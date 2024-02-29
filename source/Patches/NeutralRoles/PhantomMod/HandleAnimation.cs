@@ -1,14 +1,14 @@
 using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 
-namespace TownOfUs.NeutralRoles.PhantomMod
+namespace TownOfUsFusion.NeutralRoles.PhantomMod
 {
     [HarmonyPatch(typeof(PlayerPhysics), nameof(PlayerPhysics.HandleAnimation))]
-    public class HandleAnimation
+public class HandleAnimation
+{
+    public static void Prefix(PlayerPhysics __instance, [HarmonyArgument(0)] ref bool amDead)
     {
-        public static void Prefix(PlayerPhysics __instance, [HarmonyArgument(0)] ref bool amDead)
-        {
-            if (__instance.myPlayer.Is(RoleEnum.Phantom)) amDead = Role.GetRole<Phantom>(__instance.myPlayer).Caught;
-        }
+        if (__instance.myPlayer.Is(RoleEnum.Phantom)) amDead = Role.GetRole<Phantom>(__instance.myPlayer).Caught;
     }
+}
 }

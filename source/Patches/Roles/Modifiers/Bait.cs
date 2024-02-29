@@ -1,13 +1,13 @@
-namespace TownOfUs.Roles.Modifiers
+namespace TownOfUsFusion.Roles.Modifiers
 {
     public class Bait : Modifier
+{
+    public Bait(PlayerControl player) : base(player)
     {
-        public Bait(PlayerControl player) : base(player)
-        {
-            Name = "Bait";
-            TaskText = () => "Killing you causes an instant self-report";
-            Color = Patches.Colors.Bait;
-            ModifierType = ModifierEnum.Bait;
-        }
+        Name = "Bait";
+        TaskText = () => "Killing you causes an instant self-report";
+        Color = Patches.Colors.Bait;
+        ModifierType = ModifierEnum.Bait;
     }
+}
 }

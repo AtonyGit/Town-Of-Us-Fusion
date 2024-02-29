@@ -1,11 +1,11 @@
-namespace TownOfUs
+namespace TownOfUsFusion
 {
     public enum Faction
-    {
-        Crewmates,
-        Impostors,
-        NeutralBenign,
-        NeutralEvil,
-        NeutralKilling
-    }
+{
+    Crewmates,
+    Impostors,
+    NeutralBenign,
+    NeutralEvil,
+    NeutralKilling
+}
 }

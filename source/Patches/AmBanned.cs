@@ -1,13 +1,13 @@
 using HarmonyLib;
 
-namespace TownOfUs
+namespace TownOfUsFusion
 {
     [HarmonyPatch(typeof(StatsManager), nameof(StatsManager.AmBanned), MethodType.Getter)]
-    public class AmBanned
+public class AmBanned
+{
+    public static void Postfix(out bool __result)
     {
-        public static void Postfix(out bool __result)
-        {
-            __result = false;
-        }
+        __result = false;
     }
+}
 }

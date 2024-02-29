@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 
-namespace TownOfUs.RainbowMod
+namespace TownOfUsFusion.RainbowMod
 {
     public static class PalettePatch
+{
+    public static void Load()
     {
-        public static void Load()
+        Palette.ColorNames = new[]
         {
-            Palette.ColorNames = new[]
-            {
                 StringNames.ColorRed,
                 StringNames.ColorBlue,
                 StringNames.ColorGreen,
@@ -45,8 +45,8 @@ namespace TownOfUs.RainbowMod
                 (StringNames)999998,//"Tawny",
                 (StringNames)999999,//"Rainbow",
             };
-            Palette.PlayerColors = new[]
-            {
+        Palette.PlayerColors = new[]
+        {
                 new Color32(198, 17, 17, byte.MaxValue),
                 new Color32(19, 46, 210, byte.MaxValue),
                 new Color32(17, 128, 45, byte.MaxValue),
@@ -84,8 +84,8 @@ namespace TownOfUs.RainbowMod
                 new Color32(255, 207, 0, byte.MaxValue),
                 new Color32(0, 0, 0, byte.MaxValue),
             };
-            Palette.ShadowColors = new[]
-            {
+        Palette.ShadowColors = new[]
+        {
                 new Color32(122, 8, 56, byte.MaxValue),
                 new Color32(9, 21, 142, byte.MaxValue),
                 new Color32(10, 77, 46, byte.MaxValue),
@@ -123,6 +123,6 @@ namespace TownOfUs.RainbowMod
                 new Color32(191, 143, 0, byte.MaxValue),
                 new Color32(0, 0, 0, byte.MaxValue),
             };
-        }
     }
+}
 }

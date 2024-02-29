@@ -1,22 +1,22 @@
 using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 
-namespace TownOfUs.NeutralRoles.GuardianAngelMod
+namespace TownOfUsFusion.NeutralRoles.GuardianAngelMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
+[HarmonyPriority(Priority.Last)]
+public class ProtectUnportect
+{
     [HarmonyPriority(Priority.Last)]
-    public class ProtectUnportect
+    public static void Postfix(HudManager __instance)
     {
-        [HarmonyPriority(Priority.Last)]
-        public static void Postfix(HudManager __instance)
+        foreach (var role in Role.GetRoles(RoleEnum.GuardianAngel))
         {
-            foreach (var role in Role.GetRoles(RoleEnum.GuardianAngel))
-            {
-                var ga = (GuardianAngel) role;
-                if (ga.Protecting)
-                    ga.Protect();
-                else if (ga.Enabled) ga.UnProtect();
-            }
+            var ga = (GuardianAngel)role;
+            if (ga.Protecting)
+                ga.Protect();
+            else if (ga.Enabled) ga.UnProtect();
         }
     }
+}
 }

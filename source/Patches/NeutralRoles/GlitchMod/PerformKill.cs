@@ -1,18 +1,18 @@
 ﻿using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 
-namespace TownOfUs.NeutralRoles.GlitchMod
+namespace TownOfUsFusion.NeutralRoles.GlitchMod
 {
     [HarmonyPatch(typeof(KillButton), nameof(KillButton.DoClick))]
-    internal class PerformKill
+internal class PerformKill
+{
+    public static bool Prefix(KillButton __instance)
     {
-        public static bool Prefix(KillButton __instance)
-        {
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Glitch) && __instance.isActiveAndEnabled &&
-                !__instance.isCoolingDown)
-                return Role.GetRole<Glitch>(PlayerControl.LocalPlayer).UseAbility(__instance);
+        if (PlayerControl.LocalPlayer.Is(RoleEnum.Glitch) && __instance.isActiveAndEnabled &&
+            !__instance.isCoolingDown)
+            return Role.GetRole<Glitch>(PlayerControl.LocalPlayer).UseAbility(__instance);
 
-            return true;
-        }
+        return true;
     }
+}
 }

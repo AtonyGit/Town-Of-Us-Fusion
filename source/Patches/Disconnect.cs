@@ -1,56 +1,56 @@
 using HarmonyLib;
 using System.Linq;
 using UnityEngine;
-using TownOfUs.ImpostorRoles.TraitorMod;
+using TownOfUsFusion.ImpostorRoles.TraitorMod;
 
-namespace TownOfUs.Patches
+namespace TownOfUsFusion.Patches
 {
     [HarmonyPatch(typeof(GameData))]
-    public class DisconnectHandler
+public class DisconnectHandler
+{
+    [HarmonyPrefix]
+    [HarmonyPatch(nameof(GameData.HandleDisconnect), typeof(PlayerControl), typeof(DisconnectReasons))]
+    public static void Prefix([HarmonyArgument(0)] PlayerControl player)
     {
-        [HarmonyPrefix]
-        [HarmonyPatch(nameof(GameData.HandleDisconnect), typeof(PlayerControl), typeof(DisconnectReasons))]
-        public static void Prefix([HarmonyArgument(0)] PlayerControl player)
+        if (CustomGameOptions.GameMode == GameMode.Cultist)
         {
-            if (CustomGameOptions.GameMode == GameMode.Cultist)
+            if (player.Is(RoleEnum.Necromancer) || player.Is(RoleEnum.Whisperer))
             {
-                if (player.Is(RoleEnum.Necromancer) || player.Is(RoleEnum.Whisperer))
+                foreach (var player2 in PlayerControl.AllPlayerControls)
                 {
-                    foreach (var player2 in PlayerControl.AllPlayerControls)
-                    {
-                        if (player2.Is(Faction.Impostors)) Utils.MurderPlayer(player2, player2, true);
-                    }
+                    if (player2.Is(Faction.Impostors)) Utils.MurderPlayer(player2, player2, true);
                 }
             }
-            else
+        }
+        else
+        {
+            /*if (player.IsLover() && CustomGameOptions.BothLoversDie)
             {
-                /*if (player.IsLover() && CustomGameOptions.BothLoversDie)
+                var otherLover = Modifier.GetModifier<Lover>(player).OtherLover;
+                if (!otherLover.Is(RoleEnum.Pestilence) && !otherLover.Data.IsDead
+                     && !otherLover.Data.Disconnected) MurderPlayer(otherLover, otherLover, true);
+                if (otherLover.Is(RoleEnum.Sheriff))
                 {
-                    var otherLover = Modifier.GetModifier<Lover>(player).OtherLover;
-                    if (!otherLover.Is(RoleEnum.Pestilence) && !otherLover.Data.IsDead
-                         && !otherLover.Data.Disconnected) MurderPlayer(otherLover, otherLover, true);
-                    if (otherLover.Is(RoleEnum.Sheriff))
-                    {
-                        var sheriff = Role.GetRole<Sheriff>(otherLover);
-                        sheriff.IncorrectKills -= 1;
-                    }
-                }*/
-                if (AmongUsClient.Instance.AmHost)
+                    var sheriff = Role.GetRole<Sheriff>(otherLover);
+                    sheriff.IncorrectKills -= 1;
+                }
+            }*/
+            if (AmongUsClient.Instance.AmHost)
+            {
+                if (player == SetTraitor.WillBeTraitor)
                 {
-                    if (player == SetTraitor.WillBeTraitor)
-                    {
-                        var toChooseFrom = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) &&
-                            !x.Is(ModifierEnum.Lover) && !x.Data.IsDead && !x.Data.Disconnected && !x.IsExeTarget()).ToList();
-                        if (toChooseFrom.Count == 0) return;
-                        var rand = Random.RandomRangeInt(0, toChooseFrom.Count);
-                        var pc = toChooseFrom[rand];
+                    var toChooseFrom = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) &&
+                        !x.Is(ModifierEnum.Lover) && !x.Data.IsDead && !x.Data.Disconnected && !x.IsExeTarget()).ToList();
+                    if (toChooseFrom.Count == 0) return;
+                    var rand = Random.RandomRangeInt(0, toChooseFrom.Count);
+                    var pc = toChooseFrom[rand];
 
-                        SetTraitor.WillBeTraitor = pc;
+                    SetTraitor.WillBeTraitor = pc;
 
-                        Utils.Rpc(CustomRPC.SetTraitor, pc.PlayerId);
-                    }
+                    Utils.Rpc(CustomRPC.SetTraitor, pc.PlayerId);
                 }
             }
         }
     }
+}
 }

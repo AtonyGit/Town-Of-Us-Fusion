@@ -1,24 +1,24 @@
 using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 
-namespace TownOfUs.CrewmateRoles.ProsecutorMod
+namespace TownOfUsFusion.CrewmateRoles.ProsecutorMod
 {
 
     [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.StartMeeting))]
-    class StartMeetingPatch
+class StartMeetingPatch
+{
+    public static void Prefix(PlayerControl __instance, [HarmonyArgument(0)] GameData.PlayerInfo meetingTarget)
     {
-        public static void Prefix(PlayerControl __instance, [HarmonyArgument(0)] GameData.PlayerInfo meetingTarget)
+        if (__instance == null)
         {
-            if (__instance == null)
-            {
-                return;
-            }
-            foreach (var pros in Role.GetRoles(RoleEnum.Prosecutor))
-            {
-                var prosRole = (Prosecutor)pros;
-                prosRole.StartProsecute = false;
-            }
             return;
         }
+        foreach (var pros in Role.GetRoles(RoleEnum.Prosecutor))
+        {
+            var prosRole = (Prosecutor)pros;
+            prosRole.StartProsecute = false;
+        }
+        return;
     }
+}
 }

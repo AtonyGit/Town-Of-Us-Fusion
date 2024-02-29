@@ -1,13 +1,13 @@
 using HarmonyLib;
 
-namespace TownOfUs.Patches.CustomHats.Patches
+namespace TownOfUsFusion.Patches.CustomHats.Patches
 {
     [HarmonyPatch(typeof(InventoryManager), nameof(InventoryManager.CheckUnlockedItems))]
-    public class InventoryManager_Patches
+public class InventoryManager_Patches
+{
+    public static void Prefix()
     {
-        public static void Prefix()
-        {
-            HatLoader.LoadHatsRoutine();
-        }
+        HatLoader.LoadHatsRoutine();
     }
-}   
+}
+}

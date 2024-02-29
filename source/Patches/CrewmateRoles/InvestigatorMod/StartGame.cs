@@ -1,13 +1,13 @@
 using HarmonyLib;
 
-namespace TownOfUs.CrewmateRoles.InvestigatorMod
+namespace TownOfUsFusion.CrewmateRoles.InvestigatorMod
 {
     [HarmonyPatch(typeof(ShipStatus), nameof(ShipStatus.Start))]
-    public static class StartGame
+public static class StartGame
+{
+    public static void Postfix(ShipStatus __instance)
     {
-        public static void Postfix(ShipStatus __instance)
-        {
-            AddPrints.GameStarted = true;
-        }
+        AddPrints.GameStarted = true;
     }
+}
 }

@@ -40,7 +40,8 @@ public class RainbowUtils
         try
         {
             return (int)Palette.ColorNames[id] == 999999;
-        } catch
+        }
+        catch
         {
             return false;
         }

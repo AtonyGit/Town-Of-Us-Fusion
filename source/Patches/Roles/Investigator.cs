@@ -1,22 +1,22 @@
 using System.Collections.Generic;
-using TownOfUs.CrewmateRoles.InvestigatorMod;
+using TownOfUsFusion.CrewmateRoles.InvestigatorMod;
 
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 {
     public class Investigator : Role
+{
+    public readonly List<Footprint> AllPrints = new List<Footprint>();
+
+
+    public Investigator(PlayerControl player) : base(player)
     {
-        public readonly List<Footprint> AllPrints = new List<Footprint>();
-
-
-        public Investigator(PlayerControl player) : base(player)
-        {
-            Name = "Investigator";
-            ImpostorText = () => "Find All Impostors By Examining Footprints";
-            TaskText = () => "You can see everyone's footprints";
-            Color = Patches.Colors.Investigator;
-            RoleType = RoleEnum.Investigator;
-            AddToRoleHistory(RoleType);
-            Scale = 1.4f;
-        }
+        Name = "Investigator";
+        ImpostorText = () => "Find All Impostors By Examining Footprints";
+        TaskText = () => "You can see everyone's footprints";
+        Color = Patches.Colors.Investigator;
+        RoleType = RoleEnum.Investigator;
+        AddToRoleHistory(RoleType);
+        Scale = 1.4f;
     }
+}
 }

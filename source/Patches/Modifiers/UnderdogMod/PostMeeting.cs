@@ -1,16 +1,16 @@
 ﻿using HarmonyLib;
-using TownOfUs.Roles.Modifiers;
+using TownOfUsFusion.Roles.Modifiers;
 
-namespace TownOfUs.Modifiers.UnderdogMod
+namespace TownOfUsFusion.Modifiers.UnderdogMod
 {
     [HarmonyPatch(typeof(ExileController), nameof(ExileController.WrapUp))]
-    public static class HUDClose
+public static class HUDClose
+{
+    public static void Postfix()
     {
-        public static void Postfix()
-        {
-            var modifier = Modifier.GetModifier(PlayerControl.LocalPlayer);
-            if (modifier?.ModifierType == ModifierEnum.Underdog)
-                ((Underdog)modifier).SetKillTimer();
-        }
+        var modifier = Modifier.GetModifier(PlayerControl.LocalPlayer);
+        if (modifier?.ModifierType == ModifierEnum.Underdog)
+            ((Underdog)modifier).SetKillTimer();
     }
+}
 }

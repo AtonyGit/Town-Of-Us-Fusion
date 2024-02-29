@@ -1,17 +1,17 @@
 using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 
-namespace TownOfUs.CrewmateRoles.HaunterMod
+namespace TownOfUsFusion.CrewmateRoles.HaunterMod
 {
     [HarmonyPatch(typeof(PlayerPhysics), nameof(PlayerPhysics.ResetMoveState))]
-    public class ResetMoveState
+public class ResetMoveState
+{
+    public static void Postfix(PlayerPhysics __instance)
     {
-        public static void Postfix(PlayerPhysics __instance)
-        {
-            if (!__instance.myPlayer.Is(RoleEnum.Haunter)) return;
+        if (!__instance.myPlayer.Is(RoleEnum.Haunter)) return;
 
-            var role = Role.GetRole<Haunter>(__instance.myPlayer);
-            __instance.myPlayer.Collider.enabled = !role.Caught;
-        }
+        var role = Role.GetRole<Haunter>(__instance.myPlayer);
+        __instance.myPlayer.Collider.enabled = !role.Caught;
     }
+}
 }

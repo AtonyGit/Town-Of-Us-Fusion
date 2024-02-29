@@ -1,18 +1,18 @@
 using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 
-namespace TownOfUs.CrewmateRoles.VigilanteMod
+namespace TownOfUsFusion.CrewmateRoles.VigilanteMod
 {
     [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.VotingComplete))] // BBFDNCCEJHI
-    public static class VotingComplete
+public static class VotingComplete
+{
+    public static void Postfix(MeetingHud __instance)
     {
-        public static void Postfix(MeetingHud __instance)
+        if (PlayerControl.LocalPlayer.Is(RoleEnum.Vigilante))
         {
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Vigilante))
-            {
-                var retributionist = Role.GetRole<Vigilante>(PlayerControl.LocalPlayer);
-                ShowHideButtonsVigi.HideButtonsVigi(retributionist);
-            }
+            var retributionist = Role.GetRole<Vigilante>(PlayerControl.LocalPlayer);
+            ShowHideButtonsVigi.HideButtonsVigi(retributionist);
         }
     }
+}
 }

@@ -1,17 +1,17 @@
 using System.Collections.Generic;
 
-namespace TownOfUs.Roles.Modifiers
+namespace TownOfUsFusion.Roles.Modifiers
 {
     public class Radar : Modifier
+{
+    public List<ArrowBehaviour> RadarArrow = new List<ArrowBehaviour>();
+    public PlayerControl ClosestPlayer;
+    public Radar(PlayerControl player) : base(player)
     {
-        public List<ArrowBehaviour> RadarArrow = new List<ArrowBehaviour>();
-        public PlayerControl ClosestPlayer;
-        public Radar(PlayerControl player) : base(player)
-        {
-            Name = "Radar";
-            TaskText = () => "Be on high alert";
-            Color = Patches.Colors.Radar;
-            ModifierType = ModifierEnum.Radar;
-        }
+        Name = "Radar";
+        TaskText = () => "Be on high alert";
+        Color = Patches.Colors.Radar;
+        ModifierType = ModifierEnum.Radar;
     }
+}
 }

@@ -1,21 +1,21 @@
 ﻿using HarmonyLib;
 
-namespace TownOfUs.RainbowMod
+namespace TownOfUsFusion.RainbowMod
 {
     [HarmonyPatch(typeof(AmongUs.Data.Player.PlayerData), nameof(AmongUs.Data.Player.PlayerData.FileName), MethodType.Getter)]
-    public class SaveManagerPatch
+public class SaveManagerPatch
+{
+    public static void Postfix(ref string __result)
     {
-        public static void Postfix(ref string __result)
-        {
-            __result += "_TOU";
-        }
+        __result += "_TOU";
     }
-    [HarmonyPatch(typeof(AmongUs.Data.Legacy.LegacySaveManager), nameof(AmongUs.Data.Legacy.LegacySaveManager.GetPrefsName))]
-    public class LegacySaveManagerPatch
+}
+[HarmonyPatch(typeof(AmongUs.Data.Legacy.LegacySaveManager), nameof(AmongUs.Data.Legacy.LegacySaveManager.GetPrefsName))]
+public class LegacySaveManagerPatch
+{
+    public static void Postfix(ref string __result)
     {
-        public static void Postfix(ref string __result)
-        {
-            __result += "_TOU";
-        }
+        __result += "_TOU";
     }
+}
 }

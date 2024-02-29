@@ -1,44 +1,44 @@
 using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 
-namespace TownOfUs.CrewmateRoles.ProsecutorMod
+namespace TownOfUsFusion.CrewmateRoles.ProsecutorMod
 {
     [HarmonyPatch(typeof(PlayerVoteArea))]
-    public class AllowExtraVotes
+public class AllowExtraVotes
+{
+    [HarmonyPatch(typeof(PlayerVoteArea), nameof(PlayerVoteArea.VoteForMe))]
+    public static class VoteForMe
     {
-        [HarmonyPatch(typeof(PlayerVoteArea), nameof(PlayerVoteArea.VoteForMe))]
-        public static class VoteForMe
+        public static bool Prefix(PlayerVoteArea __instance)
         {
-            public static bool Prefix(PlayerVoteArea __instance)
-            {
-                if (!PlayerControl.LocalPlayer.Is(RoleEnum.Prosecutor)) return true;
-                var role = Role.GetRole<Prosecutor>(PlayerControl.LocalPlayer);
-                if (__instance.Parent.state == MeetingHud.VoteStates.Proceeding ||
-                    __instance.Parent.state == MeetingHud.VoteStates.Results)
-                    return false;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Prosecutor)) return true;
+            var role = Role.GetRole<Prosecutor>(PlayerControl.LocalPlayer);
+            if (__instance.Parent.state == MeetingHud.VoteStates.Proceeding ||
+                __instance.Parent.state == MeetingHud.VoteStates.Results)
+                return false;
 
-                if (__instance != role.Prosecute)
+            if (__instance != role.Prosecute)
+            {
+                if (role.StartProsecute)
                 {
-                    if (role.StartProsecute)
-                    {
-                        role.ProsecuteThisMeeting = true;
-                        role.StartProsecute = false;
-                        Utils.Rpc(CustomRPC.Prosecute, false, role.Player.PlayerId);
-                    }
-                    return true;
+                    role.ProsecuteThisMeeting = true;
+                    role.StartProsecute = false;
+                    Utils.Rpc(CustomRPC.Prosecute, false, role.Player.PlayerId);
                 }
-                else
+                return true;
+            }
+            else
+            {
+                role.StartProsecute = true;
+                MeetingHud.Instance.SkipVoteButton.gameObject.SetActive(false);
+                AddProsecute.UpdateButton(role, MeetingHud.Instance);
+                if (!AmongUsClient.Instance.AmHost)
                 {
-                    role.StartProsecute = true;
-                    MeetingHud.Instance.SkipVoteButton.gameObject.SetActive(false);
-                    AddProsecute.UpdateButton(role, MeetingHud.Instance);
-                    if (!AmongUsClient.Instance.AmHost)
-                    {
-                        Utils.Rpc(CustomRPC.Prosecute, true, role.Player.PlayerId);
-                    }
-                    return false;
+                    Utils.Rpc(CustomRPC.Prosecute, true, role.Player.PlayerId);
                 }
+                return false;
             }
         }
     }
+}
 }
