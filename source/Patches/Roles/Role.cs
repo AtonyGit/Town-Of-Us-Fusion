@@ -149,6 +149,11 @@ namespace TownOfUsFusion.Roles
                 var mayor = GetRole<Mayor>(lover.OtherLover.Player);
                 if (mayor.Revealed) return true;
             }
+            else if (lover.OtherLover.Player.Is(RoleEnum.Tyrant))
+            {
+                var tyrant = GetRole<Tyrant>(lover.OtherLover.Player);
+                if (tyrant.Revealed) return true;
+            }
         }
         return false;
     }
@@ -181,6 +186,11 @@ namespace TownOfUsFusion.Roles
     }
     public static void VampWin()
     {
+        foreach (var ty in GetRoles(RoleEnum.Tyrant))
+        {
+            var tyRole = (Tyrant)ty;
+            if (tyRole.MetWinCondition) return;
+        }
         foreach (var jest in GetRoles(RoleEnum.Jester))
         {
             var jestRole = (Jester)jest;

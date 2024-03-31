@@ -1,0 +1,74 @@
+{
+  "credits": [
+    {
+      "id": "fusion-aresfaces0",
+      "name": "Nice Fella",
+      "artist": "fusion studios"
+    },
+    {
+      "id": "fusion-aresfaces1",
+      "name": "Goofy Fella",
+      "artist": "fusion studios"
+    },
+    {
+      "id": "fusion-aresfaces2",
+      "name": "Happy Fella",
+      "artist": "fusion studios"
+    },
+    {
+      "id": "fusion-burple",
+      "name": "Burple Guy",
+      "artist": "fusion studios"
+    },
+    {
+      "id": "fusion-ares",
+      "name": "Ares' Shades",
+      "artist": "fusion studios"
+    },
+    {
+      "id": "fusion-blueberry",
+      "name": "Mole",
+      "artist": "fusion studios"
+    },
+    {
+      "id": "fusion-cdc",
+      "name": "Crafter Visor",
+      "artist": "fusion studios"
+    },
+    {
+      "id": "fusion-fallguy",
+      "name": "Fall Guy",
+      "artist": "fusion studios"
+    },
+    {
+      "id": "fusion-glare0",
+      "name": "Red Glare",
+      "artist": "fusion studios"
+    },
+    {
+      "id": "fusion-glare1",
+      "name": "Yellow Glare",
+      "artist": "fusion studios"
+    },
+    {
+      "id": "fusion-gd0",
+      "name": "Normal Face",
+      "artist": "fusion studios"
+    },
+    {
+      "id": "fusion-gd1",
+      "name": "Abnormal Face",
+      "artist": "fusion studios"
+    },
+    {
+      "id": "fusion-imp0",
+      "name": "Square Visor",
+      "artist": "fusion studios"
+    },
+    {
+      "id": "fusion-imp1",
+      "name": "Square Visor (Glaring)",
+      "artist": "fusion studios"
+    }
+  ]
+}

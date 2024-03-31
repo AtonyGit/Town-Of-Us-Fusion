@@ -1,3 +1,4 @@
+using TownOfUsFusion.CrewmateRoles.BodyguardMod;
 using TownOfUsFusion.CrewmateRoles.MedicMod;
 using TownOfUsFusion.CustomOption;
 using TownOfUsFusion.NeutralRoles.ExecutionerMod;
@@ -79,7 +80,38 @@ public static class CustomGameOptions
     public static int VenererOn => (int)Generate.VenererOn.Get();
     public static int AurialOn => (int)Generate.AurialOn.Get();
     // TOU FUSION ROLES
+    public static int BodyguardOn => (int)Generate.BodyguardOn.Get();
+    public static int MageOn => (int)Generate.MageOn.Get();
+    public static int CaptainOn => (int)Generate.CaptainOn.Get();
+    public static int MonarchOn => (int)Generate.MonarchOn.Get();
+    public static int BartenderOn => (int)Generate.BartenderOn.Get();
+
+    public static int JokerOn => (int)Generate.JokerOn.Get();
+    public static int PirateOn => (int)Generate.PirateOn.Get();
+
+    public static int FraudOn => (int)Generate.FraudOn.Get();
+    public static int TempestOn => (int)Generate.TempestOn.Get();
     public static int TyrantOn => (int)Generate.TyrantOn.Get();
+    public static int WitchOn => (int)Generate.WitchOn.Get();
+
+    public static int InfiltratorOn => (int)Generate.InfiltratorOn.Get();
+    public static int GhoulOn => (int)Generate.GhoulOn.Get();
+    public static int MercenaryOn => (int)Generate.MercenaryOn.Get();
+    public static int SerialKillerOn => (int)Generate.SerialKillerOn.Get();
+
+    public static int BakerOn => (int)Generate.BakerOn.Get();
+    public static int BerserkerOn => (int)Generate.BerserkerOn.Get();
+    public static int SoulCollectorOn => (int)Generate.SoulCollectorOn.Get();
+
+    public static int PoisonerOn => (int)Generate.PoisonerOn.Get();
+    // TOU FUSION MODIFIERS
+    
+    public static int DrunkOn => (int)Generate.DrunkOn.Get();
+    public static int NumbOn => (int)Generate.NumbOn.Get();
+    public static int NinjaOn => (int)Generate.NinjaOn.Get();
+    public static int ObliviousOn => (int)Generate.ObliviousOn.Get();
+    public static int TrollOn => (int)Generate.TrollOn.Get();
+
     public static int TorchOn => (int)Generate.TorchOn.Get();
     public static int DiseasedOn => (int)Generate.DiseasedOn.Get();
     public static int FlashOn => (int)Generate.FlashOn.Get();
@@ -120,6 +152,8 @@ public static class CustomGameOptions
     public static bool JesterVent => Generate.JesterVent.Get();
     public static bool JesterImpVision => Generate.JesterImpVision.Get();
     public static bool JesterHaunt => Generate.JesterHaunt.Get();
+    public static GuardOptions ShowGuarded => (GuardOptions)Generate.ShowGuarded.Get();
+
     public static ShieldOptions ShowShielded => (ShieldOptions)Generate.ShowShielded.Get();
 
     public static NotificationOptions NotificationShield =>
@@ -195,11 +229,13 @@ public static class CustomGameOptions
     public static bool UndertakerVentWithBody => Generate.UndertakerVentWithBody.Get();
     public static bool AssassinGuessNeutralBenign => Generate.AssassinGuessNeutralBenign.Get();
     public static bool AssassinGuessNeutralEvil => Generate.AssassinGuessNeutralEvil.Get();
+    public static bool AssassinGuessNeutralChaos => Generate.AssassinGuessNeutralChaos.Get();
     public static bool AssassinGuessNeutralKilling => Generate.AssassinGuessNeutralKilling.Get();
     public static bool AssassinGuessImpostors => Generate.AssassinGuessImpostors.Get();
     public static bool AssassinGuessModifiers => Generate.AssassinGuessModifiers.Get();
     public static bool AssassinGuessLovers => Generate.AssassinGuessLovers.Get();
     public static bool AssassinCrewmateGuess => Generate.AssassinCrewmateGuess.Get();
+    public static bool AssassinGuessCrewInvestigative => Generate.AssassinGuessCrewInvestigative.Get();
     public static int AssassinKills => (int)Generate.AssassinKills.Get();
     public static int NumberOfImpostorAssassins => (int)Generate.NumberOfImpostorAssassins.Get();
     public static int NumberOfNeutralAssassins => (int)Generate.NumberOfNeutralAssassins.Get();
@@ -342,7 +378,7 @@ public static class CustomGameOptions
     public static float RandomMapAirship => Generate.RandomMapAirship.Get();
     public static float RandomMapFungle => Generate.RandomMapFungle.Get();
     public static float RandomMapSubmerged => Patches.SubmergedCompatibility.Loaded ? Generate.RandomMapSubmerged.Get() : 0f;
-//    public static float RandomMapLevelImp => Patches.LevelImpCheck.Loaded ? Generate.RandomMapLevelImp.Get() : 0f;
+    public static float RandomMapLevelImp => Patches.LevelImpCheck.Loaded ? Generate.RandomMapLevelImp.Get() : 0f;
     public static bool AutoAdjustSettings => Generate.AutoAdjustSettings.Get();
     public static bool SmallMapHalfVision => Generate.SmallMapHalfVision.Get();
     public static float SmallMapDecreasedCooldown => Generate.SmallMapDecreasedCooldown.Get();

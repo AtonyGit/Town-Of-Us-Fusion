@@ -16,7 +16,8 @@ namespace TownOfUsFusion.Patches
 {
     public static class LevelImpCheck
     {
-        public const string LEVELIMP_ID = "com.DigiWorm.LevelImposter";
+        public const string LEVELIMP_GUID = "com.DigiWorm.LevelImposter";
+    public const ShipStatus.MapType LI_MAP_TYPE = (ShipStatus.MapType)7;
 
         private static bool _isLevelImpEnabled = false;
 
@@ -25,12 +26,12 @@ namespace TownOfUsFusion.Patches
 
         public static void Init()
         {
-            _isLevelImpEnabled = IsPlugin(LEVELIMP_ID);
-        Loaded = IL2CPPChainloader.Instance.Plugins.TryGetValue(LEVELIMP_ID, out PluginInfo plugin);
+            _isLevelImpEnabled = IsPlugin(LEVELIMP_GUID);
+        Loaded = IL2CPPChainloader.Instance.Plugins.TryGetValue(LEVELIMP_GUID, out PluginInfo plugin);
         if (!Loaded) return;
 
-            /*if (LEVELIMP_ID)
-                LILogger.Info("LevelImposter was detected, adding to map list.");*/
+            if (_isLevelImpEnabled)
+                PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("LevelImposter was detected, adding to map list.");
         }
 
         private static bool IsPlugin(string guid)

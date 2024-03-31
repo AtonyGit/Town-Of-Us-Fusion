@@ -50,7 +50,26 @@ namespace TownOfUsFusion.Patches
     public readonly static Color Vampire = new Color(0.15f, 0.15f, 0.15f, 1f);
     // TOU FUSION ROLES
     
+    public readonly static Color Bodyguard = new Color(0.5f, 0.83f, 0.67f, 1f);
+    public readonly static Color Mage = Palette.ImpostorRed;
+    public readonly static Color Captain = Palette.ImpostorRed;
+    public readonly static Color Monarch = Palette.ImpostorRed;
+    public readonly static Color Bartender = Palette.ImpostorRed;
+    
+    public readonly static Color Joker = Palette.ImpostorRed;
+    public readonly static Color Pirate = Palette.ImpostorRed;
+    public readonly static Color Fraud = Palette.ImpostorRed;
+    public readonly static Color Tempest = Palette.ImpostorRed;
     public readonly static Color Tyrant = new Color(0.92f, 0.33f, 0.36f, 1f);
+    public readonly static Color Witch = Palette.ImpostorRed;
+    public readonly static Color Infiltrator = Palette.ImpostorRed;
+    public readonly static Color Ghoul = Palette.ImpostorRed;
+    public readonly static Color Mercenary = Palette.ImpostorRed;
+    public readonly static Color SerialKiller = Palette.ImpostorRed;
+
+    public readonly static Color Baker = new Color(0.9f, 1f, 0.7f, 1f);
+    public readonly static Color Berserker = new Color(0.9f, 1f, 0.7f, 1f);
+    public readonly static Color SoulCollector = new Color(0.9f, 1f, 0.7f, 1f);
 
     //Imposter Colors
     public readonly static Color Impostor = Palette.ImpostorRed;
@@ -69,6 +88,11 @@ namespace TownOfUsFusion.Patches
     public readonly static Color Radar = new Color(1f, 0f, 0.5f, 1f);
     public readonly static Color Multitasker = new Color(1f, 0.5f, 0.3f, 1f);
     public readonly static Color Frosty = new Color(0.6f, 1f, 1f, 1f);
-
+    // OTHER STUFF
+    public readonly static Color Role = Color.white;
+    public readonly static Color Modifier = Color.white;
+    public readonly static Color Neutral = Color.white;
+    public readonly static Color Faction = Color.white;
+    public readonly static Color Alignment = Color.white;
 }
 }

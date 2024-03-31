@@ -11,12 +11,25 @@ public class PatchColours
     {
         var newResult = (int)name switch
         {
+            // TOU FUSION COLORS
+            999800 => "Snow White",
+            999801 => "Turquoise",
+            999802 => "Nacho",
+            999803 => "Galacta",
+            999804 => "Charcoal",
+            999805 => "Violet",
+            999806 => "Denim",
+            999807 => "Air Force",
+            999808 => "Wood",
+            999809 => "Dandelion",
+            999810 => "Amber",
+            // TOU COLORS
             999983 => "Watermelon",
             999984 => "Chocolate",
             999985 => "Sky Blue",
             999986 => "Beige",
             999987 => "Magenta",
-            999988 => "Turquoise",
+            999988 => "Sea Green",
             999989 => "Lilac",
             999990 => "Olive",
             999991 => "Azure",

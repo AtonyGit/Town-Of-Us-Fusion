@@ -12,9 +12,12 @@ namespace TownOfUsFusion.Roles
         Color = Patches.Colors.Tyrant;
         RoleType = RoleEnum.Tyrant;
         AddToRoleHistory(RoleType);
+        Faction = Faction.NeutralEvil;
         Revealed = false;
+        MetWinCondition = false;
     }
     public bool Revealed { get; set; }
+    public bool MetWinCondition { get; set; }
 
     public GameObject RevealButton = new GameObject();
 
@@ -33,6 +36,11 @@ namespace TownOfUsFusion.Roles
         var evilTeam = new Il2CppSystem.Collections.Generic.List<PlayerControl>();
         evilTeam.Add(PlayerControl.LocalPlayer);
         __instance.teamToShow = evilTeam;
+    }
+    public void Wins()
+    {
+        //System.Console.WriteLine("Reached Here - Jester edition");
+        MetWinCondition = true;
     }
 }
 }

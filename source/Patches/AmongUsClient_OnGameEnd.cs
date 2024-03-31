@@ -28,6 +28,11 @@ public class EndGameManager_SetEverythingUp
             var surv = (Survivor)role;
             losers.Add(surv.Player.GetDefaultOutfit().ColorId);
         }
+        foreach (var role in Role.GetRoles(RoleEnum.Tyrant))
+        {
+            var ty = (Tyrant)role;
+            losers.Add(ty.Player.GetDefaultOutfit().ColorId);
+        }
         foreach (var role in Role.GetRoles(RoleEnum.Doomsayer))
         {
             var doom = (Doomsayer)role;
@@ -111,20 +116,10 @@ public class EndGameManager_SetEverythingUp
 
         if (CustomGameOptions.NeutralEvilWinEndsGame)
         {
+            var canTyrantWin = false;
             foreach (var role in Role.AllRoles)
             {
                 var type = role.RoleType;
-
-                if (type == RoleEnum.Tyrant)
-                {
-                    var tyrant = (Tyrant)role;
-                        TempData.winners = new List<WinningPlayerData>();
-                        var tyData = new WinningPlayerData(tyrant.Player.Data);
-                        tyData.IsDead = false;
-                        if (PlayerControl.LocalPlayer != tyrant.Player) tyData.IsYou = false;
-                        TempData.winners.Add(tyData);
-                        return;
-                }
                 if (type == RoleEnum.Jester)
                 {
                     var jester = (Jester)role;
@@ -134,6 +129,7 @@ public class EndGameManager_SetEverythingUp
                         var jestData = new WinningPlayerData(jester.Player.Data);
                         jestData.IsDead = false;
                         if (PlayerControl.LocalPlayer != jester.Player) jestData.IsYou = false;
+                        canTyrantWin = true;
                         TempData.winners.Add(jestData);
                         return;
                     }
@@ -146,6 +142,7 @@ public class EndGameManager_SetEverythingUp
                         TempData.winners = new List<WinningPlayerData>();
                         var exeData = new WinningPlayerData(executioner.Player.Data);
                         if (PlayerControl.LocalPlayer != executioner.Player) exeData.IsYou = false;
+                        canTyrantWin = true;
                         TempData.winners.Add(exeData);
                         return;
                     }
@@ -158,6 +155,7 @@ public class EndGameManager_SetEverythingUp
                         TempData.winners = new List<WinningPlayerData>();
                         var doomData = new WinningPlayerData(doom.Player.Data);
                         if (PlayerControl.LocalPlayer != doom.Player) doomData.IsYou = false;
+                        canTyrantWin = true;
                         TempData.winners.Add(doomData);
                         return;
                     }
@@ -171,6 +169,20 @@ public class EndGameManager_SetEverythingUp
                         var phantomData = new WinningPlayerData(phantom.Player.Data);
                         if (PlayerControl.LocalPlayer != phantom.Player) phantomData.IsYou = false;
                         TempData.winners.Add(phantomData);
+                        return;
+                    }
+                }
+
+                if (type == RoleEnum.Tyrant)
+                {
+                    var tyrant = (Tyrant)role;
+                    if (canTyrantWin && tyrant.Revealed)
+                    {
+                        TempData.winners = new List<WinningPlayerData>();
+                        var tyData = new WinningPlayerData(tyrant.Player.Data);
+                        tyData.IsDead = false;
+                        if (PlayerControl.LocalPlayer != tyrant.Player) tyData.IsYou = false;
+                        TempData.winners.Add(tyData);
                         return;
                     }
                 }

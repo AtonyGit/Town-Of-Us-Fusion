@@ -65,17 +65,60 @@ namespace TownOfUsFusion
     CultistSnitch,
 
     // TOU FUSION ROLES
+    Bodyguard,
+    Mage,
+    Captain,
+    Monarch,
+    Bartender,
+
+    Infiltrator,
+    Joker,
+    Pirate,
+    Fraud,
+    Tempest,
     Tyrant,
+    Witch,
+    Ghoul,
+    Mercenary,
+    SerialKiller,
+    Baker,
+    Famine,
+    Berserker,
+    War,
+    SoulCollector,
+    Death,
+    Poisoner,
 
     None
 }
 
+public enum FactionEnum
+{
+    CrewmateAstral,
+    CrewmateInvestigative,
+    CrewmateKilling,
+    CrewmateProtective,
+    CrewmateChaos,
+    CrewmatePower,
+    CrewmateSupport,
+
+    NeutralBenign,
+    NeutralEvil,
+    NeutralChaos,
+    NeutralKilling,
+    NeutralApocalypse,
+
+    ImpostorConcealing,
+    ImpostorKilling,
+    ImpostorSupport,
+
+    Apocalypse
+}
 public enum ModifierEnum
 {
     Lover,
     Torch,
     Diseased,
-    Flash,
     Tiebreaker,
     Giant,
     ButtonBarry,
@@ -87,7 +130,31 @@ public enum ModifierEnum
     Multitasker,
     DoubleShot,
     Underdog,
-    Frosty
+    Frosty,
+    
+    // TOU FUSION MODIFIERS
+    Drunk,
+    Flash,
+    Dwarf,
+    Numb,
+    Ninja,
+    Oblivious,
+    Troll,
+    Tolerant,
+    None
+}
+
+public enum InfoType
+{
+    Role,
+    Modifier,
+    Faction,
+    Alignment,
+    GameMode,
+    Symbol,
+    Other,
+
+    None
 }
 
 public enum AbilityEnum

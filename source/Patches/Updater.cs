@@ -153,7 +153,7 @@ public class ModUpdater
         string info = "";
         if (updateType == "TOU")
         {
-            info = "Updating Town Of Us\nPlease wait...";
+            info = "Updating Town Of Us Fusion\nPlease wait...";
             ModUpdater.InfoPopup.Show(info);
             if (updateTOUTask == null)
             {
@@ -219,7 +219,7 @@ public class ModUpdater
             string githubURI = "";
             if (updateType == "TOU")
             {
-                githubURI = "https://api.github.com/repos/eDonnes124/Town-Of-Us-R/releases/latest";
+                githubURI = "https://api.github.com/repos/AtonyGit/Town-Of-Us-Fusion/releases/latest";
             }
             else if (updateType == "Submerged")
             {
@@ -302,7 +302,7 @@ public class ModUpdater
         if (updateType == "TOU")
         {
             downloadDLL = updateTOUURI;
-            info = "Town Of Us\nupdated successfully.\nPlease RESTART the game.";
+            info = "Town Of Us Fusion\nupdated successfully.\nPlease RESTART the game.";
         }
         else if (updateType == "Submerged")
         {

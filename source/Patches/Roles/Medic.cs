@@ -38,23 +38,36 @@ namespace TownOfUsFusion.Roles
         LightDarkColors.Add(15, "darker"); // Grey
         LightDarkColors.Add(16, "darker"); // Tan
         LightDarkColors.Add(17, "lighter"); // Coral
-        LightDarkColors.Add(18, "darker"); // Watermelon
-        LightDarkColors.Add(19, "darker"); // Chocolate
-        LightDarkColors.Add(20, "lighter"); // Sky Blue
-        LightDarkColors.Add(21, "lighter"); // Biege
-        LightDarkColors.Add(22, "darker"); // Magenta
-        LightDarkColors.Add(23, "lighter"); // Turquoise
-        LightDarkColors.Add(24, "lighter"); // Lilac
-        LightDarkColors.Add(25, "darker"); // Olive
-        LightDarkColors.Add(26, "lighter"); // Azure
-        LightDarkColors.Add(27, "darker"); // Plum
-        LightDarkColors.Add(28, "darker"); // Jungle
-        LightDarkColors.Add(29, "lighter"); // Mint
-        LightDarkColors.Add(30, "lighter"); // Chartreuse
-        LightDarkColors.Add(31, "darker"); // Macau
-        LightDarkColors.Add(32, "darker"); // Tawny
-        LightDarkColors.Add(33, "lighter"); // Gold
-        LightDarkColors.Add(34, "lighter"); // Rainbow
+        // TOU FUSION COLORS
+        LightDarkColors.Add(18, "lighter"); // Snow White
+        LightDarkColors.Add(19, "lighter"); // Turquoise
+        LightDarkColors.Add(20, "lighter"); // Nacho
+        LightDarkColors.Add(21, "darker"); // Galacta
+        LightDarkColors.Add(22, "darker"); // Charcoal
+        LightDarkColors.Add(23, "darker"); // Violet
+        LightDarkColors.Add(24, "darker"); // Denim
+        LightDarkColors.Add(25, "lighter"); // Air Force
+        LightDarkColors.Add(26, "darker"); // Wood
+        LightDarkColors.Add(27, "lighter"); // Dandelion
+        LightDarkColors.Add(28, "lighter"); // Amber
+        // TOU COLORS
+        LightDarkColors.Add(29, "darker"); // Watermelon
+        LightDarkColors.Add(30, "darker"); // Chocolate
+        LightDarkColors.Add(31, "lighter"); // Sky Blue
+        LightDarkColors.Add(32, "lighter"); // Biege
+        LightDarkColors.Add(33, "darker"); // Magenta
+        LightDarkColors.Add(34, "lighter"); // Sea Green
+        LightDarkColors.Add(35, "lighter"); // Lilac
+        LightDarkColors.Add(36, "darker"); // Olive
+        LightDarkColors.Add(37, "lighter"); // Azure
+        LightDarkColors.Add(38, "darker"); // Plum
+        LightDarkColors.Add(39, "darker"); // Jungle
+        LightDarkColors.Add(40, "lighter"); // Mint
+        LightDarkColors.Add(41, "lighter"); // Chartreuse
+        LightDarkColors.Add(42, "darker"); // Macau
+        LightDarkColors.Add(43, "darker"); // Tawny
+        LightDarkColors.Add(44, "lighter"); // Gold
+        LightDarkColors.Add(45, "lighter"); // Rainbow
     }
     public float StartTimer()
     {

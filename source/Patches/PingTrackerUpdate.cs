@@ -17,15 +17,15 @@ public static class PingTracker_Update
         var host = GameData.Instance.GetHost();
 
         __instance.text.text =
-            "<size=2><color=#00FF00FF>TownOfUsFusion v" + TownOfUsFusion.VersionString + "</color>\n" +
+            "<size=2><color=#FF6A51FF>TownOfUs v" + TownOfUsFusion.TouVersionString + "</color>" +
+            "<size=2><color=#8E5BF3FF> | Fusion v" + TownOfUsFusion.VersionString + "</color>\n" +
             $"Ping: {AmongUsClient.Instance.Ping}ms\n" +
-            (!MeetingHud.Instance
-                ?  "<color=#00FF00FF>Fusion Mod By: Atony</color>\n" +
-                "<color=#00FF00FF>OG Mod By: Donners &</color>\n" +
-                "<color=#00FF00FF>MyDragonBreath</color>\n" : "") +
+            /*(!MeetingHud.Instance
+                ?  "<size=1.7><color=#8E5BF3FF>Fork By: Atony</color>\n" +
+                "<size=1.7><color=#5BB6F3FF>TOU-R By: Donners & MyDragonBreath</color>\n" : "") +*/
             (AmongUsClient.Instance.GameState != InnerNet.InnerNetClient.GameStates.Started
-                ? "<color=#00FF00FF>Formerly: Slushiegoose & Polus.gg</color>\n" +
-                 $"Host: {host.PlayerName}" : "") +
+                ? /*"<size=2><color=#A364CAFF>Formerly: Slushiegoose & Polus.gg</color>\n" +
+                 */$"<size=3>Host: {host.PlayerName}" : "") +
                 "</size>";
     }
 }

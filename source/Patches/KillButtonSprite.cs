@@ -40,6 +40,8 @@ public class KillButtonSprite
     private static Sprite Stake => TownOfUsFusion.StakeSprite;
     private static Sprite Confess => TownOfUsFusion.ConfessSprite;
     private static Sprite Radiate => TownOfUsFusion.RadiateSprite;
+    // TOU FUSION STUFF
+    private static Sprite Guard => TownOfUsFusion.GuardSprite;
 
     private static Sprite Kill;
 
@@ -59,6 +61,11 @@ public class KillButtonSprite
         else if (PlayerControl.LocalPlayer.Is(RoleEnum.Medic))
         {
             __instance.KillButton.graphic.sprite = Medic;
+            flag = true;
+        }
+        else if (PlayerControl.LocalPlayer.Is(RoleEnum.Bodyguard))
+        {
+            __instance.KillButton.graphic.sprite = Guard;
             flag = true;
         }
         else if (PlayerControl.LocalPlayer.Is(RoleEnum.Arsonist))

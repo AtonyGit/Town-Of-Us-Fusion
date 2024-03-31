@@ -54,23 +54,36 @@ public class BodyReport
                 {15, "darker"},// gray
                 {16, "darker"},// tan
                 {17, "lighter"},// coral
-                {18, "darker"},// watermelon
-                {19, "darker"},// chocolate
-                {20, "lighter"},// sky blue
-                {21, "lighter"},// beige
-                {22, "darker"},// magenta
-                {23, "lighter"},// turquoise
-                {24, "lighter"},// lilac
-                {25, "darker"},// olive
-                {26, "lighter"},// azure
-                {27, "darker"},// plum
-                {28, "darker"},// jungle
-                {29, "lighter"},// mint
-                {30, "lighter"},// chartreuse
-                {31, "darker"},// macau
-                {32, "darker"},// tawny
-                {33, "lighter"},// gold
-                {34, "lighter"},// rainbow
+                // TOU FUSION COLORS
+                {18, "lighter"},// snow white
+                {19, "lighter"},// turquoise
+                {20, "lighter"},// nacho
+                {21, "darker"},// galacta
+                {22, "darker"},// charcoal
+                {23, "lighter"},// violet
+                {24, "lighter"},// denim
+                {25, "lighter"},// air force
+                {26, "darker"},// wood
+                {27, "darker"},// dandelion
+                {28, "darker"},// amber
+                // TOU COLORS
+                {29, "darker"},// watermelon
+                {30, "darker"},// chocolate
+                {31, "lighter"},// sky blue
+                {32, "lighter"},// beige
+                {33, "darker"},// magenta
+                {34, "lighter"},// Sea Green
+                {35, "lighter"},// lilac
+                {36, "darker"},// olive
+                {37, "lighter"},// azure
+                {38, "darker"},// plum
+                {39, "darker"},// jungle
+                {40, "lighter"},// mint
+                {41, "lighter"},// chartreuse
+                {42, "darker"},// macau
+                {43, "darker"},// tawny
+                {44, "lighter"},// gold
+                {45, "lighter"},// rainbow
             };
         var typeOfColor = colors[br.Killer.GetDefaultOutfit().ColorId];
         return

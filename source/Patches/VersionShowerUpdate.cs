@@ -10,7 +10,8 @@ public static class VersionShowerUpdate
     public static void Postfix(VersionShower __instance)
     {
         var text = __instance.text;
-        text.text += " - <color=#00FF00FF>TownOfUsFusion v" + TownOfUsFusion.VersionString + "</color>";
+        text.text += " - <color=#FF6A51FF>TownOfUs v" + TownOfUsFusion.TouVersionString + "</color>" +
+        "<color=#8E5BF3FF> | Fusion v" + TownOfUsFusion.VersionString + "</color>";
         text.transform.localPosition += new Vector3(-0.8f, -0.16f, 0f);
 
         if (GameObject.Find("RightPanel"))
@@ -19,7 +20,7 @@ public static class VersionShowerUpdate
 
             var aspect = text.gameObject.AddComponent<AspectPosition>();
             aspect.Alignment = AspectPosition.EdgeAlignments.Top;
-            aspect.DistanceFromEdge = new Vector3(-0.2f, 2.5f, 8f);
+            aspect.DistanceFromEdge = new Vector3(-0.2f, 3f, 8f);
 
             aspect.StartCoroutine(Effects.Lerp(0.1f, new System.Action<float>((p) =>
             {

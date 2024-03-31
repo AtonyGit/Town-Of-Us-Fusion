@@ -82,7 +82,7 @@ class RandomMap
         totalWeight += CustomGameOptions.RandomMapAirship;
         totalWeight += CustomGameOptions.RandomMapFungle;
         if (SubmergedCompatibility.Loaded) totalWeight += CustomGameOptions.RandomMapSubmerged;
-//        if (LevelImpCheck.Loaded) totalWeight += CustomGameOptions.RandomMapLevelImp;
+        if (LevelImpCheck.Loaded) totalWeight += CustomGameOptions.RandomMapLevelImp;
 
         if (totalWeight == 0) return GameOptionsManager.Instance.currentNormalGameOptions.MapId;
 
@@ -98,7 +98,7 @@ class RandomMap
         if (randomNumber < CustomGameOptions.RandomMapFungle) return 5;
         randomNumber -= CustomGameOptions.RandomMapFungle;
         if (SubmergedCompatibility.Loaded && randomNumber < CustomGameOptions.RandomMapSubmerged) return 6;
-//        if (LevelImpCheck.Loaded && randomNumber < CustomGameOptions.RandomMapLevelImp) return MapSync.randomMapID;
+        if (LevelImpCheck.Loaded && randomNumber < CustomGameOptions.RandomMapLevelImp) return 7;
 
         return GameOptionsManager.Instance.currentNormalGameOptions.MapId;
     }

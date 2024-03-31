@@ -1099,7 +1099,7 @@ A report can contain the name of the killer or the color type (Darker/Lighter)
 - Sky Blue - Lighter
 - Beige - Lighter
 - Magenta - Darker
-- Turquoise - Lighter
+- Sea Green - Lighter
 - Lilac - Lighter
 - Olive - Darker
 - Azure - Lighter

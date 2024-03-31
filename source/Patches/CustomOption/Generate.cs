@@ -4,13 +4,16 @@ namespace TownOfUsFusion.CustomOption
 {
     public class Generate
     {
-        public static CustomHeaderOption CrewInvestigativeRoles;
+        public static CustomHeaderOption CrewAstralRoles;
         public static CustomNumberOption AurialOn;
-        public static CustomNumberOption DetectiveOn;
         public static CustomNumberOption HaunterOn;
-        public static CustomNumberOption InvestigatorOn;
+        public static CustomNumberOption MediumOn;
         public static CustomNumberOption MysticOn;
         public static CustomNumberOption OracleOn;
+
+        public static CustomHeaderOption CrewInvestigativeRoles;
+        public static CustomNumberOption DetectiveOn;
+        public static CustomNumberOption InvestigatorOn;
         public static CustomNumberOption SeerOn;
         public static CustomNumberOption SnitchOn;
         public static CustomNumberOption SpyOn;
@@ -19,7 +22,13 @@ namespace TownOfUsFusion.CustomOption
 
         public static CustomHeaderOption CrewProtectiveRoles;
         public static CustomNumberOption AltruistOn;
+        public static CustomNumberOption BodyguardOn;
         public static CustomNumberOption MedicOn;
+
+        public static CustomHeaderOption CrewChaosRoles;
+        public static CustomNumberOption MageOn;
+        public static CustomNumberOption SwapperOn;
+        public static CustomNumberOption TransporterOn;
 
         public static CustomHeaderOption CrewKillingRoles;
         public static CustomNumberOption SheriffOn;
@@ -27,14 +36,16 @@ namespace TownOfUsFusion.CustomOption
         public static CustomNumberOption VeteranOn;
         public static CustomNumberOption VigilanteOn;
 
+        public static CustomHeaderOption CrewPowerRoles;
+        public static CustomNumberOption CaptainOn;
+        public static CustomNumberOption MayorOn;
+        public static CustomNumberOption MonarchOn;
+        public static CustomNumberOption ProsecutorOn;
+
         public static CustomHeaderOption CrewSupportRoles;
+        public static CustomNumberOption BartenderOn;
         public static CustomNumberOption EngineerOn;
         public static CustomNumberOption ImitatorOn;
-        public static CustomNumberOption MayorOn;
-        public static CustomNumberOption MediumOn;
-        public static CustomNumberOption ProsecutorOn;
-        public static CustomNumberOption SwapperOn;
-        public static CustomNumberOption TransporterOn;
 
         public static CustomHeaderOption NeutralBenignRoles;
         public static CustomNumberOption AmnesiacOn;
@@ -45,14 +56,31 @@ namespace TownOfUsFusion.CustomOption
         public static CustomNumberOption DoomsayerOn;
         public static CustomNumberOption ExecutionerOn;
         public static CustomNumberOption JesterOn;
+        public static CustomNumberOption JokerOn;
         public static CustomNumberOption PhantomOn;
+        public static CustomNumberOption PirateOn;
+
+        public static CustomHeaderOption NeutralChaosRoles;
+        public static CustomNumberOption FraudOn;
+        public static CustomNumberOption TempestOn;
+        public static CustomNumberOption TyrantOn;
+        public static CustomNumberOption WitchOn;
 
         public static CustomHeaderOption NeutralKillingRoles;
         public static CustomNumberOption ArsonistOn;
-        public static CustomNumberOption PlaguebearerOn;
+        public static CustomNumberOption InfiltratorOn;
+        public static CustomNumberOption GhoulOn;
         public static CustomNumberOption GlitchOn;
+        public static CustomNumberOption MercenaryOn;
+        public static CustomNumberOption SerialKillerOn;
         public static CustomNumberOption VampireOn;
         public static CustomNumberOption WerewolfOn;
+
+        public static CustomHeaderOption NeutralApocalypseRoles;
+        public static CustomNumberOption BakerOn;
+        public static CustomNumberOption BerserkerOn;
+        public static CustomNumberOption PlaguebearerOn;
+        public static CustomNumberOption SoulCollectorOn;
 
         public static CustomHeaderOption ImpostorConcealingRoles;
         public static CustomNumberOption EscapistOn;
@@ -63,6 +91,7 @@ namespace TownOfUsFusion.CustomOption
 
         public static CustomHeaderOption ImpostorKillingRoles;
         public static CustomNumberOption BomberOn;
+        public static CustomNumberOption PoisonerOn;
         public static CustomNumberOption TraitorOn;
         public static CustomNumberOption WarlockOn;
 
@@ -81,20 +110,23 @@ namespace TownOfUsFusion.CustomOption
         public static CustomNumberOption TorchOn;
 
         public static CustomHeaderOption GlobalModifiers;
+        public static CustomNumberOption DrunkOn;
         public static CustomNumberOption ButtonBarryOn;
         public static CustomNumberOption FlashOn;
         public static CustomNumberOption GiantOn;
         public static CustomNumberOption LoversOn;
+        public static CustomNumberOption NumbOn;
+        public static CustomNumberOption NinjaOn;
+        public static CustomNumberOption ObliviousOn;
         public static CustomNumberOption RadarOn;
         public static CustomNumberOption SleuthOn;
         public static CustomNumberOption TiebreakerOn;
+        public static CustomNumberOption TrollOn;
 
         public static CustomHeaderOption ImpostorModifiers;
         public static CustomNumberOption DisperserOn;
         public static CustomNumberOption DoubleShotOn;
         public static CustomNumberOption UnderdogOn;
-        // TOU FUSION ROLES
-        public static CustomNumberOption TyrantOn;
 
         public static CustomHeaderOption MapSettings;
         public static CustomToggleOption RandomMapEnabled;
@@ -104,7 +136,7 @@ namespace TownOfUsFusion.CustomOption
         public static CustomNumberOption RandomMapAirship;
         public static CustomNumberOption RandomMapFungle;
         public static CustomNumberOption RandomMapSubmerged;
-//        public static CustomNumberOption RandomMapLevelImp;
+        public static CustomNumberOption RandomMapLevelImp;
         public static CustomToggleOption AutoAdjustSettings;
         public static CustomToggleOption SmallMapHalfVision;
         public static CustomNumberOption SmallMapDecreasedCooldown;
@@ -203,6 +235,9 @@ namespace TownOfUsFusion.CustomOption
         public static CustomNumberOption FootprintDuration;
         public static CustomToggleOption AnonymousFootPrint;
         public static CustomToggleOption VentFootprintVisible;
+
+        public static CustomHeaderOption Bodyguard;
+        public static CustomStringOption ShowGuarded;
 
         public static CustomHeaderOption Medic;
         public static CustomStringOption ShowShielded;
@@ -305,7 +340,9 @@ namespace TownOfUsFusion.CustomOption
         public static CustomToggleOption AssassinMultiKill;
         public static CustomToggleOption AssassinCrewmateGuess;
         public static CustomToggleOption AssassinGuessNeutralBenign;
+        public static CustomToggleOption AssassinGuessCrewInvestigative;
         public static CustomToggleOption AssassinGuessNeutralEvil;
+        public static CustomToggleOption AssassinGuessNeutralChaos;
         public static CustomToggleOption AssassinGuessNeutralKilling;
         public static CustomToggleOption AssassinGuessImpostors;
         public static CustomToggleOption AssassinGuessModifiers;
@@ -509,18 +546,22 @@ namespace TownOfUsFusion.CustomOption
             Patches.ExportButton = new Export(num++);
             Patches.ImportButton = new Import(num++);
 
-            CrewInvestigativeRoles = new CustomHeaderOption(num++, MultiMenu.crewmate, "Crewmate Investigative Roles");
+            CrewAstralRoles = new CustomHeaderOption(num++, MultiMenu.crewmate, "Crewmate Astral Roles");
             AurialOn = new CustomNumberOption(num++, MultiMenu.crewmate, $"<color=#B34D99FF>Aurial</color>", 0f, 0f, 100f, 10f,
-                PercentFormat);
-            DetectiveOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#4D4DFFFF>Detective</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             HaunterOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#D3D3D3FF>Haunter</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
-            InvestigatorOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#00B3B3FF>Investigator</color>", 0f, 0f, 100f, 10f,
+            MediumOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#A680FFFF>Medium</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             MysticOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#4D99E6FF>Mystic</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             OracleOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#BF00BFFF>Oracle</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+
+            CrewInvestigativeRoles = new CustomHeaderOption(num++, MultiMenu.crewmate, "Crewmate Investigative Roles");
+            DetectiveOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#4D4DFFFF>Detective</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            InvestigatorOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#00B3B3FF>Investigator</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             SeerOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#FFCC80FF>Seer</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
@@ -546,23 +587,35 @@ namespace TownOfUsFusion.CustomOption
             CrewProtectiveRoles = new CustomHeaderOption(num++, MultiMenu.crewmate, "Crewmate Protective Roles");
             AltruistOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#660000FF>Altruist</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
+            BodyguardOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#80D3ABFF>Bodyguard (WIP)</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
             MedicOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#006600FF>Medic</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
 
-            CrewSupportRoles = new CustomHeaderOption(num++, MultiMenu.crewmate, "Crewmate Support Roles");
-            EngineerOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#FFA60AFF>Engineer</color>", 0f, 0f, 100f, 10f,
-                PercentFormat);
-            ImitatorOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#B3D94DFF>Imitator</color>", 0f, 0f, 100f, 10f,
-                PercentFormat);
-            MayorOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#704FA8FF>Mayor</color>", 0f, 0f, 100f, 10f,
-                PercentFormat);
-            MediumOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#A680FFFF>Medium</color>", 0f, 0f, 100f, 10f,
-                PercentFormat);
-            ProsecutorOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#B38000FF>Prosecutor</color>", 0f, 0f, 100f, 10f,
+            CrewChaosRoles = new CustomHeaderOption(num++, MultiMenu.crewmate, "Crewmate Chaos Roles");
+            MageOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#6064D8FF>Mage (WIP)</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             SwapperOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#66E666FF>Swapper</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             TransporterOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#00EEFFFF>Transporter</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+
+            CrewSupportRoles = new CustomHeaderOption(num++, MultiMenu.crewmate, "Crewmate Power Roles");
+            CaptainOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#D2F3FFFF>Captain (WIP)</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            MayorOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#704FA8FF>Mayor</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            MonarchOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#DC9E3FFF>Monarch (WIP)</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            ProsecutorOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#B38000FF>Prosecutor</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+
+            CrewSupportRoles = new CustomHeaderOption(num++, MultiMenu.crewmate, "Crewmate Support Roles");
+            BartenderOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#770169FF>Bartender (WIP)</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            EngineerOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#FFA60AFF>Engineer</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            ImitatorOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#B3D94DFF>Imitator</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
 
 
@@ -575,28 +628,57 @@ namespace TownOfUsFusion.CustomOption
                 PercentFormat);
 
             NeutralEvilRoles = new CustomHeaderOption(num++, MultiMenu.neutral, "Neutral Evil Roles");
-            TyrantOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#EA535BFF>Tyrant</color>", 0f, 0f, 100f, 10f,
-                PercentFormat);
             DoomsayerOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#00FF80FF>Doomsayer</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             ExecutionerOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#8C4005FF>Executioner</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             JesterOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#FFBFCCFF>Jester</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
+            JokerOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#C0FF85FF>Joker (WIP)</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
             PhantomOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#662962FF>Phantom</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            PirateOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#DBAF57FF>Pirate (WIP)</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+
+            NeutralChaosRoles = new CustomHeaderOption(num++, MultiMenu.neutral, "Neutral Chaos Roles");
+            FraudOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#896260FF>Fraud (WIP)</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            TempestOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#A2A6F0FF>Tempest (WIP)</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            TyrantOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#EA535BFF>Tyrant</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            WitchOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#5514E1FF>Witch (WIP)</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
 
             NeutralKillingRoles = new CustomHeaderOption(num++, MultiMenu.neutral, "Neutral Killing Roles");
             ArsonistOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#FF4D00FF>Arsonist</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
-            PlaguebearerOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#E6FFB3FF>Plaguebearer</color>", 0f, 0f, 100f, 10f,
+            InfiltratorOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#F62572FF>Infiltrator (WIP)</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            GhoulOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#4EA4EBFF>Ghoul (WIP)</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            MercenaryOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#626900FF>Mercenary (WIP)</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             GlitchOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#00FF00FF>The Glitch</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            SerialKillerOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#002AFFFF>Serial Killer (WIP)</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             VampireOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#262626FF>Vampire</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             WerewolfOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#A86629FF>Werewolf</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
+
+            NeutralApocalypseRoles = new CustomHeaderOption(num++, MultiMenu.neutral, "Neutral Apocalyse Roles");
+            BakerOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#E6FFB3FF>Baker (WIP)</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            BerserkerOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#E6FFB3FF>Berserker (WIP)</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            PlaguebearerOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#E6FFB3FF>Plaguebearer</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            SoulCollectorOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#E6FFB3FF>Soul Collector (WIP)</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+
 
             ImpostorConcealingRoles = new CustomHeaderOption(num++, MultiMenu.imposter, "Impostor Concealing Roles");
             EscapistOn = new CustomNumberOption(num++, MultiMenu.imposter, "<color=#FF0000FF>Escapist</color>", 0f, 0f, 100f, 10f,
@@ -612,6 +694,8 @@ namespace TownOfUsFusion.CustomOption
 
             ImpostorKillingRoles = new CustomHeaderOption(num++, MultiMenu.imposter, "Impostor Killing Roles");
             BomberOn = new CustomNumberOption(num++, MultiMenu.imposter, "<color=#FF0000FF>Bomber</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            PoisonerOn = new CustomNumberOption(num++, MultiMenu.imposter, "<color=#FF0000FF>Poisoner (WIP)</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             TraitorOn = new CustomNumberOption(num++, MultiMenu.imposter, "<color=#FF0000FF>Traitor</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
@@ -645,17 +729,27 @@ namespace TownOfUsFusion.CustomOption
             GlobalModifiers = new CustomHeaderOption(num++, MultiMenu.modifiers, "Global Modifiers");
             ButtonBarryOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#E600FFFF>Button Barry</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
+            DrunkOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#839271FF>Drunk (WIP)</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
             FlashOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#FF8080FF>Flash</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             GiantOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#FFB34DFF>Giant</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             LoversOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#FF66CCFF>Lovers</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
+            NumbOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#662529FF>Numb (WIP)</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            NinjaOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#304A3EFF>Ninja (WIP)</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            ObliviousOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#28292DFF>Oblivious (WIP)</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
             RadarOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#FF0080FF>Radar</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             SleuthOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#803333FF>Sleuth</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             TiebreakerOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#99E699FF>Tiebreaker</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            TrollOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#00571AFF>Troll (WIP)</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
 
             ImpostorModifiers = new CustomHeaderOption(num++, MultiMenu.modifiers, "Impostor Modifiers");
@@ -752,7 +846,7 @@ namespace TownOfUsFusion.CustomOption
             RandomMapAirship = new CustomNumberOption(num++, MultiMenu.main, "Airship Chance", 0f, 0f, 100f, 10f, PercentFormat);
             RandomMapFungle = new CustomNumberOption(num++, MultiMenu.main, "Fungle Chance", 0f, 0f, 100f, 10f, PercentFormat);
             RandomMapSubmerged = new CustomNumberOption(num++, MultiMenu.main, "Submerged Chance", 0f, 0f, 100f, 10f, PercentFormat);
-//            RandomMapLevelImp = new CustomNumberOption(num++, MultiMenu.main, "Random Custom Map Chance", 0f, 0f, 100f, 10f, PercentFormat);
+            RandomMapLevelImp = new CustomNumberOption(num++, MultiMenu.main, "Random Custom Map Chance", 0f, 0f, 100f, 10f, PercentFormat);
             AutoAdjustSettings = new CustomToggleOption(num++, MultiMenu.main, "Auto Adjust Settings", false);
             SmallMapHalfVision = new CustomToggleOption(num++, MultiMenu.main, "Half Vision On Skeld/Mira HQ", false);
             SmallMapDecreasedCooldown =
@@ -805,8 +899,10 @@ namespace TownOfUsFusion.CustomOption
             AssassinKills = new CustomNumberOption(num++, MultiMenu.imposter, "Number Of Assassin Kills", 1, 1, 15, 1);
             AssassinMultiKill = new CustomToggleOption(num++, MultiMenu.imposter, "Assassin Can Kill More Than Once Per Meeting", false);
             AssassinCrewmateGuess = new CustomToggleOption(num++, MultiMenu.imposter, "Assassin Can Guess \"Crewmate\"", false);
+            AssassinGuessCrewInvestigative = new CustomToggleOption(num++, MultiMenu.imposter, "Assassin Can Guess Crew Investigative", false);
             AssassinGuessNeutralBenign = new CustomToggleOption(num++, MultiMenu.imposter, "Assassin Can Guess Neutral Benign Roles", false);
             AssassinGuessNeutralEvil = new CustomToggleOption(num++, MultiMenu.imposter, "Assassin Can Guess Neutral Evil Roles", false);
+            AssassinGuessNeutralChaos = new CustomToggleOption(num++, MultiMenu.imposter, "Assassin Can Guess Neutral Chaos Roles", false);
             AssassinGuessNeutralKilling = new CustomToggleOption(num++, MultiMenu.imposter, "Assassin Can Guess Neutral Killing Roles", false);
             AssassinGuessImpostors = new CustomToggleOption(num++, MultiMenu.imposter, "Assassin Can Guess Impostor Roles", false);
             AssassinGuessModifiers = new CustomToggleOption(num++, MultiMenu.imposter, "Assassin Can Guess Crewmate Modifiers", false);
@@ -986,6 +1082,12 @@ namespace TownOfUsFusion.CustomOption
                 new CustomNumberOption(num++, MultiMenu.crewmate, "Altruist Revive Duration", 10f, 1f, 15f, 1f, CooldownFormat);
             AltruistTargetBody =
                 new CustomToggleOption(num++, MultiMenu.crewmate, "Target's Body Disappears On Beginning Of Revive", false);
+
+            Bodyguard =
+                new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#006600FF>Bodyguard</color>");
+            ShowShielded =
+                new CustomStringOption(num++, MultiMenu.crewmate, "Show Guarded Player",
+                    new[] { "Self", "Bodyguard", "Self+Bodyguard", "Everyone" });
 
             Medic =
                 new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#006600FF>Medic</color>");

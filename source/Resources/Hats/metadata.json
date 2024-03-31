@@ -1,36 +1,6 @@
 {
   "credits": [
     {
-      "id": "fusion-ares0",
-      "name": "Areseem Drip (With Pack)",
-      "artist": "fusion studios"
-    },
-    {
-      "id": "fusion-ares1",
-      "name": "Areseem Drip",
-      "artist": "fusion studios"
-    },
-    {
-      "id": "fusion-ares2",
-      "name": "Sharpeye Glasses (With Pack)",
-      "artist": "fusion studios"
-    },
-    {
-      "id": "fusion-ares3",
-      "name": "Sharpeye Glasses",
-      "artist": "fusion studios"
-    },
-    {
-      "id": "fusion-ares4",
-      "name": "Black-Red Flame Pompadour (With Pack)",
-      "artist": "fusion studios"
-    },
-    {
-      "id": "fusion-ares5",
-      "name": "Black-Red Flame Pompadour",
-      "artist": "fusion studios"
-    },
-    {
       "id": "fusion-atony0",
       "name": "Fiery Passion",
       "artist": "fusion studios"
@@ -82,7 +52,7 @@
     },
     {
       "id": "fusion-bread0",
-      "name": "Host Hoedown",
+      "name": "Fancy Host",
       "artist": "fusion studios"
     },
     {
@@ -108,6 +78,41 @@
     {
       "id": "fusion-burple2",
       "name": "Unemployed Bean",
+      "artist": "fusion studios"
+    },
+    {
+      "id": "fusion-char0",
+      "name": "Necronomicon Witch",
+      "artist": "fusion studios"
+    },
+    {
+      "id": "fusion-char1",
+      "name": "Spellcast Wizard",
+      "artist": "fusion studios"
+    },
+    {
+      "id": "fusion-char2",
+      "name": "Necronomicon Apprentice (Glaring)",
+      "artist": "fusion studios"
+    },
+    {
+      "id": "fusion-char3",
+      "name": "Necronomicon Apprentice",
+      "artist": "fusion studios"
+    },
+    {
+      "id": "fusion-char4",
+      "name": "Evil Wizard",
+      "artist": "fusion studios"
+    },
+    {
+      "id": "fusion-char5",
+      "name": "Good Wizard",
+      "artist": "fusion studios"
+    },
+    {
+      "id": "fusion-char6",
+      "name": "Necronomicon Thief",
       "artist": "fusion studios"
     },
     {
@@ -256,129 +261,1109 @@
       "artist": "fusion studios"
     },
     {
+      "id": "fusion-ares0",
+      "name": "Areseem Drip (With Pack)",
+      "artist": "tinkr crew"
+    },
+    {
+      "id": "fusion-ares1",
+      "name": "Areseem Drip",
+      "artist": "tinkr crew"
+    },
+    {
+      "id": "fusion-ares2",
+      "name": "Sharpeye Glasses (With Pack)",
+      "artist": "tinkr crew"
+    },
+    {
+      "id": "fusion-ares3",
+      "name": "Sharpeye Glasses",
+      "artist": "tinkr crew"
+    },
+    {
+      "id": "fusion-ares4",
+      "name": "Black-Red Flame Pompadour (With Pack)",
+      "artist": "tinkr crew"
+    },
+    {
+      "id": "fusion-ares5",
+      "name": "Black-Red Flame Pompadour",
+      "artist": "tinkr crew"
+    },
+    {
+      "id": "fusion-oakgear0",
+      "name": "T3 Oakgear (On)",
+      "artist": "tinkr crew"
+    },
+    {
+      "id": "fusion-oakgear1",
+      "name": "T3 Oakgear (Off)",
+      "artist": "tinkr crew"
+    },
+    {
+      "id": "fusion-oakgear2",
+      "name": "T2 Oakgear (On)",
+      "artist": "tinkr crew"
+    },
+    {
+      "id": "fusion-oakgear3",
+      "name": "T2 Oakgear (Off)",
+      "artist": "tinkr crew"
+    },
+    {
+      "id": "fusion-oakgear4",
+      "name": "T1 Oakgear (On)",
+      "artist": "tinkr crew"
+    },
+    {
+      "id": "fusion-oakgear5",
+      "name": "T1 Oakgear (Off)",
+      "artist": "tinkr crew"
+    },
+    {
+      "id": "fusion-roseq0",
+      "name": "M2 Rosequartz (Normal)",
+      "artist": "tinkr crew"
+    },
+    {
+      "id": "fusion-roseq1",
+      "name": "M2 Rosequartz (Bliss)",
+      "artist": "tinkr crew"
+    },
+    {
+      "id": "fusion-roseq2",
+      "name": "M2 Rosequartz (Off)",
+      "artist": "tinkr crew"
+    },
+    {
+      "id": "fusion-roseq3",
+      "name": "M1 Rosequartz (Normal)",
+      "artist": "tinkr crew"
+    },
+    {
+      "id": "fusion-roseq4",
+      "name": "M1 Rosequartz (Bliss)",
+      "artist": "tinkr crew"
+    },
+    {
+      "id": "fusion-roseq5",
+      "name": "M1 Rosequartz (Off)",
+      "artist": "tinkr crew"
+    },
+    {
+      "id": "fusion-dicrup0",
+      "name": "Dicruption T1",
+      "artist": "tinkr crew"
+    },
+    {
+      "id": "fusion-dicrup1",
+      "name": "Dicruption T2",
+      "artist": "tinkr crew"
+    },
+    {
+      "id": "fusion-dicrup2",
+      "name": "Dicruption T3",
+      "artist": "tinkr crew"
+    },
+    {
       "id": "fusion-socks0",
-      "name": "Socksfor1 Outfit",
-      "artist": "fusion studios (socks crew)"
+      "name": "Socksfor1 Outfit (Helm)",
+      "artist": "socks crew"
     },
     {
       "id": "fusion-socks1",
-      "name": "Socksfor1 Back",
-      "artist": "fusion studios (socks crew)"
+      "name": "Socksfor1 Outfit",
+      "artist": "socks crew"
     },
     {
       "id": "fusion-socks2",
+      "name": "Socksfor1 Visor (Helm)",
+      "artist": "socks crew"
+    },
+    {
+      "id": "fusion-socks3",
       "name": "Socksfor1 Visor",
-      "artist": "fusion studios (socks crew)"
+      "artist": "socks crew"
+    },
+    {
+      "id": "fusion-socks4",
+      "name": "Socksfor1 Suit",
+      "artist": "socks crew"
     },
     {
       "id": "fusion-creeperhat",
       "name": "Creeper Hat",
-      "artist": "fusion studios (bonus)"
+      "artist": "miscellaneous cosmetics"
     },
     {
       "id": "fusion-fallguy",
       "name": "Fall Bean",
-      "artist": "fusion studios (bonus)"
+      "artist": "miscellaneous cosmetics"
     },
     {
-      "id": "fusion-lethal0",
-      "name": "Comedy",
-      "artist": "fusion studios (bonus)"
+      "id": "fusion-fnfBf",
+      "name": "Boyfriend.xml",
+      "artist": "miscellaneous cosmetics"
     },
     {
-      "id": "fusion-lethal1",
-      "name": "Comedy (Possessed)",
-      "artist": "fusion studios (bonus)"
+      "id": "fusion-fnfGf",
+      "name": "Girlfriend",
+      "artist": "miscellaneous cosmetics"
     },
     {
-      "id": "fusion-lethal2",
-      "name": "Tragedy",
-      "artist": "fusion studios (bonus)"
-    },
-    {
-      "id": "fusion-lethal3",
-      "name": "Tragedy (Possessed)",
-      "artist": "fusion studios (bonus)"
-    },
-    {
-      "id": "transparent",
-      "name": "Death by Suffocation",
-      "artist": "fusion studios (bonus)"
-    },
-    {
-      "id": "fusion-lobotomy",
-      "name": "LOBOTOMY MASK!!!?!?!?!?!?!",
-      "artist": "fusion studios (bonus)"
-    },
-    {
-      "id": "transparent",
-      "name": "Playstation Rhythm",
-      "artist": "fusion studios (bonus)"
+      "id": "fusion-fnfRed",
+      "name": "sussy baka",
+      "artist": "miscellaneous cosmetics"
     },
     {
       "id": "fusion-v4black0",
       "name": "Vs Black V4",
-      "artist": "fusion studios (bonus)"
+      "artist": "miscellaneous cosmetics"
     },
     {
       "id": "fusion-v4black1",
       "name": "Scrapped Cone",
-      "artist": "fusion studios (bonus)"
+      "artist": "miscellaneous cosmetics"
     },
     {
       "id": "fusion-v4black2",
       "name": "Glaring Cone",
-      "artist": "fusion studios (bonus)"
+      "artist": "miscellaneous cosmetics"
     },
     {
       "id": "fusion-v4black3",
       "name": "Mutated Visor",
-      "artist": "fusion studios (bonus)"
+      "artist": "miscellaneous cosmetics"
     },
     {
       "id": "fusion-v4black4",
       "name": "Impostor Glare",
-      "artist": "fusion studios (bonus)"
+      "artist": "miscellaneous cosmetics"
+    },
+    {
+      "id": "fusion-lethal0",
+      "name": "Comedy",
+      "artist": "miscellaneous cosmetics"
+    },
+    {
+      "id": "fusion-lethal1",
+      "name": "Comedy (Possessed)",
+      "artist": "miscellaneous cosmetics"
+    },
+    {
+      "id": "fusion-lethal2",
+      "name": "Tragedy",
+      "artist": "miscellaneous cosmetics"
+    },
+    {
+      "id": "fusion-lethal3",
+      "name": "Tragedy (Possessed)",
+      "artist": "miscellaneous cosmetics"
+    },
+    {
+      "id": "fusion-lethal4",
+      "name": "Coilhead",
+      "artist": "miscellaneous cosmetics"
+    },
+    {
+      "id": "transparent",
+      "name": "Death by Suffocation",
+      "artist": "miscellaneous cosmetics"
+    },
+    {
+      "id": "fusion-perry0",
+      "name": "Agent Perry",
+      "artist": "miscellaneous cosmetics"
+    },
+    {
+      "id": "fusion-perry1",
+      "name": "Perry the Platypus",
+      "artist": "miscellaneous cosmetics"
+    },
+    {
+      "id": "fusion-perry2",
+      "name": "Perry!",
+      "artist": "miscellaneous cosmetics"
+    },
+    {
+      "id": "fusion-perry3",
+      "name": "Perry",
+      "artist": "miscellaneous cosmetics"
+    },
+    {
+      "id": "fusion-perry4",
+      "name": "Platy Beak",
+      "artist": "miscellaneous cosmetics"
+    },
+    {
+      "id": "fusion-perry5",
+      "name": "Platy Fedora",
+      "artist": "miscellaneous cosmetics"
+    },
+    {
+      "id": "fusion-perry6",
+      "name": "Dr. Heinz Doofenshmirtz Hair",
+      "artist": "miscellaneous cosmetics"
+    },
+    {
+      "id": "fusion-gd0",
+      "name": "Normal Face",
+      "artist": "miscellaneous cosmetics"
+    },
+    {
+      "id": "fusion-gd1",
+      "name": "Abnormal Face",
+      "artist": "miscellaneous cosmetics"
     },
     {
       "id": "transparent",
       "name": "Catloaf",
-      "artist": "fusion studios (bonus)"
+      "artist": "miscellaneous cosmetics"
     },
     {
       "id": "transparent",
       "name": "Mario Cap",
-      "artist": "fusion studios (bonus)"
+      "artist": "miscellaneous cosmetics"
     },
     {
       "id": "transparent",
       "name": "Luigi Cap",
-      "artist": "fusion studios (bonus)"
+      "artist": "miscellaneous cosmetics"
     },
     {
       "id": "transparent",
       "name": "Wario Cap",
-      "artist": "fusion studios (bonus)"
+      "artist": "miscellaneous cosmetics"
     },
     {
       "id": "transparent",
       "name": "Waluigi Hat",
-      "artist": "fusion studios (bonus)"
+      "artist": "miscellaneous cosmetics"
     },
     {
-      "id": "transparent",
-      "name": "Kirby (Sitting)",
-      "artist": "fusion studios (bonus)"
+      "id": "fusion-kirb0",
+      "name": "Kirby",
+      "artist": "miscellaneous cosmetics"
     },
     {
-      "id": "transparent",
-      "name": "Kirby (Inhaling)",
-      "artist": "fusion studios (bonus)"
+      "id": "fusion-kirb4",
+      "name": "Kirby (Grey)",
+      "artist": "miscellaneous cosmetics"
     },
     {
-      "id": "transparent",
-      "name": "Kirby (Grey Mage)",
-      "artist": "fusion studios (bonus)"
+      "id": "hats0287",
+      "name": "Koala hat",
+      "artist": "tou - ophidian"
+    },
+    {
+      "id": "hats0304",
+      "name": "AstasApple hat",
+      "artist": "tou - ophidian"
+    },
+    {
+      "id": "hats0305",
+      "name": "CaptainStoppy hat",
+      "artist": "tou - ophidian"
+    },
+    {
+      "id": "hats0313",
+      "name": "Shiny Psyduck hat",
+      "artist": "tou - ophidian"
+    },
+    {
+      "id": "hats0314",
+      "name": "Snorlax hat",
+      "artist": "tou - ophidian"
+    },
+    {
+      "id": "hats0327",
+      "name": "DigDuck hat",
+      "artist": "tou - ophidian"
+    },
+    {
+      "id": "hats0330",
+      "name": "Magikarp hat",
+      "artist": "tou - ophidian"
+    },
+    {
+      "id": "hats0343",
+      "name": "Blaziken hat",
+      "artist": "tou - ophidian"
+    },
+    {
+      "id": "hats0359",
+      "name": "HecksBunBun hat",
+      "artist": "tou - ophidian"
+    },
+    {
+      "id": "hats0360",
+      "name": "MxJosie hat ",
+      "artist": "tou - ophidian"
+    },
+    {
+      "id": "hats0412",
+      "name": "Bodybuilder hat ",
+      "artist": "tou - ophidian"
+    },
+    {
+      "id": "hats0413",
+      "name": "Bosa hat ",
+      "artist": "tou - ophidian"
+    },
+    {
+      "id": "hats0414",
+      "name": "Cluckers hat ",
+      "artist": "tou - ophidian"
+    },
+    {
+      "id": "hats0417",
+      "name": "Mr T hat ",
+      "artist": "tou - ophidian"
+    },
+    {
+      "id": "hats0419",
+      "name": "Tatsugiri hat ",
+      "artist": "tou - ophidian"
+    },
+    {
+      "id": "hats0283",
+      "name": "Nogla hat",
+      "artist": "tou - sarinjin"
+    },
+    {
+      "id": "hats0284",
+      "name": "Wildcat hat",
+      "artist": "tou - sarinjin"
+    },
+    {
+      "id": "hats0285",
+      "name": "Olive Kruzadar hat",
+      "artist": "tou - sarinjin"
+    },
+    {
+      "id": "hats0286",
+      "name": "Red Kruzadar hat",
+      "artist": "tou - sarinjin"
+    },
+    {
+      "id": "hats0303",
+      "name": "SlackATK hat",
+      "artist": "tou - sarinjin"
+    },
+    {
+      "id": "hats0420",
+      "name": "Wonton hat ",
+      "artist": "tou - sarinjin"
+    },
+    {
+      "id": "hats0427",
+      "name": "Giddawid hat",
+      "artist": "tou - sarinjin"
+    },
+    {
+      "id": "hats0451",
+      "name": "Slayed hat",
+      "artist": "tou - sarinjin"
+    },
+    {
+      "id": "hats0496",
+      "name": "Sendit hat",
+      "artist": "tou - sarinjin"
+    },
+    {
+      "id": "hats0084",
+      "name": "A Knoife! hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0085",
+      "name": "Blush-stache hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0086",
+      "name": "BTW hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0087",
+      "name": "Flower Fedora hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0088",
+      "name": "Gigawolf hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0089",
+      "name": "Good Aura hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0090",
+      "name": "Guardian Angel hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0091",
+      "name": "Horned Angel hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0092",
+      "name": "Kartodk Evil hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0093",
+      "name": "Kartodk Sus hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0094",
+      "name": "Lavish hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0095",
+      "name": "Lie-canthrope hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0096",
+      "name": "Overgrown hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0097",
+      "name": "Press X hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0098",
+      "name": "Rico's Navy hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0099",
+      "name": "Sav Beanie hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0100",
+      "name": "Sparkles! hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0101",
+      "name": "Specs n' Antlers hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0102",
+      "name": "Stylish Witch hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0103",
+      "name": "Tropic Beach hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0124",
+      "name": "Cyreni's Pony hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0125",
+      "name": "Oreos hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0126",
+      "name": "Soyciety hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0136",
+      "name": "Cros Style hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0137",
+      "name": "Novasauros hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0138",
+      "name": "Peppercorny hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0139",
+      "name": "Rainy Day hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0140",
+      "name": "Scarf Gang hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0141",
+      "name": "So Devilish hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0142",
+      "name": "Huntress hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0143",
+      "name": "You're so Salty! hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0154",
+      "name": "Bad Aura hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0155",
+      "name": "Dunce hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0156",
+      "name": "Gay-ny Day hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0157",
+      "name": "Marionette hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0158",
+      "name": "Random Ronnie hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0159",
+      "name": "Disconnected hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0160",
+      "name": "Lunch hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0161",
+      "name": "Peace Never! hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0247",
+      "name": "Kn0vis hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0484",
+      "name": "CabociTV hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0485",
+      "name": "Cat hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0486",
+      "name": "Cream Unicorn hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0487",
+      "name": "Zod hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0488",
+      "name": "Poseidon's Crown hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0489",
+      "name": "The True King hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0490",
+      "name": "Titans hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0491",
+      "name": "Wreath hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0492",
+      "name": "Golden Wreath hat",
+      "artist": "tou - suganope"
+    },
+    {
+      "id": "hats0437",
+      "name": "Evee hat",
+      "artist": "tou - ophidian"
+    },
+    {
+      "id": "hats0438",
+      "name": "Flareon hat",
+      "artist": "tou - ophidian"
+    },
+    {
+      "id": "hats0439",
+      "name": "Glaceon hat",
+      "artist": "tou - ophidian"
+    },
+    {
+      "id": "hats0440",
+      "name": "Leafeon hat",
+      "artist": "tou - ophidian"
+    },
+    {
+      "id": "hats0441",
+      "name": "Sylveon hat",
+      "artist": "tou - ophidian"
+    },
+    {
+      "id": "hats0442",
+      "name": "Umbreon hat",
+      "artist": "tou - ophidian"
+    },
+    {
+      "id": "hats0443",
+      "name": "Vaporeon hat",
+      "artist": "tou - ophidian"
+    },
+    {
+      "id": "hats0444",
+      "name": "Jolteon hat",
+      "artist": "tou - ophidian"
+    },
+    {
+      "id": "hats0454",
+      "name": "Crab hat",
+      "artist": "tou - ophidian"
+    },
+    {
+      "id": "hats0455",
+      "name": "GooglyEyes hat",
+      "artist": "tou - ophidian"
+    },
+    {
+      "id": "hats0458",
+      "name": "jb hat",
+      "artist": "tou - ophidian"
+    },
+    {
+      "id": "hats0459",
+      "name": "WingsBodyBuilder hat",
+      "artist": "tou - ophidian"
+    },
+    {
+      "id": "hats0477",
+      "name": "Wheelchair hat",
+      "artist": "tou - ophidian"
+    },
+    {
+      "id": "hats0478",
+      "name": "Gligar hat",
+      "artist": "tou - ophidian"
+    },
+    {
+      "id": "hats0003",
+      "name": "aphex hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0004",
+      "name": "aplatypuss hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0016",
+      "name": "cheesy hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0017",
+      "name": "chilledchaos hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0032",
+      "name": "junkyard hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0052",
+      "name": "shubble hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0064",
+      "name": "zeroyalviking hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0071",
+      "name": "platty halloween hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0072",
+      "name": "cheesy halloween hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0073",
+      "name": "chilled halloween hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0074",
+      "name": "zeroyalviking halloween hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0075",
+      "name": "fox hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0076",
+      "name": "frog hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0077",
+      "name": "pig hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0078",
+      "name": "owl hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0079",
+      "name": "witch hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0080",
+      "name": "goldfish hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0081",
+      "name": "ctulhu hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0082",
+      "name": "spider hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0083",
+      "name": "crocodile hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0121",
+      "name": "dwarf hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0122",
+      "name": "rooster hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0123",
+      "name": "monster hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0180",
+      "name": "Bee hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0181",
+      "name": "T-Rex hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0201",
+      "name": "Monkeh hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0202",
+      "name": "Pink hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0203",
+      "name": "Sugarcat hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0204",
+      "name": "Zombie hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0261",
+      "name": "Bunnies hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0262",
+      "name": "Mushroom hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0263",
+      "name": "Red Panda hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0264",
+      "name": "Wizard hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0339",
+      "name": "Boar hat ",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0340",
+      "name": "Creepy Doll hat ",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0341",
+      "name": "Raven hat ",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0342",
+      "name": "Trenchcoat hat ",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0375",
+      "name": "Little Death hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0376",
+      "name": "Little Jester hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0377",
+      "name": "Little Mage hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0378",
+      "name": "Little Pirate hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0385",
+      "name": "Moth hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0386",
+      "name": "Necro hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0387",
+      "name": "Shaman hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0388",
+      "name": "Assassin hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0389",
+      "name": "Death hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0394",
+      "name": "Little Angel hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0395",
+      "name": "Little Demon hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0396",
+      "name": "Little Red Riding Hood hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0397",
+      "name": "Little Sheriff hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0398",
+      "name": "Little Chef hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0399",
+      "name": "Little Evil Queen hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0401",
+      "name": "Little Gnome hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0402",
+      "name": "Little Krampus hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0403",
+      "name": "Little Santa hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0430",
+      "name": "Platy Mayo hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0431",
+      "name": "Princess Zeach hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0432",
+      "name": "Firemage hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0433",
+      "name": "Peter Griffin hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0493",
+      "name": "Little Antoinette hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0494",
+      "name": "Little Golem hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0495",
+      "name": "Little Jason hat",
+      "artist": "tou - pigoletto"
+    },
+    {
+      "id": "hats0031",
+      "name": "jose hat",
+      "artist": "tou - ressnie"
+    },
+    {
+      "id": "hats0040",
+      "name": "mindy hat",
+      "artist": "tou - ressnie"
+    },
+    {
+      "id": "hats0044",
+      "name": "ozza hat",
+      "artist": "tou - ressnie"
+    },
+    {
+      "id": "hats0046",
+      "name": "pastaroni hat",
+      "artist": "tou - ressnie"
+    },
+    {
+      "id": "hats0237",
+      "name": "McRib hat",
+      "artist": "tou - sweetrolled"
+    },
+    {
+      "id": "hats0243",
+      "name": "Sweetroll hat",
+      "artist": "tou - sweetrolled"
+    },
+    {
+      "id": "hats0230",
+      "name": "Golden Boi hat",
+      "artist": "tou - sweetrolled"
+    },
+    {
+      "id": "hats0041",
+      "name": "nerdout hat",
+      "artist": "tou - taamoy"
+    },
+    {
+      "id": "hats0049",
+      "name": "ravs hat",
+      "artist": "tou - thelastshaymin"
+    },
+    {
+      "id": "hats0050",
+      "name": "razzbowski hat",
+      "artist": "tou - thelastshaymin"
+    },
+    {
+      "id": "hats0186",
+      "name": "jeremy hat",
+      "artist": "tou - thelastshaymin"
+    },
+    {
+      "id": "misc0020",
+      "name": "groot hat",
+      "artist": "tou - thelastshaymin"
+    },
+    {
+      "id": "standard0024",
+      "name": "charizard hat",
+      "artist": "tou - thelastshaymin"
+    },
+    {
+      "id": "hats0127",
+      "name": "Tsedtacle hat",
+      "artist": "tou - tsed"
     }
   ]
 }

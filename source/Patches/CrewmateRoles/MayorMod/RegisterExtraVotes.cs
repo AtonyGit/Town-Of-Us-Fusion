@@ -51,10 +51,22 @@ public class RegisterExtraVotes
                 || playerVoteArea.VotedFor == PlayerVoteArea.DeadVote) continue;
 
             var player = Utils.PlayerById(playerVoteArea.TargetPlayerId);
+            // THIS FIXES DOUBLE VOTES FOR ALL PLAYER
             if (player.Is(RoleEnum.Mayor))
             {
                 var mayor = Role.GetRole<Mayor>(player);
                 if (mayor.Revealed)
+                {
+                    if (dictionary.TryGetValue(playerVoteArea.VotedFor, out var num2))
+                        dictionary[playerVoteArea.VotedFor] = num2 + 2;
+                    else
+                        dictionary[playerVoteArea.VotedFor] = 2;
+                }
+            }
+            if (player.Is(RoleEnum.Tyrant))
+            {
+                var tyrant = Role.GetRole<Tyrant>(player);
+                if (tyrant.Revealed)
                 {
                     if (dictionary.TryGetValue(playerVoteArea.VotedFor, out var num2))
                         dictionary[playerVoteArea.VotedFor] = num2 + 2;
@@ -203,6 +215,35 @@ public class RegisterExtraVotes
                         if (mayorRole.Revealed)
                         {
                             if (voteState.VoterId == mayorRole.Player.PlayerId)
+                            {
+                                if (playerInfo == null)
+                                {
+                                    Debug.LogError(string.Format("Couldn't find player info for voter: {0}",
+                                        voteState.VoterId));
+                                }
+                                else if (i == 0 && voteState.SkippedVote)
+                                {
+                                    __instance.BloopAVoteIcon(playerInfo, amountOfSkippedVoters, __instance.SkippedVoting.transform);
+                                    __instance.BloopAVoteIcon(playerInfo, amountOfSkippedVoters, __instance.SkippedVoting.transform);
+                                    amountOfSkippedVoters++;
+                                    amountOfSkippedVoters++;
+                                }
+                                else if (voteState.VotedForId == playerVoteArea.TargetPlayerId)
+                                {
+                                    __instance.BloopAVoteIcon(playerInfo, allNums[i], playerVoteArea.transform);
+                                    __instance.BloopAVoteIcon(playerInfo, allNums[i], playerVoteArea.transform);
+                                    allNums[i]++;
+                                    allNums[i]++;
+                                }
+                            }
+                        }
+                    }
+                    foreach (var tyrant in Role.GetRoles(RoleEnum.Tyrant))
+                    {
+                        var tyrantRole = (Tyrant)tyrant;
+                        if (tyrantRole.Revealed)
+                        {
+                            if (voteState.VoterId == tyrantRole.Player.PlayerId)
                             {
                                 if (playerInfo == null)
                                 {

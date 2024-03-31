@@ -93,6 +93,7 @@ namespace TownOfUsFusion
 
     SubmergedFixOxygen,
     // TOU FUSION ROLES
+    Guard,
     RevealTy
 }
 }

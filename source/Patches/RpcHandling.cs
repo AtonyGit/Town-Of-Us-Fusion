@@ -805,6 +805,15 @@ namespace TownOfUsFusion
                         Role.GetRole<Medic>(medic).ShieldedPlayer = shield;
                         Role.GetRole<Medic>(medic).UsedAbility = true;
                         break;
+                    case CustomRPC.Guard:
+                        readByte1 = reader.ReadByte();
+                        readByte2 = reader.ReadByte();
+
+                        var bodyguard = Utils.PlayerById(readByte1);
+                        var guard = Utils.PlayerById(readByte2);
+                        Role.GetRole<Bodyguard>(bodyguard).GuardedPlayer = guard;
+                        Role.GetRole<Bodyguard>(bodyguard).UsedAbility = true;
+                        break;
                     case CustomRPC.AttemptSound:
                         var medicId = reader.ReadByte();
                         readByte = reader.ReadByte();
@@ -1361,6 +1370,9 @@ namespace TownOfUsFusion
 
                     if (CustomGameOptions.ExecutionerOn > 0)
                         NeutralEvilRoles.Add((typeof(Executioner), CustomGameOptions.ExecutionerOn, false));
+
+                    if (CustomGameOptions.TyrantOn > 0)
+                        NeutralEvilRoles.Add((typeof(Tyrant), CustomGameOptions.TyrantOn, false));
 
                     if (CustomGameOptions.DoomsayerOn > 0)
                         NeutralEvilRoles.Add((typeof(Doomsayer), CustomGameOptions.DoomsayerOn, false));

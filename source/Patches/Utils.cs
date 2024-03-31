@@ -1,12 +1,18 @@
 ﻿using HarmonyLib;
 using Hazel;
 using System;
+using System.IO;
+using System.Text;
+using System.Linq;
+using System.Text.Json;
+using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using System.Text.Json.Serialization;
 using Reactor.Utilities;
 using Reactor.Utilities.Extensions;
 using TownOfUsFusion.CrewmateRoles.MedicMod;
+using TownOfUsFusion.CrewmateRoles.BodyguardMod;
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Patches;
 using TownOfUsFusion.Roles;
@@ -15,6 +21,7 @@ using TownOfUsFusion.Roles.Modifiers;
 using Il2CppInterop.Runtime.InteropTypes;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using UnityEngine;
+using ISystem = Il2CppSystem.Collections.Generic;
 using Object = UnityEngine.Object;
 using PerformKill = TownOfUsFusion.Modifiers.UnderdogMod.PerformKill;
 using Random = UnityEngine.Random;
@@ -146,6 +153,96 @@ public static class Utils
 
         return null;
     }
+    
+    public static float CycleFloat(float max, float min, float currentVal, bool increment, float change = 1f)
+    {
+        var value = change * (increment ? 1 : -1);
+        currentVal += value;
+
+        if (currentVal > max)
+            currentVal = min;
+        else if (currentVal < min)
+            currentVal = max;
+
+        return currentVal;
+    }
+
+    public static int CycleInt(int max, int min, int currentVal, bool increment, int change = 1) => (int)CycleFloat(max, min, currentVal, increment, change);
+
+    public static byte CycleByte(int max, int min, int currentVal, bool increment, int change = 1) => (byte)CycleInt(max, min, currentVal, increment, change);
+
+    public static string WrapText(string text, int width = 90, bool overflow = true)
+    {
+        var result = new StringBuilder();
+        var startIndex = 0;
+        var column = 0;
+
+        while (startIndex < text.Length)
+        {
+            var num = text.IndexOfAny(new[] { ' ', '\t', '\r' }, startIndex);
+
+            if (num != -1)
+            {
+                if (num == startIndex)
+                    ++startIndex;
+                else if (text[startIndex] == '\n')
+                    startIndex++;
+                else
+                {
+                    AddWord(text[startIndex..num]);
+                    startIndex = num + 1;
+                }
+            }
+            else
+                break;
+        }
+
+        if (startIndex < text.Length)
+            AddWord(text[startIndex..]);
+
+        return result.ToString();
+
+        void AddWord(string word)
+        {
+            var word1 = "";
+
+            if (!overflow && word.Length > width)
+            {
+                for (var startIndex = 0; startIndex < word.Length; startIndex += word1.Length)
+                {
+                    word1 = word.Substring(startIndex, Math.Min(width, word.Length - startIndex));
+                    AddWord(word1);
+                }
+            }
+            else
+            {
+                if (column + word.Length >= width)
+                {
+                    if (column > 0)
+                    {
+                        result.AppendLine();
+                        column = 0;
+                    }
+                }
+                else if (column > 0)
+                {
+                    result.Append(' ');
+                    column++;
+                }
+
+                result.Append(word);
+                column += word.Length;
+            }
+        }
+    }
+
+    public static string WrapTexts(List<string> texts, int width = 90, bool overflow = true)
+    {
+        var result = WrapText(texts[0], width, overflow);
+        //texts.Skip(1).ForEach(x => result += $"\n{WrapText(x, width, overflow)}");
+        return result;
+    }
+
 
     public static bool IsExeTarget(this PlayerControl player)
     {
@@ -154,6 +251,24 @@ public static class Utils
             var exeTarget = ((Executioner)role).target;
             return exeTarget != null && player.PlayerId == exeTarget.PlayerId;
         });
+    }
+
+    public static bool IsGuarded(this PlayerControl player)
+    {
+        return Role.GetRoles(RoleEnum.Bodyguard).Any(role =>
+        {
+            var guardedPlayer = ((Bodyguard)role).GuardedPlayer;
+            return guardedPlayer != null && player.PlayerId == guardedPlayer.PlayerId;
+        });
+    }
+
+    public static Bodyguard GetBodyguard(this PlayerControl player)
+    {
+        return Role.GetRoles(RoleEnum.Bodyguard).FirstOrDefault(role =>
+        {
+            var guardedPlayer = ((Bodyguard)role).GuardedPlayer;
+            return guardedPlayer != null && player.PlayerId == guardedPlayer.PlayerId;
+        }) as Bodyguard;
     }
 
     public static bool IsShielded(this PlayerControl player)
@@ -238,6 +353,17 @@ public static class Utils
 
                 StopKill.BreakShield(medic, player.PlayerId, CustomGameOptions.ShieldBreaks);
             }
+            if (player.IsGuarded())
+            {
+                var bodyguard = player.GetBodyguard().Player.PlayerId;
+                Rpc(CustomRPC.AttemptSound, bodyguard, player.PlayerId);
+            //    RpcMurderPlayer(target, bodyguard);
+
+                if (CustomGameOptions.ShieldBreaks) fullCooldownReset = true;
+                else zeroSecReset = true;
+
+                Switcheroo.AttackTrigger(bodyguard, player.PlayerId, CustomGameOptions.ShieldBreaks);
+            }
             else if (player.IsProtected()) gaReset = true;
             else RpcMurderPlayer(target, player);
         }
@@ -255,6 +381,16 @@ public static class Utils
 
                 StopKill.BreakShield(medic, player.PlayerId, CustomGameOptions.ShieldBreaks);
             }
+            else if (player.IsGuarded())
+            {
+                var bodyguard = player.GetBodyguard().Player.PlayerId;
+                Rpc(CustomRPC.AttemptSound, bodyguard, player.PlayerId);
+            //    RpcMurderPlayer(target, bodyguard);
+
+                if (CustomGameOptions.ShieldBreaks) fullCooldownReset = true;
+                else zeroSecReset = true;
+
+            }
             else if (player.IsProtected()) gaReset = true;
             else RpcMurderPlayer(target, player);
             if (toKill && CustomGameOptions.KilledOnAlert)
@@ -268,6 +404,18 @@ public static class Utils
                     else zeroSecReset = true;
 
                     StopKill.BreakShield(medic, target.PlayerId, CustomGameOptions.ShieldBreaks);
+                }
+                if (target.IsGuarded())
+                {
+                    var bodyguard = target.GetBodyguard().Player.PlayerId;
+                    Rpc(CustomRPC.AttemptSound, bodyguard, target.PlayerId);
+
+                    if (CustomGameOptions.ShieldBreaks) fullCooldownReset = true;
+                    else zeroSecReset = true;
+
+            //        RpcMurderPlayer(player, bodyguard);
+
+                    Switcheroo.AttackTrigger(bodyguard, target.PlayerId, CustomGameOptions.ShieldBreaks);
                 }
                 else if (target.IsProtected()) gaReset = true;
                 else
@@ -319,6 +467,17 @@ public static class Utils
             if (CustomGameOptions.ShieldBreaks) fullCooldownReset = true;
             else zeroSecReset = true;
             StopKill.BreakShield(target.GetMedic().Player.PlayerId, target.PlayerId, CustomGameOptions.ShieldBreaks);
+        }
+        else if (target.IsGuarded() && toKill)
+        {
+            var bodyguard = target.GetBodyguard().Player.PlayerId;
+            Rpc(CustomRPC.AttemptSound, target.GetBodyguard().Player.PlayerId, target.PlayerId);
+
+            System.Console.WriteLine(CustomGameOptions.ShieldBreaks + "- shield break");
+            if (CustomGameOptions.ShieldBreaks) fullCooldownReset = true;
+            else zeroSecReset = true;
+        //    RpcMurderPlayer(target, bodyguard);
+        //    RpcMurderPlayer(bodyguard, target);
         }
         else if (target.IsVesting() && toKill)
         {

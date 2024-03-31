@@ -8,6 +8,12 @@ namespace TownOfUsFusion.CustomOption
     String,
     Button
 }
+public enum SkipEnum
+{
+    RoleCard,
+    Guide,
+    None
+}
 public enum MultiMenu
 {
     main,
