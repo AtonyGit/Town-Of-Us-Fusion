@@ -30,11 +30,15 @@ namespace TownOfUsFusion
     SurvivorOnlyWin,
     VampireWin,
 
+    CannibalWin,
+    NecroWin,
+
     JanitorClean,
     FixLights,
     EngineerFix,
     SetSwaps,
     Protect,
+    SetJkTarget,
     AttemptSound,
     Morph,
     Mine,
@@ -55,6 +59,8 @@ namespace TownOfUsFusion
     Mediate,
     Vest,
     GAProtect,
+    Poison,
+    CannibalEat,
     Blackmail,
     Infect,
     TurnPestilence,
@@ -80,6 +86,7 @@ namespace TownOfUsFusion
     SetHacked,
 
     ExecutionerToJester,
+    JokerToJester,
     GAToSurv,
 
     Start,
@@ -93,6 +100,9 @@ namespace TownOfUsFusion
 
     SubmergedFixOxygen,
     // TOU FUSION ROLES
+    Resurrect,
+    Resurrect2,
+    NeoConvert,
     Guard,
     RevealTy
 }

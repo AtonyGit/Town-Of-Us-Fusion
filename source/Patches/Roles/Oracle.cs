@@ -17,6 +17,7 @@ namespace TownOfUsFusion.Roles
         Name = "Oracle";
         ImpostorText = () => "Get Other Player's To Confess Their Sins";
         TaskText = () => "Get another player to confess on your passing";
+        AlignmentText = () => "Crew Astral";
         Color = Patches.Colors.Oracle;
         LastConfessed = DateTime.UtcNow;
         Accuracy = CustomGameOptions.RevealAccuracy;

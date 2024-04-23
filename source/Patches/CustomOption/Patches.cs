@@ -10,7 +10,7 @@ namespace TownOfUsFusion.CustomOption
     public static class Patches
 {
 
-    static string[] Menus = { "Game", "Crew", "Neutral", "Imposter", "Modifier" };
+    static string[] Menus = { "Map", "Game", "Crew", "Neutral", "Imposter", "Modifier" };
 
     public static Export ExportButton;
     public static Import ImportButton;
@@ -147,7 +147,7 @@ namespace TownOfUsFusion.CustomOption
         public static void Postfix(GameSettingMenu __instance)
         {
             var obj = __instance.RolesSettingsHightlight.gameObject.transform.parent.parent;
-            var diff = 0.906f * Menus.Length - 2;
+            var diff = 0.8f * Menus.Length - 2;
             obj.transform.localPosition = new Vector3(obj.transform.localPosition.x - diff, obj.transform.localPosition.y, obj.transform.localPosition.z);
             __instance.GameSettingsHightlight.gameObject.transform.parent.localPosition = new Vector3(obj.transform.localPosition.x, obj.transform.localPosition.y, obj.transform.localPosition.z);
             List<GameObject> menug = new List<GameObject>();
@@ -171,7 +171,7 @@ namespace TownOfUsFusion.CustomOption
                     sliderInner.GetComponent<GameOptionsMenu>().name = $"Tou{Menus[index]}OptionsMenu";
 
                 var ourSettingsButton = Object.Instantiate(obj.gameObject, obj.transform.parent);
-                ourSettingsButton.transform.localPosition = new Vector3(obj.localPosition.x + (0.906f * (index + 1)), obj.localPosition.y, obj.localPosition.z);
+                ourSettingsButton.transform.localPosition = new Vector3(obj.localPosition.x + (0.8f * (index + 1)), obj.localPosition.y, obj.localPosition.z);
                 ourSettingsButton.name = $"TOU{Menus[index]}tab";
                 var hatButton = ourSettingsButton.transform.GetChild(0); //TODO:  change to FindChild I guess to be sure
                 var hatIcon = hatButton.GetChild(0);
@@ -215,14 +215,16 @@ namespace TownOfUsFusion.CustomOption
                 default:
                     return TownOfUsFusion.SettingsButtonSprite;
                 case 0:
-                    return TownOfUsFusion.SettingsButtonSprite;
+                    return TownOfUsFusion.MapSettingsButtonSprite;
                 case 1:
-                    return TownOfUsFusion.CrewSettingsButtonSprite;
+                    return TownOfUsFusion.SettingsButtonSprite;
                 case 2:
-                    return TownOfUsFusion.NeutralSettingsButtonSprite;
+                    return TownOfUsFusion.CrewSettingsButtonSprite;
                 case 3:
-                    return TownOfUsFusion.ImposterSettingsButtonSprite;
+                    return TownOfUsFusion.NeutralSettingsButtonSprite;
                 case 4:
+                    return TownOfUsFusion.ImposterSettingsButtonSprite;
+                case 5:
                     return TownOfUsFusion.ModifierSettingsButtonSprite;
             }
         }

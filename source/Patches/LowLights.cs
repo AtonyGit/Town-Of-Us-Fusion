@@ -2,6 +2,7 @@ using AmongUs.GameOptions;
 using HarmonyLib;
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Modifiers;
 using UnityEngine;
 
 namespace TownOfUsFusion
@@ -56,12 +57,15 @@ public static class LowLights
         if (Patches.SubmergedCompatibility.isSubmerged())
         {
             if (player._object.Is(ModifierEnum.Torch)) __result = Mathf.Lerp(__instance.MinLightRadius, __instance.MaxLightRadius, 1) * GameOptionsManager.Instance.currentNormalGameOptions.CrewLightMod;
+            if (player._object.Is(ModifierEnum.Eclipsed)) __result = Mathf.Lerp(__instance.MinLightRadius, __instance.MaxLightRadius, 1) * GameOptionsManager.Instance.currentNormalGameOptions.CrewLightMod * CustomGameOptions.EclipsedWithoutLights;
             return false;
         }
 
         var t = switchSystem != null ? switchSystem.Value / 255f : 1;
 
         if (player._object.Is(ModifierEnum.Torch)) t = 1;
+
+    //    if (player._object.Is(ModifierEnum.Eclipsed)) t = 1 / CustomGameOptions.EclipsedWithLights;
 
         if (player._object.Is(RoleEnum.Mayor))
         {
@@ -73,6 +77,14 @@ public static class LowLights
                 return false;
             }
         }
+        if (player._object.Is(ModifierEnum.Eclipsed))
+        {
+            // what the fuck dude
+                __result = Mathf.Lerp(2.5f * CustomGameOptions.EclipsedWithoutLights, 2.5f / CustomGameOptions.EclipsedWithLights, 1) *
+                   GameOptionsManager.Instance.currentNormalGameOptions.CrewLightMod;
+                return false;
+        }
+
         if (player._object.Is(RoleEnum.Tyrant))
         {
             var role = Role.GetRole<Tyrant>(player._object);

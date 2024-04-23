@@ -35,6 +35,7 @@ public static class SubmergedHudPatch
         if (PlayerControl.LocalPlayer == null || PlayerControl.LocalPlayer.Data == null) return;
         if (SubmergedCompatibility.isSubmerged())
         {
+            __instance.MapButton.transform.parent.Find(__instance.MapButton.name + "(Clone)").transform.localPosition = __instance.SettingsButton.transform.localPosition + new Vector3(0, -2.6f, -__instance.SettingsButton.transform.localPosition.z - 51f);
             if (PlayerControl.LocalPlayer.Data.IsDead && PlayerControl.LocalPlayer.Is(RoleEnum.Haunter))
             {
                 if (!Role.GetRole<Haunter>(PlayerControl.LocalPlayer).Caught) __instance.MapButton.transform.parent.Find(__instance.MapButton.name + "(Clone)").gameObject.SetActive(false);

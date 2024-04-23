@@ -23,6 +23,7 @@ namespace TownOfUsFusion.Roles
         Name = "Trapper";
         ImpostorText = () => "Catch Killers In The Act";
         TaskText = () => "Place traps around the map";
+        AlignmentText = () => "Crew Investigative";
         Color = Patches.Colors.Trapper;
         RoleType = RoleEnum.Trapper;
         LastTrapped = DateTime.UtcNow;

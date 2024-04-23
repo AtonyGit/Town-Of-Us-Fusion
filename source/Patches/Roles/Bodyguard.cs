@@ -13,6 +13,7 @@ namespace TownOfUsFusion.Roles
         Name = "Bodyguard";
         ImpostorText = () => "Bodyguard A Crewmate With Your Life!";
         TaskText = () => "Protect a crewmate, physically!";
+        AlignmentText = () => "Crew Protective";
         Color = Patches.Colors.Bodyguard;
         StartingCooldown = DateTime.UtcNow;
         RoleType = RoleEnum.Bodyguard;

@@ -41,7 +41,10 @@ public class KillButtonSprite
     private static Sprite Confess => TownOfUsFusion.ConfessSprite;
     private static Sprite Radiate => TownOfUsFusion.RadiateSprite;
     // TOU FUSION STUFF
+    private static Sprite Consume => TownOfUsFusion.ConsumeSprite;
     private static Sprite Guard => TownOfUsFusion.GuardSprite;
+    private static Sprite Taunt => TownOfUsFusion.TauntSprite;
+    private static Sprite PortAdmin => TownOfUsFusion.PortableAdSprite;
 
     private static Sprite Kill;
 
@@ -61,6 +64,11 @@ public class KillButtonSprite
         else if (PlayerControl.LocalPlayer.Is(RoleEnum.Medic))
         {
             __instance.KillButton.graphic.sprite = Medic;
+            flag = true;
+        }
+        else if (PlayerControl.LocalPlayer.Is(RoleEnum.Spy))
+        {
+            __instance.KillButton.graphic.sprite = PortAdmin;
             flag = true;
         }
         else if (PlayerControl.LocalPlayer.Is(RoleEnum.Bodyguard))
@@ -163,13 +171,31 @@ public class KillButtonSprite
             __instance.KillButton.graphic.sprite = Radiate;
             flag = true;
         }
+        else if (PlayerControl.LocalPlayer.Is(RoleEnum.Joker))
+        {
+            __instance.KillButton.graphic.sprite = Taunt;
+            flag = true;
+        }
+        else if (PlayerControl.LocalPlayer.Is(RoleEnum.Cannibal))
+        {
+            __instance.KillButton.graphic.sprite = Consume;
+            flag = true;
+        }
         else
         {
             __instance.KillButton.graphic.sprite = Kill;
             __instance.KillButton.buttonLabelText.gameObject.SetActive(true);
             __instance.KillButton.buttonLabelText.text = "Kill";
-            flag = PlayerControl.LocalPlayer.Is(RoleEnum.Sheriff) || PlayerControl.LocalPlayer.Is(RoleEnum.Pestilence) ||
-                PlayerControl.LocalPlayer.Is(RoleEnum.Werewolf) || PlayerControl.LocalPlayer.Is(RoleEnum.Juggernaut);
+            flag = PlayerControl.LocalPlayer.Is(RoleEnum.Sheriff) || PlayerControl.LocalPlayer.Is(RoleEnum.Pestilence) || PlayerControl.LocalPlayer.Is(RoleEnum.Scourge) || 
+                PlayerControl.LocalPlayer.Is(RoleEnum.Werewolf) || PlayerControl.LocalPlayer.Is(RoleEnum.NeoNecromancer) || PlayerControl.LocalPlayer.Is(RoleEnum.Juggernaut);
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Sheriff))  {
+                if (!Role.GetRole<Sheriff>(PlayerControl.LocalPlayer).CanShoot) {
+                __instance.KillButton.gameObject.SetActive(false);
+                __instance.KillButton.buttonLabelText.text = "Waiting";
+                __instance.KillButton.cooldownTimerText.gameObject.SetActive(false);
+                } else 
+                __instance.KillButton.buttonLabelText.text = "Shoot";
+            }
         }
         if (!PlayerControl.LocalPlayer.Is(Faction.Impostors) &&
             GameOptionsManager.Instance.CurrentGameOptions.GameMode != GameModes.HideNSeek)
@@ -181,6 +207,11 @@ public class KillButtonSprite
              || PlayerControl.LocalPlayer.Is(RoleEnum.Vampire))
         {
             __instance.ImpostorVentButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
+        }
+        else if (PlayerControl.LocalPlayer.Is(ModifierEnum.Oblivious) && !CustomGameOptions.ObliviousCanReport)
+        {
+            __instance.ReportButton.gameObject.SetActive(false);
+        //    __instance.ImpostorVentButton.transform.localPosition = new Vector3(0f, -1f, 0f);
         }
         else if (PlayerControl.LocalPlayer.Is(RoleEnum.Werewolf))
         {

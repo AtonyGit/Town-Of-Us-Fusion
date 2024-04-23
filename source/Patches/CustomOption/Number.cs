@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using TownOfUsFusion.Patches;
 
 namespace TownOfUsFusion.CustomOption
 {

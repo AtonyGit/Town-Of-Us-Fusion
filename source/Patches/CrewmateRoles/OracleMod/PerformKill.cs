@@ -51,6 +51,7 @@ public class PerformKill
             }
             if (faction == 0) role.RevealedFaction = Faction.Crewmates;
             else if (faction == 1) role.RevealedFaction = Faction.NeutralEvil;
+            else if (faction == 2) role.RevealedFaction = Faction.NeutralChaos;
             else role.RevealedFaction = Faction.Impostors;
             Utils.Rpc(CustomRPC.Confess, PlayerControl.LocalPlayer.PlayerId, role.Confessor.PlayerId, faction);
         }

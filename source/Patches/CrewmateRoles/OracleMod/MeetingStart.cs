@@ -28,7 +28,8 @@ public class MeetingStartOracle
         if (allPlayers.Count < 2) return "Too few people alive to receive a confessional";
         var evilPlayers = PlayerControl.AllPlayerControls.ToArray().Where(x => !x.Data.IsDead && !x.Data.Disconnected &&
         (x.Is(Faction.Impostors) || (x.Is(Faction.NeutralKilling) && CustomGameOptions.NeutralKillingShowsEvil) ||
-        (x.Is(Faction.NeutralEvil) && CustomGameOptions.NeutralEvilShowsEvil) || (x.Is(Faction.NeutralBenign) && CustomGameOptions.NeutralBenignShowsEvil))).ToList();
+        (x.Is(Faction.NeutralEvil) && CustomGameOptions.NeutralEvilShowsEvil) || (x.Is(Faction.NeutralBenign) && CustomGameOptions.NeutralBenignShowsEvil)
+         || (x.Is(Faction.NeutralChaos) && CustomGameOptions.NeutralChaosShowsEvil))).ToList();
         if (evilPlayers.Count == 0) return $"{player.GetDefaultOutfit().PlayerName} confesses to knowing that there are no more evil players!";
         allPlayers.Shuffle();
         evilPlayers.Shuffle();

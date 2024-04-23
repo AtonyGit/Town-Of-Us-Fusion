@@ -29,12 +29,13 @@ public static class GameSettings
 
             var builder = new StringBuilder();
             builder.AppendLine("Press Tab To Change Page");
-            builder.AppendLine($"Currently Viewing Page ({(SettingsPage + 2)}/6)");
-            if (SettingsPage == 0) builder.AppendLine("General Mod Settings");
-            else if (SettingsPage == 1) builder.AppendLine("Crewmate Settings");
-            else if (SettingsPage == 2) builder.AppendLine("Neutral Settings");
-            else if (SettingsPage == 3) builder.AppendLine("Impostor Settings");
-            else if (SettingsPage == 4) builder.AppendLine("Modifier Settings");
+            builder.AppendLine($"Currently Viewing Page ({(SettingsPage + 2)}/7)");
+            if (SettingsPage == 0) builder.AppendLine("Map Settings");
+            if (SettingsPage == 1) builder.AppendLine("General Mod Settings");
+            else if (SettingsPage == 2) builder.AppendLine("Crewmate Settings");
+            else if (SettingsPage == 3) builder.AppendLine("Neutral Settings");
+            else if (SettingsPage == 4) builder.AppendLine("Impostor Settings");
+            else if (SettingsPage == 5) builder.AppendLine("Modifier Settings");
 
             if (SettingsPage == -1) builder.Append(new StringBuilder(__result));
 

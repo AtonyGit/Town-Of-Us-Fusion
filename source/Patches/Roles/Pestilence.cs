@@ -15,7 +15,7 @@ namespace TownOfUsFusion.Roles
         AddToRoleHistory(RoleType);
         ImpostorText = () => "";
         TaskText = () => "Kill everyone with your unstoppable abilities!\nFake Tasks:";
-        Faction = Faction.NeutralKilling;
+        Faction = Faction.NeutralApocalypse;
     }
 
     public PlayerControl ClosestPlayer;
@@ -28,7 +28,7 @@ namespace TownOfUsFusion.Roles
 
         if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected) <= 2 &&
                 PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
-                (x.Data.IsImpostor() || x.Is(Faction.NeutralKilling))) == 1)
+                (x.Data.IsImpostor() || x.Is(Faction.NeutralApocalypse))) == 1)
         {
             Utils.Rpc(CustomRPC.PestilenceWin, Player.PlayerId);
             Wins();

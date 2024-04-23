@@ -1,3 +1,5 @@
+using TownOfUsFusion.Patches;
+
 namespace TownOfUsFusion.CustomOption
 {
     public enum CustomOptionType
@@ -16,6 +18,7 @@ public enum SkipEnum
 }
 public enum MultiMenu
 {
+    map,
     main,
     crewmate,
     neutral,

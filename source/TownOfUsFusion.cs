@@ -14,6 +14,7 @@ using TownOfUsFusion.CustomOption;
 using TownOfUsFusion.Patches;
 using TownOfUsFusion.RainbowMod;
 using TownOfUsFusion.Extensions;
+using TownOfUsFusion.CrewmateRoles.DetectiveMod;
 using Il2CppInterop.Runtime;
 using Il2CppInterop.Runtime.Injection;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
@@ -31,7 +32,7 @@ namespace TownOfUsFusion
     public class TownOfUsFusion : BasePlugin
     {
         public const string Id = "com.FusionStudios.TownOfUsFusion";
-        public const string VersionString = "0.1.4";
+        public const string VersionString = "0.2.1";
         public const string TouVersionString = "5.0.3";
         public static System.Version Version = System.Version.Parse(VersionString);
         public static string STR_DiscordText = "Lobby";
@@ -100,12 +101,16 @@ namespace TownOfUsFusion
         public static Sprite HackSprite;
         public static Sprite MimicSprite;
         public static Sprite LockSprite;
-
+        public static Sprite ResurrectSprite;
+        public static Sprite ConsumeSprite;
+        public static Sprite MapSettingsButtonSprite;
         public static Sprite SettingsButtonSprite;
         public static Sprite CrewSettingsButtonSprite;
         public static Sprite NeutralSettingsButtonSprite;
         public static Sprite ImposterSettingsButtonSprite;
         public static Sprite ModifierSettingsButtonSprite;
+        public static Sprite VisorColorButtonSprite;
+
         public static Sprite ToUBanner;
         public static Sprite UpdateTOUButton;
         public static Sprite UpdateSubmergedButton;
@@ -114,7 +119,12 @@ namespace TownOfUsFusion
         public static Sprite ZoomMinusButton;
 
 //      FUSION SHIT
+        public static Sprite PoisonSprite;
+        public static Sprite PoisonedSprite;
+        public static Sprite CrimeSceneSprite;
         public static Sprite BugSprite;
+        
+        public static Sprite PortableAdSprite;
         public static Sprite GuardSprite;
         public static Sprite SpellbookSprite;
         public static Sprite CastSprite;
@@ -161,8 +171,10 @@ namespace TownOfUsFusion
             Footprint = CreateLegacySprite("TownOfUsFusion.Resources.Footprint.png");
             InspectSprite = CreateSprite("TownOfUsFusion.Resources.Inspect.png");
             ExamineSprite = CreateSprite("TownOfUsFusion.Resources.Examine.png");
+            CrimeSceneSprite = CreateLegacySprite("TownOfUsFusion.Resources.CrimeScene.png");
             SeerSprite = CreateSprite("TownOfUsFusion.Resources.Seer.png");
             BugSprite = CreateSprite("TownOfUsFusion.Resources.Bug.png");
+            PortableAdSprite = CreateSprite("TownOfUsFusion.Resources.PortableAdmin.png");
             TrackSprite = CreateSprite("TownOfUsFusion.Resources.Track.png");
             TrapSprite = CreateSprite("TownOfUsFusion.Resources.Trap.png");
             // CREW (KILLING)
@@ -193,6 +205,7 @@ namespace TownOfUsFusion
             VestSprite = CreateSprite("TownOfUsFusion.Resources.Vest.png");
             // NEUTRAL (EVIL)
             ObserveSprite = CreateSprite("TownOfUsFusion.Resources.Observe.png");
+            // NEUTRAL (CHAOS)
             TauntSprite = CreateSprite("TownOfUsFusion.Resources.Taunt.png");
             // NEUTRAL (KILLING)
             DouseSprite = CreateSprite("TownOfUsFusion.Resources.Douse.png");
@@ -204,6 +217,9 @@ namespace TownOfUsFusion
             SlashSprite = CreateSprite("TownOfUsFusion.Resources.Slash.png");
             BiteSprite = CreateSprite("TownOfUsFusion.Resources.Bite.png");
             RampageSprite = CreateSprite("TownOfUsFusion.Resources.Rampage.png");
+            // NEUTRAL (NEOPHYTE)
+            ResurrectSprite = CreateSprite("TownOfUsFusion.Resources.Resurrect.png");
+            ConsumeSprite = CreateSprite("TownOfUsFusion.Resources.Consume.png");
             // IMPOSTOR (CONCEALING)
             EscapeSprite = CreateSprite("TownOfUsFusion.Resources.Recall.png");
             MarkSprite = CreateSprite("TownOfUsFusion.Resources.Mark.png");
@@ -218,6 +234,8 @@ namespace TownOfUsFusion
             // IMPOSTOR (KILLING)
             PlantSprite = CreateLegacySprite("TownOfUsFusion.Resources.Plant.png");
             DetonateSprite = CreateLegacySprite("TownOfUsFusion.Resources.Detonate.png");
+            PoisonSprite = CreateLegacySprite("TownOfUsFusion.Resources.Poison.png");
+            PoisonedSprite = CreateLegacySprite("TownOfUsFusion.Resources.Poisoned.png");
             // IMPOSTOR (SUPPORT)
             BlackmailSprite = CreateSprite("TownOfUsFusion.Resources.Blackmail.png");
             BlackmailLetterSprite = CreateLegacySprite("TownOfUsFusion.Resources.BlackmailLetter.png");
@@ -239,11 +257,14 @@ namespace TownOfUsFusion
             CycleForwardSprite = CreateLegacySprite("TownOfUsFusion.Resources.CycleForward.png");
             GuessSprite = CreateLegacySprite("TownOfUsFusion.Resources.Guess.png");
             // SETTINGS
+            MapSettingsButtonSprite = CreateSettingsSprite("TownOfUsFusion.Resources.Map.png");
             SettingsButtonSprite = CreateSettingsSprite("TownOfUsFusion.Resources.SettingsButton.png");
             CrewSettingsButtonSprite = CreateSettingsSprite("TownOfUsFusion.Resources.Crewmate.png");
             NeutralSettingsButtonSprite = CreateSettingsSprite("TownOfUsFusion.Resources.Neutral.png");
             ImposterSettingsButtonSprite = CreateSettingsSprite("TownOfUsFusion.Resources.Impostor.png");
             ModifierSettingsButtonSprite = CreateSettingsSprite("TownOfUsFusion.Resources.Modifiers.png");
+            
+            VisorColorButtonSprite = CreateSettingsSprite("TownOfUsFusion.Resources.VisorColor.png");
             // MAIN MENU
             ToUBanner = CreateLegacySprite("TownOfUsFusion.Resources.TownOfUsFusionBanner.png");
             UpdateTOUButton = CreateLegacySprite("TownOfUsFusion.Resources.UpdateToUButton.png");
@@ -265,6 +286,7 @@ namespace TownOfUsFusion
 
             PalettePatch.Load();
             ClassInjector.RegisterTypeInIl2Cpp<RainbowBehaviour>();
+            ClassInjector.RegisterTypeInIl2Cpp<CrimeScene>();
 
             // RegisterInIl2CppAttribute.Register();
 

@@ -1,98 +1,73 @@
-using UnityEngine;
 using System;
-using TownOfUsFusion.ImpostorRoles.BomberMod;
-using TownOfUsFusion.CrewmateRoles.MedicMod;
-using TownOfUsFusion.Patches;
+using UnityEngine;
 
 namespace TownOfUsFusion.Roles
 {
     public class Poisoner : Role
 
-{
-    public KillButton _plantButton;
-    public float TimeRemaining;
-    public bool Enabled = false;
-    public bool Detonated = true;
-    public Vector3 DetonatePoint;
-    public Bomb Bomb = new Bomb();
-    public static Material bombMaterial = TownOfUsFusion.bundledAssets.Get<Material>("bomb");
-    public DateTime StartingCooldown { get; set; }
+    {
+        public KillButton _poisonButton;
+        public PlayerControl ClosestPlayer;
+        public DateTime LastPoisoned;
+        public PlayerControl PoisonedPlayer;
+        public float TimeRemaining;
+        public bool Enabled = false;
 
-    public Poisoner(PlayerControl player) : base(player)
-    {
-        Name = "Poisoner";
-        ImpostorText = () => "Plant Bombs To Kill Multiple Crewmates At Once";
-        TaskText = () => "Plant bombs to kill crewmates";
-        Color = Palette.ImpostorRed;
-        StartingCooldown = DateTime.UtcNow;
-        RoleType = RoleEnum.Poisoner;
-        AddToRoleHistory(RoleType);
-        Faction = Faction.Impostors;
-    }
-    public KillButton PlantButton
-    {
-        get => _plantButton;
-        set
+        public Poisoner(PlayerControl player) : base(player)
         {
-            _plantButton = value;
-            ExtraButtons.Clear();
-            ExtraButtons.Add(value);
+            Name = "Poisoner";
+            ImpostorText = () => "Poison A Player To Kill Them Within Seconds";
+            TaskText = () => "Poison the crewmates";
+            Color = Palette.ImpostorRed;
+            LastPoisoned = DateTime.UtcNow;
+            RoleType = RoleEnum.Poisoner;
+            AddToRoleHistory(RoleType);
+            Faction = Faction.Impostors;
+            PoisonedPlayer = null;
         }
-    }
-    public float StartTimer()
-    {
-        var utcNow = DateTime.UtcNow;
-        var timeSpan = utcNow - StartingCooldown;
-        var num = 10000f;
-        var flag2 = num - (float)timeSpan.TotalMilliseconds < 0f;
-        if (flag2) return 0;
-        return (num - (float)timeSpan.TotalMilliseconds) / 1000f;
-    }
-    public bool Detonating => TimeRemaining > 0f;
-    public void DetonateTimer()
-    {
-        Enabled = true;
-        TimeRemaining -= Time.deltaTime;
-        if (MeetingHud.Instance) Detonated = true;
-        if (TimeRemaining <= 0 && !Detonated)
+        public KillButton PoisonButton
         {
-            var Poisoner = GetRole<Poisoner>(PlayerControl.LocalPlayer);
-            Poisoner.Bomb.ClearBomb();
-            DetonateKillStart();
-        }
-    }
-    public void DetonateKillStart()
-    {
-        Detonated = true;
-        var playersToDie = Utils.GetClosestPlayers(DetonatePoint, CustomGameOptions.DetonateRadius, false);
-        playersToDie = Shuffle(playersToDie);
-        while (playersToDie.Count > CustomGameOptions.MaxKillsInDetonation) playersToDie.Remove(playersToDie[playersToDie.Count - 1]);
-        foreach (var player in playersToDie)
-        {
-            if (!player.Is(RoleEnum.Pestilence) && !player.IsShielded() && !player.IsProtected() && player != ShowRoundOneShield.FirstRoundShielded)
+            get => _poisonButton;
+            set
             {
-                Utils.RpcMultiMurderPlayer(Player, player);
-            }
-            else if (player.IsShielded())
-            {
-                var medic = player.GetMedic().Player.PlayerId;
-                Utils.Rpc(CustomRPC.AttemptSound, medic, player.PlayerId);
-                StopKill.BreakShield(medic, player.PlayerId, CustomGameOptions.ShieldBreaks);
+                _poisonButton = value;
+                ExtraButtons.Clear();
+                ExtraButtons.Add(value);
             }
         }
-    }
-    public static Il2CppSystem.Collections.Generic.List<PlayerControl> Shuffle(Il2CppSystem.Collections.Generic.List<PlayerControl> playersToDie)
-    {
-        var count = playersToDie.Count;
-        var last = count - 1;
-        for (var i = 0; i < last; ++i)
+        public bool Poisoned => TimeRemaining > 0f;
+        public void Poison()
         {
-            var r = UnityEngine.Random.Range(i, count);
-            var tmp = playersToDie[i];
-            playersToDie[i] = playersToDie[r];
-            playersToDie[r] = tmp;
+            Enabled = true;
+            TimeRemaining -= Time.deltaTime;
+            if (MeetingHud.Instance)
+            {
+                TimeRemaining = 0;
+            }
+            if (TimeRemaining <= 0)
+            {
+                PoisonKill();
+            }
         }
-        return playersToDie;
+        public void PoisonKill()
+        {
+            if (!PoisonedPlayer.Is(RoleEnum.Pestilence))
+            {
+                Utils.RpcMultiMurderPlayer(Player, PoisonedPlayer);
+                if (!PoisonedPlayer.Data.IsDead) SoundManager.Instance.PlaySound(PlayerControl.LocalPlayer.KillSfx, false, 0.5f);
+            }
+            PoisonedPlayer = null;
+            Enabled = false;
+            LastPoisoned = DateTime.UtcNow;
+        }
+        public float PoisonTimer()
+        {
+            var utcNow = DateTime.UtcNow;
+            var timeSpan = utcNow - LastPoisoned;
+            var num = GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown;
+            var flag2 = num - (float)timeSpan.TotalMilliseconds < 0f;
+            if (flag2) return 0;
+            return (num - (float)timeSpan.TotalMilliseconds) / 1000f;
+        }
     }
-}
 }

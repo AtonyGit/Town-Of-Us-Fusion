@@ -81,6 +81,11 @@ public class StartImitate
             vh.UsesLeft = CustomGameOptions.MaxFailedStakesPerGame;
             vh.AddedStakes = true;
         }
+        if (imitatorRole == RoleEnum.Sheriff)
+        {
+            var sh = new Sheriff(ImitatingPlayer);
+            sh.CanShoot = true;
+        }
         if (imitatorRole == RoleEnum.Aurial)
         {
             var aurial = new Aurial(ImitatingPlayer);

@@ -12,7 +12,7 @@ public class PatchColours
         var newResult = (int)name switch
         {
             // TOU FUSION COLORS
-            999800 => "Snow White",
+            999800 => "Snow",
             999801 => "Turquoise",
             999802 => "Nacho",
             999803 => "Galacta",
@@ -23,6 +23,27 @@ public class PatchColours
             999808 => "Wood",
             999809 => "Dandelion",
             999810 => "Amber",
+            999811 => "Cotton Candy",
+            999812 => "Aqua",
+            999813 => "Lemon",
+            999814 => "Apple",
+            999815 => "Blood",
+            999816 => "Grass",
+            999817 => "Mandarin",
+            999818 => "Glass",
+            999819 => "Ash",
+            999820 => "Midnight",
+            999821 => "Steel",
+            
+            999822 => "Mahogany",
+            999823 => "Salmon",
+            999824 => "Pear",
+            999825 => "Wine",
+            999826 => "True Red",
+            999827 => "Silver",
+            999828 => "Shimmer",
+            999829 => "Crimson",
+            999830 => "Crow",
             // TOU COLORS
             999983 => "Watermelon",
             999984 => "Chocolate",
@@ -41,6 +62,9 @@ public class PatchColours
             999997 => "Tawny",
             999998 => "Gold",
             999999 => "Rainbow",
+            1000000 => "Galaxy",
+            1000001 => "Fire",
+            1000002 => "Acid",
             _ => null
         };
         if (newResult != null)

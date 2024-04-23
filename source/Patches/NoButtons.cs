@@ -11,6 +11,8 @@ public class NoButtons
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Jester)) PlayerControl.LocalPlayer.RemainingEmergencies = 0;
         if (!CustomGameOptions.ExecutionerButton)
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Executioner)) PlayerControl.LocalPlayer.RemainingEmergencies = 0;
+        if (!CustomGameOptions.JokerButton)
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Joker)) PlayerControl.LocalPlayer.RemainingEmergencies = 0;
         if (!CustomGameOptions.SwapperButton)
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Swapper)) PlayerControl.LocalPlayer.RemainingEmergencies = 0;
     }
@@ -25,6 +27,8 @@ public class NoButtonsHost
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Jester)) PlayerControl.LocalPlayer.RemainingEmergencies = 0;
         if (!CustomGameOptions.ExecutionerButton)
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Executioner)) PlayerControl.LocalPlayer.RemainingEmergencies = 0;
+        if (!CustomGameOptions.JokerButton)
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Joker)) PlayerControl.LocalPlayer.RemainingEmergencies = 0;
         if (!CustomGameOptions.SwapperButton)
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Swapper)) PlayerControl.LocalPlayer.RemainingEmergencies = 0;
     }

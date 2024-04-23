@@ -29,12 +29,21 @@ public static class NEWin
             if (survRole != null) return;
             var vampRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Vampire && Role.VampireWins);
             if (vampRole != null) return;
+
+            var necroRoles = Role.AllRoles.FirstOrDefault(x => (x.RoleType == RoleEnum.NeoNecromancer || x.RoleType == RoleEnum.Husk || x.RoleType == RoleEnum.Apparitionist
+            || x.RoleType == RoleEnum.Enchanter || x.RoleType == RoleEnum.Scourge) && Role.NecroWins);
+            if (necroRoles != null) return;
+
             var arsoRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Arsonist && ((Arsonist)x).ArsonistWins);
             if (arsoRole != null) return;
             var glitchRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Glitch && ((Glitch)x).GlitchWins);
             if (glitchRole != null) return;
             var juggRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Juggernaut && ((Juggernaut)x).JuggernautWins);
             if (juggRole != null) return;
+
+            var canRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Cannibal && ((Cannibal)x).EatWin);
+            if (canRole != null) return;
+
             var pestRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Pestilence && ((Pestilence)x).PestilenceWins);
             if (pestRole != null) return;
             var pbRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Plaguebearer && ((Plaguebearer)x).PlaguebearerWins);

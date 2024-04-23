@@ -18,6 +18,7 @@ namespace TownOfUsFusion.Roles
         Name = "Medium";
         ImpostorText = () => "Watch The Spooky Ghosts";
         TaskText = () => "Follow ghosts to get clues from them";
+        AlignmentText = () => "Crew Astral";
         Color = Patches.Colors.Medium;
         LastMediated = DateTime.UtcNow;
         RoleType = RoleEnum.Medium;

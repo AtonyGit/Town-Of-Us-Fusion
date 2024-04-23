@@ -7,6 +7,7 @@ namespace TownOfUsFusion.Roles
         Name = "Prosecutor";
         ImpostorText = () => "Exile One Person Of Your Choosing";
         TaskText = () => "Choose to exile anyone you want";
+        AlignmentText = () => "Crew Sovereign";
         Color = Patches.Colors.Prosecutor;
         RoleType = RoleEnum.Prosecutor;
         AddToRoleHistory(RoleType);

@@ -12,6 +12,7 @@ namespace TownOfUsFusion.Roles
         Name = "Mystic";
         ImpostorText = () => "Understand When And Where Kills Happen";
         TaskText = () => "Know When and Where Kills Happen";
+        AlignmentText = () => "Crew Astral";
         Color = Patches.Colors.Mystic;
         RoleType = RoleEnum.Mystic;
         AddToRoleHistory(RoleType);

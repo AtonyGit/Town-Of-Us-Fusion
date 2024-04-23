@@ -14,6 +14,7 @@ namespace TownOfUsFusion.Roles
         Name = "Medic";
         ImpostorText = () => "Create A Shield To Protect A Crewmate";
         TaskText = () => "Protect a crewmate with a shield";
+        AlignmentText = () => "Crew Protective";
         Color = Patches.Colors.Medic;
         StartingCooldown = DateTime.UtcNow;
         RoleType = RoleEnum.Medic;
@@ -39,7 +40,7 @@ namespace TownOfUsFusion.Roles
         LightDarkColors.Add(16, "darker"); // Tan
         LightDarkColors.Add(17, "lighter"); // Coral
         // TOU FUSION COLORS
-        LightDarkColors.Add(18, "lighter"); // Snow White
+        LightDarkColors.Add(18, "lighter"); // Snow
         LightDarkColors.Add(19, "lighter"); // Turquoise
         LightDarkColors.Add(20, "lighter"); // Nacho
         LightDarkColors.Add(21, "darker"); // Galacta
@@ -50,24 +51,50 @@ namespace TownOfUsFusion.Roles
         LightDarkColors.Add(26, "darker"); // Wood
         LightDarkColors.Add(27, "lighter"); // Dandelion
         LightDarkColors.Add(28, "lighter"); // Amber
+        LightDarkColors.Add(29, "lighter"); // Cotton Candy
+        LightDarkColors.Add(30, "lighter"); // Aqua
+        LightDarkColors.Add(31, "lighter"); // Lemon
+        LightDarkColors.Add(32, "lighter"); // Apple
+        LightDarkColors.Add(33, "darker"); // Blood
+        LightDarkColors.Add(34, "darker"); // Grass
+        LightDarkColors.Add(35, "lighter"); // Mandarin
+        LightDarkColors.Add(36, "lighter"); // Glass
+        LightDarkColors.Add(37, "darker"); // Ash
+        LightDarkColors.Add(38, "darker"); // Midnight
+        LightDarkColors.Add(39, "darker"); // Steel
+
+        
+        LightDarkColors.Add(40, "darker"); // Mahogany
+        LightDarkColors.Add(41, "lighter"); // Salmon
+        LightDarkColors.Add(42, "lighter"); // Pear
+        LightDarkColors.Add(43, "darker"); // Wine
+        LightDarkColors.Add(44, "lighter"); // True Red
+        LightDarkColors.Add(45, "lighter"); // Silver
+        LightDarkColors.Add(46, "lighter"); // Shimmer
+        LightDarkColors.Add(47, "darker"); // Crimson
+        LightDarkColors.Add(48, "darker"); // Crow
+
         // TOU COLORS
-        LightDarkColors.Add(29, "darker"); // Watermelon
-        LightDarkColors.Add(30, "darker"); // Chocolate
-        LightDarkColors.Add(31, "lighter"); // Sky Blue
-        LightDarkColors.Add(32, "lighter"); // Biege
-        LightDarkColors.Add(33, "darker"); // Magenta
-        LightDarkColors.Add(34, "lighter"); // Sea Green
-        LightDarkColors.Add(35, "lighter"); // Lilac
-        LightDarkColors.Add(36, "darker"); // Olive
-        LightDarkColors.Add(37, "lighter"); // Azure
-        LightDarkColors.Add(38, "darker"); // Plum
-        LightDarkColors.Add(39, "darker"); // Jungle
-        LightDarkColors.Add(40, "lighter"); // Mint
-        LightDarkColors.Add(41, "lighter"); // Chartreuse
-        LightDarkColors.Add(42, "darker"); // Macau
-        LightDarkColors.Add(43, "darker"); // Tawny
-        LightDarkColors.Add(44, "lighter"); // Gold
-        LightDarkColors.Add(45, "lighter"); // Rainbow
+        LightDarkColors.Add(49, "darker"); // Watermelon
+        LightDarkColors.Add(50, "darker"); // Chocolate
+        LightDarkColors.Add(51, "lighter"); // Sky Blue
+        LightDarkColors.Add(52, "lighter"); // Biege
+        LightDarkColors.Add(53, "darker"); // Magenta
+        LightDarkColors.Add(54, "lighter"); // Sea Green
+        LightDarkColors.Add(55, "lighter"); // Lilac
+        LightDarkColors.Add(56, "darker"); // Olive
+        LightDarkColors.Add(57, "lighter"); // Azure
+        LightDarkColors.Add(58, "darker"); // Plum
+        LightDarkColors.Add(59, "darker"); // Jungle
+        LightDarkColors.Add(60, "lighter"); // Mint
+        LightDarkColors.Add(61, "lighter"); // Chartreuse
+        LightDarkColors.Add(62, "darker"); // Macau
+        LightDarkColors.Add(63, "darker"); // Tawny
+        LightDarkColors.Add(64, "lighter"); // Gold
+        LightDarkColors.Add(65, "lighter"); // Rainbow
+        LightDarkColors.Add(66, "darker"); // Galaxy
+        LightDarkColors.Add(67, "lighter"); // Fire
+        LightDarkColors.Add(68, "lighter"); // Acid
     }
     public float StartTimer()
     {

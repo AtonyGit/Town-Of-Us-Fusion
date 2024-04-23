@@ -45,6 +45,7 @@ public class ShowShield
             var player = medic.ShieldedPlayer;
             if (player == null) continue;
 
+            //string ogName = player.GetDefaultOutfit().PlayerName;
             if (player.Data.IsDead || medic.Player.Data.IsDead || medic.Player.Data.Disconnected)
             {
                 StopKill.BreakShield(medic.Player.PlayerId, player.PlayerId, true);
@@ -54,6 +55,7 @@ public class ShowShield
             var showShielded = CustomGameOptions.ShowShielded;
             if (showShielded == ShieldOptions.Everyone)
             {
+                //player.GetDefaultOutfit().PlayerName = ogName + "<color=#006600FF> ✚</color>";
                 player.myRend().material.SetColor("_VisorColor", ProtectedColor);
                 player.myRend().material.SetFloat("_Outline", 1f);
                 player.myRend().material.SetColor("_OutlineColor", ProtectedColor);
@@ -61,6 +63,7 @@ public class ShowShield
             else if (PlayerControl.LocalPlayer.PlayerId == player.PlayerId && (showShielded == ShieldOptions.Self ||
                 showShielded == ShieldOptions.SelfAndMedic))
             {
+                //player.GetDefaultOutfit().PlayerName = ogName + "<color=#006600FF> ✚</color>";
                 player.myRend().material.SetColor("_VisorColor", ProtectedColor);
                 player.myRend().material.SetFloat("_Outline", 1f);
                 player.myRend().material.SetColor("_OutlineColor", ProtectedColor);
@@ -68,6 +71,7 @@ public class ShowShield
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Medic) &&
                      (showShielded == ShieldOptions.Medic || showShielded == ShieldOptions.SelfAndMedic))
             {
+                //player.GetDefaultOutfit().PlayerName = ogName + "<color=#006600FF> ✚</color>";
                 player.myRend().material.SetColor("_VisorColor", ProtectedColor);
                 player.myRend().material.SetFloat("_Outline", 1f);
                 player.myRend().material.SetColor("_OutlineColor", ProtectedColor);

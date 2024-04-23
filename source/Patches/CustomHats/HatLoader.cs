@@ -42,6 +42,8 @@ namespace TownOfUsFusion.Patches.CustomHats
             var hatData = new List<HatData>();
             hatData.AddRange(DestroyableSingleton<HatManager>.Instance.allHats);
             hatData.ForEach((Action<HatData>)(x => x.StoreName = "Vanilla"));
+            // fuck this lags the shit out of the game
+            //hatData.ForEach((Action<HatData>)(x => x.Free = true));
 
             var originalCount = DestroyableSingleton<HatManager>.Instance.allHats.ToList().Count;
             hatBehaviours.Reverse();

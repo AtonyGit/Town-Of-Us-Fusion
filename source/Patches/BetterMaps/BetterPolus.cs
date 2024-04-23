@@ -2,7 +2,7 @@ using System.Linq;
 using HarmonyLib;
 using UnityEngine;
 
-namespace TownOfUsFusion
+namespace TownOfUsFusion.BetterMaps
 {
     [HarmonyPatch(typeof(ShipStatus))]
 public static class ShipStatusPatch
@@ -80,6 +80,8 @@ public static class ShipStatusPatch
 
     private static void ApplyChanges(ShipStatus instance)
     {
+        if (!CustomGameOptions.BetterPolusEnabled)
+            return;
         if (instance.Type == ShipStatus.MapType.Pb)
         {
             FindPolusObjects();
@@ -98,13 +100,13 @@ public static class ShipStatusPatch
     {
         if (IsObjectsFetched && IsRoomsFetched)
         {
-            if (CustomGameOptions.VitalsLab) MoveVitals();
-            if (!CustomGameOptions.ColdTempDeathValley && CustomGameOptions.VitalsLab) MoveTempCold();
-            if (CustomGameOptions.ColdTempDeathValley) MoveTempColdDV();
-            if (CustomGameOptions.WifiChartCourseSwap) SwitchNavWifi();
+            if (CustomGameOptions.BPVitalsLab) MoveVitals();
+            if (!CustomGameOptions.BPColdTempDeathValley && CustomGameOptions.BPVitalsLab) MoveTempCold();
+            if (CustomGameOptions.BPColdTempDeathValley) MoveTempColdDV();
+            if (CustomGameOptions.BPWifiChartCourseSwap) SwitchNavWifi();
         }
 
-        if (CustomGameOptions.VentImprovements) AdjustVents();
+        if (CustomGameOptions.BPVentImprovements) AdjustVents();
 
         IsAdjustmentsDone = true;
     }

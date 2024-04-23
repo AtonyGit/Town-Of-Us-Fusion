@@ -12,6 +12,7 @@ namespace TownOfUsFusion.Roles
         Name = "Altruist";
         ImpostorText = () => "Sacrifice Yourself To Save Another";
         TaskText = () => "Revive a dead body at the cost of your own life";
+        AlignmentText = () => "Crew Protective";
         Color = Patches.Colors.Altruist;
         RoleType = RoleEnum.Altruist;
         AddToRoleHistory(RoleType);

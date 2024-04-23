@@ -19,7 +19,7 @@ public class HighlightImpostors
                     state.NameText.color = Palette.ImpostorRed;
                 else if (player.Is(RoleEnum.Traitor) && CustomGameOptions.SnitchSeesTraitor)
                     state.NameText.color = Palette.ImpostorRed;
-                if (player.Is(Faction.NeutralKilling) && CustomGameOptions.SnitchSeesNeutrals)
+                if ((player.Is(Faction.NeutralKilling) || player.Is(Faction.NeutralNeophyte) || player.Is(Faction.NeutralApocalypse)) && CustomGameOptions.SnitchSeesNeutrals)
                     state.NameText.color = role.Color;
             }
         }

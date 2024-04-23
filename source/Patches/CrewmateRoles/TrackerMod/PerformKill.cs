@@ -37,9 +37,12 @@ public class PerformKill
             renderer.sprite = Sprite;
             if (!CamouflageUnCamouflage.IsCamoed)
             {
-                if (RainbowUtils.IsRainbow(target.GetDefaultOutfit().ColorId))
+                if (RainbowUtils.IsGradient(target.GetDefaultOutfit().ColorId))
                 {
-                    renderer.color = RainbowUtils.Rainbow;
+                    if (RainbowUtils.IsRainbow(target.GetDefaultOutfit().ColorId)) renderer.color = RainbowUtils.Rainbow;
+                    if (RainbowUtils.IsGalaxy(target.GetDefaultOutfit().ColorId)) renderer.color = RainbowUtils.Galaxy;
+                    if (RainbowUtils.IsFire(target.GetDefaultOutfit().ColorId)) renderer.color = RainbowUtils.Fire;
+                    if (RainbowUtils.IsAcid(target.GetDefaultOutfit().ColorId)) renderer.color = RainbowUtils.Acid;
                 }
                 else
                 {

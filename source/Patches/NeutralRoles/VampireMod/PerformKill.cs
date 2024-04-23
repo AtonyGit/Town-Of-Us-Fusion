@@ -45,7 +45,8 @@ public class Bite
             return false;
         }
         else if ((role.ClosestPlayer.Is(Faction.Crewmates) || (role.ClosestPlayer.Is(Faction.NeutralBenign)
-            && CustomGameOptions.CanBiteNeutralBenign) || (role.ClosestPlayer.Is(Faction.NeutralEvil)
+            && CustomGameOptions.CanBiteNeutralBenign) || (role.ClosestPlayer.Is(Faction.NeutralChaos)
+            && CustomGameOptions.CanBiteNeutralChaos) || (role.ClosestPlayer.Is(Faction.NeutralEvil)
             && CustomGameOptions.CanBiteNeutralEvil)) && !role.ClosestPlayer.Is(ModifierEnum.Lover) &&
             aliveVamps.Count == 1 && vamps.Count < CustomGameOptions.MaxVampiresPerGame)
         {

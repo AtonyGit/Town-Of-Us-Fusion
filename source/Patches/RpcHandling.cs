@@ -27,6 +27,7 @@ using TownOfUsFusion.Roles.Cultist;
 using TownOfUsFusion.Roles.Modifiers;
 using UnityEngine;
 using Coroutine = TownOfUsFusion.ImpostorRoles.JanitorMod.Coroutine;
+using EatCoroutine = TownOfUsFusion.NeutralRoles.CannibalMod.EatCoroutine;
 using Object = UnityEngine.Object;
 using PerformKillButton = TownOfUsFusion.NeutralRoles.AmnesiacMod.PerformKillButton;
 using Random = UnityEngine.Random;
@@ -35,9 +36,12 @@ using AmongUs.GameOptions;
 using TownOfUsFusion.NeutralRoles.VampireMod;
 using TownOfUsFusion.CrewmateRoles.MayorMod;
 using TownOfUsFusion.NeutralRoles.TyrantMod;
+using TownOfUsFusion.NeutralRoles.JokerMod;
 using System.Reflection;
 using TownOfUsFusion.Patches.NeutralRoles;
 using BepInEx.Logging;
+using TownOfUsFusion.NeutralRoles.NeoNecromancerMod;
+using TownOfUsFusion.NeutralRoles.ApparitionistMod;
 
 namespace TownOfUsFusion
 {
@@ -46,7 +50,10 @@ namespace TownOfUsFusion
         private static readonly List<(Type, int, bool)> CrewmateRoles = new();
         private static readonly List<(Type, int, bool)> NeutralBenignRoles = new();
         private static readonly List<(Type, int, bool)> NeutralEvilRoles = new();
+        private static readonly List<(Type, int, bool)> NeutralChaosRoles = new();
         private static readonly List<(Type, int, bool)> NeutralKillingRoles = new();
+        private static readonly List<(Type, int, bool)> NeutralNeophyteRoles = new();
+        private static readonly List<(Type, int, bool)> NeutralApocalypseRoles = new();
         private static readonly List<(Type, int, bool)> ImpostorRoles = new();
         private static readonly List<(Type, int)> CrewmateModifiers = new();
         private static readonly List<(Type, int)> GlobalModifiers = new();
@@ -64,11 +71,6 @@ namespace TownOfUsFusion
             if (probability == 100) return true;
             var num = Random.RandomRangeInt(1, 101);
             return num <= probability;
-        }
-        internal static bool CheckJugg()
-        {
-            var num = Random.RandomRangeInt(1, 101);
-            return num <= 10 * CustomGameOptions.MaxNeutralKillingRoles;
         }
         private static int PickRoleCount(int min, int max)
         {
@@ -154,17 +156,23 @@ namespace TownOfUsFusion
             {
                 var benign = PickRoleCount(CustomGameOptions.MinNeutralBenignRoles, Math.Min(CustomGameOptions.MaxNeutralBenignRoles, NeutralBenignRoles.Count));
                 var evil = PickRoleCount(CustomGameOptions.MinNeutralEvilRoles, Math.Min(CustomGameOptions.MaxNeutralEvilRoles, NeutralEvilRoles.Count));
+                var chaos = PickRoleCount(CustomGameOptions.MinNeutralChaosRoles, Math.Min(CustomGameOptions.MaxNeutralChaosRoles, NeutralChaosRoles.Count));
                 var killing = PickRoleCount(CustomGameOptions.MinNeutralKillingRoles, Math.Min(CustomGameOptions.MaxNeutralKillingRoles, NeutralKillingRoles.Count));
+                var neophyte = PickRoleCount(CustomGameOptions.MinNeutralNeophyteRoles, Math.Min(CustomGameOptions.MaxNeutralNeophyteRoles, NeutralNeophyteRoles.Count));
+                var apocalypse = PickRoleCount(CustomGameOptions.MinNeutralApocalypseRoles, Math.Min(CustomGameOptions.MaxNeutralApocalypseRoles, NeutralApocalypseRoles.Count));
 
                 var canSubtract = (int faction, int minFaction) => { return faction > minFaction; };
-                var factions = new List<string>() { "Benign", "Evil", "Killing" };
+                var factions = new List<string>() { "Benign", "Evil", "Chaos", "Killing", "Neophyte", "Apocalypse" };
 
                 // Crew must always start out outnumbering neutrals, so subtract roles until that can be guaranteed.
                 while (Math.Ceiling((double)crewmates.Count/2) <= benign + evil + killing)
                 {
                     bool canSubtractBenign = canSubtract(benign, CustomGameOptions.MinNeutralBenignRoles);
                     bool canSubtractEvil = canSubtract(evil, CustomGameOptions.MinNeutralEvilRoles);
+                    bool canSubtractChaos = canSubtract(chaos, CustomGameOptions.MinNeutralChaosRoles);
                     bool canSubtractKilling = canSubtract(killing, CustomGameOptions.MinNeutralKillingRoles);
+                    bool canSubtractNeophyte = canSubtract(neophyte, CustomGameOptions.MinNeutralNeophyteRoles);
+                    bool canSubtractApocalypse = canSubtract(apocalypse, CustomGameOptions.MinNeutralApocalypseRoles);
                     bool canSubtractNone = !canSubtractBenign && !canSubtractEvil && !canSubtractKilling;
 
                     factions.Shuffle();
@@ -183,11 +191,32 @@ namespace TownOfUsFusion
                                 evil -= 1;
                                 break;
                             }
+                            goto case "Chaos";
+                        case "Chaos":
+                            if (chaos > 0 && (canSubtractChaos || canSubtractNone))
+                            {
+                                chaos -= 1;
+                                break;
+                            }
                             goto case "Killing";
                         case "Killing":
                             if (killing > 0 && (canSubtractKilling || canSubtractNone))
                             {
                                 killing -= 1;
+                                break;
+                            }
+                            goto case "Neophyte";
+                        case "Neophyte":
+                            if (neophyte > 0 && (canSubtractNeophyte || canSubtractNone))
+                            {
+                                neophyte -= 1;
+                                break;
+                            }
+                            goto case "Apocalypse";
+                        case "Apocalypse":
+                            if (apocalypse > 0 && (canSubtractApocalypse || canSubtractNone))
+                            {
+                                apocalypse -= 1;
                                 break;
                             }
                             goto default;
@@ -200,25 +229,40 @@ namespace TownOfUsFusion
                             {
                                 evil -= 1;
                             }
+                            else if (chaos > 0)
+                            {
+                                chaos -= 1;
+                            }
                             else if (killing > 0)
                             {
                                 killing -= 1;
                             }
+                            else if (neophyte > 0)
+                            {
+                                neophyte -= 1;
+                            }
+                            else if (apocalypse > 0)
+                            {
+                                apocalypse -= 1;
+                            }
                             break;
                     }
 
-                    if (benign + evil + killing == 0)
+                    if (benign + evil + chaos + killing + neophyte + apocalypse == 0)
                         break;
                 }
 
                 NeutralBenignRoles.SortRoles(benign);
                 NeutralEvilRoles.SortRoles(evil);
+                NeutralChaosRoles.SortRoles(chaos);
                 NeutralKillingRoles.SortRoles(killing);
+                NeutralNeophyteRoles.SortRoles(neophyte);
+                NeutralApocalypseRoles.SortRoles(apocalypse);
 
                 if (NeutralKillingRoles.Contains((typeof(Vampire), CustomGameOptions.VampireOn, true)) && CustomGameOptions.VampireHunterOn > 0)
                     CrewmateRoles.Add((typeof(VampireHunter), CustomGameOptions.VampireHunterOn, true));
 
-                CrewmateRoles.SortRoles(crewmates.Count - NeutralBenignRoles.Count - NeutralEvilRoles.Count - NeutralKillingRoles.Count);
+                CrewmateRoles.SortRoles(crewmates.Count - NeutralBenignRoles.Count - NeutralEvilRoles.Count - NeutralChaosRoles.Count - NeutralKillingRoles.Count - NeutralNeophyteRoles.Count - NeutralApocalypseRoles.Count);
                 ImpostorRoles.SortRoles(impostors.Count);
 
                 crewRoles.AddRange(CrewmateRoles);
@@ -226,7 +270,10 @@ namespace TownOfUsFusion
             }
             neutRoles.AddRange(NeutralBenignRoles);
             neutRoles.AddRange(NeutralEvilRoles);
+            neutRoles.AddRange(NeutralChaosRoles);
             neutRoles.AddRange(NeutralKillingRoles);
+            neutRoles.AddRange(NeutralNeophyteRoles);
+            neutRoles.AddRange(NeutralApocalypseRoles);
             // Roles are not, at this point, shuffled yet.
 
             // In All/Any mode, there is at least one neutral and one crewmate, but duplicates are allowed and probability is ignored.
@@ -422,7 +469,7 @@ namespace TownOfUsFusion
                 Utils.Rpc(CustomRPC.SetHaunter, byte.MaxValue);
             }
 
-            var toChooseFromNeut = PlayerControl.AllPlayerControls.ToArray().Where(x => (x.Is(Faction.NeutralBenign) || x.Is(Faction.NeutralEvil) || x.Is(Faction.NeutralKilling)) && !x.Is(ModifierEnum.Lover)).ToList();
+            var toChooseFromNeut = PlayerControl.AllPlayerControls.ToArray().Where(x => (x.Is(Faction.NeutralBenign) || x.Is(Faction.NeutralEvil) || x.Is(Faction.NeutralChaos)  || x.Is(Faction.NeutralKilling)  || x.Is(Faction.NeutralNeophyte)  || x.Is(Faction.NeutralApocalypse)) && !x.Is(ModifierEnum.Lover)).ToList();
             if (PhantomOn && toChooseFromNeut.Count != 0)
             {
                 var rand = Random.RandomRangeInt(0, toChooseFromNeut.Count);
@@ -497,8 +544,7 @@ namespace TownOfUsFusion
 
             NeutralKillingRoles.Add((typeof(Glitch), 10, true));
             NeutralKillingRoles.Add((typeof(Werewolf), 10, true));
-            if (CustomGameOptions.HiddenRoles)
-                NeutralKillingRoles.Add((typeof(Juggernaut), 10, true));
+            NeutralKillingRoles.Add((typeof(Juggernaut), 10, true));
             if (CustomGameOptions.AddArsonist)
                 NeutralKillingRoles.Add((typeof(Arsonist), 10, true));
             if (CustomGameOptions.AddPlaguebearer)
@@ -681,6 +727,10 @@ namespace TownOfUsFusion
                         Role.VampWin();
                         break;
 
+                    case CustomRPC.NecroWin:
+                        Role.NecroWin();
+                        break;
+
                     case CustomRPC.SetCouple:
                         var id = reader.ReadByte();
                         var id2 = reader.ReadByte();
@@ -704,6 +754,7 @@ namespace TownOfUsFusion
                         Role.NobodyWins = false;
                         Role.SurvOnlyWins = false;
                         Role.VampireWins = false;
+                        Role.NecroWins = false;
                         ExileControllerPatch.lastExiled = null;
                         PatchKillTimer.GameStarted = false;
                         StartImitate.ImitatingPlayer = null;
@@ -725,6 +776,24 @@ namespace TownOfUsFusion
                                 Coroutines.Start(Coroutine.CleanCoroutine(body, janitorRole));
 
                         break;
+
+                    case CustomRPC.CannibalEat:
+                        readByte1 = reader.ReadByte();
+                        var cannibalPlayer = Utils.PlayerById(readByte1);
+                        var cannibalRole = Role.GetRole<Cannibal>(cannibalPlayer);
+                        readByte = reader.ReadByte();
+                        var deadCBodies = Object.FindObjectsOfType<DeadBody>();
+                        foreach (var body in deadCBodies)
+                            if (body.ParentId == readByte)
+                                Coroutines.Start(EatCoroutine.CannibalCoroutine(body, cannibalRole));
+                        PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("Cannibal needs " + cannibalRole.EatNeed + " more bodies to win!");
+
+                        break;
+                    case CustomRPC.CannibalWin:
+                        var cannibalWinner = Role.GetRole<Cannibal>(Utils.PlayerById(reader.ReadByte()));
+                        cannibalWinner.Wins();
+                        break;
+
                     case CustomRPC.EngineerFix:
                         if (ShipStatus.Instance.Systems.ContainsKey(SystemTypes.MushroomMixupSabotage))
                         {
@@ -888,11 +957,26 @@ namespace TownOfUsFusion
                         morphRole.TimeRemaining = CustomGameOptions.MorphlingDuration;
                         morphRole.MorphedPlayer = morphTarget;
                         break;
+                    case CustomRPC.Poison:
+                        var poisoner = Utils.PlayerById(reader.ReadByte());
+                        var poisoned = Utils.PlayerById(reader.ReadByte());
+                        var poisonerRole = Role.GetRole<Poisoner>(poisoner);
+                        poisonerRole.PoisonedPlayer = poisoned;
+                        break;
                     case CustomRPC.SetTarget:
                         var exe = Utils.PlayerById(reader.ReadByte());
                         var exeTarget = Utils.PlayerById(reader.ReadByte());
                         var exeRole = Role.GetRole<Executioner>(exe);
                         exeRole.target = exeTarget;
+                        break;
+                    case CustomRPC.SetJkTarget:
+                        var jk = Utils.PlayerById(reader.ReadByte());
+                        var jkTarget = Utils.PlayerById(reader.ReadByte());
+                        var jkRole = Role.GetRole<Joker>(jk);
+                        jkRole.target = jkTarget;
+                        jkRole.UsedAbility = true;
+                        jkRole.TaskText = () => "Get {target.name} lynched to start your master plan.\nFake Tasks:";
+                        jkTarget.nameText().color = Color.black;
                         break;
                     case CustomRPC.SetGATarget:
                         var ga = Utils.PlayerById(reader.ReadByte());
@@ -915,6 +999,7 @@ namespace TownOfUsFusion
                         var faction = reader.ReadInt32();
                         if (faction == 0) oracle.RevealedFaction = Faction.Crewmates;
                         else if (faction == 1) oracle.RevealedFaction = Faction.NeutralEvil;
+                        else if (faction == 2) oracle.RevealedFaction = Faction.NeutralChaos;
                         else oracle.RevealedFaction = Faction.Impostors;
                         break;
                     case CustomRPC.Bless:
@@ -923,6 +1008,9 @@ namespace TownOfUsFusion
                         break;
                     case CustomRPC.ExecutionerToJester:
                         TargetColor.ExeToJes(Utils.PlayerById(reader.ReadByte()));
+                        break;
+                    case CustomRPC.JokerToJester:
+                        JkTargetColor.JkToJes(Utils.PlayerById(reader.ReadByte()));
                         break;
                     case CustomRPC.GAToSurv:
                         GATargetColor.GAToSurv(Utils.PlayerById(reader.ReadByte()));
@@ -1186,6 +1274,32 @@ namespace TownOfUsFusion
                         var convertedPlayer = Utils.PlayerById(reader.ReadByte());
                         Utils.Convert(convertedPlayer);
                         break;
+                    case CustomRPC.Resurrect:
+                        var neoNecro = Utils.PlayerById(reader.ReadByte());
+                        var neoNecroRole = Role.GetRole<NeoNecromancer>(neoNecro);
+                        var resurrected = reader.ReadByte();
+                        var theDeadBodies3 = Object.FindObjectsOfType<DeadBody>();
+                        foreach (var body in theDeadBodies3)
+                            if (body.ParentId == resurrected)
+                            {
+                                PerformNecro.Resurrect(body, neoNecroRole);
+                            }
+                        break;
+                    case CustomRPC.Resurrect2:
+                        var resus = Utils.PlayerById(reader.ReadByte());
+                        var resusRole = Role.GetRole<Apparitionist>(resus);
+                        var resurrected2 = reader.ReadByte();
+                        var theDeadBodies4 = Object.FindObjectsOfType<DeadBody>();
+                        foreach (var body in theDeadBodies4)
+                            if (body.ParentId == resurrected2)
+                            {
+                                PerformResurrect2.Resurrect2(body, resusRole);
+                            }
+                        break;
+                    case CustomRPC.NeoConvert:
+                        var convertedPlayer2 = Utils.PlayerById(reader.ReadByte());
+                        Utils.NeoConvert(convertedPlayer2);
+                        break;
                     case CustomRPC.RemoveAllBodies:
                         var buggedBodies = Object.FindObjectsOfType<DeadBody>();
                         foreach (var body in buggedBodies)
@@ -1246,6 +1360,7 @@ namespace TownOfUsFusion
                 Role.NobodyWins = false;
                 Role.SurvOnlyWins = false;
                 Role.VampireWins = false;
+                Role.NecroWins = false;
                 ExileControllerPatch.lastExiled = null;
                 PatchKillTimer.GameStarted = false;
                 StartImitate.ImitatingPlayer = null;
@@ -1253,7 +1368,10 @@ namespace TownOfUsFusion
                 CrewmateRoles.Clear();
                 NeutralBenignRoles.Clear();
                 NeutralEvilRoles.Clear();
+                NeutralChaosRoles.Clear();
                 NeutralKillingRoles.Clear();
+                NeutralNeophyteRoles.Clear();
+                NeutralApocalypseRoles.Clear();
                 ImpostorRoles.Clear();
                 CrewmateModifiers.Clear();
                 GlobalModifiers.Clear();
@@ -1362,20 +1480,9 @@ namespace TownOfUsFusion
                         CrewmateRoles.Add((typeof(Aurial), CustomGameOptions.AurialOn, false));
                     #endregion
                     #region Neutral Roles
-                    if (CustomGameOptions.JesterOn > 0)
-                        NeutralEvilRoles.Add((typeof(Jester), CustomGameOptions.JesterOn, false));
-
+                    // NEUTRAL BENIGN
                     if (CustomGameOptions.AmnesiacOn > 0)
                         NeutralBenignRoles.Add((typeof(Amnesiac), CustomGameOptions.AmnesiacOn, false));
-
-                    if (CustomGameOptions.ExecutionerOn > 0)
-                        NeutralEvilRoles.Add((typeof(Executioner), CustomGameOptions.ExecutionerOn, false));
-
-                    if (CustomGameOptions.TyrantOn > 0)
-                        NeutralEvilRoles.Add((typeof(Tyrant), CustomGameOptions.TyrantOn, false));
-
-                    if (CustomGameOptions.DoomsayerOn > 0)
-                        NeutralEvilRoles.Add((typeof(Doomsayer), CustomGameOptions.DoomsayerOn, false));
 
                     if (CustomGameOptions.SurvivorOn > 0)
                         NeutralBenignRoles.Add((typeof(Survivor), CustomGameOptions.SurvivorOn, false));
@@ -1383,23 +1490,49 @@ namespace TownOfUsFusion
                     if (CustomGameOptions.GuardianAngelOn > 0)
                         NeutralBenignRoles.Add((typeof(GuardianAngel), CustomGameOptions.GuardianAngelOn, false));
 
+                    // NEUTRAL EVIL
+                    if (CustomGameOptions.ExecutionerOn > 0)
+                        NeutralEvilRoles.Add((typeof(Executioner), CustomGameOptions.ExecutionerOn, false));
+
+                    if (CustomGameOptions.DoomsayerOn > 0)
+                        NeutralEvilRoles.Add((typeof(Doomsayer), CustomGameOptions.DoomsayerOn, false));
+
+                    if (CustomGameOptions.JesterOn > 0)
+                        NeutralEvilRoles.Add((typeof(Jester), CustomGameOptions.JesterOn, false));
+
+                    // NEUTRAL CHAOS
+                    if (CustomGameOptions.TyrantOn > 0)
+                        NeutralChaosRoles.Add((typeof(Tyrant), CustomGameOptions.TyrantOn, false));
+
+                    if (CustomGameOptions.CannibalOn > 0)
+                        NeutralChaosRoles.Add((typeof(Cannibal), CustomGameOptions.CannibalOn, false));
+
+                    if (CustomGameOptions.JokerOn > 0)
+                        NeutralChaosRoles.Add((typeof(Joker), CustomGameOptions.JokerOn, false));
+
+                    // NEUTRAL KILLING
                     if (CustomGameOptions.GlitchOn > 0)
                         NeutralKillingRoles.Add((typeof(Glitch), CustomGameOptions.GlitchOn, true));
 
                     if (CustomGameOptions.ArsonistOn > 0)
                         NeutralKillingRoles.Add((typeof(Arsonist), CustomGameOptions.ArsonistOn, true));
 
-                    if (CustomGameOptions.PlaguebearerOn > 0)
-                        NeutralKillingRoles.Add((typeof(Plaguebearer), CustomGameOptions.PlaguebearerOn, true));
-
                     if (CustomGameOptions.WerewolfOn > 0)
                         NeutralKillingRoles.Add((typeof(Werewolf), CustomGameOptions.WerewolfOn, true));
 
-                    if (CustomGameOptions.GameMode == GameMode.Classic && CustomGameOptions.VampireOn > 0)
-                        NeutralKillingRoles.Add((typeof(Vampire), CustomGameOptions.VampireOn, true));
+                    if (CustomGameOptions.JuggernautOn > 0)
+                        NeutralKillingRoles.Add((typeof(Juggernaut), CustomGameOptions.JuggernautOn, true));
 
-                    if ((CheckJugg() || CustomGameOptions.GameMode == GameMode.AllAny) && CustomGameOptions.HiddenRoles)
-                        NeutralKillingRoles.Add((typeof(Juggernaut), 100, true));
+                    // NEUTRAL NEOPHYTE
+                    if (CustomGameOptions.VampireOn > 0)
+                        NeutralNeophyteRoles.Add((typeof(Vampire), CustomGameOptions.VampireOn, true));
+
+                    if (CustomGameOptions.NeoNecromancerOn > 0)
+                        NeutralNeophyteRoles.Add((typeof(NeoNecromancer), CustomGameOptions.NeoNecromancerOn, true));
+
+                    // NEUTRAL APOCALYPSE
+                    if (CustomGameOptions.PlaguebearerOn > 0)
+                        NeutralApocalypseRoles.Add((typeof(Plaguebearer), CustomGameOptions.PlaguebearerOn, true));
                     #endregion
                     #region Impostor Roles
                     if (CustomGameOptions.UndertakerOn > 0)
@@ -1423,6 +1556,9 @@ namespace TownOfUsFusion
                     if (CustomGameOptions.GrenadierOn > 0)
                         ImpostorRoles.Add((typeof(Grenadier), CustomGameOptions.GrenadierOn, true));
 
+                    if (CustomGameOptions.PoisonerOn > 0 && CustomGameOptions.GameMode != GameMode.KillingOnly)
+                        ImpostorRoles.Add((typeof(Poisoner), CustomGameOptions.PoisonerOn, true));
+
                     if (CustomGameOptions.EscapistOn > 0)
                         ImpostorRoles.Add((typeof(Escapist), CustomGameOptions.EscapistOn, false));
 
@@ -1438,6 +1574,9 @@ namespace TownOfUsFusion
                     #region Crewmate Modifiers
                     if (Check(CustomGameOptions.TorchOn))
                         CrewmateModifiers.Add((typeof(Torch), CustomGameOptions.TorchOn));
+
+                    if (Check(CustomGameOptions.EclipsedOn))
+                        CrewmateModifiers.Add((typeof(Eclipsed), CustomGameOptions.EclipsedOn));
 
                     if (Check(CustomGameOptions.DiseasedOn))
                         CrewmateModifiers.Add((typeof(Diseased), CustomGameOptions.DiseasedOn));
@@ -1458,11 +1597,17 @@ namespace TownOfUsFusion
                     if (Check(CustomGameOptions.TiebreakerOn))
                         GlobalModifiers.Add((typeof(Tiebreaker), CustomGameOptions.TiebreakerOn));
 
-                    if (Check(CustomGameOptions.FlashOn))
-                        GlobalModifiers.Add((typeof(Flash), CustomGameOptions.FlashOn));
+                    if (Check(CustomGameOptions.DwarfOn))
+                        GlobalModifiers.Add((typeof(Dwarf), CustomGameOptions.DwarfOn));
 
                     if (Check(CustomGameOptions.GiantOn))
                         GlobalModifiers.Add((typeof(Giant), CustomGameOptions.GiantOn));
+
+                    if (Check(CustomGameOptions.DrunkOn))
+                        GlobalModifiers.Add((typeof(Drunk), CustomGameOptions.DrunkOn));
+
+                    if (Check(CustomGameOptions.ObliviousOn))
+                        GlobalModifiers.Add((typeof(Oblivious), CustomGameOptions.ObliviousOn));
 
                     if (Check(CustomGameOptions.ButtonBarryOn))
                         ButtonModifiers.Add((typeof(ButtonBarry), CustomGameOptions.ButtonBarryOn));

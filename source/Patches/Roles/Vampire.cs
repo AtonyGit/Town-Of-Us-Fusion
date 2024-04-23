@@ -15,7 +15,7 @@ namespace TownOfUsFusion.Roles
         Color = Patches.Colors.Vampire;
         LastBit = DateTime.UtcNow;
         RoleType = RoleEnum.Vampire;
-        Faction = Faction.NeutralKilling;
+        Faction = Faction.NeutralNeophyte;
         AddToRoleHistory(RoleType);
     }
 
@@ -38,7 +38,7 @@ namespace TownOfUsFusion.Roles
 
         if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected) <= 2 &&
                 PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
-                (x.Data.IsImpostor() || x.Is(Faction.NeutralKilling))) == 1)
+                (x.Data.IsImpostor() || x.Is(Faction.NeutralNeophyte))) == 1)
         {
             VampWin();
             Utils.EndGame();
@@ -46,7 +46,7 @@ namespace TownOfUsFusion.Roles
         }
         else if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected) <= 4 &&
                 PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
-                (x.Data.IsImpostor() || x.Is(Faction.NeutralKilling)) && !x.Is(RoleEnum.Vampire)) == 0)
+                (x.Data.IsImpostor() || x.Is(Faction.NeutralNeophyte)) && !x.Is(RoleEnum.Vampire)) == 0)
         {
             var vampsAlives = PlayerControl.AllPlayerControls.ToArray()
                 .Where(x => !x.Data.IsDead && !x.Data.Disconnected && x.Is(RoleEnum.Vampire)).ToList();
@@ -63,7 +63,7 @@ namespace TownOfUsFusion.Roles
             var alives = PlayerControl.AllPlayerControls.ToArray()
                 .Where(x => !x.Data.IsDead && !x.Data.Disconnected).ToList();
             var killersAlive = PlayerControl.AllPlayerControls.ToArray()
-                .Where(x => !x.Data.IsDead && !x.Data.Disconnected && !x.Is(RoleEnum.Vampire) && (x.Is(Faction.Impostors) || x.Is(Faction.NeutralKilling))).ToList();
+                .Where(x => !x.Data.IsDead && !x.Data.Disconnected && !x.Is(RoleEnum.Vampire) && (x.Is(Faction.Impostors) || x.Is(Faction.NeutralNeophyte))).ToList();
             if (killersAlive.Count > 0) return false;
             if (alives.Count <= 6)
             {

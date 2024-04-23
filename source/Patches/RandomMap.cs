@@ -2,8 +2,10 @@ using HarmonyLib;
 using System;
 using TownOfUsFusion.Patches;
 using TownOfUsFusion.CustomOption;
-using Reactor.Networking.Attributes;
 using System.Collections.Generic;
+using System.Linq;
+using Hazel;
+using Reactor.Networking.Attributes;
 using BepInEx;
 using BepInEx.Unity.IL2CPP;
 using Il2CppInterop.Runtime;
@@ -11,6 +13,7 @@ using Il2CppInterop.Runtime.Injection;
 using Reactor.Utilities;
 //using LevelImposter.Shop.Util.MapSync;
 using AmongUs.GameOptions;
+using Reactor.Utilities.Extensions;
 
 namespace TownOfUsFusion
 {
@@ -60,7 +63,7 @@ class RandomMap
             {
                 if (CustomGameOptions.SmallMapHalfVision && vision != 0) GameOptionsManager.Instance.currentNormalGameOptions.CrewLightMod = vision;
                 if (GameOptionsManager.Instance.currentNormalGameOptions.MapId == 1) AdjustCooldowns(CustomGameOptions.SmallMapDecreasedCooldown);
-                if (GameOptionsManager.Instance.currentNormalGameOptions.MapId >= 4) AdjustCooldowns(-CustomGameOptions.LargeMapIncreasedCooldown);
+                if (GameOptionsManager.Instance.currentNormalGameOptions.MapId is 4 or 5 or 6) AdjustCooldowns(-CustomGameOptions.LargeMapIncreasedCooldown);
             }
             if (CustomGameOptions.RandomMapEnabled) GameOptionsManager.Instance.currentNormalGameOptions.MapId = previousMap;
             if (!(commonTasks == 0 && shortTasks == 0 && longTasks == 0))
@@ -79,6 +82,7 @@ class RandomMap
         totalWeight += CustomGameOptions.RandomMapSkeld;
         totalWeight += CustomGameOptions.RandomMapMira;
         totalWeight += CustomGameOptions.RandomMapPolus;
+        totalWeight += CustomGameOptions.RandomMapdlekS;
         totalWeight += CustomGameOptions.RandomMapAirship;
         totalWeight += CustomGameOptions.RandomMapFungle;
         if (SubmergedCompatibility.Loaded) totalWeight += CustomGameOptions.RandomMapSubmerged;
@@ -93,26 +97,133 @@ class RandomMap
         randomNumber -= CustomGameOptions.RandomMapMira;
         if (randomNumber < CustomGameOptions.RandomMapPolus) return 2;
         randomNumber -= CustomGameOptions.RandomMapPolus;
+        if (randomNumber < CustomGameOptions.RandomMapdlekS) return 3;
+        randomNumber -= CustomGameOptions.RandomMapdlekS;
         if (randomNumber < CustomGameOptions.RandomMapAirship) return 4;
         randomNumber -= CustomGameOptions.RandomMapAirship;
         if (randomNumber < CustomGameOptions.RandomMapFungle) return 5;
         randomNumber -= CustomGameOptions.RandomMapFungle;
         if (SubmergedCompatibility.Loaded && randomNumber < CustomGameOptions.RandomMapSubmerged) return 6;
+        randomNumber -= CustomGameOptions.RandomMapSubmerged;
         if (LevelImpCheck.Loaded && randomNumber < CustomGameOptions.RandomMapLevelImp) return 7;
 
         return GameOptionsManager.Instance.currentNormalGameOptions.MapId;
     }
+    /*
+    public static byte GetRandomMap()
+    {
+        var map = (byte)CustomGameOptions.Map;
 
+        if (map < 8)
+            return map;
+
+        float totalWeight = 0;
+        totalWeight += CustomGameOptions.RandomMapSkeld;
+        totalWeight += CustomGameOptions.RandomMapMira;
+        totalWeight += CustomGameOptions.RandomMapPolus;
+        totalWeight += CustomGameOptions.RandomMapdlekS;
+        totalWeight += CustomGameOptions.RandomMapAirship;
+        totalWeight += CustomGameOptions.RandomMapFungle;
+        totalWeight += CustomGameOptions.RandomMapSubmerged;
+        totalWeight += CustomGameOptions.RandomMapLevelImp;
+        var maps = new List<byte>() { 0, 1, 2, 3, 4, 5 };
+
+        if (SubmergedCompatibility.Loaded)
+            maps.Add(6);
+
+        if (LevelImpCheck.Loaded)
+            maps.Add(7);
+
+        maps.Shuffle();
+
+        if (totalWeight == 0)
+            return maps.Random();
+
+        var randoms = new List<byte>();
+        var num = CustomGameOptions.RandomMapSkeld / 5;
+
+        while (num > 0)
+        {
+            randoms.Add(0);
+            num--;
+        }
+
+        num = CustomGameOptions.RandomMapMira / 5;
+
+        while (num > 0)
+        {
+            randoms.Add(1);
+            num--;
+        }
+
+        num = CustomGameOptions.RandomMapPolus / 5;
+
+        while (num > 0)
+        {
+            randoms.Add(2);
+            num--;
+        }
+
+        num = CustomGameOptions.RandomMapdlekS / 5;
+
+        while (num > 0)
+        {
+            randoms.Add(3);
+            num--;
+        }
+
+        num = CustomGameOptions.RandomMapAirship / 5;
+
+        while (num > 0)
+        {
+            randoms.Add(4);
+            num--;
+        }
+
+        num = CustomGameOptions.RandomMapFungle / 5;
+
+        while (num > 0)
+        {
+            randoms.Add(5);
+            num--;
+        }
+
+        if (SubmergedCompatibility.Loaded)
+        {
+            num = CustomGameOptions.RandomMapSubmerged / 5;
+
+            while (num > 0)
+            {
+                randoms.Add(6);
+                num--;
+            }
+        }
+
+        if (LevelImpCheck.Loaded)
+        {
+            num = CustomGameOptions.RandomMapLevelImp / 5;
+
+            while (num > 0)
+            {
+                randoms.Add(7);
+                num--;
+            }
+        }
+
+        randoms.Shuffle();
+        return (randoms.Count > 0 ? randoms : maps).Random();
+    }*/
+    
     public static void AdjustSettings(byte map)
     {
-        if (map <= 1)
+        if (map is 0 or 1 or 3)
         {
             if (CustomGameOptions.SmallMapHalfVision) GameOptionsManager.Instance.currentNormalGameOptions.CrewLightMod *= 0.5f;
             GameOptionsManager.Instance.currentNormalGameOptions.NumShortTasks += CustomGameOptions.SmallMapIncreasedShortTasks;
             GameOptionsManager.Instance.currentNormalGameOptions.NumLongTasks += CustomGameOptions.SmallMapIncreasedLongTasks;
+            if (map == 1) AdjustCooldowns(-CustomGameOptions.SmallMapDecreasedCooldown);
         }
-        if (map == 1) AdjustCooldowns(-CustomGameOptions.SmallMapDecreasedCooldown);
-        if (map >= 4)
+        if (map is 4 or 5 or 6)
         {
             GameOptionsManager.Instance.currentNormalGameOptions.NumShortTasks -= CustomGameOptions.LargeMapDecreasedShortTasks;
             GameOptionsManager.Instance.currentNormalGameOptions.NumLongTasks -= CustomGameOptions.LargeMapDecreasedLongTasks;
@@ -142,6 +253,7 @@ class RandomMap
         Generate.GrenadeCooldown.Set((float)Generate.GrenadeCooldown.Value + change, false);
         Generate.MorphlingCooldown.Set((float)Generate.MorphlingCooldown.Value + change, false);
         Generate.SwoopCooldown.Set((float)Generate.SwoopCooldown.Value + change, false);
+        //Generate.PoisonCooldown.Set((float)Generate.PoisonCooldown.Value + change, false);
         Generate.MineCooldown.Set((float)Generate.MineCooldown.Value + change, false);
         Generate.DragCooldown.Set((float)Generate.DragCooldown.Value + change, false);
         Generate.EscapeCooldown.Set((float)Generate.EscapeCooldown.Value + change, false);

@@ -25,6 +25,10 @@ namespace TownOfUsFusion
                         playerInfo._object.Is(RoleEnum.Plaguebearer) || playerInfo._object.Is(RoleEnum.Pestilence) ||
                         playerInfo._object.Is(RoleEnum.Werewolf) || playerInfo._object.Is(RoleEnum.Doomsayer) ||
                         playerInfo._object.Is(RoleEnum.Vampire) ||
+                        playerInfo._object.Is(RoleEnum.NeoNecromancer) || playerInfo._object.Is(RoleEnum.Scourge) ||
+                        playerInfo._object.Is(RoleEnum.Apparitionist) || playerInfo._object.Is(RoleEnum.Enchanter) ||
+                        playerInfo._object.Is(RoleEnum.Husk) ||
+                        playerInfo._object.Is(RoleEnum.Tyrant) || playerInfo._object.Is(RoleEnum.Joker) ||
                         playerInfo._object.Is(RoleEnum.Phantom) || playerInfo._object.Is(RoleEnum.Haunter)
                     ))
                     for (var j = 0; j < playerInfo.Tasks.Count; j++)
@@ -46,10 +50,16 @@ namespace TownOfUsFusion
             var playerControl = playerInfo.Object;
 
             var flag = playerControl.Is(RoleEnum.Glitch)
+                       || playerControl.Is(RoleEnum.Tyrant)
+                       || playerControl.Is(RoleEnum.Joker)
+                       || playerControl.Is(RoleEnum.Cannibal)
                        || playerControl.Is(RoleEnum.Jester)
                        || playerControl.Is(RoleEnum.Executioner)
                        || playerControl.Is(RoleEnum.Juggernaut)
                        || playerControl.Is(RoleEnum.Arsonist)
+                       || playerControl.Is(RoleEnum.NeoNecromancer) || playerControl.Is(RoleEnum.Scourge)
+                       || playerControl.Is(RoleEnum.Apparitionist) || playerControl.Is(RoleEnum.Enchanter)
+                       || playerControl.Is(RoleEnum.Husk)
                        || playerControl.Is(RoleEnum.Plaguebearer)
                        || playerControl.Is(RoleEnum.Pestilence)
                        || playerControl.Is(RoleEnum.Werewolf)

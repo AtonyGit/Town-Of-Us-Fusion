@@ -155,7 +155,17 @@ namespace TownOfUsFusion.Roles.Modifiers
                 venerer.KillsAtStartAbility = venerer.Kills;
                 venerer.Ability();
             }
-        }
+        }/*
+        else if (role is Poisoner poisoner)
+        {
+            if (!poisoner.Enabled)
+            {
+                Utils.Rpc(CustomRPC.Camouflage, PlayerControl.LocalPlayer.PlayerId, poisoner.Kills);
+                poisoner.TimeRemaining = CustomGameOptions.AbilityDuration;
+                poisoner.KillsAtStartAbility = poisoner.Kills;
+                poisoner.Ability();
+            }
+        }*/
         else if (role is Bomber bomber)
         {
             bomber.Detonated = false;

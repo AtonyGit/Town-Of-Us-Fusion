@@ -9,6 +9,7 @@ namespace TownOfUsFusion.Roles
         Name = "Mayor";
         ImpostorText = () => "Reveal Yourself To Save The Town";
         TaskText = () => "Reveal yourself when the time is right";
+        AlignmentText = () => "Crew Sovereign";
         Color = Patches.Colors.Mayor;
         RoleType = RoleEnum.Mayor;
         AddToRoleHistory(RoleType);

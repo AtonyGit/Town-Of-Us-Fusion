@@ -77,10 +77,18 @@ namespace TownOfUsFusion
     Fraud,
     Tempest,
     Tyrant,
+    Cannibal,
     Witch,
     Ghoul,
     Mercenary,
     SerialKiller,
+//  NEUTRAL NEOPHYTE
+    NeoNecromancer,
+    Scourge,
+    Apparitionist,
+    Enchanter,
+    Husk,
+//  NEUTRAL APOCALYPSE
     Baker,
     Famine,
     Berserker,
@@ -106,6 +114,7 @@ public enum FactionEnum
     NeutralEvil,
     NeutralChaos,
     NeutralKilling,
+    NeutralNeophyte,
     NeutralApocalypse,
 
     ImpostorConcealing,
@@ -134,9 +143,9 @@ public enum ModifierEnum
     
     // TOU FUSION MODIFIERS
     Drunk,
-    Flash,
     Dwarf,
     Numb,
+    Eclipsed,
     Ninja,
     Oblivious,
     Troll,

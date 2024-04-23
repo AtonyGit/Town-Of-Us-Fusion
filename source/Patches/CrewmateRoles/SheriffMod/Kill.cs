@@ -20,6 +20,7 @@ public static class Kill
         var role = Role.GetRole<Sheriff>(PlayerControl.LocalPlayer);
         if (!PlayerControl.LocalPlayer.CanMove) return false;
         if (PlayerControl.LocalPlayer.Data.IsDead) return false;
+        if (!role.CanShoot) return false;
         var flag2 = role.SheriffKillTimer() == 0f;
         if (!flag2) return false;
         if (!__instance.enabled || role.ClosestPlayer == null) return false;
@@ -29,13 +30,20 @@ public static class Kill
 
         var flag4 = role.ClosestPlayer.Data.IsImpostor() ||
                     role.ClosestPlayer.Is(RoleEnum.Doomsayer) && CustomGameOptions.SheriffKillsDoomsayer ||
-                    role.ClosestPlayer.Is(RoleEnum.Vampire) && CustomGameOptions.SheriffKillsVampire ||
                     role.ClosestPlayer.Is(RoleEnum.Jester) && CustomGameOptions.SheriffKillsJester ||
                     role.ClosestPlayer.Is(RoleEnum.Glitch) && CustomGameOptions.SheriffKillsGlitch ||
                     role.ClosestPlayer.Is(RoleEnum.Juggernaut) && CustomGameOptions.SheriffKillsJuggernaut ||
                     role.ClosestPlayer.Is(RoleEnum.Executioner) && CustomGameOptions.SheriffKillsExecutioner ||
                     role.ClosestPlayer.Is(RoleEnum.Arsonist) && CustomGameOptions.SheriffKillsArsonist ||
                     role.ClosestPlayer.Is(RoleEnum.Werewolf) && CustomGameOptions.SheriffKillsWerewolf ||
+
+                    role.ClosestPlayer.Is(RoleEnum.Tyrant) && CustomGameOptions.SheriffKillsTyrant ||
+                    role.ClosestPlayer.Is(RoleEnum.Cannibal) && CustomGameOptions.SheriffKillsCannibal ||
+                    role.ClosestPlayer.Is(RoleEnum.Joker) && CustomGameOptions.SheriffKillsJoker ||
+
+                    role.ClosestPlayer.Is(RoleEnum.NeoNecromancer) && CustomGameOptions.SheriffKillsNeoNecromancer ||
+                    role.ClosestPlayer.Is(RoleEnum.Vampire) && CustomGameOptions.SheriffKillsVampire ||
+
                     role.ClosestPlayer.Is(RoleEnum.Plaguebearer) && CustomGameOptions.SheriffKillsPlaguebearer;
 
         if (role.ClosestPlayer.Is(RoleEnum.Pestilence))
@@ -117,6 +125,13 @@ public static class Kill
                     && !player.Is(RoleEnum.Whisperer)) Utils.RpcMurderPlayer(player, player);
             }
         }
+            if (role.ClosestPlayer.Is(RoleEnum.NeoNecromancer))
+            {
+                foreach (var player2 in PlayerControl.AllPlayerControls)
+                {
+                    if (/*player2.Is(RoleEnum.NeoNecromancer) || */player2.Is(RoleEnum.Apparitionist) || player2.Is(RoleEnum.Scourge) || player2.Is(RoleEnum.Enchanter) || player2.Is(RoleEnum.Husk)) Utils.MurderPlayer(player2, player2, true);
+                }
+            }
 
         if (!flag4)
         {

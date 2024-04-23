@@ -26,7 +26,7 @@ public class CompleteTask
             {
                 Coroutines.Start(Utils.FlashCoroutine(role.Color));
             }
-            else if (PlayerControl.LocalPlayer.Data.IsImpostor() || (PlayerControl.LocalPlayer.Is(Faction.NeutralKilling) && CustomGameOptions.HaunterRevealsNeutrals))
+            else if (PlayerControl.LocalPlayer.Data.IsImpostor() || ((PlayerControl.LocalPlayer.Is(Faction.NeutralKilling) || PlayerControl.LocalPlayer.Is(Faction.NeutralNeophyte) || PlayerControl.LocalPlayer.Is(Faction.NeutralApocalypse)) && CustomGameOptions.HaunterRevealsNeutrals))
             {
                 role.Revealed = true;
                 Coroutines.Start(Utils.FlashCoroutine(role.Color));

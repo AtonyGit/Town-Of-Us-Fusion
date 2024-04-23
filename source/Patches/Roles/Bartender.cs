@@ -13,6 +13,7 @@ namespace TownOfUsFusion.Roles
         Name = "Bartender";
         ImpostorText = () => "placeholder1";
         TaskText = () => "placeholder2";
+        AlignmentText = () => "Crew Support";
         Color = Patches.Colors.Bartender;
         RoleType = RoleEnum.Bartender;
         AddToRoleHistory(RoleType);

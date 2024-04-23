@@ -39,6 +39,7 @@ namespace TownOfUsFusion.Roles
         Name = "Transporter";
         ImpostorText = () => "Choose Two Players To Swap Locations";
         TaskText = () => "Choose two players to swap locations";
+        AlignmentText = () => "Crew Support";
         Color = Colors.Transporter;
         LastTransported = DateTime.UtcNow;
         RoleType = RoleEnum.Transporter;

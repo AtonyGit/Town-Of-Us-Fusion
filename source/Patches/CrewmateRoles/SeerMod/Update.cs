@@ -24,6 +24,9 @@ public class Update
                         ((player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.VampireHunter)) && !CustomGameOptions.CrewKillingRed) ||
                         (player.Is(Faction.NeutralBenign) && !CustomGameOptions.NeutBenignRed) ||
                         (player.Is(Faction.NeutralEvil) && !CustomGameOptions.NeutEvilRed) ||
+                        (player.Is(Faction.NeutralChaos) && !CustomGameOptions.NeutChaosRed) ||
+                        (player.Is(Faction.NeutralNeophyte) && !CustomGameOptions.NeutNeophyteRed) ||
+                        (player.Is(Faction.NeutralApocalypse) && !CustomGameOptions.NeutApocalypseRed) ||
                         (player.Is(Faction.NeutralKilling) && !CustomGameOptions.NeutKillingRed))
                         {
                             state.NameText.color = Color.green;
@@ -73,6 +76,9 @@ public class Update
                         ((player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.VampireHunter)) && !CustomGameOptions.CrewKillingRed) ||
                         (player.Is(Faction.NeutralBenign) && !CustomGameOptions.NeutBenignRed) ||
                         (player.Is(Faction.NeutralEvil) && !CustomGameOptions.NeutEvilRed) ||
+                        (player.Is(Faction.NeutralChaos) && !CustomGameOptions.NeutChaosRed) ||
+                        (player.Is(Faction.NeutralNeophyte) && !CustomGameOptions.NeutNeophyteRed) ||
+                        (player.Is(Faction.NeutralApocalypse) && !CustomGameOptions.NeutApocalypseRed) ||
                         (player.Is(Faction.NeutralKilling) && !CustomGameOptions.NeutKillingRed))
                     {
                         player.nameText().color = Color.green;

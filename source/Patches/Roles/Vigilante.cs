@@ -23,6 +23,7 @@ namespace TownOfUsFusion.Roles
         Name = "Vigilante";
         ImpostorText = () => "Kill Impostors If You Can Guess Their Roles";
         TaskText = () => "Guess the roles of impostors mid-meeting to kill them!";
+        AlignmentText = () => "Crew Killing";
         Color = Patches.Colors.Vigilante;
         RoleType = RoleEnum.Vigilante;
         AddToRoleHistory(RoleType);
@@ -42,6 +43,7 @@ namespace TownOfUsFusion.Roles
             if (CustomGameOptions.TraitorOn > 0) ColorMapping.Add("Traitor", Colors.Impostor);
             if (CustomGameOptions.BlackmailerOn > 0) ColorMapping.Add("Blackmailer", Colors.Impostor);
             if (CustomGameOptions.BomberOn > 0) ColorMapping.Add("Bomber", Colors.Impostor);
+            if (CustomGameOptions.PoisonerOn > 0) ColorMapping.Add("Poisoner", Colors.Impostor);
             if (CustomGameOptions.WarlockOn > 0) ColorMapping.Add("Warlock", Colors.Impostor);
             if (CustomGameOptions.VenererOn > 0) ColorMapping.Add("Venerer", Colors.Impostor);
 
@@ -54,18 +56,38 @@ namespace TownOfUsFusion.Roles
             if (CustomGameOptions.VigilanteGuessNeutralEvil)
             {
                 if (CustomGameOptions.DoomsayerOn > 0) ColorMapping.Add("Doomsayer", Colors.Doomsayer);
-                if (CustomGameOptions.TyrantOn > 0) ColorMapping.Add("Tyrant", Colors.Tyrant);
                 if (CustomGameOptions.ExecutionerOn > 0) ColorMapping.Add("Executioner", Colors.Executioner);
                 if (CustomGameOptions.JesterOn > 0 || (CustomGameOptions.ExecutionerOn > 0 && CustomGameOptions.OnTargetDead == OnTargetDead.Jester) || (CustomGameOptions.GuardianAngelOn > 0 && CustomGameOptions.GaOnTargetDeath == BecomeOptions.Jester)) ColorMapping.Add("Jester", Colors.Jester);
+            }
+            if (CustomGameOptions.VigilanteGuessNeutralChaos)
+            {
+                if (CustomGameOptions.TyrantOn > 0) ColorMapping.Add("Tyrant", Colors.Tyrant);
+                if (CustomGameOptions.JokerOn > 0) ColorMapping.Add("Joker", Colors.Joker);
+                if (CustomGameOptions.CannibalOn > 0) ColorMapping.Add("Cannibal", Colors.Cannibal);
+            //    if (CustomGameOptions.JesterOn > 0 || (CustomGameOptions.ExecutionerOn > 0 && CustomGameOptions.OnTargetDead == OnTargetDead.Jester) || (CustomGameOptions.GuardianAngelOn > 0 && CustomGameOptions.GaOnTargetDeath == BecomeOptions.Jester)) ColorMapping.Add("Jester", Colors.Jester);
             }
             if (CustomGameOptions.VigilanteGuessNeutralKilling)
             {
                 if (CustomGameOptions.ArsonistOn > 0) ColorMapping.Add("Arsonist", Colors.Arsonist);
                 if (CustomGameOptions.GlitchOn > 0) ColorMapping.Add("The Glitch", Colors.Glitch);
-                if (CustomGameOptions.PlaguebearerOn > 0) ColorMapping.Add("Plaguebearer", Colors.Plaguebearer);
-                if (CustomGameOptions.GameMode == GameMode.Classic && CustomGameOptions.VampireOn > 0) ColorMapping.Add("Vampire", Colors.Vampire);
                 if (CustomGameOptions.WerewolfOn > 0) ColorMapping.Add("Werewolf", Colors.Werewolf);
-                if (CustomGameOptions.HiddenRoles) ColorMapping.Add("Juggernaut", Colors.Juggernaut);
+                if (CustomGameOptions.JuggernautOn > 0) ColorMapping.Add("Juggernaut", Colors.Juggernaut);
+            }
+            if (CustomGameOptions.VigilanteGuessNeutralKilling)
+            {
+                if (CustomGameOptions.ArsonistOn > 0) ColorMapping.Add("Arsonist", Colors.Arsonist);
+                if (CustomGameOptions.GlitchOn > 0) ColorMapping.Add("The Glitch", Colors.Glitch);
+                if (CustomGameOptions.WerewolfOn > 0) ColorMapping.Add("Werewolf", Colors.Werewolf);
+                if (CustomGameOptions.JuggernautOn > 0) ColorMapping.Add("Juggernaut", Colors.Juggernaut);
+            }
+            if (CustomGameOptions.VigilanteGuessNeutralNeophyte)
+            {
+                if (CustomGameOptions.NeoNecromancerOn > 0) ColorMapping.Add("Necromancer", Colors.NeoNecromancer);
+                if (CustomGameOptions.VampireOn > 0) ColorMapping.Add("Vampire", Colors.Vampire);
+            }
+            if (CustomGameOptions.VigilanteGuessNeutralApocalypse)
+            {
+                if (CustomGameOptions.PlaguebearerOn > 0) ColorMapping.Add("Plaguebearer", Colors.Plaguebearer);
             }
             if (CustomGameOptions.VigilanteGuessLovers && CustomGameOptions.LoversOn > 0) ColorMapping.Add("Lover", Colors.Lovers);
         }
@@ -85,7 +107,7 @@ namespace TownOfUsFusion.Roles
                 if (CustomGameOptions.AddPlaguebearer) ColorMapping.Add("Plaguebearer", Colors.Plaguebearer);
                 ColorMapping.Add("The Glitch", Colors.Glitch);
                 ColorMapping.Add("Werewolf", Colors.Werewolf);
-                if (CustomGameOptions.HiddenRoles) ColorMapping.Add("Juggernaut", Colors.Juggernaut);
+                ColorMapping.Add("Juggernaut", Colors.Juggernaut);
             }
         }
         else

@@ -58,6 +58,14 @@ public static class Start
             sheriff.LastKilled = DateTime.UtcNow;
             sheriff.LastKilled = sheriff.LastKilled.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.SheriffKillCd);
         }
+        if (CustomGameOptions.SheriffShootRoundOne)
+        {
+            foreach (var sh in Role.GetRoles(RoleEnum.Sheriff))
+            {
+                var shRole = (Sheriff)sh;
+                shRole.CanShoot = true;
+            }
+        }
 
         if (PlayerControl.LocalPlayer.Is(RoleEnum.Tracker))
         {
@@ -81,6 +89,28 @@ public static class Start
                 vhRole.UsesLeft = CustomGameOptions.MaxFailedStakesPerGame;
                 vhRole.AddedStakes = true;
             }
+        }
+
+
+        if (PlayerControl.LocalPlayer.Is(RoleEnum.Scourge))
+        {
+            var scourge = Role.GetRole<Scourge>(PlayerControl.LocalPlayer);
+            scourge.LastKilled = DateTime.UtcNow;
+            scourge.LastKilled = scourge.LastKilled.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.ScourgeKillCooldown);
+        }
+        if (PlayerControl.LocalPlayer.Is(RoleEnum.Apparitionist))
+        {
+            var appa = Role.GetRole<Apparitionist>(PlayerControl.LocalPlayer);
+            appa.LastResurrected = DateTime.UtcNow;
+            appa.LastResurrected = appa.LastResurrected.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.AppaResurrectCooldown);
+        }
+        if (PlayerControl.LocalPlayer.Is(RoleEnum.NeoNecromancer))
+        {
+            var necro = Role.GetRole<NeoNecromancer>(PlayerControl.LocalPlayer);
+            necro.LastResurrected = DateTime.UtcNow;
+            necro.LastKilled = DateTime.UtcNow;
+            necro.LastResurrected = necro.LastResurrected.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.NecroResurrectCooldown);
+            necro.LastKilled = necro.LastKilled.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.NecroKillCooldown);
         }
 
         if (PlayerControl.LocalPlayer.Is(RoleEnum.Transporter))

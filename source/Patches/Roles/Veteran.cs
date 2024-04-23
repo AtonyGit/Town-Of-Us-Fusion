@@ -20,6 +20,7 @@ namespace TownOfUsFusion.Roles
         Name = "Veteran";
         ImpostorText = () => "Alert To Kill Anyone Who Interacts With You";
         TaskText = () => "Alert to kill whoever interacts with you";
+        AlignmentText = () => "Crew Killing";
         Color = Patches.Colors.Veteran;
         LastAlerted = DateTime.UtcNow;
         RoleType = RoleEnum.Veteran;

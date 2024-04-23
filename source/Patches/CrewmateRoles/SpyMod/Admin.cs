@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using AmongUs.GameOptions;
 using HarmonyLib;
+using TMPro;
 using UnityEngine;
 
 namespace TownOfUsFusion.CrewmateRoles.SpyMod
@@ -23,16 +24,32 @@ public static class Admin
         area.UpdateCount(colorMapping.Count);
         var icons = area.myIcons.ToArray();
         colorMapping.Sort();
+        var useCompactText = icons.Count > 2 * area.MaxWidth;
         for (var i = 0; i < colorMapping.Count; i++)
         {
             var icon = icons[i];
             var sprite = icon.GetComponent<SpriteRenderer>();
+            var text = icon.GetComponentInChildren<TextMeshPro>(true);
             if (Patches.SubmergedCompatibility.Loaded) sprite.color = new Color(1, 1, 1, 1);
             if (sprite != null)
             {
                 if (isSpy) PlayerMaterial.SetColors(colorMapping[i], sprite);
                 else PlayerMaterial.SetColors(new Color(0.8793f, 1, 0, 1), sprite);
             }
+                if (text != null) {
+                    text.gameObject.SetActive(true);
+                    text.text = colorMapping[i].ToString();
+                    // Show first row numbers below player icons
+                    // Show second row numbers above player icons
+                    // show all icons on player icons when there are three rows
+                    if(useCompactText) {
+                        text.transform.localPosition = new Vector3(0, 0, -20);
+					} else if (i / area.MaxWidth == 0) {
+                        text.transform.localPosition = new Vector3(0, -area.YOffset, -20);
+                    } else {
+                        text.transform.localPosition = new Vector3(0, area.YOffset, -20);
+                    }
+                }
         }
     }
 
@@ -67,6 +84,25 @@ public static class Admin
                     PlayerControl component = collider.GetComponent<PlayerControl>();
                     if (component && component.Data != null && !component.Data.Disconnected && !component.Data.IsDead && (__instance.showLivePlayerPosition || !component.AmOwner))
                     {
+                    var text = __instance.GetComponentInChildren<TextMeshPro>(true);
+                    if (text == null) {
+                        text = new GameObject("Text").AddComponent<TextMeshPro>();
+                        text.transform.SetParent(__instance.transform, false);
+                        text.fontSize = 1.5f;
+                        text.fontSizeMin = 1;
+                        text.fontSizeMax = 1.5f;
+                        text.enableAutoSizing = true;
+                        text.fontStyle = FontStyles.Bold;
+                        text.alignment = TextAlignmentOptions.Center;
+                        text.horizontalAlignment = HorizontalAlignmentOptions.Center;
+                        text.gameObject.layer = 5;
+                        text.fontMaterial.EnableKeyword("OUTLINE_ON");
+                        text.fontMaterial.SetFloat("_OutlineWidth", 0.1745f);
+                        text.fontMaterial.SetFloat("_FaceDilate", 0.151f);
+			        }
+			text.transform.localPosition = new Vector3(0, 0, -20);
+			text.text = "";
+			text.gameObject.SetActive(false);
                         if (!colorMapDuplicate.Contains(data.DefaultOutfit.ColorId))
                         {
                             colorMap.Add(data.DefaultOutfit.ColorId);

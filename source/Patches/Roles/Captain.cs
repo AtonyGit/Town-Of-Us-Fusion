@@ -13,6 +13,7 @@ namespace TownOfUsFusion.Roles
         Name = "Captain";
         ImpostorText = () => "placeholder1";
         TaskText = () => "placeholder2";
+        AlignmentText = () => "Crew Sovereign";
         Color = Patches.Colors.Captain;
         RoleType = RoleEnum.Captain;
         AddToRoleHistory(RoleType);

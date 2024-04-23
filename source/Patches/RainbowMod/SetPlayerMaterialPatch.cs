@@ -15,7 +15,7 @@ public class SetPlayerMaterialPatch
         }
 
         r.AddRend(rend, colorId);
-        return !RainbowUtils.IsRainbow(colorId);
+        return !RainbowUtils.IsGradient(colorId);
     }
 }
 

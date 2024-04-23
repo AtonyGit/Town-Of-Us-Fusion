@@ -13,6 +13,7 @@ namespace TownOfUsFusion.Roles
         Name = "Monarch";
         ImpostorText = () => "placeholder1";
         TaskText = () => "placeholder2";
+        AlignmentText = () => "Crew Sovereign";
         Color = Patches.Colors.Monarch;
         RoleType = RoleEnum.Monarch;
         AddToRoleHistory(RoleType);

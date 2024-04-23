@@ -1,14 +1,18 @@
+
+using TownOfUsFusion.Patches;
 namespace TownOfUsFusion.CustomOption
 {
     public class CustomStringOption : CustomOption
 {
     protected internal CustomStringOption(int id, MultiMenu menu, string name, string[] values) : base(id, menu, name,
-        CustomOptionType.String,
-        0)
+        CustomOptionType.String, 0)
     {
         Values = values;
         Format = value => Values[(int)value];
     }
+    public int GetInt() => (int)Value;
+
+    public string GetString() => Values[(int)Value];
 
     protected string[] Values { get; set; }
 

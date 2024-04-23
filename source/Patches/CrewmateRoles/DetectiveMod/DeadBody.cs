@@ -30,7 +30,7 @@ namespace TownOfUsFusion.CrewmateRoles.DetectiveMod
             return
                 $"Body Report: The killer appears to be a Crewmate! (Killed {Math.Round(br.KillAge / 1000)}s ago)";
 
-        else if (br.Killer.Is(Faction.NeutralKilling) || br.Killer.Is(Faction.NeutralBenign))
+        else if (br.Killer.Is(Faction.NeutralKilling) || br.Killer.Is(Faction.NeutralBenign) || br.Killer.Is(Faction.NeutralNeophyte) || br.Killer.Is(Faction.NeutralApocalypse))
             return
                 $"Body Report: The killer appears to be a Neutral Role! (Killed {Math.Round(br.KillAge / 1000)}s ago)";
 

@@ -18,6 +18,7 @@ namespace TownOfUsFusion.Roles
         Name = "Aurial";
         ImpostorText = () => "Radiate To See The Auras Of Other Players";
         TaskText = () => "Radiate to discover evildoers";
+        AlignmentText = () => "Crew Astral";
         Color = Patches.Colors.Aurial;
         RoleType = RoleEnum.Aurial;
         AddToRoleHistory(RoleType);

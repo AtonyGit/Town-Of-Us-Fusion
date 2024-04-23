@@ -13,6 +13,7 @@ namespace TownOfUsFusion.Roles
         Name = "Investigator";
         ImpostorText = () => "Find All Impostors By Examining Footprints";
         TaskText = () => "You can see everyone's footprints";
+        AlignmentText = () => "Crew Investigative";
         Color = Patches.Colors.Investigator;
         RoleType = RoleEnum.Investigator;
         AddToRoleHistory(RoleType);

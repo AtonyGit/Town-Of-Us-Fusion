@@ -12,6 +12,7 @@ namespace TownOfUsFusion.Roles
         Name = "Seer";
         ImpostorText = () => "Reveal The Alliance Of Other Players";
         TaskText = () => "Reveal alliances of other players to find the Impostors";
+        AlignmentText = () => "Crew Astral";
         Color = Patches.Colors.Seer;
         LastInvestigated = DateTime.UtcNow;
         RoleType = RoleEnum.Seer;

@@ -13,9 +13,9 @@ public static class PlayerTabPatch
         for (int i = 0; i < __instance.ColorChips.Count; i++)
         {
             var colorChip = __instance.ColorChips[i];
-            colorChip.transform.localScale *= 0.6f;
-            var x = __instance.XRange.Lerp((i % 7) / 6f) + 0.25f;
-            var y = __instance.YStart - (i / 7) * 0.425f;
+            colorChip.transform.localScale *= 0.55f;
+            var x = __instance.XRange.Lerp((i % 8) / 6.95f);
+            var y = __instance.YStart - (i / 8) * 0.35f + 0.05f;
             colorChip.transform.localPosition = new Vector3(x, y, -1f);
         }
     }
@@ -26,9 +26,12 @@ public static class PlayerTabPatch
     {
         for (int i = 0; i < __instance.ColorChips.Count; i++)
         {
-            if (RainbowUtils.IsRainbow(i))
+            if (RainbowUtils.IsRainbow(i)) __instance.ColorChips[i].Inner.SpriteColor = RainbowUtils.Rainbow;
+            if (RainbowUtils.IsGalaxy(i)) __instance.ColorChips[i].Inner.SpriteColor = RainbowUtils.Galaxy;
+            if (RainbowUtils.IsFire(i)) __instance.ColorChips[i].Inner.SpriteColor = RainbowUtils.Fire;
+            if (RainbowUtils.IsAcid(i))
             {
-                __instance.ColorChips[i].Inner.SpriteColor = RainbowUtils.Rainbow;
+                __instance.ColorChips[i].Inner.SpriteColor = RainbowUtils.Acid;
                 break;
             }
         }

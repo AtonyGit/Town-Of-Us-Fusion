@@ -16,6 +16,7 @@ internal class Outro
 
         TextMeshPro text;
         Vector3 pos;
+        if (Role.NecroWins) return;
         if (Role.NobodyWins)
         {
             text = Object.Instantiate(__instance.WinText);
@@ -37,8 +38,11 @@ internal class Outro
             if (Role.GetRoles(RoleEnum.Executioner).Any(x => ((Executioner)x).TargetVotedOut)) return;
             if (Role.GetRoles(RoleEnum.Doomsayer).Any(x => ((Doomsayer)x).WonByGuessing)) return;
         }
+        if (Role.GetRoles(RoleEnum.Joker).Any(x => ((Joker)x).TargetVotedOut)) return;
         if (!Modifier.AllModifiers.Where(x => x.ModifierType == ModifierEnum.Lover)
             .Any(x => ((Lover)x).LoveCoupleWins)) return;
+
+        if (Role.GetRoles(RoleEnum.Cannibal).Any(x => ((Cannibal)x).EatWin)) return;
 
         PoolablePlayer[] array = Object.FindObjectsOfType<PoolablePlayer>();
         if (array[0] != null)

@@ -19,6 +19,7 @@ namespace TownOfUsFusion.Roles
             TasksDone
                 ? "Find the arrows pointing to the Impostors!"
                 : "Complete all your tasks to discover the Impostors!";
+        AlignmentText = () => "Crew Investigative";
         Color = Patches.Colors.Snitch;
         RoleType = RoleEnum.Snitch;
         AddToRoleHistory(RoleType);

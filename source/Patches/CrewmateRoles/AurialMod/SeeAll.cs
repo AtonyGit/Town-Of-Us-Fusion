@@ -95,7 +95,14 @@ public class SeeAll
                     break;
                 case Faction.NeutralBenign:
                 case Faction.NeutralEvil:
+                case Faction.NeutralChaos:
                 case Faction.NeutralKilling:
+                    ColorChar(player, Color.gray);
+                    break;
+                case Faction.NeutralNeophyte:
+                    ColorChar(player, Color.gray);
+                    break;
+                case Faction.NeutralApocalypse:
                     ColorChar(player, Color.gray);
                     break;
             }

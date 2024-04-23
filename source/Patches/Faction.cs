@@ -7,7 +7,10 @@ namespace TownOfUsFusion
     Neutrals,
     NeutralBenign,
     NeutralEvil,
+    NeutralChaos,
     NeutralKilling,
+    NeutralNeophyte,
+    NeutralApocalypse,
     None
 }
     public enum Alignment

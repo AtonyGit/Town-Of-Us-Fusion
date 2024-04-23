@@ -18,6 +18,7 @@ public class Outro
             if (Role.GetRoles(RoleEnum.Tyrant).Any(x => ((Tyrant)x).MetWinCondition)) return;
             if (Role.GetRoles(RoleEnum.Doomsayer).Any(x => ((Doomsayer)x).WonByGuessing)) return;
         }
+        if (Role.GetRoles(RoleEnum.Joker).Any(x => ((Joker)x).TargetVotedOut)) return;
         var role = Role.AllRoles.FirstOrDefault(x =>
             x.RoleType == RoleEnum.Vampire && Role.VampireWins);
         if (role == null) return;

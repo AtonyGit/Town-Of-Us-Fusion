@@ -29,7 +29,7 @@ namespace TownOfUsFusion.RainbowMod
                 StringNames.ColorTan,
                 StringNames.ColorCoral,
                 // TOU FUSION COLORS
-                (StringNames)999800,//"Snow White",
+                (StringNames)999800,//"Snow",
                 (StringNames)999801,//"Turquoise",
                 (StringNames)999802,//"Nacho",
 
@@ -42,6 +42,27 @@ namespace TownOfUsFusion.RainbowMod
                 (StringNames)999809,//"Dandelion",
 
                 (StringNames)999810,//"Amber",
+                (StringNames)999811,//"Cotton Candy",
+                (StringNames)999812,//"Aqua",
+                (StringNames)999813,//"Lemon",
+                (StringNames)999814,//"Apple",
+                (StringNames)999815,//"Blood",
+                (StringNames)999816,//"Grass",
+                (StringNames)999817,//"Mandarin",
+                (StringNames)999818,//"Glass",
+                (StringNames)999819,//"Ash",
+                (StringNames)999820,//"Midnight",
+                (StringNames)999821,//"Steel",
+                
+                (StringNames)999822,//"Mahogany",
+                (StringNames)999823,//"Salmon",
+                (StringNames)999824,//"Pear",
+                (StringNames)999825,//"Wine",
+                (StringNames)999826,//"True Red",
+                (StringNames)999827,//"Silver",
+                (StringNames)999828,//"Shimmer",
+                (StringNames)999829,//"Crimson",
+                (StringNames)999830,//"Crow",
                 // TOU COLORS
                 (StringNames)999983,//"Watermelon",
                 (StringNames)999984,//"Chocolate",
@@ -62,6 +83,9 @@ namespace TownOfUsFusion.RainbowMod
                 (StringNames)999997,//"Gold",
                 (StringNames)999998,//"Tawny",
                 (StringNames)999999,//"Rainbow",
+                (StringNames)1000000,//"Galaxy",
+                (StringNames)1000001,//"Fire",
+                (StringNames)1000002,//"Acid",
             };
         Palette.PlayerColors = new[]
         {
@@ -99,6 +123,27 @@ namespace TownOfUsFusion.RainbowMod
                 new Color32(255, 244, 133, byte.MaxValue),
 
                 new Color32(255, 191, 0, byte.MaxValue),
+                new Color32(255, 141, 189, byte.MaxValue),
+                new Color32(107, 175, 235, byte.MaxValue),
+                new Color32(253, 255, 101, byte.MaxValue),
+                new Color32(255, 62, 60, byte.MaxValue),
+                new Color32(110, 0, 21, byte.MaxValue),
+                new Color32(59, 130, 90, byte.MaxValue),
+                new Color32(255, 149, 79, byte.MaxValue),
+                new Color32(149, 202, 220, byte.MaxValue),
+                new Color32(11, 14, 19, byte.MaxValue),
+                new Color32(16, 46, 104, byte.MaxValue),
+                new Color32(93, 97, 118, byte.MaxValue),
+                
+                new Color32(219, 99, 28, byte.MaxValue),
+                new Color32(236, 170, 177, byte.MaxValue),
+                new Color32(183, 216, 34, byte.MaxValue),
+                new Color32(102, 33, 89, byte.MaxValue),
+                new Color32(255, 0, 0, byte.MaxValue),
+                new Color32(203, 220, 219, byte.MaxValue),
+                new Color32(54, 252, 169, byte.MaxValue),
+                new Color32(174, 29, 74, byte.MaxValue),
+                new Color32(35, 32, 32, byte.MaxValue),
                 // TOU COLORS
                 new Color32(168, 50, 62, byte.MaxValue),
                 new Color32(60, 48, 44, byte.MaxValue),
@@ -118,6 +163,9 @@ namespace TownOfUsFusion.RainbowMod
                 new Color32(0, 97, 93, byte.MaxValue),
                 new Color32(205, 63, 0, byte.MaxValue),
                 new Color32(255, 207, 0, byte.MaxValue),
+                new Color32(0, 0, 0, byte.MaxValue),
+                new Color32(0, 0, 0, byte.MaxValue),
+                new Color32(0, 0, 0, byte.MaxValue),
                 new Color32(0, 0, 0, byte.MaxValue),
             };
         Palette.ShadowColors = new[]
@@ -156,6 +204,27 @@ namespace TownOfUsFusion.RainbowMod
                 new Color32(241, 133, 38, byte.MaxValue),
 
                 new Color32(231, 78, 27, byte.MaxValue),
+                new Color32(241, 68, 166, byte.MaxValue),
+                new Color32(6, 79, 159, byte.MaxValue),
+                new Color32(231, 203, 65, byte.MaxValue),
+                new Color32(151, 0, 55, byte.MaxValue),
+                new Color32(61, 0, 46, byte.MaxValue),
+                new Color32(9, 86, 73, byte.MaxValue),
+                new Color32(230, 52, 76, byte.MaxValue),
+                new Color32(79, 125, 161, byte.MaxValue),
+                new Color32(4, 5, 7, byte.MaxValue),
+                new Color32(8, 27, 65, byte.MaxValue),
+                new Color32(59, 60, 81, byte.MaxValue),
+                
+                new Color32(155, 21, 9, byte.MaxValue),
+                new Color32(198, 84, 105, byte.MaxValue),
+                new Color32(76, 157, 14, byte.MaxValue),
+                new Color32(70, 11, 75, byte.MaxValue),
+                new Color32(145, 9, 66, byte.MaxValue),
+                new Color32(105, 125, 121, byte.MaxValue),
+                new Color32(30, 189, 191, byte.MaxValue),
+                new Color32(107, 22, 72, byte.MaxValue),
+                new Color32(24, 20, 21, byte.MaxValue),
                 // TOU COLORS
                 new Color32(101, 30, 37, byte.MaxValue),
                 new Color32(30, 24, 22, byte.MaxValue),
@@ -175,6 +244,9 @@ namespace TownOfUsFusion.RainbowMod
                 new Color32(0, 65, 61, byte.MaxValue),
                 new Color32(141, 31, 0, byte.MaxValue),
                 new Color32(191, 143, 0, byte.MaxValue),
+                new Color32(0, 0, 0, byte.MaxValue),
+                new Color32(0, 0, 0, byte.MaxValue),
+                new Color32(0, 0, 0, byte.MaxValue),
                 new Color32(0, 0, 0, byte.MaxValue),
             };
     }

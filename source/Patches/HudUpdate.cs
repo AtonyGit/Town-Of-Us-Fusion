@@ -54,6 +54,7 @@ public static class HudUpdate
     private static bool GuideActive;
     private static bool RoleCardActive;
     private static Vector3 Pos2;
+    private static Vector3 Pos3;
     private static PassiveButton KILLYOURSELF;
     private static PassiveButton ToTheGuide;
     private static PassiveButton NextButton;
@@ -81,7 +82,9 @@ public static class HudUpdate
             ZoomButton.GetComponent<PassiveButton>().OnClick.AddListener(new Action(Zoom));
         }
 
-        Pos = __instance.MapButton.transform.localPosition + new Vector3(0.02f, -0.66f, 0f);
+        Pos = __instance.MapButton.transform.localPosition + new Vector3(0f, -0.66f, 0f);
+        Pos3 = __instance.SettingsButton.transform.localPosition + new Vector3(0f, -1.98f, -__instance.SettingsButton.transform.localPosition.z - 51f);
+    //    Pos3 = __instance.MapButton.transform.localPosition + new Vector3(-0.66f, 0.66f, 0f);
         var dead = false;
         if (Utils.ShowDeadBodies)
         {
@@ -98,7 +101,13 @@ public static class HudUpdate
             else dead = true;
         }
 
+        ZoomButton.SetActive(!MeetingHud.Instance && dead && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started
+            && GameOptionsManager.Instance.CurrentGameOptions.GameMode == GameModes.Normal);
+        ZoomButton.transform.localPosition = Pos3;
+        ZoomButton.GetComponent<SpriteRenderer>().sprite = Zooming ? TownOfUsFusion.ZoomPlusButton : TownOfUsFusion.ZoomMinusButton;
+
             MapPos = __instance.SettingsButton.transform.localPosition + new Vector3(0, -0.66f, -__instance.SettingsButton.transform.localPosition.z - 51f);
+
 
 
             if (!GuideButton)
@@ -116,16 +125,6 @@ public static class HudUpdate
             Pos = MapPos + new Vector3(0, -0.66f, 0f);
             __instance.MapButton.transform.localPosition = Pos;
 
-            if (Patches.SubmergedCompatibility.isSubmerged())
-            {
-                var floorButton = __instance.MapButton.transform.parent.Find(__instance.MapButton.name + "(Clone)");
-
-                if (floorButton && floorButton.gameObject.active)
-                {
-                    Pos += new Vector3(0, -0.66f, 0f);
-                    floorButton.localPosition = Pos;
-                }
-            }
             if (PhoneText)
             {/*
                 if (RoleCardActive)
@@ -141,10 +140,22 @@ public static class HudUpdate
                 }*/
             }
 
-        ZoomButton.SetActive(!MeetingHud.Instance && dead && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started
-            && GameOptionsManager.Instance.CurrentGameOptions.GameMode == GameModes.Normal);
-        ZoomButton.transform.localPosition = Pos;
-        ZoomButton.GetComponent<SpriteRenderer>().sprite = Zooming ? TownOfUsFusion.ZoomPlusButton : TownOfUsFusion.ZoomMinusButton;
+            if (Patches.SubmergedCompatibility.isSubmerged())
+            {
+                var floorButton = __instance.MapButton.transform.parent.Find(__instance.MapButton.name + "(Clone)");
+
+                if (floorButton && floorButton.gameObject.active)
+                {
+                    Pos2 = Pos + new Vector3(0, -1.98f, 0f);
+                    floorButton.transform.localPosition = Pos2;
+                }
+                if (dead){
+            MapPos = __instance.SettingsButton.transform.localPosition + new Vector3(0, -0.66f, -__instance.SettingsButton.transform.localPosition.z - 51f);
+            GuideButton.transform.localPosition = MapPos + new Vector3(-0.66f, 0f, 0f);
+            Pos = MapPos;
+            __instance.MapButton.transform.localPosition = Pos;
+                }
+            }
 
             if (!GreyedOptionCrew)
             {

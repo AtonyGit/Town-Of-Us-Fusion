@@ -25,7 +25,7 @@ namespace TownOfUsFusion.Roles
         Color = Patches.Colors.Plaguebearer;
         RoleType = RoleEnum.Plaguebearer;
         AddToRoleHistory(RoleType);
-        Faction = Faction.NeutralKilling;
+        Faction = Faction.NeutralApocalypse;
         InfectedPlayers.Add(player.PlayerId);
     }
 
@@ -35,7 +35,7 @@ namespace TownOfUsFusion.Roles
 
         if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected) <= 2 &&
                 PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
-                (x.Data.IsImpostor() || x.Is(Faction.NeutralKilling))) == 1)
+                (x.Data.IsImpostor() || x.Is(Faction.NeutralApocalypse))) == 1)
         {
             Utils.Rpc(CustomRPC.PlaguebearerWin, Player.PlayerId);
             Wins();

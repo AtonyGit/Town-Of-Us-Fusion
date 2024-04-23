@@ -103,7 +103,10 @@ public class PerformKillButton
 
             case RoleEnum.Jester:
             case RoleEnum.Executioner:
+
             case RoleEnum.Tyrant:
+            case RoleEnum.Cannibal:
+
             case RoleEnum.Arsonist:
             case RoleEnum.Amnesiac:
             case RoleEnum.Glitch:
@@ -114,7 +117,13 @@ public class PerformKillButton
             case RoleEnum.Pestilence:
             case RoleEnum.Werewolf:
             case RoleEnum.Doomsayer:
+
             case RoleEnum.Vampire:
+            case RoleEnum.NeoNecromancer:
+            case RoleEnum.Scourge:
+            case RoleEnum.Apparitionist:
+            case RoleEnum.Enchanter:
+            case RoleEnum.Husk:
 
                 rememberImp = false;
 
@@ -132,8 +141,8 @@ public class PerformKillButton
             CameraEffect.singleton.materials.Clear();
         }
 
-        if ((role == RoleEnum.Glitch || role == RoleEnum.Juggernaut || role == RoleEnum.Pestilence ||
-            role == RoleEnum.Werewolf) && PlayerControl.LocalPlayer == other)
+        if ((role == RoleEnum.Glitch || role == RoleEnum.Juggernaut || role == RoleEnum.Pestilence || role == RoleEnum.Scourge ||
+            role == RoleEnum.NeoNecromancer || role == RoleEnum.Werewolf) && PlayerControl.LocalPlayer == other)
         {
             HudManager.Instance.KillButton.buttonLabelText.gameObject.SetActive(false);
         }
@@ -162,12 +171,21 @@ public class PerformKillButton
                 new Crewmate(other);
             }
             else
-            {
+            {             
+                // If role is not Vampire, turn dead player into Survivor
+                if (role != RoleEnum.Vampire || !CustomGameOptions.RememberedVampireStaysVamp) {
                 var survivor = new Survivor(other);
                 survivor.RegenTask();
-                if (role == RoleEnum.Arsonist || role == RoleEnum.Glitch || role == RoleEnum.Plaguebearer ||
+                }
+                // If role is Vampire, keep dead player as Vampire
+                if (role == RoleEnum.Vampire && CustomGameOptions.RememberedVampireStaysVamp) {
+                var vampire = new Vampire(other);
+                vampire.RegenTask();
+                }
+
+                if (role == RoleEnum.Arsonist || role == RoleEnum.Glitch || role == RoleEnum.Plaguebearer || role == RoleEnum.Scourge ||
                         role == RoleEnum.Pestilence || role == RoleEnum.Werewolf || role == RoleEnum.Juggernaut
-                         || role == RoleEnum.Vampire)
+                || role == RoleEnum.NeoNecromancer ||  role == RoleEnum.Vampire)
                 {
                     if (CustomGameOptions.AmneTurnNeutAssassin) new Assassin(amnesiac);
                     if (other.Is(AbilityEnum.Assassin)) Ability.AbilityDictionary.Remove(other.PlayerId);
@@ -207,6 +225,7 @@ public class PerformKillButton
         {
             var sheriffRole = Role.GetRole<Sheriff>(amnesiac);
             sheriffRole.LastKilled = DateTime.UtcNow;
+            if (CustomGameOptions.SheriffShootRoundOne) sheriffRole.CanShoot = true;
         }
 
         else if (role == RoleEnum.Engineer)
@@ -421,6 +440,14 @@ public class PerformKillButton
             wwRole.LastKilled = DateTime.UtcNow;
         }
 
+        else if (role == RoleEnum.NeoNecromancer || role == RoleEnum.Scourge || role == RoleEnum.Apparitionist || role == RoleEnum.Enchanter || role == RoleEnum.Husk)
+        {
+            var necroRole = Role.GetRole<NeoNecromancer>(amnesiac);
+            necroRole.LastKilled = DateTime.UtcNow;
+            necroRole.LastResurrected = DateTime.UtcNow;
+            necroRole.CanKill = false;
+        }
+
         else if (role == RoleEnum.Doomsayer)
         {
             var doomRole = Role.GetRole<Doomsayer>(amnesiac);
@@ -458,6 +485,13 @@ public class PerformKillButton
             trapperRole.traps.ClearTraps();
         }
 
+        if (role == RoleEnum.Poisoner)
+        {
+            var poisonerRole = Role.GetRole<Poisoner>(amnesiac);
+            poisonerRole.LastPoisoned = DateTime.UtcNow;
+            DestroyableSingleton<HudManager>.Instance.KillButton.graphic.enabled = false;
+        
+        }
         else if (role == RoleEnum.Bomber)
         {
             var bomberRole = Role.GetRole<Bomber>(amnesiac);
@@ -473,6 +507,13 @@ public class PerformKillButton
         {
             var tyrantRole = Role.GetRole<Tyrant>(amnesiac);
             tyrantRole.Revealed = false;
+            DestroyableSingleton<HudManager>.Instance.KillButton.gameObject.SetActive(false);
+        }
+        else if (role == RoleEnum.Cannibal)
+        {
+            var cannibalRole = Role.GetRole<Cannibal>(amnesiac);
+            cannibalRole.Eaten = false;
+            cannibalRole.EatNeed = CustomGameOptions.BodiesNeededToWin;
             DestroyableSingleton<HudManager>.Instance.KillButton.gameObject.SetActive(false);
         }
         var killsList = (newRole.Kills, newRole.CorrectKills, newRole.IncorrectKills, newRole.CorrectAssassinKills, newRole.IncorrectAssassinKills);

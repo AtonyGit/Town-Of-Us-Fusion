@@ -12,21 +12,31 @@
     },
     {
       "id": "fusion-ares2",
-      "name": "Sharpeye Glasses (With Pack)",
+      "name": "Areseem Coatless (With Pack)",
       "artist": "fusion studios"
     },
     {
       "id": "fusion-ares3",
-      "name": "Sharpeye Glasses",
+      "name": "Areseem Coatless",
       "artist": "fusion studios"
     },
     {
       "id": "fusion-ares4",
-      "name": "Black-Red Flame Pompadour (With Pack)",
+      "name": "Sharpeye Glasses (With Pack)",
       "artist": "fusion studios"
     },
     {
       "id": "fusion-ares5",
+      "name": "Sharpeye Glasses",
+      "artist": "fusion studios"
+    },
+    {
+      "id": "fusion-ares6",
+      "name": "Black-Red Flame Pompadour (With Pack)",
+      "artist": "fusion studios"
+    },
+    {
+      "id": "fusion-ares7",
       "name": "Black-Red Flame Pompadour",
       "artist": "fusion studios"
     },

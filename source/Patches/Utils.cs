@@ -17,6 +17,7 @@ using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Patches;
 using TownOfUsFusion.Roles;
 using TownOfUsFusion.Roles.Cultist;
+using TownOfUsFusion.NeutralRoles.NeoNecromancerMod;
 using TownOfUsFusion.Roles.Modifiers;
 using Il2CppInterop.Runtime.InteropTypes;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
@@ -31,6 +32,7 @@ using TownOfUsFusion.ImpostorRoles.BomberMod;
 using TownOfUsFusion.CrewmateRoles.VampireHunterMod;
 using TownOfUsFusion.CrewmateRoles.ImitatorMod;
 using TownOfUsFusion.CrewmateRoles.AurialMod;
+using TownOfUsFusion.CrewmateRoles.DetectiveMod;
 using Reactor.Networking;
 using Reactor.Networking.Extensions;
 
@@ -250,6 +252,14 @@ public static class Utils
         {
             var exeTarget = ((Executioner)role).target;
             return exeTarget != null && player.PlayerId == exeTarget.PlayerId;
+        });
+    }
+    public static bool IsJkTarget(this PlayerControl player)
+    {
+        return Role.GetRoles(RoleEnum.Joker).Any(role =>
+        {
+            var jkTarget = ((Joker)role).target;
+            return jkTarget != null && player.PlayerId == jkTarget.PlayerId;
         });
     }
 
@@ -656,9 +666,16 @@ public static class Utils
                     target.Is(RoleEnum.Pestilence) && CustomGameOptions.SheriffKillsPlaguebearer ||
                     target.Is(RoleEnum.Werewolf) && CustomGameOptions.SheriffKillsWerewolf ||
                     target.Is(RoleEnum.Juggernaut) && CustomGameOptions.SheriffKillsJuggernaut ||
-                    target.Is(RoleEnum.Vampire) && CustomGameOptions.SheriffKillsVampire ||
                     target.Is(RoleEnum.Executioner) && CustomGameOptions.SheriffKillsExecutioner ||
                     target.Is(RoleEnum.Doomsayer) && CustomGameOptions.SheriffKillsDoomsayer ||
+
+                    target.Is(RoleEnum.Tyrant) && CustomGameOptions.SheriffKillsTyrant ||
+                    target.Is(RoleEnum.Joker) && CustomGameOptions.SheriffKillsJoker ||
+                    target.Is(RoleEnum.Cannibal) && CustomGameOptions.SheriffKillsCannibal ||
+                    
+                    target.Is(RoleEnum.NeoNecromancer) && CustomGameOptions.SheriffKillsNeoNecromancer ||
+                    target.Is(RoleEnum.Vampire) && CustomGameOptions.SheriffKillsVampire ||
+
                     target.Is(RoleEnum.Jester) && CustomGameOptions.SheriffKillsJester) sheriff.CorrectKills += 1;
                 else if (killer == target) sheriff.IncorrectKills += 1;
             }
@@ -672,7 +689,7 @@ public static class Utils
             if (killer.Is(RoleEnum.Veteran))
             {
                 var veteran = Role.GetRole<Veteran>(killer);
-                if (target.Is(Faction.Impostors) || target.Is(Faction.NeutralKilling) || target.Is(Faction.NeutralEvil)) veteran.CorrectKills += 1;
+                if (target.Is(Faction.Impostors) || target.Is(Faction.NeutralKilling) || target.Is(Faction.NeutralEvil) || target.Is(Faction.NeutralChaos) || target.Is(Faction.NeutralNeophyte) || target.Is(Faction.NeutralApocalypse)) veteran.CorrectKills += 1;
                 else if (killer != target) veteran.IncorrectKills += 1;
             }
 
@@ -687,7 +704,20 @@ public static class Utils
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Detective))
             {
                 var detective = Role.GetRole<Detective>(PlayerControl.LocalPlayer);
-                detective.LastKiller = killer;
+                if (target.PlayerId == PlayerControl.LocalPlayer.PlayerId)
+                    {
+                        detective.CurrentTarget = null;
+                        detective.InvestigatingScene = null;
+                        CrimeSceneExtensions.ClearCrimeScenes(detective.CrimeScenes);
+                    }
+                else if (!PlayerControl.LocalPlayer.Data.IsDead)
+                    {
+                        var bodyPos = target.transform.position;
+                        bodyPos.z += 0.005f;
+                        bodyPos.y -= 0.3f;
+                        bodyPos.x -= 0.11f;
+                        detective.CrimeScenes.Add(CrimeSceneExtensions.CreateCrimeScene(bodyPos, target));
+                    }
             }
 
             if (target.AmOwner)
@@ -740,10 +770,7 @@ public static class Utils
                 target.myTasks.Insert(0, importantTextTask);
             }
 
-            if (jumpToBody)
-            {
-                killer.MyPhysics.StartCoroutine(killer.KillAnimations.Random().CoPerformKill(killer, target));
-            }
+            if (jumpToBody) killer.MyPhysics.StartCoroutine(killer.KillAnimations.Random().CoPerformKill(killer, target));
             else killer.MyPhysics.StartCoroutine(killer.KillAnimations.Random().CoPerformKill(target, target));
 
             if (target.Is(ModifierEnum.Frosty))
@@ -903,6 +930,107 @@ public static class Utils
                 catch
                 {
                 }
+            }
+        }
+    }
+
+    public static void NeoConvert(PlayerControl player)
+    {
+        if (PlayerControl.LocalPlayer == player) Coroutines.Start(FlashCoroutine(Patches.Colors.NeoNecromancer));
+        if (PlayerControl.LocalPlayer != player && PlayerControl.LocalPlayer.Is(RoleEnum.Mystic)
+            && !PlayerControl.LocalPlayer.Data.IsDead) Coroutines.Start(FlashCoroutine(Patches.Colors.NeoNecromancer));
+
+        if (PlayerControl.LocalPlayer.Is(RoleEnum.Transporter) && PlayerControl.LocalPlayer == player)
+        {
+            var transporterRole = Role.GetRole<Transporter>(PlayerControl.LocalPlayer);
+            Object.Destroy(transporterRole.UsesText);
+            if (transporterRole.TransportList != null)
+            {
+                transporterRole.TransportList.Toggle();
+                transporterRole.TransportList.SetVisible(false);
+                transporterRole.TransportList = null;
+                transporterRole.PressedButton = false;
+                transporterRole.TransportPlayer1 = null;
+            }
+        }
+/*
+        if (player.Is(RoleEnum.Vigilante))
+        {
+            var vigi = Role.GetRole<Vigilante>(player);
+            vigi.Name = "Assassin";
+            vigi.TaskText = () => "Guess the roles of crewmates mid-meeting to kill them!";
+            vigi.Color = Patches.Colors.NeoNecromancer;
+            vigi.Faction = Faction.NeutralNeophyte;
+            vigi.RegenTask();
+            var colorMapping = new Dictionary<string, Color>();
+            if (CustomGameOptions.MayorCultistOn > 0) colorMapping.Add("Mayor", Colors.Mayor);
+            if (CustomGameOptions.SeerCultistOn > 0) colorMapping.Add("Seer", Colors.Seer);
+            if (CustomGameOptions.SheriffCultistOn > 0) colorMapping.Add("Sheriff", Colors.Sheriff);
+            if (CustomGameOptions.SurvivorCultistOn > 0) colorMapping.Add("Survivor", Colors.Survivor);
+            if (CustomGameOptions.MaxChameleons > 0) colorMapping.Add("Chameleon", Colors.Chameleon);
+            if (CustomGameOptions.MaxEngineers > 0) colorMapping.Add("Engineer", Colors.Engineer);
+            if (CustomGameOptions.MaxInvestigators > 0) colorMapping.Add("Investigator", Colors.Investigator);
+            if (CustomGameOptions.MaxMystics > 0) colorMapping.Add("Mystic", Colors.Mystic);
+            if (CustomGameOptions.MaxSnitches > 0) colorMapping.Add("Snitch", Colors.Snitch);
+            if (CustomGameOptions.MaxSpies > 0) colorMapping.Add("Spy", Colors.Spy);
+            if (CustomGameOptions.MaxTransporters > 0) colorMapping.Add("Transporter", Colors.Transporter);
+            if (CustomGameOptions.MaxVigilantes > 1) colorMapping.Add("Vigilante", Colors.Vigilante);
+            colorMapping.Add("Crewmate", Colors.Crewmate);
+            vigi.SortedColorMapping = colorMapping.OrderBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
+        }*/
+        if (player.Is(RoleEnum.Altruist) || player.Is(RoleEnum.Medic) || player.Is(RoleEnum.Imitator))
+        {
+            Role.RoleDictionary.Remove(player.PlayerId);
+            var appa = new Apparitionist(player);
+            appa.Name = "Apparitionist";
+            appa.TaskText = () => "Use black magic to Resurrect the dead\nFake Tasks:";
+            appa.Color = Patches.Colors.NeoNecromancer;
+            appa.LastResurrected = DateTime.UtcNow;
+            appa.Faction = Faction.NeutralNeophyte;
+            appa.RegenTask();
+        }
+        if (player.Is(RoleEnum.Aurial) || player.Is(RoleEnum.Medium) || player.Is(RoleEnum.Mystic) || player.Is(RoleEnum.Oracle))
+        {
+            Role.RoleDictionary.Remove(player.PlayerId);
+            var encha = new Husk(player);
+            encha.Name = "Husk";
+            encha.TaskText = () => "Use your old powers to sense useful utilities (no lol)\nFake Tasks:";
+            encha.Color = Patches.Colors.NeoNecromancer;
+            encha.Faction = Faction.NeutralNeophyte;
+            encha.RegenTask();
+        }
+        if (player.Is(Faction.NeutralKilling) || player.Is(RoleEnum.Sheriff))
+        {
+            Role.RoleDictionary.Remove(player.PlayerId);
+            var scourge = new Scourge(player);
+            scourge.Name = "Scourge";
+            scourge.TaskText = () => "Help your Necromancer kill opposers\nFake Tasks:";
+            scourge.Color = Patches.Colors.NeoNecromancer;
+            scourge.LastKilled = DateTime.UtcNow;
+            scourge.Faction = Faction.NeutralNeophyte;
+            scourge.RegenTask();
+        }
+
+        if (player.Is(Faction.NeutralEvil) || player.Is(RoleEnum.Crewmate) || player.Is(RoleEnum.Survivor) || player.Is(RoleEnum.Transporter) || player.Is(RoleEnum.Engineer))
+        {
+            Role.RoleDictionary.Remove(player.PlayerId);
+            var husk = new Husk(player);
+            husk.Name = "Husk";
+            husk.TaskText = () => "Help your Necromancer in any way possible\nFake Tasks:";
+            husk.Color = Patches.Colors.NeoNecromancer;
+            husk.Faction = Faction.NeutralNeophyte;
+            husk.RegenTask();
+        }
+
+        //player.Data.Role.TeamType = RoleTeamTypes.Impostor;
+        //RoleManager.Instance.SetRole(player, RoleTypes.Impostor);
+        player.SetKillTimer(GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown);
+
+        foreach (var player2 in PlayerControl.AllPlayerControls)
+        {
+            if (player2.IsNecroTeam() && PlayerControl.LocalPlayer.IsNecroTeam())
+            {
+                player2.nameText().color = Patches.Colors.NeoNecromancer;
             }
         }
     }
@@ -1297,6 +1425,26 @@ public static class Utils
             var sheriff = Role.GetRole<Sheriff>(PlayerControl.LocalPlayer);
             sheriff.LastKilled = DateTime.UtcNow;
         }
+
+        foreach (var nec in Role.GetRoles(RoleEnum.Scourge))
+        {
+            var necRole = (Scourge)nec;
+            necRole.LastKilled = DateTime.UtcNow;
+        }
+        foreach (var nec in Role.GetRoles(RoleEnum.NeoNecromancer))
+        {
+            var necRole = (NeoNecromancer)nec;
+            necRole.LastKilled = DateTime.UtcNow;
+            if (!necRole.CanKill) necRole.CanKill = true;
+            /*else
+            if (necRole.CanKill) necRole.CanKill = false;*/
+        }
+        
+        foreach (var sh in Role.GetRoles(RoleEnum.Sheriff))
+        {
+            var shRole = (Sheriff)sh;
+            if (!shRole.CanShoot) shRole.CanShoot = true;
+        }
         if (PlayerControl.LocalPlayer.Is(RoleEnum.Tracker))
         {
             var tracker = Role.GetRole<Tracker>(PlayerControl.LocalPlayer);
@@ -1331,6 +1479,7 @@ public static class Utils
                     Role.RoleDictionary.Remove(vhPlayer.PlayerId);
                     var kills = ((VampireHunter)vh).CorrectKills;
                     var sheriff = new Sheriff(vhPlayer);
+                    if(CustomGameOptions.SheriffShootRoundOne) sheriff.CanShoot = true;
                     sheriff.CorrectKills = kills;
                     sheriff.RegenTask();
                 }
@@ -1491,6 +1640,12 @@ public static class Utils
             morphling.LastMorphed = DateTime.UtcNow;
             morphling.MorphButton.graphic.sprite = TownOfUsFusion.SampleSprite;
             morphling.SampledPlayer = null;
+        }
+        if (PlayerControl.LocalPlayer.Is(RoleEnum.Poisoner))
+        {
+            var poisoner = Role.GetRole<Poisoner>(PlayerControl.LocalPlayer);
+            poisoner.LastPoisoned = DateTime.UtcNow;
+            poisoner.PoisonButton.graphic.sprite = TownOfUsFusion.PoisonSprite;
         }
         if (PlayerControl.LocalPlayer.Is(RoleEnum.Swooper))
         {

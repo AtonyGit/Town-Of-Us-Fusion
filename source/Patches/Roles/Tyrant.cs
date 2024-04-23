@@ -8,11 +8,11 @@ namespace TownOfUsFusion.Roles
     {
         Name = "Tyrant";
         ImpostorText = () => "Backstab the crew and regain political power";
-        TaskText = () => "Reveal your true colors to the murderers";
+        TaskText = () => "Reveal your true colors to the neutrals\nFake Tasks:";
         Color = Patches.Colors.Tyrant;
         RoleType = RoleEnum.Tyrant;
         AddToRoleHistory(RoleType);
-        Faction = Faction.NeutralEvil;
+        Faction = Faction.NeutralChaos;
         Revealed = false;
         MetWinCondition = false;
     }

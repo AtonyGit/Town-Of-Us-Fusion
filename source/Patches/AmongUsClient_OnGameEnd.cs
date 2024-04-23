@@ -33,10 +33,20 @@ public class EndGameManager_SetEverythingUp
             var ty = (Tyrant)role;
             losers.Add(ty.Player.GetDefaultOutfit().ColorId);
         }
+        foreach (var role in Role.GetRoles(RoleEnum.Cannibal))
+        {
+            var can = (Cannibal)role;
+            losers.Add(can.Player.GetDefaultOutfit().ColorId);
+        }
         foreach (var role in Role.GetRoles(RoleEnum.Doomsayer))
         {
             var doom = (Doomsayer)role;
             losers.Add(doom.Player.GetDefaultOutfit().ColorId);
+        }
+        foreach (var role in Role.GetRoles(RoleEnum.Joker))
+        {
+            var jk = (Joker)role;
+            losers.Add(jk.Player.GetDefaultOutfit().ColorId);
         }
         foreach (var role in Role.GetRoles(RoleEnum.Executioner))
         {
@@ -89,8 +99,75 @@ public class EndGameManager_SetEverythingUp
             losers.Add(ww.Player.GetDefaultOutfit().ColorId);
         }
 
+        foreach (var role in Role.GetRoles(RoleEnum.NeoNecromancer))
+        {
+            var necro = (NeoNecromancer)role;
+            losers.Add(necro.Player.GetDefaultOutfit().ColorId);
+        }
+        foreach (var role in Role.GetRoles(RoleEnum.Scourge))
+        {
+            var scourge = (Scourge)role;
+            losers.Add(scourge.Player.GetDefaultOutfit().ColorId);
+        }
+        foreach (var role in Role.GetRoles(RoleEnum.Enchanter))
+        {
+            var enchanter = (Enchanter)role;
+            losers.Add(enchanter.Player.GetDefaultOutfit().ColorId);
+        }
+        foreach (var role in Role.GetRoles(RoleEnum.Apparitionist))
+        {
+            var apparitionist = (Apparitionist)role;
+            losers.Add(apparitionist.Player.GetDefaultOutfit().ColorId);
+        }
+        foreach (var role in Role.GetRoles(RoleEnum.Husk))
+        {
+            var husk = (Husk)role;
+            losers.Add(husk.Player.GetDefaultOutfit().ColorId);
+        }
+
         var toRemoveWinners = TempData.winners.ToArray().Where(o => losers.Contains(o.ColorId)).ToArray();
         for (int i = 0; i < toRemoveWinners.Count(); i++) TempData.winners.Remove(toRemoveWinners[i]);
+
+        if (Role.NecroWins)
+        {
+            TempData.winners = new List<WinningPlayerData>();
+            foreach (var role in Role.GetRoles(RoleEnum.NeoNecromancer))
+            {
+                var necro = (NeoNecromancer)role;
+                var necroData = new WinningPlayerData(necro.Player.Data);
+                if (PlayerControl.LocalPlayer != necro.Player) necroData.IsYou = false;
+                TempData.winners.Add(necroData);
+            }
+            foreach (var role in Role.GetRoles(RoleEnum.Scourge))
+            {
+                var scourge = (Scourge)role;
+                var scourgeData = new WinningPlayerData(scourge.Player.Data);
+                if (PlayerControl.LocalPlayer != scourge.Player) scourgeData.IsYou = false;
+                TempData.winners.Add(scourgeData);
+            }
+            foreach (var role in Role.GetRoles(RoleEnum.Enchanter))
+            {
+                var enchanter = (Enchanter)role;
+                var enchanterData = new WinningPlayerData(enchanter.Player.Data);
+                if (PlayerControl.LocalPlayer != enchanter.Player) enchanterData.IsYou = false;
+                TempData.winners.Add(enchanterData);
+            }
+            foreach (var role in Role.GetRoles(RoleEnum.Apparitionist))
+            {
+                var apparitionist = (Apparitionist)role;
+                var apparitionistData = new WinningPlayerData(apparitionist.Player.Data);
+                if (PlayerControl.LocalPlayer != apparitionist.Player) apparitionistData.IsYou = false;
+                TempData.winners.Add(apparitionistData);
+            }
+            foreach (var role in Role.GetRoles(RoleEnum.Husk))
+            {
+                var husk = (Husk)role;
+                var huskData = new WinningPlayerData(husk.Player.Data);
+                if (PlayerControl.LocalPlayer != husk.Player) huskData.IsYou = false;
+                TempData.winners.Add(huskData);
+            }
+            return;
+        }
 
         if (Role.NobodyWins)
         {
@@ -227,7 +304,20 @@ public class EndGameManager_SetEverythingUp
         {
             var type = role.RoleType;
 
-            if (type == RoleEnum.Glitch)
+            if (type == RoleEnum.Cannibal)
+            {
+                var can = (Cannibal)role;
+                if (can.EatWin)
+                {
+                    TempData.winners = new List<WinningPlayerData>();
+                    var canData = new WinningPlayerData(can.Player.Data);
+                    canData.IsDead = false;
+                    if (PlayerControl.LocalPlayer != can.Player) canData.IsYou = false;
+                    TempData.winners.Add(canData);
+                    return;
+                }
+            }
+            else if (type == RoleEnum.Glitch)
             {
                 var glitch = (Glitch)role;
                 if (glitch.GlitchWins)

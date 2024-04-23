@@ -13,6 +13,7 @@ namespace TownOfUsFusion.Roles
         Name = "Mage";
         ImpostorText = () => "placeholder1";
         TaskText = () => "placeholder2";
+        AlignmentText = () => "Crew Support";
         Color = Patches.Colors.Mage;
         RoleType = RoleEnum.Mage;
         AddToRoleHistory(RoleType);
