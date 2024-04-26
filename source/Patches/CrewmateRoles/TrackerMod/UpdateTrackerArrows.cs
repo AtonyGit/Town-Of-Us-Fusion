@@ -47,6 +47,7 @@ public class UpdateTrackerArrows
                     if (RainbowUtils.IsGalaxy(player.GetDefaultOutfit().ColorId)) arrow.Value.image.color = RainbowUtils.Galaxy;
                     if (RainbowUtils.IsFire(player.GetDefaultOutfit().ColorId)) arrow.Value.image.color = RainbowUtils.Fire;
                     if (RainbowUtils.IsAcid(player.GetDefaultOutfit().ColorId)) arrow.Value.image.color = RainbowUtils.Acid;
+                    if (RainbowUtils.IsMonochrome(player.GetDefaultOutfit().ColorId)) arrow.Value.image.color = RainbowUtils.Monochrome;
                 }
                 else if (CamoedLastTick)
                 {

@@ -59,6 +59,7 @@ namespace TownOfUsFusion.Roles
 
     protected float Scale { get; set; } = 1f;
     protected internal Color Color { get; set; }
+    protected internal DeathReasonEnum DeathReason { get; set; } = DeathReasonEnum.Alive;
     protected internal RoleEnum RoleType { get; set; }
     protected internal int TasksLeft => Player.Data.Tasks.ToArray().Count(x => !x.Complete);
     protected internal int TotalTasks => Player.Data.Tasks.Count;
@@ -71,7 +72,7 @@ namespace TownOfUsFusion.Roles
     public bool Local => PlayerControl.LocalPlayer.PlayerId == Player.PlayerId;
 
     protected internal bool Hidden { get; set; } = false;
-
+    protected internal string KilledBy { get; set; } = "";
     protected internal Faction Faction { get; set; } = Faction.Crewmates;
 
     public static uint NetId => PlayerControl.LocalPlayer.NetId;
@@ -187,7 +188,7 @@ namespace TownOfUsFusion.Roles
         return PlayerControl.LocalPlayer.Is(RoleEnum.Medic) && Player == GetRole<Medic>(PlayerControl.LocalPlayer).ShieldedPlayer;
     }*/
 
-    protected virtual void IntroPrefix(IntroCutscene._ShowTeam_d__36 __instance)
+    protected virtual void IntroPrefix(IntroCutscene._ShowTeam_d__38 __instance)
     {
     }
 
@@ -562,14 +563,14 @@ namespace TownOfUsFusion.Roles
         [HarmonyPatch(typeof(IntroCutscene._ShowTeam_d__36), nameof(IntroCutscene._ShowTeam_d__36.MoveNext))]
         public static class IntroCutscene_ShowTeam__d_MoveNext
         {
-            public static void Prefix(IntroCutscene._ShowTeam_d__36 __instance)
+            public static void Prefix(IntroCutscene._ShowTeam_d__38 __instance)
             {
                 var role = GetRole(PlayerControl.LocalPlayer);
 
                 if (role != null) role.IntroPrefix(__instance);
             }
 
-            public static void Postfix(IntroCutscene._ShowRole_d__39 __instance)
+            public static void Postfix(IntroCutscene._ShowRole_d__41 __instance)
             {
                 var role = GetRole(PlayerControl.LocalPlayer);
                 // var alpha = __instance.__4__this.RoleText.color.a;
@@ -621,7 +622,7 @@ namespace TownOfUsFusion.Roles
         [HarmonyPatch(typeof(IntroCutscene._ShowRole_d__39), nameof(IntroCutscene._ShowRole_d__39.MoveNext))]
         public static class IntroCutscene_ShowRole_d__24
         {
-            public static void Postfix(IntroCutscene._ShowRole_d__39 __instance)
+            public static void Postfix(IntroCutscene._ShowRole_d__41 __instance)
             {
                 var role = GetRole(PlayerControl.LocalPlayer);
                 if (role != null && !role.Hidden)
@@ -664,10 +665,10 @@ namespace TownOfUsFusion.Roles
             }
         }
 
-        [HarmonyPatch(typeof(IntroCutscene._CoBegin_d__33), nameof(IntroCutscene._CoBegin_d__33.MoveNext))]
+        [HarmonyPatch(typeof(IntroCutscene._CoBegin_d__35), nameof(IntroCutscene._CoBegin_d__35.MoveNext))]
         public static class IntroCutscene_CoBegin_d__29
         {
-            public static void Postfix(IntroCutscene._CoBegin_d__33 __instance)
+            public static void Postfix(IntroCutscene._CoBegin_d__35 __instance)
             {
                 var role = GetRole(PlayerControl.LocalPlayer);
                 if (role != null && !role.Hidden)
@@ -867,6 +868,8 @@ namespace TownOfUsFusion.Roles
                         if (role == null) return;
                         var roleName = role.RoleType == RoleEnum.Glitch ? role.Name : $"The {role.Name}";
                         __result = $"{info.PlayerName} was {roleName}.";
+                        role.DeathReason = DeathReasonEnum.Ejected;
+                        role.KilledBy = " ";
                         return;
                     }
             }

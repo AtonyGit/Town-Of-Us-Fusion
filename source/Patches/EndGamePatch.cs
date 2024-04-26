@@ -58,6 +58,7 @@ public class OnGameEndPatch
                 else if (role.Value == RoleEnum.Investigator) { playerRole += "<color=#" + Patches.Colors.Investigator.ToHtmlStringRGBA() + ">Investigator</color> > "; }
                 else if (role.Value == RoleEnum.Mayor) { playerRole += "<color=#" + Patches.Colors.Mayor.ToHtmlStringRGBA() + ">Mayor</color> > "; }
                 else if (role.Value == RoleEnum.Medic) { playerRole += "<color=#" + Patches.Colors.Medic.ToHtmlStringRGBA() + ">Medic</color> > "; }
+                else if (role.Value == RoleEnum.Hunter) { playerRole += "<color=#" + Patches.Colors.Hunter.ToHtmlStringRGBA() + ">Hunter</color> > "; }
                 else if (role.Value == RoleEnum.Sheriff) { playerRole += "<color=#" + Patches.Colors.Sheriff.ToHtmlStringRGBA() + ">Sheriff</color> > "; }
                 else if (role.Value == RoleEnum.Swapper) { playerRole += "<color=#" + Patches.Colors.Swapper.ToHtmlStringRGBA() + ">Swapper</color> > "; }
                 else if (role.Value == RoleEnum.Seer || role.Value == RoleEnum.CultistSeer) { playerRole += "<color=#" + Patches.Colors.Seer.ToHtmlStringRGBA() + ">Seer</color> > "; }
@@ -230,6 +231,7 @@ public class OnGameEndPatch
             {
                 playerRole += " |<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + $"> Incorrect Guesses: {player.IncorrectAssassinKills}</color>";
             }
+            playerRole += " | " + playerControl.DeathReason();
             AdditionalTempData.playerRoles.Add(new AdditionalTempData.PlayerRoleInfo() { PlayerName = playerControl.Data.PlayerName, Role = playerRole });
         }
 
@@ -283,11 +285,11 @@ public class EndGameManagerSetUpPatch
         roleSummary.transform.localScale = new Vector3(1f, 1f, 1f);
 
         var roleSummaryText = new StringBuilder();
-        roleSummaryText.AppendLine("End game summary:");
+        roleSummaryText.AppendLine("<size=65%>End game summary: </size>");
         foreach (var data in AdditionalTempData.playerRoles)
         {
             var role = string.Join(" ", data.Role);
-            roleSummaryText.AppendLine($"{data.PlayerName} - {role}");
+            roleSummaryText.AppendLine($"<size=65%>{data.PlayerName} - {role}</size>");
         }
 
         if (AdditionalTempData.otherWinners.Count != 0)

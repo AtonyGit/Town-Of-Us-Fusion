@@ -24,6 +24,7 @@ namespace TownOfUsFusion.RainbowMod
             if (RainbowUtils.IsGalaxy(Id)) RainbowUtils.SetGalaxy(Renderer);
             if (RainbowUtils.IsFire(Id)) RainbowUtils.SetFire(Renderer);
             if (RainbowUtils.IsAcid(Id)) RainbowUtils.SetAcid(Renderer);
+            if (RainbowUtils.IsMonochrome(Id)) RainbowUtils.SetMonochrome(Renderer);
         }
     }
 

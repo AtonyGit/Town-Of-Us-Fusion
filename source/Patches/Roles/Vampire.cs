@@ -75,7 +75,7 @@ namespace TownOfUsFusion.Roles
         }
     }
 
-    protected override void IntroPrefix(IntroCutscene._ShowTeam_d__36 __instance)
+    protected override void IntroPrefix(IntroCutscene._ShowTeam_d__38 __instance)
     {
         var vampTeam = new List<PlayerControl>();
         vampTeam.Add(PlayerControl.LocalPlayer);

@@ -1006,6 +1006,27 @@ namespace TownOfUsFusion
                         var oracle2 = Role.GetRole<Oracle>(Utils.PlayerById(reader.ReadByte()));
                         oracle2.SavedConfessor = true;
                         break;
+
+                    case CustomRPC.HunterStalk:
+                        var stalker = Utils.PlayerById(reader.ReadByte());
+                        var stalked = Utils.PlayerById(reader.ReadByte());
+                        Hunter hunterRole = Role.GetRole<Hunter>(stalker);
+                        hunterRole.StalkDuration = CustomGameOptions.HunterStalkDuration;
+                        hunterRole.StalkedPlayer = stalked;
+                        hunterRole.Stalk();
+                        break;
+                    case CustomRPC.HunterCatchPlayer:
+                        var hunter = Utils.PlayerById(reader.ReadByte());
+                        var prey = Utils.PlayerById(reader.ReadByte());
+                        Hunter hunter2 = Role.GetRole<Hunter>(hunter);
+                        hunter2.CatchPlayer(prey);
+                        break;
+
+                    case CustomRPC.Retribution:
+                        var lastVoted = Utils.PlayerById(reader.ReadByte());
+                        AssassinKill.MurderPlayer(lastVoted);
+                        break;
+
                     case CustomRPC.ExecutionerToJester:
                         TargetColor.ExeToJes(Utils.PlayerById(reader.ReadByte()));
                         break;
@@ -1478,6 +1499,9 @@ namespace TownOfUsFusion
 
                     if (CustomGameOptions.AurialOn > 0)
                         CrewmateRoles.Add((typeof(Aurial), CustomGameOptions.AurialOn, false));
+
+                    if (CustomGameOptions.HunterOn > 0)
+                        CrewmateRoles.Add((typeof(Hunter), CustomGameOptions.HunterOn, false));
                     #endregion
                     #region Neutral Roles
                     // NEUTRAL BENIGN

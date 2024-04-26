@@ -95,6 +95,7 @@ namespace TownOfUsFusion.Roles
         LightDarkColors.Add(66, "darker"); // Galaxy
         LightDarkColors.Add(67, "lighter"); // Fire
         LightDarkColors.Add(68, "lighter"); // Acid
+        LightDarkColors.Add(69, "lighter"); // Monochrome
     }
     public float StartTimer()
     {

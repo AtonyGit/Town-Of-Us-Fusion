@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using HarmonyLib;
 namespace TownOfUsFusion.Patches
 {
+    [HarmonyPatch]
     internal class DiscordStatus
 {
 /*    [HarmonyPatch(typeof(DiscordManager), nameof(DiscordManager.Start))]

@@ -46,6 +46,7 @@ namespace TownOfUsFusion
         public static Sprite Footprint;
         public static Sprite NormalKill;
         public static Sprite MedicSprite;
+        public static Sprite StalkSprite;
         public static Sprite SeerSprite;
         public static Sprite SampleSprite;
         public static Sprite MorphSprite;
@@ -178,6 +179,7 @@ namespace TownOfUsFusion
             TrackSprite = CreateSprite("TownOfUsFusion.Resources.Track.png");
             TrapSprite = CreateSprite("TownOfUsFusion.Resources.Trap.png");
             // CREW (KILLING)
+            StalkSprite = CreateLegacySprite("TownOfUsFusion.Resources.Stalk.png");
             StakeSprite = CreateSprite("TownOfUsFusion.Resources.Stake.png");
             AlertSprite = CreateSprite("TownOfUsFusion.Resources.Alert.png");
             // CREW (PROTECTIVE)

@@ -41,5 +41,9 @@ namespace TownOfUsFusion.Roles
         if (flag2) return 0;
         return (num - (float)timeSpan.TotalMilliseconds) / 1000f;
     }
+        public bool CanSeeBlackmailed(byte playerId)
+        {
+            return CustomGameOptions.CanSeeBlackmailed || Blackmailed?.PlayerId == playerId || Player.PlayerId == playerId || Utils.PlayerById(playerId).Data.IsDead;
+        }
 }
 }

@@ -20,8 +20,8 @@ public class Update
                 switch (roleType)
                 {
                     default:
-                        if ((player.Is(Faction.Crewmates) && !(player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.VampireHunter))) ||
-                        ((player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.VampireHunter)) && !CustomGameOptions.CrewKillingRed) ||
+                        if ((player.Is(Faction.Crewmates) && !(player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.VampireHunter) || player.Is(RoleEnum.Hunter))) ||
+                        ((player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.VampireHunter) || player.Is(RoleEnum.Hunter)) && !CustomGameOptions.CrewKillingRed) ||
                         (player.Is(Faction.NeutralBenign) && !CustomGameOptions.NeutBenignRed) ||
                         (player.Is(Faction.NeutralEvil) && !CustomGameOptions.NeutEvilRed) ||
                         (player.Is(Faction.NeutralChaos) && !CustomGameOptions.NeutChaosRed) ||
@@ -37,7 +37,8 @@ public class Update
                             {
                                 var traitor = (Traitor)role;
                                 if ((traitor.formerRole == RoleEnum.Sheriff || traitor.formerRole == RoleEnum.Vigilante ||
-                                    traitor.formerRole == RoleEnum.Veteran || traitor.formerRole == RoleEnum.VampireHunter)
+                                    traitor.formerRole == RoleEnum.Veteran ||
+                                    traitor.formerRole == RoleEnum.Hunter || traitor.formerRole == RoleEnum.VampireHunter)
                                 && CustomGameOptions.CrewKillingRed) state.NameText.color = Color.red;
                                 else state.NameText.color = Color.green;
                             }
@@ -72,8 +73,8 @@ public class Update
             switch (roleType)
             {
                 default:
-                    if ((player.Is(Faction.Crewmates) && !(player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.VampireHunter))) ||
-                        ((player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.VampireHunter)) && !CustomGameOptions.CrewKillingRed) ||
+                    if ((player.Is(Faction.Crewmates) && !(player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.VampireHunter) || player.Is(RoleEnum.Hunter))) ||
+                        ((player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.VampireHunter) || player.Is(RoleEnum.Hunter)) && !CustomGameOptions.CrewKillingRed) ||
                         (player.Is(Faction.NeutralBenign) && !CustomGameOptions.NeutBenignRed) ||
                         (player.Is(Faction.NeutralEvil) && !CustomGameOptions.NeutEvilRed) ||
                         (player.Is(Faction.NeutralChaos) && !CustomGameOptions.NeutChaosRed) ||
@@ -89,7 +90,7 @@ public class Update
                         {
                             var traitor = (Traitor)role;
                             if ((traitor.formerRole == RoleEnum.Sheriff || traitor.formerRole == RoleEnum.Vigilante ||
-                                traitor.formerRole == RoleEnum.Veteran || traitor.formerRole == RoleEnum.VampireHunter)
+                                    traitor.formerRole == RoleEnum.Hunter || traitor.formerRole == RoleEnum.VampireHunter)
                                 && CustomGameOptions.CrewKillingRed) player.nameText().color = Color.red;
                             else player.nameText().color = Color.green;
                         }

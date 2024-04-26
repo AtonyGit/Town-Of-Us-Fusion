@@ -55,6 +55,11 @@ public static class Kill
         {
             foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(role.ClosestPlayer, role.Player);
         }
+        foreach (Role hunterRole in Role.GetRoles(RoleEnum.Hunter))
+        {
+            Hunter hunter = (Hunter)hunterRole;
+            hunter.CatchPlayer(role.Player);
+        }
         if (role.ClosestPlayer.IsOnAlert())
         {
             if (role.ClosestPlayer.IsShielded())

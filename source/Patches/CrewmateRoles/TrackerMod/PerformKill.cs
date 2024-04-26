@@ -43,6 +43,7 @@ public class PerformKill
                     if (RainbowUtils.IsGalaxy(target.GetDefaultOutfit().ColorId)) renderer.color = RainbowUtils.Galaxy;
                     if (RainbowUtils.IsFire(target.GetDefaultOutfit().ColorId)) renderer.color = RainbowUtils.Fire;
                     if (RainbowUtils.IsAcid(target.GetDefaultOutfit().ColorId)) renderer.color = RainbowUtils.Acid;
+                    if (RainbowUtils.IsMonochrome(target.GetDefaultOutfit().ColorId)) renderer.color = RainbowUtils.Monochrome;
                 }
                 else
                 {

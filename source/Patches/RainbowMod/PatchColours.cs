@@ -30,7 +30,7 @@ public class PatchColours
             999815 => "Blood",
             999816 => "Grass",
             999817 => "Mandarin",
-            999818 => "Glass",
+            999818 => "Pearl",
             999819 => "Ash",
             999820 => "Midnight",
             999821 => "Steel",
@@ -65,6 +65,7 @@ public class PatchColours
             1000000 => "Galaxy",
             1000001 => "Fire",
             1000002 => "Acid",
+            1000003 => "Monochrome",
             _ => null
         };
         if (newResult != null)

@@ -108,6 +108,7 @@ public class BodyReport
                 {66, "darker"},// galaxy
                 {67, "lighter"},// fire
                 {68, "lighter"},// acid
+                {69, "lighter"},// monochrome
             };
         var typeOfColor = colors[br.Killer.GetDefaultOutfit().ColorId];
         return

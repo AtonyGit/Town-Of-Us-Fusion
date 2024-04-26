@@ -36,7 +36,7 @@ namespace TownOfUsFusion.Roles
         }
     }
 
-    protected override void IntroPrefix(IntroCutscene._ShowTeam_d__36 __instance)
+    protected override void IntroPrefix(IntroCutscene._ShowTeam_d__38 __instance)
     {
         var necroTeam = new Il2CppSystem.Collections.Generic.List<PlayerControl>();
         necroTeam.Add(PlayerControl.LocalPlayer);

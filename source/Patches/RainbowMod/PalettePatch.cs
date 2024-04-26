@@ -86,6 +86,7 @@ namespace TownOfUsFusion.RainbowMod
                 (StringNames)1000000,//"Galaxy",
                 (StringNames)1000001,//"Fire",
                 (StringNames)1000002,//"Acid",
+                (StringNames)1000003,//"Monochrome",
             };
         Palette.PlayerColors = new[]
         {
@@ -167,6 +168,7 @@ namespace TownOfUsFusion.RainbowMod
                 new Color32(0, 0, 0, byte.MaxValue),
                 new Color32(0, 0, 0, byte.MaxValue),
                 new Color32(0, 0, 0, byte.MaxValue),
+                new Color32(0, 0, 0, byte.MaxValue),
             };
         Palette.ShadowColors = new[]
         {
@@ -244,6 +246,7 @@ namespace TownOfUsFusion.RainbowMod
                 new Color32(0, 65, 61, byte.MaxValue),
                 new Color32(141, 31, 0, byte.MaxValue),
                 new Color32(191, 143, 0, byte.MaxValue),
+                new Color32(0, 0, 0, byte.MaxValue),
                 new Color32(0, 0, 0, byte.MaxValue),
                 new Color32(0, 0, 0, byte.MaxValue),
                 new Color32(0, 0, 0, byte.MaxValue),

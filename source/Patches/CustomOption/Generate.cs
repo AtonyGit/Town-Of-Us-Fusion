@@ -78,6 +78,7 @@ namespace TownOfUsFusion.CustomOption
         public static CustomNumberOption TransporterOn;
 
         public static CustomHeaderOption CrewKillingRoles;
+        public static CustomNumberOption HunterOn;
         public static CustomNumberOption SheriffOn;
         public static CustomNumberOption VampireHunterOn;
         public static CustomNumberOption VeteranOn;
@@ -488,6 +489,7 @@ namespace TownOfUsFusion.CustomOption
 
         public static CustomHeaderOption Blackmailer;
         public static CustomNumberOption BlackmailCooldown;
+        public static CustomToggleOption CanSeeBlackmailed;
 
         public static CustomHeaderOption Plaguebearer;
         public static CustomNumberOption InfectCooldown;
@@ -569,6 +571,12 @@ namespace TownOfUsFusion.CustomOption
         public static CustomToggleOption SelfKillAfterFinalStake;
         public static CustomStringOption BecomeOnVampDeaths;
 
+        public static CustomHeaderOption Hunter;
+        public static CustomNumberOption HunterKillCd;
+        public static CustomNumberOption HunterStalkCd;
+        public static CustomNumberOption HunterStalkDuration;
+        public static CustomNumberOption HunterStalkUses;
+        public static CustomToggleOption HunterBodyReport;
         public static CustomHeaderOption Prosecutor;
         public static CustomToggleOption ProsDiesOnIncorrectPros;
 
@@ -725,6 +733,8 @@ namespace TownOfUsFusion.CustomOption
                 PercentFormat);
 
             CrewKillingRoles = new CustomHeaderOption(num++, MultiMenu.crewmate, "Crewmate Killing Roles");
+            HunterOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#29AB87FF>Hunter</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
             SheriffOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#FFFF00FF>Sheriff</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             VampireHunterOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#B3B3E6FF>Vampire Hunter</color>", 0f, 0f, 100f, 10f,
@@ -1177,6 +1187,18 @@ namespace TownOfUsFusion.CustomOption
             MinAmountOfPlayersInTrap =
                 new CustomNumberOption(num++, MultiMenu.crewmate, "Minimum Number Of Roles Required To Trigger Trap", 3, 1, 5, 1);
 
+            Hunter =
+               new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#29AB87FF>Hunter</color>");
+            HunterKillCd =
+                new CustomNumberOption(num++, MultiMenu.crewmate, "Hunter Kill Cooldown", 25f, 10f, 40f, 2.5f, CooldownFormat);
+            HunterStalkCd =
+                new CustomNumberOption(num++, MultiMenu.crewmate, "Hunter Stalk Cooldown", 10f, 0f, 40f, 2.5f, CooldownFormat);
+            HunterStalkDuration =
+                new CustomNumberOption(num++, MultiMenu.crewmate, "Hunter Stalk Duration", 25f, 5f, 40f, 1f, CooldownFormat);
+            HunterStalkUses =
+                new CustomNumberOption(num++, MultiMenu.crewmate, "Maximum Stalk Uses", 5, 1, 15, 1);
+            HunterBodyReport =
+                new CustomToggleOption(num++, MultiMenu.crewmate, "Hunter Can Report Who They've Killed");
             Sheriff =
                 new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#FFFF00FF>Sheriff</color>");
             SheriffShootRoundOne =
@@ -1225,7 +1247,7 @@ namespace TownOfUsFusion.CustomOption
             CanStakeRoundOne = new CustomToggleOption(num++, MultiMenu.crewmate, "Can Stake Round One", false);
             SelfKillAfterFinalStake = new CustomToggleOption(num++, MultiMenu.crewmate, "Self Kill On Failure To Kill A Vamp With All Stakes", false);
             BecomeOnVampDeaths =
-                new CustomStringOption(num++, MultiMenu.crewmate, "What Vampire Hunter Becomes On All Vampire Deaths", new[] { "Crewmate", "Sheriff", "Veteran", "Vigilante" });
+                new CustomStringOption(num++, MultiMenu.crewmate, "What Vampire Hunter Becomes On All Vampire Deaths", new[] { "Crewmate", "Sheriff", "Veteran", "Vigilante", "Hunter"});
 
             Veteran =
                 new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#998040FF>Veteran</color>");
@@ -1577,6 +1599,8 @@ namespace TownOfUsFusion.CustomOption
             Blackmailer = new CustomHeaderOption(num++, MultiMenu.imposter, "<color=#FF0000FF>Blackmailer</color>");
             BlackmailCooldown =
                 new CustomNumberOption(num++, MultiMenu.imposter, "Initial Blackmail Cooldown", 10f, 1f, 15f, 1f, CooldownFormat);
+            CanSeeBlackmailed =
+                new CustomToggleOption(num++, MultiMenu.imposter, "Players Can See Blackmailer Player", true);
 
             Miner = new CustomHeaderOption(num++, MultiMenu.imposter, "<color=#FF0000FF>Miner</color>");
             MineCooldown =

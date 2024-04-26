@@ -204,7 +204,9 @@ namespace TownOfUsFusion.CustomOption
             }
             catch
             {
-
+                var vanillarolebutton = __instance.Tabs.transform.FindChild("RoleTab");
+                __instance.Tabs.transform.FindChild("GameTab").localPosition = new(0.17f, 0, -5);
+                vanillarolebutton.gameObject.SetActive(false);
             }
         }
 

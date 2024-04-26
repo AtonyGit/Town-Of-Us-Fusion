@@ -80,6 +80,7 @@ public static class CustomGameOptions
     public static int OracleOn => (int)Generate.OracleOn.Get();
     public static int VenererOn => (int)Generate.VenererOn.Get();
     public static int AurialOn => (int)Generate.AurialOn.Get();
+    public static int HunterOn => (int)Generate.HunterOn.Get();
     // TOU FUSION ROLES
     public static int BodyguardOn => (int)Generate.BodyguardOn.Get();
     public static int MageOn => (int)Generate.MageOn.Get();
@@ -342,6 +343,7 @@ public static class CustomGameOptions
     public static int EvilTargetPercent => (int)Generate.EvilTargetPercent.Get();
     public static float MysticArrowDuration => Generate.MysticArrowDuration.Get();
     public static float BlackmailCd => Generate.BlackmailCooldown.Get();
+    public static bool CanSeeBlackmailed => Generate.CanSeeBlackmailed.Get();
     public static float GiantSlow => Generate.GiantSlow.Get();
     public static bool ObliviousCanReport => Generate.ObliviousCanReport.Get();
     public static float DwarfSpeed => Generate.DwarfSpeed.Get();
@@ -423,6 +425,11 @@ public static class CustomGameOptions
     public static float RadiateInvis => (float)Generate.RadiateInvis.Get();
     public static int RadiateCount => (int)Generate.RadiateCount.Get();
     public static int RadiateChance => (int)Generate.RadiateSucceedChance.Get();
+        public static float HunterKillCd => Generate.HunterKillCd.Get();
+        public static float HunterStalkCd => Generate.HunterStalkCd.Get();
+        public static float HunterStalkDuration => Generate.HunterStalkDuration.Get();
+        public static int HunterStalkUses => (int)Generate.HunterStalkUses.Get();
+        public static bool HunterBodyReport => Generate.HunterBodyReport.Get();
     public static AdminDeadPlayers WhoSeesDead => (AdminDeadPlayers)Generate.WhoSeesDead.Get();
     public static DisableSkipButtonMeetings SkipButtonDisable =>
         (DisableSkipButtonMeetings)Generate.SkipButtonDisable.Get();

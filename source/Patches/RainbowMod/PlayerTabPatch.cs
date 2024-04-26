@@ -29,9 +29,10 @@ public static class PlayerTabPatch
             if (RainbowUtils.IsRainbow(i)) __instance.ColorChips[i].Inner.SpriteColor = RainbowUtils.Rainbow;
             if (RainbowUtils.IsGalaxy(i)) __instance.ColorChips[i].Inner.SpriteColor = RainbowUtils.Galaxy;
             if (RainbowUtils.IsFire(i)) __instance.ColorChips[i].Inner.SpriteColor = RainbowUtils.Fire;
-            if (RainbowUtils.IsAcid(i))
+            if (RainbowUtils.IsAcid(i)) __instance.ColorChips[i].Inner.SpriteColor = RainbowUtils.Acid;
+            if (RainbowUtils.IsMonochrome(i))
             {
-                __instance.ColorChips[i].Inner.SpriteColor = RainbowUtils.Acid;
+                __instance.ColorChips[i].Inner.SpriteColor = RainbowUtils.Monochrome;
                 break;
             }
         }

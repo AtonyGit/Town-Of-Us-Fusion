@@ -20,10 +20,16 @@ public class RainbowUtils
     public static Color Acid => new HSBColor(PP(0.17f, 0.4f, 0.2f), 1, 1).ToColor();
     public static Color AcidShadow => Shadow(Acid);
 
+    public static Color Monochrome => new HSBColor(1, 0, PP(0.4f, 1f, 5.5f)).ToColor();
+    public static Color MonochromeShadow => Shadow(Monochrome);
 
     public static float PP(float min, float max, float mul)
     {
         return min + Mathf.PingPong(Time.time * mul, max - min);
+    }
+    public static float NotPP(float min, float max, float mul)
+    {
+        return min + Mathf.PerlinNoise(Time.time * mul, max - min);
     }
 
     public static Color Shadow(Color color)
@@ -56,60 +62,44 @@ public class RainbowUtils
         rend.material.SetColor(BodyColor, Acid);
         rend.material.SetColor(VisorColor, Palette.VisorColor);
     }
+    public static void SetMonochrome(Renderer rend)
+    {
+        rend.material.SetColor(BackColor, MonochromeShadow);
+        rend.material.SetColor(BodyColor, Monochrome);
+        rend.material.SetColor(VisorColor, Palette.VisorColor);
+    }
     public static bool IsGradient(int id)
     {
         try
-        {
-            return (int)Palette.ColorNames[id] == 999999 || (int)Palette.ColorNames[id] == 1000000 || (int)Palette.ColorNames[id] == 1000001  || (int)Palette.ColorNames[id] == 1000002;
-        }
-        catch
-        {
-            return false;
-        }
+        { return (int)Palette.ColorNames[id] == 999999 || (int)Palette.ColorNames[id] == 1000000
+            || (int)Palette.ColorNames[id] == 1000001  || (int)Palette.ColorNames[id] == 1000002
+            || (int)Palette.ColorNames[id] == 1000003; }
+        catch { return false; }
     }
     public static bool IsRainbow(int id)
     {
-        try
-        {
-            return (int)Palette.ColorNames[id] == 999999;
-        }
-        catch
-        {
-            return false;
-        }
+        try { return (int)Palette.ColorNames[id] == 999999; }
+        catch { return false; }
     }
     public static bool IsGalaxy(int id)
     {
-        try
-        {
-            return (int)Palette.ColorNames[id] == 1000000;
-        }
-        catch
-        {
-            return false;
-        }
+        try { return (int)Palette.ColorNames[id] == 1000000; }
+        catch { return false; }
     }
     public static bool IsFire(int id)
     {
-        try
-        {
-            return (int)Palette.ColorNames[id] == 1000001;
-        }
-        catch
-        {
-            return false;
-        }
+        try { return (int)Palette.ColorNames[id] == 1000001; }
+        catch { return false; }
     }
     public static bool IsAcid(int id)
     {
-        try
-        {
-            return (int)Palette.ColorNames[id] == 1000002;
-        }
-        catch
-        {
-            return false;
-        }
+        try { return (int)Palette.ColorNames[id] == 1000002; }
+        catch { return false; }
+    }
+    public static bool IsMonochrome(int id)
+    {
+        try { return (int)Palette.ColorNames[id] == 1000003; }
+        catch { return false; }
     }
 }
 

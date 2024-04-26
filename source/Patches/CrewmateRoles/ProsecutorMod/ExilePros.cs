@@ -29,6 +29,7 @@ public class ExilePros
                 {
                     KillButtonTarget.DontRevive = pros.Player.PlayerId;
                     pros.Player.Exiled();
+                    pros.DeathReason = DeathReasonEnum.Suicide;
                 }
                 pros.ProsecuteThisMeeting = false;
             }

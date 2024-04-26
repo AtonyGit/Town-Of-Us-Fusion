@@ -539,6 +539,14 @@ public static class Utils
             abilityUsed = true;
             fullCooldownReset = true;
         }
+            if (abilityUsed)
+            {
+                foreach (Role role in Role.GetRoles(RoleEnum.Hunter))
+                {
+                    Hunter hunter = (Hunter)role;
+                    hunter.CatchPlayer(player);
+                }
+            }
         var reset = new List<bool>();
         reset.Add(fullCooldownReset);
         reset.Add(gaReset);
@@ -646,6 +654,8 @@ public static class Utils
     public static void MurderPlayer(PlayerControl killer, PlayerControl target, bool jumpToBody)
     {
         var data = target.Data;
+        var targetRole = Role.GetRole(target);
+        var killerRole = Role.GetRole(killer);
         if (data != null && !data.IsDead)
         {
             if (ShowRoundOneShield.DiedFirst == "") ShowRoundOneShield.DiedFirst = target.GetDefaultOutfit().PlayerName;
@@ -692,6 +702,18 @@ public static class Utils
                 if (target.Is(Faction.Impostors) || target.Is(Faction.NeutralKilling) || target.Is(Faction.NeutralEvil) || target.Is(Faction.NeutralChaos) || target.Is(Faction.NeutralNeophyte) || target.Is(Faction.NeutralApocalypse)) veteran.CorrectKills += 1;
                 else if (killer != target) veteran.IncorrectKills += 1;
             }
+                if (killer.Is(RoleEnum.Hunter))
+                {
+                    var hunter = Role.GetRole<Hunter>(killer);
+                    if (target.Is(RoleEnum.Doomsayer) || target.Is(Faction.Impostors) || target.Is(Faction.NeutralKilling) || target.Is(Faction.NeutralNeophyte) || target.Is(Faction.NeutralApocalypse))
+                    {
+                        hunter.CorrectKills += 1;
+                    }
+                    else
+                    {
+                        hunter.IncorrectKills += 1;
+                    }
+                }
 
             target.gameObject.layer = LayerMask.NameToLayer("Ghost");
             target.Visible = false;
@@ -772,6 +794,14 @@ public static class Utils
 
             if (jumpToBody) killer.MyPhysics.StartCoroutine(killer.KillAnimations.Random().CoPerformKill(killer, target));
             else killer.MyPhysics.StartCoroutine(killer.KillAnimations.Random().CoPerformKill(target, target));
+            if (killer != target)
+                {
+                    targetRole.KilledBy = " By " + ColorString(killerRole.Color, killerRole.PlayerName);
+                    targetRole.DeathReason = DeathReasonEnum.Killed;
+                }
+                else targetRole.DeathReason = DeathReasonEnum.Suicide;
+
+
 
             if (target.Is(ModifierEnum.Frosty))
             {
@@ -888,7 +918,16 @@ public static class Utils
             }
         }
     }
-
+//Code from https://github.com/theOtherRolesAU/TheOtherRoles
+        public static string ColorString(Color c, string s)
+        {
+            return string.Format("<color=#{0:X2}{1:X2}{2:X2}{3:X2}>{4}</color>", ToByte(c.r), ToByte(c.g), ToByte(c.b), ToByte(c.a), s);
+        }
+        private static byte ToByte(float f)
+        {
+            f = Mathf.Clamp01(f);
+            return (byte)(f * 255);
+        }
     public static void BaitReport(PlayerControl killer, PlayerControl target)
     {
         Coroutines.Start(BaitReportDelay(killer, target));
@@ -1367,7 +1406,39 @@ public static class Utils
             }
         }
     }
+public static string DeathReason(this PlayerControl player)
+        {
+            if (player == null)
+                return "";
 
+            var role = Role.GetRole(player);
+
+            if (role == null)
+                return " Null";
+
+            var die = "";
+            var killedBy = "";
+            var result = "";
+
+            if (role.DeathReason == DeathReasonEnum.Killed)
+                die = "Killed";
+            else if (role.DeathReason == DeathReasonEnum.Ejected)
+                die = "Ejected";
+            else if (role.DeathReason == DeathReasonEnum.Guessed)
+                die = "Guessed";
+            else if (role.DeathReason == DeathReasonEnum.Alive)
+                die = "Alive";
+            else if (role.DeathReason == DeathReasonEnum.Suicide)
+                die = "Suicide";
+
+            if (role.DeathReason != DeathReasonEnum.Alive && role.DeathReason != DeathReasonEnum.Ejected && role.DeathReason != DeathReasonEnum.Suicide)
+                killedBy = role.KilledBy;
+
+            result = die + killedBy;
+
+            return result;
+        }
+        
     //Submerged utils
     public static object TryCast(this Il2CppObjectBase self, Type type)
     {
@@ -1456,6 +1527,11 @@ public static class Utils
                 tracker.TrackerArrows.Clear();
             }
         }
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Hunter))
+            {
+                var hunter = Role.GetRole<Hunter>(PlayerControl.LocalPlayer);
+                hunter.LastKilled = DateTime.UtcNow;
+            }
         if (PlayerControl.LocalPlayer.Is(RoleEnum.VampireHunter))
         {
             var vh = Role.GetRole<VampireHunter>(PlayerControl.LocalPlayer);
@@ -1501,6 +1577,15 @@ public static class Utils
                     vigi.CorrectKills = kills;
                     vigi.RegenTask();
                 }
+                    else if (CustomGameOptions.BecomeOnVampDeaths == BecomeEnum.Hunter)
+                    {
+                        Role.RoleDictionary.Remove(vhPlayer.PlayerId);
+                        var kills = ((VampireHunter)vh).CorrectKills;
+                        var hunt = new Hunter(vhPlayer);
+                        hunt.RegenTask();
+                        hunt.LastKilled = DateTime.UtcNow;
+                        hunt.UsesLeft = CustomGameOptions.HunterStalkUses;
+                    }
                 else
                 {
                     Role.RoleDictionary.Remove(vhPlayer.PlayerId);

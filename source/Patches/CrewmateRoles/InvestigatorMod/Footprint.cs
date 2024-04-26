@@ -78,6 +78,7 @@ namespace TownOfUsFusion.CrewmateRoles.InvestigatorMod
             if (RainbowUtils.IsGalaxy(Player.GetDefaultOutfit().ColorId)) Color = RainbowUtils.Galaxy;
             if (RainbowUtils.IsFire(Player.GetDefaultOutfit().ColorId)) Color = RainbowUtils.Fire;
             if (RainbowUtils.IsAcid(Player.GetDefaultOutfit().ColorId)) Color = RainbowUtils.Acid;
+            if (RainbowUtils.IsMonochrome(Player.GetDefaultOutfit().ColorId)) Color = RainbowUtils.Monochrome;
         }
         else if (Grey)
             Color = new Color(0.2f, 0.2f, 0.2f, 1f);

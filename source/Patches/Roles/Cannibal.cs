@@ -35,7 +35,7 @@ namespace TownOfUsFusion.Roles
             ExtraButtons.Add(value);
         }
     }
-    protected override void IntroPrefix(IntroCutscene._ShowTeam_d__36 __instance)
+    protected override void IntroPrefix(IntroCutscene._ShowTeam_d__38 __instance)
     {
         var cannibalTeam = new Il2CppSystem.Collections.Generic.List<PlayerControl>();
         cannibalTeam.Add(PlayerControl.LocalPlayer);

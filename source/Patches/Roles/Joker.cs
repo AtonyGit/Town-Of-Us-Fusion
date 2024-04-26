@@ -43,7 +43,7 @@ namespace TownOfUsFusion.Roles
         if (flag2) return 0;
         return (num - (float)timeSpan.TotalMilliseconds) / 1000f;
     }
-    protected override void IntroPrefix(IntroCutscene._ShowTeam_d__36 __instance)
+    protected override void IntroPrefix(IntroCutscene._ShowTeam_d__38 __instance)
     {
         var jokerTeam = new List<PlayerControl>();
         jokerTeam.Add(PlayerControl.LocalPlayer);

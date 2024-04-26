@@ -26,24 +26,6 @@ namespace TownOfUsFusion.Extensions
         return result;
     }
 
-    public static KeyValuePair<byte, int> MaxPair(this byte[] self, out bool tie)
-    {
-        tie = true;
-        var result = new KeyValuePair<byte, int>(byte.MaxValue, int.MinValue);
-        for (byte i = 0; i < self.Length; i++)
-            if (self[i] > result.Value)
-            {
-                result = new KeyValuePair<byte, int>(i, self[i]);
-                tie = false;
-            }
-            else if (self[i] == result.Value)
-            {
-                tie = true;
-            }
-
-        return result;
-    }
-
     public static VisualAppearance GetDefaultAppearance(this PlayerControl player)
     {
         return new VisualAppearance();
@@ -122,7 +104,7 @@ namespace TownOfUsFusion.Extensions
     public static bool IsNullOrDestroyed(this System.Object obj)
     {
 
-        if (object.ReferenceEquals(obj, null)) return true;
+            if (ReferenceEquals(obj, null)) return true;
 
         if (obj is UnityEngine.Object) return (obj as UnityEngine.Object) == null;
 
@@ -137,6 +119,6 @@ namespace TownOfUsFusion.Extensions
 
     public static TMPro.TextMeshPro NameText(this PoolablePlayer p) => p.cosmetics.nameText;
 
-    public static UnityEngine.SpriteRenderer myRend(this PlayerControl p) => p.cosmetics.currentBodySprite.BodySprite;
+        public static SpriteRenderer myRend(this PlayerControl p) => p.cosmetics.currentBodySprite.BodySprite;
 }
 }
