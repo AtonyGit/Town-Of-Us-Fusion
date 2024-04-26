@@ -560,7 +560,7 @@ namespace TownOfUsFusion.Roles
             }
         }
 
-        [HarmonyPatch(typeof(IntroCutscene._ShowTeam_d__36), nameof(IntroCutscene._ShowTeam_d__36.MoveNext))]
+        [HarmonyPatch(typeof(IntroCutscene._ShowTeam_d__38), nameof(IntroCutscene._ShowTeam_d__38.MoveNext))]
         public static class IntroCutscene_ShowTeam__d_MoveNext
         {
             public static void Prefix(IntroCutscene._ShowTeam_d__38 __instance)
@@ -619,7 +619,7 @@ namespace TownOfUsFusion.Roles
             }
         }
 
-        [HarmonyPatch(typeof(IntroCutscene._ShowRole_d__39), nameof(IntroCutscene._ShowRole_d__39.MoveNext))]
+        [HarmonyPatch(typeof(IntroCutscene._ShowRole_d__41), nameof(IntroCutscene._ShowRole_d__41.MoveNext))]
         public static class IntroCutscene_ShowRole_d__24
         {
             public static void Postfix(IntroCutscene._ShowRole_d__41 __instance)
