@@ -101,8 +101,8 @@ public static class CustomGameOptions
     public static int GhoulOn => (int)Generate.GhoulOn.Get();
     public static int MercenaryOn => (int)Generate.MercenaryOn.Get();
     public static int SerialKillerOn => (int)Generate.SerialKillerOn.Get();
-    public static int JuggernautOn => (int)Generate.JuggernautOn.Get();
 
+    public static int JackalOn => (int)Generate.JackalOn.Get();
     public static int NeoNecromancerOn => (int)Generate.NeoNecromancerOn.Get();
 
     public static int BakerOn => (int)Generate.BakerOn.Get();
@@ -128,7 +128,6 @@ public static class CustomGameOptions
     public static int GiantOn => (int)Generate.GiantOn.Get();
     public static int ButtonBarryOn => (int)Generate.ButtonBarryOn.Get();
     public static int BaitOn => (int)Generate.BaitOn.Get();
-    public static int LoversOn => (int)Generate.LoversOn.Get();
     public static int SleuthOn => (int)Generate.SleuthOn.Get();
     public static int AftermathOn => (int)Generate.AftermathOn.Get();
     public static int RadarOn => (int)Generate.RadarOn.Get();
@@ -139,26 +138,21 @@ public static class CustomGameOptions
     public static int FrostyOn => (int)Generate.FrostyOn.Get();
     public static float InitialCooldowns => Generate.InitialCooldowns.Get();
     public static bool ButtonBarryGetsCooldown => Generate.ButtonBarryGetsCooldown.Get();
-    public static bool BothLoversDie => Generate.BothLoversDie.Get();
-    public static bool NeutralLovers => Generate.NeutralLovers.Get();
     public static bool SheriffShootRoundOne => Generate.SheriffShootRoundOne.Get();
     public static bool SheriffKillOther => Generate.SheriffKillOther.Get();
     public static bool SheriffKillsDoomsayer => Generate.SheriffKillsDoomsayer.Get();
     public static bool SheriffKillsExecutioner => Generate.SheriffKillsExecutioner.Get();
     public static bool SheriffKillsJester => Generate.SheriffKillsJester.Get();
 
-    public static bool SheriffKillsTyrant => Generate.SheriffKillsTyrant.Get();
-    public static bool SheriffKillsCannibal => Generate.SheriffKillsCannibal.Get();
-    public static bool SheriffKillsJoker => Generate.SheriffKillsJoker.Get();
+    public static bool SheriffKillsChaos => Generate.SheriffKillsChaos.Get();
 
     public static bool SheriffKillsArsonist => Generate.SheriffKillsArsonist.Get();
-    public static bool SheriffKillsJuggernaut => Generate.SheriffKillsJuggernaut.Get();
-    public static bool SheriffKillsPlaguebearer => Generate.SheriffKillsPlaguebearer.Get();
+    public static bool SheriffKillsApocalypse => Generate.SheriffKillsApocalypse.Get();
     public static bool SheriffKillsGlitch => Generate.SheriffKillsGlitch.Get();
     public static bool SheriffKillsWerewolf => Generate.SheriffKillsWerewolf.Get();
 
-    public static bool SheriffKillsVampire => Generate.SheriffKillsVampire.Get();
-    public static bool SheriffKillsNeoNecromancer => Generate.SheriffKillsNeoNecromancer.Get();
+    public static bool SheriffKillsNeophyte => Generate.SheriffKillsNeophyte.Get();
+    public static bool SheriffKillsAlliedCrew => Generate.SheriffKillsAlliedCrew.Get();
     
     public static float SheriffKillCd => Generate.SheriffKillCd.Get();
     public static bool SwapperButton => Generate.SwapperButton.Get();
@@ -241,6 +235,8 @@ public static class CustomGameOptions
     public static int MaxNeutralNeophyteRoles => (int)Generate.MaxNeutralNeophyteRoles.Get();
     public static int MinNeutralApocalypseRoles => (int)Generate.MinNeutralApocalypseRoles.Get();
     public static int MaxNeutralApocalypseRoles => (int)Generate.MaxNeutralApocalypseRoles.Get();
+    public static int MinImpostorRoles => (int)Generate.MinImpostorRoles.Get();
+    public static int MaxImpostorRoles => (int)Generate.MaxImpostorRoles.Get();
     public static bool RandomNumberImps => Generate.RandomNumberImps.Get();
     public static int NeutralRoles => (int)Generate.NeutralRoles.Get();
     public static int VeteranCount => (int)Generate.VeteranCount.Get();
@@ -265,6 +261,8 @@ public static class CustomGameOptions
     public static bool AssassinGuessImpostors => Generate.AssassinGuessImpostors.Get();
     public static bool AssassinGuessModifiers => Generate.AssassinGuessModifiers.Get();
     public static bool AssassinGuessLovers => Generate.AssassinGuessLovers.Get();
+    public static bool AssassinGuessRecruits => Generate.AssassinGuessRecruits.Get();
+    public static bool AssassinGuessEvilCrew => Generate.AssassinGuessEvilCrew.Get();
     public static bool AssassinCrewmateGuess => Generate.AssassinCrewmateGuess.Get();
     public static bool AssassinGuessCrewInvestigative => Generate.AssassinGuessCrewInvestigative.Get();
     public static int AssassinKills => (int)Generate.AssassinKills.Get();
@@ -286,6 +284,8 @@ public static class CustomGameOptions
     public static bool VigilanteGuessNeutralNeophyte => Generate.VigilanteGuessNeutralNeophyte.Get();
     public static bool VigilanteGuessNeutralApocalypse => Generate.VigilanteGuessNeutralApocalypse.Get();
     public static bool VigilanteGuessLovers => Generate.VigilanteGuessLovers.Get();
+    public static bool VigilanteGuessRecruits => Generate.VigilanteGuessRecruits.Get();
+    public static bool VigilanteGuessEvilCrew => Generate.VigilanteGuessEvilCrew.Get();
     public static int VigilanteKills => (int)Generate.VigilanteKills.Get();
     public static bool VigilanteMultiKill => Generate.VigilanteMultiKill.Get();
     public static bool VigilanteAfterVoting => Generate.VigilanteAfterVoting.Get();
@@ -389,6 +389,7 @@ public static class CustomGameOptions
     public static float BiteCd => Generate.BiteCooldown.Get();
     public static bool VampImpVision => Generate.VampImpVision.Get();
     public static bool VampVent => Generate.VampVent.Get();
+    public static float BiteDuration => Generate.BiteDuration.Get();
     public static bool NewVampCanAssassin => Generate.NewVampCanAssassin.Get();
     public static int MaxVampiresPerGame => (int)Generate.MaxVampiresPerGame.Get();
     public static bool RememberedVampireStaysVamp => Generate.RememberedVampireStaysVamp.Get();
@@ -474,6 +475,10 @@ public static class CustomGameOptions
     public static float IncreasedCooldownPerRevive => Generate.IncreasedCooldownPerRevive.Get();
     public static int MaxReveals => (int)Generate.MaxReveals.Get();
 
+    public static float JackalKillCooldown => Generate.JackalKillCooldown.Get();
+    public static bool DoJackalRecruitsDie => Generate.DoJackalRecruitsDie.Get();
+    public static bool JackalCanAlwaysKill => Generate.JackalCanAlwaysKill.Get();
+
     public static float NecroKillCooldown => Generate.NecroKillCooldown.Get();
     public static float NecroResurrectCooldown => Generate.NecroResurrectCooldown.Get();
     public static float NecroIncreasedCooldownPerResurrect => Generate.NecroIncreasedCooldownPerResurrect.Get();
@@ -484,6 +489,8 @@ public static class CustomGameOptions
     public static int EnchantMaxReveals => (int)Generate.EnchantMaxReveals.Get();
     public static bool CanHuskVent => Generate.CanHuskVent.Get();
     public static bool CanHuskAssassinate => Generate.CanHuskAssassinate.Get();
+    public static bool HuskAssassinMultiKill => Generate.HuskAssassinMultiKill.Get();
+    public static int HuskAssassinKills => (int)Generate.HuskAssassinKills.Get();
 
     public static bool EnableAprilFoolsMode => Generate.EnableAprilFoolsMode.Get();
 
@@ -542,5 +549,12 @@ public static class CustomGameOptions
         public static bool BAMoveVitals => Generate.BAMoveVitals.Get();
         public static bool BAMoveFuel => Generate.BAMoveFuel.Get();
         public static bool BAMoveDivert => Generate.BAMoveDivert.Get();
+
+        
+    public static int CrewpocalypseOn => (int)Generate.CrewpocalypseOn.Get();
+    public static int CrewpostorOn => (int)Generate.CrewpostorOn.Get();
+    public static int LoversOn => (int)Generate.LoversOn.Get();
+    public static bool BothLoversDie => Generate.BothLoversDie.Get();
+    public static bool NeutralLovers => Generate.NeutralLovers.Get();
 }
 }

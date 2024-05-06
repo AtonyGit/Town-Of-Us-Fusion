@@ -21,15 +21,20 @@ namespace TownOfUsFusion
                         playerInfo._object.Is(RoleEnum.Jester) || playerInfo._object.Is(RoleEnum.Amnesiac) ||
                         playerInfo._object.Is(RoleEnum.Survivor) || playerInfo._object.Is(RoleEnum.GuardianAngel) ||
                         playerInfo._object.Is(RoleEnum.Glitch) || playerInfo._object.Is(RoleEnum.Executioner) ||
-                        playerInfo._object.Is(RoleEnum.Arsonist) || playerInfo._object.Is(RoleEnum.Juggernaut) ||
-                        playerInfo._object.Is(RoleEnum.Plaguebearer) || playerInfo._object.Is(RoleEnum.Pestilence) ||
+                        playerInfo._object.Is(RoleEnum.Arsonist) || playerInfo._object.Is(RoleEnum.Berserker) ||
                         playerInfo._object.Is(RoleEnum.Werewolf) || playerInfo._object.Is(RoleEnum.Doomsayer) ||
-                        playerInfo._object.Is(RoleEnum.Vampire) ||
+                        playerInfo._object.Is(RoleEnum.Vampire) || playerInfo._object.Is(RoleEnum.Jackal) || 
                         playerInfo._object.Is(RoleEnum.NeoNecromancer) || playerInfo._object.Is(RoleEnum.Scourge) ||
                         playerInfo._object.Is(RoleEnum.Apparitionist) || playerInfo._object.Is(RoleEnum.Enchanter) ||
                         playerInfo._object.Is(RoleEnum.Husk) ||
                         playerInfo._object.Is(RoleEnum.Tyrant) || playerInfo._object.Is(RoleEnum.Joker) ||
-                        playerInfo._object.Is(RoleEnum.Phantom) || playerInfo._object.Is(RoleEnum.Haunter)
+                        playerInfo._object.Is(RoleEnum.Phantom) || playerInfo._object.Is(RoleEnum.Haunter) ||
+                        playerInfo._object.Is(RoleEnum.Baker) || playerInfo._object.Is(RoleEnum.Famine) ||
+                        playerInfo._object.Is(RoleEnum.Berserker) || playerInfo._object.Is(RoleEnum.War) ||
+                        playerInfo._object.Is(RoleEnum.Plaguebearer) || playerInfo._object.Is(RoleEnum.Pestilence) ||
+                        playerInfo._object.Is(RoleEnum.SoulCollector) || playerInfo._object.Is(RoleEnum.Death) ||
+                        playerInfo._object.Is(AllianceEnum.Crewpostor) || playerInfo._object.Is(AllianceEnum.Crewpocalypse)
+                        || playerInfo._object.Is(AllianceEnum.Recruit)
                     ))
                     for (var j = 0; j < playerInfo.Tasks.Count; j++)
                     {
@@ -55,13 +60,15 @@ namespace TownOfUsFusion
                        || playerControl.Is(RoleEnum.Cannibal)
                        || playerControl.Is(RoleEnum.Jester)
                        || playerControl.Is(RoleEnum.Executioner)
-                       || playerControl.Is(RoleEnum.Juggernaut)
+                       || playerControl.Is(RoleEnum.Berserker)
                        || playerControl.Is(RoleEnum.Arsonist)
                        || playerControl.Is(RoleEnum.NeoNecromancer) || playerControl.Is(RoleEnum.Scourge)
                        || playerControl.Is(RoleEnum.Apparitionist) || playerControl.Is(RoleEnum.Enchanter)
-                       || playerControl.Is(RoleEnum.Husk)
-                       || playerControl.Is(RoleEnum.Plaguebearer)
-                       || playerControl.Is(RoleEnum.Pestilence)
+                       || playerControl.Is(RoleEnum.Husk) || playerInfo._object.Is(RoleEnum.Jackal)
+                       || playerControl.Is(RoleEnum.Baker) || playerControl.Is(RoleEnum.Famine)
+                       || playerControl.Is(RoleEnum.Berserker) || playerControl.Is(RoleEnum.War)
+                       || playerControl.Is(RoleEnum.Plaguebearer) || playerControl.Is(RoleEnum.Pestilence)
+                       || playerControl.Is(RoleEnum.SoulCollector) || playerControl.Is(RoleEnum.Death)
                        || playerControl.Is(RoleEnum.Werewolf)
                        || playerControl.Is(RoleEnum.Doomsayer)
                        || playerControl.Is(RoleEnum.Vampire);

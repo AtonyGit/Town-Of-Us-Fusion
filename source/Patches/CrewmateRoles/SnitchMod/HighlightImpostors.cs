@@ -37,7 +37,7 @@ public class HighlightImpostors
             if (player.Data.IsImpostor() && !player.Is(RoleEnum.Traitor)) player.nameText().color = Palette.ImpostorRed;
             else if (player.Is(RoleEnum.Traitor) && CustomGameOptions.SnitchSeesTraitor) player.nameText().color = Palette.ImpostorRed;
             var playerRole = Role.GetRole(player);
-            if (playerRole.Faction == Faction.NeutralKilling && CustomGameOptions.SnitchSeesNeutrals)
+            if ((playerRole.Faction == Faction.NeutralKilling || playerRole.Faction == Faction.NeutralNeophyte || playerRole.Faction == Faction.NeutralApocalypse) && CustomGameOptions.SnitchSeesNeutrals)
                 player.nameText().color = playerRole.Color;
         }
     }

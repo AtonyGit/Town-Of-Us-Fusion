@@ -21,7 +21,6 @@ namespace TownOfUsFusion
     Haunter,
     Veteran,
     Amnesiac,
-    Juggernaut,
     Tracker,
     Transporter,
     Medium,
@@ -89,6 +88,7 @@ namespace TownOfUsFusion
     Apparitionist,
     Enchanter,
     Husk,
+    Jackal,
 //  NEUTRAL APOCALYPSE
     Baker,
     Famine,
@@ -126,7 +126,6 @@ public enum FactionEnum
 }
 public enum ModifierEnum
 {
-    Lover,
     Torch,
     Diseased,
     Tiebreaker,
@@ -151,6 +150,14 @@ public enum ModifierEnum
     Oblivious,
     Troll,
     Tolerant,
+    None
+}
+public enum AllianceEnum
+{
+    Lover,
+    Recruit,
+    Crewpostor,
+    Crewpocalypse,
     None
 }
 

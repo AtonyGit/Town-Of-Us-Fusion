@@ -8,6 +8,7 @@ using Reactor.Utilities.Extensions;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using UnityEngine;
 using Object = UnityEngine.Object;
+using System.Reflection;
 
 namespace TownOfUsFusion.CustomOption
 {
@@ -87,6 +88,8 @@ namespace TownOfUsFusion.CustomOption
         SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "Slot 3", delegate { ImportSlot(3); }));
         SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "Slot 4", delegate { ImportSlot(4); }));
         SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "Slot 5", delegate { ImportSlot(5); }));
+        SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "<color=#255EF0FF>Forward</color> <color=#A043C2FF>Pals</color> <color=#51D37EFF>Preset</color>", delegate { ImportPresetSlot(6); }));
+        SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, Utils.GradientColorText("B7B9BA", "5E576B", "Four-Way Deadlock Preset (For 10+ Players)"), delegate { ImportPresetSlot(7); }));
         SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "Cancel", delegate { Cancel(FlashWhite); }));
 
         var options = CreateOptions();
@@ -105,6 +108,66 @@ namespace TownOfUsFusion.CustomOption
         foreach (var option in options) option.transform.localPosition = new Vector3(x, y - i++ * 0.5f, z);
 
         __instance.Children = new Il2CppReferenceArray<OptionBehaviour>(options.ToArray());
+    }
+
+    private void ImportPresetSlot(int slotId)
+    {
+        System.Console.WriteLine(slotId);
+
+        string text;
+
+        try
+        {
+            var path = Path.GetDirectoryName(Application.dataPath) + $@"\BepInEx\plugins\touf-presets\Preset-Slot{slotId}";
+            text = File.ReadAllText(path);
+        }
+        catch
+        {
+            Cancel(FlashRed);
+            PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("Failed to open " + Path.GetDirectoryName(Application.dataPath) + $@"\BepInEx\plugins\touf-presets\Preset-Slot{slotId}");
+            return;
+        }
+
+
+        var splitText = text.Split("\n").ToList();
+
+        while (splitText.Count > 0)
+        {
+            var name = splitText[0].Trim();
+            splitText.RemoveAt(0);
+            var option = AllOptions.FirstOrDefault(o => o.Name.Equals(name, StringComparison.Ordinal));
+            if (option == null)
+            {
+                try
+                {
+                    splitText.RemoveAt(0);
+                }
+                catch
+                {
+                }
+
+                continue;
+            }
+
+            var value = splitText[0];
+            splitText.RemoveAt(0);
+            switch (option.Type)
+            {
+                case CustomOptionType.Number:
+                    option.Set(float.Parse(value), false);
+                    break;
+                case CustomOptionType.Toggle:
+                    option.Set(bool.Parse(value), false);
+                    break;
+                case CustomOptionType.String:
+                    option.Set(int.Parse(value), false);
+                    break;
+            }
+        }
+
+        Rpc.SendRpc();
+
+        Cancel(FlashGreen);
     }
 
     private void ImportSlot(int slotId)

@@ -5,6 +5,7 @@ using TownOfUsFusion.Roles;
 using UnityEngine;
 using Reactor;
 using TownOfUsFusion.CrewmateRoles.MedicMod;
+using TownOfUsFusion.Roles.Apocalypse;
 
 namespace TownOfUsFusion.ImpostorRoles.PoisonerMod
 {

@@ -2,8 +2,9 @@ using HarmonyLib;
 using Il2CppSystem.Collections.Generic;
 using System.Linq;
 using TownOfUsFusion.Roles;
-using TownOfUsFusion.Roles.Modifiers;
+using TownOfUsFusion.Roles.Alliances;
 using TownOfUsFusion.Extensions;
+using TownOfUsFusion.Roles.Apocalypse;
 
 namespace TownOfUsFusion
 {
@@ -68,9 +69,48 @@ public class EndGameManager_SetEverythingUp
             var arso = (Arsonist)role;
             losers.Add(arso.Player.GetDefaultOutfit().ColorId);
         }
-        foreach (var role in Role.GetRoles(RoleEnum.Juggernaut))
+
+        foreach (var role in Role.GetRoles(RoleEnum.Jackal))
         {
-            var jugg = (Juggernaut)role;
+            var jackal = (Jackal)role;
+            losers.Add(jackal.Player.GetDefaultOutfit().ColorId);
+        }
+        foreach (var alliance in Alliance.GetAlliances(AllianceEnum.Recruit))
+        {
+            var jackal = (Recruit)alliance;
+            losers.Add(jackal.Player.GetDefaultOutfit().ColorId);
+        }
+
+        // APOCALYPSE
+        foreach (var role in Role.GetRoles(RoleEnum.Baker))
+        {
+            var bak = (Baker)role;
+            losers.Add(bak.Player.GetDefaultOutfit().ColorId);
+        }
+        foreach (var role in Role.GetRoles(RoleEnum.Berserker))
+        {
+            var jugg = (Berserker)role;
+            losers.Add(jugg.Player.GetDefaultOutfit().ColorId);
+        }
+        foreach (var role in Role.GetRoles(RoleEnum.Plaguebearer))
+        {
+            var pb = (Plaguebearer)role;
+            losers.Add(pb.Player.GetDefaultOutfit().ColorId);
+        }
+        foreach (var role in Role.GetRoles(RoleEnum.SoulCollector))
+        {
+            var sc = (SoulCollector)role;
+            losers.Add(sc.Player.GetDefaultOutfit().ColorId);
+        }
+
+        foreach (var role in Role.GetRoles(RoleEnum.Famine))
+        {
+            var bak = (Famine)role;
+            losers.Add(bak.Player.GetDefaultOutfit().ColorId);
+        }
+        foreach (var role in Role.GetRoles(RoleEnum.War))
+        {
+            var jugg = (War)role;
             losers.Add(jugg.Player.GetDefaultOutfit().ColorId);
         }
         foreach (var role in Role.GetRoles(RoleEnum.Pestilence))
@@ -78,11 +118,23 @@ public class EndGameManager_SetEverythingUp
             var pest = (Pestilence)role;
             losers.Add(pest.Player.GetDefaultOutfit().ColorId);
         }
-        foreach (var role in Role.GetRoles(RoleEnum.Plaguebearer))
+        foreach (var role in Role.GetRoles(RoleEnum.Death))
         {
-            var pb = (Plaguebearer)role;
-            losers.Add(pb.Player.GetDefaultOutfit().ColorId);
+            var sc = (Death)role;
+            losers.Add(sc.Player.GetDefaultOutfit().ColorId);
         }
+        foreach (var alliance in Alliance.GetAlliances(AllianceEnum.Crewpocalypse))
+        {
+            var crewpoc = (Crewpocalypse)alliance;
+            losers.Add(crewpoc.Player.GetDefaultOutfit().ColorId);
+        }
+        foreach (var alliance in Alliance.GetAlliances(AllianceEnum.Crewpostor))
+        {
+            var crewpost = (Crewpostor)alliance;
+            losers.Add(crewpost.Player.GetDefaultOutfit().ColorId);
+        }
+
+
         foreach (var role in Role.GetRoles(RoleEnum.Glitch))
         {
             var glitch = (Glitch)role;
@@ -266,13 +318,13 @@ public class EndGameManager_SetEverythingUp
             }
         }
 
-        foreach (var modifier in Modifier.AllModifiers)
+        foreach (var alliance in Alliance.AllAlliances)
         {
-            var type = modifier.ModifierType;
+            var type = alliance.AllianceType;
 
-            if (type == ModifierEnum.Lover)
+            if (type == AllianceEnum.Lover)
             {
-                var lover = (Lover)modifier;
+                var lover = (Lover)alliance;
                 if (lover.LoveCoupleWins)
                 {
                     var otherLover = lover.OtherLover;
@@ -285,6 +337,118 @@ public class EndGameManager_SetEverythingUp
                     TempData.winners.Add(loverTwoData);
                     return;
                 }
+            } else
+            if (type == AllianceEnum.Crewpostor)
+            {
+                var crewpostor = (Crewpostor)alliance;
+                var isImp = TempData.winners.Count != 0 && TempData.winners[0].IsImpostor;
+                var crewpostorWinData = new WinningPlayerData(crewpostor.Player.Data);
+                if (isImp) crewpostorWinData.IsImpostor = true;
+                if (PlayerControl.LocalPlayer != crewpostor.Player) crewpostorWinData.IsYou = false;
+                if (!isImp) return;
+                TempData.winners.Add(crewpostorWinData);
+                return;
+            }
+        }
+        
+
+        if (Role.ApocWins)
+        {
+            TempData.winners = new List<WinningPlayerData>();
+            foreach (var role in Role.GetRoles(RoleEnum.Baker))
+            {
+                var apoc = (Baker)role;
+                var apocData = new WinningPlayerData(apoc.Player.Data);
+                if (PlayerControl.LocalPlayer != apoc.Player) apocData.IsYou = false;
+                TempData.winners.Add(apocData);
+            }
+            foreach (var role in Role.GetRoles(RoleEnum.Berserker))
+            {
+                var apoc = (Berserker)role;
+                var apocData = new WinningPlayerData(apoc.Player.Data);
+                if (PlayerControl.LocalPlayer != apoc.Player) apocData.IsYou = false;
+                TempData.winners.Add(apocData);
+            }
+            foreach (var role in Role.GetRoles(RoleEnum.Plaguebearer))
+            {
+                var apoc = (Plaguebearer)role;
+                var apocData = new WinningPlayerData(apoc.Player.Data);
+                if (PlayerControl.LocalPlayer != apoc.Player) apocData.IsYou = false;
+                TempData.winners.Add(apocData);
+            }
+            foreach (var role in Role.GetRoles(RoleEnum.SoulCollector))
+            {
+                var apoc = (SoulCollector)role;
+                var apocData = new WinningPlayerData(apoc.Player.Data);
+                if (PlayerControl.LocalPlayer != apoc.Player) apocData.IsYou = false;
+                TempData.winners.Add(apocData);
+            }
+            
+            foreach (var role in Role.GetRoles(RoleEnum.Famine))
+            {
+                var apoc = (Famine)role;
+                var apocData = new WinningPlayerData(apoc.Player.Data);
+                if (PlayerControl.LocalPlayer != apoc.Player) apocData.IsYou = false;
+                TempData.winners.Add(apocData);
+            }
+            foreach (var role in Role.GetRoles(RoleEnum.War))
+            {
+                var apoc = (War)role;
+                var apocData = new WinningPlayerData(apoc.Player.Data);
+                if (PlayerControl.LocalPlayer != apoc.Player) apocData.IsYou = false;
+                TempData.winners.Add(apocData);
+            }
+            foreach (var role in Role.GetRoles(RoleEnum.Pestilence))
+            {
+                var apoc = (Pestilence)role;
+                var apocData = new WinningPlayerData(apoc.Player.Data);
+                if (PlayerControl.LocalPlayer != apoc.Player) apocData.IsYou = false;
+                TempData.winners.Add(apocData);
+            }
+            foreach (var role in Role.GetRoles(RoleEnum.Death))
+            {
+                var apoc = (Death)role;
+                var apocData = new WinningPlayerData(apoc.Player.Data);
+                if (PlayerControl.LocalPlayer != apoc.Player) apocData.IsYou = false;
+                TempData.winners.Add(apocData);
+            }
+            foreach (var alliance in Alliance.GetAlliances(AllianceEnum.Crewpocalypse))
+            {
+                var apoc = (Crewpocalypse)alliance;
+                var apocData = new WinningPlayerData(apoc.Player.Data);
+                if (PlayerControl.LocalPlayer != apoc.Player) apocData.IsYou = false;
+                TempData.winners.Add(apocData);
+            }/*
+            foreach (var alliance in Alliance.AllAlliances)
+            {
+                if (alliance.AllianceType == AllianceEnum.Crewpocalypse)
+                {
+                    var apoc = (Crewpostor)alliance;
+                    var isApoc = TempData.winners.Count != 0 && TempData.winners[0].IsImpostor;
+                    var apocData = new WinningPlayerData(apoc.Player.Data);
+                if (isApoc) apocData.IsImpostor = true;
+                    if (PlayerControl.LocalPlayer != apoc.Player) apocData.IsYou = false;
+                    TempData.winners.Add(apocData);
+                }
+            }*/
+        }
+
+        if (Role.JackalWins)
+        {
+            TempData.winners = new List<WinningPlayerData>();
+            foreach (var role in Role.GetRoles(RoleEnum.Jackal))
+            {
+                var jackal = (Jackal)role;
+                var jackalData = new WinningPlayerData(jackal.Player.Data);
+                if (PlayerControl.LocalPlayer != jackal.Player) jackalData.IsYou = false;
+                TempData.winners.Add(jackalData);
+            }
+            foreach (var alliance in Alliance.GetAlliances(AllianceEnum.Recruit))
+            {
+                var recruit = (Recruit)alliance;
+                var recruitData = new WinningPlayerData(recruit.Player.Data);
+                if (PlayerControl.LocalPlayer != recruit.Player) recruitData.IsYou = false;
+                TempData.winners.Add(recruitData);
             }
         }
 
@@ -328,17 +492,6 @@ public class EndGameManager_SetEverythingUp
                     TempData.winners.Add(glitchData);
                 }
             }
-            else if (type == RoleEnum.Juggernaut)
-            {
-                var juggernaut = (Juggernaut)role;
-                if (juggernaut.JuggernautWins)
-                {
-                    TempData.winners = new List<WinningPlayerData>();
-                    var juggData = new WinningPlayerData(juggernaut.Player.Data);
-                    if (PlayerControl.LocalPlayer != juggernaut.Player) juggData.IsYou = false;
-                    TempData.winners.Add(juggData);
-                }
-            }
             else if (type == RoleEnum.Arsonist)
             {
                 var arsonist = (Arsonist)role;
@@ -348,28 +501,6 @@ public class EndGameManager_SetEverythingUp
                     var arsonistData = new WinningPlayerData(arsonist.Player.Data);
                     if (PlayerControl.LocalPlayer != arsonist.Player) arsonistData.IsYou = false;
                     TempData.winners.Add(arsonistData);
-                }
-            }
-            else if (type == RoleEnum.Plaguebearer)
-            {
-                var plaguebearer = (Plaguebearer)role;
-                if (plaguebearer.PlaguebearerWins)
-                {
-                    TempData.winners = new List<WinningPlayerData>();
-                    var pbData = new WinningPlayerData(plaguebearer.Player.Data);
-                    if (PlayerControl.LocalPlayer != plaguebearer.Player) pbData.IsYou = false;
-                    TempData.winners.Add(pbData);
-                }
-            }
-            else if (type == RoleEnum.Pestilence)
-            {
-                var pestilence = (Pestilence)role;
-                if (pestilence.PestilenceWins)
-                {
-                    TempData.winners = new List<WinningPlayerData>();
-                    var pestilenceData = new WinningPlayerData(pestilence.Player.Data);
-                    if (PlayerControl.LocalPlayer != pestilence.Player) pestilenceData.IsYou = false;
-                    TempData.winners.Add(pestilenceData);
                 }
             }
             else if (type == RoleEnum.Werewolf)

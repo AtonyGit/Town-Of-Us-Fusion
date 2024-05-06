@@ -49,7 +49,7 @@ public static class VentPatches
             return false;
 
         if (player.Is(RoleEnum.Engineer) ||
-            (player.Is(RoleEnum.Glitch) && CustomGameOptions.GlitchVent) || (player.Is(RoleEnum.Juggernaut) && CustomGameOptions.JuggVent) ||
+            (player.Is(RoleEnum.Glitch) && CustomGameOptions.GlitchVent) || (player.Is(RoleEnum.Berserker) && CustomGameOptions.JuggVent) ||
             (player.Is(RoleEnum.Husk) && CustomGameOptions.CanHuskVent) ||
             (player.Is(RoleEnum.Pestilence) && CustomGameOptions.PestVent) || (player.Is(RoleEnum.Jester) && CustomGameOptions.JesterVent) ||
             (player.Is(RoleEnum.Vampire) && CustomGameOptions.VampVent))

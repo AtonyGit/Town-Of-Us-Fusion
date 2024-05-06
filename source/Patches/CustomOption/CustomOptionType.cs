@@ -24,6 +24,7 @@ public enum MultiMenu
     neutral,
     imposter,
     modifiers,
+    alliance,
     external
 }
 }

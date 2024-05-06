@@ -36,7 +36,9 @@ public static class LowLights
 
         var switchSystem = GameOptionsManager.Instance.currentNormalGameOptions.MapId == 5 ? null : __instance.Systems[SystemTypes.Electrical]?.TryCast<SwitchSystem>();
         if (player.IsImpostor() || player._object.Is(RoleEnum.Glitch) ||
-            player._object.Is(RoleEnum.Juggernaut) || player._object.Is(RoleEnum.Pestilence) ||
+            player._object.Is(RoleEnum.War) || player._object.Is(RoleEnum.Pestilence) ||
+            player._object.Is(RoleEnum.NeoNecromancer) ||
+            player._object.Is(RoleEnum.Death) || player._object.Is(RoleEnum.Famine) ||
             (player._object.Is(RoleEnum.Jester) && CustomGameOptions.JesterImpVision) ||
             (player._object.Is(RoleEnum.Arsonist) && CustomGameOptions.ArsoImpVision) ||
             (player._object.Is(RoleEnum.Vampire) && CustomGameOptions.VampImpVision))

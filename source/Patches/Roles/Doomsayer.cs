@@ -102,16 +102,23 @@ namespace TownOfUsFusion.Roles
                 if (CustomGameOptions.ArsonistOn > 0) ColorMapping.Add("Arsonist", Colors.Arsonist);
                 if (CustomGameOptions.GlitchOn > 0) ColorMapping.Add("The Glitch", Colors.Glitch);
                 if (CustomGameOptions.WerewolfOn > 0) ColorMapping.Add("Werewolf", Colors.Werewolf);
-                if (CustomGameOptions.JuggernautOn > 0) ColorMapping.Add("Juggernaut", Colors.Juggernaut);
             }
             if (CustomGameOptions.DoomsayerGuessNeutralNeophyte)
             {
                 if (CustomGameOptions.NeoNecromancerOn > 0) ColorMapping.Add("Necromancer", Colors.NeoNecromancer);
+                if (CustomGameOptions.NeoNecromancerOn > 0) ColorMapping.Add("Husk", Colors.NeoNecromancer);
+                if (CustomGameOptions.NeoNecromancerOn > 0) ColorMapping.Add("Scourge", Colors.NeoNecromancer);
+                if (CustomGameOptions.NeoNecromancerOn > 0) ColorMapping.Add("Enchanter", Colors.NeoNecromancer);
+                if (CustomGameOptions.NeoNecromancerOn > 0) ColorMapping.Add("Apparitionist", Colors.NeoNecromancer);
+                if (!player.Is(AllianceEnum.Recruit) && CustomGameOptions.JackalOn > 0) ColorMapping.Add(Utils.GradientColorText("B7B9BA", "5E576B", "Jackal"), Colors.Recruit);
                 if (CustomGameOptions.VampireOn > 0) ColorMapping.Add("Vampire", Colors.Vampire);
             }
             if (CustomGameOptions.DoomsayerGuessNeutralApocalypse)
             {
-                if (CustomGameOptions.PlaguebearerOn > 0) ColorMapping.Add("Plaguebearer", Colors.Plaguebearer);
+                if (CustomGameOptions.PlaguebearerOn > 0) ColorMapping.Add("Plaguebearer", Colors.RegularApoc);
+                if (CustomGameOptions.BakerOn > 0) ColorMapping.Add("Baker", Colors.RegularApoc);
+                if (CustomGameOptions.SoulCollectorOn > 0) ColorMapping.Add("Soul Collector", Colors.RegularApoc);
+                if (CustomGameOptions.BerserkerOn > 0) ColorMapping.Add("Berserker", Colors.RegularApoc);
             }
         }
 

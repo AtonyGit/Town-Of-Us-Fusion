@@ -25,7 +25,8 @@ public class ExilePros
             if (pros.ProsecuteThisMeeting)
             {
                 var exiled = __instance.exiled?.Object;
-                if (exiled != null && exiled.Is(Faction.Crewmates) && !exiled.IsLover() && CustomGameOptions.ProsDiesOnIncorrectPros)
+                if (exiled != null && exiled.Is(Faction.Crewmates) && !exiled.IsRecruit() && !exiled.IsLover() && CustomGameOptions.ProsDiesOnIncorrectPros 
+                && !PlayerControl.LocalPlayer.Is(AllianceEnum.Crewpostor) && !PlayerControl.LocalPlayer.Is(AllianceEnum.Crewpocalypse) && !PlayerControl.LocalPlayer.Is(AllianceEnum.Recruit))
                 {
                     KillButtonTarget.DontRevive = pros.Player.PlayerId;
                     pros.Player.Exiled();

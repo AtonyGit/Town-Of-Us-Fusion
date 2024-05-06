@@ -41,11 +41,8 @@ namespace TownOfUsFusion.Patches
     public readonly static Color Arsonist = new(1f, 0.3f, 0f);
     public readonly static Color Phantom = new(0.4f, 0.16f, 0.38f, 1f);
     public readonly static Color Amnesiac = new(0.5f, 0.7f, 1f, 1f);
-    public readonly static Color Juggernaut = new(0.55f, 0f, 0.3f, 1f);
     public readonly static Color Survivor = new(1f, 0.9f, 0.3f, 1f);
     public readonly static Color GuardianAngel = new(0.7f, 1f, 1f, 1f);
-    public readonly static Color Plaguebearer = new(0.9f, 1f, 0.7f, 1f);
-    public readonly static Color Pestilence = new(0.3f, 0.3f, 0.3f, 1f);
     public readonly static Color Werewolf = new(0.66f, 0.4f, 0.16f, 1f);
     public readonly static Color Doomsayer = new(0f, 1f, 0.5f, 1f);
     public readonly static Color Vampire = new(0.15f, 0.15f, 0.15f, 1f);
@@ -71,12 +68,10 @@ namespace TownOfUsFusion.Patches
     
     public readonly static Color NeoNecromancer = new(0.89f, 0.15f, 0.35f, 1f);
 
-    public readonly static Color Baker = new(0.9f, 1f, 0.7f, 1f);
-    public readonly static Color Berserker = new(0.9f, 1f, 0.7f, 1f);
-    public readonly static Color SoulCollector = new(0.9f, 1f, 0.7f, 1f);
-
-    //Imposter Colors
+    //Base Colors
     public readonly static Color Impostor = Palette.ImpostorRed;
+    public readonly static Color RegularApoc = new(1f, 0.91f, 0.7f, 1f);
+    public readonly static Color TrueApoc = new(0.42f, 0.36f, 0.23f, 1f);
 
     //Modifiers
     public readonly static Color Bait = new(0f, 0.7f, 0.7f, 1f);
@@ -89,12 +84,15 @@ namespace TownOfUsFusion.Patches
     public readonly static Color Dwarf = new(1f, 0.5f, 0.5f, 1f);
     public readonly static Color Eclipsed = new(0.85f, 0.56f, 0.44f, 1f);
     public readonly static Color Giant = new(1f, 0.7f, 0.3f, 1f);
-    public readonly static Color Lovers = new(1f, 0.4f, 0.8f, 1f);
     public readonly static Color Sleuth = new(0.5f, 0.2f, 0.2f, 1f);
     public readonly static Color Tiebreaker = new(0.6f, 0.9f, 0.6f, 1f);
     public readonly static Color Radar = new(1f, 0f, 0.5f, 1f);
     public readonly static Color Multitasker = new(1f, 0.5f, 0.3f, 1f);
     public readonly static Color Frosty = new(0.6f, 1f, 1f, 1f);
+    // ALLIANCE COLORS
+    public readonly static Color Recruit = new(0.31f, 0.3f, 0.36f, 1f);
+    public readonly static Color Lovers = new(1f, 0.4f, 0.53f, 1f);
+    public readonly static Color Crewpocalypse = new(1f, 0.4f, 0.8f, 1f);
     // OTHER STUFF
     public readonly static Color Role = Color.white;
     public readonly static Color Modifier = Color.white;

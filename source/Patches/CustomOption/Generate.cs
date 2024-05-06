@@ -118,7 +118,6 @@ namespace TownOfUsFusion.CustomOption
         public static CustomHeaderOption NeutralKillingRoles;
         public static CustomNumberOption ArsonistOn;
         public static CustomNumberOption InfiltratorOn;
-        public static CustomNumberOption JuggernautOn;
         public static CustomNumberOption GhoulOn;
         public static CustomNumberOption GlitchOn;
         public static CustomNumberOption MercenaryOn;
@@ -128,6 +127,7 @@ namespace TownOfUsFusion.CustomOption
         public static CustomHeaderOption NeutralNeophyteRoles;
         public static CustomNumberOption VampireOn;
         public static CustomNumberOption NeoNecromancerOn;
+        public static CustomNumberOption JackalOn;
 
         public static CustomHeaderOption NeutralApocalypseRoles;
         public static CustomNumberOption BakerOn;
@@ -168,7 +168,6 @@ namespace TownOfUsFusion.CustomOption
         public static CustomNumberOption DwarfOn;
         public static CustomNumberOption EclipsedOn;
         public static CustomNumberOption GiantOn;
-        public static CustomNumberOption LoversOn;
         public static CustomNumberOption NumbOn;
         public static CustomNumberOption NinjaOn;
         public static CustomNumberOption ObliviousOn;
@@ -181,6 +180,17 @@ namespace TownOfUsFusion.CustomOption
         public static CustomNumberOption DisperserOn;
         public static CustomNumberOption DoubleShotOn;
         public static CustomNumberOption UnderdogOn;
+
+        public static CustomHeaderOption CrewmateAlliances;
+        public static CustomNumberOption CrewpocalypseOn;
+        public static CustomNumberOption CrewpostorOn;
+        public static CustomHeaderOption GlobalAlliances;
+        public static CustomNumberOption LoversOn;
+        public static CustomHeaderOption Lovers;
+        public static CustomToggleOption BothLoversDie;
+        public static CustomNumberOption LovingImpPercent;
+        public static CustomToggleOption NeutralLovers;
+
         public static CustomHeaderOption CustomGameSettings;
         // April Fools
         public static CustomToggleOption EnableAprilFoolsMode;
@@ -210,6 +220,8 @@ namespace TownOfUsFusion.CustomOption
         public static CustomNumberOption MaxNeutralNeophyteRoles;
         public static CustomNumberOption MinNeutralApocalypseRoles;
         public static CustomNumberOption MaxNeutralApocalypseRoles;
+        public static CustomNumberOption MinImpostorRoles;
+        public static CustomNumberOption MaxImpostorRoles;
 
         public static CustomHeaderOption AllAnySettings;
         public static CustomToggleOption RandomNumberImps;
@@ -255,19 +267,15 @@ namespace TownOfUsFusion.CustomOption
         public static CustomToggleOption SheriffKillsDoomsayer;
         public static CustomToggleOption SheriffKillsExecutioner;
         public static CustomToggleOption SheriffKillsJester;
-
-        public static CustomToggleOption SheriffKillsTyrant;
-        public static CustomToggleOption SheriffKillsCannibal;
-        public static CustomToggleOption SheriffKillsJoker;
+        public static CustomToggleOption SheriffKillsChaos;
 
         public static CustomToggleOption SheriffKillsArsonist;
-        public static CustomToggleOption SheriffKillsJuggernaut;
-        public static CustomToggleOption SheriffKillsPlaguebearer;
+        public static CustomToggleOption SheriffKillsApocalypse;
         public static CustomToggleOption SheriffKillsGlitch;
         public static CustomToggleOption SheriffKillsWerewolf;
 
-        public static CustomToggleOption SheriffKillsNeoNecromancer;
-        public static CustomToggleOption SheriffKillsVampire;
+        public static CustomToggleOption SheriffKillsNeophyte;
+        public static CustomToggleOption SheriffKillsAlliedCrew;
 
         public static CustomNumberOption SheriffKillCd;
         public static CustomToggleOption SheriffBodyReport;
@@ -330,7 +338,7 @@ namespace TownOfUsFusion.CustomOption
         public static CustomStringOption GlitchHackDistanceOption;
         public static CustomToggleOption GlitchVent;
 
-        public static CustomHeaderOption Juggernaut;
+        public static CustomHeaderOption Berserker;
         public static CustomNumberOption JuggKillCooldown;
         public static CustomNumberOption ReducedKCdPerKill;
         public static CustomToggleOption JuggVent;
@@ -402,6 +410,8 @@ namespace TownOfUsFusion.CustomOption
         public static CustomToggleOption AssassinGuessImpostors;
         public static CustomToggleOption AssassinGuessModifiers;
         public static CustomToggleOption AssassinGuessLovers;
+        public static CustomToggleOption AssassinGuessRecruits;
+        public static CustomToggleOption AssassinGuessEvilCrew;
         public static CustomToggleOption AssassinateAfterVoting;
 
         public static CustomHeaderOption Underdog;
@@ -418,6 +428,8 @@ namespace TownOfUsFusion.CustomOption
         public static CustomToggleOption VigilanteGuessNeutralNeophyte;
         public static CustomToggleOption VigilanteGuessNeutralApocalypse;
         public static CustomToggleOption VigilanteGuessLovers;
+        public static CustomToggleOption VigilanteGuessRecruits;
+        public static CustomToggleOption VigilanteGuessEvilCrew;
         public static CustomToggleOption VigilanteAfterVoting;
 
         public static CustomHeaderOption Haunter;
@@ -540,6 +552,10 @@ namespace TownOfUsFusion.CustomOption
         public static CustomToggleOption DoomsayerAfterVoting;
         public static CustomNumberOption DoomsayerGuessesToWin;
 
+        public static CustomHeaderOption Jackal;
+        public static CustomNumberOption JackalKillCooldown;
+        public static CustomToggleOption DoJackalRecruitsDie;
+        public static CustomToggleOption JackalCanAlwaysKill;
 
         public static CustomHeaderOption NeoNecromancer;
         public static CustomNumberOption NecroKillCooldown;
@@ -552,9 +568,12 @@ namespace TownOfUsFusion.CustomOption
         public static CustomNumberOption EnchantMaxReveals;
         public static CustomToggleOption CanHuskVent;
         public static CustomToggleOption CanHuskAssassinate;
+        public static CustomNumberOption HuskAssassinKills;
+        public static CustomToggleOption HuskAssassinMultiKill;
 
         public static CustomHeaderOption Vampire;
         public static CustomNumberOption BiteCooldown;
+        public static CustomNumberOption BiteDuration;
         public static CustomToggleOption VampImpVision;
         public static CustomToggleOption VampVent;
         public static CustomToggleOption RememberedVampireStaysVamp;
@@ -625,11 +644,6 @@ namespace TownOfUsFusion.CustomOption
         public static CustomNumberOption BaitMaxDelay;
         public static CustomHeaderOption Oblivious;
         public static CustomToggleOption ObliviousCanReport;
-
-        public static CustomHeaderOption Lovers;
-        public static CustomToggleOption BothLoversDie;
-        public static CustomNumberOption LovingImpPercent;
-        public static CustomToggleOption NeutralLovers;
 
         public static CustomHeaderOption Frosty;
         public static CustomNumberOption ChillDuration;
@@ -818,8 +832,6 @@ namespace TownOfUsFusion.CustomOption
                 PercentFormat);
             InfiltratorOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#F62572FF>Infiltrator (WIP)</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
-            JuggernautOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#8C004DFF>Juggernaut</color>", 0f, 0f, 100f, 10f,
-                PercentFormat);
             GhoulOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#4EA4EBFF>Ghoul (WIP)</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             MercenaryOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#626900FF>Mercenary (WIP)</color>", 0f, 0f, 100f, 10f,
@@ -832,19 +844,21 @@ namespace TownOfUsFusion.CustomOption
                 PercentFormat);
 
             NeutralNeophyteRoles = new CustomHeaderOption(num++, MultiMenu.neutral, "Neutral Neophyte Roles");
-            VampireOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#262626FF>Vampire</color>", 0f, 0f, 100f, 10f,
+            JackalOn = new CustomNumberOption(num++, MultiMenu.neutral, Utils.GradientColorText("B7B9BA", "5E576B", "Jackal"), 0f, 0f, 100f, 10f,
                 PercentFormat);
             NeoNecromancerOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#E22759FF>Necromancer</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
+            VampireOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#262626FF>Vampire</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
 
-            NeutralApocalypseRoles = new CustomHeaderOption(num++, MultiMenu.neutral, "Neutral Apocalyse Roles");
-            BakerOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#E6FFB3FF>Baker (WIP)</color>", 0f, 0f, 100f, 10f,
+            NeutralApocalypseRoles = new CustomHeaderOption(num++, MultiMenu.neutral, "Neutral Apocalypse Roles");
+            BakerOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#FFE8B3FF>Baker (WIP)</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
-            BerserkerOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#E6FFB3FF>Berserker (WIP)</color>", 0f, 0f, 100f, 10f,
+            BerserkerOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#FFE8B3FF>Berserker</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
-            PlaguebearerOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#E6FFB3FF>Plaguebearer</color>", 0f, 0f, 100f, 10f,
+            PlaguebearerOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#FFE8B3FF>Plaguebearer</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
-            SoulCollectorOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#E6FFB3FF>Soul Collector (WIP)</color>", 0f, 0f, 100f, 10f,
+            SoulCollectorOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#FFE8B3FF>Soul Collector (WIP)</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
 
 
@@ -905,8 +919,6 @@ namespace TownOfUsFusion.CustomOption
                 PercentFormat);
             GiantOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#FFB34DFF>Giant</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
-            LoversOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#FF66CCFF>Lovers</color>", 0f, 0f, 100f, 10f,
-                PercentFormat);
             NumbOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#662529FF>Numb (WIP)</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             NinjaOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#304A3EFF>Ninja (WIP)</color>", 0f, 0f, 100f, 10f,
@@ -929,6 +941,22 @@ namespace TownOfUsFusion.CustomOption
                 PercentFormat);
             UnderdogOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#FF0000FF>Underdog</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
+
+            CrewmateAlliances = new CustomHeaderOption(num++, MultiMenu.alliance, "Crewmate Alliances");
+            CrewpostorOn = new CustomNumberOption(num++, MultiMenu.alliance, "<color=#FF0000FF>Crewpostor</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            CrewpocalypseOn = new CustomNumberOption(num++, MultiMenu.alliance, "<color=#FFE8B3FF>Crewpocalypse</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            GlobalAlliances = new CustomHeaderOption(num++, MultiMenu.alliance, "Global Alliances");
+            LoversOn = new CustomNumberOption(num++, MultiMenu.alliance, "<color=#FF66CCFF>Lovers</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+
+            Lovers =
+                new CustomHeaderOption(num++, MultiMenu.alliance, "<color=#FF66CCFF>Lovers</color>");
+            BothLoversDie = new CustomToggleOption(num++, MultiMenu.alliance, "Both Lovers Die");
+            LovingImpPercent = new CustomNumberOption(num++, MultiMenu.alliance, "Loving Impostor Probability", 20f, 0f, 100f, 10f,
+                PercentFormat);
+            NeutralLovers = new CustomToggleOption(num++, MultiMenu.alliance, "Neutral Roles Can Be Lovers");
 
             GameModeSettings =
                 new CustomHeaderOption(num++, MultiMenu.main, "Game Mode Settings");
@@ -960,6 +988,10 @@ namespace TownOfUsFusion.CustomOption
                 new CustomNumberOption(num++, MultiMenu.main, "Min Neutral Apocalypse Roles", 1, 0, 5, 1);
             MaxNeutralApocalypseRoles =
                 new CustomNumberOption(num++, MultiMenu.main, "Max Neutral Apocalypse Roles", 1, 0, 5, 1);
+            MinImpostorRoles =
+                new CustomNumberOption(num++, MultiMenu.main, "Min Impostor Roles", 1, 0, 3, 1);
+            MaxImpostorRoles =
+                new CustomNumberOption(num++, MultiMenu.main, "Max Impostor Roles", 1, 0, 3, 1);
 
             AllAnySettings =
                 new CustomHeaderOption(num++, MultiMenu.main, "All Any Settings");
@@ -1060,6 +1092,8 @@ namespace TownOfUsFusion.CustomOption
             AssassinGuessImpostors = new CustomToggleOption(num++, MultiMenu.imposter, "Assassin Can Guess Impostor Roles", false);
             AssassinGuessModifiers = new CustomToggleOption(num++, MultiMenu.imposter, "Assassin Can Guess Crewmate Modifiers", false);
             AssassinGuessLovers = new CustomToggleOption(num++, MultiMenu.imposter, "Assassin Can Guess Lovers", false);
+            AssassinGuessRecruits = new CustomToggleOption(num++, MultiMenu.imposter, "Assassin Can Guess Recruits", false);
+            AssassinGuessEvilCrew = new CustomToggleOption(num++, MultiMenu.imposter, "Assassin Can Guess Crewpostor/Crewpocalypse", false);
             AssassinateAfterVoting = new CustomToggleOption(num++, MultiMenu.imposter, "Assassin Can Guess After Voting", false);
 
             Aurial =
@@ -1212,28 +1246,22 @@ namespace TownOfUsFusion.CustomOption
             SheriffKillsJester =
                 new CustomToggleOption(num++, MultiMenu.crewmate, "Sheriff Kills Jester", false);
 
-            SheriffKillsJoker =
-                new CustomToggleOption(num++, MultiMenu.crewmate, "Sheriff Kills Joker", false);
-            SheriffKillsTyrant =
-                new CustomToggleOption(num++, MultiMenu.crewmate, "Sheriff Kills Tyrant", false);
-            SheriffKillsCannibal =
-                new CustomToggleOption(num++, MultiMenu.crewmate, "Sheriff Kills Cannibal", false);
+            SheriffKillsChaos =
+                new CustomToggleOption(num++, MultiMenu.crewmate, "Sheriff Kills Chaos Neutrals", false);
 
             SheriffKillsArsonist =
                 new CustomToggleOption(num++, MultiMenu.crewmate, "Sheriff Kills Arsonist", false);
             SheriffKillsGlitch =
                 new CustomToggleOption(num++, MultiMenu.crewmate, "Sheriff Kills The Glitch", false);
-            SheriffKillsJuggernaut =
-                new CustomToggleOption(num++, MultiMenu.crewmate, "Sheriff Kills Juggernaut", false);
-            SheriffKillsPlaguebearer =
-                new CustomToggleOption(num++, MultiMenu.crewmate, "Sheriff Kills Plaguebearer", false);
             SheriffKillsWerewolf =
                 new CustomToggleOption(num++, MultiMenu.crewmate, "Sheriff Kills Werewolf", false);
 
-            SheriffKillsNeoNecromancer =
-                new CustomToggleOption(num++, MultiMenu.crewmate, "Sheriff Kills Necromancer", false);
-            SheriffKillsVampire =
-                new CustomToggleOption(num++, MultiMenu.crewmate, "Sheriff Kills Vampire", false);
+            SheriffKillsNeophyte =
+                new CustomToggleOption(num++, MultiMenu.crewmate, "Sheriff Kills Neophyte Neutrals", false);
+            SheriffKillsApocalypse =
+                new CustomToggleOption(num++, MultiMenu.crewmate, "Sheriff Kills Apocalypse Neutrals", false);
+            SheriffKillsAlliedCrew =
+                new CustomToggleOption(num++, MultiMenu.crewmate, "Sheriff Kills Crewpostor/Crewpocalypse/Recruits", true);
 
             SheriffKillCd =
                 new CustomNumberOption(num++, MultiMenu.crewmate, "Sheriff Kill Cooldown", 25f, 10f, 40f, 2.5f, CooldownFormat);
@@ -1269,6 +1297,8 @@ namespace TownOfUsFusion.CustomOption
             VigilanteGuessNeutralNeophyte = new CustomToggleOption(num++, MultiMenu.crewmate, "Vigilante Can Guess Neutral Neophyte Roles", false);
             VigilanteGuessNeutralApocalypse = new CustomToggleOption(num++, MultiMenu.crewmate, "Vigilante Can Guess Neutral Apocalypse Roles", false);
             VigilanteGuessLovers = new CustomToggleOption(num++, MultiMenu.crewmate, "Vigilante Can Guess Lovers", false);
+            VigilanteGuessRecruits = new CustomToggleOption(num++, MultiMenu.crewmate, "Vigilante Can Guess Recruits", false);
+            VigilanteGuessEvilCrew = new CustomToggleOption(num++, MultiMenu.crewmate, "Vigilante Can Guess Crewpostor/Crewpocalypse", false);
             VigilanteAfterVoting = new CustomToggleOption(num++, MultiMenu.crewmate, "Vigilante Can Guess After Voting", false);
 
             Altruist = new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#660000FF>Altruist</color>");
@@ -1439,21 +1469,6 @@ namespace TownOfUsFusion.CustomOption
             IgniteCdRemoved =
                 new CustomToggleOption(num++, MultiMenu.neutral, "Ignite Cooldown Removed When Arsonist Is Last Killer", false);
 
-            Juggernaut =
-                new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#8C004DFF>Juggernaut</color>");
-            JuggKillCooldown = new CustomNumberOption(num++, MultiMenu.neutral, "Juggernaut Initial Kill Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
-            ReducedKCdPerKill = new CustomNumberOption(num++, MultiMenu.neutral, "Reduced Kill Cooldown Per Kill", 5f, 2.5f, 10f, 2.5f, CooldownFormat);
-            JuggVent =
-                new CustomToggleOption(num++, MultiMenu.neutral, "Juggernaut Can Vent", false);
-
-            Plaguebearer = new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#E6FFB3FF>Plaguebearer</color>");
-            InfectCooldown =
-                new CustomNumberOption(num++, MultiMenu.neutral, "Infect Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
-            PestKillCooldown =
-                new CustomNumberOption(num++, MultiMenu.neutral, "Pestilence Kill Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
-            PestVent =
-                new CustomToggleOption(num++, MultiMenu.neutral, "Pestilence Can Vent", false);
-
             TheGlitch =
                 new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#00FF00FF>The Glitch</color>");
             MimicCooldownOption = new CustomNumberOption(num++, MultiMenu.neutral, "Mimic Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
@@ -1477,6 +1492,14 @@ namespace TownOfUsFusion.CustomOption
             WerewolfVent =
                 new CustomToggleOption(num++, MultiMenu.neutral, "Werewolf Can Vent When Rampaged", false);
 
+            Jackal = new CustomHeaderOption(num++, MultiMenu.neutral, Utils.GradientColorText("B7B9BA", "5E576B", "Jackal"));
+            JackalKillCooldown =
+                new CustomNumberOption(num++, MultiMenu.neutral, "Jackal Kill Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
+            DoJackalRecruitsDie =
+                new CustomToggleOption(num++, MultiMenu.neutral, "Do Both Jackal Recruits Die", true);
+            JackalCanAlwaysKill =
+                new CustomToggleOption(num++, MultiMenu.neutral, "Jackal Can Always Kill", false);
+
             NeoNecromancer = new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#E22759FF>Necromancer Team</color>");
             NecroKillCooldown =
                 new CustomNumberOption(num++, MultiMenu.neutral, "Necromancer: Kill Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
@@ -1484,27 +1507,27 @@ namespace TownOfUsFusion.CustomOption
                 new CustomNumberOption(num++, MultiMenu.neutral, "Necromancer: Initial Resurrect Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
             NecroIncreasedCooldownPerResurrect =
                 new CustomNumberOption(num++, MultiMenu.neutral, "Necromancer: Increased Cooldown Per Resurrection", 25f, 10f, 60f, 2.5f, CooldownFormat);
-
             AppaResurrectCooldown =
                 new CustomNumberOption(num++, MultiMenu.neutral, "Apparitionist: Initial Resurrect Cooldown", 35f, 10f, 90f, 2.5f, CooldownFormat);
             AppaIncreasedCooldownPerResurrect =
                 new CustomNumberOption(num++, MultiMenu.neutral, "Apparitionist: Increased Cooldown Per Resurrection", 35f, 10f, 90f, 2.5f, CooldownFormat);
-
             ScourgeKillCooldown =
                 new CustomNumberOption(num++, MultiMenu.neutral, "Scourge Kill Cooldown", 35f, 10f, 90f, 2.5f, CooldownFormat);
-
             EnchantRevealCooldown =
                 new CustomNumberOption(num++, MultiMenu.neutral, "Enchanter: Reveal Cooldown", 35f, 10f, 90f, 2.5f, CooldownFormat);
             EnchantMaxReveals = new CustomNumberOption(num++, MultiMenu.neutral, "Enchanter: Max Reveal Uses", 5, 1, 15, 1);
-
             CanHuskVent =
                 new CustomToggleOption(num++, MultiMenu.neutral, "Can Husk Vent", true);
             CanHuskAssassinate =
-                new CustomToggleOption(num++, MultiMenu.neutral, "Can Husk Assassinate (Uses Vigi Settings)", false);
+                new CustomToggleOption(num++, MultiMenu.neutral, "Can Husk Assassinate (Uses Assassin Settings)", false);
+            HuskAssassinKills = new CustomNumberOption(num++, MultiMenu.neutral, "Number Of Husk Assassin Kills", 1, 1, 15, 1);
+            HuskAssassinMultiKill = new CustomToggleOption(num++, MultiMenu.neutral, "Husk Can Kill More Than Once Per Meeting", false);
 
             Vampire = new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#262626FF>Vampire</color>");
             BiteCooldown =
                 new CustomNumberOption(num++, MultiMenu.neutral, "Vampire Bite Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
+            BiteDuration =
+                new CustomNumberOption(num++, MultiMenu.neutral, "Vampire Bite Duration", 5f, 0f, 10f, 2.5f, CooldownFormat);
             VampImpVision =
                 new CustomToggleOption(num++, MultiMenu.neutral, "Vampires Have Impostor Vision", false);
             VampVent =
@@ -1522,6 +1545,21 @@ namespace TownOfUsFusion.CustomOption
             CanBiteNeutralChaos =
                 new CustomToggleOption(num++, MultiMenu.neutral, "Can Convert Neutral Chaos Roles", false);
 
+            Berserker =
+                new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#FFE8B3FF>Berserker</color>");
+            JuggKillCooldown = new CustomNumberOption(num++, MultiMenu.neutral, "Berserker Initial Kill Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
+            ReducedKCdPerKill = new CustomNumberOption(num++, MultiMenu.neutral, "Reduced Kill Cooldown Per Kill", 5f, 2.5f, 10f, 2.5f, CooldownFormat);
+            JuggVent =
+                new CustomToggleOption(num++, MultiMenu.neutral, "Berserker Can Vent", false);
+
+            Plaguebearer = new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#FFE8B3FF>Plaguebearer</color>");
+            InfectCooldown =
+                new CustomNumberOption(num++, MultiMenu.neutral, "Infect Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
+            PestKillCooldown =
+                new CustomNumberOption(num++, MultiMenu.neutral, "Pestilence Kill Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
+            PestVent =
+                new CustomToggleOption(num++, MultiMenu.neutral, "Pestilence Can Vent", false);
+                
             Escapist =
                 new CustomHeaderOption(num++, MultiMenu.imposter, "<color=#FF0000FF>Escapist</color>");
             EscapeCooldown =
@@ -1638,12 +1676,6 @@ namespace TownOfUsFusion.CustomOption
 
             Oblivious = new CustomHeaderOption(num++, MultiMenu.modifiers, "<color=#AAAAAAFF>Oblivious</color>");
             ObliviousCanReport = new CustomToggleOption(num++, MultiMenu.modifiers, "Oblivious Can Report", true);
-            Lovers =
-                new CustomHeaderOption(num++, MultiMenu.modifiers, "<color=#FF66CCFF>Lovers</color>");
-            BothLoversDie = new CustomToggleOption(num++, MultiMenu.modifiers, "Both Lovers Die");
-            LovingImpPercent = new CustomNumberOption(num++, MultiMenu.modifiers, "Loving Impostor Probability", 20f, 0f, 100f, 10f,
-                PercentFormat);
-            NeutralLovers = new CustomToggleOption(num++, MultiMenu.modifiers, "Neutral Roles Can Be Lovers");
 
             Underdog = new CustomHeaderOption(num++, MultiMenu.modifiers, "<color=#FF0000FF>Underdog</color>");
             UnderdogKillBonus = new CustomNumberOption(num++, MultiMenu.modifiers, "Kill Cooldown Bonus", 5f, 2.5f, 10f, 2.5f, CooldownFormat);

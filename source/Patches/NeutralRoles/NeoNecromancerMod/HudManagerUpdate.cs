@@ -20,12 +20,13 @@ public static class HudManagerUpdate
         if (!PlayerControl.LocalPlayer.Is(RoleEnum.NeoNecromancer)) return;
         var role = Role.GetRole<NeoNecromancer>(PlayerControl.LocalPlayer);
         
-        __instance.KillButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+            var killButton = __instance.KillButton;
+        killButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                 && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                 && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-            __instance.KillButton.SetCoolDown(role.NecroKillTimer(), CustomGameOptions.NecroKillCooldown);
-            PlayerControl.LocalPlayer.SetKillTimer(CustomGameOptions.NecroKillCooldown);
-            Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton, float.NaN);
+            killButton.SetCoolDown(role.NecroKillTimer(), CustomGameOptions.NecroKillCooldown);
+            Utils.SetTarget(ref role.ClosestPlayer, killButton, float.NaN);
+            
 
         if (role.ResurrectButton == null)
         {
@@ -90,7 +91,8 @@ public static class HudManagerUpdate
         }
         var player = Utils.PlayerById(role.CurrentTarget.ParentId);
         if (role.CurrentTarget && role.ResurrectButton.enabled &&
-            (!player.Is(ModifierEnum.Lover) || !player.Is(Faction.Impostors) || !player.Is(RoleEnum.Vampire) || !player.Is(Faction.NeutralApocalypse) || !player.Is(Faction.NeutralChaos)
+            (!player.Is(AllianceEnum.Lover) || !player.Is(AllianceEnum.Crewpocalypse) || !player.Is(AllianceEnum.Crewpostor) || !player.Is(AllianceEnum.Recruit) || 
+            !player.Is(Faction.Impostors) || !player.Is(RoleEnum.Vampire) || !player.Is(Faction.NeutralApocalypse) || !player.Is(Faction.NeutralChaos)
              || !player.Is(RoleEnum.Detective) || !player.Is(RoleEnum.Seer) || !player.Is(RoleEnum.Investigator) || !player.Is(RoleEnum.Tracker) || !player.Is(RoleEnum.Snitch)
             || !player.Is(RoleEnum.Spy) || !player.Is(RoleEnum.Trapper) || !player.Is(RoleEnum.VampireHunter) || !player.Is(RoleEnum.Veteran) || !player.Is(RoleEnum.Vigilante)
              || !player.Is(RoleEnum.Mayor) || !player.Is(RoleEnum.Prosecutor) || !player.Is(RoleEnum.Amnesiac) || !player.Is(RoleEnum.GuardianAngel)) &&

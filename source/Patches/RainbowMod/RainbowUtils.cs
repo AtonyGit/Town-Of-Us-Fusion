@@ -20,7 +20,7 @@ public class RainbowUtils
     public static Color Acid => new HSBColor(PP(0.17f, 0.4f, 0.2f), 1, 1).ToColor();
     public static Color AcidShadow => Shadow(Acid);
 
-    public static Color Monochrome => new HSBColor(1, 0, PP(0.4f, 1f, 5.5f)).ToColor();
+    public static Color Monochrome => new HSBColor(1, 0, PP(0.4f, 1f, 2.4f)).ToColor();
     public static Color MonochromeShadow => Shadow(Monochrome);
 
     public static float PP(float min, float max, float mul)

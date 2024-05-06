@@ -13,6 +13,8 @@ using TownOfUsFusion.CrewmateRoles.SwapperMod;
 using TownOfUsFusion.Patches;
 using Reactor.Utilities.Extensions;
 using TownOfUsFusion.CrewmateRoles.ImitatorMod;
+using TownOfUsFusion.Roles.Alliances;
+using TownOfUsFusion.NeutralRoles.HuskMod;
 
 namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
 {
@@ -138,6 +140,12 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
                 ShowHideButtonsVigi.HideButtonsVigi(vigilante);
             }
 
+            if (player.Is(RoleEnum.Husk))
+            {
+                var husk = Role.GetRole<Husk>(PlayerControl.LocalPlayer);
+                ShowHideButtonsHusk.HideButtonsHusk(husk);
+            }
+
             if (player.Is(RoleEnum.Doomsayer))
             {
                 var doom = Role.GetRole<Doomsayer>(PlayerControl.LocalPlayer);
@@ -158,8 +166,13 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
         player.Die(DeathReason.Kill, false);
         if (checkLover && player.IsLover() && CustomGameOptions.BothLoversDie)
         {
-            var otherLover = Modifier.GetModifier<Lover>(player).OtherLover.Player;
+            var otherLover = Alliance.GetAlliance<Lover>(player).OtherLover.Player;
             if (!otherLover.Is(RoleEnum.Pestilence)) MurderPlayer(otherLover, false, false);
+        } else
+        if (checkLover && player.IsRecruit() && CustomGameOptions.DoJackalRecruitsDie)
+        {
+            var otherRecruit = Alliance.GetAlliance<Recruit>(player).OtherRecruit.Player;
+            if (!otherRecruit.Is(RoleEnum.Pestilence)) MurderPlayer(otherRecruit, false, false);
         }
         
             var role2 = Role.GetRole(player);

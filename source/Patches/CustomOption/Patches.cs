@@ -10,7 +10,7 @@ namespace TownOfUsFusion.CustomOption
     public static class Patches
 {
 
-    static string[] Menus = { "Map", "Game", "Crew", "Neutral", "Imposter", "Modifier" };
+    static string[] Menus = { "Map", "Game", "Crew", "Neutral", "Imposter", "Modifier", "Alliance" };
 
     public static Export ExportButton;
     public static Import ImportButton;
@@ -38,6 +38,9 @@ namespace TownOfUsFusion.CustomOption
                 var toggle = Object.Instantiate(togglePrefab, togglePrefab.transform.parent);
                 toggle.transform.GetChild(2).gameObject.SetActive(false);
                 toggle.transform.GetChild(0).localPosition += new Vector3(1f, 0f, 0f);
+                toggle.transform.GetChild(1).localScale = new(1.6f, 1f, 1f);
+                //toggle.transform.GetChild(1).localPosition += new Vector3(1.2f, 0f, 0f);
+                //toggle.transform.GetChild(0).GetComponent<RectTransform>().sizeDelta = new(1.6f, 0.26f);
 
                 ExportButton.Setting = toggle;
                 ExportButton.OptionCreated();
@@ -54,6 +57,9 @@ namespace TownOfUsFusion.CustomOption
                 var toggle = Object.Instantiate(togglePrefab, togglePrefab.transform.parent);
                 toggle.transform.GetChild(2).gameObject.SetActive(false);
                 toggle.transform.GetChild(0).localPosition += new Vector3(1f, 0f, 0f);
+                toggle.transform.GetChild(1).localScale = new(1.6f, 1f, 1f);
+                //toggle.transform.GetChild(1).localPosition += new Vector3(1.2f, 0f, 0f);
+                //toggle.transform.GetChild(0).GetComponent<RectTransform>().sizeDelta = new(1.6f, 0.26f);
 
                 ImportButton.Setting = toggle;
                 ImportButton.OptionCreated();
@@ -80,21 +86,63 @@ namespace TownOfUsFusion.CustomOption
                     var toggle = Object.Instantiate(togglePrefab, togglePrefab.transform.parent);
                     toggle.transform.GetChild(1).gameObject.SetActive(false);
                     toggle.transform.GetChild(2).gameObject.SetActive(false);
+                    
+                        toggle.transform.GetChild(0).localPosition = new(-1.05f, 0f, 0f);
+                        toggle.transform.GetChild(0).GetComponent<RectTransform>().sizeDelta = new(5.5f, 0.37f);
+                        toggle.transform.GetChild(1).localScale = new(1.6f, 1f, 1f);
+                        toggle.transform.GetChild(2).localPosition = new(2.72f, 0f, 0f);
+                        toggle.gameObject.GetComponent<BoxCollider2D>().size = new(option is CustomHeaderOption ? 0f : 7.91f, 0.45f);
+
                     option.Setting = toggle;
                     options.Add(toggle);
                     break;
                 case CustomOptionType.Toggle:
                     var toggle2 = Object.Instantiate(togglePrefab, togglePrefab.transform.parent);
+                    
+                        toggle2.transform.GetChild(0).localPosition = new(-1.05f, 0f, 0f);
+                        toggle2.transform.GetChild(0).GetComponent<RectTransform>().sizeDelta = new(5.5f, 0.37f);
+                        toggle2.transform.GetChild(1).localScale = new(1.6f, 1f, 1f);
+                        toggle2.transform.GetChild(2).localPosition = new(2.72f, 0f, 0f);
+                        toggle2.gameObject.GetComponent<BoxCollider2D>().size = new(option is CustomHeaderOption ? 0f : 7.91f, 0.45f);
+                    
                     option.Setting = toggle2;
                     options.Add(toggle2);
                     break;
-                case CustomOptionType.Number:
+                case CustomOptionType.Number: //Background = 0, + = 1, - = 2, Title = 3, Val = 4
                     var number = Object.Instantiate(numberPrefab, numberPrefab.transform.parent);
+
+                    number.transform.GetChild(0).localScale = new(1.6f, 1f, 1f);
+                    number.transform.GetChild(1).localPosition += new Vector3(1.4f, 0f, 0f);
+                    number.transform.GetChild(2).localPosition += new Vector3(1, 0f, 0f);
+                    number.transform.GetChild(3).localPosition = new(-1.05f, 0f, 0f);
+                    number.transform.GetChild(3).GetComponent<RectTransform>().sizeDelta = new(5.5f, 0.37f);
+                    number.transform.GetChild(4).localPosition += new Vector3(1.2f, 0f, 0f);
+                    number.transform.GetChild(4).GetComponent<RectTransform>().sizeDelta = new(1.6f, 0.26f);
+
                     option.Setting = number;
                     options.Add(number);
                     break;
-                case CustomOptionType.String:
+                case CustomOptionType.String: //Background = 0, + = 1, - = 2, Title = 3, Val = 4
+                                                //+ = 0, - = 1, Title = 2, Val = 3, Background = 4
                     var str = Object.Instantiate(stringPrefab, stringPrefab.transform.parent);
+
+                    str.transform.GetChild(4).localScale = new(1.6f, 1f, 1f);
+                    str.transform.GetChild(0).localPosition += new Vector3(1.4f, 0f, 0f);
+                    str.transform.GetChild(1).localPosition += new Vector3(1, 0f, 0f);
+                    str.transform.GetChild(2).localPosition = new(-1.05f, 0f, 0f);
+                    str.transform.GetChild(2).GetComponent<RectTransform>().sizeDelta = new(5.5f, 0.37f);
+                    str.transform.GetChild(3).localPosition += new Vector3(1.2f, 0f, 0f);
+                    str.transform.GetChild(3).GetComponent<RectTransform>().sizeDelta = new(1.6f, 0.26f);
+/*
+                    str.transform.GetChild(1).localScale = new(1.6f, 1f, 1f);
+                    str.transform.GetChild(2).localPosition += new Vector3(1.4f, 0f, 0f);
+                    str.transform.GetChild(3).localPosition += new Vector3(1, 0f, 0f);
+
+                    str.transform.GetChild(2).GetComponent<RectTransform>().sizeDelta = new(5.5f, 0.37f);
+                    str.transform.GetChild(2).localPosition = new(-1.05f, 0f, 0f);
+                    str.transform.GetChild(4).localPosition += new Vector3(1.2f, 0f, 0f);
+                    str.transform.GetChild(3).GetComponent<RectTransform>().sizeDelta = new(1.6f, 0.26f);
+*/
                     option.Setting = str;
                     options.Add(str);
                     break;
@@ -147,7 +195,7 @@ namespace TownOfUsFusion.CustomOption
         public static void Postfix(GameSettingMenu __instance)
         {
             var obj = __instance.RolesSettingsHightlight.gameObject.transform.parent.parent;
-            var diff = 0.8f * Menus.Length - 2;
+            var diff = 0.9f * Menus.Length - 2;
             obj.transform.localPosition = new Vector3(obj.transform.localPosition.x - diff, obj.transform.localPosition.y, obj.transform.localPosition.z);
             __instance.GameSettingsHightlight.gameObject.transform.parent.localPosition = new Vector3(obj.transform.localPosition.x, obj.transform.localPosition.y, obj.transform.localPosition.z);
             List<GameObject> menug = new List<GameObject>();
@@ -157,6 +205,16 @@ namespace TownOfUsFusion.CustomOption
                 var touSettings = Object.Instantiate(__instance.RegularGameSettings, __instance.RegularGameSettings.transform.parent);
                 touSettings.SetActive(false);
                 touSettings.name = "TOUSettings" + Menus[index];
+
+            //Derived this from Town Of Host Edited
+            touSettings.transform.FindChild("BackPanel").transform.localScale = new(1.6f, 1f, 1f);
+            touSettings.transform.FindChild("Bottom Gradient").transform.localScale = new(1.6f, 1f, 1f);
+            touSettings.transform.FindChild("BackPanel").transform.localPosition += new Vector3(0.2f, 0f, 0f);
+            touSettings.transform.FindChild("Bottom Gradient").transform.localPosition += new Vector3(0.2f, 0f, 0f);
+            touSettings.transform.FindChild("Background").transform.localScale = new(1.8f, 1f, 1f);
+            touSettings.transform.FindChild("UI_Scrollbar").transform.localPosition += new Vector3(1.4f, 0f, 0f);
+            touSettings.transform.FindChild("UI_ScrollbarTrack").transform.localPosition += new Vector3(1.4f, 0f, 0f);
+            touSettings.transform.FindChild("GameGroup/SliderInner").transform.localPosition += new Vector3(-0.3f, 0f, 0f);
 
                 var gameGroup = touSettings.transform.FindChild("GameGroup");
                 var title = gameGroup?.FindChild("Text");
@@ -171,7 +229,7 @@ namespace TownOfUsFusion.CustomOption
                     sliderInner.GetComponent<GameOptionsMenu>().name = $"Tou{Menus[index]}OptionsMenu";
 
                 var ourSettingsButton = Object.Instantiate(obj.gameObject, obj.transform.parent);
-                ourSettingsButton.transform.localPosition = new Vector3(obj.localPosition.x + (0.8f * (index + 1)), obj.localPosition.y, obj.localPosition.z);
+                ourSettingsButton.transform.localPosition = new Vector3(obj.localPosition.x + (1f * (index + 1)), obj.localPosition.y, obj.localPosition.z);
                 ourSettingsButton.name = $"TOU{Menus[index]}tab";
                 var hatButton = ourSettingsButton.transform.GetChild(0); //TODO:  change to FindChild I guess to be sure
                 var hatIcon = hatButton.GetChild(0);
@@ -228,6 +286,8 @@ namespace TownOfUsFusion.CustomOption
                     return TownOfUsFusion.ImposterSettingsButtonSprite;
                 case 5:
                     return TownOfUsFusion.ModifierSettingsButtonSprite;
+                case 6:
+                    return TownOfUsFusion.AllianceSettingsButtonSprite;
             }
         }
     }

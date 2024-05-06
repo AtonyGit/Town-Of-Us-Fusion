@@ -69,7 +69,7 @@ namespace TownOfUsFusion.Roles
 
         if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected) <= 2 &&
                 PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
-                (x.Data.IsImpostor() || x.Is(Faction.NeutralKilling))) == 1)
+                (x.Data.IsImpostor() || x.Is(Faction.NeutralNeophyte)|| x.Is(Faction.NeutralKilling)|| x.Is(Faction.NeutralApocalypse))) == 1)
         {
             Utils.Rpc(CustomRPC.GlitchWin, Player.PlayerId);
             Wins();

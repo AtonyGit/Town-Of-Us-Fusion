@@ -82,19 +82,26 @@ namespace TownOfUsFusion.Roles.Modifiers
             if (CustomGameOptions.ArsonistOn > 0 && !PlayerControl.LocalPlayer.Is(RoleEnum.Arsonist)) ColorMapping.Add("Arsonist", Colors.Arsonist);
             if (CustomGameOptions.GlitchOn > 0 && !PlayerControl.LocalPlayer.Is(RoleEnum.Glitch)) ColorMapping.Add("The Glitch", Colors.Glitch);
             if (CustomGameOptions.WerewolfOn > 0 && !PlayerControl.LocalPlayer.Is(RoleEnum.Werewolf)) ColorMapping.Add("Werewolf", Colors.Werewolf);
-            if (CustomGameOptions.JuggernautOn > 0 && !PlayerControl.LocalPlayer.Is(RoleEnum.Juggernaut)) ColorMapping.Add("Juggernaut", Colors.Juggernaut);
         }
             if (CustomGameOptions.AssassinGuessNeutralNeophyte)
             {
-                if (CustomGameOptions.NeoNecromancerOn > 0) ColorMapping.Add("Necromancer", Colors.NeoNecromancer);
+                if (!player.Is(AllianceEnum.Recruit) && CustomGameOptions.JackalOn > 0) ColorMapping.Add(Utils.GradientColorText("B7B9BA", "5E576B", "Jackal"), Colors.Recruit);
+                if (CustomGameOptions.NeoNecromancerOn > 0 && !PlayerControl.LocalPlayer.Is(RoleEnum.NeoNecromancer)) ColorMapping.Add("Necromancer", Colors.NeoNecromancer);
+                if (CustomGameOptions.NeoNecromancerOn > 0) ColorMapping.Add("Husk", Colors.NeoNecromancer);
+                if (CustomGameOptions.NeoNecromancerOn > 0) ColorMapping.Add("Scourge", Colors.NeoNecromancer);
+                if (CustomGameOptions.NeoNecromancerOn > 0) ColorMapping.Add("Enchanter", Colors.NeoNecromancer);
+                if (CustomGameOptions.NeoNecromancerOn > 0) ColorMapping.Add("Apparitionist", Colors.NeoNecromancer);
                 if (CustomGameOptions.VampireOn > 0) ColorMapping.Add("Vampire", Colors.Vampire);
             }
-            if (CustomGameOptions.AssassinGuessNeutralApocalypse)
+            if (CustomGameOptions.AssassinGuessNeutralApocalypse && !PlayerControl.LocalPlayer.Is(Faction.NeutralApocalypse) && !PlayerControl.LocalPlayer.Is(AllianceEnum.Crewpocalypse))
             {
-                if (CustomGameOptions.PlaguebearerOn > 0) ColorMapping.Add("Plaguebearer", Colors.Plaguebearer);
+                if (CustomGameOptions.PlaguebearerOn > 0 && !PlayerControl.LocalPlayer.Is(RoleEnum.Plaguebearer)) ColorMapping.Add("Plaguebearer", Colors.RegularApoc);
+                if (CustomGameOptions.BakerOn > 0 && !PlayerControl.LocalPlayer.Is(RoleEnum.Baker)) ColorMapping.Add("Baker", Colors.RegularApoc);
+                if (CustomGameOptions.SoulCollectorOn > 0 && !PlayerControl.LocalPlayer.Is(RoleEnum.SoulCollector)) ColorMapping.Add("Soul Collector", Colors.RegularApoc);
+                if (CustomGameOptions.BerserkerOn > 0 && !PlayerControl.LocalPlayer.Is(RoleEnum.Berserker)) ColorMapping.Add("Berserker", Colors.RegularApoc);
             }
 
-        if (CustomGameOptions.AssassinGuessImpostors && !PlayerControl.LocalPlayer.Is(Faction.Impostors))
+        if (CustomGameOptions.AssassinGuessImpostors && !PlayerControl.LocalPlayer.Is(Faction.Impostors) && !PlayerControl.LocalPlayer.Is(AllianceEnum.Crewpostor))
         {
             ColorMapping.Add("Impostor", Colors.Impostor);
             if (CustomGameOptions.JanitorOn > 0) ColorMapping.Add("Janitor", Colors.Impostor);
@@ -124,6 +131,9 @@ namespace TownOfUsFusion.Roles.Modifiers
         if (CustomGameOptions.AssassinGuessModifiers && CustomGameOptions.EclipsedOn > 0) ColorMapping.Add("Eclipsed", Colors.Eclipsed);
         if (CustomGameOptions.AssassinGuessLovers && CustomGameOptions.LoversOn > 0) ColorMapping.Add("Lover", Colors.Lovers);
 
+                if (CustomGameOptions.AssassinGuessRecruits && !PlayerControl.LocalPlayer.Is(RoleEnum.Jackal) && !player.Is(AllianceEnum.Recruit) && CustomGameOptions.JackalOn > 0) ColorMapping.Add(Utils.GradientColorText("B7B9BA", "5E576B", "Recruit"), Colors.Recruit);
+                if (CustomGameOptions.AssassinGuessEvilCrew && !PlayerControl.LocalPlayer.Is(Faction.Impostors) && !player.Is(AllianceEnum.Crewpostor) && CustomGameOptions.CrewpostorOn > 0) ColorMapping.Add("Crewpostor", Colors.Impostor);
+                if (CustomGameOptions.AssassinGuessEvilCrew && !PlayerControl.LocalPlayer.Is(Faction.NeutralApocalypse) && !player.Is(AllianceEnum.Crewpocalypse) && CustomGameOptions.CrewpocalypseOn > 0) ColorMapping.Add("Crewpocalypse", Colors.RegularApoc);
         // Sorts the list alphabetically. 
         SortedColorMapping = ColorMapping.OrderBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
     }

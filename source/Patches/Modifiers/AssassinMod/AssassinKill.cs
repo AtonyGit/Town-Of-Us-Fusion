@@ -13,6 +13,8 @@ using TownOfUsFusion.Extensions;
 using TownOfUsFusion.CrewmateRoles.ImitatorMod;
 using TownOfUsFusion.Patches;
 using Reactor.Utilities.Extensions;
+using TownOfUsFusion.Roles.Alliances;
+using TownOfUsFusion.NeutralRoles.HuskMod;
 
 namespace TownOfUsFusion.Modifiers.AssassinMod
 {
@@ -126,6 +128,12 @@ namespace TownOfUsFusion.Modifiers.AssassinMod
                 ShowHideButtonsVigi.HideButtonsVigi(retributionist);
             }
 
+            if (player.Is(RoleEnum.Husk))
+            {
+                var husk = Role.GetRole<Husk>(PlayerControl.LocalPlayer);
+                ShowHideButtonsHusk.HideButtonsHusk(husk);
+            }
+            
             if (player.Is(AbilityEnum.Assassin))
             {
                 var assassin = Ability.GetAbility<Assassin>(PlayerControl.LocalPlayer);
@@ -152,8 +160,13 @@ namespace TownOfUsFusion.Modifiers.AssassinMod
         player.Die(DeathReason.Kill, false);
         if (checkLover && player.IsLover() && CustomGameOptions.BothLoversDie)
         {
-            var otherLover = Modifier.GetModifier<Lover>(player).OtherLover.Player;
+            var otherLover = Alliance.GetAlliance<Lover>(player).OtherLover.Player;
             if (!otherLover.Is(RoleEnum.Pestilence)) MurderPlayer(otherLover, false);
+        } else
+        if (checkLover && player.IsRecruit() && CustomGameOptions.DoJackalRecruitsDie)
+        {
+            var otherRecruit = Alliance.GetAlliance<Recruit>(player).OtherRecruit.Player;
+            if (!otherRecruit.Is(RoleEnum.Pestilence)) MurderPlayer(otherRecruit, false);
         }
 
             var role2 = Role.GetRole(player);

@@ -28,7 +28,7 @@ public class SetHaunter
     {
         if (WillBeHaunter == null) return;
         var exiled = __instance.exiled?.Object;
-        if (!WillBeHaunter.Data.IsDead && exiled.Is(Faction.Crewmates) && !exiled.IsLover()) WillBeHaunter = exiled;
+        if (!WillBeHaunter.Data.IsDead && exiled.Is(Faction.Crewmates) && !exiled.Is(AllianceEnum.Lover) && !exiled.Is(AllianceEnum.Crewpocalypse) && !exiled.Is(AllianceEnum.Crewpostor) && !exiled.Is(AllianceEnum.Recruit)) WillBeHaunter = exiled;
         if (WillBeHaunter.Data.Disconnected) return;
         if (!WillBeHaunter.Data.IsDead && WillBeHaunter != exiled) return;
 

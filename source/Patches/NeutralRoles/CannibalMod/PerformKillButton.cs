@@ -3,6 +3,7 @@ using Reactor.Utilities;
 using TownOfUsFusion.Roles;
 using UnityEngine;
 using AmongUs.GameOptions;
+using TownOfUsFusion.Roles.Apocalypse;
 
 namespace TownOfUsFusion.NeutralRoles.CannibalMod
 {

@@ -10,6 +10,7 @@ using UnityEngine;
 using Object = UnityEngine.Object;
 using TownOfUsFusion.Roles.Modifiers;
 using AmongUs.GameOptions;
+using TownOfUsFusion.Roles.Alliances;
 
 namespace TownOfUsFusion.CrewmateRoles.AltruistMod
 {
@@ -60,7 +61,13 @@ namespace TownOfUsFusion.CrewmateRoles.AltruistMod
             var poisonerRole = (Poisoner)poisoner;
             if (poisonerRole.PoisonedPlayer == player) poisonerRole.PoisonedPlayer = poisonerRole.Player;
         }
-            
+
+        foreach (var vamp in Role.GetRoles(RoleEnum.Vampire))
+        {
+            var vampRole = (Vampire)vamp;
+            if (vampRole.BittenPlayer == player) vampRole.BittenPlayer = vampRole.Player;
+        }
+
         player.Revive();
         if (player.Is(Faction.Impostors)) RoleManager.Instance.SetRole(player, RoleTypes.Impostor);
         else RoleManager.Instance.SetRole(player, RoleTypes.Crewmate);
@@ -77,7 +84,7 @@ namespace TownOfUsFusion.CrewmateRoles.AltruistMod
 
         if (player.IsLover() && CustomGameOptions.BothLoversDie)
         {
-            var lover = Modifier.GetModifier<Lover>(player).OtherLover.Player;
+            var lover = Alliance.GetAlliance<Lover>(player).OtherLover.Player;
 
             lover.Revive();
             if (lover.Is(Faction.Impostors)) RoleManager.Instance.SetRole(lover, RoleTypes.Impostor);
@@ -89,6 +96,26 @@ namespace TownOfUsFusion.CrewmateRoles.AltruistMod
             foreach (DeadBody deadBody in GameObject.FindObjectsOfType<DeadBody>())
             {
                 if (deadBody.ParentId == lover.PlayerId)
+                {
+                    deadBody.gameObject.Destroy();
+                }
+            }
+        }
+
+        if (player.IsRecruit() && CustomGameOptions.DoJackalRecruitsDie)
+        {
+            var recruit = Alliance.GetAlliance<Recruit>(player).OtherRecruit.Player;
+
+            recruit.Revive();
+            if (recruit.Is(Faction.Impostors)) RoleManager.Instance.SetRole(recruit, RoleTypes.Impostor);
+            else RoleManager.Instance.SetRole(recruit, RoleTypes.Crewmate);
+            Murder.KilledPlayers.Remove(
+                Murder.KilledPlayers.FirstOrDefault(x => x.PlayerId == recruit.PlayerId));
+            revived.Add(recruit);
+
+            foreach (DeadBody deadBody in GameObject.FindObjectsOfType<DeadBody>())
+            {
+                if (deadBody.ParentId == recruit.PlayerId)
                 {
                     deadBody.gameObject.Destroy();
                 }

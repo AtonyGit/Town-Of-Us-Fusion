@@ -7,6 +7,7 @@ using Reactor.Utilities;
 using AmongUs.GameOptions;
 using System.Collections.Generic;
 using TownOfUsFusion.Extensions;
+using TownOfUsFusion.Roles.Apocalypse;
 
 namespace TownOfUsFusion.CrewmateRoles.DetectiveMod
 {

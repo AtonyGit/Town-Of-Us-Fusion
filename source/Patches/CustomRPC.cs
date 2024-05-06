@@ -4,7 +4,9 @@ namespace TownOfUsFusion
 {
     SetRole = 100,
     SetModifier,
+    SetAlliance,
     SetCouple,
+    SetRecruits,
     SetAssassin,
     SetTarget,
     SetGATarget,
@@ -20,18 +22,17 @@ namespace TownOfUsFusion
 
     LoveWin,
     GlitchWin,
-    JuggernautWin,
     ArsonistWin,
     PhantomWin,
     NobodyWins,
-    PlaguebearerWin,
-    PestilenceWin,
     WerewolfWin,
     SurvivorOnlyWin,
     VampireWin,
+    JackalWin,
 
     CannibalWin,
     NecroWin,
+    ApocWin,
 
     JanitorClean,
     FixLights,
@@ -48,6 +49,7 @@ namespace TownOfUsFusion
     Drag,
     Drop,
     AssassinKill,
+    HuskAssassinKill,
     VigilanteKill,
     DoomsayerKill,
     FlashGrenade,
@@ -60,10 +62,12 @@ namespace TownOfUsFusion
     Vest,
     GAProtect,
     Poison,
+    RemoteBite,
     CannibalEat,
     Blackmail,
     Infect,
     TurnPestilence,
+    TurnWar,
     Disperse,
     Escape,
     Revive,
@@ -107,6 +111,6 @@ namespace TownOfUsFusion
     Resurrect2,
     NeoConvert,
     Guard,
-    RevealTy
+    RevealTy,
 }
 }

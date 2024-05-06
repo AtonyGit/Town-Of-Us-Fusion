@@ -10,6 +10,7 @@ using TownOfUsFusion.Patches;
 using System.Collections;
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.CrewmateRoles.MedicMod;
+using TownOfUsFusion.Roles.Apocalypse;
 
 namespace TownOfUsFusion.Roles
 {

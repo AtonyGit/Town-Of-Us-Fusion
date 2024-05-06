@@ -32,8 +32,8 @@ namespace TownOfUsFusion
     public class TownOfUsFusion : BasePlugin
     {
         public const string Id = "com.FusionStudios.TownOfUsFusion";
-        public const string VersionString = "0.2.1";
-        public const string TouVersionString = "5.0.3";
+        public const string VersionString = "0.2.2";
+        public const string TouVersionString = "5.0.4";
         public static System.Version Version = System.Version.Parse(VersionString);
         public static string STR_DiscordText = "Lobby";
 
@@ -91,6 +91,7 @@ namespace TownOfUsFusion
         public static Sprite ImitateDeselectSprite;
         public static Sprite ObserveSprite;
         public static Sprite BiteSprite;
+        public static Sprite BittenSprite;
         public static Sprite StakeSprite;
         public static Sprite RevealSprite;
         public static Sprite ConfessSprite;
@@ -110,6 +111,7 @@ namespace TownOfUsFusion
         public static Sprite NeutralSettingsButtonSprite;
         public static Sprite ImposterSettingsButtonSprite;
         public static Sprite ModifierSettingsButtonSprite;
+        public static Sprite AllianceSettingsButtonSprite;
         public static Sprite VisorColorButtonSprite;
 
         public static Sprite ToUBanner;
@@ -212,14 +214,15 @@ namespace TownOfUsFusion
             // NEUTRAL (KILLING)
             DouseSprite = CreateSprite("TownOfUsFusion.Resources.Douse.png");
             IgniteSprite = CreateSprite("TownOfUsFusion.Resources.Ignite.png");
-            InfectSprite = CreateLegacySprite("TownOfUsFusion.Resources.Infect.png");
+            InfectSprite = CreateSprite("TownOfUsFusion.Resources.Infect.png");
             HackSprite = CreateSprite("TownOfUsFusion.Resources.Hack.png");
             MimicSprite = CreateSprite("TownOfUsFusion.Resources.Mimic.png");
             LockSprite = CreateLegacySprite("TownOfUsFusion.Resources.Lock.png");
             SlashSprite = CreateSprite("TownOfUsFusion.Resources.Slash.png");
-            BiteSprite = CreateSprite("TownOfUsFusion.Resources.Bite.png");
             RampageSprite = CreateSprite("TownOfUsFusion.Resources.Rampage.png");
             // NEUTRAL (NEOPHYTE)
+            BiteSprite = CreateSprite("TownOfUsFusion.Resources.Bite.png");
+            BittenSprite = CreateSprite("TownOfUsFusion.Resources.Bitten.png");
             ResurrectSprite = CreateSprite("TownOfUsFusion.Resources.Resurrect.png");
             ConsumeSprite = CreateSprite("TownOfUsFusion.Resources.Consume.png");
             // IMPOSTOR (CONCEALING)
@@ -265,6 +268,7 @@ namespace TownOfUsFusion
             NeutralSettingsButtonSprite = CreateSettingsSprite("TownOfUsFusion.Resources.Neutral.png");
             ImposterSettingsButtonSprite = CreateSettingsSprite("TownOfUsFusion.Resources.Impostor.png");
             ModifierSettingsButtonSprite = CreateSettingsSprite("TownOfUsFusion.Resources.Modifiers.png");
+            AllianceSettingsButtonSprite = CreateSettingsSprite("TownOfUsFusion.Resources.Alliances.png");
             
             VisorColorButtonSprite = CreateSettingsSprite("TownOfUsFusion.Resources.VisorColor.png");
             // MAIN MENU

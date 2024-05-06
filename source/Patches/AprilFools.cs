@@ -80,7 +80,7 @@ namespace TownOfUsFusion.Patches
                     bodyType = PlayerBodyTypes.Horse;
                     break;
                 case 3:
-                    bodyType = PlayerBodyTypes.Seeker;
+                    bodyType = PlayerBodyTypes.LongSeeker;
                     break;
             }
         }
@@ -99,7 +99,7 @@ namespace TownOfUsFusion.Patches
                     __result = PlayerBodyTypes.Long;
                     return false;
                 case 3:
-                    __result = PlayerBodyTypes.Seeker;
+                    __result = PlayerBodyTypes.LongSeeker;
                     return false;
                 default:
                     return true;

@@ -2,6 +2,7 @@ using System;
 using HarmonyLib;
 using TownOfUsFusion.Roles;
 using AmongUs.GameOptions;
+using TownOfUsFusion.Roles.Apocalypse;
 
 namespace TownOfUsFusion.NeutralRoles.PestilenceMod
 {

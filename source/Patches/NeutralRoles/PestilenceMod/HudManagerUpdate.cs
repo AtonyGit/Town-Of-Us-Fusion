@@ -1,5 +1,7 @@
+using System.Linq;
 using HarmonyLib;
 using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Apocalypse;
 
 namespace TownOfUsFusion.NeutralRoles.PestilenceMod
 {
@@ -20,7 +22,10 @@ public static class HudManagerUpdate
 
         __instance.KillButton.SetCoolDown(role.KillTimer(), CustomGameOptions.PestKillCd);
 
-        Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton);
+        var notApocTeam = PlayerControl.AllPlayerControls.ToArray()
+            .Where(x => !x.Is(Faction.NeutralApocalypse)).ToList();
+
+        Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton, float.NaN, notApocTeam);
     }
 }
 }

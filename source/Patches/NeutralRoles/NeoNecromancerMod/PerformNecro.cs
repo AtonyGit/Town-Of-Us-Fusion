@@ -41,10 +41,12 @@ public class PerformNecro
             var playerId = role.CurrentTarget.ParentId;
             var player = Utils.PlayerById(playerId);
 
-            if (player.Is(ModifierEnum.Lover) || player.Is(Faction.Impostors) || player.Is(RoleEnum.Vampire) || player.Is(Faction.NeutralApocalypse) || player.Is(Faction.NeutralChaos)
-             || player.Is(RoleEnum.Detective) || player.Is(RoleEnum.Seer) || player.Is(RoleEnum.Investigator) || player.Is(RoleEnum.Tracker) || player.Is(RoleEnum.Snitch)
+            
+            if (player.Is(AllianceEnum.Lover) || player.Is(AllianceEnum.Crewpocalypse) || player.Is(AllianceEnum.Crewpostor) || player.Is(AllianceEnum.Recruit) || 
+            player.Is(Faction.Impostors) || player.Is(RoleEnum.Vampire) || player.Is(Faction.NeutralApocalypse) || player.Is(Faction.NeutralChaos)
+            || player.Is(RoleEnum.Detective) || player.Is(RoleEnum.Seer) || player.Is(RoleEnum.Investigator) || player.Is(RoleEnum.Tracker) || player.Is(RoleEnum.Snitch)
             || player.Is(RoleEnum.Spy) || player.Is(RoleEnum.Trapper) || player.Is(RoleEnum.VampireHunter) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Vigilante)
-             || player.Is(RoleEnum.Mayor) || player.Is(RoleEnum.Prosecutor) || player.Is(RoleEnum.Amnesiac) || player.Is(RoleEnum.GuardianAngel)) return false;
+            || player.Is(RoleEnum.Mayor) || player.Is(RoleEnum.Prosecutor) || player.Is(RoleEnum.Amnesiac) || player.Is(RoleEnum.GuardianAngel)) return false;
             if (PlayerControl.LocalPlayer.killTimer > GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown - 0.5f) return false;
 
             role.ResurrectCount += 1;

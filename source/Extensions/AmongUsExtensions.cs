@@ -3,6 +3,7 @@ using TownOfUsFusion.Roles;
 using TownOfUsFusion.Roles.Modifiers;
 using UnityEngine;
 using System;
+using TownOfUsFusion.Roles.Alliances;
 
 namespace TownOfUsFusion.Extensions
 {

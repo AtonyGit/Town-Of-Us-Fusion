@@ -12,7 +12,7 @@ using AmongUs.GameOptions;
 namespace TownOfUsFusion.NeutralRoles.NeoNecromancerMod
 {
     [HarmonyPatch(typeof(KillButton), nameof(KillButton.DoClick))]
-public class PerformKill
+public class NeoNecroKill
 {
     [HarmonyPriority(Priority.First)]
     public static bool Prefix(KillButton __instance)
@@ -22,10 +22,9 @@ public class PerformKill
         if (!PlayerControl.LocalPlayer.CanMove) return false;
         if (PlayerControl.LocalPlayer.Data.IsDead) return false;
         var role = Role.GetRole<NeoNecromancer>(PlayerControl.LocalPlayer);
-        
+        if (__instance == role.ResurrectButton) return true;
         if (role.NecroKillTimer() != 0) return false;
         if (!role.CanKill) return false;
-        if (__instance == role.ResurrectButton) return true;
         if (!__instance.isActiveAndEnabled || __instance.isCoolingDown) return false;
         if (role.ClosestPlayer == null) return false;
         var distBetweenPlayers = Utils.GetDistBetweenPlayers(PlayerControl.LocalPlayer, role.ClosestPlayer);

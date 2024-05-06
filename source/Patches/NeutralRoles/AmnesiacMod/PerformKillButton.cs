@@ -12,6 +12,7 @@ using TownOfUsFusion.Roles.Modifiers;
 using TownOfUsFusion.ImpostorRoles.BomberMod;
 using TownOfUsFusion.CrewmateRoles.AurialMod;
 using TownOfUsFusion.Patches.ScreenEffects;
+using TownOfUsFusion.Roles.Apocalypse;
 
 namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
 {
@@ -110,7 +111,7 @@ public class PerformKillButton
             case RoleEnum.Arsonist:
             case RoleEnum.Amnesiac:
             case RoleEnum.Glitch:
-            case RoleEnum.Juggernaut:
+            case RoleEnum.Berserker:
             case RoleEnum.Survivor:
             case RoleEnum.GuardianAngel:
             case RoleEnum.Plaguebearer:
@@ -118,6 +119,7 @@ public class PerformKillButton
             case RoleEnum.Werewolf:
             case RoleEnum.Doomsayer:
 
+            case RoleEnum.Jackal:
             case RoleEnum.Vampire:
             case RoleEnum.NeoNecromancer:
             case RoleEnum.Scourge:
@@ -141,8 +143,8 @@ public class PerformKillButton
             CameraEffect.singleton.materials.Clear();
         }
 
-        if ((role == RoleEnum.Glitch || role == RoleEnum.Juggernaut || role == RoleEnum.Pestilence || role == RoleEnum.Scourge ||
-            role == RoleEnum.NeoNecromancer || role == RoleEnum.Werewolf) && PlayerControl.LocalPlayer == other)
+        if ((role == RoleEnum.Glitch || role == RoleEnum.Berserker || role == RoleEnum.Pestilence || role == RoleEnum.Scourge ||
+            role == RoleEnum.NeoNecromancer || role == RoleEnum.Werewolf || role == RoleEnum.Jackal) && PlayerControl.LocalPlayer == other)
         {
             HudManager.Instance.KillButton.buttonLabelText.gameObject.SetActive(false);
         }
@@ -184,7 +186,7 @@ public class PerformKillButton
                 }
 
                 if (role == RoleEnum.Arsonist || role == RoleEnum.Glitch || role == RoleEnum.Plaguebearer || role == RoleEnum.Scourge ||
-                        role == RoleEnum.Pestilence || role == RoleEnum.Werewolf || role == RoleEnum.Juggernaut
+                        role == RoleEnum.Pestilence || role == RoleEnum.Werewolf || role == RoleEnum.Berserker || role == RoleEnum.Jackal
                 || role == RoleEnum.NeoNecromancer ||  role == RoleEnum.Vampire)
                 {
                     if (CustomGameOptions.AmneTurnNeutAssassin) new Assassin(amnesiac);
@@ -376,9 +378,9 @@ public class PerformKillButton
             glitchRole.LastMimic = DateTime.UtcNow;
         }
 
-        else if (role == RoleEnum.Juggernaut)
+        else if (role == RoleEnum.Berserker)
         {
-            var juggRole = Role.GetRole<Juggernaut>(amnesiac);
+            var juggRole = Role.GetRole<Berserker>(amnesiac);
             juggRole.JuggKills = 0;
             juggRole.LastKill = DateTime.UtcNow;
         }
@@ -455,6 +457,13 @@ public class PerformKillButton
             doomRole.LastObserved = DateTime.UtcNow;
             doomRole.LastObservedPlayer = null;
         }
+        
+        else if (role == RoleEnum.Jackal)
+        {
+            var jackRole = Role.GetRole<Jackal>(amnesiac);
+            jackRole.LastKill = DateTime.UtcNow;
+            jackRole.CanKill = CustomGameOptions.JackalCanAlwaysKill;
+        }
 
         else if (role == RoleEnum.Plaguebearer)
         {
@@ -474,6 +483,7 @@ public class PerformKillButton
         {
             var vampRole = Role.GetRole<Vampire>(amnesiac);
             vampRole.LastBit = DateTime.UtcNow;
+            vampRole.BittenPlayer = null;
         }
 
         else if (role == RoleEnum.Trapper)

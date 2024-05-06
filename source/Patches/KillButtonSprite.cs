@@ -2,6 +2,7 @@
 using HarmonyLib;
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Apocalypse;
 using TownOfUsFusion.Roles.Modifiers;
 using UnityEngine;
 
@@ -186,8 +187,8 @@ public class KillButtonSprite
             __instance.KillButton.graphic.sprite = Kill;
             __instance.KillButton.buttonLabelText.gameObject.SetActive(true);
             __instance.KillButton.buttonLabelText.text = "Kill";
-            flag = PlayerControl.LocalPlayer.Is(RoleEnum.Sheriff) || PlayerControl.LocalPlayer.Is(RoleEnum.Pestilence) || PlayerControl.LocalPlayer.Is(RoleEnum.Scourge) || 
-                PlayerControl.LocalPlayer.Is(RoleEnum.Werewolf) || PlayerControl.LocalPlayer.Is(RoleEnum.NeoNecromancer) || PlayerControl.LocalPlayer.Is(RoleEnum.Juggernaut);
+            flag = PlayerControl.LocalPlayer.Is(RoleEnum.Sheriff) || PlayerControl.LocalPlayer.Is(RoleEnum.Pestilence) || PlayerControl.LocalPlayer.Is(RoleEnum.Scourge) || PlayerControl.LocalPlayer.Is(RoleEnum.Jackal) || 
+                PlayerControl.LocalPlayer.Is(RoleEnum.Werewolf) || PlayerControl.LocalPlayer.Is(RoleEnum.NeoNecromancer) || PlayerControl.LocalPlayer.Is(RoleEnum.Berserker) || PlayerControl.LocalPlayer.Is(RoleEnum.War);
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Sheriff))  {
                 if (!Role.GetRole<Sheriff>(PlayerControl.LocalPlayer).CanShoot) {
                 __instance.KillButton.gameObject.SetActive(false);
@@ -195,6 +196,22 @@ public class KillButtonSprite
                 __instance.KillButton.cooldownTimerText.gameObject.SetActive(false);
                 } else 
                 __instance.KillButton.buttonLabelText.text = "Shoot";
+            } else
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Berserker))  {
+                if (!Role.GetRole<Berserker>(PlayerControl.LocalPlayer).CanKill) {
+                __instance.KillButton.gameObject.SetActive(false);
+                __instance.KillButton.buttonLabelText.text = "Waiting";
+                __instance.KillButton.cooldownTimerText.gameObject.SetActive(false);
+                } else 
+                __instance.KillButton.buttonLabelText.text = "Destroy";
+                }
+            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Jackal))  {
+                if (!Role.GetRole<Jackal>(PlayerControl.LocalPlayer).CanKill) {
+                __instance.KillButton.gameObject.SetActive(false);
+                __instance.KillButton.buttonLabelText.text = "Waiting";
+                __instance.KillButton.cooldownTimerText.gameObject.SetActive(false);
+                } else 
+                __instance.KillButton.buttonLabelText.text = "Assassinate";
             }
         }
         if (!PlayerControl.LocalPlayer.Is(Faction.Impostors) &&
@@ -203,7 +220,7 @@ public class KillButtonSprite
             __instance.KillButton.transform.localPosition = new Vector3(0f, 1f, 0f);
         }
         if (PlayerControl.LocalPlayer.Is(RoleEnum.Engineer) || PlayerControl.LocalPlayer.Is(RoleEnum.Glitch)
-             || PlayerControl.LocalPlayer.Is(RoleEnum.Pestilence) || PlayerControl.LocalPlayer.Is(RoleEnum.Juggernaut)
+             || PlayerControl.LocalPlayer.Is(RoleEnum.Pestilence) || PlayerControl.LocalPlayer.Is(RoleEnum.Berserker)
              || PlayerControl.LocalPlayer.Is(RoleEnum.Vampire))
         {
             __instance.ImpostorVentButton.transform.localPosition = new Vector3(-2f, 0f, 0f);

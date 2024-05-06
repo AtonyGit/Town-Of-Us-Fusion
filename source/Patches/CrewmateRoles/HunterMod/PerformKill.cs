@@ -29,6 +29,8 @@ namespace TownOfUsFusion.CrewmateRoles.HunterMod
                     role.StalkedPlayer = role.ClosestStalkPlayer;
                     role.Stalk();
                     Utils.Rpc(CustomRPC.HunterStalk, PlayerControl.LocalPlayer.PlayerId, role.ClosestStalkPlayer.PlayerId);
+                /*    if (PlayerControl.LocalPlayer.Is(AllianceEnum.Crewpocalypse) || PlayerControl.LocalPlayer.Is(AllianceEnum.Crewpostor))
+                    Utils.Rpc(CustomRPC.HunterCatchPlayer, PlayerControl.LocalPlayer.PlayerId, role.ClosestStalkPlayer.PlayerId);*/
                 }
                 if (stalkInteract[0] == true)
                 {
@@ -43,7 +45,7 @@ namespace TownOfUsFusion.CrewmateRoles.HunterMod
             }
 
             if (role.ClosestPlayer == null) return false;
-            if (!role.CaughtPlayers.Contains(role.ClosestPlayer)) return false;
+            if (!PlayerControl.LocalPlayer.Is(AllianceEnum.Crewpostor) && !PlayerControl.LocalPlayer.Is(AllianceEnum.Crewpocalypse) && !PlayerControl.LocalPlayer.Is(AllianceEnum.Recruit) && !role.CaughtPlayers.Contains(role.ClosestPlayer)) return false;
             if (role.HunterKillTimer() != 0) return false;
             var distBetweenPlayers = Utils.GetDistBetweenPlayers(PlayerControl.LocalPlayer, role.ClosestPlayer);
             var flag3 = distBetweenPlayers <

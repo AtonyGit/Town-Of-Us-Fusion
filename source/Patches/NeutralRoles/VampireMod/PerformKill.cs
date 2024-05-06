@@ -10,12 +10,17 @@ using System.Linq;
 using TownOfUsFusion.Roles.Modifiers;
 using TownOfUsFusion.CrewmateRoles.AurialMod;
 using TownOfUsFusion.Patches.ScreenEffects;
+using Hazel;
+using TownOfUsFusion.CrewmateRoles.MedicMod;
+using TownOfUsFusion.Roles.Apocalypse;
 
 namespace TownOfUsFusion.NeutralRoles.VampireMod
 {
     [HarmonyPatch(typeof(KillButton), nameof(KillButton.DoClick))]
 public class Bite
 {
+    public static Sprite BiteSprite => TownOfUsFusion.BiteSprite;
+    public static Sprite BittenSprite => TownOfUsFusion.BittenSprite;
     public static bool Prefix(KillButton __instance)
     {
         if (__instance != DestroyableSingleton<HudManager>.Instance.KillButton) return true;
@@ -26,10 +31,12 @@ public class Bite
         var flag2 = role.BiteTimer() == 0f;
         if (!flag2) return false;
         if (!__instance.enabled) return false;
+        if (role.Enabled == true) return false;
         var maxDistance = GameOptionsData.KillDistances[GameOptionsManager.Instance.currentNormalGameOptions.KillDistance];
         if (Vector2.Distance(role.ClosestPlayer.GetTruePosition(),
             PlayerControl.LocalPlayer.GetTruePosition()) > maxDistance) return false;
         if (role.ClosestPlayer == null) return false;
+
 
         var vamps = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(RoleEnum.Vampire)).ToList();
         foreach (var phantom in Role.GetRoles(RoleEnum.Phantom))
@@ -44,56 +51,141 @@ public class Bite
             Utils.RpcMurderPlayer(role.ClosestPlayer, PlayerControl.LocalPlayer);
             return false;
         }
-        else if ((role.ClosestPlayer.Is(Faction.Crewmates) || (role.ClosestPlayer.Is(Faction.NeutralBenign)
+        
+        var canBeConverted = ((role.ClosestPlayer.Is(Faction.Crewmates) || (role.ClosestPlayer.Is(Faction.NeutralBenign)
             && CustomGameOptions.CanBiteNeutralBenign) || (role.ClosestPlayer.Is(Faction.NeutralChaos)
             && CustomGameOptions.CanBiteNeutralChaos) || (role.ClosestPlayer.Is(Faction.NeutralEvil)
-            && CustomGameOptions.CanBiteNeutralEvil)) && !role.ClosestPlayer.Is(ModifierEnum.Lover) &&
-            aliveVamps.Count == 1 && vamps.Count < CustomGameOptions.MaxVampiresPerGame)
-        {
-            var interact = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer);
-            if (interact[4] == true)
+            && CustomGameOptions.CanBiteNeutralEvil)) && !role.ClosestPlayer.Is(AllianceEnum.Lover) &&
+            !role.ClosestPlayer.Is(AllianceEnum.Crewpocalypse) && !role.ClosestPlayer.Is(AllianceEnum.Crewpostor) && !role.ClosestPlayer.Is(AllianceEnum.Recruit) &&
+            aliveVamps.Count == 1 && vamps.Count < CustomGameOptions.MaxVampiresPerGame);
+
+
+            if (role.ClosestPlayer.Is(RoleEnum.Pestilence))
             {
-                Convert(role.ClosestPlayer);
-                Utils.Rpc(CustomRPC.Bite, role.ClosestPlayer.PlayerId);
-            }
-            if (interact[0] == true)
-            {
-                role.LastBit = DateTime.UtcNow;
+                if (role.Player.IsShielded())
+                {
+                    var medic = role.Player.GetMedic().Player.PlayerId;
+                    var writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId,
+                        (byte)CustomRPC.AttemptSound, SendOption.Reliable, -1);
+                    writer.Write(medic);
+                    writer.Write(role.Player.PlayerId);
+                    AmongUsClient.Instance.FinishRpcImmediately(writer);
+
+                    if (CustomGameOptions.ShieldBreaks) role.LastBit = DateTime.UtcNow;
+                    __instance.SetCoolDown(0.01f, 1f);
+
+                    StopKill.BreakShield(medic, role.Player.PlayerId,
+                        CustomGameOptions.ShieldBreaks);
+                }
+                if (role.Player.IsProtected())
+                {
+                    role.LastBit.AddSeconds(CustomGameOptions.ProtectKCReset);
+                    __instance.SetCoolDown(0.01f, 1f);
+                    return false;
+                }
+                Utils.RpcMultiMurderPlayer(role.ClosestPlayer, PlayerControl.LocalPlayer);
                 return false;
             }
-            else if (interact[1] == true)
+            if (role.ClosestPlayer.IsInfected() || role.Player.IsInfected())
             {
-                role.LastBit = DateTime.UtcNow;
-                role.LastBit = role.LastBit.AddSeconds(CustomGameOptions.ProtectKCReset - CustomGameOptions.BiteCd);
+                foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(role.ClosestPlayer, role.Player);
+            }
+            if (role.ClosestPlayer.IsOnAlert())
+            {
+                if (role.Player.IsShielded())
+                {
+                    var medic = role.Player.GetMedic().Player.PlayerId;
+                    var writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId,
+                        (byte)CustomRPC.AttemptSound, SendOption.Reliable, -1);
+                    writer.Write(medic);
+                    writer.Write(role.Player.PlayerId);
+                    AmongUsClient.Instance.FinishRpcImmediately(writer);
+
+                    if (CustomGameOptions.ShieldBreaks) role.LastBit = DateTime.UtcNow;
+                    __instance.SetCoolDown(0.01f, 1f);
+
+                    StopKill.BreakShield(medic, role.Player.PlayerId,
+                        CustomGameOptions.ShieldBreaks);
+                    if (CustomGameOptions.KilledOnAlert && !role.ClosestPlayer.IsProtected())
+                    {
+                        role.BittenPlayer = role.ClosestPlayer;
+                        __instance.SetTarget(null);
+                        DestroyableSingleton<HudManager>.Instance.KillButton.SetTarget(null);
+
+                        role.TimeRemaining = CustomGameOptions.BiteDuration;
+                        __instance.SetCoolDown(role.TimeRemaining, CustomGameOptions.BiteDuration);
+                        var writer4 = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId,
+                            (byte)CustomRPC.RemoteBite,
+                        SendOption.Reliable, -1);
+                        Convert(role.ClosestPlayer);
+                        //Utils.Rpc(CustomRPC.Bite, role.ClosestPlayer.PlayerId);
+
+                        writer4.Write(PlayerControl.LocalPlayer.PlayerId);
+                        writer4.Write(role.BittenPlayer.PlayerId);
+                        AmongUsClient.Instance.FinishRpcImmediately(writer4);
+                    }
+                }
+                else
+                {
+                    if (!PlayerControl.LocalPlayer.IsProtected())
+                    {
+                        Utils.RpcMultiMurderPlayer(role.ClosestPlayer, role.Player);
+                    }
+                    else
+                    {
+                        role.LastBit.AddSeconds(CustomGameOptions.ProtectKCReset + 0.01f);
+                        __instance.SetCoolDown(0.01f, 1f);
+                    }
+                }
                 return false;
             }
-            else if (interact[3] == true) return false;
+            else if (role.ClosestPlayer.IsShielded() && !canBeConverted)
+            {
+                var medic = role.ClosestPlayer.GetMedic().Player.PlayerId;
+                var writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId,
+                    (byte)CustomRPC.AttemptSound, SendOption.Reliable, -1);
+                writer.Write(medic);
+                writer.Write(role.ClosestPlayer.PlayerId);
+                AmongUsClient.Instance.FinishRpcImmediately(writer);
+
+                if (CustomGameOptions.ShieldBreaks) role.LastBit = DateTime.UtcNow;
+                __instance.SetCoolDown(0.01f, 1f);
+
+                StopKill.BreakShield(medic, role.ClosestPlayer.PlayerId,
+                    CustomGameOptions.ShieldBreaks);
+
+                return false;
+            }
+            /*
+            else if (role.ClosestPlayer.IsVesting())
+            {
+                role.LastBit.AddSeconds(CustomGameOptions.VestKCReset + 0.01f);
+                __instance.SetCoolDown(0.01f, 1f);
+                return false;
+            }*/
+            else if (role.ClosestPlayer.IsProtected() && !canBeConverted)
+            {
+                role.LastBit.AddSeconds(CustomGameOptions.ProtectKCReset + 0.01f);
+                __instance.SetCoolDown(0.01f, 1f);
+                return false;
+            }
+            role.BittenPlayer = role.ClosestPlayer;
+            __instance.SetTarget(null);
+            DestroyableSingleton<HudManager>.Instance.KillButton.SetTarget(null);
+            role.TimeRemaining = CustomGameOptions.BiteDuration;
+            __instance.SetCoolDown(role.TimeRemaining, CustomGameOptions.BiteDuration);
+            var writer2 = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId,
+                (byte)CustomRPC.RemoteBite,
+            SendOption.Reliable, -1);
+            writer2.Write(PlayerControl.LocalPlayer.PlayerId);
+            writer2.Write(role.BittenPlayer.PlayerId);
+            AmongUsClient.Instance.FinishRpcImmediately(writer2);
+
+
+            // role.Player.SetKillTimer(0);
             return false;
-        }
-        else
-        {
-            var interact = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer, true);
-            if (interact[4] == true) return false;
-            if (interact[0] == true)
-            {
-                role.LastBit = DateTime.UtcNow;
-                return false;
-            }
-            else if (interact[1] == true)
-            {
-                role.LastBit = DateTime.UtcNow;
-                role.LastBit = role.LastBit.AddSeconds(CustomGameOptions.ProtectKCReset - CustomGameOptions.BiteCd);
-                return false;
-            }
-            else if (interact[2] == true)
-            {
-                role.LastBit = DateTime.UtcNow;
-                role.LastBit = role.LastBit.AddSeconds(CustomGameOptions.VestKCReset - CustomGameOptions.BiteCd);
-                return false;
-            }
-            else if (interact[3] == true) return false;
-            return false;
-        }
+
+
     }
 
     public static void Convert(PlayerControl newVamp)

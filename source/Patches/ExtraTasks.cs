@@ -1,5 +1,7 @@
+using System;
 using AmongUs.GameOptions;
 using HarmonyLib;
+using Reactor.Utilities;
 using Random = UnityEngine.Random;
 
 namespace TownOfUsFusion.Patches
@@ -39,6 +41,16 @@ public class GetAdjustedImposters
             __result = 1;
             return false;
         }
+        if (CustomGameOptions.GameMode == GameMode.Classic/* && CustomGameOptions.MinImpostorRoles != CustomGameOptions.MaxImpostorRoles*/)
+        {
+            var trueCount = 1;
+            var randomCount = Random.RandomRangeInt(CustomGameOptions.MinImpostorRoles * 30, CustomGameOptions.MaxImpostorRoles * 30);
+            trueCount = Convert.ToInt32(randomCount/25);
+            __result = trueCount;
+            PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"Randomized value: {randomCount}, Final value: {trueCount}");
+            return false;
+        }
+
         if (CustomGameOptions.GameMode == GameMode.AllAny && CustomGameOptions.RandomNumberImps)
         {
             var players = GameData.Instance.PlayerCount;

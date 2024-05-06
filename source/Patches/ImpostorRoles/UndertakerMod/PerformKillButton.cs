@@ -3,6 +3,7 @@ using HarmonyLib;
 using TownOfUsFusion.Roles;
 using UnityEngine;
 using AmongUs.GameOptions;
+using TownOfUsFusion.Roles.Apocalypse;
 
 namespace TownOfUsFusion.ImpostorRoles.UndertakerMod
 {

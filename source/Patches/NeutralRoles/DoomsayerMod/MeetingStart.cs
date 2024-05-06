@@ -54,7 +54,7 @@ public class MeetingStart
              || player.Is(RoleEnum.Swapper) || player.Is(RoleEnum.Traitor) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Joker))
             return $"You observe that {player.GetDefaultOutfit().PlayerName} has a trick up their sleeve";
 
-        else if (player.Is(RoleEnum.Bomber) || player.Is(RoleEnum.Juggernaut) || player.Is(RoleEnum.Pestilence) || player.Is(RoleEnum.Poisoner)
+        else if (player.Is(RoleEnum.Bomber) || player.Is(RoleEnum.Berserker) || player.Is(RoleEnum.Pestilence) || player.Is(RoleEnum.Poisoner)
              || player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.Warlock))
             return $"You observe that {player.GetDefaultOutfit().PlayerName} is capable of performing relentless attacks";
 
@@ -95,9 +95,9 @@ public class MeetingStart
              || player.Is(RoleEnum.Swapper) || player.Is(RoleEnum.Traitor) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Joker))
             return "(Executioner, Jester, Joker, Mayor, Tyrant, Swapper, Traitor or Veteran)";
             
-        else if (player.Is(RoleEnum.Bomber) || player.Is(RoleEnum.Juggernaut) || player.Is(RoleEnum.Pestilence) || player.Is(RoleEnum.Poisoner)
+        else if (player.Is(RoleEnum.Bomber) || player.Is(RoleEnum.Berserker) || player.Is(RoleEnum.Pestilence) || player.Is(RoleEnum.Poisoner)
              || player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.Warlock))
-            return "(Bomber, Juggernaut, Pestilence, Poisoner, Sheriff, Vigilante or Warlock)";
+            return "(Bomber, Berserker, Pestilence, Poisoner, Sheriff, Vigilante or Warlock)";
 
         else if (player.Is(RoleEnum.Crewmate) || player.Is(RoleEnum.Impostor))
             return "(Crewmate or Impostor)";

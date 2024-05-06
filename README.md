@@ -42,7 +42,7 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 - [Jester](#jester)
 - [Phantom](#phantom)
 - [Arsonist](#arsonist)
-- [Juggernaut](#juggernaut)
+- [Berserker](#Berserker)
 - [Plaguebearer](#plaguebearer)
 - [The Glitch](#the-glitch)
 - [Vampire](#vampire)
@@ -996,7 +996,7 @@ However, if they kill a Crewmate or a Neutral player they can't kill, they inste
 | Sheriff Kills Jester | Whether the Sheriff is able to kill the Jester | Toggle | False |
 | Sheriff Kills Arsonist | Whether the Sheriff is able to kill the Arsonist | Toggle | False |
 | Sheriff Kills The Glitch | Whether the Sheriff is able to kill The Glitch | Toggle | False |
-| Sheriff Kills Juggernaut | Whether the Sheriff is able to kill the Juggernaut | Toggle | False |
+| Sheriff Kills Berserker | Whether the Sheriff is able to kill the Berserker | Toggle | False |
 | Sheriff Kills Plaguebearer | Whether the Sheriff is able to kill the Plaguebearer | Toggle | False |
 | Sheriff Kills Vampire | Whether the Sheriff is able to kill the Vampire | Toggle | False |
 | Sheriff Kills Werewolf | Whether the Sheriff is able to kill the Werewolf | Toggle | False |
@@ -1348,20 +1348,20 @@ The Arsonist needs to be the last killer alive to win the game.
 | Ignite Cooldown Removed When Arso Is Last Killer | Whether the Arsonist's Ignite Cooldown is removed when they're the final killer | Toggle | False |
 
 -----------------------
-## Juggernaut
+## Berserker
 ### **Team: Neutral**
 
-The Juggernaut is a Neutral role with its own win condition.\
-The Juggernaut's special ability is that their kill cooldown reduces with each kill.\
-This means in theory the Juggernaut can have a 0 second kill cooldown!\
-The Juggernaut is also a hidden role, meaning it will show up randomly and can not be toggled by percentages like other roles.\
-The Juggernaut needs to be the last killer alive to win the game.
+The Berserker is a Neutral role with its own win condition.\
+The Berserker's special ability is that their kill cooldown reduces with each kill.\
+This means in theory the Berserker can have a 0 second kill cooldown!\
+The Berserker is also a hidden role, meaning it will show up randomly and can not be toggled by percentages like other roles.\
+The Berserker needs to be the last killer alive to win the game.
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
-| Juggernaut Kill Cooldown | The initial cooldown of the Juggernaut's Kill button | Time | 25s |
-| Reduced Kill Cooldown Per Kill | The amount of time removed from the Juggernaut's Kill Cooldown Per Kill | Time | 5s |
-| Juggernaut can Vent | Whether the Juggernaut can Vent | Toggle | False |
+| Berserker Kill Cooldown | The initial cooldown of the Berserker's Kill button | Time | 25s |
+| Reduced Kill Cooldown Per Kill | The amount of time removed from the Berserker's Kill Cooldown Per Kill | Time | 5s |
+| Berserker can Vent | Whether the Berserker can Vent | Toggle | False |
 
 -----------------------
 ## Plaguebearer

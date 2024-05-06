@@ -4,6 +4,7 @@ using Hazel;
 using TownOfUsFusion.NeutralRoles.ExecutionerMod;
 using TownOfUsFusion.NeutralRoles.GuardianAngelMod;
 using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Apocalypse;
 using TownOfUsFusion.Roles.Cultist;
 using TownOfUsFusion.Roles.Modifiers;
 using UnityEngine;
@@ -98,6 +99,12 @@ public static class Start
             }
         }
 
+        if (PlayerControl.LocalPlayer.Is(RoleEnum.Jackal))
+        {
+            var jackal = Role.GetRole<Jackal>(PlayerControl.LocalPlayer);
+            jackal.LastKill = DateTime.UtcNow;
+            jackal.LastKill = jackal.LastKill.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.JackalKillCooldown);
+        }
 
         if (PlayerControl.LocalPlayer.Is(RoleEnum.Scourge))
         {
@@ -283,11 +290,11 @@ public static class Start
             }
         }
 
-        if (PlayerControl.LocalPlayer.Is(RoleEnum.Juggernaut))
+        if (PlayerControl.LocalPlayer.Is(RoleEnum.Berserker))
         {
-            var juggernaut = Role.GetRole<Juggernaut>(PlayerControl.LocalPlayer);
-            juggernaut.LastKill = DateTime.UtcNow;
-            juggernaut.LastKill = juggernaut.LastKill.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.JuggKCd);
+            var Berserker = Role.GetRole<Berserker>(PlayerControl.LocalPlayer);
+            Berserker.LastKill = DateTime.UtcNow;
+            Berserker.LastKill = Berserker.LastKill.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.JuggKCd);
         }
 
         if (PlayerControl.LocalPlayer.Is(RoleEnum.Plaguebearer))

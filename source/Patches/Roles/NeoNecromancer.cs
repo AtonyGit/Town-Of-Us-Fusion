@@ -11,7 +11,8 @@ namespace TownOfUsFusion.Roles
     public PlayerControl ClosestPlayer;
     private KillButton _ResurrectButton;
     public PlayerControl KillTarget { get; set; }
-    public DateTime LastResurrected;
+    public DateTime LastKilled { get; set; }
+    public DateTime LastResurrected { get; set; }
     public int ResurrectCount;
     public bool CanKill;
 
@@ -73,7 +74,7 @@ namespace TownOfUsFusion.Roles
             var alives = PlayerControl.AllPlayerControls.ToArray()
                 .Where(x => !x.Data.IsDead && !x.Data.Disconnected).ToList();
             var killersAlive = PlayerControl.AllPlayerControls.ToArray()
-                .Where(x => !x.Data.IsDead && !x.Data.Disconnected && !(x.Is(RoleEnum.Apparitionist) || x.Is(RoleEnum.Enchanter) || x.Is(RoleEnum.Husk) || x.Is(RoleEnum.Scourge) || x.Is(RoleEnum.NeoNecromancer)) && (x.Is(Faction.Impostors) || x.Is(Faction.NeutralNeophyte))).ToList();
+                .Where(x => !x.Data.IsDead && !x.Data.Disconnected && !(x.Is(RoleEnum.Apparitionist) || x.Is(RoleEnum.Enchanter) || x.Is(RoleEnum.Husk) || x.Is(RoleEnum.Scourge) || x.Is(RoleEnum.NeoNecromancer)) && (x.Is(Faction.Impostors) || x.Is(Faction.NeutralNeophyte) || x.Is(Faction.NeutralKilling))).ToList();
             if (killersAlive.Count > 0) return false;
             if (alives.Count <= 6)
             {
@@ -94,7 +95,6 @@ namespace TownOfUsFusion.Roles
         __instance.teamToShow = necroTeam;
     }
 
-    public DateTime LastKilled { get; set; }
     public float NecroKillTimer()
     {
         var utcNow = DateTime.UtcNow;

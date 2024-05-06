@@ -29,13 +29,14 @@ public static class GameSettings
 
             var builder = new StringBuilder();
             builder.AppendLine("Press Tab To Change Page");
-            builder.AppendLine($"Currently Viewing Page ({(SettingsPage + 2)}/7)");
+            builder.AppendLine($"Currently Viewing Page ({(SettingsPage + 2)}/8)");
             if (SettingsPage == 0) builder.AppendLine("Map Settings");
             if (SettingsPage == 1) builder.AppendLine("General Mod Settings");
             else if (SettingsPage == 2) builder.AppendLine("Crewmate Settings");
             else if (SettingsPage == 3) builder.AppendLine("Neutral Settings");
             else if (SettingsPage == 4) builder.AppendLine("Impostor Settings");
             else if (SettingsPage == 5) builder.AppendLine("Modifier Settings");
+            else if (SettingsPage == 6) builder.AppendLine("Alliance Settings");
 
                 if (SettingsPage == -1)
                 {
@@ -82,7 +83,7 @@ public static class GameSettings
         {
             if (Input.GetKeyDown(KeyCode.Tab))
             {
-                if (SettingsPage > 3)
+                if (SettingsPage > 5)
                     SettingsPage = -1;
                 else
                     SettingsPage++;

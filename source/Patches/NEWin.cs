@@ -1,6 +1,8 @@
 using System.Linq;
 using HarmonyLib;
 using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Alliances;
+using TownOfUsFusion.Roles.Apocalypse;
 using TownOfUsFusion.Roles.Modifiers;
 
 namespace TownOfUsFusion.Patches
@@ -23,12 +25,14 @@ public static class NEWin
         if (neWin)
         {
             __instance.WinText.text = "</color><color=#008DFFFF>Victory";
-            var loveRole = Modifier.AllModifiers.FirstOrDefault(x => x.ModifierType == ModifierEnum.Lover && ((Lover)x).LoveCoupleWins);
+            var loveRole = Alliance.AllAlliances.FirstOrDefault(x => x.AllianceType == AllianceEnum.Lover && ((Lover)x).LoveCoupleWins);
             if (loveRole != null) return;
             var survRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Survivor && Role.SurvOnlyWins);
             if (survRole != null) return;
             var vampRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Vampire && Role.VampireWins);
             if (vampRole != null) return;
+            var jackalRole = Role.AllRoles.FirstOrDefault(x => (x.RoleType == RoleEnum.Jackal || x.IsAlliance == AllianceEnum.Recruit) && Role.JackalWins);
+            if (jackalRole != null) return;
 
             var necroRoles = Role.AllRoles.FirstOrDefault(x => (x.RoleType == RoleEnum.NeoNecromancer || x.RoleType == RoleEnum.Husk || x.RoleType == RoleEnum.Apparitionist
             || x.RoleType == RoleEnum.Enchanter || x.RoleType == RoleEnum.Scourge) && Role.NecroWins);
@@ -38,16 +42,13 @@ public static class NEWin
             if (arsoRole != null) return;
             var glitchRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Glitch && ((Glitch)x).GlitchWins);
             if (glitchRole != null) return;
-            var juggRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Juggernaut && ((Juggernaut)x).JuggernautWins);
-            if (juggRole != null) return;
 
             var canRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Cannibal && ((Cannibal)x).EatWin);
             if (canRole != null) return;
 
-            var pestRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Pestilence && ((Pestilence)x).PestilenceWins);
-            if (pestRole != null) return;
-            var pbRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Plaguebearer && ((Plaguebearer)x).PlaguebearerWins);
-            if (pbRole != null) return;
+            var apocRoles = Role.AllRoles.FirstOrDefault(x => (x.IsAlliance == AllianceEnum.Crewpocalypse || x.Faction == Faction.NeutralApocalypse) && Role.ApocWins);
+            if (apocRoles != null) return;
+
             var wwRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Werewolf && ((Werewolf)x).WerewolfWins);
             if (wwRole != null) return;
             __instance.BackgroundBar.material.SetColor("_Color", Palette.CrewmateBlue);

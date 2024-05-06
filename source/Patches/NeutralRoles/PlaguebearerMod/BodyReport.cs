@@ -1,5 +1,6 @@
 using HarmonyLib;
 using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Apocalypse;
 
 namespace TownOfUsFusion.NeutralRoles.PlaguebearerMod
 {

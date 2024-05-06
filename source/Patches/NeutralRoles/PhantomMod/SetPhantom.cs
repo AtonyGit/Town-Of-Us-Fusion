@@ -26,7 +26,8 @@ public class SetPhantom
     {
         if (WillBePhantom == null) return;
         var exiled = __instance.exiled?.Object;
-        if (!WillBePhantom.Data.IsDead && (exiled.Is(Faction.NeutralKilling) || exiled.Is(Faction.NeutralEvil) || exiled.Is(Faction.NeutralBenign)) && !exiled.IsLover()) WillBePhantom = exiled;
+        if (!WillBePhantom.Data.IsDead && (exiled.Is(Faction.NeutralKilling) || exiled.Is(Faction.NeutralEvil) || exiled.Is(Faction.NeutralBenign))
+         && !exiled.IsLover() && !exiled.IsRecruit()) WillBePhantom = exiled;
         if (exiled == WillBePhantom && exiled.Is(RoleEnum.Jester)) return;
         var doomRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Doomsayer && ((Doomsayer)x).WonByGuessing && ((Doomsayer)x).Player == WillBePhantom);
         if (doomRole != null) return;

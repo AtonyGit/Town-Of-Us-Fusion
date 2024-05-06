@@ -35,6 +35,8 @@ using TownOfUsFusion.CrewmateRoles.AurialMod;
 using TownOfUsFusion.CrewmateRoles.DetectiveMod;
 using Reactor.Networking;
 using Reactor.Networking.Extensions;
+using TownOfUsFusion.Roles.Alliances;
+using TownOfUsFusion.Roles.Apocalypse;
 
 namespace TownOfUsFusion
 {
@@ -94,9 +96,13 @@ public static class Utils
         if (!self.Contains(item)) self.Add(item);
     }
 
+    public static bool IsRecruit(this PlayerControl player)
+    {
+        return player.Is(AllianceEnum.Recruit);
+    }
     public static bool IsLover(this PlayerControl player)
     {
-        return player.Is(ModifierEnum.Lover);
+        return player.Is(AllianceEnum.Lover);
     }
 
     public static bool Is(this PlayerControl player, RoleEnum roleType)
@@ -109,6 +115,10 @@ public static class Utils
         return Modifier.GetModifier(player)?.ModifierType == modifierType;
     }
 
+    public static bool Is(this PlayerControl player, AllianceEnum allianceType)
+    {
+        return Alliance.GetAlliance(player)?.AllianceType == allianceType;
+    }
     public static bool Is(this PlayerControl player, AbilityEnum abilityType)
     {
         return Ability.GetAbility(player)?.AbilityType == abilityType;
@@ -435,9 +445,9 @@ public static class Utils
                         var glitch = Role.GetRole<Glitch>(player);
                         glitch.LastKill = DateTime.UtcNow;
                     }
-                    else if (player.Is(RoleEnum.Juggernaut))
+                    else if (player.Is(RoleEnum.Berserker))
                     {
-                        var jugg = Role.GetRole<Juggernaut>(player);
+                        var jugg = Role.GetRole<Berserker>(player);
                         jugg.JuggKills += 1;
                         jugg.LastKill = DateTime.UtcNow;
                     }
@@ -445,6 +455,16 @@ public static class Utils
                     {
                         var pest = Role.GetRole<Pestilence>(player);
                         pest.LastKill = DateTime.UtcNow;
+                    }
+                    else if (player.Is(RoleEnum.Scourge))
+                    {
+                        var necro = Role.GetRole<Scourge>(player);
+                        necro.LastKilled = DateTime.UtcNow;
+                    }
+                    else if (player.Is(RoleEnum.NeoNecromancer))
+                    {
+                        var necro = Role.GetRole<NeoNecromancer>(player);
+                        necro.LastKilled = DateTime.UtcNow;
                     }
                     else if (player.Is(RoleEnum.Vampire))
                     {
@@ -499,14 +519,15 @@ public static class Utils
         }
         else if (toKill)
         {
+            // USE TO FIX KILL COOLDOWNS
             if (player.Is(RoleEnum.Glitch))
             {
                 var glitch = Role.GetRole<Glitch>(player);
                 glitch.LastKill = DateTime.UtcNow;
             }
-            else if (player.Is(RoleEnum.Juggernaut))
+            else if (player.Is(RoleEnum.Berserker))
             {
-                var jugg = Role.GetRole<Juggernaut>(player);
+                var jugg = Role.GetRole<Berserker>(player);
                 jugg.JuggKills += 1;
                 jugg.LastKill = DateTime.UtcNow;
             }
@@ -514,6 +535,21 @@ public static class Utils
             {
                 var pest = Role.GetRole<Pestilence>(player);
                 pest.LastKill = DateTime.UtcNow;
+            }
+            else if (player.Is(RoleEnum.Scourge))
+            {
+                var necro = Role.GetRole<Scourge>(player);
+                necro.LastKilled = DateTime.UtcNow;
+            }
+            else if (player.Is(RoleEnum.NeoNecromancer))
+            {
+                var necro = Role.GetRole<NeoNecromancer>(player);
+                necro.LastKilled = DateTime.UtcNow;
+            }
+            else if (player.Is(RoleEnum.Jackal))
+            {
+                var jackal = Role.GetRole<Jackal>(player);
+                jackal.LastKill = DateTime.UtcNow;
             }
             else if (player.Is(RoleEnum.Vampire))
             {
@@ -663,49 +699,54 @@ public static class Utils
             if (killer == PlayerControl.LocalPlayer)
                 SoundManager.Instance.PlaySound(PlayerControl.LocalPlayer.KillSfx, false, 0.8f);
 
-            if (!killer.Is(Faction.Crewmates) && killer != target
+            if ((!killer.Is(Faction.Crewmates) || killer.Is(AllianceEnum.Crewpocalypse) || killer.Is(AllianceEnum.Crewpostor) || killer.Is(AllianceEnum.Recruit)) && killer != target
                 && GameOptionsManager.Instance.CurrentGameOptions.GameMode == GameModes.Normal) Role.GetRole(killer).Kills += 1;
 
-            if (killer.Is(RoleEnum.Sheriff))
+            if (killer.Is(RoleEnum.Sheriff) && !killer.Is(AllianceEnum.Crewpocalypse) && !killer.Is(AllianceEnum.Crewpostor) && !killer.Is(AllianceEnum.Recruit))
             {
                 var sheriff = Role.GetRole<Sheriff>(killer);
                 if (target.Is(Faction.Impostors) ||
                     target.Is(RoleEnum.Glitch) && CustomGameOptions.SheriffKillsGlitch ||
                     target.Is(RoleEnum.Arsonist) && CustomGameOptions.SheriffKillsArsonist ||
-                    target.Is(RoleEnum.Plaguebearer) && CustomGameOptions.SheriffKillsPlaguebearer ||
-                    target.Is(RoleEnum.Pestilence) && CustomGameOptions.SheriffKillsPlaguebearer ||
+                    target.Is(RoleEnum.Plaguebearer) && CustomGameOptions.SheriffKillsApocalypse ||
+                    target.Is(RoleEnum.Pestilence) && CustomGameOptions.SheriffKillsApocalypse ||
                     target.Is(RoleEnum.Werewolf) && CustomGameOptions.SheriffKillsWerewolf ||
-                    target.Is(RoleEnum.Juggernaut) && CustomGameOptions.SheriffKillsJuggernaut ||
+                    target.Is(RoleEnum.Berserker) && CustomGameOptions.SheriffKillsApocalypse ||
                     target.Is(RoleEnum.Executioner) && CustomGameOptions.SheriffKillsExecutioner ||
                     target.Is(RoleEnum.Doomsayer) && CustomGameOptions.SheriffKillsDoomsayer ||
 
-                    target.Is(RoleEnum.Tyrant) && CustomGameOptions.SheriffKillsTyrant ||
-                    target.Is(RoleEnum.Joker) && CustomGameOptions.SheriffKillsJoker ||
-                    target.Is(RoleEnum.Cannibal) && CustomGameOptions.SheriffKillsCannibal ||
+                    target.Is(RoleEnum.Tyrant) && CustomGameOptions.SheriffKillsChaos ||
+                    target.Is(RoleEnum.Joker) && CustomGameOptions.SheriffKillsChaos ||
+                    target.Is(RoleEnum.Cannibal) && CustomGameOptions.SheriffKillsChaos ||
                     
-                    target.Is(RoleEnum.NeoNecromancer) && CustomGameOptions.SheriffKillsNeoNecromancer ||
-                    target.Is(RoleEnum.Vampire) && CustomGameOptions.SheriffKillsVampire ||
+                    target.Is(RoleEnum.NeoNecromancer) && CustomGameOptions.SheriffKillsNeophyte ||
+                    target.Is(RoleEnum.Vampire) && CustomGameOptions.SheriffKillsNeophyte ||
+                    target.Is(AllianceEnum.Crewpocalypse) && CustomGameOptions.SheriffKillsAlliedCrew ||
+                    target.Is(AllianceEnum.Crewpostor) && CustomGameOptions.SheriffKillsAlliedCrew ||
+                    target.Is(AllianceEnum.Recruit) && CustomGameOptions.SheriffKillsAlliedCrew ||
 
                     target.Is(RoleEnum.Jester) && CustomGameOptions.SheriffKillsJester) sheriff.CorrectKills += 1;
                 else if (killer == target) sheriff.IncorrectKills += 1;
             }
 
-            if (killer.Is(RoleEnum.VampireHunter))
+            if (killer.Is(RoleEnum.VampireHunter) && !killer.Is(AllianceEnum.Crewpocalypse) && !killer.Is(AllianceEnum.Crewpostor) && !killer.Is(AllianceEnum.Recruit))
             {
                 var vh = Role.GetRole<VampireHunter>(killer);
                 if (killer != target) vh.CorrectKills += 1;
             }
 
-            if (killer.Is(RoleEnum.Veteran))
+            if (killer.Is(RoleEnum.Veteran) && !killer.Is(AllianceEnum.Crewpocalypse) && !killer.Is(AllianceEnum.Crewpostor) && !killer.Is(AllianceEnum.Recruit))
             {
                 var veteran = Role.GetRole<Veteran>(killer);
-                if (target.Is(Faction.Impostors) || target.Is(Faction.NeutralKilling) || target.Is(Faction.NeutralEvil) || target.Is(Faction.NeutralChaos) || target.Is(Faction.NeutralNeophyte) || target.Is(Faction.NeutralApocalypse)) veteran.CorrectKills += 1;
+                if (target.Is(Faction.Impostors) || target.Is(Faction.NeutralKilling) || target.Is(Faction.NeutralEvil) || target.Is(Faction.NeutralChaos)
+                || target.Is(Faction.NeutralNeophyte) || target.Is(Faction.NeutralApocalypse) || target.Is(AllianceEnum.Crewpocalypse) || target.Is(AllianceEnum.Crewpostor) || target.Is(AllianceEnum.Recruit)) veteran.CorrectKills += 1;
                 else if (killer != target) veteran.IncorrectKills += 1;
             }
-                if (killer.Is(RoleEnum.Hunter))
+                if (killer.Is(RoleEnum.Hunter) && !killer.Is(AllianceEnum.Crewpocalypse) && !killer.Is(AllianceEnum.Crewpostor) && !killer.Is(AllianceEnum.Recruit))
                 {
                     var hunter = Role.GetRole<Hunter>(killer);
-                    if (target.Is(RoleEnum.Doomsayer) || target.Is(Faction.Impostors) || target.Is(Faction.NeutralKilling) || target.Is(Faction.NeutralNeophyte) || target.Is(Faction.NeutralApocalypse))
+                    if (target.Is(RoleEnum.Doomsayer) || target.Is(Faction.Impostors) || target.Is(Faction.NeutralKilling) || target.Is(Faction.NeutralNeophyte)
+                    || target.Is(Faction.NeutralApocalypse) || target.Is(AllianceEnum.Crewpocalypse) || target.Is(AllianceEnum.Crewpostor) || target.Is(AllianceEnum.Recruit))
                     {
                         hunter.CorrectKills += 1;
                     }
@@ -714,6 +755,14 @@ public static class Utils
                         hunter.IncorrectKills += 1;
                     }
                 }
+
+            if (target.Is(RoleEnum.NeoNecromancer))
+            {
+                foreach (var player2 in PlayerControl.AllPlayerControls)
+                {
+                    if (/*player2.Is(RoleEnum.NeoNecromancer) || */player2.Is(RoleEnum.Apparitionist) || player2.Is(RoleEnum.Scourge) || player2.Is(RoleEnum.Enchanter) || player2.Is(RoleEnum.Husk)) Utils.MurderPlayer(player2, player2, true);
+                }
+            }
 
             target.gameObject.layer = LayerMask.NameToLayer("Ghost");
             target.Visible = false;
@@ -796,7 +845,8 @@ public static class Utils
             else killer.MyPhysics.StartCoroutine(killer.KillAnimations.Random().CoPerformKill(target, target));
             if (killer != target)
                 {
-                    targetRole.KilledBy = " By " + ColorString(killerRole.Color, killerRole.PlayerName);
+                    if(killer.Is(RoleEnum.Jackal) || killer.Is(AllianceEnum.Recruit)) targetRole.KilledBy = " By " + GradientColorText("B7B9BA", "5E576B", killerRole.PlayerName);
+                    else targetRole.KilledBy = " By " + ColorString(killerRole.Color, killerRole.PlayerName);
                     targetRole.DeathReason = DeathReasonEnum.Killed;
                 }
                 else targetRole.DeathReason = DeathReasonEnum.Suicide;
@@ -863,6 +913,30 @@ public static class Utils
                 return;
             }
 
+            if (target.Is(ModifierEnum.Diseased) && killer.Is(RoleEnum.Scourge))
+            {
+                var necro = Role.GetRole<Scourge>(killer);
+                necro.LastKilled = DateTime.UtcNow.AddSeconds((CustomGameOptions.DiseasedMultiplier - 1f) * CustomGameOptions.ScourgeKillCooldown);
+                necro.Player.SetKillTimer(CustomGameOptions.ScourgeKillCooldown * CustomGameOptions.DiseasedMultiplier);
+                return;
+            }
+
+            if (target.Is(ModifierEnum.Diseased) && killer.Is(RoleEnum.NeoNecromancer))
+            {
+                var necro = Role.GetRole<NeoNecromancer>(killer);
+                necro.LastKilled = DateTime.UtcNow.AddSeconds((CustomGameOptions.DiseasedMultiplier - 1f) * CustomGameOptions.NecroKillCooldown);
+                necro.Player.SetKillTimer(CustomGameOptions.NecroKillCooldown * CustomGameOptions.DiseasedMultiplier);
+                return;
+            }
+
+            if (target.Is(ModifierEnum.Diseased) && killer.Is(RoleEnum.Jackal))
+            {
+                var jackal = Role.GetRole<Jackal>(killer);
+                jackal.LastKill = DateTime.UtcNow.AddSeconds((CustomGameOptions.DiseasedMultiplier - 1f) * CustomGameOptions.JackalKillCooldown);
+                jackal.Player.SetKillTimer(CustomGameOptions.JackalKillCooldown * CustomGameOptions.DiseasedMultiplier);
+                return;
+            }
+
             if (target.Is(ModifierEnum.Diseased) && killer.Is(RoleEnum.Vampire))
             {
                 var vampire = Role.GetRole<Vampire>(killer);
@@ -879,11 +953,11 @@ public static class Utils
                 return;
             }
 
-            if (target.Is(ModifierEnum.Diseased) && killer.Is(RoleEnum.Juggernaut))
+            if (target.Is(ModifierEnum.Diseased) && killer.Is(RoleEnum.Berserker))
             {
-                var juggernaut = Role.GetRole<Juggernaut>(killer);
-                juggernaut.LastKill = DateTime.UtcNow.AddSeconds((CustomGameOptions.DiseasedMultiplier - 1f) * (CustomGameOptions.JuggKCd - CustomGameOptions.ReducedKCdPerKill * juggernaut.JuggKills));
-                juggernaut.Player.SetKillTimer((CustomGameOptions.JuggKCd - CustomGameOptions.ReducedKCdPerKill * juggernaut.JuggKills) * CustomGameOptions.DiseasedMultiplier);
+                var Berserker = Role.GetRole<Berserker>(killer);
+                Berserker.LastKill = DateTime.UtcNow.AddSeconds((CustomGameOptions.DiseasedMultiplier - 1f) * (CustomGameOptions.JuggKCd - CustomGameOptions.ReducedKCdPerKill * Berserker.JuggKills));
+                Berserker.Player.SetKillTimer((CustomGameOptions.JuggKCd - CustomGameOptions.ReducedKCdPerKill * Berserker.JuggKills) * CustomGameOptions.DiseasedMultiplier);
                 return;
             }
 
@@ -927,6 +1001,54 @@ public static class Utils
         {
             f = Mathf.Clamp01(f);
             return (byte)(f * 255);
+        }
+        public static string GradientColorText(string startColorHex, string endColorHex, string text)
+        {
+            if (startColorHex.Length != 6 || endColorHex.Length != 6)
+            {
+                PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("GradientColorText : Invalid Color Hex Code, Hex code should be 6 characters long (without #) (e.g., FFFFFF).");
+                return text;
+            }
+
+            Color startColor = HexToColor(startColorHex);
+            Color endColor = HexToColor(endColorHex);
+
+            int textLength = text.Length;
+            float stepR = (endColor.r - startColor.r) / (float)textLength;
+            float stepG = (endColor.g - startColor.g) / (float)textLength;
+            float stepB = (endColor.b - startColor.b) / (float)textLength;
+            float stepA = (endColor.a - startColor.a) / (float)textLength;
+
+            string gradientText = "";
+
+            for (int i = 0; i < textLength; i++)
+            {
+                float r = startColor.r + (stepR * i);
+                float g = startColor.g + (stepG * i);
+                float b = startColor.b + (stepB * i);
+                float a = startColor.a + (stepA * i);
+
+
+                string colorhex = ColorToHex(new Color(r, g, b, a));
+                gradientText += $"<color=#{colorhex}>{text[i]}</color>";
+
+            }
+
+            return gradientText;
+
+        }
+
+        private static Color HexToColor(string hex)
+        {
+            Color color = new();
+            ColorUtility.TryParseHtmlString("#" + hex, out color);
+            return color;
+        }
+
+        private static string ColorToHex(Color color)
+        {
+            Color32 color32 = (Color32)color;
+            return $"{color32.r:X2}{color32.g:X2}{color32.b:X2}{color32.a:X2}";
         }
     public static void BaitReport(PlayerControl killer, PlayerControl target)
     {
@@ -1038,7 +1160,7 @@ public static class Utils
             encha.Faction = Faction.NeutralNeophyte;
             encha.RegenTask();
         }
-        if (player.Is(Faction.NeutralKilling) || player.Is(RoleEnum.Sheriff))
+        if (player.Is(Faction.NeutralKilling) || player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Hunter))
         {
             Role.RoleDictionary.Remove(player.PlayerId);
             var scourge = new Scourge(player);
@@ -1497,20 +1619,6 @@ public static string DeathReason(this PlayerControl player)
             sheriff.LastKilled = DateTime.UtcNow;
         }
 
-        foreach (var nec in Role.GetRoles(RoleEnum.Scourge))
-        {
-            var necRole = (Scourge)nec;
-            necRole.LastKilled = DateTime.UtcNow;
-        }
-        foreach (var nec in Role.GetRoles(RoleEnum.NeoNecromancer))
-        {
-            var necRole = (NeoNecromancer)nec;
-            necRole.LastKilled = DateTime.UtcNow;
-            if (!necRole.CanKill) necRole.CanKill = true;
-            /*else
-            if (necRole.CanKill) necRole.CanKill = false;*/
-        }
-        
         foreach (var sh in Role.GetRoles(RoleEnum.Sheriff))
         {
             var shRole = (Sheriff)sh;
@@ -1654,32 +1762,57 @@ public static string DeathReason(this PlayerControl player)
             glitch.LastHack = DateTime.UtcNow;
             glitch.LastMimic = DateTime.UtcNow;
         }
-        if (PlayerControl.LocalPlayer.Is(RoleEnum.Juggernaut))
-        {
-            var juggernaut = Role.GetRole<Juggernaut>(PlayerControl.LocalPlayer);
-            juggernaut.LastKill = DateTime.UtcNow;
-        }
+        
         if (PlayerControl.LocalPlayer.Is(RoleEnum.Werewolf))
         {
             var werewolf = Role.GetRole<Werewolf>(PlayerControl.LocalPlayer);
             werewolf.LastRampaged = DateTime.UtcNow;
             werewolf.LastKilled = DateTime.UtcNow;
         }
-        if (PlayerControl.LocalPlayer.Is(RoleEnum.Plaguebearer))
-        {
-            var plaguebearer = Role.GetRole<Plaguebearer>(PlayerControl.LocalPlayer);
-            plaguebearer.LastInfected = DateTime.UtcNow;
-        }
-        if (PlayerControl.LocalPlayer.Is(RoleEnum.Pestilence))
-        {
-            var pest = Role.GetRole<Pestilence>(PlayerControl.LocalPlayer);
-            pest.LastKill = DateTime.UtcNow;
-        }
         if (PlayerControl.LocalPlayer.Is(RoleEnum.Doomsayer))
         {
             var doom = Role.GetRole<Doomsayer>(PlayerControl.LocalPlayer);
             doom.LastObserved = DateTime.UtcNow;
             doom.LastObservedPlayer = null;
+        }
+
+
+        if (PlayerControl.LocalPlayer.Is(RoleEnum.Scourge))
+        {
+            var necRole = Role.GetRole<Scourge>(PlayerControl.LocalPlayer);
+            necRole.LastKilled = DateTime.UtcNow;
+        }
+        if (PlayerControl.LocalPlayer.Is(RoleEnum.NeoNecromancer))
+        {
+            var necRole = Role.GetRole<NeoNecromancer>(PlayerControl.LocalPlayer);
+            necRole.LastKilled = DateTime.UtcNow;
+            if (!necRole.CanKill) necRole.CanKill = true;
+            /*else
+            if (necRole.CanKill) necRole.CanKill = false;*/
+        }
+        if (PlayerControl.LocalPlayer.Is(RoleEnum.Jackal))
+        {
+            var jackalRole = Role.GetRole<Jackal>(PlayerControl.LocalPlayer);
+            jackalRole.LastKill = DateTime.UtcNow;
+            if (!jackalRole.CanKill && (jackalRole.Recruit1.Player.Data.IsDead || jackalRole.Recruit2.Player.Data.IsDead)) jackalRole.CanKill = true;
+        }
+
+        if (PlayerControl.LocalPlayer.Is(RoleEnum.Berserker))
+        {
+            var berRole = Role.GetRole<Berserker>(PlayerControl.LocalPlayer);
+            berRole.LastKill = DateTime.UtcNow;
+            if (!berRole.CanKill) berRole.CanKill = true;
+        }
+        if (PlayerControl.LocalPlayer.Is(RoleEnum.Plaguebearer))
+        {
+            var plaguebearer = Role.GetRole<Plaguebearer>(PlayerControl.LocalPlayer);
+            plaguebearer.LastInfected = DateTime.UtcNow;
+        }
+
+        if (PlayerControl.LocalPlayer.Is(RoleEnum.Pestilence))
+        {
+            var pest = Role.GetRole<Pestilence>(PlayerControl.LocalPlayer);
+            pest.LastKill = DateTime.UtcNow;
         }
         #endregion
         #region ImposterRoles

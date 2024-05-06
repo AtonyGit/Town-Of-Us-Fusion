@@ -3,6 +3,7 @@ using HarmonyLib;
 using TownOfUsFusion.Roles;
 using UnityEngine;
 using TownOfUsFusion.Extensions;
+using TownOfUsFusion.Roles.Apocalypse;
 
 namespace TownOfUsFusion.NeutralRoles.PlaguebearerMod
 {
@@ -36,7 +37,7 @@ public static class HudManagerUpdate
         infectButton.SetCoolDown(role.InfectTimer(), CustomGameOptions.InfectCd);
 
         var notInfected = PlayerControl.AllPlayerControls.ToArray().Where(
-            player => !role.InfectedPlayers.Contains(player.PlayerId)
+            player => !role.InfectedPlayers.Contains(player.PlayerId) || !Utils.PlayerById(player.PlayerId).Is(Faction.NeutralApocalypse)
         ).ToList();
 
         Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton, float.NaN, notInfected);
@@ -49,7 +50,7 @@ public static class HudManagerUpdate
             {
                 foreach (var player in alives)
                 {
-                    if (player.Data.IsImpostor() || player.Is(Faction.NeutralKilling))
+                    if (player.Data.IsImpostor() || player.Is(Faction.NeutralKilling) || player.Is(Faction.NeutralNeophyte) || player.Is(Faction.NeutralApocalypse))
                     {
                         transform = true;
                     }

@@ -2,6 +2,8 @@ using System;
 using System.Linq;
 using Il2CppSystem.Collections.Generic;
 using TownOfUsFusion.Extensions;
+using TownOfUsFusion.NeutralRoles.VampireMod;
+using UnityEngine;
 
 namespace TownOfUsFusion.Roles
 {
@@ -17,11 +19,52 @@ namespace TownOfUsFusion.Roles
         RoleType = RoleEnum.Vampire;
         Faction = Faction.NeutralNeophyte;
         AddToRoleHistory(RoleType);
+        BittenPlayer = null;
     }
 
+        public float TimeRemaining;
+        public bool Bitten => TimeRemaining > 0f;
+        public bool Enabled = false;
     public PlayerControl ClosestPlayer;
+    public PlayerControl BittenPlayer;
     public DateTime LastBit { get; set; }
 
+        public void BiteThingy()
+        {
+            Enabled = true;
+            TimeRemaining -= Time.deltaTime;
+            if (MeetingHud.Instance)
+            {
+                TimeRemaining = 0;
+            }
+            if (TimeRemaining <= 0)
+            {
+                BiteKill();
+            }
+        }
+        public void BiteKill()
+        {
+            var aliveVamps = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(RoleEnum.Vampire) && !x.Data.IsDead && !x.Data.Disconnected).ToList();
+            var vamps = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(RoleEnum.Vampire)).ToList();
+
+            if (!BittenPlayer.Is(RoleEnum.Pestilence) && (BittenPlayer.Is(Faction.Crewmates) || (BittenPlayer.Is(Faction.NeutralBenign)
+            && CustomGameOptions.CanBiteNeutralBenign) || (BittenPlayer.Is(Faction.NeutralChaos)
+            && CustomGameOptions.CanBiteNeutralChaos) || (BittenPlayer.Is(Faction.NeutralEvil)
+            && CustomGameOptions.CanBiteNeutralEvil)) && !BittenPlayer.Is(AllianceEnum.Lover) &&
+            !BittenPlayer.Is(AllianceEnum.Crewpocalypse) && !BittenPlayer.Is(AllianceEnum.Crewpostor) &&
+            !BittenPlayer.Is(AllianceEnum.Recruit) &&
+            aliveVamps.Count == 1 && vamps.Count < CustomGameOptions.MaxVampiresPerGame)
+            {
+                Bite.Convert(BittenPlayer);
+                Utils.Rpc(CustomRPC.Bite, BittenPlayer.PlayerId);
+            } else {
+                Utils.RpcMultiMurderPlayer(Player, BittenPlayer);
+                if (!BittenPlayer.Data.IsDead) SoundManager.Instance.PlaySound(PlayerControl.LocalPlayer.KillSfx, false, 0.5f);
+            }
+            BittenPlayer = null;
+            Enabled = false;
+            LastBit = DateTime.UtcNow;
+        }
     public float BiteTimer()
     {
         var utcNow = DateTime.UtcNow;
@@ -38,7 +81,7 @@ namespace TownOfUsFusion.Roles
 
         if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected) <= 2 &&
                 PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
-                (x.Data.IsImpostor() || x.Is(Faction.NeutralNeophyte))) == 1)
+                (x.Data.IsImpostor() || x.Is(Faction.NeutralNeophyte)|| x.Is(Faction.NeutralKilling)|| x.Is(Faction.NeutralApocalypse))) == 1)
         {
             VampWin();
             Utils.EndGame();

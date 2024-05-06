@@ -5,6 +5,7 @@ using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;
 using AmongUs.GameOptions;
 using TownOfUsFusion.Patches;
+using TownOfUsFusion.Roles.Apocalypse;
 
 namespace TownOfUsFusion.CrewmateRoles.SheriffMod
 {
@@ -32,19 +33,23 @@ public static class Kill
                     role.ClosestPlayer.Is(RoleEnum.Doomsayer) && CustomGameOptions.SheriffKillsDoomsayer ||
                     role.ClosestPlayer.Is(RoleEnum.Jester) && CustomGameOptions.SheriffKillsJester ||
                     role.ClosestPlayer.Is(RoleEnum.Glitch) && CustomGameOptions.SheriffKillsGlitch ||
-                    role.ClosestPlayer.Is(RoleEnum.Juggernaut) && CustomGameOptions.SheriffKillsJuggernaut ||
                     role.ClosestPlayer.Is(RoleEnum.Executioner) && CustomGameOptions.SheriffKillsExecutioner ||
                     role.ClosestPlayer.Is(RoleEnum.Arsonist) && CustomGameOptions.SheriffKillsArsonist ||
                     role.ClosestPlayer.Is(RoleEnum.Werewolf) && CustomGameOptions.SheriffKillsWerewolf ||
 
-                    role.ClosestPlayer.Is(RoleEnum.Tyrant) && CustomGameOptions.SheriffKillsTyrant ||
-                    role.ClosestPlayer.Is(RoleEnum.Cannibal) && CustomGameOptions.SheriffKillsCannibal ||
-                    role.ClosestPlayer.Is(RoleEnum.Joker) && CustomGameOptions.SheriffKillsJoker ||
+                    role.ClosestPlayer.Is(RoleEnum.Tyrant) && CustomGameOptions.SheriffKillsChaos ||
+                    role.ClosestPlayer.Is(RoleEnum.Cannibal) && CustomGameOptions.SheriffKillsChaos ||
+                    role.ClosestPlayer.Is(RoleEnum.Joker) && CustomGameOptions.SheriffKillsChaos ||
 
-                    role.ClosestPlayer.Is(RoleEnum.NeoNecromancer) && CustomGameOptions.SheriffKillsNeoNecromancer ||
-                    role.ClosestPlayer.Is(RoleEnum.Vampire) && CustomGameOptions.SheriffKillsVampire ||
+                    role.ClosestPlayer.Is(RoleEnum.NeoNecromancer) && CustomGameOptions.SheriffKillsNeophyte ||
+                    role.ClosestPlayer.Is(RoleEnum.Vampire) && CustomGameOptions.SheriffKillsNeophyte ||
 
-                    role.ClosestPlayer.Is(RoleEnum.Plaguebearer) && CustomGameOptions.SheriffKillsPlaguebearer;
+                    role.ClosestPlayer.Is(AllianceEnum.Crewpocalypse) && CustomGameOptions.SheriffKillsAlliedCrew ||
+                    role.ClosestPlayer.Is(AllianceEnum.Crewpostor) && CustomGameOptions.SheriffKillsAlliedCrew ||
+                    role.ClosestPlayer.Is(AllianceEnum.Recruit) && CustomGameOptions.SheriffKillsAlliedCrew ||
+
+                    role.ClosestPlayer.Is(RoleEnum.Berserker) && CustomGameOptions.SheriffKillsApocalypse ||
+                    role.ClosestPlayer.Is(RoleEnum.Plaguebearer) && CustomGameOptions.SheriffKillsApocalypse;
 
         if (role.ClosestPlayer.Is(RoleEnum.Pestilence))
         {
@@ -130,15 +135,8 @@ public static class Kill
                     && !player.Is(RoleEnum.Whisperer)) Utils.RpcMurderPlayer(player, player);
             }
         }
-            if (role.ClosestPlayer.Is(RoleEnum.NeoNecromancer))
-            {
-                foreach (var player2 in PlayerControl.AllPlayerControls)
-                {
-                    if (/*player2.Is(RoleEnum.NeoNecromancer) || */player2.Is(RoleEnum.Apparitionist) || player2.Is(RoleEnum.Scourge) || player2.Is(RoleEnum.Enchanter) || player2.Is(RoleEnum.Husk)) Utils.MurderPlayer(player2, player2, true);
-                }
-            }
 
-        if (!flag4)
+        if (!flag4 && !PlayerControl.LocalPlayer.Is(AllianceEnum.Crewpostor) && !PlayerControl.LocalPlayer.Is(AllianceEnum.Crewpocalypse) && !PlayerControl.LocalPlayer.Is(AllianceEnum.Recruit))
         {
             if (CustomGameOptions.SheriffKillOther)
                 Utils.RpcMurderPlayer(PlayerControl.LocalPlayer, role.ClosestPlayer);

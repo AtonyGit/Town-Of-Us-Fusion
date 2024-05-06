@@ -4,6 +4,7 @@ using Reactor.Utilities.Extensions;
 using TMPro;
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Alliances;
 using TownOfUsFusion.Roles.Modifiers;
 using UnityEngine;
 using UnityEngine.UI;
@@ -157,6 +158,7 @@ public class AddButton
 
             var playerRole = Role.GetRole(voteArea);
             var playerModifier = Modifier.GetModifier(voteArea);
+            var playerAlliance = Alliance.GetAlliance(voteArea);
 
             var toDie = playerRole.Name == currentGuess ? playerRole.Player : role.Player;
             if (playerModifier != null)
@@ -177,8 +179,13 @@ public class AddButton
                 ShowHideButtonsVigi.HideSingle(role, targetId, toDie == role.Player);
                 if (toDie.IsLover() && CustomGameOptions.BothLoversDie)
                 {
-                    var lover = ((Lover)playerModifier).OtherLover.Player;
+                    var lover = ((Lover)playerAlliance).OtherLover.Player;
                     if (!lover.Is(RoleEnum.Pestilence)) ShowHideButtonsVigi.HideSingle(role, lover.PlayerId, false);
+                }
+                if (toDie.IsRecruit() && CustomGameOptions.DoJackalRecruitsDie)
+                {
+                    var recruit = ((Recruit)playerAlliance).OtherRecruit.Player;
+                    if (!recruit.Is(RoleEnum.Pestilence)) ShowHideButtonsVigi.HideSingle(role, recruit.PlayerId, false);
                 }
             }
         }
