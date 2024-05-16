@@ -13,7 +13,7 @@ public class MeetingStart
         if (PlayerControl.LocalPlayer.Data.IsDead) return;
         if (!PlayerControl.LocalPlayer.Is(RoleEnum.Doomsayer)) return;
         var doomsayerRole = Role.GetRole<Doomsayer>(PlayerControl.LocalPlayer);
-        if (doomsayerRole.LastObservedPlayer != null)
+        if (doomsayerRole.LastObservedPlayer != null && !CustomGameOptions.DoomsayerCantObserve)
         {
             var playerResults = PlayerReportFeedback(doomsayerRole.LastObservedPlayer);
             var roleResults = RoleReportFeedback(doomsayerRole.LastObservedPlayer);

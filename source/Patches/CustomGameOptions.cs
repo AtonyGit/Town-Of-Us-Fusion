@@ -474,6 +474,8 @@ public static class CustomGameOptions
     public static float ReviveCooldown => Generate.ReviveCooldown.Get();
     public static float IncreasedCooldownPerRevive => Generate.IncreasedCooldownPerRevive.Get();
     public static int MaxReveals => (int)Generate.MaxReveals.Get();
+    public static bool GhostsDoTasks => Generate.GhostsDoTasks.Get();
+    public static bool DoomsayerCantObserve => Generate.DoomsayerCantObserve.Get();
 
     public static float JackalKillCooldown => Generate.JackalKillCooldown.Get();
     public static bool DoJackalRecruitsDie => Generate.DoJackalRecruitsDie.Get();

@@ -7,83 +7,38 @@ An Among Us mod that adds a bunch of roles, modifiers and game settings
 
 Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or want to find people to play with!
 
-**Crewmate Roles**
-- [Aurial](#aurial)
-- [Detective](#detective)
-- [Haunter](#haunter)
-- [Investigator](#investigator)
-- [Mystic](#mystic)
-- [Oracle](#oracle)
-- [Seer](#seer)
-- [Snitch](#snitch)
-- [Spy](#spy)
-- [Tracker](#tracker)
-- [Trapper](#trapper)
-- [Sheriff](#sheriff)
-- [Vampire Hunter](#vampire-hunter)
-- [Veteran](#veteran)
-- [Vigilante](#vigilante)
-- [Altruist](#altruist)
-- [Medic](#medic)
-- [Engineer](#engineer)
-- [Imitator](#imitator)
-- [Mayor](#mayor)
-- [Medium](#medium)
-- [Prosecutor](#prosecutor)
-- [Swapper](#swapper)
-- [Transporter](#transporter)
-
-**Neutral Roles**
-- [Amnesiac](#amnesiac)
-- [Guardian Angel](#guardian-angel)
-- [Survivor](#survivor)
-- [Doomsayer](#doomsayer)
-- [Executioner](#executioner)
-- [Jester](#jester)
-- [Phantom](#phantom)
-- [Arsonist](#arsonist)
-- [Berserker](#Berserker)
-- [Plaguebearer](#plaguebearer)
-- [The Glitch](#the-glitch)
-- [Vampire](#vampire)
-- [Werewolf](#werewolf)
-
-**Impostor Roles**
-- [Escapist](#escapist)
-- [Grenadier](#grenadier)
-- [Morphling](#morphling)
-- [Swooper](#swooper)
-- [Venerer](#venerer)
-- [Bomber](#bomber)
-- [Traitor](#traitor)
-- [Warlock](#warlock)
-- [Blackmailer](#blackmailer)
-- [Janitor](#janitor)
-- [Miner](#miner)
-- [Undertaker](#undertaker)
-
-**Modifiers**
-- [Aftermath](#aftermath)
-- [Bait](#bait)
-- [Diseased](#diseased)
-- [Frosty](#frosty)
-- [Multitasker](#multitasker)
-- [Torch](#torch)
-- [Button Barry](#button-barry)
-- [Flash](#flash)
-- [Giant](#giant)
-- [Radar](#radar)
-- [Lovers](#lovers)
-- [Sleuth](#sleuth)
-- [Tiebreaker](#tiebreaker)
-- [Disperser](#disperser)
-- [Double Shot](#double-shot)
-- [Underdog](#underdog)
-
+| **Impostor Roles**           | **Crewmate Roles**                | **Neutral Roles**               | **Modifiers**                |
+|:---------------------------:|:---------------------------------:|:-------------------------------:|:---------------------------:|
+| [Blackmailer](#blackmailer)  | [Altruist](#altruist)              | [Amnesiac](#amnesiac)            | [Aftermath](#aftermath)     |
+| [Bomber](#bomber)            | [Aurial](#aurial)                  | [Arsonist](#arsonist)            | [Bait](#bait)               |
+| [Escapist](#escapist)        | [Detective](#detective)            | [Doomsayer](#doomsayer)          | [Button Barry](#button-barry)|
+| [Grenadier](#grenadier)      | [Engineer](#engineer)              | [Executioner](#executioner)      | [Diseased](#diseased)       |
+| [Janitor](#janitor)          | [Haunter](#haunter)                | [Guardian Angel](#guardian-angel)| [Disperser](#disperser)     |
+| [Miner](#miner)              | [Hunter](#hunter)                  | [Jester](#jester)                | [Double Shot](#double-shot) |
+| [Morphling](#morphling)      | [Imitator](#imitator)              | [Juggernaut](#juggernaut)        | [Flash](#flash)             |
+| [Swooper](#swooper)          | [Investigator](#investigator)      | [Phantom](#phantom)              | [Frosty](#frosty)           |
+| [Traitor](#traitor)          | [Mayor](#mayor)                    | [Plaguebearer](#plaguebearer)    | [Giant](#giant)             |
+| [Undertaker](#undertaker)    | [Medic](#medic)                    | [Survivor](#survivor)            | [Lovers](#lovers)           |
+| [Venerer](#venerer)          | [Medium](#medium)                  | [The Glitch](#the-glitch)        | [Multitasker](#multitasker)|
+| [Warlock](#warlock)          | [Mystic](#mystic)                  | [Vampire](#vampire)              | [Radar](#radar)             |
+|                             | [Oracle](#oracle)                  | [Werewolf](#werewolf)            | [Sleuth](#sleuth)           |
+|                             | [Prosecutor](#prosecutor)          |                                 | [Tiebreaker](#tiebreaker)   |
+|                             | [Seer](#seer)                      |                                 | [Torch](#torch)             |
+|                             | [Sheriff](#sheriff)                |                                 | [Underdog](#underdog)       |
+|                             | [Snitch](#snitch)                  |                                 |                             |
+|                             | [Spy](#spy)                        |                                 |                             |
+|                             | [Swapper](#swapper)                |                                 |                             |
+|                             | [Tracker](#tracker)                |                                 |                             |
+|                             | [Trapper](#trapper)                |                                 |                             |
+|                             | [Transporter](#transporter)        |                                 |                             |
+|                             | [Vampire Hunter](#vampire-hunter)  |                                 |                             |
+|                             | [Veteran](#veteran)                |                                 |                             |
+|                             | [Vigilante](#vigilante)            |                                 |                             |
 -----------------------
 # Releases
 | Among Us - Version| Mod Version | Link |
 |----------|-------------|-----------------|
+| 2024.3.5s & 2024.3.5e | v5.0.4 | [Download](https://github.com/eDonnes124/Town-Of-Us/releases/download/v5.0.4/ToU.v5.0.4.zip) |
 | 2023.11.28s & 2023.11.28e | v5.0.3 | [Download](https://github.com/eDonnes124/Town-Of-Us/releases/download/v5.0.3/ToU.v5.0.3.zip) |
 | 2023.7.12s & 2023.7.12e | v5.0.2 | [Download](https://github.com/eDonnes124/Town-Of-Us/releases/download/v5.0.2/ToU.v5.0.2.zip) |
 | 2023.6.13s & 2023.6.13e | v5.0.1 | [Download](https://github.com/eDonnes124/Town-Of-Us/releases/download/v5.0.1/ToU.v5.0.1.zip) |
@@ -128,24 +83,35 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 | 2021.6.30s & 2021.6.30e & 2021.7.20e | v2.2.1 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v2.2.1/TOU_221.zip) |
 | 2021.6.30s & 2021.6.30e & 2021.7.20e | v2.2.0 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v2.2.0/TOU_220.zip) |
 | 2021.6.15s & 2021.6.15e | v2.1.4 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v2.1.4/TOU_214.zip) |
-| 2021.6.15s & 2021.6.15e | v2.1.3 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v2.1.3/TownOfUsFusion213_1.zip) |
-| 2021.6.15s & 2021.6.15e | v2.1.2 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v2.1.2/TownOfUsFusion212_1.zip) |
-| 2021.6.15s & 2021.6.15e | v2.1.1 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v2.1.1/TownOfUsFusion211_1.zip) |
-| 2021.5.10s | v2.0.4 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v2.0.4/TownOfUsFusion-v2.0.4.zip) |
-| 2021.5.10s | v2.0.3 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v2.0.3/TownOfUsFusion-v2.0.3.zip) |
-| 2021.4.12s & 2021.4.14s | v2.0.2 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v2.0.2/TownOfUsFusion-v2.0.2.zip) |
-| 2021.4.12s | v2.0.1 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v2.0.1/TownOfUsFusion-v2.0.1.zip) |
-| 2021.3.31.3s | v2.0.0 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v2.0.0/TownOfUsFusion-v2.0.0.zip) |
-| 2021.3.5s | v1.2.0 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v1.2.0/TownOfUsFusion-v1.2.0.zip) |
-| 2021.3.5s | v1.1.0 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v1.1.0/TownOfUsFusion-v1.1.0-2021.3.5s.zip) |
-| 2020.12.19s | v1.1.0 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v1.1.0/TownOfUsFusion-v1.1.0-2020.12.9s.zip) |
-| 2020.12.19s | v1.0.3 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v1.0.3/TownOfUsFusion-v1.0.3.zip) |
-| 2020.12.19s | v1.0.2 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v1.0.2/TownOfUsFusion-v1.0.2.zip) |
-| 2020.12.19s | v1.0.1 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v1.0.1/TownOfUsFusion-v1.0.1.zip) |
-| 2020.12.19s | v1.0.0 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v1.0.0/TownOfUsFusion-v1.0.0.zip) |
+| 2021.6.15s & 2021.6.15e | v2.1.3 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v2.1.3/TownOfUs213_1.zip) |
+| 2021.6.15s & 2021.6.15e | v2.1.2 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v2.1.2/TownOfUs212_1.zip) |
+| 2021.6.15s & 2021.6.15e | v2.1.1 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v2.1.1/TownOfUs211_1.zip) |
+| 2021.5.10s | v2.0.4 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v2.0.4/TownOfUs-v2.0.4.zip) |
+| 2021.5.10s | v2.0.3 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v2.0.3/TownOfUs-v2.0.3.zip) |
+| 2021.4.12s & 2021.4.14s | v2.0.2 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v2.0.2/TownOfUs-v2.0.2.zip) |
+| 2021.4.12s | v2.0.1 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v2.0.1/TownOfUs-v2.0.1.zip) |
+| 2021.3.31.3s | v2.0.0 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v2.0.0/TownOfUs-v2.0.0.zip) |
+| 2021.3.5s | v1.2.0 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v1.2.0/TownOfUs-v1.2.0.zip) |
+| 2021.3.5s | v1.1.0 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v1.1.0/TownOfUs-v1.1.0-2021.3.5s.zip) |
+| 2020.12.19s | v1.1.0 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v1.1.0/TownOfUs-v1.1.0-2020.12.9s.zip) |
+| 2020.12.19s | v1.0.3 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v1.0.3/TownOfUs-v1.0.3.zip) |
+| 2020.12.19s | v1.0.2 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v1.0.2/TownOfUs-v1.0.2.zip) |
+| 2020.12.19s | v1.0.1 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v1.0.1/TownOfUs-v1.0.1.zip) |
+| 2020.12.19s | v1.0.0 | [Download](https://github.com/polusgg/Town-Of-Us/releases/download/v1.0.0/TownOfUs-v1.0.0.zip) |
 
 <details>
   <summary> Changelog </summary>
+  <details>
+  <summary> v5.0.4 </summary>
+  <ul> <li>Compatibility with the new Among Us version v2024.3.5</li> </ul>
+  <ul> <li>Added ghosts ignore tasks option</li> </ul>
+  <ul> <li>Hide vanilla roles in hudstring and its tab, courtesy of @whichtwix</li> </ul>
+  <ul> <li>April fools options, courtesy of @whichtwix</li> </ul>
+  <ul> <li>Vampire Remains Vampire When Remembered, courtesy of @Loons-Loons/@Loonie-Toons</li> </ul>
+  <ul> <li>Hats system standardised to Unity Addressables</li> </ul>
+  <ul> <li>New Role: Hunter, courtesy of @fariparedes</li> </ul>
+  <ul> <li>Modified updater, courtesy of @whichtwix</li> </ul>
+  </details>
   <details>
   <summary> v5.0.3 </summary>
   <ul> <li>Compatibility with the new Among Us version v2023.11.28</li> </ul>
@@ -774,11 +740,17 @@ If the mod does not work and the version of Among Us that you see in the main me
 \
 **11. Click on Enter.**\
 \
-**12. Copy or move the contents of the Town Of Us zip file into the AmongUs folder.**\
+**12. Copy all the Among Us files and put them in a new folder on your desktop or anywhere else.**\
 \
-**13. Finally, launch Among Us from Epic Games library.**\
+**13. Paste the contents of the town of us zip in the new folder.**\
 \
-A first launch may take up to 5 minutes, so be patient if it doesn't launch immediately.<br/>
+**14. Download the exe file [here](https://github.com/whichtwix/EpicGamesStarter/releases/latest) and place it in your among us folder.**\
+\
+**15. Open the ```EpicGamesStarter.exe``` by double clicking it to start the game in the copy.**\
+\
+**16. Add the folder as a exclusion for any antivirus you have and for windows defender.**\
+\
+A first launch may take awhile as it sets up and downloads prerequisites, so be patient if it doesn't launch immediately.<br/>
 <br/>
 
 If the mod does not work and the version of Among Us that you see in the main menu, under the town of us logo or bottom left, does not correspond to the version indicated in the [releases table](#releases) above please do the following to get the correct version:
@@ -981,6 +953,23 @@ However, this is done so in a random order, not stating who entered the trap, no
 | Minimum Number of Roles required to Trigger Trap | The number of players that must enter the trap for it to be triggered | Number | 3 |
 
 -----------------------
+## Hunter
+### **Team: Crewmates**
+
+The Hunter is a Crewmate Killing role with the ability to track players and execute them if they do anything suspicious.\ 
+Unlike the Sheriff, the Hunter does not die if they kill an innocent player,\
+however the Hunter may only execute players who have given them probable cause.\
+### Game Options
+| Name | Description | Type | Default |
+|----------|:-------------:|:------:|:------:|
+| Hunter | The percentage probability of the Hunter appearing | Percentage | 0% |
+| Hunter Kill Cooldown | The cooldown of the Hunter's Kill button | Number | 25 |
+| Hunter Stalk Cooldown | The cooldown of the Hunter's Stalk button | Number | 10 |
+| Hunter Stalk Duration | The duration of the Hunter's Stalk | Number | 25 |
+| Maximum Stalk Uses | Maximum number of times a Hunter can Stalk | Number | 5 |
+| Hunter Can Report Who They've Killed |  Whether the Hunter is able to report their own kills | Toggle | True |
+
+-----------------------
 ## Sheriff
 ### **Team: Crewmates**
 The Sheriff is a Crewmate that has the ability to eliminate the Impostors using their kill button.\
@@ -996,7 +985,7 @@ However, if they kill a Crewmate or a Neutral player they can't kill, they inste
 | Sheriff Kills Jester | Whether the Sheriff is able to kill the Jester | Toggle | False |
 | Sheriff Kills Arsonist | Whether the Sheriff is able to kill the Arsonist | Toggle | False |
 | Sheriff Kills The Glitch | Whether the Sheriff is able to kill The Glitch | Toggle | False |
-| Sheriff Kills Berserker | Whether the Sheriff is able to kill the Berserker | Toggle | False |
+| Sheriff Kills Juggernaut | Whether the Sheriff is able to kill the Juggernaut | Toggle | False |
 | Sheriff Kills Plaguebearer | Whether the Sheriff is able to kill the Plaguebearer | Toggle | False |
 | Sheriff Kills Vampire | Whether the Sheriff is able to kill the Vampire | Toggle | False |
 | Sheriff Kills Werewolf | Whether the Sheriff is able to kill the Werewolf | Toggle | False |
@@ -1099,7 +1088,7 @@ A report can contain the name of the killer or the color type (Darker/Lighter)
 - Sky Blue - Lighter
 - Beige - Lighter
 - Magenta - Darker
-- Sea Green - Lighter
+- Turquoise - Lighter
 - Lilac - Lighter
 - Olive - Darker
 - Azure - Lighter
@@ -1285,6 +1274,7 @@ They have an additional observe ability that hints towards certain player's role
 | Doomsayer Guess Impostors  | Whether the Doomsayer can Guess Impostor roles | Toggle | False |
 | Doomsayer Can Guess After Voting  | Whether the Doomsayer can Guess after voting | Toggle | False |
 | Number Of Doomsayer Kills To Win | The amount of kills in order for the Doomsayer to win | Number | 3 |
+| (Experienced) Doomsayer Can't Observe | The Doomsayer doesn't have the observe feature | Toggle | False |
 
 -----------------------
 ## Executioner
@@ -1348,20 +1338,20 @@ The Arsonist needs to be the last killer alive to win the game.
 | Ignite Cooldown Removed When Arso Is Last Killer | Whether the Arsonist's Ignite Cooldown is removed when they're the final killer | Toggle | False |
 
 -----------------------
-## Berserker
+## Juggernaut
 ### **Team: Neutral**
 
-The Berserker is a Neutral role with its own win condition.\
-The Berserker's special ability is that their kill cooldown reduces with each kill.\
-This means in theory the Berserker can have a 0 second kill cooldown!\
-The Berserker is also a hidden role, meaning it will show up randomly and can not be toggled by percentages like other roles.\
-The Berserker needs to be the last killer alive to win the game.
+The Juggernaut is a Neutral role with its own win condition.\
+The Juggernaut's special ability is that their kill cooldown reduces with each kill.\
+This means in theory the Juggernaut can have a 0 second kill cooldown!\
+The Juggernaut is also a hidden role, meaning it will show up randomly and can not be toggled by percentages like other roles.\
+The Juggernaut needs to be the last killer alive to win the game.
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
-| Berserker Kill Cooldown | The initial cooldown of the Berserker's Kill button | Time | 25s |
-| Reduced Kill Cooldown Per Kill | The amount of time removed from the Berserker's Kill Cooldown Per Kill | Time | 5s |
-| Berserker can Vent | Whether the Berserker can Vent | Toggle | False |
+| Juggernaut Kill Cooldown | The initial cooldown of the Juggernaut's Kill button | Time | 25s |
+| Reduced Kill Cooldown Per Kill | The amount of time removed from the Juggernaut's Kill Cooldown Per Kill | Time | 5s |
+| Juggernaut can Vent | Whether the Juggernaut can Vent | Toggle | False |
 
 -----------------------
 ## Plaguebearer
@@ -1580,6 +1570,7 @@ This prevents the blackmailed person from speaking during the next meeting.
 |----------|:-------------:|:------:|:------:|
 | Blackmailer | The percentage probability of the Blackmailer appearing | Percentage | 0% |
 | Initial Blackmail Cooldown | The initial cooldown of the Blackmailer's Blackmail button | Time | 10s |
+| Only Target Sees Blackmail | If enabled, only the blackmailed player (and the Blackmailer) will see that the player can't speak. | Toggle | False |
 
 -----------------------
 ## Janitor
@@ -1809,8 +1800,16 @@ When they are the only remaining Impostor, they will have their kill cooldown sh
 | Max Neutral Benign Roles | The maximum number of Neutral Benign roles a game can have | Number | 1 |
 | Min Neutral Evil Roles | The minimum number of Neutral Evil roles a game can have | Number | 1 |
 | Max Neutral Evil Roles | The maximum number of Neutral Evil roles a game can have | Number | 1 |
+| Min Neutral Chaos Roles | The minimum number of Neutral Chaos roles a game can have | Number | 1 |
+| Max Neutral Chaos Roles | The maximum number of Neutral Chaos roles a game can have | Number | 1 |
 | Min Neutral Killing Roles | The minimum number of Neutral Killing roles a game can have | Number | 1 |
 | Max Neutral Killing Roles | The maximum number of Neutral Killing roles a game can have | Number | 1 |
+| Min Neutral Neophyte Roles | The minimum number of Neutral Neophyte roles a game can have | Number | 1 |
+| Max Neutral Neophyte Roles | The maximum number of Neutral Neophyte roles a game can have | Number | 1 |
+| Min Neutral Apocalypse Roles | The minimum number of Neutral Apocalypse roles a game can have | Number | 1 |
+| Max Neutral Apocalypse Roles | The maximum number of Neutral Apocalypse roles a game can have | Number | 1 |
+| Min Impostor Roles | The minimum number of Impostor roles a game can have | Number | 1 |
+| Max Impostor Roles | The maximum number of Impostor roles a game can have | Number | 1 |
 
 -----------------------
 # All Any Settings
@@ -1955,7 +1954,7 @@ If you have any bugs or any need to contact me, join the [Discord Server](https:
 [TorchMod](https://github.com/tomozbot/TorchMod) - For the inspiration of the Torch modifier.\
 [XtraCube](https://github.com/XtraCube) - For the RainbowMod.\
 [PhasmoFireGod](https://twitch.tv/PhasmoFireGod) and [Ophidian](https://www.instagram.com/ixean.studio) - Button Art.\
-[TheOtherRoles](https://github.com/Eisbison/TheOtherRoles) - For the inspiration of the Vigilante, Tracker and Spy roles, as well as the Bait modifier.\
+[TheOtherRoles](https://github.com/Eisbison/TheOtherRoles) - For the inspiration of the Vigilante, Tracker and Spy roles, as well as the Bait modifier, as well as gradient text code for Jackal.\
 [5up](https://www.twitch.tv/5uppp) and the Submarine Team - For the inspiration of the Grenadier role.\
 [Guus](https://github.com/OhMyGuus) - For support for the old Among Us versions (v2021.11.9.5 and v2021.12.15).\
 [MyDragonBreath](https://github.com/MyDragonBreath) - For Submerged Compatibility, the Trapper and Aurial roles, the Aftermath modifier and support for the new Among Us versions (v2022.6.21, v2023.6.13 & v2023.7.12).\

@@ -106,6 +106,8 @@ namespace TownOfUsFusion
     CheckMurder,
 
     SubmergedFixOxygen,
+    ContentAddition,
+
     // TOU FUSION ROLES
     Resurrect,
     Resurrect2,

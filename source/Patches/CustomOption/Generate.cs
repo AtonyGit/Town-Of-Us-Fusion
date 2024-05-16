@@ -203,6 +203,7 @@ namespace TownOfUsFusion.CustomOption
         public static CustomStringOption SkipButtonDisable;
         public static CustomToggleOption FirstDeathShield;
         public static CustomToggleOption NeutralEvilWinEndsGame;
+        public static CustomToggleOption GhostsDoTasks;
 
         public static CustomHeaderOption GameModeSettings;
         public static CustomStringOption GameMode;
@@ -551,6 +552,7 @@ namespace TownOfUsFusion.CustomOption
         public static CustomToggleOption DoomsayerGuessImpostors;
         public static CustomToggleOption DoomsayerAfterVoting;
         public static CustomNumberOption DoomsayerGuessesToWin;
+        public static CustomToggleOption DoomsayerCantObserve;
 
         public static CustomHeaderOption Jackal;
         public static CustomNumberOption JackalKillCooldown;
@@ -1065,6 +1067,7 @@ namespace TownOfUsFusion.CustomOption
             SkipButtonDisable = new CustomStringOption(num++, MultiMenu.main, "Disable Meeting Skip Button", new[] { "No", "Emergency", "Always" });
             FirstDeathShield = new CustomToggleOption(num++, MultiMenu.main, "First Death Shield Next Game", false);
             NeutralEvilWinEndsGame = new CustomToggleOption(num++, MultiMenu.main, "Neutral Evil Win Ends Game", true);
+            GhostsDoTasks = new CustomToggleOption(num++, MultiMenu.main, "Ghosts Do Tasks", true);
             EnableAprilFoolsMode = new CustomToggleOption(num++, MultiMenu.main, "Enable April Fools Mode", false);
 
             TaskTrackingSettings =
@@ -1416,6 +1419,7 @@ namespace TownOfUsFusion.CustomOption
             DoomsayerGuessImpostors = new CustomToggleOption(num++, MultiMenu.neutral, "Doomsayer Can Guess Impostor Roles", false);
             DoomsayerAfterVoting = new CustomToggleOption(num++, MultiMenu.neutral, "Doomsayer Can Guess After Voting", false);
             DoomsayerGuessesToWin = new CustomNumberOption(num++, MultiMenu.neutral, "Number Of Doomsayer Kills To Win", 3, 1, 5, 1);
+            DoomsayerCantObserve = new CustomToggleOption(num++, MultiMenu.neutral, "(Experienced) Doomsayer can't observe", false);
 
             Executioner =
                 new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#8C4005FF>Executioner</color>");

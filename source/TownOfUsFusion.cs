@@ -21,6 +21,7 @@ using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TownOfUsFusion.Patches.ScreenEffects;
+using System.IO;
 
 namespace TownOfUsFusion
 {
@@ -32,7 +33,7 @@ namespace TownOfUsFusion
     public class TownOfUsFusion : BasePlugin
     {
         public const string Id = "com.FusionStudios.TownOfUsFusion";
-        public const string VersionString = "0.2.2";
+        public const string VersionString = "0.2.3";
         public const string TouVersionString = "5.0.4";
         public static System.Version Version = System.Version.Parse(VersionString);
         public static string STR_DiscordText = "Lobby";
@@ -156,9 +157,11 @@ namespace TownOfUsFusion
         public ConfigEntry<string> Ip { get; set; }
 
         public ConfigEntry<ushort> Port { get; set; }
+        public static string RuntimeLocation;
 
         public override void Load()
         {
+            RuntimeLocation = Path.GetDirectoryName(Assembly.GetAssembly(typeof(TownOfUsFusion)).Location);
             System.Console.WriteLine("000.000.000.000/000000000000000000");
 
             _harmony = new Harmony("com.fusionstudios.TownOfUsFusion");
