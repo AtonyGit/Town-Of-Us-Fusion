@@ -1,6 +1,7 @@
 using System;
 using HarmonyLib;
 using Hazel;
+using TownOfUsFusion.CrewmateRoles.BodyguardMod;
 using TownOfUsFusion.NeutralRoles.ExecutionerMod;
 using TownOfUsFusion.NeutralRoles.GuardianAngelMod;
 using TownOfUsFusion.Roles;
@@ -67,6 +68,15 @@ public static class Start
                 shRole.CanShoot = true;
             }
         }
+        
+        if (PlayerControl.LocalPlayer.Is(RoleEnum.Inquisitor))
+        {
+            var inquis = Role.GetRole<Inquisitor>(PlayerControl.LocalPlayer);
+            inquis.LastInquired = DateTime.UtcNow;
+            inquis.LastInquired = inquis.LastInquired.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.InquireCooldown);
+            inquis.LastVanquished = DateTime.UtcNow;
+            inquis.LastVanquished = inquis.LastVanquished.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.VanquishCooldown);
+        }
 
         if (PlayerControl.LocalPlayer.Is(RoleEnum.Tracker))
         {
@@ -96,6 +106,23 @@ public static class Start
                 var vhRole = (VampireHunter)vh;
                 vhRole.UsesLeft = CustomGameOptions.MaxFailedStakesPerGame;
                 vhRole.AddedStakes = true;
+            }
+        }
+            
+        if (PlayerControl.LocalPlayer.Is(RoleEnum.Trickster))
+        {
+            var vh = Role.GetRole<Trickster>(PlayerControl.LocalPlayer);
+            vh.LastKilled = DateTime.UtcNow;
+            vh.LastKilled = vh.LastKilled.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.TrickCd);
+        }
+
+        if (CustomGameOptions.CanTrickRoundOne)
+        {
+            foreach (var vh in Role.GetRoles(RoleEnum.Trickster))
+            {
+                var vhRole = (Trickster)vh;
+                vhRole.UsesLeft = CustomGameOptions.MaxFailedTricksPerGame;
+                vhRole.AddedTricks = true;
             }
         }
 
@@ -273,6 +300,60 @@ public static class Start
             glitch.LastHack = glitch.LastHack.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.HackCooldown);
             glitch.LastMimic = glitch.LastMimic.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.MimicCooldown);
         }
+
+        if (PlayerControl.LocalPlayer.Is(RoleEnum.Inquisitor))
+        {
+            var inquis = Role.GetRole<Inquisitor>(PlayerControl.LocalPlayer);
+            inquis.LastInquired = DateTime.UtcNow;
+            inquis.LastVanquished = DateTime.UtcNow;
+            //inquis.canVanquish = true;
+            inquis.LastInquired = inquis.LastInquired.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.InquireCooldown);
+            inquis.LastVanquished = inquis.LastVanquished.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.VanquishCooldown);
+        }
+            foreach (var bg1 in Role.GetRoles(RoleEnum.Inquisitor))
+            {
+                var bgRole = (Inquisitor)bg1;
+                bgRole.canVanquish = true;
+            }
+
+            foreach (var bg in Role.GetRoles(RoleEnum.Bodyguard))
+            {
+                var bgRole = (Bodyguard)bg;
+                bgRole.exGuarded = bgRole.GuardedPlayer;
+                bgRole.GuardedPlayer = null;
+            }
+
+        if (PlayerControl.LocalPlayer.Is(RoleEnum.Bodyguard))
+        {
+            var bg = Role.GetRole<Bodyguard>(PlayerControl.LocalPlayer);
+            if (bg.GuardedPlayer != null)
+            {
+        foreach (var role in Role.GetRoles(RoleEnum.Bodyguard))
+            {
+                ((Bodyguard)role).exGuarded = ((Bodyguard)role).GuardedPlayer;
+                ((Bodyguard)role).GuardedPlayer = null;
+                System.Console.WriteLine(((Bodyguard)role).GuardedPlayer.name + " Is Ex-Guarded");
+            }
+
+                var writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId,
+                    (byte)CustomRPC.GuardReset, SendOption.Reliable, -1);
+                writer.Write(bg.Player.PlayerId);
+                AmongUsClient.Instance.FinishRpcImmediately(writer);
+
+                ShowGuarded.GuardReset(bg.Player);
+            }
+            //bg.LastGuarded = bg.LastGuarded.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.GuardCd);
+        }/*
+            foreach (var bg1 in Role.GetRoles(RoleEnum.Bodyguard))
+            {
+                var bgRole = (Bodyguard)bg1;
+                var writer = AmongUsClient.Instance.StartRpcImmediately(bgRole.NetId,
+                    (byte)CustomRPC.GuardReset, SendOption.Reliable, -1);
+                writer.Write(bgRole.Player.PlayerId);
+                AmongUsClient.Instance.FinishRpcImmediately(writer);
+
+                ShowGuarded.GuardReset(bgRole.Player);
+            }*/
 
         if (PlayerControl.LocalPlayer.Is(RoleEnum.GuardianAngel))
         {

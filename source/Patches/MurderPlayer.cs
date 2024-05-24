@@ -27,7 +27,7 @@ public class MurderPlayer
             {
                 foreach (var player2 in PlayerControl.AllPlayerControls)
                 {
-                    if (/*player2.Is(RoleEnum.NeoNecromancer) || */player2.Is(RoleEnum.Apparitionist) || player2.Is(RoleEnum.Scourge) || player2.Is(RoleEnum.Enchanter) || player2.Is(RoleEnum.Husk)) Utils.MurderPlayer(player2, player2, true);
+                    if (!player2.Is(RoleEnum.NeoNecromancer) && player2.Is(Faction.NeutralNecro)) Utils.MurderPlayer(player2, player2, true);
                 }
             }
             return false;

@@ -30,7 +30,7 @@ namespace TownOfUsFusion.Roles
         Color = Patches.Colors.NeoNecromancer;
         RoleType = RoleEnum.Husk;
         AddToRoleHistory(RoleType);
-        Faction = Faction.NeutralNeophyte;
+        Faction = Faction.NeutralNecro;
         
         RemainingKills = CustomGameOptions.CanHuskAssassinate ? CustomGameOptions.HuskAssassinKills : 0;
 
@@ -47,6 +47,7 @@ namespace TownOfUsFusion.Roles
             if (CustomGameOptions.TransporterOn > 0) ColorMapping.Add("Transporter", Colors.Transporter);
             if (CustomGameOptions.MediumOn > 0) ColorMapping.Add("Medium", Colors.Medium);
             if (CustomGameOptions.MysticOn > 0) ColorMapping.Add("Mystic", Colors.Mystic);
+            if (CustomGameOptions.TricksterOn > 0) ColorMapping.Add("Trickster", Colors.Trickster);
             if (CustomGameOptions.ImitatorOn > 0) ColorMapping.Add("Imitator", Colors.Imitator);
             if (CustomGameOptions.VampireHunterOn > 0 && CustomGameOptions.VampireOn > 0) ColorMapping.Add("Vampire Hunter", Colors.VampireHunter);
             if (CustomGameOptions.ProsecutorOn > 0) ColorMapping.Add("Prosecutor", Colors.Prosecutor);
@@ -95,6 +96,7 @@ namespace TownOfUsFusion.Roles
                 if (CustomGameOptions.TyrantOn > 0) ColorMapping.Add("Tyrant", Colors.Tyrant);
                 if (CustomGameOptions.JokerOn > 0) ColorMapping.Add("Joker", Colors.Joker);
                 if (CustomGameOptions.CannibalOn > 0) ColorMapping.Add("Cannibal", Colors.Cannibal);
+                if (CustomGameOptions.InquisitorOn > 0) ColorMapping.Add("Inquisitor", Colors.Inquisitor);
             //    if (CustomGameOptions.JesterOn > 0 || (CustomGameOptions.ExecutionerOn > 0 && CustomGameOptions.OnTargetDead == OnTargetDead.Jester) || (CustomGameOptions.GuardianAngelOn > 0 && CustomGameOptions.GaOnTargetDeath == BecomeOptions.Jester)) ColorMapping.Add("Jester", Colors.Jester);
             }
             if (CustomGameOptions.AssassinGuessNeutralKilling)

@@ -187,8 +187,8 @@ public class KillButtonSprite
             __instance.KillButton.graphic.sprite = Kill;
             __instance.KillButton.buttonLabelText.gameObject.SetActive(true);
             __instance.KillButton.buttonLabelText.text = "Kill";
-            flag = PlayerControl.LocalPlayer.Is(RoleEnum.Sheriff) || PlayerControl.LocalPlayer.Is(RoleEnum.Pestilence) || PlayerControl.LocalPlayer.Is(RoleEnum.Scourge) || PlayerControl.LocalPlayer.Is(RoleEnum.Jackal) || 
-                PlayerControl.LocalPlayer.Is(RoleEnum.Werewolf) || PlayerControl.LocalPlayer.Is(RoleEnum.NeoNecromancer) || PlayerControl.LocalPlayer.Is(RoleEnum.Berserker) || PlayerControl.LocalPlayer.Is(RoleEnum.War);
+            flag = PlayerControl.LocalPlayer.Is(RoleEnum.Sheriff) || PlayerControl.LocalPlayer.Is(RoleEnum.Pestilence) || PlayerControl.LocalPlayer.Is(RoleEnum.Trickster) || PlayerControl.LocalPlayer.Is(RoleEnum.Scourge) || PlayerControl.LocalPlayer.Is(RoleEnum.Jackal) || 
+                PlayerControl.LocalPlayer.Is(RoleEnum.Werewolf) || PlayerControl.LocalPlayer.Is(RoleEnum.NeoNecromancer) || PlayerControl.LocalPlayer.Is(RoleEnum.Berserker) || PlayerControl.LocalPlayer.Is(RoleEnum.Inquisitor) || PlayerControl.LocalPlayer.Is(RoleEnum.War);
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Sheriff))  {
                 if (!Role.GetRole<Sheriff>(PlayerControl.LocalPlayer).CanShoot) {
                 __instance.KillButton.gameObject.SetActive(false);
@@ -204,6 +204,14 @@ public class KillButtonSprite
                 __instance.KillButton.cooldownTimerText.gameObject.SetActive(false);
                 } else 
                 __instance.KillButton.buttonLabelText.text = "Destroy";
+                } else
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Inquisitor))  {
+                if (!Role.GetRole<Inquisitor>(PlayerControl.LocalPlayer).canVanquish || Role.GetRole<Inquisitor>(PlayerControl.LocalPlayer).lostVanquish) {
+                __instance.KillButton.gameObject.SetActive(false);
+                __instance.KillButton.buttonLabelText.text = "Waiting";
+                __instance.KillButton.cooldownTimerText.gameObject.SetActive(false);
+                }
+                __instance.KillButton.buttonLabelText.text = "Vanquish";
                 }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Jackal))  {
                 if (!Role.GetRole<Jackal>(PlayerControl.LocalPlayer).CanKill) {
@@ -212,7 +220,7 @@ public class KillButtonSprite
                 __instance.KillButton.cooldownTimerText.gameObject.SetActive(false);
                 } else 
                 __instance.KillButton.buttonLabelText.text = "Assassinate";
-            }
+            } else if (PlayerControl.LocalPlayer.Is(RoleEnum.Trickster)) __instance.KillButton.buttonLabelText.text = "Trick";
         }
         if (!PlayerControl.LocalPlayer.Is(Faction.Impostors) &&
             GameOptionsManager.Instance.CurrentGameOptions.GameMode != GameModes.HideNSeek)

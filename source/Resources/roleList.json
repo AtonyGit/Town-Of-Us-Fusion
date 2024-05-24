@@ -356,9 +356,9 @@
       "description": "PLACEHOLDER DESCRIPTION"
     },
     {
-      "displayname": "Infiltrator",
-      "role": "Infiltrator",
-      "color": "Infiltrator",
+      "displayname": "Inquisitor",
+      "role": "Inquisitor",
+      "color": "Inquisitor",
       "alias": "Infilt",
       "alignment": "NeutralKilling",
       "description": "PLACEHOLDER DESCRIPTION"

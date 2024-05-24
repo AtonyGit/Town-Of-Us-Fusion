@@ -23,14 +23,14 @@ namespace TownOfUsFusion.NeutralRoles.CannibalMod
         var backColor = renderer.material.GetColor(BackColor);
         var bodyColor = renderer.material.GetColor(BodyColor);
         var newColor = new Color(1f, 1f, 1f, 0f);
-        for (var i = 0; i < 60; i++)
+        for (var i = 0; i < 30; i++)
         {
             if (body == null) yield break;
-            renderer.color = Color.Lerp(backColor, newColor, i / 60f);
-            renderer.color = Color.Lerp(bodyColor, newColor, i / 60f);
+            renderer.color = Color.Lerp(backColor, newColor, i / 30f);
+            renderer.color = Color.Lerp(bodyColor, newColor, i / 30f);
             if (crimeSceneRenderer != null)
                 {
-                    crimeSceneRenderer.color = Color.Lerp(crimeSceneRenderer.color, newColor, i / 60f);
+                    crimeSceneRenderer.color = Color.Lerp(crimeSceneRenderer.color, newColor, i / 30f);
                 }
             yield return null;
         }

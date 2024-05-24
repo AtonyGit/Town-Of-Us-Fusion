@@ -13,20 +13,23 @@ public static class HudManagerUpdate
 
     public static void Postfix(HudManager __instance)
     {
+        UpdateNecroButtons(__instance);
+    }
+    public static void UpdateNecroButtons(HudManager __instance)
+    {
         if (PlayerControl.AllPlayerControls.Count <= 1) return;
         if (PlayerControl.LocalPlayer == null) return;
         if (PlayerControl.LocalPlayer.Data == null) return;
         if (PlayerControl.LocalPlayer.Data.IsDead) return;
         if (!PlayerControl.LocalPlayer.Is(RoleEnum.NeoNecromancer)) return;
         var role = Role.GetRole<NeoNecromancer>(PlayerControl.LocalPlayer);
-        
+            
             var killButton = __instance.KillButton;
         killButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                 && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                 && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
             killButton.SetCoolDown(role.NecroKillTimer(), CustomGameOptions.NecroKillCooldown);
             Utils.SetTarget(ref role.ClosestPlayer, killButton, float.NaN);
-            
 
         if (role.ResurrectButton == null)
         {
@@ -91,11 +94,10 @@ public static class HudManagerUpdate
         }
         var player = Utils.PlayerById(role.CurrentTarget.ParentId);
         if (role.CurrentTarget && role.ResurrectButton.enabled &&
-            (!player.Is(AllianceEnum.Lover) || !player.Is(AllianceEnum.Crewpocalypse) || !player.Is(AllianceEnum.Crewpostor) || !player.Is(AllianceEnum.Recruit) || 
-            !player.Is(Faction.Impostors) || !player.Is(RoleEnum.Vampire) || !player.Is(Faction.NeutralApocalypse) || !player.Is(Faction.NeutralChaos)
-             || !player.Is(RoleEnum.Detective) || !player.Is(RoleEnum.Seer) || !player.Is(RoleEnum.Investigator) || !player.Is(RoleEnum.Tracker) || !player.Is(RoleEnum.Snitch)
-            || !player.Is(RoleEnum.Spy) || !player.Is(RoleEnum.Trapper) || !player.Is(RoleEnum.VampireHunter) || !player.Is(RoleEnum.Veteran) || !player.Is(RoleEnum.Vigilante)
-             || !player.Is(RoleEnum.Mayor) || !player.Is(RoleEnum.Prosecutor) || !player.Is(RoleEnum.Amnesiac) || !player.Is(RoleEnum.GuardianAngel)) &&
+            (!player.Is(AllianceEnum.Lover) || !player.Is(AllianceEnum.Crewpocalypse) || !player.Is(AllianceEnum.Crewpostor) || !player.Is(AllianceEnum.Recruit)
+            || !player.Is(Faction.Impostors) || !player.Is(Faction.NeutralNeophyte) || !player.Is(Faction.NeutralApocalypse) || !player.Is(Faction.NeutralChaos)
+            || !player.Is(RoleEnum.Detective) || !player.Is(RoleEnum.Seer) || !player.Is(RoleEnum.Investigator) || !player.Is(RoleEnum.Tracker) || !player.Is(RoleEnum.Snitch) || !player.Is(RoleEnum.Spy) || !player.Is(RoleEnum.Trapper)
+            || !player.Is(RoleEnum.Mayor) || !player.Is(RoleEnum.Prosecutor) || !player.Is(RoleEnum.Swapper) || !player.Is(RoleEnum.Amnesiac) || !player.Is(RoleEnum.Survivor)) &&
             !(PlayerControl.LocalPlayer.killTimer > GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown - 0.5f))
         {
             SpriteRenderer component = null;
@@ -104,45 +106,11 @@ public static class HudManagerUpdate
             component.material.SetColor("_OutlineColor", Color.red);
             role.ResurrectButton.graphic.color = Palette.EnabledColor;
             role.ResurrectButton.graphic.material.SetFloat("_Desat", 0f);
-            return;
-        }
-
+        } else
+        {
         role.ResurrectButton.graphic.color = Palette.DisabledClear;
         role.ResurrectButton.graphic.material.SetFloat("_Desat", 1f);
-    }
-}/*
-public class NecroKillHudManagerUpdate
-{
-    public static void Postfix(HudManager __instance)
-    {
-        if (PlayerControl.AllPlayerControls.Count <= 1) return;
-        if (PlayerControl.LocalPlayer == null) return;
-        if (PlayerControl.LocalPlayer.Data == null) return;
-        if (PlayerControl.LocalPlayer.Data.IsDead) return;
-        if (!PlayerControl.LocalPlayer.Is(RoleEnum.NeoNecromancer)) return;
-        var role = Role.GetRole<NeoNecromancer>(PlayerControl.LocalPlayer);
-        
-        __instance.KillButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-        __instance.KillButton.SetCoolDown(role.KillTimer(), CustomGameOptions.NecroKillCooldown);
-
-        if(__instance.KillButton == null)
-        {
-        var notNecroTeam = PlayerControl.AllPlayerControls.ToArray()
-            .Where(x => !x.Is(RoleEnum.NeoNecromancer) || !x.Is(RoleEnum.Apparitionist) || !x.Is(RoleEnum.Scourge)
-            || !x.Is(RoleEnum.Enchanter) || !x.Is(RoleEnum.Husk)).ToList();
-            
-            if (role.ClosestPlayer != null)
-            {
-                role.ClosestPlayer.myRend().material.SetColor("_OutlineColor", Colors.NeoNecromancer);
-            }
-        //if(!role.ClosestPlayer.Is(RoleEnum.NeoNecromancer) || !role.ClosestPlayer.Is(RoleEnum.Apparitionist) || !role.ClosestPlayer.Is(RoleEnum.Scourge)
-        // || !role.ClosestPlayer.Is(RoleEnum.Enchanter) || !role.ClosestPlayer.Is(RoleEnum.Husk))
-        Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton, float.NaN, notNecroTeam);
-            return;
         }
-
     }
-}*/
+}
 }

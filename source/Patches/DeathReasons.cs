@@ -6,6 +6,7 @@ namespace TownOfUsFusion
         Ejected,
         Guessed,
         Killed,
-        Suicide
+        Suicide,
+        MetCondition
     }
 }

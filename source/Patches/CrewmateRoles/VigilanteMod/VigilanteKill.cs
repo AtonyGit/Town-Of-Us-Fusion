@@ -12,6 +12,7 @@ using TownOfUsFusion.NeutralRoles.DoomsayerMod;
 using TownOfUsFusion.CrewmateRoles.SwapperMod;
 using TownOfUsFusion.Patches;
 using TownOfUsFusion.Roles.Alliances;
+using Hazel;
 
 namespace TownOfUsFusion.CrewmateRoles.VigilanteMod
 {
@@ -106,12 +107,12 @@ namespace TownOfUsFusion.CrewmateRoles.VigilanteMod
         {
             var otherLover = Alliance.GetAlliance<Lover>(player).OtherLover.Player;
             if (!otherLover.Is(RoleEnum.Pestilence)) MurderPlayer(otherLover, false);
-        }
+        }/*
         else if (checkLover && player.IsRecruit() && CustomGameOptions.DoJackalRecruitsDie)
         {
             var otherRecruit = Alliance.GetAlliance<Recruit>(player).OtherRecruit.Player;
             if (!otherRecruit.Is(RoleEnum.Pestilence)) MurderPlayer(otherRecruit, false);
-        }
+        }*/
         
         var role2 = Role.GetRole(player);
         var vigilantePlayer = Role.GetRole<Vigilante>(player);
@@ -205,7 +206,33 @@ namespace TownOfUsFusion.CrewmateRoles.VigilanteMod
             meetingHud.ClearVote();
         }
 
-        if (AmongUsClient.Instance.AmHost) meetingHud.CheckForEndVoting();
+        if (AmongUsClient.Instance.AmHost) 
+        {
+                foreach (var role in Role.GetRoles(RoleEnum.Tyrant))
+                {
+                    if (role is Tyrant tyrant)
+                    {
+                        if (role.Player == player)
+                        {
+                            tyrant.ExtraVotes.Clear();
+                        }
+                        else
+                        {
+                            var votesRegained = tyrant.ExtraVotes.RemoveAll(x => x == player.PlayerId);
+
+                            if (tyrant.Player == PlayerControl.LocalPlayer)
+                                tyrant.VoteBank += votesRegained;
+
+                            var writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId,
+                                (byte) CustomRPC.AddTyrantVoteBank, SendOption.Reliable, -1);
+                            writer.Write(tyrant.Player.PlayerId);
+                            writer.Write(votesRegained);
+                            AmongUsClient.Instance.FinishRpcImmediately(writer);
+                        }
+                    }
+                }
+            meetingHud.CheckForEndVoting();
+        }
 
         AddHauntPatch.AssassinatedPlayers.Add(player);
     }

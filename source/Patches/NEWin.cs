@@ -35,7 +35,7 @@ public static class NEWin
             if (jackalRole != null) return;
 
             var necroRoles = Role.AllRoles.FirstOrDefault(x => (x.RoleType == RoleEnum.NeoNecromancer || x.RoleType == RoleEnum.Husk || x.RoleType == RoleEnum.Apparitionist
-            || x.RoleType == RoleEnum.Enchanter || x.RoleType == RoleEnum.Scourge) && Role.NecroWins);
+            || x.RoleType == RoleEnum.Scourge) && Role.NecroWins);
             if (necroRoles != null) return;
 
             var arsoRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Arsonist && ((Arsonist)x).ArsonistWins);

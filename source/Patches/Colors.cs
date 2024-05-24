@@ -29,10 +29,11 @@ namespace TownOfUsFusion.Patches
     public readonly static Color Chameleon = new(0.5f, 0.5f, 0f, 1f);
     public readonly static Color Imitator = new(0.7f, 0.85f, 0.3f, 1f);
     public readonly static Color VampireHunter = new(0.7f, 0.7f, 0.9f, 1f);
+    public readonly static Color Trickster = new(0.92f, 0.64f, 0.6f, 1f);
     public readonly static Color Prosecutor = new(0.7f, 0.5f, 0f, 1f);
     public readonly static Color Oracle = new(0.75f, 0f, 0.75f, 1f);
     public readonly static Color Aurial = new(0.7f, 0.3f, 0.6f, 1f);
-        public readonly static Color Hunter = new Color(0.16f, 0.67f, 0.53f, 1f);
+    public readonly static Color Hunter = new Color(0.16f, 0.67f, 0.53f, 1f);
 
     // Neutral Colors
     public readonly static Color Jester = new(1f, 0.75f, 0.8f, 1f);
@@ -61,7 +62,7 @@ namespace TownOfUsFusion.Patches
     public readonly static Color Tyrant = new(0.92f, 0.33f, 0.36f, 1f);
     public readonly static Color Cannibal = new(0.55f, 0.27f, 0.07f, 1f);
     public readonly static Color Witch = Palette.ImpostorRed;
-    public readonly static Color Infiltrator = Palette.ImpostorRed;
+    public readonly static Color Inquisitor = new(0.85f, 0.26f, 0.57f, 1f);
     public readonly static Color Ghoul = Palette.ImpostorRed;
     public readonly static Color Mercenary = Palette.ImpostorRed;
     public readonly static Color SerialKiller = Palette.ImpostorRed;

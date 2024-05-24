@@ -25,9 +25,13 @@ namespace TownOfUsFusion
                         playerInfo._object.Is(RoleEnum.Werewolf) || playerInfo._object.Is(RoleEnum.Doomsayer) ||
                         playerInfo._object.Is(RoleEnum.Vampire) || playerInfo._object.Is(RoleEnum.Jackal) || 
                         playerInfo._object.Is(RoleEnum.NeoNecromancer) || playerInfo._object.Is(RoleEnum.Scourge) ||
-                        playerInfo._object.Is(RoleEnum.Apparitionist) || playerInfo._object.Is(RoleEnum.Enchanter) ||
+                        playerInfo._object.Is(RoleEnum.Apparitionist) ||
                         playerInfo._object.Is(RoleEnum.Husk) ||
-                        playerInfo._object.Is(RoleEnum.Tyrant) || playerInfo._object.Is(RoleEnum.Joker) ||
+                        playerInfo._object.Is(RoleEnum.Tyrant) ||
+                        playerInfo._object.Is(RoleEnum.Joker) ||
+                        // ADD A GAMEMODE CHECK SO TASKS DON'T IMMEDIATELY END IN MURDER MANIFESTO
+                        playerInfo._object.Is(RoleEnum.Cannibal) ||
+                        playerInfo._object.Is(RoleEnum.Inquisitor) ||
                         playerInfo._object.Is(RoleEnum.Phantom) || playerInfo._object.Is(RoleEnum.Haunter) ||
                         playerInfo._object.Is(RoleEnum.Baker) || playerInfo._object.Is(RoleEnum.Famine) ||
                         playerInfo._object.Is(RoleEnum.Berserker) || playerInfo._object.Is(RoleEnum.War) ||
@@ -58,12 +62,13 @@ namespace TownOfUsFusion
                        || playerControl.Is(RoleEnum.Tyrant)
                        || playerControl.Is(RoleEnum.Joker)
                        || playerControl.Is(RoleEnum.Cannibal)
+                       || playerControl.Is(RoleEnum.Inquisitor)
                        || playerControl.Is(RoleEnum.Jester)
                        || playerControl.Is(RoleEnum.Executioner)
                        || playerControl.Is(RoleEnum.Berserker)
                        || playerControl.Is(RoleEnum.Arsonist)
                        || playerControl.Is(RoleEnum.NeoNecromancer) || playerControl.Is(RoleEnum.Scourge)
-                       || playerControl.Is(RoleEnum.Apparitionist) || playerControl.Is(RoleEnum.Enchanter)
+                       || playerControl.Is(RoleEnum.Apparitionist)
                        || playerControl.Is(RoleEnum.Husk) || playerInfo._object.Is(RoleEnum.Jackal)
                        || playerControl.Is(RoleEnum.Baker) || playerControl.Is(RoleEnum.Famine)
                        || playerControl.Is(RoleEnum.Berserker) || playerControl.Is(RoleEnum.War)

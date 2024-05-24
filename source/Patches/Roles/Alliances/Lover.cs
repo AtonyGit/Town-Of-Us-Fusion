@@ -38,10 +38,10 @@ namespace TownOfUsFusion.Roles.Alliances
 
         foreach (var player in canHaveAlliances)
         {
-            if (player.Is(Faction.Impostors) || player.Is(Faction.NeutralKilling) || ((player.Is(Faction.NeutralNeophyte) && !player.Is(RoleEnum.Vampire) && !player.Is(RoleEnum.Jackal) || player.Is(Faction.NeutralApocalypse)) && CustomGameOptions.NeutralLovers))
+            if (player.Is(Faction.Impostors) || player.Is(Faction.NeutralKilling) || player.Is(Faction.NeutralApocalypse) && CustomGameOptions.NeutralLovers)
                 impostors.Add(player);
             else if (player.Is(Faction.Crewmates) || (player.Is(Faction.NeutralBenign) && CustomGameOptions.NeutralLovers)
-                 || (player.Is(Faction.NeutralChaos) && CustomGameOptions.NeutralLovers)
+                 || (player.Is(Faction.NeutralChaos) && !player.Is(RoleEnum.Inquisitor) && CustomGameOptions.NeutralLovers)
                  || (player.Is(Faction.NeutralEvil) && CustomGameOptions.NeutralLovers))
                 crewmates.Add(player);
         }

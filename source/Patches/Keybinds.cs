@@ -79,10 +79,10 @@ public sealed class AssassinVigilanteKeybinds
             else player.SetHighlighted(false);
         }
 
-        if (role is Vigilante || role.Player.Is(AbilityEnum.Assassin) || role.Player.Is(RoleEnum.Doomsayer))
+        if (role is Vigilante || role.Player.Is(AbilityEnum.Assassin) || role.Player.Is(RoleEnum.Doomsayer) || role.Player.Is(RoleEnum.Husk))
         {
             dynamic guesser = role is Vigilante ? Role.GetRole<Vigilante>(role.Player) : Ability.GetAbility<Assassin>(role.Player);
-            if (guesser == null) guesser = Role.GetRole<Doomsayer>(role.Player);
+            if (guesser == null) guesser = role is Doomsayer ? Role.GetRole<Doomsayer>(role.Player) :Role.GetRole<Husk>(role.Player) ;
             var players = __instance.playerStates.Where(x => (guesser as IGuesser).Buttons[x.TargetPlayerId] != (null, null, null, null)
                                                               && x.TargetPlayerId != role.Player.PlayerId)
                                                  .ToList();

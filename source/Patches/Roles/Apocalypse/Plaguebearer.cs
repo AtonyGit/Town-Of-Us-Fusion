@@ -35,7 +35,7 @@ namespace TownOfUsFusion.Roles.Apocalypse
 
         if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected) <= 2 &&
                 PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
-                (x.Data.IsImpostor() || x.Is(Faction.NeutralNeophyte)|| x.Is(Faction.NeutralKilling)|| x.Is(Faction.NeutralApocalypse))) == 1)
+                (x.Data.IsImpostor() || x.Is(Faction.NeutralNeophyte) || x.Is(Faction.NeutralNecro) || x.Is(Faction.NeutralKilling)|| x.Is(Faction.NeutralApocalypse))) == 1)
         {
             Utils.Rpc(CustomRPC.ApocWin, Player.PlayerId);
             ApocWin();
@@ -44,7 +44,7 @@ namespace TownOfUsFusion.Roles.Apocalypse
         }
         else if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected) <= 4 &&
                 PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
-                (x.Data.IsImpostor() || x.Is(Faction.NeutralNeophyte)|| x.Is(Faction.NeutralKilling)) && !x.Is(Faction.NeutralApocalypse)) == 0)
+                (x.Data.IsImpostor() || x.Is(Faction.NeutralNeophyte) || x.Is(Faction.NeutralNecro) || x.Is(Faction.NeutralKilling)) && !x.Is(Faction.NeutralApocalypse)) == 0)
         {
             var apocAlives = PlayerControl.AllPlayerControls.ToArray()
                 .Where(x => !x.Data.IsDead && !x.Data.Disconnected && x.Is(Faction.NeutralApocalypse)).ToList();
@@ -62,7 +62,7 @@ namespace TownOfUsFusion.Roles.Apocalypse
             var alives = PlayerControl.AllPlayerControls.ToArray()
                 .Where(x => !x.Data.IsDead && !x.Data.Disconnected).ToList();
             var killersAlive = PlayerControl.AllPlayerControls.ToArray()
-                .Where(x => !x.Data.IsDead && !x.Data.Disconnected && !x.Is(Faction.NeutralApocalypse) && (x.Is(Faction.Impostors) || x.Is(Faction.NeutralNeophyte) || x.Is(Faction.NeutralKilling))).ToList();
+                .Where(x => !x.Data.IsDead && !x.Data.Disconnected && !x.Is(Faction.NeutralApocalypse) && (x.Is(Faction.Impostors) || x.Is(Faction.NeutralNeophyte) || x.Is(Faction.NeutralNecro) || x.Is(Faction.NeutralKilling))).ToList();
             if (killersAlive.Count > 0) return false;
             if (alives.Count <= 6)
             {
@@ -83,7 +83,27 @@ namespace TownOfUsFusion.Roles.Apocalypse
     protected override void IntroPrefix(IntroCutscene._ShowTeam_d__38 __instance)
     {
         var apocTeam = new Il2CppSystem.Collections.Generic.List<PlayerControl>();
-        apocTeam.Add(PlayerControl.LocalPlayer);
+        //apocTeam.Add(PlayerControl.LocalPlayer);
+        foreach (var role in GetRoles(RoleEnum.Plaguebearer))
+        {
+            var apocRole = (Plaguebearer)role;
+            apocTeam.Add(apocRole.Player);
+        }
+        foreach (var role in GetRoles(RoleEnum.Baker))
+        {
+            var apocRole = (Baker)role;
+            apocTeam.Add(apocRole.Player);
+        }
+        foreach (var role in GetRoles(RoleEnum.Berserker))
+        {
+            var apocRole = (Berserker)role;
+            apocTeam.Add(apocRole.Player);
+        }
+        foreach (var role in GetRoles(RoleEnum.SoulCollector))
+        {
+            var apocRole = (SoulCollector)role;
+            apocTeam.Add(apocRole.Player);
+        }
         __instance.teamToShow = apocTeam;
     }
 

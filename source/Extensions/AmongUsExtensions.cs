@@ -57,8 +57,7 @@ namespace TownOfUsFusion.Extensions
     
     public static bool IsNecroTeam(this PlayerControl player)
     {
-        //return player.Is(RoleEnum.NeoNecromancer) || player.Is(RoleEnum.Scourge) || player.Is(RoleEnum.Apparitionist) || player.Is(RoleEnum.Enchanter) || player.Is(RoleEnum.Husk);
-        return player.Is(Faction.NeutralNeophyte) && !player.Is(RoleEnum.Vampire);
+        return player.Is(Faction.NeutralNecro);
     }
 
     public static void SetImpostor(this GameData.PlayerInfo playerinfo, bool impostor)

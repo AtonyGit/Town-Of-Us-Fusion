@@ -31,7 +31,7 @@ public class MeetingStart
             return $"You observe that {player.GetDefaultOutfit().PlayerName} has an altered perception of reality";
 
         else if (player.Is(RoleEnum.Blackmailer) || player.Is(RoleEnum.Detective) || player.Is(RoleEnum.Doomsayer)
-             || player.Is(RoleEnum.Oracle) || player.Is(RoleEnum.Snitch) || player.Is(RoleEnum.Trapper) || player.Is(RoleEnum.Enchanter))
+             || player.Is(RoleEnum.Oracle) || player.Is(RoleEnum.Snitch) || player.Is(RoleEnum.Trapper))
             return $"You observe that {player.GetDefaultOutfit().PlayerName} has an insight for private information";
 
         else if (player.Is(RoleEnum.Altruist) || player.Is(RoleEnum.Amnesiac) || player.Is(RoleEnum.Janitor) || player.Is(RoleEnum.NeoNecromancer)
@@ -72,8 +72,8 @@ public class MeetingStart
             return "(Aurial, Husk, Imitator, Morphling, Mystic, Spy or The Glitch)";
 
         else if (player.Is(RoleEnum.Blackmailer) || player.Is(RoleEnum.Detective) || player.Is(RoleEnum.Doomsayer)
-             || player.Is(RoleEnum.Oracle) || player.Is(RoleEnum.Snitch) || player.Is(RoleEnum.Trapper) || player.Is(RoleEnum.Enchanter))
-            return "(Blackmailer, Detective, Doomsayer, Oracle, Enchanter, Snitch or Trapper)";
+             || player.Is(RoleEnum.Oracle) || player.Is(RoleEnum.Snitch) || player.Is(RoleEnum.Trapper))
+            return "(Blackmailer, Detective, Doomsayer, Oracle, Snitch or Trapper)";
 
         else if (player.Is(RoleEnum.Altruist) || player.Is(RoleEnum.Amnesiac) || player.Is(RoleEnum.Janitor) || player.Is(RoleEnum.NeoNecromancer)
              || player.Is(RoleEnum.Medium) || player.Is(RoleEnum.Undertaker) || player.Is(RoleEnum.Vampire) || player.Is(RoleEnum.Apparitionist))

@@ -26,6 +26,7 @@ namespace TownOfUsFusion.ImpostorRoles.PoisonerMod
             if (target == null) return false;
             if (!__instance.isActiveAndEnabled) return false;
             if (role.PoisonTimer() > 0) return false;
+            if (PlayerControl.LocalPlayer.killTimer > 0) return false;
             if (role.Enabled == true) return false;
             if (role.Player.inVent)
             {

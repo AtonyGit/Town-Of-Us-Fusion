@@ -45,6 +45,8 @@ using TownOfUsFusion.NeutralRoles.ApparitionistMod;
 using TownOfUsFusion.Roles.Alliances;
 using TownOfUsFusion.Roles.Apocalypse;
 using TownOfUsFusion.NeutralRoles.HuskMod;
+using TownOfUsFusion.CrewmateRoles.BodyguardMod;
+using TownOfUsFusion.NeutralRoles.InquisitorMod;
 
 namespace TownOfUsFusion
 {
@@ -377,7 +379,7 @@ namespace TownOfUsFusion
             // Hand out assassin ability to killers according to the settings.
             var canHaveAbility = PlayerControl.AllPlayerControls.ToArray().Where(player => player.Is(Faction.Impostors)).ToList();
             canHaveAbility.Shuffle();
-            var canHaveAbility2 = PlayerControl.AllPlayerControls.ToArray().Where(player => player.Is(Faction.NeutralKilling) || player.Is(Faction.NeutralNeophyte) || player.Is(Faction.NeutralApocalypse)).ToList();
+            var canHaveAbility2 = PlayerControl.AllPlayerControls.ToArray().Where(player => player.Is(Faction.NeutralKilling) || player.Is(Faction.NeutralNeophyte) || player.Is(Faction.NeutralNecro) || player.Is(Faction.NeutralApocalypse)).ToList();
             canHaveAbility2.Shuffle();
 
             var assassinConfig = new (List<PlayerControl>, int)[]
@@ -456,32 +458,38 @@ namespace TownOfUsFusion
             }
 
             
-            // ALLIANCE SHIT
+            // ALLIANCE STUFF
+
+            // Hand out global alliances
             var canHaveAlliance = PlayerControl.AllPlayerControls.ToArray().ToList();
             var jackalList = PlayerControl.AllPlayerControls.ToArray().ToList();
             jackalList.RemoveAll(player => !player.Is(RoleEnum.Jackal));
+            canHaveAlliance.RemoveAll(player => player.Is(RoleEnum.Inquisitor));
             canHaveAlliance.Shuffle();
             GlobalAlliances.SortAlliances(canHaveAlliance.Count);
             GlobalAlliances.Shuffle();
+
             foreach (var (type, id) in GlobalAlliances)
             {
                 if (canHaveAlliance.Count == 0) break;
-                if (type.FullName.Contains("Lover"))
-                {
-                    if (canHaveAlliance.Count == 1) continue;
-                    Lover.Gen(canHaveAlliance);
-                }
-                else if (type.FullName.Contains("Recruit") && jackalList.Count != 0)
+                if (type.FullName.Contains("Recruit"))
                 {
                     if (canHaveAlliance.Count == 1) continue;
                     Recruit.Gen(canHaveAlliance);
+                }
+                else if (type.FullName.Contains("Lover"))
+                {
+                    if (canHaveAlliance.Count == 1) continue;
+                    Lover.Gen(canHaveAlliance);
                 }
                 else /*if(!type.FullName.Contains("Crewpocalypse") || !type.FullName.Contains("Crewpostor"))*/
                 {
                     Role.GenAlliance<Alliance>(type, canHaveAlliance);
                 }
+                //PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"{type} was spawned");
             }
 
+            // Hand out crewmate alliances
             canHaveAlliance.RemoveAll(player => !player.Is(Faction.Crewmates));
             canHaveAlliance.Shuffle();
             CrewmateAlliances.SortAlliances(canHaveAlliance.Count);
@@ -497,6 +505,18 @@ namespace TownOfUsFusion
                 if((type.FullName.Contains("Crewpocalypse") && apocList.Count != 0) || (type.FullName.Contains("Crewpostor") && impList.Count != 0))
                 {
                 Role.GenAlliance<Alliance>(type, canHaveAlliance.TakeFirst());
+                }
+            }
+
+            var inquisitorThingy = PlayerControl.AllPlayerControls.ToArray().Where(player => player.Is(RoleEnum.Inquisitor)).ToList();
+            var inquisitorList = PlayerControl.AllPlayerControls.ToArray().ToList();
+            if (NeutralChaosRoles.Count > 0 && inquisitorThingy.Count > 0)
+            {
+                var pc = inquisitorThingy[0];
+                foreach (var role in Role.GetRoles(RoleEnum.Inquisitor)) 
+                {
+                    var yippee = (Inquisitor)role;
+                    Inquisitor.Gen(yippee.Player, inquisitorList);
                 }
             }
 
@@ -532,7 +552,7 @@ namespace TownOfUsFusion
                 Utils.Rpc(CustomRPC.SetHaunter, byte.MaxValue);
             }
 
-            var toChooseFromNeut = PlayerControl.AllPlayerControls.ToArray().Where(x => (x.Is(Faction.NeutralBenign) || x.Is(Faction.NeutralEvil) || x.Is(Faction.NeutralChaos)  || x.Is(Faction.NeutralKilling)  || x.Is(Faction.NeutralNeophyte)) && !x.Is(AllianceEnum.Lover) && !x.Is(AllianceEnum.Recruit)).ToList();
+            var toChooseFromNeut = PlayerControl.AllPlayerControls.ToArray().Where(x => (x.Is(Faction.NeutralBenign) || x.Is(Faction.NeutralEvil) || x.Is(Faction.NeutralChaos)  || x.Is(Faction.NeutralKilling)  || x.Is(Faction.NeutralNeophyte) || x.Is(Faction.NeutralNecro)) && !x.Is(AllianceEnum.Lover) && !x.Is(AllianceEnum.Recruit)).ToList();
             if (PhantomOn && toChooseFromNeut.Count != 0)
             {
                 var rand = Random.RandomRangeInt(0, toChooseFromNeut.Count);
@@ -560,8 +580,8 @@ namespace TownOfUsFusion
                 }
             }
 
-            var goodGATargets = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) && !x.Is(AllianceEnum.Lover) && !x.Is(AllianceEnum.Recruit)).ToList();
-            var evilGATargets = PlayerControl.AllPlayerControls.ToArray().Where(x => (x.Is(Faction.Impostors) || x.Is(Faction.NeutralKilling) || x.Is(Faction.NeutralNeophyte) || x.Is(Faction.NeutralApocalypse)) && !x.Is(AllianceEnum.Lover) && x.Is(AllianceEnum.Recruit) && x.Is(AllianceEnum.Crewpocalypse) && x.Is(AllianceEnum.Crewpostor)).ToList();
+            var goodGATargets = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) && !x.Is(AllianceEnum.Lover) && !x.Is(AllianceEnum.Crewpostor) && !x.Is(AllianceEnum.Crewpocalypse) && !x.Is(AllianceEnum.Recruit)).ToList();
+            var evilGATargets = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Impostors) || x.Is(Faction.NeutralKilling) || x.Is(Faction.NeutralNeophyte) || x.Is(Faction.NeutralNecro) || x.Is(Faction.NeutralApocalypse) || x.Is(AllianceEnum.Lover) || x.Is(AllianceEnum.Recruit) || x.Is(AllianceEnum.Crewpocalypse) || x.Is(AllianceEnum.Crewpostor)).ToList();
             foreach (var role in Role.GetRoles(RoleEnum.GuardianAngel))
             {
                 var ga = (GuardianAngel)role;
@@ -822,6 +842,42 @@ namespace TownOfUsFusion
                         modifierRecruit2.OtherRecruit = modifierRecruit1;
 
                         break;
+                    case CustomRPC.SetHeretics:
+                        var id5 = reader.ReadByte();
+                        var id6 = reader.ReadByte();
+                        var id7 = reader.ReadByte();
+                        var id8 = reader.ReadByte();
+                        var heretic1 = Utils.PlayerById(id5);
+                        var heretic2 = Utils.PlayerById(id6);
+                        var heretic3 = Utils.PlayerById(id7);
+                        var inquisitor1 = Utils.PlayerById(id8);
+
+                        var roleInquisitor = new Inquisitor(inquisitor1);
+                        roleInquisitor.heretic1 = heretic1;
+                        roleInquisitor.heretic2 = heretic2;
+                        roleInquisitor.heretic3 = heretic3;
+
+                            if(Role.GetRole(heretic1).RoleType == RoleEnum.Glitch) roleInquisitor.displayRole1 = "The Glitch";
+                            else if(Role.GetRole(heretic1).RoleType == RoleEnum.GuardianAngel) roleInquisitor.displayRole1 = "Guardian Angel";
+                            else if(Role.GetRole(heretic1).RoleType == RoleEnum.NeoNecromancer) roleInquisitor.displayRole1 = "Necromancer";
+                            else if(Role.GetRole(heretic1).RoleType == RoleEnum.VampireHunter) roleInquisitor.displayRole1 = "Vampire Hunter";
+                            else if(Role.GetRole(heretic1).RoleType == RoleEnum.SoulCollector) roleInquisitor.displayRole1 = "Soul Collector";
+                            else roleInquisitor.displayRole1 = $"{Role.GetRole(heretic1).RoleType}";
+
+                            if(Role.GetRole(heretic2).RoleType == RoleEnum.Glitch) roleInquisitor.displayRole2 = "The Glitch";
+                            else if(Role.GetRole(heretic2).RoleType == RoleEnum.GuardianAngel) roleInquisitor.displayRole2 = "Guardian Angel";
+                            else if(Role.GetRole(heretic2).RoleType == RoleEnum.NeoNecromancer) roleInquisitor.displayRole2 = "Necromancer";
+                            else if(Role.GetRole(heretic2).RoleType == RoleEnum.VampireHunter) roleInquisitor.displayRole2 = "Vampire Hunter";
+                            else if(Role.GetRole(heretic2).RoleType == RoleEnum.SoulCollector) roleInquisitor.displayRole2 = "Soul Collector";
+                            else roleInquisitor.displayRole2 = $"{Role.GetRole(heretic2).RoleType}";
+
+                            if(Role.GetRole(heretic3).RoleType == RoleEnum.Glitch) roleInquisitor.displayRole3 = "The Glitch";
+                            else if(Role.GetRole(heretic3).RoleType == RoleEnum.GuardianAngel) roleInquisitor.displayRole3 = "Guardian Angel";
+                            else if(Role.GetRole(heretic3).RoleType == RoleEnum.NeoNecromancer) roleInquisitor.displayRole3 = "Necromancer";
+                            else if(Role.GetRole(heretic3).RoleType == RoleEnum.VampireHunter) roleInquisitor.displayRole3 = "Vampire Hunter";
+                            else if(Role.GetRole(heretic3).RoleType == RoleEnum.SoulCollector) roleInquisitor.displayRole3 = "Soul Collector";
+                            else roleInquisitor.displayRole3 = $"{Role.GetRole(heretic3).RoleType}";
+                        break;
 
                     case CustomRPC.SetCouple:
                         var id = reader.ReadByte();
@@ -871,6 +927,17 @@ namespace TownOfUsFusion
 
                         break;
 
+                    case CustomRPC.VanquishClean:
+                        readByte1 = reader.ReadByte();
+                        var inquisPlayer = Utils.PlayerById(readByte1);
+                        var inquisRole = Role.GetRole<Inquisitor>(inquisPlayer);
+                        readByte = reader.ReadByte();
+                        var deadBodies3 = Object.FindObjectsOfType<DeadBody>();
+                        foreach (var body in deadBodies3)
+                            if (body.ParentId == readByte)
+                                Coroutines.Start(VanquishCoroutine.InquisitorCoroutine(body, inquisRole));
+
+                        break;
                     case CustomRPC.CannibalEat:
                         readByte1 = reader.ReadByte();
                         var cannibalPlayer = Utils.PlayerById(readByte1);
@@ -967,15 +1034,6 @@ namespace TownOfUsFusion
                         var shield = Utils.PlayerById(readByte2);
                         Role.GetRole<Medic>(medic).ShieldedPlayer = shield;
                         Role.GetRole<Medic>(medic).UsedAbility = true;
-                        break;
-                    case CustomRPC.Guard:
-                        readByte1 = reader.ReadByte();
-                        readByte2 = reader.ReadByte();
-
-                        var bodyguard = Utils.PlayerById(readByte1);
-                        var guard = Utils.PlayerById(readByte2);
-                        Role.GetRole<Bodyguard>(bodyguard).GuardedPlayer = guard;
-                        Role.GetRole<Bodyguard>(bodyguard).UsedAbility = true;
                         break;
                     case CustomRPC.AttemptSound:
                         var medicId = reader.ReadByte();
@@ -1138,6 +1196,12 @@ namespace TownOfUsFusion
                     case CustomRPC.GAToSurv:
                         GATargetColor.GAToSurv(Utils.PlayerById(reader.ReadByte()));
                         break;
+                    case CustomRPC.GuardReset:
+                        ShowGuarded.GuardReset(Utils.PlayerById(reader.ReadByte()));
+                        break;
+                    case CustomRPC.AddTyrantVoteBank:
+                        Role.GetRole<Tyrant>(Utils.PlayerById(reader.ReadByte())).VoteBank += reader.ReadInt32();
+                        break;
                     case CustomRPC.Mine:
                         var ventId = reader.ReadInt32();
                         var miner = Utils.PlayerById(reader.ReadByte());
@@ -1176,6 +1240,12 @@ namespace TownOfUsFusion
                         var survRole = Role.GetRole<Survivor>(surv);
                         survRole.TimeRemaining = CustomGameOptions.VestDuration;
                         survRole.Vest();
+                        break;
+                    case CustomRPC.BGGuard:
+                        var bg = Utils.PlayerById(reader.ReadByte());
+                        var bgRole = Role.GetRole<Bodyguard>(bg);
+                        bgRole.TimeRemaining = CustomGameOptions.GuardDuration;
+                        bgRole.Guard();
                         break;
                     case CustomRPC.GAProtect:
                         var ga2 = Utils.PlayerById(reader.ReadByte());
@@ -1224,6 +1294,7 @@ namespace TownOfUsFusion
                         break;
                     case CustomRPC.SyncCustomSettings:
                         Rpc.ReceiveRpc(reader);
+                        PluginSingleton <TownOfUsFusion>.Instance.Log.LogInfo("Options were successfully synced with the host!");
                         break;
                     case CustomRPC.AltruistRevive:
                         readByte1 = reader.ReadByte();
@@ -1426,13 +1497,6 @@ namespace TownOfUsFusion
                     case CustomRPC.SubmergedFixOxygen:
                         Patches.SubmergedCompatibility.RepairOxygen();
                         break;
-                        // TOU FUSION ROLES
-                    case CustomRPC.RevealTy:
-                        var tyrant = Utils.PlayerById(reader.ReadByte());
-                        var tyrantRole = Role.GetRole<Tyrant>(tyrant);
-                        tyrantRole.Revealed = true;
-                        AddRevealTyButton.RemoveAssassin(tyrantRole);
-                        break;
 
                     case CustomRPC.SetPos:
                         var setplayer = Utils.PlayerById(reader.ReadByte());
@@ -1604,6 +1668,12 @@ namespace TownOfUsFusion
 
                     if (CustomGameOptions.HunterOn > 0)
                         CrewmateRoles.Add((typeof(Hunter), CustomGameOptions.HunterOn, false));
+
+                    if (CustomGameOptions.TricksterOn > 0)
+                        CrewmateRoles.Add((typeof(Trickster), CustomGameOptions.TricksterOn, false));
+
+                    if (CustomGameOptions.BodyguardOn > 0)
+                        CrewmateRoles.Add((typeof(Bodyguard), CustomGameOptions.BodyguardOn, true));
                     #endregion
                     #region Neutral Roles
                     // NEUTRAL BENIGN
@@ -1629,6 +1699,9 @@ namespace TownOfUsFusion
                     // NEUTRAL CHAOS
                     if (CustomGameOptions.TyrantOn > 0)
                         NeutralChaosRoles.Add((typeof(Tyrant), CustomGameOptions.TyrantOn, false));
+
+                    if (CustomGameOptions.InquisitorOn > 0)
+                        NeutralChaosRoles.Add((typeof(Inquisitor), CustomGameOptions.InquisitorOn, false));
 
                     if (CustomGameOptions.CannibalOn > 0)
                         NeutralChaosRoles.Add((typeof(Cannibal), CustomGameOptions.CannibalOn, false));
@@ -1714,10 +1787,10 @@ namespace TownOfUsFusion
                         CrewmateAlliances.Add((typeof(Crewpostor), CustomGameOptions.CrewpostorOn));
                     #endregion
                     #region Global Alliances
-                    if (Check(CustomGameOptions.LoversOn))
-                        GlobalAlliances.Add((typeof(Lover), CustomGameOptions.LoversOn));
                     if (Check(CustomGameOptions.JackalOn))
                         GlobalAlliances.Add((typeof(Recruit), CustomGameOptions.JackalOn));
+                    if (Check(CustomGameOptions.LoversOn))
+                        GlobalAlliances.Add((typeof(Lover), CustomGameOptions.LoversOn));
                     #endregion
 
                     #region Crewmate Modifiers

@@ -36,7 +36,7 @@ public class CompleteTask
                         Coroutines.Start(Utils.FlashCoroutine(role.Color));
                     }
                     else if ((PlayerControl.LocalPlayer.Data.IsImpostor() && (!PlayerControl.LocalPlayer.Is(RoleEnum.Traitor) || CustomGameOptions.SnitchSeesTraitor))
-                        || ((PlayerControl.LocalPlayer.Is(Faction.NeutralKilling) || PlayerControl.LocalPlayer.Is(Faction.NeutralNeophyte) || PlayerControl.LocalPlayer.Is(Faction.NeutralApocalypse)) && CustomGameOptions.SnitchSeesNeutrals))
+                        || ((PlayerControl.LocalPlayer.Is(Faction.NeutralKilling) || PlayerControl.LocalPlayer.Is(Faction.NeutralNeophyte) || PlayerControl.LocalPlayer.Is(Faction.NeutralNecro) || PlayerControl.LocalPlayer.Is(Faction.NeutralApocalypse)) && CustomGameOptions.SnitchSeesNeutrals))
                     {
                         Coroutines.Start(Utils.FlashCoroutine(role.Color));
                         var gameObj = new GameObject();

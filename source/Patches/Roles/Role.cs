@@ -14,6 +14,7 @@ using AmongUs.GameOptions;
 using TownOfUsFusion.ImpostorRoles.TraitorMod;
 using TownOfUsFusion.CrewmateRoles.MedicMod;
 using TownOfUsFusion.Roles.Alliances;
+using TownOfUsFusion.Patches;
 
 namespace TownOfUsFusion.Roles
 {
@@ -150,10 +151,7 @@ namespace TownOfUsFusion.Roles
     }
     internal virtual bool NecroCriteria()
     {
-        if ((RoleType != RoleEnum.Vampire && Faction == Faction.NeutralNeophyte) && (!PlayerControl.LocalPlayer.Is(RoleEnum.Vampire) && PlayerControl.LocalPlayer.Is(Faction.NeutralNeophyte))) return true;
-        /*
-        if ((RoleType == RoleEnum.NeoNecromancer || RoleType == RoleEnum.Scourge || RoleType == RoleEnum.Apparitionist || RoleType == RoleEnum.Enchanter || RoleType == RoleEnum.Husk)
-        && PlayerControl.LocalPlayer.Is(RoleEnum.NeoNecromancer) || PlayerControl.LocalPlayer.Is(RoleEnum.Scourge) || PlayerControl.LocalPlayer.Is(RoleEnum.Apparitionist) || PlayerControl.LocalPlayer.Is(RoleEnum.Enchanter) || PlayerControl.LocalPlayer.Is(RoleEnum.Husk)) return true;*/
+        if (Faction == Faction.NeutralNecro && PlayerControl.LocalPlayer.Is(Faction.NeutralNecro)) return true;
         return false;
     }
 
@@ -180,8 +178,7 @@ namespace TownOfUsFusion.Roles
         if (PlayerControl.LocalPlayer.Is(RoleEnum.Jackal))
         {
             var recruit = Alliance.GetAlliance<Recruit>(Role.GetRole<Jackal>(PlayerControl.LocalPlayer).Recruit1.Player);
-            if (Local) return true;
-            //if (recruit.OtherRecruit.Player != Player) return false;
+            if (recruit.OtherRecruit.Player != Player) return false;
             if (MeetingHud.Instance || Utils.ShowDeadBodies) return true;
             if (recruit.OtherRecruit.Player.Is(RoleEnum.Mayor))
             {
@@ -198,12 +195,32 @@ namespace TownOfUsFusion.Roles
     }*/
     
     internal virtual bool RecruitCriteria()
-    {
+    {/*
+        if (PlayerControl.LocalPlayer.Is(RoleEnum.Jackal))
+        {
+            if (Local) return true;
+            var jackal = GetRole<Jackal>(PlayerControl.LocalPlayer);
+            var recruit1 = Alliance.GetAlliance<Recruit>(jackal.Recruit1.Player);
+            var recruit2 = Alliance.GetAlliance<Recruit>(jackal.Recruit2.Player);
+            if (recruit1.OtherRecruit.Player != Player && recruit2.OtherRecruit.Player != Player) return false;
+            //if (!PlayerControl.LocalPlayer.Is(RoleEnum.Aurial)) return true;
+            if (MeetingHud.Instance || Utils.ShowDeadBodies) return true;
+            if (recruit1.OtherRecruit.Player.Is(RoleEnum.Mayor))
+            {
+                var mayor = GetRole<Mayor>(recruit1.OtherRecruit.Player);
+                if (mayor.Revealed) return true;
+            } else
+            if (recruit2.OtherRecruit.Player.Is(RoleEnum.Mayor))
+            {
+                var mayor = GetRole<Mayor>(recruit2.OtherRecruit.Player);
+                if (mayor.Revealed) return true;
+            }
+        }*/
         if (PlayerControl.LocalPlayer.Is(AllianceEnum.Recruit))
         {
             if (Local) return true;
             var recruit = Alliance.GetAlliance<Recruit>(PlayerControl.LocalPlayer);
-            if (recruit.OtherRecruit.Player != Player) return false;
+            if (recruit.OtherRecruit.Player == null || recruit.OtherRecruit.Player != Player) return false;
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Aurial)) return true;
             if (MeetingHud.Instance || Utils.ShowDeadBodies) return true;
             if (recruit.OtherRecruit.Player.Is(RoleEnum.Mayor))
@@ -244,7 +261,11 @@ namespace TownOfUsFusion.Roles
     internal virtual bool GuardianAngelCriteria()
     {
         return PlayerControl.LocalPlayer.Is(RoleEnum.GuardianAngel) && CustomGameOptions.GAKnowsTargetRole && Player == GetRole<GuardianAngel>(PlayerControl.LocalPlayer).target;
-    }
+    }/*
+    internal virtual bool JackalCriteria()
+    {
+        return PlayerControl.LocalPlayer.Is(RoleEnum.Jackal) && (Player == GetRole<Jackal>(PlayerControl.LocalPlayer).Recruit1.Player || Player == GetRole<Jackal>(PlayerControl.LocalPlayer).Recruit2.Player);
+    }*/
     /*internal virtual bool MedicCriteria()
     {
         return PlayerControl.LocalPlayer.Is(RoleEnum.Medic) && Player == GetRole<Medic>(PlayerControl.LocalPlayer).ShieldedPlayer;
@@ -469,6 +490,23 @@ namespace TownOfUsFusion.Roles
                 || (PlayerControl.LocalPlayer.Data.IsDead && !ga.Player.Data.IsDead)))
             {
                 PlayerName += "<color=#B3FFFFFF> ★</color>";
+            }
+        }
+
+        foreach (var role in GetRoles(RoleEnum.Jackal))
+        {
+            var jackal = (Jackal)role;
+            if (Player == jackal.Recruit1.Player && jackal.Recruit1 != null && ((Player == PlayerControl.LocalPlayer)
+                || (PlayerControl.LocalPlayer.Data.IsDead && !jackal.Player.Data.IsDead)))
+            {
+                PlayerName = Utils.GradientColorText("B7B9BA", "5E576B", PlayerName);
+                //PlayerName += "<color=#" + Colors.Recruit.ToHtmlStringRGBA() + "> §</color> >";
+            }
+            if (Player == jackal.Recruit2.Player && jackal.Recruit2 != null && ((Player == PlayerControl.LocalPlayer)
+                || (PlayerControl.LocalPlayer.Data.IsDead && !jackal.Player.Data.IsDead)))
+            {
+                PlayerName = Utils.GradientColorText("B7B9BA", "5E576B", PlayerName);
+                //PlayerName += "<color=#" + Colors.Recruit.ToHtmlStringRGBA() + "> §</color> >";
             }
         }
         /*
@@ -713,7 +751,7 @@ namespace TownOfUsFusion.Roles
                 // var alpha = __instance.__4__this.RoleText.color.a;
                 if (role != null && !role.Hidden)
                 {
-                    if (role.Faction == Faction.NeutralKilling || role.Faction == Faction.NeutralEvil || role.Faction == Faction.NeutralChaos || role.Faction == Faction.NeutralBenign || role.Faction == Faction.NeutralNeophyte || role.Faction == Faction.NeutralApocalypse)
+                    if (role.Faction == Faction.NeutralKilling || role.Faction == Faction.NeutralEvil || role.Faction == Faction.NeutralChaos || role.Faction == Faction.NeutralBenign || role.Faction == Faction.NeutralNeophyte || role.Faction == Faction.NeutralNecro || role.Faction == Faction.NeutralApocalypse)
                     {
                         __instance.__4__this.TeamTitle.text = "Neutral";
                         __instance.__4__this.TeamTitle.color = Color.white;
@@ -757,7 +795,7 @@ namespace TownOfUsFusion.Roles
                 var role = GetRole(PlayerControl.LocalPlayer);
                 if (role != null && !role.Hidden)
                 {
-                    if (role.Faction == Faction.NeutralKilling || role.Faction == Faction.NeutralChaos || role.Faction == Faction.NeutralEvil || role.Faction == Faction.NeutralBenign || role.Faction == Faction.NeutralNeophyte || role.Faction == Faction.NeutralApocalypse)
+                    if (role.Faction == Faction.NeutralKilling || role.Faction == Faction.NeutralChaos || role.Faction == Faction.NeutralEvil || role.Faction == Faction.NeutralBenign || role.Faction == Faction.NeutralNeophyte || role.Faction == Faction.NeutralNecro || role.Faction == Faction.NeutralApocalypse)
                     {
                         __instance.__4__this.TeamTitle.text = "Neutral";
                         __instance.__4__this.TeamTitle.color = Color.white;
@@ -796,7 +834,7 @@ namespace TownOfUsFusion.Roles
                 var role = GetRole(PlayerControl.LocalPlayer);
                 if (role != null && !role.Hidden)
                 {
-                    if (role.Faction == Faction.NeutralKilling || role.Faction == Faction.NeutralChaos || role.Faction == Faction.NeutralEvil || role.Faction == Faction.NeutralBenign || role.Faction == Faction.NeutralNeophyte || role.Faction == Faction.NeutralApocalypse)
+                    if (role.Faction == Faction.NeutralKilling || role.Faction == Faction.NeutralChaos || role.Faction == Faction.NeutralEvil || role.Faction == Faction.NeutralBenign || role.Faction == Faction.NeutralNeophyte || role.Faction == Faction.NeutralNecro || role.Faction == Faction.NeutralApocalypse)
                     {
                         __instance.__4__this.TeamTitle.text = "Neutral";
                         __instance.__4__this.TeamTitle.color = Color.white;
@@ -901,9 +939,9 @@ namespace TownOfUsFusion.Roles
             foreach (var role in AllRoles)
             {
                 var roleIsEnd = role.NeutralWin(__instance);
-                var modifier = Modifier.GetModifier(role.Player);
+                //var modifier = Modifier.GetModifier(role.Player);
                 var alliance = Alliance.GetAlliance(role.Player);
-                bool modifierIsEnd = true;
+                //bool modifierIsEnd = true;
                 bool allianceIsEnd = true;
                 var alives = PlayerControl.AllPlayerControls.ToArray().Where(x => !x.Data.IsDead && !x.Data.Disconnected).ToList();
                 var impsAlive = PlayerControl.AllPlayerControls.ToArray().Where(x => !x.Data.IsDead && !x.Data.Disconnected && x.Data.IsImpostor()).ToList();
@@ -912,11 +950,11 @@ namespace TownOfUsFusion.Roles
                 {
                     traitorIsEnd = SetTraitor.WillBeTraitor.Data.IsDead || SetTraitor.WillBeTraitor.Data.Disconnected || alives.Count < CustomGameOptions.LatestSpawn || impsAlive.Count * 2 >= alives.Count;
                 }
-                if (modifier != null)
-                    modifierIsEnd = modifier.ModifierWin(__instance);
+                /*if (modifier != null)
+                    modifierIsEnd = modifier.ModifierWin(__instance);*/
                 if (alliance != null)
                     allianceIsEnd = alliance.AllianceWin(__instance);
-                if (!roleIsEnd || !modifierIsEnd || !allianceIsEnd || !traitorIsEnd || role.PauseEndCrit) result = false;
+                if (!roleIsEnd/* || !modifierIsEnd*/ || !allianceIsEnd || !traitorIsEnd || role.PauseEndCrit) result = false;
             }
 
             if (!NobodyEndCriteria(__instance)) result = false;
@@ -955,6 +993,11 @@ namespace TownOfUsFusion.Roles
             {
                 ((Mystic)role).BodyArrows.Values.DestroyAll();
                 ((Mystic)role).BodyArrows.Clear();
+            }
+            foreach (var role in AllRoles.Where(x => x.RoleType == RoleEnum.Cannibal))
+            {
+                ((Cannibal)role).BodyArrows.Values.DestroyAll();
+                ((Cannibal)role).BodyArrows.Clear();
             }
 
             RoleDictionary.Clear();

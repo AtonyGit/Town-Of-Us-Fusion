@@ -8,6 +8,7 @@ using TownOfUsFusion.Roles;
 using TownOfUsFusion.Extensions;
 using AmongUs.GameOptions;
 using TownOfUsFusion.Patches.ScreenEffects;
+using Reactor.Utilities;
 
 namespace TownOfUsFusion.Patches {
 
@@ -69,11 +70,13 @@ public class OnGameEndPatch
                 // CREW KILLING
                 else if (role.Value == RoleEnum.Hunter) { playerRole += "<color=#" + Colors.Hunter.ToHtmlStringRGBA() + ">Hunter</color> > "; }
                 else if (role.Value == RoleEnum.Sheriff) { playerRole += "<color=#" + Colors.Sheriff.ToHtmlStringRGBA() + ">Sheriff</color> > "; }
+                else if (role.Value == RoleEnum.Trickster) { playerRole += "<color=#" + Colors.Trickster.ToHtmlStringRGBA() + ">Trickster</color> > "; }
                 else if (role.Value == RoleEnum.VampireHunter) { playerRole += "<color=#" + Colors.VampireHunter.ToHtmlStringRGBA() + ">Vampire Hunter</color> > "; }
                 else if (role.Value == RoleEnum.Veteran) { playerRole += "<color=#" + Colors.Veteran.ToHtmlStringRGBA() + ">Veteran</color> > "; }
                 else if (role.Value == RoleEnum.Vigilante) { playerRole += "<color=#" + Colors.Vigilante.ToHtmlStringRGBA() + ">Vigilante</color> > "; }
                 // CREW PROTECTIVE
                 else if (role.Value == RoleEnum.Altruist) { playerRole += "<color=#" + Colors.Altruist.ToHtmlStringRGBA() + ">Altruist</color> > "; }
+                else if (role.Value == RoleEnum.Bodyguard) { playerRole += "<color=#" + Colors.Bodyguard.ToHtmlStringRGBA() + ">Bodyguard</color> > "; }
                 else if (role.Value == RoleEnum.Medic) { playerRole += "<color=#" + Colors.Medic.ToHtmlStringRGBA() + ">Medic</color> > "; }
                 // CREW SOVEREIGN
                 else if (role.Value == RoleEnum.Mayor) { playerRole += "<color=#" + Colors.Mayor.ToHtmlStringRGBA() + ">Mayor</color> > "; }
@@ -96,6 +99,7 @@ public class OnGameEndPatch
                 // NEUTRAL CHAOS
                 else if (role.Value == RoleEnum.Cannibal) { playerRole += "<color=#" + Colors.Cannibal.ToHtmlStringRGBA() + ">Cannibal</color> > "; }
                 else if (role.Value == RoleEnum.Joker) { playerRole += "<color=#" + Colors.Joker.ToHtmlStringRGBA() + ">Joker</color> > "; }
+                else if (role.Value == RoleEnum.Inquisitor) { playerRole += "<color=#" + Colors.Inquisitor.ToHtmlStringRGBA() + ">Inquisitor</color> > "; }
                 else if (role.Value == RoleEnum.Tyrant) { playerRole += "<color=#" + Colors.Tyrant.ToHtmlStringRGBA() + ">Tyrant</color> > "; }
                 // NEUTRAL KILLING
                 else if (role.Value == RoleEnum.Arsonist) { playerRole += "<color=#" + Colors.Arsonist.ToHtmlStringRGBA() + ">Arsonist</color> > "; }
@@ -106,7 +110,6 @@ public class OnGameEndPatch
                 else if (role.Value == RoleEnum.NeoNecromancer) { playerRole += "<color=#" + Colors.NeoNecromancer.ToHtmlStringRGBA() + ">Necromancer</color> > "; }
                 else if (role.Value == RoleEnum.Scourge) { playerRole += "<color=#" + Colors.NeoNecromancer.ToHtmlStringRGBA() + ">Scourge</color> > "; }
                 else if (role.Value == RoleEnum.Apparitionist) { playerRole += "<color=#" + Colors.NeoNecromancer.ToHtmlStringRGBA() + ">Apparitionist</color> > "; }
-                else if (role.Value == RoleEnum.Enchanter) { playerRole += "<color=#" + Colors.NeoNecromancer.ToHtmlStringRGBA() + ">Enchanter</color> > "; }
                 else if (role.Value == RoleEnum.Husk) { playerRole += "<color=#" + Colors.NeoNecromancer.ToHtmlStringRGBA() + ">Husk</color> > "; }
                 else if (role.Value == RoleEnum.Vampire) { playerRole += "<color=#" + Colors.Vampire.ToHtmlStringRGBA() + ">Vampire</color> > "; }
                 // NEUTRAL APOCALYPSE
@@ -165,11 +168,10 @@ public class OnGameEndPatch
             {
                 playerRole += " [<color=#" + Colors.Impostor.ToHtmlStringRGBA() + "><size=50%>§</size></color>]";
             }
-            else if (playerControl.Is(AllianceEnum.Recruit))
-            {
-                playerRole += " [<color=#" + Colors.Recruit.ToHtmlStringRGBA() + "><size=50%>§</size></color>]";
-            }
-
+            else if (playerControl.Is(AllianceEnum.Recruit)
+            )
+                if (PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(RoleEnum.Jackal)).ToList().Count > 0) playerRole += " [<color=#" + Colors.Recruit.ToHtmlStringRGBA() + "><size=50%>§</size></color>]";
+                else PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"INVALID RECRUIT: {playerControl}");
             if (playerControl.Is(ModifierEnum.Giant))
             {
                 playerRole += " (<color=#" + Colors.Giant.ToHtmlStringRGBA() + ">Giant</color>)";
@@ -248,7 +250,7 @@ public class OnGameEndPatch
                 if ((player.TotalTasks - player.TasksLeft) / player.TotalTasks == 1) playerRole += " | Tasks: <color=#" + Color.green.ToHtmlStringRGBA() + $">{player.TotalTasks - player.TasksLeft}/{player.TotalTasks}</color>";
                 else playerRole += $" | Tasks: {player.TotalTasks - player.TasksLeft}/{player.TotalTasks}";
             }
-            if (player.Kills > 0 && (!playerControl.Is(Faction.Crewmates) || playerControl.Is(AllianceEnum.Crewpocalypse) || playerControl.Is(AllianceEnum.Crewpostor)))
+            if (player.Kills > 0 && (!playerControl.Is(Faction.Crewmates) || !playerControl.Is(RoleEnum.Inquisitor) || playerControl.Is(AllianceEnum.Crewpocalypse) || playerControl.Is(AllianceEnum.Crewpostor)))
             {
                 playerRole += " |<color=#" + Colors.Impostor.ToHtmlStringRGBA() + $"> Kills: {player.Kills}</color>";
             }
@@ -276,6 +278,15 @@ public class OnGameEndPatch
             {
                 var jk = (Joker)jock;
                 if (jk.TargetVotedOut) AdditionalTempData.otherWinners.Add(new AdditionalTempData.Winners() { PlayerName = jk.Player.Data.PlayerName, Role = RoleEnum.Joker });
+            }
+            foreach (var inquis in Role.GetRoles(RoleEnum.Inquisitor))
+            {
+                var inquisitor = (Inquisitor)inquis;
+                if (inquisitor.didWin || inquisitor.heretic1.Data.IsDead && inquisitor.heretic2.Data.IsDead && inquisitor.heretic3.Data.IsDead) {
+                    AdditionalTempData.otherWinners.Add(new AdditionalTempData.Winners() { PlayerName = inquisitor.Player.Data.PlayerName/* + $":\n{inquisitor.heretic1.Data.PlayerName}, {inquisitor.heretic2.Data.PlayerName}, and {inquisitor.heretic3.Data.PlayerName} were Heretics"*/, Role = RoleEnum.Inquisitor });
+                    PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"INQUISITOR WINS: {inquisitor.Player.Data.PlayerName}");
+                }
+                else PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"INQUISITOR DID NOT WIN: {inquisitor.Player.Data.PlayerName}");
             }
         if (!CustomGameOptions.NeutralEvilWinEndsGame)
         {
@@ -311,14 +322,14 @@ public class EndGameManagerSetUpPatch
         if (GameOptionsManager.Instance.CurrentGameOptions.GameMode == GameModes.HideNSeek) return;
 
         GameObject bonusText = UnityEngine.Object.Instantiate(__instance.WinText.gameObject);
-        bonusText.transform.position = new Vector3(__instance.WinText.transform.position.x, __instance.WinText.transform.position.y - 0.8f, __instance.WinText.transform.position.z);
+        bonusText.transform.position = new Vector3(__instance.WinText.transform.position.x, __instance.WinText.transform.position.y - 0.85f, __instance.WinText.transform.position.z);
         bonusText.transform.localScale = new Vector3(0.7f, 0.7f, 1f);
         TMPro.TMP_Text textRenderer = bonusText.GetComponent<TMPro.TMP_Text>();
         textRenderer.text = "";
 
         var position = Camera.main.ViewportToWorldPoint(new Vector3(0f, 1f, Camera.main.nearClipPlane));
         GameObject roleSummary = UnityEngine.Object.Instantiate(__instance.WinText.gameObject);
-        roleSummary.transform.position = new Vector3(__instance.Navigation.ExitButton.transform.position.x + 0.1f, position.y - 0.1f, -14f);
+        roleSummary.transform.position = new Vector3(__instance.Navigation.ExitButton.transform.position.x + 0.25f, position.y - 0.25f, -14f);
         roleSummary.transform.localScale = new Vector3(1f, 1f, 1f);
 
         var roleSummaryText = new StringBuilder();
@@ -331,13 +342,17 @@ public class EndGameManagerSetUpPatch
 
         if (AdditionalTempData.otherWinners.Count != 0)
         {
-            roleSummaryText.AppendLine("\n\n\nOther Winners:");
+            roleSummaryText.AppendLine("\n\n\n<size=65%>Other Winners:</size>");
             foreach (var data in AdditionalTempData.otherWinners)
-            {
+            { roleSummaryText.AppendLine("<size=80%>");
                 if (data.Role == RoleEnum.Doomsayer) roleSummaryText.AppendLine("<color=#" + Colors.Doomsayer.ToHtmlStringRGBA() + $">{data.PlayerName}</color>");
                 else if (data.Role == RoleEnum.Executioner) roleSummaryText.AppendLine("<color=#" + Colors.Executioner.ToHtmlStringRGBA() + $">{data.PlayerName}</color>");
                 else if (data.Role == RoleEnum.Jester) roleSummaryText.AppendLine("<color=#" + Colors.Jester.ToHtmlStringRGBA() + $">{data.PlayerName}</color>");
                 else if (data.Role == RoleEnum.Phantom) roleSummaryText.AppendLine("<color=#" + Colors.Phantom.ToHtmlStringRGBA() + $">{data.PlayerName}</color>");
+                else if (data.Role == RoleEnum.Inquisitor) roleSummaryText.AppendLine("<color=#" + Colors.Inquisitor.ToHtmlStringRGBA() + $">{data.PlayerName}</color>");
+                else if (data.Role == RoleEnum.Joker) roleSummaryText.AppendLine("<color=#" + Colors.Joker.ToHtmlStringRGBA() + $">{data.PlayerName}</color>");
+                else if (data.Role == RoleEnum.Tyrant) roleSummaryText.AppendLine("<color=#" + Colors.Tyrant.ToHtmlStringRGBA() + $">{data.PlayerName}</color>");
+            roleSummaryText.AppendLine("</size>");
             }
         }
 

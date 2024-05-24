@@ -18,7 +18,7 @@ namespace TownOfUsFusion.Roles
         AddToRoleHistory(RoleType);
         ImpostorText = () => Utils.GradientColorText("B7B9BA", "5E576B", "Lead Your Recruits To Victory");
         //TaskText = () => "Your recruits are this and that\nFake Tasks:";
-        TaskText = () => Recruit1 != null && Recruit2 != null ? "Your recruits are " + Recruit1.Player.GetDefaultOutfit().PlayerName + " and " + Recruit2.Player.GetDefaultOutfit().PlayerName + "\nFake Tasks:" : "Odd, your recruits don't appear to exist\nFake Tasks:";
+        TaskText = () => Recruit1 != null && Recruit2 != null ? "Your recruits are " + Recruit1.Player.GetDefaultOutfit().PlayerName + " and " + Recruit2.Player.GetDefaultOutfit().PlayerName + "\nFake Tasks:" : "Avenge your Recruits.\nFake Tasks:";
         Faction = Faction.NeutralNeophyte;
         CanKill = CustomGameOptions.JackalCanAlwaysKill;
     }
@@ -35,7 +35,7 @@ namespace TownOfUsFusion.Roles
 
         if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected) <= 2 &&
                 PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
-                (x.Data.IsImpostor() || x.Is(Faction.NeutralNeophyte)|| x.Is(Faction.NeutralKilling)|| x.Is(Faction.NeutralApocalypse))) == 1)
+                (x.Data.IsImpostor() || x.Is(Faction.NeutralNeophyte) || x.Is(Faction.NeutralNecro) || x.Is(Faction.NeutralKilling)|| x.Is(Faction.NeutralApocalypse))) == 1)
         {
             JackalWin();
             Utils.EndGame();
@@ -43,7 +43,7 @@ namespace TownOfUsFusion.Roles
         }
         else if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected) <= 4 &&
                 PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
-                (x.Data.IsImpostor() || x.Is(Faction.NeutralNeophyte)) && !x.Is(RoleEnum.Jackal) && !x.Is(AllianceEnum.Recruit)) == 0)
+                (x.Data.IsImpostor() || x.Is(Faction.NeutralNeophyte) || x.Is(Faction.NeutralNecro)) && !x.Is(RoleEnum.Jackal) && !x.Is(AllianceEnum.Recruit)) == 0)
         {
             var jackalsAlive = PlayerControl.AllPlayerControls.ToArray()
                 .Where(x => !x.Data.IsDead && !x.Data.Disconnected && (x.Is(RoleEnum.Jackal) || x.Is(AllianceEnum.Recruit))).ToList();
@@ -60,7 +60,7 @@ namespace TownOfUsFusion.Roles
             var alives = PlayerControl.AllPlayerControls.ToArray()
                 .Where(x => !x.Data.IsDead && !x.Data.Disconnected).ToList();
             var killersAlive = PlayerControl.AllPlayerControls.ToArray()
-                .Where(x => !x.Data.IsDead && !x.Data.Disconnected && !x.Is(RoleEnum.Jackal) && !x.Is(AllianceEnum.Recruit) && (x.Is(Faction.Impostors) || x.Is(Faction.NeutralNeophyte))).ToList();
+                .Where(x => !x.Data.IsDead && !x.Data.Disconnected && !x.Is(RoleEnum.Jackal) && !x.Is(AllianceEnum.Recruit) && (x.Is(Faction.Impostors) || x.Is(Faction.NeutralNeophyte) || x.Is(Faction.NeutralNecro))).ToList();
             if (killersAlive.Count > 0) return false;
             if (alives.Count <= 6)
             {
@@ -86,6 +86,8 @@ namespace TownOfUsFusion.Roles
     {
         var jackalTeam = new Il2CppSystem.Collections.Generic.List<PlayerControl>();
         jackalTeam.Add(PlayerControl.LocalPlayer);
+        jackalTeam.Add(Recruit1.Player);
+        jackalTeam.Add(Recruit2.Player);
         __instance.teamToShow = jackalTeam;
     }
 }

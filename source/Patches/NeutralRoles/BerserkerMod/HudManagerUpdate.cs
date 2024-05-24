@@ -37,7 +37,7 @@ public static class HudManagerUpdate
             {
                 foreach (var player in alives)
                 {
-                    if (player.Data.IsImpostor() || player.Is(Faction.NeutralKilling) || player.Is(Faction.NeutralNeophyte) || player.Is(Faction.NeutralApocalypse))
+                    if (player.Data.IsImpostor() || player.Is(Faction.NeutralKilling) || player.Is(Faction.NeutralNeophyte) || player.Is(Faction.NeutralNecro) || player.Is(Faction.NeutralApocalypse))
                     {
                         transform = true;
                     }

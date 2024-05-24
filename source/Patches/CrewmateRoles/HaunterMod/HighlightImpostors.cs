@@ -16,7 +16,7 @@ public class HighlightImpostors
                 var role = Role.GetRole(player);
                 if (player.Is(Faction.Impostors))
                     state.NameText.color = Palette.ImpostorRed;
-                if ((player.Is(Faction.NeutralKilling) || player.Is(Faction.NeutralNeophyte) || player.Is(Faction.NeutralApocalypse)) && CustomGameOptions.HaunterRevealsNeutrals)
+                if ((player.Is(Faction.NeutralKilling) || player.Is(Faction.NeutralNecro) || player.Is(Faction.NeutralNeophyte) || player.Is(Faction.NeutralApocalypse)) && CustomGameOptions.HaunterRevealsNeutrals)
                     state.NameText.color = role.Color;
             }
         }

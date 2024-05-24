@@ -29,7 +29,7 @@ public static class GameSettings
 
             var builder = new StringBuilder();
             builder.AppendLine("Press Tab To Change Page");
-            builder.AppendLine($"Currently Viewing Page ({(SettingsPage + 2)}/8)");
+            builder.AppendLine($"Currently Viewing Page ({SettingsPage + 2}/8)");
             if (SettingsPage == 0) builder.AppendLine("Map Settings");
             if (SettingsPage == 1) builder.AppendLine("General Mod Settings");
             else if (SettingsPage == 2) builder.AppendLine("Crewmate Settings");
@@ -37,6 +37,9 @@ public static class GameSettings
             else if (SettingsPage == 4) builder.AppendLine("Impostor Settings");
             else if (SettingsPage == 5) builder.AppendLine("Modifier Settings");
             else if (SettingsPage == 6) builder.AppendLine("Alliance Settings");
+
+
+            var tobedisplayed = CustomOption.CustomOption.AllOptions/*.Where(x => x.Active)*/.ToList();
 
                 if (SettingsPage == -1)
                 {
@@ -55,11 +58,18 @@ public static class GameSettings
                 {
                     if (option.Type == CustomOptionType.Button)
                         continue;
+/*
+            var title = $"<b><size=160%>{$"GameSettings.Page{(int)option.Menu + 1}"}</size></b>";
+            
+            if (!builder.ToString().Contains(title))
+                builder.AppendLine(title);*/
 
+            var index = tobedisplayed.IndexOf(option);
+            var thing = option is CustomHeaderOption ? "" : (index == tobedisplayed.Count - 1 || tobedisplayed[index + 1].Type == CustomOptionType.Header ? "┗ " : "┣ " );
                     if (option.Type == CustomOptionType.Header)
-                        builder.AppendLine($"\n{option.Name}");
+                        builder.AppendLine($"\n<b>{thing}{option.Name}</b>");
                     else
-                        builder.AppendLine($"    {option.Name}: {option}");
+                        builder.AppendLine($" {thing}{option.Name}: {option}");
                 }
             }
 
@@ -72,7 +82,8 @@ public static class GameSettings
     {
         public static void Postfix(ref GameOptionsMenu __instance)
         {
-            __instance.GetComponentInParent<Scroller>().ContentYBounds.max = (__instance.Children.Length - 6.5f) / 2;
+            //__instance.GetComponentInParent<Scroller>().ContentYBounds.max = (__instance.Children.Length - 6.5f) / 2;
+            __instance.GetComponentInParent<Scroller>().ContentYBounds.max = __instance.Children.Length / 2f;
         }
     }
 

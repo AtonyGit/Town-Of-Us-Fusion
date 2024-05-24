@@ -1,6 +1,5 @@
 using HarmonyLib;
 using TownOfUsFusion.CrewmateRoles.AltruistMod;
-using TownOfUsFusion.Roles;
 using TownOfUsFusion.Roles.Alliances;
 
 namespace TownOfUsFusion.Alliances.RecruitsMod
@@ -15,7 +14,7 @@ public class Die
         var flag3 = __instance.IsRecruit() && CustomGameOptions.DoJackalRecruitsDie;
         if (!flag3) return true;
         var otherRecruit = Alliance.GetAlliance<Recruit>(__instance).OtherRecruit.Player;
-        if (otherRecruit.Data.IsDead) return true;
+        if (otherRecruit == null || otherRecruit.Data.IsDead) return true;
 
         if (reason == DeathReason.Exile)
         {

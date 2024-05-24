@@ -87,17 +87,6 @@ public static class LowLights
                 return false;
         }
 
-        if (player._object.Is(RoleEnum.Tyrant))
-        {
-            var role = Role.GetRole<Tyrant>(player._object);
-            if (role.Revealed)
-            {
-                __result = Mathf.Lerp(__instance.MinLightRadius, __instance.MaxLightRadius * 2, t) *
-                   GameOptionsManager.Instance.currentNormalGameOptions.CrewLightMod;
-                return false;
-            }
-        }
-
         __result = Mathf.Lerp(__instance.MinLightRadius, __instance.MaxLightRadius, t) *
                    GameOptionsManager.Instance.currentNormalGameOptions.CrewLightMod;
         return false;

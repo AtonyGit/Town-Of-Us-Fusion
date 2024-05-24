@@ -3,6 +3,8 @@ using System.Linq;
 using TownOfUsFusion.Patches;
 using UnityEngine;
 using TownOfUsFusion.Extensions;
+using Reactor.Utilities;
+using LibCpp2IL.Elf;
 
 namespace TownOfUsFusion.Roles.Alliances
 {
@@ -35,63 +37,101 @@ namespace TownOfUsFusion.Roles.Alliances
     {
         List<PlayerControl> allPlayers = new List<PlayerControl>();
         List<PlayerControl> passives = new List<PlayerControl>();
-        List<PlayerControl> NKs = new List<PlayerControl>();
-        List<PlayerControl> NAs = new List<PlayerControl>();
-        List<PlayerControl> imps = new List<PlayerControl>();
+        List<PlayerControl> teams = new List<PlayerControl>();
+        List<PlayerControl> jackal = new List<PlayerControl>();
 
         foreach (var player in canHaveAlliances)
         {
                 allPlayers.Add(player);
-            if (player.Is(Faction.Crewmates) || player.Is(Faction.NeutralBenign) || player.Is(Faction.NeutralEvil) || player.Is(Faction.NeutralChaos))
+            if (player.Is(Faction.Crewmates) || player.Is(Faction.NeutralBenign) || player.Is(Faction.NeutralEvil))
                 passives.Add(player);
-            else if (player.Is(Faction.NeutralKilling))
-                NKs.Add(player);
-            else if (player.Is(Faction.NeutralApocalypse))
-                NAs.Add(player);
-            else if (player.Is(Faction.Impostors))
-                imps.Add(player);
+            else if (player.Is(Faction.NeutralKilling) || player.Is(Faction.NeutralApocalypse) || player.Is(Faction.Impostors))
+                teams.Add(player);
+            else if (player.Is(RoleEnum.Jackal))
+                jackal.Add(player);
 
             allPlayers.Shuffle();
-            NKs.Shuffle();
-            NAs.Shuffle();
-            imps.Shuffle();
+            teams.Shuffle();
+            teams.Shuffle();
         }
-
-        if (passives.Count < 2 || NKs.Count < 1) return;
+        if (passives.Count + teams.Count < 5) return;
 
         var num = Random.RandomRangeInt(0, passives.Count);
         var firstRecruit = passives[num];
         canHaveAlliances.Remove(firstRecruit);
 
+        var lovingEvil = Random.RandomRangeInt(0, 100);
+
+        PlayerControl secondRecruit;
+        if (60 < lovingEvil)
+        {
+            var num3 = Random.RandomRangeInt(0, teams.Count);
+            secondRecruit = teams[num3];
+        }
+        else if (passives.Count < 2)
+        {
+            var num3 = Random.RandomRangeInt(0, teams.Count);
+            secondRecruit = teams[num3];
+        }
+        else
+        {
+            var num3 = Random.RandomRangeInt(0, passives.Count);
+            while (num3 == num)
+            {
+                num3 = Random.RandomRangeInt(0, passives.Count);
+            }
+            secondRecruit = passives[num3];
+        }
+/*
+        if ((passives.Count + NKs.Count + NAs.Count + imps.Count < 6 && allPlayers.Count < 5) || jackal.Count < 1)
+        {
+            AllianceDictionary.Remove(PlayerControl.LocalPlayer.PlayerId);
+            PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("NO RECRUITS WILL SPAWN");
+                return;
+        }
+        PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("SETTING RECRUITS");
+        var num = Random.RandomRangeInt(0, passives.Count);
+        var firstRecruit = passives[num];
+        canHaveAlliances.Remove(firstRecruit);
+        allPlayers.Remove(firstRecruit);
+        passives.Remove(firstRecruit);
+        teams.Remove(firstRecruit);
+        allPlayers.Remove(jackal[num]);
+
         var listChance = Random.RandomRangeInt(0, 100);
 
         PlayerControl secondRecruit;
-        if (listChance <= 25)
+        if (listChance <= 24 && !firstRecruit.Is(Faction.Crewmates) && !firstRecruit.Is(Faction.NeutralBenign)
+        && !firstRecruit.Is(Faction.NeutralEvil))
         {
             var num3 = Random.RandomRangeInt(0, passives.Count);
             secondRecruit = passives[num3];
             allPlayers.RemoveAll(player => player.Is(Faction.Crewmates));
             allPlayers.RemoveAll(player => player.Is(Faction.NeutralBenign));
             allPlayers.RemoveAll(player => player.Is(Faction.NeutralEvil));
-            allPlayers.RemoveAll(player => player.Is(Faction.NeutralChaos));
+            PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("SETTING RECRUIT: PASSIVE ROLE");
         }
-        else if (listChance <= 50)
+        else if (listChance <= 70 && !firstRecruit.Is(Faction.NeutralApocalypse))
         {
-            var num3 = Random.RandomRangeInt(0, NKs.Count);
-            secondRecruit = NKs[num3];
-            allPlayers.RemoveAll(player => player.Is(Faction.NeutralKilling));
-        }
-        else if (listChance <= 75)
-        {
-            var num3 = Random.RandomRangeInt(0, NAs.Count);
-            secondRecruit = NAs[num3];
+            teams.RemoveAll(player => player.Is(Faction.NeutralApocalypse));
+            var num3 = Random.RandomRangeInt(0, teams.Count);
+            secondRecruit = teams[num3];
             allPlayers.RemoveAll(player => player.Is(Faction.NeutralApocalypse));
+            PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("SETTING RECRUIT: APOCALYPSE");
         }
-        else if (listChance <= 100)
+        else if (listChance <= 70 && !firstRecruit.Is(Faction.Impostors))
         {
-            var num3 = Random.RandomRangeInt(0, imps.Count);
-            secondRecruit = imps[num3];
+            teams.RemoveAll(player => player.Is(Faction.Impostors));
+            var num3 = Random.RandomRangeInt(0, teams.Count);
+            secondRecruit = teams[num3];
             allPlayers.RemoveAll(player => player.Is(Faction.Impostors));
+            PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("SETTING RECRUIT: IMPOSTOR");
+        }
+        else if (listChance <= 70)
+        {
+            var num3 = Random.RandomRangeInt(0, teams.Count);
+            secondRecruit = teams[num3];
+            PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("SETTING RECRUIT: NEUTRAL KILLING");
         }
         else
         {
@@ -101,7 +141,8 @@ namespace TownOfUsFusion.Roles.Alliances
                 num3 = Random.RandomRangeInt(0, allPlayers.Count);
             }
             secondRecruit = allPlayers[num3];
-        }
+            PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("SETTING RECRUIT: WILDCARD");
+        }*/
         canHaveAlliances.Remove(secondRecruit);
 
         Utils.Rpc(CustomRPC.SetRecruits, firstRecruit.PlayerId, secondRecruit.PlayerId);
@@ -115,6 +156,7 @@ namespace TownOfUsFusion.Roles.Alliances
             var jackalPrime = (Jackal)role;
             jackalPrime.Recruit1 = Recruit1.OtherRecruit;
             jackalPrime.Recruit2 = Recruit2.OtherRecruit;
+            if(Recruit1 == null || Recruit2 == null) jackalPrime.CanKill = true;
             }
     }
 

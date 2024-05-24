@@ -75,6 +75,7 @@ public static class CustomGameOptions
     public static int DoomsayerOn => (int)Generate.DoomsayerOn.Get();
     public static int VampireOn => (int)Generate.VampireOn.Get();
     public static int VampireHunterOn => (int)Generate.VampireHunterOn.Get();
+    public static int TricksterOn => (int)Generate.TricksterOn.Get();
     public static int ProsecutorOn => (int)Generate.ProsecutorOn.Get();
     public static int WarlockOn => (int)Generate.WarlockOn.Get();
     public static int OracleOn => (int)Generate.OracleOn.Get();
@@ -89,6 +90,7 @@ public static class CustomGameOptions
     public static int BartenderOn => (int)Generate.BartenderOn.Get();
 
     public static int JokerOn => (int)Generate.JokerOn.Get();
+    public static int InquisitorOn => (int)Generate.InquisitorOn.Get();
     public static int PirateOn => (int)Generate.PirateOn.Get();
 
     public static int FraudOn => (int)Generate.FraudOn.Get();
@@ -97,9 +99,7 @@ public static class CustomGameOptions
     public static int CannibalOn => (int)Generate.CannibalOn.Get();
     public static int WitchOn => (int)Generate.WitchOn.Get();
 
-    public static int InfiltratorOn => (int)Generate.InfiltratorOn.Get();
     public static int GhoulOn => (int)Generate.GhoulOn.Get();
-    public static int MercenaryOn => (int)Generate.MercenaryOn.Get();
     public static int SerialKillerOn => (int)Generate.SerialKillerOn.Get();
 
     public static int JackalOn => (int)Generate.JackalOn.Get();
@@ -165,7 +165,10 @@ public static class CustomGameOptions
     public static bool JesterVent => Generate.JesterVent.Get();
     public static bool JesterImpVision => Generate.JesterImpVision.Get();
     public static bool JesterHaunt => Generate.JesterHaunt.Get();
-    public static GuardOptions ShowGuarded => (GuardOptions)Generate.ShowGuarded.Get();
+
+    public static float GuardCd => Generate.GuardCd.Get();
+    public static float GuardDuration => Generate.GuardDuration.Get();
+    public static int MaxGuards => (int)Generate.MaxGuards.Get();
 
     public static ShieldOptions ShowShielded => (ShieldOptions)Generate.ShowShielded.Get();
 
@@ -402,6 +405,11 @@ public static class CustomGameOptions
     public static bool SelfKillAfterFinalStake => Generate.SelfKillAfterFinalStake.Get();
     public static BecomeEnum BecomeOnVampDeaths => (BecomeEnum)Generate.BecomeOnVampDeaths.Get();
 
+    public static float TrickCd => Generate.TrickCooldown.Get();
+    public static int MaxFailedTricksPerGame => (int)Generate.MaxFailedTricksPerGame.Get();
+    public static bool CanTrickRoundOne => Generate.CanTrickRoundOne.Get();
+    public static bool SelfKillAfterFinalTrick => Generate.SelfKillAfterFinalTrick.Get();
+
     public static bool ProsDiesOnIncorrectPros => Generate.ProsDiesOnIncorrectPros.Get();
 
     public static float ChargeUpDuration => Generate.ChargeUpDuration.Get();
@@ -431,6 +439,14 @@ public static class CustomGameOptions
         public static float HunterStalkDuration => Generate.HunterStalkDuration.Get();
         public static int HunterStalkUses => (int)Generate.HunterStalkUses.Get();
         public static bool HunterBodyReport => Generate.HunterBodyReport.Get();
+    public static float InquireCooldown => Generate.InquireCooldown.Get();
+    public static bool VanquishEnabled => Generate.VanquishEnabled.Get();
+    public static bool VanquishRoundOne => Generate.VanquishRoundOne.Get();
+    public static float VanquishCooldown => Generate.VanquishCooldown.Get();
+
+    public static int TyrantVoteBank => (int)Generate.TyrantVoteBank.Get();
+    public static bool TyrantAnonymous => Generate.TyrantAnonymous.Get();
+
     public static AdminDeadPlayers WhoSeesDead => (AdminDeadPlayers)Generate.WhoSeesDead.Get();
     public static DisableSkipButtonMeetings SkipButtonDisable =>
         (DisableSkipButtonMeetings)Generate.SkipButtonDisable.Get();
@@ -487,14 +503,12 @@ public static class CustomGameOptions
     public static float AppaResurrectCooldown => Generate.AppaResurrectCooldown.Get();
     public static float AppaIncreasedCooldownPerResurrect => Generate.AppaIncreasedCooldownPerResurrect.Get();
     public static float ScourgeKillCooldown => Generate.ScourgeKillCooldown.Get();
-    public static float EnchantRevealCooldown => Generate.EnchantRevealCooldown.Get();
-    public static int EnchantMaxReveals => (int)Generate.EnchantMaxReveals.Get();
     public static bool CanHuskVent => Generate.CanHuskVent.Get();
     public static bool CanHuskAssassinate => Generate.CanHuskAssassinate.Get();
     public static bool HuskAssassinMultiKill => Generate.HuskAssassinMultiKill.Get();
     public static int HuskAssassinKills => (int)Generate.HuskAssassinKills.Get();
 
-    public static bool EnableAprilFoolsMode => Generate.EnableAprilFoolsMode.Get();
+    //public static bool EnableAprilFoolsMode => Generate.EnableAprilFoolsMode.Get();
 
     //              MAP SETTINGSSSS
     public static MapEnum Map

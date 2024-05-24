@@ -257,6 +257,16 @@
     },
 
     {
+      "id": "fusion-cube0",
+      "name": "Cube6",
+      "artist": "2: stampverse"
+    },
+    {
+      "id": "fusion-cube1",
+      "name": "Cube6 Hair",
+      "artist": "2: stampverse"
+    },
+    {
       "id": "fusion-mez0",
       "name": "Mez with Coat",
       "artist": "2: stampverse"
@@ -279,6 +289,16 @@
     {
       "id": "fusion-mez3",
       "name": "Mez Hair",
+      "artist": "2: stampverse"
+    },
+    {
+      "id": "fusion-milk0",
+      "name": "Milk",
+      "artist": "2: stampverse"
+    },
+    {
+      "id": "fusion-milk1",
+      "name": "Milk Hair",
       "artist": "2: stampverse"
     },
 

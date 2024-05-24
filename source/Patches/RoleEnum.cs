@@ -2,127 +2,117 @@ namespace TownOfUsFusion
 {
     public enum RoleEnum
 {
-    Sheriff,
-    Jester,
-    Engineer,
-    Mayor,
-    Swapper,
-    Investigator,
-    Medic,
-    Seer,
-    Executioner,
-    Spy,
-    Glitch,
-    Snitch,
-    Arsonist,
-    Altruist,
-    Phantom,
-    Vigilante,
+    // CREWMATE ASTRAL
+    Aurial,
     Haunter,
-    Veteran,
-    Amnesiac,
-    Tracker,
-    Transporter,
     Medium,
+    Mystic,
+    Oracle,
+    // CREWMATE INVESTIGATIVE
+    Detective,
+    Investigator,
+    Seer,
+    Snitch,
+    Spy,
+    Tracker,
     Trapper,
+    // CREWMATE KILLING
+    Hunter,
+    Sheriff,
+    Trickster,
+    VampireHunter,
+    Veteran,
+    Vigilante,
+    // CREWMATE PROTECTIVE
+    Altruist,
+    Bodyguard,
+    Crusader,
+    Medic,
+    // CREWMATE SOVEREIGN
+    Captain,
+    Mayor,
+    Monarch,
+    Prosecutor,
+    Swapper,
+    // CREWMATE SUPPORT
+    Bartender,
+    Engineer,
+    Imitator,
+    Mage,
+    Transporter,
+
+
+    // NEUTRAL BENIGN
+    Amnesiac,
     Survivor,
     GuardianAngel,
-    Mystic,
+    // NEUTRAL EVIL
+    Doomsayer,
+    Executioner,
+    Inquisitor,
+    Jester,
+    Phantom,
+    Pirate,
+    // NEUTRAL CHAOS
+    Joker,
+    Fraud,
+    Tempest,
+    Tyrant,
+    Cannibal,
+    Witch,
+    // NEUTRAL KILLING
+    Arsonist,
+    Ghoul,
+    Glitch,
+    Mercenary,
+    SerialKiller,
+    Werewolf,
+
+//  NEUTRAL NEOPHYTE
+    Apparitionist,
+    Husk,
+    Jackal,
+    NeoNecromancer,
+    Scourge,
+    Vampire,
+//  NEUTRAL APOCALYPSE
+    Baker,
+    Famine,
+    Berserker,
+    War,
     Plaguebearer,
     Pestilence,
-    Werewolf,
-    Detective,
-    Imitator,
-    Doomsayer,
-    Vampire,
-    VampireHunter,
-    Prosecutor,
-    Oracle,
-    Aurial,
-    Hunter,
-    
-    Miner,
-    Swooper,
-    Morphling,
-    Janitor,
-    Undertaker,
-    Grenadier,
-    Traitor,
-    Blackmailer,
+    SoulCollector,
+    Death,
+
+
+    // IMPOSTOR CONCEALING
     Escapist,
-    Bomber,
-    Warlock,
+    Grenadier,
+    Morphling,
+    Swooper,
     Venerer,
-
-    Crewmate,
-    Impostor,
-
+    // IMPOSTOR KILLING
+    Bomber,
+    Poisoner,
+    Traitor,
+    Warlock,
+    // IMPOSTOR SUPPORT
+    Blackmailer,
+    Janitor,
+    Miner,
+    Undertaker,
+    // CULTIST ROLES
     Necromancer,
     Whisperer,
     CultistSeer,
     CultistMystic,
     Chameleon,
     CultistSnitch,
-
-    // TOU FUSION ROLES
-    Bodyguard,
-    Mage,
-    Captain,
-    Monarch,
-    Bartender,
-
-    Infiltrator,
-    Joker,
-    Pirate,
-    Fraud,
-    Tempest,
-    Tyrant,
-    Cannibal,
-    Witch,
-    Ghoul,
-    Mercenary,
-    SerialKiller,
-//  NEUTRAL NEOPHYTE
-    NeoNecromancer,
-    Scourge,
-    Apparitionist,
-    Enchanter,
-    Husk,
-    Jackal,
-//  NEUTRAL APOCALYPSE
-    Baker,
-    Famine,
-    Berserker,
-    War,
-    SoulCollector,
-    Death,
-    Poisoner,
-
+    // BASIC ROLES
+    Crewmate,
+    Impostor,
     None
-}
-
-public enum FactionEnum
-{
-    CrewmateAstral,
-    CrewmateInvestigative,
-    CrewmateKilling,
-    CrewmateProtective,
-    CrewmateChaos,
-    CrewmatePower,
-    CrewmateSupport,
-
-    NeutralBenign,
-    NeutralEvil,
-    NeutralChaos,
-    NeutralKilling,
-    NeutralNeophyte,
-    NeutralApocalypse,
-
-    ImpostorConcealing,
-    ImpostorKilling,
-    ImpostorSupport,
-
-    Apocalypse
 }
 public enum ModifierEnum
 {

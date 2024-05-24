@@ -7,6 +7,7 @@ namespace TownOfUsFusion
     SetAlliance,
     SetCouple,
     SetRecruits,
+    SetHeretics,
     SetAssassin,
     SetTarget,
     SetGATarget,
@@ -35,6 +36,7 @@ namespace TownOfUsFusion
     ApocWin,
 
     JanitorClean,
+    VanquishClean,
     FixLights,
     EngineerFix,
     SetSwaps,
@@ -61,6 +63,7 @@ namespace TownOfUsFusion
     Mediate,
     Vest,
     GAProtect,
+    BGGuard,
     Poison,
     RemoteBite,
     CannibalEat,
@@ -95,6 +98,7 @@ namespace TownOfUsFusion
     ExecutionerToJester,
     JokerToJester,
     GAToSurv,
+    GuardReset,
 
     Start,
     SyncCustomSettings,
@@ -113,6 +117,6 @@ namespace TownOfUsFusion
     Resurrect2,
     NeoConvert,
     Guard,
-    RevealTy,
+    AddTyrantVoteBank,
 }
 }

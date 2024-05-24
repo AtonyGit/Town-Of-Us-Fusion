@@ -19,7 +19,7 @@ namespace TownOfUsFusion.Roles
         LastKilled = DateTime.UtcNow;
         RoleType = RoleEnum.Scourge;
         AddToRoleHistory(RoleType);
-        Faction = Faction.NeutralNeophyte;
+        Faction = Faction.NeutralNecro;
     }
     public DateTime LastKilled { get; set; }
 

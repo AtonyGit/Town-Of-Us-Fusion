@@ -10,6 +10,7 @@ namespace TownOfUsFusion
     NeutralChaos,
     NeutralKilling,
     NeutralNeophyte,
+    NeutralNecro,
     NeutralApocalypse,
     None
 }

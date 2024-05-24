@@ -554,8 +554,46 @@ namespace TownOfUsFusion.CustomOption
     [HarmonyPatch(typeof(PlayerPhysics), nameof(PlayerPhysics.CoSpawnPlayer))]
     private class PlayerJoinPatch
     {
-        public static void Postfix()
+        private static bool SentOnce;
+        public static HudManager HUD => HudManager.Instance;
+        public static ChatController Chat => HUD.Chat;
+        public static void Postfix(PlayerPhysics __instance)
         {
+            if (!AmongUsClient.Instance || !PlayerControl.LocalPlayer || !__instance.myPlayer)
+                return;
+
+            if (__instance.myPlayer == PlayerControl.LocalPlayer)
+            {
+                if (!SentOnce)
+                {
+                    //Run("<color=#5411F8FF>人 Welcome! 人</color>", "Welcome to Town Of Us Reworked! Type /help to get started!");
+                    var pooledBubble = Chat.GetPooledBubble();
+
+                        pooledBubble.transform.SetParent(Chat.scroller.Inner);
+                        pooledBubble.transform.localScale = Vector3.one;
+                        pooledBubble.SetLeft();
+                        pooledBubble.SetCosmetics(PlayerControl.LocalPlayer.Data);
+                        pooledBubble.NameText.text = "人 Welcome! 人</color>";
+                        pooledBubble.NameText.color = Color.white;
+                        pooledBubble.NameText.ForceMeshUpdate(true, true);
+                        pooledBubble.votedMark.enabled = false;
+                        pooledBubble.Xmark.enabled = false;
+                        pooledBubble.TextArea.text = "Welcome to Town Of Us Fusion!\nRemember, you legally must make fun of MrGrism or you will get executed";
+                        pooledBubble.TextArea.ForceMeshUpdate(true, true);
+                        pooledBubble.Background.size = new(5.52f, 0.2f + pooledBubble.NameText.GetNotDumbRenderedHeight() + pooledBubble.TextArea.GetNotDumbRenderedHeight());
+                        pooledBubble.MaskArea.size = pooledBubble.Background.size - new Vector2(0, 0.03f);
+
+                        pooledBubble.AlignChildren();
+                        var pos = pooledBubble.NameText.transform.localPosition;
+                        pos.y += 0.05f;
+                        pooledBubble.NameText.transform.localPosition = pos;
+                        Chat.AlignAllBubbles();
+                        //Play("Chat");
+                    SentOnce = true;
+                }
+
+                return;
+            }
             if (PlayerControl.AllPlayerControls.Count < 2 || !AmongUsClient.Instance ||
                 !PlayerControl.LocalPlayer || !AmongUsClient.Instance.AmHost) return;
 
@@ -601,9 +639,9 @@ namespace TownOfUsFusion.CustomOption
             if (!Scroller.gameObject.active) return;
 
             var rows = __instance.GameSettings.text.Count(c => c == '\n');
-            var maxY = Mathf.Max(MinY, rows * LobbyTextRowHeight + (rows - 38) * LobbyTextRowHeight);
+            var maxY = Mathf.Max(MinY, (rows * 0.081f) + ((rows - 30) * 0.081f * (__instance.GameSettings.text.Contains('┣') ? 1.9f : 1f)));
 
-            Scroller.ContentYBounds = new FloatRange(MinY, maxY);
+            Scroller.ContentYBounds = new(MinY, maxY);
 
             // Prevent scrolling when the player is interacting with a menu
             if (PlayerControl.LocalPlayer?.CanMove != true)

@@ -27,7 +27,7 @@ namespace TownOfUsFusion.Roles
         LastKilled = DateTime.UtcNow;
         LastResurrected = DateTime.UtcNow;
         RoleType = RoleEnum.NeoNecromancer;
-        Faction = Faction.NeutralNeophyte;
+        Faction = Faction.NeutralNecro;
         AddToRoleHistory(RoleType);
         CanKill = true;
     }
@@ -49,7 +49,7 @@ namespace TownOfUsFusion.Roles
 
         if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected) <= 2 &&
                 PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
-                (x.Data.IsImpostor() || x.Is(Faction.NeutralNeophyte)|| x.Is(Faction.NeutralKilling)|| x.Is(Faction.NeutralApocalypse))) == 1)
+                (x.Data.IsImpostor() || x.Is(Faction.NeutralNeophyte) || x.Is(Faction.NeutralNecro) || x.Is(Faction.NeutralKilling)|| x.Is(Faction.NeutralApocalypse))) == 1)
         {
             NecroWin();
             Utils.EndGame();
@@ -57,10 +57,10 @@ namespace TownOfUsFusion.Roles
         }
         else if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected) <= 4 &&
                 PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
-                (x.Data.IsImpostor() || x.Is(Faction.NeutralNeophyte)|| x.Is(Faction.NeutralKilling)|| x.Is(Faction.NeutralApocalypse)) && !(x.Is(RoleEnum.Apparitionist) || x.Is(RoleEnum.Enchanter) || x.Is(RoleEnum.Husk) || x.Is(RoleEnum.Scourge) || x.Is(RoleEnum.NeoNecromancer))) == 0)
+                (x.Data.IsImpostor() || x.Is(Faction.NeutralNeophyte) || x.Is(Faction.NeutralNecro) || x.Is(Faction.NeutralKilling)|| x.Is(Faction.NeutralApocalypse)) && !x.Is(Faction.NeutralNecro)) == 0)
         {
             var necrosAlives = PlayerControl.AllPlayerControls.ToArray()
-                .Where(x => !x.Data.IsDead && !x.Data.Disconnected && (x.Is(RoleEnum.Apparitionist) || x.Is(RoleEnum.Enchanter) || x.Is(RoleEnum.Husk) || x.Is(RoleEnum.Scourge) || x.Is(RoleEnum.NeoNecromancer))).ToList();
+                .Where(x => !x.Data.IsDead && !x.Data.Disconnected && x.Is(Faction.NeutralNecro)).ToList();
             if (necrosAlives.Count == 1) return false;
             NecroWin();
             Utils.EndGame();
@@ -69,12 +69,12 @@ namespace TownOfUsFusion.Roles
         else
         {
             var necrosAlives = PlayerControl.AllPlayerControls.ToArray()
-                .Where(x => !x.Data.IsDead && !x.Data.Disconnected && (x.Is(RoleEnum.Apparitionist) || x.Is(RoleEnum.Enchanter) || x.Is(RoleEnum.Husk) || x.Is(RoleEnum.Scourge) || x.Is(RoleEnum.NeoNecromancer))).ToList();
+                .Where(x => !x.Data.IsDead && !x.Data.Disconnected && x.Is(Faction.NeutralNecro)).ToList();
             if (necrosAlives.Count == 1 || necrosAlives.Count == 2) return false;
             var alives = PlayerControl.AllPlayerControls.ToArray()
                 .Where(x => !x.Data.IsDead && !x.Data.Disconnected).ToList();
             var killersAlive = PlayerControl.AllPlayerControls.ToArray()
-                .Where(x => !x.Data.IsDead && !x.Data.Disconnected && !(x.Is(RoleEnum.Apparitionist) || x.Is(RoleEnum.Enchanter) || x.Is(RoleEnum.Husk) || x.Is(RoleEnum.Scourge) || x.Is(RoleEnum.NeoNecromancer)) && (x.Is(Faction.Impostors) || x.Is(Faction.NeutralNeophyte) || x.Is(Faction.NeutralKilling))).ToList();
+                .Where(x => !x.Data.IsDead && !x.Data.Disconnected && !x.Is(Faction.NeutralNecro) && (x.Is(Faction.Impostors) || x.Is(Faction.NeutralNeophyte) || x.Is(Faction.NeutralKilling))).ToList();
             if (killersAlive.Count > 0) return false;
             if (alives.Count <= 6)
             {

@@ -124,7 +124,6 @@ public class PerformKillButton
             case RoleEnum.NeoNecromancer:
             case RoleEnum.Scourge:
             case RoleEnum.Apparitionist:
-            case RoleEnum.Enchanter:
             case RoleEnum.Husk:
 
                 rememberImp = false;
@@ -175,7 +174,7 @@ public class PerformKillButton
             else
             {             
                 // If role is not Vampire, turn dead player into Survivor
-                if (role != RoleEnum.Vampire || !CustomGameOptions.RememberedVampireStaysVamp) {
+                if (role != RoleEnum.Vampire) {
                 var survivor = new Survivor(other);
                 survivor.RegenTask();
                 }
@@ -442,7 +441,7 @@ public class PerformKillButton
             wwRole.LastKilled = DateTime.UtcNow;
         }
 
-        else if (role == RoleEnum.NeoNecromancer || role == RoleEnum.Scourge || role == RoleEnum.Apparitionist || role == RoleEnum.Enchanter || role == RoleEnum.Husk)
+        else if (role == RoleEnum.NeoNecromancer || role == RoleEnum.Scourge || role == RoleEnum.Apparitionist || role == RoleEnum.Husk)
         {
             var necroRole = Role.GetRole<NeoNecromancer>(amnesiac);
             necroRole.LastKilled = DateTime.UtcNow;
@@ -516,7 +515,6 @@ public class PerformKillButton
         else if (role == RoleEnum.Tyrant)
         {
             var tyrantRole = Role.GetRole<Tyrant>(amnesiac);
-            tyrantRole.Revealed = false;
             DestroyableSingleton<HudManager>.Instance.KillButton.gameObject.SetActive(false);
         }
         else if (role == RoleEnum.Cannibal)

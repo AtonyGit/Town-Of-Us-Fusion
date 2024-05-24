@@ -59,15 +59,6 @@ public class SeeAll
                         continue;
                     }
                 }
-                else if (player.Is(RoleEnum.Tyrant))
-                {
-                    var tyrant = Role.GetRole<Tyrant>(player);
-                    if (!tyrant.Revealed)
-                    {
-                        ColorChar(player, Color.clear);
-                        continue;
-                    }
-                }
                 else
                 {
                     ColorChar(player, Color.clear);
@@ -100,6 +91,9 @@ public class SeeAll
                     ColorChar(player, Color.gray);
                     break;
                 case Faction.NeutralNeophyte:
+                    ColorChar(player, Color.gray);
+                    break;
+                case Faction.NeutralNecro:
                     ColorChar(player, Color.gray);
                     break;
                 case Faction.NeutralApocalypse:

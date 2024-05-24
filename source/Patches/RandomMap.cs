@@ -261,6 +261,9 @@ class RandomMap
         Generate.ObserveCooldown.Set((float)Generate.ObserveCooldown.Value + change, false);
         Generate.BiteCooldown.Set((float)Generate.BiteCooldown.Value + change, false);
         Generate.StakeCooldown.Set((float)Generate.StakeCooldown.Value + change, false);
+        Generate.TrickCooldown.Set((float)Generate.TrickCooldown.Value + change, false);
+        Generate.InquireCooldown.Set((float)Generate.InquireCooldown.Value + change, false);
+        Generate.VanquishCooldown.Set((float)Generate.VanquishCooldown.Value + change, false);
         Generate.ConfessCooldown.Set((float)Generate.ConfessCooldown.Value + change, false);
         Generate.ChargeUpDuration.Set((float)Generate.ChargeUpDuration.Value + change, false);
         Generate.AbilityCooldown.Set((float)Generate.AbilityCooldown.Value + change, false);

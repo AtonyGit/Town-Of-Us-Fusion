@@ -37,8 +37,6 @@ public class SetPhantom
         if (jestRole != null) return;
         var jkRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Joker && ((Joker)x).TargetVotedOut && ((Joker)x).Player == WillBePhantom);
         if (jkRole != null) return;
-        var tyRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Tyrant && ((Tyrant)x).Revealed && ((Tyrant)x).MetWinCondition == WillBePhantom);
-        if (tyRole != null) return;
         if (WillBePhantom.Data.Disconnected) return;
         if (!WillBePhantom.Data.IsDead && WillBePhantom != exiled) return;
 

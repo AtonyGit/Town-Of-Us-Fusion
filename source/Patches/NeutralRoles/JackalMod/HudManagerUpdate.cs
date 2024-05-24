@@ -28,7 +28,7 @@ public static class HudManagerUpdate
         var notRecruits = PlayerControl.AllPlayerControls.ToArray()
             .Where(x => !x.Is(AllianceEnum.Recruit)).ToList();
 
-        Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton, float.NaN, notRecruits);
+        Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton, float.NaN/*, notRecruits*/);
     }
 }
 }

@@ -22,7 +22,7 @@ namespace TownOfUsFusion.Roles
         LastResurrected = DateTime.UtcNow;
         RoleType = RoleEnum.Apparitionist;
         AddToRoleHistory(RoleType);
-        Faction = Faction.NeutralNeophyte;
+        Faction = Faction.NeutralNecro;
     }
 
     public KillButton ResurrectButton

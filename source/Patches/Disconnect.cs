@@ -12,6 +12,7 @@ public class DisconnectHandler
     [HarmonyPatch(nameof(GameData.HandleDisconnect), typeof(PlayerControl), typeof(DisconnectReasons))]
     public static void Prefix([HarmonyArgument(0)] PlayerControl player)
     {
+
         if (CustomGameOptions.GameMode == GameMode.Cultist)
         {
             if (player.Is(RoleEnum.Necromancer) || player.Is(RoleEnum.Whisperer))
@@ -21,27 +22,16 @@ public class DisconnectHandler
                     if (player2.Is(Faction.Impostors)) Utils.MurderPlayer(player2, player2, true);
                 }
             }
-        }
+        } else
             if (player.Is(RoleEnum.NeoNecromancer))
             {
                 foreach (var player2 in PlayerControl.AllPlayerControls)
                 {
-                    if (/*player2.Is(RoleEnum.NeoNecromancer) || */player2.Is(RoleEnum.Apparitionist) || player2.Is(RoleEnum.Scourge) || player2.Is(RoleEnum.Enchanter) || player2.Is(RoleEnum.Husk)) Utils.MurderPlayer(player2, player2, true);
+                    if (!player2.Is(RoleEnum.NeoNecromancer) && player2.Is(Faction.NeutralNecro)) Utils.MurderPlayer(player2, player2, true);
                 }
             }
         else
         {
-            /*if (player.IsLover() && CustomGameOptions.BothLoversDie)
-            {
-                var otherLover = Modifier.GetModifier<Lover>(player).OtherLover;
-                if (!otherLover.Is(RoleEnum.Pestilence) && !otherLover.Data.IsDead
-                     && !otherLover.Data.Disconnected) MurderPlayer(otherLover, otherLover, true);
-                if (otherLover.Is(RoleEnum.Sheriff))
-                {
-                    var sheriff = Role.GetRole<Sheriff>(otherLover);
-                    sheriff.IncorrectKills -= 1;
-                }
-            }*/
             if (AmongUsClient.Instance.AmHost)
             {
                 if (player == SetTraitor.WillBeTraitor)

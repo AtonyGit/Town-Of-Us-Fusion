@@ -89,6 +89,11 @@ namespace TownOfUsFusion.CustomOption
         SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "Slot 3", delegate { ExportSlot(3); }));
         SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "Slot 4", delegate { ExportSlot(4); }));
         SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "Slot 5", delegate { ExportSlot(5); }));
+        SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "Slot 6", delegate { ExportSlot(6); }));
+        SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "Slot 7", delegate { ExportSlot(7); }));/*
+        SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "Slot 8", delegate { ExportSlot(8); }));
+        SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "Slot 9", delegate { ExportSlot(9); }));
+        SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "Slot 10", delegate { ExportSlot(10); }));*/
         SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "Cancel", delegate { Cancel(FlashWhite); }));
 
         var options = CreateOptions();

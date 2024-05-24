@@ -15,7 +15,8 @@ public static class PingTracker_Update
         position.DistanceFromEdge = new Vector3(3.6f, 0.1f, 0);
         position.AdjustPosition();
         var host = GameData.Instance.GetHost();
-
+        if (AmongUsClient.Instance.GameState != InnerNet.InnerNetClient.GameStates.Ended) {
+            // this is so the logs aren't spammed with this shit because it clogs it up too much
         __instance.text.text =
             "<size=2><color=#FF6A51FF>TownOfUs v" + TownOfUsFusion.TouVersionString + "</color>" +
             "<size=2><color=#8E5BF3FF> | Fusion v" + TownOfUsFusion.VersionString + "</color>\n" +
@@ -27,6 +28,7 @@ public static class PingTracker_Update
                 ? /*"<size=2><color=#A364CAFF>Formerly: Slushiegoose & Polus.gg</color>\n" +
                  */$"<size=3>Host: {host.PlayerName}" : "") +
                 "</size>";
+        }
     }
 }
 }

@@ -88,8 +88,14 @@ namespace TownOfUsFusion.CustomOption
         SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "Slot 3", delegate { ImportSlot(3); }));
         SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "Slot 4", delegate { ImportSlot(4); }));
         SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "Slot 5", delegate { ImportSlot(5); }));
-        SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "<color=#255EF0FF>Forward</color> <color=#A043C2FF>Pals</color> <color=#51D37EFF>Preset</color>", delegate { ImportPresetSlot(6); }));
-        SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, Utils.GradientColorText("B7B9BA", "5E576B", "Four-Way Deadlock Preset (For 10+ Players)"), delegate { ImportPresetSlot(7); }));
+        SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "Slot 6", delegate { ImportSlot(6); }));
+        SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "Slot 7", delegate { ImportSlot(7); }));/*
+        SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "Slot 8", delegate { ImportSlot(8); }));
+        SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "Slot 9", delegate { ImportSlot(9); }));
+        SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "Slot 10", delegate { ImportSlot(10); }));*/
+        SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "<color=#255EF0FF>Forward</color> <color=#A043C2FF>Pals</color> <color=#51D37EFF>Preset</color>", delegate { ImportPresetSlot(11); }));
+        SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, Utils.GradientColorText("B7B9BA", "5E576B", "Four-Way Deadlock Preset (For 10+ Players)"), delegate { ImportPresetSlot(12); }));
+        SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, Utils.GradientColorText("FF0000", "FFD260", "Murder Manifesto Preset"), delegate { ImportPresetSlot(13); }));
         SlotButtons.Add(new CustomButtonOption(1, MultiMenu.external, "Cancel", delegate { Cancel(FlashWhite); }));
 
         var options = CreateOptions();

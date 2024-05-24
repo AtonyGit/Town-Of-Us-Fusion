@@ -1,46 +1,30 @@
-using UnityEngine;
+using System.Collections.Generic;
 
 namespace TownOfUsFusion.Roles
 {
     public class Tyrant : Role
-{
-    public Tyrant(PlayerControl player) : base(player)
     {
-        Name = "Tyrant";
-        ImpostorText = () => "Backstab the crew and regain political power";
-        TaskText = () => "Reveal your true colors to the neutrals\nFake Tasks:";
-        Color = Patches.Colors.Tyrant;
-        RoleType = RoleEnum.Tyrant;
-        AddToRoleHistory(RoleType);
-        Faction = Faction.NeutralChaos;
-        Revealed = false;
-        MetWinCondition = false;
-    }
-    public bool Revealed { get; set; }
-    public bool MetWinCondition { get; set; }
+        public List<byte> ExtraVotes = new List<byte>();
 
-    public GameObject RevealButton = new GameObject();
+        public Tyrant(PlayerControl player) : base(player)
+        {
+            Name = "Tyrant";
+            ImpostorText = () => "Betray The Crew To Regain Political Power";
+            TaskText = () => "Reveal your true colors to the neutrals.\nFake Tasks:";
+            Color = Patches.Colors.Tyrant;
+            RoleType = RoleEnum.Tyrant;
+            AddToRoleHistory(RoleType);
+            Faction = Faction.NeutralChaos;
+            VoteBank = CustomGameOptions.TyrantVoteBank;
+        }
 
-    internal override bool Criteria()
-    {
-        return Revealed && !Player.Data.IsDead || base.Criteria();
-    }
+        public int VoteBank { get; set; }
+        public bool SelfVote { get; set; }
 
-    internal override bool RoleCriteria()
-    {
-        if (!Player.Data.IsDead) return Revealed || base.RoleCriteria();
-        return false || base.RoleCriteria();
+        public bool VotedOnce { get; set; }
+
+        public PlayerVoteArea Abstain { get; set; }
+
+        public bool CanVote => VoteBank > 0 && !SelfVote;
     }
-    protected override void IntroPrefix(IntroCutscene._ShowTeam_d__38 __instance)
-    {
-        var evilTeam = new Il2CppSystem.Collections.Generic.List<PlayerControl>();
-        evilTeam.Add(PlayerControl.LocalPlayer);
-        __instance.teamToShow = evilTeam;
-    }
-    public void Wins()
-    {
-        //System.Console.WriteLine("Reached Here - Jester edition");
-        MetWinCondition = true;
-    }
-}
 }

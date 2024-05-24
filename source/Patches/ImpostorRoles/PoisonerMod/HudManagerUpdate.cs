@@ -25,10 +25,12 @@ namespace TownOfUsFusion.ImpostorRoles.PoisonerMod
                 role.PoisonButton = Object.Instantiate(__instance.KillButton, __instance.KillButton.transform.parent);
                 role.PoisonButton.graphic.enabled = true;
                 role.PoisonButton.graphic.sprite = PoisonSprite;
+                role.PoisonButton.gameObject.SetActive(false);
             }
 
             //role.PoisonButton.gameObject.SetActive(!PlayerControl.LocalPlayer.Data.IsDead && !MeetingHud.Instance);
-                role.PoisonButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+
+            role.PoisonButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                 && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                 && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
             //__instance.KillButton.Hide();
@@ -47,8 +49,6 @@ namespace TownOfUsFusion.ImpostorRoles.PoisonerMod
                 role.ClosestPlayer.myRend().material.SetColor("_OutlineColor", Palette.Purple);
             }
 
-            try
-            {
                 if (role.Poisoned)
                 {
                     role.Player.SetKillTimer(GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown/* + CustomGameOptions.PoisonDuration*/);
@@ -75,14 +75,14 @@ namespace TownOfUsFusion.ImpostorRoles.PoisonerMod
                     }
                     role.PoisonButton.SetCoolDown(PlayerControl.LocalPlayer.killTimer,
                     GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown);
+
+        if (role.PoisonButton.graphic.sprite == PoisonSprite) role.PoisonButton.SetCoolDown(PlayerControl.LocalPlayer.killTimer,
+            GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown);
+        else role.PoisonButton.SetCoolDown(role.TimeRemaining, CustomGameOptions.PoisonDuration);
+
                     //role.PoisonButton.SetCoolDown(role.PoisonTimer(), CustomGameOptions.PoisonCd);
                     role.PoisonedPlayer = PlayerControl.LocalPlayer; //Only do this to stop repeatedly trying to re-kill poisoned player. null didn't work for some reason
                 }
-            }
-            catch
-            {
-
-            }
         }
     }
 }

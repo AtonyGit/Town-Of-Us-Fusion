@@ -42,6 +42,7 @@ namespace TownOfUsFusion.Roles.Modifiers
         if (CustomGameOptions.TransporterOn > 0) ColorMapping.Add("Transporter", Colors.Transporter);
         if (CustomGameOptions.MediumOn > 0) ColorMapping.Add("Medium", Colors.Medium);
         if (CustomGameOptions.MysticOn > 0) ColorMapping.Add("Mystic", Colors.Mystic);
+        if (CustomGameOptions.TricksterOn > 0) ColorMapping.Add("Trickster", Colors.Trickster);
         if (CustomGameOptions.ImitatorOn > 0) ColorMapping.Add("Imitator", Colors.Imitator);
         if (CustomGameOptions.VampireHunterOn > 0 && CustomGameOptions.VampireOn > 0) ColorMapping.Add("Vampire Hunter", Colors.VampireHunter);
         if (CustomGameOptions.ProsecutorOn > 0) ColorMapping.Add("Prosecutor", Colors.Prosecutor);
@@ -75,6 +76,7 @@ namespace TownOfUsFusion.Roles.Modifiers
         {
             if (CustomGameOptions.TyrantOn > 0) ColorMapping.Add("Tyrant", Colors.Tyrant);
             if (CustomGameOptions.JokerOn > 0) ColorMapping.Add("Joker", Colors.Joker);
+            if (CustomGameOptions.InquisitorOn > 0) ColorMapping.Add("Inquisitor", Colors.Inquisitor);
             if (CustomGameOptions.CannibalOn > 0) ColorMapping.Add("Cannibal", Colors.Cannibal);
         }
         if (CustomGameOptions.AssassinGuessNeutralKilling)
@@ -89,7 +91,6 @@ namespace TownOfUsFusion.Roles.Modifiers
                 if (CustomGameOptions.NeoNecromancerOn > 0 && !PlayerControl.LocalPlayer.Is(RoleEnum.NeoNecromancer)) ColorMapping.Add("Necromancer", Colors.NeoNecromancer);
                 if (CustomGameOptions.NeoNecromancerOn > 0) ColorMapping.Add("Husk", Colors.NeoNecromancer);
                 if (CustomGameOptions.NeoNecromancerOn > 0) ColorMapping.Add("Scourge", Colors.NeoNecromancer);
-                if (CustomGameOptions.NeoNecromancerOn > 0) ColorMapping.Add("Enchanter", Colors.NeoNecromancer);
                 if (CustomGameOptions.NeoNecromancerOn > 0) ColorMapping.Add("Apparitionist", Colors.NeoNecromancer);
                 if (CustomGameOptions.VampireOn > 0) ColorMapping.Add("Vampire", Colors.Vampire);
             }

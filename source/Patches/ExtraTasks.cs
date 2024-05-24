@@ -43,9 +43,8 @@ public class GetAdjustedImposters
         }
         if (CustomGameOptions.GameMode == GameMode.Classic/* && CustomGameOptions.MinImpostorRoles != CustomGameOptions.MaxImpostorRoles*/)
         {
-            var trueCount = 1;
             var randomCount = Random.RandomRangeInt(CustomGameOptions.MinImpostorRoles * 30, CustomGameOptions.MaxImpostorRoles * 30);
-            trueCount = Convert.ToInt32(randomCount/25);
+            var trueCount = Convert.ToInt32(randomCount/25);
             __result = trueCount;
             PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"Randomized value: {randomCount}, Final value: {trueCount}");
             return false;

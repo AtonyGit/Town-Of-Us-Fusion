@@ -24,15 +24,12 @@ public static class HudManagerUpdate
         __instance.KillButton.SetCoolDown(role.ScourgeKillTimer(), CustomGameOptions.ScourgeKillCooldown);
 
         var notNecroTeam = PlayerControl.AllPlayerControls.ToArray()
-            .Where(x => !x.Is(RoleEnum.NeoNecromancer) || !x.Is(RoleEnum.Apparitionist) || !x.Is(RoleEnum.Scourge)
-            || !x.Is(RoleEnum.Enchanter) || !x.Is(RoleEnum.Husk)).ToList();
+            .Where(x => !x.Is(Faction.NeutralNecro)).ToList();
             
             if (role.ClosestPlayer != null)
             {
                 role.ClosestPlayer.myRend().material.SetColor("_OutlineColor", Colors.NeoNecromancer);
             }
-        //if(!role.ClosestPlayer.Is(RoleEnum.NeoNecromancer) || !role.ClosestPlayer.Is(RoleEnum.Apparitionist) || !role.ClosestPlayer.Is(RoleEnum.Scourge)
-        // || !role.ClosestPlayer.Is(RoleEnum.Enchanter) || !role.ClosestPlayer.Is(RoleEnum.Husk))
         Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton, float.NaN, notNecroTeam);
     }
 }
