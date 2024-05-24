@@ -22,10 +22,10 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 | [Venerer](#venerer)          | [Medium](#medium)                  | [The Glitch](#the-glitch)        | [Multitasker](#multitasker)|
 | [Warlock](#warlock)          | [Mystic](#mystic)                  | [Vampire](#vampire)              | [Radar](#radar)             |
 |                             | [Oracle](#oracle)                  | [Werewolf](#werewolf)            | [Sleuth](#sleuth)           |
-|                             | [Prosecutor](#prosecutor)          |                                 | [Tiebreaker](#tiebreaker)   |
-|                             | [Seer](#seer)                      |                                 | [Torch](#torch)             |
-|                             | [Sheriff](#sheriff)                |                                 | [Underdog](#underdog)       |
-|                             | [Snitch](#snitch)                  |                                 |                             |
+|                             | [Prosecutor](#prosecutor)          | [Cannibal](#cannibal)      | [Tiebreaker](#tiebreaker)   |
+|                             | [Seer](#seer)                      | [Inquisitor](#inquisitor)      | [Torch](#torch)             |
+|                             | [Sheriff](#sheriff)                | [Tyrant](#tyrant)      | [Underdog](#underdog)       |
+|                             | [Snitch](#snitch)                  | [Jackal](#jackal)      |                             |
 |                             | [Spy](#spy)                        |                                 |                             |
 |                             | [Swapper](#swapper)                |                                 |                             |
 |                             | [Tracker](#tracker)                |                                 |                             |
@@ -34,6 +34,8 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 |                             | [Vampire Hunter](#vampire-hunter)  |                                 |                             |
 |                             | [Veteran](#veteran)                |                                 |                             |
 |                             | [Vigilante](#vigilante)            |                                 |                             |
+|                             | [Bodyguard](#bodyguard)            |                                 |                             |
+|                             | [Trickster](#trickster)            |                                 |                             |
 -----------------------
 # Releases
 | Among Us - Version| Mod Version | Link |
@@ -993,6 +995,21 @@ However, if they kill a Crewmate or a Neutral player they can't kill, they inste
 | Sheriff can report who they've killed | Whether the Sheriff is able to report their own kills | Toggle | True |
 
 -----------------------
+## Trickster
+### **Team: Crewmates**
+The Trickster is a Crewmate role which can kamikaze with another killer.\
+However, they may also kill Sheriffs, Hunters, and other Tricksters.\
+
+### Game Options
+| Name | Description | Type | Default |
+|----------|:-------------:|:------:|:------:|
+| Trickster | The percentage probability of the Trickster appearing | Percentage | 0% |
+| Trick Cooldown | The cooldown of the Trickster's Trick button | Time | 25s |
+| Max Failed Tricks Per Game | The amount of times the Trick ability can be used per game incorrectly | Number | 3 |
+| Can Trick Round One | If the Trickster can trick players on the first round | Toggle | False |
+| Suicide If All Tricks Fail | Whether the Trickster will die if no tricks work | Toggle | False |
+
+-----------------------
 ## Vampire Hunter
 ### **Team: Crewmates**
 The Vampire Hunter is a Crewmate role which can hunt Vampires.\
@@ -1057,6 +1074,20 @@ After a set period of time, the player will be resurrected, if the revival isn't
 | Altruist Revive Duration | The time it takes for the Altruist to revive a dead body | Time | 10s |
 | Target's body disappears on beginning of revive | Whether the dead body of the player the Altruist is reviving disappears upon revival | Toggle | False |
 
+-----------------------
+## Bodyguard
+### **Team: Crewmates**
+
+The Bodyguard is a Crewmate that can take a hit from killers for others.\
+Once they select a player, they may periodically choose to Guard them, killing all players that attack them.\
+However, the Bodyguard will die if the killer can be killed. Otherwise, it acts like a Medic.\
+### Game Options
+| Name | Description | Type | Default |
+|----------|:-------------:|:------:|:------:|
+| Bodyguard | The percentage probability of the Bodyguard appearing | Percentage | 0% |
+| Guard Cooldown | The cooldown of the Bodyguard's Guard button | Time | 25s |
+| Guard Duration | How long The Bodyguard's Guard lasts | Time | 10s |
+| Max Uses | The amount of times the Guard ability can be used | Number | 5 |
 -----------------------
 ## Medic
 ### **Team: Crewmates**
@@ -1321,6 +1352,51 @@ They become half-invisible when they die and has to complete all their tasks wit
 | Phantom Spook On Victory | Whether the Phantom can spook someone when they win | Toggle | True |
 
 -----------------------
+## Cannibal
+### **Team: Neutral**
+The Cannibal is a Neutral role that must eat bodies to win by themselves.
+
+### Game Options
+| Name | Description | Type | Default |
+|----------|:-------------:|:------:|:------:|
+| Cannibal | The percentage probability of the Cannibal appearing | Percentage | 0% |
+| Cannibal Gets Arrows Pointing To Dead Body | Whether the Cannibal gets arrows towards bodies | Toggle | Off |
+| Time After Death Arrow Appear | The time it takes for a body's arrow to appear | Time | 5s |
+| Bodies Needed To Win | The amount of bodies needed to win | Number | 3 |
+
+-----------------------
+## Inquisitor
+### **Team: Neutral**
+The Inquisitor is a Neutral role that has a unique win condition.\
+They are given a list of 3 roles that are Heretics, which mush be vanquished in order to win.\
+These heretics do not need to die to your hands, but you must be alive by the time all three die in order to win.\
+The Inquisitor may choose to Inquire a player each round, which tells them if their target is a Heretic or not.\
+The Inquisitor may also Vanquish a player, which gets disabled if they choose poorly.\
+After the win condition is met, it does not matter if they die or not, as they are an extra winner.
+
+### Game Options
+| Name | Description | Type | Default |
+|----------|:-------------:|:------:|:------:|
+| Inquisitor | The percentage probability of the Inquisitor appearing | Percentage | 0% |
+| Inquire Cooldown | The cooldown of the Inquisitor's Inquire button | Time | 25s |
+| Inquisitor Can Vanquish | Whether the Inquisitor can Vanquish players | Toggle | On |
+| Inquisitor Can Vanquish Round One | Whether the Inquisitor can Vanquish round one | Toggle | Off |
+| Vanquish Cooldown | The cooldown of the Inquisitor's Vanquish button | Time | 25s |
+
+-----------------------
+## Tyrant
+### **Team: Neutral**
+The Tyrant is a Neutral role that can only win with other Neutrals.\
+The Tyrant may choose to abstain each meeting, or unload as many votes as they wish onto a player.\
+However, the Prosecutor can still see all of the Tyrant's votes.
+
+### Game Options
+| Name | Description | Type | Default |
+|----------|:-------------:|:------:|:------:|
+| Tyrant | The percentage probability of the Tyrant appearing | Percentage | 0% |
+| Initial Tyrant Vote Bank | The amount of votes the Tyrant starts with | Number | 1 |
+
+-----------------------
 ## Arsonist
 ### **Team: Neutral**
 
@@ -1394,6 +1470,41 @@ The Glitch can Mimic someone, which results in them looking exactly like the oth
 | Glitch can Vent | Whether the Glitch can Vent | Toggle | False |
 
 -----------------------
+## Werewolf
+### **Team: Neutral**
+
+The Werewolf is a Neutral role with its own win condition.\
+Although the Werwolf has a kill button, they can't use it unless they are Rampaged.\
+Once the Werewolf rampages they gain Impostor vision and the ability to kill.\
+However, unlike most killers their kill cooldown is really short.\
+The Werewolf needs to be the last killer alive to win the game.
+### Game Options
+| Name | Description | Type | Default |
+|----------|:-------------:|:------:|:------:|
+| Werewolf | The percentage probability of the Werewolf appearing | Percentage | 0% |
+| Rampage Cooldown | The cooldown of the Werewolf's Rampage button | Time | 25s |
+| Rampage Duration | The duration of the Werewolf's Rampage | Time | 25s |
+| Rampage Kill Cooldown | The cooldown of the Werewolf's Kill button | Time | 10s |
+| Werewolf can Vent when Rampaged | Whether the Werewolf can Vent when Rampaged | Toggle | False |
+
+-----------------------
+## Jackal
+### **Team: Neutral**
+
+The Jackal is a Neutral role with its own win condition.\
+The Jackal spawns with two recruits on opposite factions.\
+The Recruits can see each other, but they aren't aware of their Jackal.\
+However, the Jackal can see the recruits just fine.\
+The Recruits may also die together, allowing the Jackal to kill freely.
+### Game Options
+| Name | Description | Type | Default |
+|----------|:-------------:|:------:|:------:|
+| Jackal | The percentage probability of the Jackal appearing | Percentage | 0% |
+| Jackal Kill Cooldown | The cooldown of the Jackal's Kill button | Time | 25s |
+| Do Both Jackal Recruits Die | Whether the Recruits die together | Toggle | True |
+| Jackal Can Always Kill | Whether the Jackal Can Kill immediately | Toggle | False |
+
+-----------------------
 ## Vampire
 ### **Team: Neutral**
 
@@ -1412,24 +1523,6 @@ Else they will kill the bitten player.
 | Maximum Vampires Per Game | The maximum amount of players that can be Vampires | Number | 2 |
 | Can Convert Neutral Benign Roles | Whether Neutral Benign Roles can be turned into Vampires | Toggle | False |
 | Can Convert Neutral Evil Roles | Whether Neutral Evil Roles can be turned into Vampires | Toggle | False |
-
------------------------
-## Werewolf
-### **Team: Neutral**
-
-The Werewolf is a Neutral role with its own win condition.\
-Although the Werwolf has a kill button, they can't use it unless they are Rampaged.\
-Once the Werewolf rampages they gain Impostor vision and the ability to kill.\
-However, unlike most killers their kill cooldown is really short.\
-The Werewolf needs to be the last killer alive to win the game.
-### Game Options
-| Name | Description | Type | Default |
-|----------|:-------------:|:------:|:------:|
-| Werewolf | The percentage probability of the Werewolf appearing | Percentage | 0% |
-| Rampage Cooldown | The cooldown of the Werewolf's Rampage button | Time | 25s |
-| Rampage Duration | The duration of the Werewolf's Rampage | Time | 25s |
-| Rampage Kill Cooldown | The cooldown of the Werewolf's Kill button | Time | 10s |
-| Werewolf can Vent when Rampaged | Whether the Werewolf can Vent when Rampaged | Toggle | False |
 
 -----------------------
 # Impostor Roles
