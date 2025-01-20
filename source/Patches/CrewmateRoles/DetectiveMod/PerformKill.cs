@@ -1,78 +1,107 @@
 ﻿using System;
 using HarmonyLib;
-using TownOfUsFusion.Roles;
+using TownOfUs.Roles;
 using UnityEngine;
-using TownOfUsFusion.CrewmateRoles.MedicMod;
+<<<<<<< Updated upstream
+using TownOfUs.CrewmateRoles.MedicMod;
 using Reactor.Utilities;
 using AmongUs.GameOptions;
-using System.Collections.Generic;
+=======
+using Reactor.Utilities;
+using AmongUs.GameOptions;
 using TownOfUsFusion.Extensions;
-using TownOfUsFusion.Roles.Apocalypse;
+>>>>>>> Stashed changes
 
-namespace TownOfUsFusion.CrewmateRoles.DetectiveMod
+namespace TownOfUs.CrewmateRoles.DetectiveMod
 {
     [HarmonyPatch(typeof(KillButton), nameof(KillButton.DoClick))]
-public class PerformKill
-{
-    public static bool Prefix(KillButton __instance)
+    public class PerformKill
     {
-        if (!PlayerControl.LocalPlayer.Is(RoleEnum.Detective)) return true;
-        var role = Role.GetRole<Detective>(PlayerControl.LocalPlayer);
-        if (PlayerControl.LocalPlayer.Data.IsDead) return false;
-        if (!PlayerControl.LocalPlayer.CanMove) return false;
-        if (!__instance.enabled) return false;
-        var maxDistance = GameOptionsData.KillDistances[GameOptionsManager.Instance.currentNormalGameOptions.KillDistance];
-
-        if (__instance == role.ExamineButton)
+        public static bool Prefix(KillButton __instance)
         {
-            var flag2 = role.ExamineTimer() == 0f;
-            if (!flag2) return false;
-            if (role.InvestigatingScene == null) return false;
-            if (role.ClosestPlayer == null) return false;
-            if (Vector2.Distance(role.ClosestPlayer.GetTruePosition(),
-                PlayerControl.LocalPlayer.GetTruePosition()) > maxDistance) return false;
-            var interact = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer);
-            if (interact[4] == true)
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Detective)) return true;
+            var role = Role.GetRole<Detective>(PlayerControl.LocalPlayer);
+            if (PlayerControl.LocalPlayer.Data.IsDead) return false;
+            if (!PlayerControl.LocalPlayer.CanMove) return false;
+            if (!__instance.enabled) return false;
+            var maxDistance = GameOptionsData.KillDistances[GameOptionsManager.Instance.currentNormalGameOptions.KillDistance];
+
+            if (__instance == role.ExamineButton)
             {
-                if (role.InvestigatedPlayers.Contains(role.ClosestPlayer.PlayerId))
+                var flag2 = role.ExamineTimer() == 0f;
+                if (!flag2) return false;
+<<<<<<< Updated upstream
+                if (role.ClosestPlayer == null) return false;
+                if (Vector2.Distance(role.ClosestPlayer.GetTruePosition(),
+                    PlayerControl.LocalPlayer.GetTruePosition()) > maxDistance) return false;
+                if (role.ClosestPlayer == null) return false;
+                var interact = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer);
+                if (interact[4] == true)
                 {
-                    Coroutines.Start(Utils.FlashCoroutine(Color.red));
-                    var deadPlayer = role.InvestigatingScene.DeadPlayer;
-                    if (DestroyableSingleton<HudManager>.Instance)
-                        DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"{role.ClosestPlayer.GetDefaultOutfit().PlayerName} was at the scene of {deadPlayer.GetDefaultOutfit().PlayerName}'s death!");
+                    if (role.DetectedKillers.Contains(role.ClosestPlayer.PlayerId) || (CustomGameOptions.CanDetectLastKiller && role.LastKiller == role.ClosestPlayer)) Coroutines.Start(Utils.FlashCoroutine(Color.red));
+=======
+                if (role.InvestigatingScene == null) return false;
+                if (role.ClosestPlayer == null) return false;
+                if (Vector2.Distance(role.ClosestPlayer.GetTruePosition(),
+                    PlayerControl.LocalPlayer.GetTruePosition()) > maxDistance) return false;
+                var interact = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer);
+                if (interact[4] == true)
+                {
+                    if (role.InvestigatedPlayers.Contains(role.ClosestPlayer.PlayerId))
+                    {
+                        Coroutines.Start(Utils.FlashCoroutine(Color.red));
+                        var deadPlayer = role.InvestigatingScene.DeadPlayer;
+                        if (DestroyableSingleton<HudManager>.Instance)
+                            DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"{role.ClosestPlayer.GetDefaultOutfit().PlayerName} was at the scene of {deadPlayer.GetDefaultOutfit().PlayerName}'s death!");
+                    }
+>>>>>>> Stashed changes
+                    else Coroutines.Start(Utils.FlashCoroutine(Color.green));
                 }
+                if (interact[0] == true)
+                {
+                    role.LastExamined = DateTime.UtcNow;
+                    return false;
+                }
+                else if (interact[1] == true)
+                {
+                    role.LastExamined = DateTime.UtcNow;
+                    role.LastExamined = role.LastExamined.AddSeconds(CustomGameOptions.ProtectKCReset - CustomGameOptions.ExamineCd);
+                    return false;
+                }
+                else if (interact[3] == true) return false;
+                return false;
             }
-            if (interact[0] == true)
+            else
             {
-                role.LastExamined = DateTime.UtcNow;
-
-                return false;
-            }
-            else if (interact[1] == true)
-            {
-                role.LastExamined = DateTime.UtcNow;
-                role.LastExamined = role.LastExamined.AddSeconds(CustomGameOptions.ProtectKCReset - CustomGameOptions.ExamineCd);
-
-                return false;
-            }
-            else if (interact[3] == true) return false;
-            return false;
-        }
-        else
-        {
-            if (role.CurrentTarget == null)
-                return false;
-            if (Vector2.Distance(role.CurrentTarget.gameObject.transform.position,
-                PlayerControl.LocalPlayer.GetTruePosition()) > maxDistance) return false;
+                if (role.CurrentTarget == null)
+                    return false;
+<<<<<<< Updated upstream
+                if (Vector2.Distance(role.CurrentTarget.TruePosition,
+                    PlayerControl.LocalPlayer.GetTruePosition()) > maxDistance) return false;
+                var playerId = role.CurrentTarget.ParentId;
+                var player = Utils.PlayerById(playerId);
+=======
+                if (Vector2.Distance(role.CurrentTarget.gameObject.transform.position,
+                    PlayerControl.LocalPlayer.GetTruePosition()) > maxDistance) return false;
                 var player = role.CurrentTarget.DeadPlayer;
-            if (player.IsInfected() || role.Player.IsInfected())
-            {
-                foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(player, role.Player);
+                var abilityUsed = Utils.AbilityUsed(PlayerControl.LocalPlayer);
+                if (!abilityUsed) return false;
+>>>>>>> Stashed changes
+                if (player.IsInfected() || role.Player.IsInfected())
+                {
+                    foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(player, role.Player);
+                }
+<<<<<<< Updated upstream
+                foreach (var deadPlayer in Murder.KilledPlayers)
+                {
+                    if (deadPlayer.PlayerId == playerId) role.DetectedKillers.Add(deadPlayer.KillerId);
+                }
+=======
+                role.InvestigatingScene = role.CurrentTarget;
+                role.InvestigatedPlayers.AddRange(role.CurrentTarget.ScenePlayers);
+>>>>>>> Stashed changes
+                return false;
             }
-            role.InvestigatingScene = role.CurrentTarget;
-            role.InvestigatedPlayers.AddRange(role.CurrentTarget.ScenePlayers);
-            return false;
         }
     }
-}
 }

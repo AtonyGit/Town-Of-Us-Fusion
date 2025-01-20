@@ -1,52 +1,55 @@
 ﻿using System.Linq;
 using HarmonyLib;
-using TownOfUsFusion.Roles;
+using TownOfUs.Roles;
 
-namespace TownOfUsFusion.CrewmateRoles.SeerMod
+namespace TownOfUs.CrewmateRoles.SeerMod
 {
     [HarmonyPatch(typeof(HudManager))]
-public class HudInvestigate
-{
-    [HarmonyPatch(nameof(HudManager.Update))]
-    public static void Postfix(HudManager __instance)
+    public class HudInvestigate
     {
-        UpdateInvButton(__instance);
-    }
-
-    public static void UpdateInvButton(HudManager __instance)
-    {
-        if (PlayerControl.AllPlayerControls.Count <= 1) return;
-        if (PlayerControl.LocalPlayer == null) return;
-        if (PlayerControl.LocalPlayer.Data == null) return;
-        if (!PlayerControl.LocalPlayer.Is(RoleEnum.Seer)) return;
-        var investigateButton = __instance.KillButton;
-
-        var role = Role.GetRole<Seer>(PlayerControl.LocalPlayer);
-
-        investigateButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-        investigateButton.SetCoolDown(role.SeerTimer(), CustomGameOptions.SeerCd);
-
-        var notInvestigated = PlayerControl.AllPlayerControls
-            .ToArray()
-            .Where(x => !role.Investigated.Contains(x.PlayerId))
-            .ToList();
-
-        Utils.SetTarget(ref role.ClosestPlayer, investigateButton, float.NaN, notInvestigated);
-
-        var renderer = investigateButton.graphic;
-
-        if (role.ClosestPlayer != null)
+        [HarmonyPatch(nameof(HudManager.Update))]
+        public static void Postfix(HudManager __instance)
         {
-            renderer.color = Palette.EnabledColor;
-            renderer.material.SetFloat("_Desat", 0f);
+            UpdateInvButton(__instance);
         }
-        else
+
+        public static void UpdateInvButton(HudManager __instance)
         {
-            renderer.color = Palette.DisabledClear;
-            renderer.material.SetFloat("_Desat", 1f);
+            if (PlayerControl.AllPlayerControls.Count <= 1) return;
+            if (PlayerControl.LocalPlayer == null) return;
+            if (PlayerControl.LocalPlayer.Data == null) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Seer)) return;
+            var investigateButton = __instance.KillButton;
+
+            var role = Role.GetRole<Seer>(PlayerControl.LocalPlayer);
+
+            investigateButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+            investigateButton.SetCoolDown(role.SeerTimer(), CustomGameOptions.SeerCd);
+
+            var notInvestigated = PlayerControl.AllPlayerControls
+                .ToArray()
+                .Where(x => !role.Investigated.Contains(x.PlayerId))
+                .ToList();
+
+            Utils.SetTarget(ref role.ClosestPlayer, investigateButton, float.NaN, notInvestigated);
+<<<<<<< Updated upstream
+
+            var renderer = investigateButton.graphic;
+
+            if (role.ClosestPlayer != null)
+            {
+                renderer.color = Palette.EnabledColor;
+                renderer.material.SetFloat("_Desat", 0f);
+            }
+            else
+            {
+                renderer.color = Palette.DisabledClear;
+                renderer.material.SetFloat("_Desat", 1f);
+            }
+=======
+>>>>>>> Stashed changes
         }
     }
-}
 }

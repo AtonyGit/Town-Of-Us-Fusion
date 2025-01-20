@@ -1,52 +1,52 @@
 using System.Linq;
 using HarmonyLib;
-using TownOfUsFusion.Roles;
+using TownOfUs.Roles;
 
-namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
+namespace TownOfUs.CrewmateRoles.ImitatorMod
 {
     [HarmonyPatch(typeof(MeetingHud))]
-public class SetImitate
-{
-    public static PlayerVoteArea Imitate;
-
-    [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.VotingComplete))]
-    public static class VotingComplete
+    public class SetImitate
     {
-        public static void Postfix(MeetingHud __instance)
+        public static PlayerVoteArea Imitate;
+
+        [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.VotingComplete))]
+        public static class VotingComplete
         {
-            if (Imitate == null) return;
-
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Imitator))
+            public static void Postfix(MeetingHud __instance)
             {
-                var imitator = Role.GetRole<Imitator>(PlayerControl.LocalPlayer);
-                foreach (var button in imitator.Buttons.Where(button => button != null)) button.SetActive(false);
+                if (Imitate == null) return;
 
-                foreach (var player in PlayerControl.AllPlayerControls)
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.Imitator))
                 {
-                    if (player.PlayerId == Imitate.TargetPlayerId)
+                    var imitator = Role.GetRole<Imitator>(PlayerControl.LocalPlayer);
+                    foreach (var button in imitator.Buttons.Where(button => button != null)) button.SetActive(false);
+
+                    foreach (var player in PlayerControl.AllPlayerControls)
                     {
-                        imitator.ImitatePlayer = player;
+                        if (player.PlayerId == Imitate.TargetPlayerId) 
+                        { 
+                            imitator.ImitatePlayer = player;
+                        }
                     }
-                }
 
-                if (Imitate == null)
-                {
-                    Utils.Rpc(CustomRPC.Imitate, imitator.Player.PlayerId, sbyte.MaxValue);
-                    return;
-                }
+                    if (Imitate == null)
+                    {
+                        Utils.Rpc(CustomRPC.Imitate, imitator.Player.PlayerId, sbyte.MaxValue);
+                        return;
+                    }
 
-                Utils.Rpc(CustomRPC.Imitate, imitator.Player.PlayerId, imitator.ImitatePlayer.PlayerId);
+                    Utils.Rpc(CustomRPC.Imitate, imitator.Player.PlayerId, imitator.ImitatePlayer.PlayerId);
+                }
+            }
+        }
+
+        [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.Start))]
+        public static class MeetingHud_Start
+        {
+            public static void Postfix(MeetingHud __instance)
+            {
+                Imitate = null;
             }
         }
     }
-
-    [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.Start))]
-    public static class MeetingHud_Start
-    {
-        public static void Postfix(MeetingHud __instance)
-        {
-            Imitate = null;
-        }
-    }
-}
 }

@@ -1,6 +1,6 @@
 ﻿using HarmonyLib;
 
-namespace TownOfUsFusion.Patches;
+namespace TownOfUs.Patches;
 
 [HarmonyPatch(typeof(LongBoiPlayerBody))]
 public static class LongBoiPatches

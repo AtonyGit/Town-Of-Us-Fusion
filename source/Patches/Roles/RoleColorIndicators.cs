@@ -1,39 +1,38 @@
 ﻿using HarmonyLib;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+<<<<<<< Updated upstream
+using TownOfUs.Roles;
+=======
 using TownOfUsFusion.Roles;
+>>>>>>> Stashed changes
 using UnityEngine;
 
-namespace TownOfUsFusion.Patches.Roles
+namespace TownOfUs.Patches.Roles
 {
     public class RoleColorIndicators
-{
-    [HarmonyPatch(typeof(Vent), nameof(Vent.SetOutline))]
-    class SetVentOutlinePatch
     {
-        public static void Postfix(Vent __instance, [HarmonyArgument(1)] ref bool mainTarget)
+        [HarmonyPatch(typeof(Vent), nameof(Vent.SetOutline))]
+        class SetVentOutlinePatch
         {
-            var player = PlayerControl.LocalPlayer;
-            var role = Role.GetRole(player);
-            Color color = role.Color;
-            __instance.myRend.material.SetColor("_OutlineColor", color);
-            __instance.myRend.material.SetColor("_AddColor", mainTarget ? color : Color.clear);
-        }
-    }
-    [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.ToggleHighlight))]
-    class ToggleHighlightPatch
-    {
-        public static void Postfix(PlayerControl __instance, [HarmonyArgument(0)] bool active, [HarmonyArgument(1)] RoleTeamTypes team)
-        {
-            var player = PlayerControl.LocalPlayer;
-            var role = Role.GetRole(player);
+            public static void Postfix(Vent __instance, [HarmonyArgument(1)] ref bool mainTarget)
             {
-                __instance.cosmetics.currentBodySprite.BodySprite.material.SetColor("_OutlineColor", role.Color);
+                var player = PlayerControl.LocalPlayer;
+                var role = Role.GetRole(player);
+                Color color = role.Color;
+                __instance.myRend.material.SetColor("_OutlineColor", color);
+                __instance.myRend.material.SetColor("_AddColor", mainTarget ? color : Color.clear);
+            }
+        }
+        [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.ToggleHighlight))]
+        class ToggleHighlightPatch
+        {
+            public static void Postfix(PlayerControl __instance, [HarmonyArgument(0)] bool active, [HarmonyArgument(1)] RoleTeamTypes team)
+            {
+                var player = PlayerControl.LocalPlayer;
+                var role = Role.GetRole(player);
+                {
+                    __instance.cosmetics.currentBodySprite.BodySprite.material.SetColor("_OutlineColor", role.Color);
+                }
             }
         }
     }
-}
 }

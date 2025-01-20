@@ -1,39 +1,39 @@
 using HarmonyLib;
-using TownOfUsFusion.Roles;
-using TownOfUsFusion.Modifiers.UnderdogMod;
+using TownOfUs.Roles;
+using TownOfUs.Modifiers.UnderdogMod;
 
-namespace TownOfUsFusion.ImpostorRoles.WarlockMod
+namespace TownOfUs.ImpostorRoles.WarlockMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
-[HarmonyPriority(Priority.Last)]
-public class ChargeUnCharge
-{
     [HarmonyPriority(Priority.Last)]
-    public static void Postfix(HudManager __instance)
+    public class ChargeUnCharge
     {
-        if (!PlayerControl.LocalPlayer.Is(RoleEnum.Warlock)) return;
-        foreach (var role in Role.GetRoles(RoleEnum.Warlock))
+        [HarmonyPriority(Priority.Last)]
+        public static void Postfix(HudManager __instance)
         {
-            var warlock = (Warlock)role;
-            if (warlock.Charging)
-                warlock.ChargePercent = warlock.ChargeUpTimer();
-            else if (warlock.UsingCharge)
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Warlock)) return;
+            foreach (var role in Role.GetRoles(RoleEnum.Warlock))
             {
-                warlock.ChargePercent = warlock.ChargeUseTimer();
-                if (warlock.ChargePercent <= 0f)
+                var warlock = (Warlock) role;
+                if (warlock.Charging)
+                    warlock.ChargePercent = warlock.ChargeUpTimer();
+                else if (warlock.UsingCharge)
                 {
-                    warlock.UsingCharge = false;
-                    if (warlock.Player.Is(ModifierEnum.Underdog))
+                    warlock.ChargePercent = warlock.ChargeUseTimer();
+                    if (warlock.ChargePercent <= 0f)
                     {
-                        var lowerKC = GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown - CustomGameOptions.UnderdogKillBonus;
-                        var normalKC = GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown;
-                        var upperKC = GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown + CustomGameOptions.UnderdogKillBonus;
-                        warlock.Player.SetKillTimer(PerformKill.LastImp() ? lowerKC : (PerformKill.IncreasedKC() ? normalKC : upperKC));
+                        warlock.UsingCharge = false;
+                        if (warlock.Player.Is(ModifierEnum.Underdog))
+                        {
+                            var lowerKC = GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown - CustomGameOptions.UnderdogKillBonus;
+                            var normalKC = GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown;
+                            var upperKC = GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown + CustomGameOptions.UnderdogKillBonus;
+                            warlock.Player.SetKillTimer(PerformKill.LastImp() ? lowerKC : (PerformKill.IncreasedKC() ? normalKC : upperKC));
+                        }
+                        else warlock.Player.SetKillTimer(GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown);
                     }
-                    else warlock.Player.SetKillTimer(GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown);
                 }
             }
         }
     }
-}
 }

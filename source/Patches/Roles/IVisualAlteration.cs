@@ -1,7 +1,7 @@
-﻿namespace TownOfUsFusion.Roles
+﻿namespace TownOfUs.Roles
 {
     public interface IVisualAlteration
-{
-    bool TryGetModifiedAppearance(out VisualAppearance appearance);
-}
+    {
+        bool TryGetModifiedAppearance(out VisualAppearance appearance);
+    }
 }

@@ -1,22 +1,22 @@
 using HarmonyLib;
-using TownOfUsFusion.Roles;
+using TownOfUs.Roles;
 
-namespace TownOfUsFusion.ImpostorRoles.GrenadierMod
+namespace TownOfUs.ImpostorRoles.GrenadierMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
-[HarmonyPriority(Priority.Last)]
-public class FlashUnFlash
-{
     [HarmonyPriority(Priority.Last)]
-    public static void Postfix(HudManager __instance)
+    public class FlashUnFlash
     {
-        foreach (var role in Role.GetRoles(RoleEnum.Grenadier))
+        [HarmonyPriority(Priority.Last)]
+        public static void Postfix(HudManager __instance)
         {
-            var grenadier = (Grenadier)role;
-            if (grenadier.Flashed)
-                grenadier.Flash();
-            else if (grenadier.Enabled) grenadier.UnFlash();
+            foreach (var role in Role.GetRoles(RoleEnum.Grenadier))
+            {
+                var grenadier = (Grenadier) role;
+                if (grenadier.Flashed)
+                    grenadier.Flash();
+                else if (grenadier.Enabled) grenadier.UnFlash();
+            }
         }
     }
-}
 }

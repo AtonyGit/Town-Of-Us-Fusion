@@ -1,14 +1,14 @@
 using HarmonyLib;
-using TownOfUsFusion.Roles;
+using TownOfUs.Roles;
 
-namespace TownOfUsFusion.CrewmateRoles.HaunterMod
+namespace TownOfUs.CrewmateRoles.HaunterMod
 {
     [HarmonyPatch(typeof(PlayerPhysics), nameof(PlayerPhysics.HandleAnimation))]
-public class HandleAnimation
-{
-    public static void Prefix(PlayerPhysics __instance, [HarmonyArgument(0)] ref bool amDead)
+    public class HandleAnimation
     {
-        if (__instance.myPlayer.Is(RoleEnum.Haunter)) amDead = Role.GetRole<Haunter>(__instance.myPlayer).Caught;
+        public static void Prefix(PlayerPhysics __instance, [HarmonyArgument(0)] ref bool amDead)
+        {
+            if (__instance.myPlayer.Is(RoleEnum.Haunter)) amDead = Role.GetRole<Haunter>(__instance.myPlayer).Caught;
+        }
     }
-}
 }

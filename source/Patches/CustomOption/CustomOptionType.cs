@@ -1,30 +1,24 @@
-using TownOfUsFusion.Patches;
-
+<<<<<<< Updated upstream
+namespace TownOfUs.CustomOption
+=======
 namespace TownOfUsFusion.CustomOption
+>>>>>>> Stashed changes
 {
     public enum CustomOptionType
-{
-    Header,
-    Toggle,
-    Number,
-    String,
-    Button
-}
-public enum SkipEnum
-{
-    RoleCard,
-    Guide,
-    None
-}
-public enum MultiMenu
-{
-    map,
-    main,
-    crewmate,
-    neutral,
-    imposter,
-    modifiers,
-    alliance,
-    external
-}
+    {
+        Header,
+        Toggle,
+        Number,
+        String,
+        Button
+    }
+    public enum MultiMenu
+    {
+        main,
+        crewmate,
+        neutral,
+        imposter,
+        modifiers,
+        external
+    }
 }

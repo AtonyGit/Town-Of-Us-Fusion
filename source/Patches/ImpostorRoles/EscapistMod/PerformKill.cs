@@ -1,48 +1,63 @@
 ﻿using System;
 using HarmonyLib;
-using TownOfUsFusion.Roles;
+using TownOfUs.Roles;
 using UnityEngine;
 
-namespace TownOfUsFusion.ImpostorRoles.EscapistMod
+namespace TownOfUs.ImpostorRoles.EscapistMod
 {
     [HarmonyPatch(typeof(KillButton), nameof(KillButton.DoClick))]
-public class PerformKill
-{
-    public static Sprite MarkSprite => TownOfUsFusion.MarkSprite;
-    public static Sprite EscapeSprite => TownOfUsFusion.EscapeSprite;
-
-    public static bool Prefix(KillButton __instance)
+    public class PerformKill
     {
-        var flag = PlayerControl.LocalPlayer.Is(RoleEnum.Escapist);
-        if (!flag) return true;
-        if (!PlayerControl.LocalPlayer.CanMove) return false;
-        if (PlayerControl.LocalPlayer.Data.IsDead) return false;
-        var role = Role.GetRole<Escapist>(PlayerControl.LocalPlayer);
-        if (__instance == role.EscapeButton)
+<<<<<<< Updated upstream
+        public static Sprite MarkSprite => TownOfUs.MarkSprite;
+        public static Sprite EscapeSprite => TownOfUs.EscapeSprite;
+=======
+        public static Sprite MarkSprite => TownOfUsFusion.MarkSprite;
+        public static Sprite EscapeSprite => TownOfUsFusion.EscapeSprite;
+>>>>>>> Stashed changes
+
+        public static bool Prefix(KillButton __instance)
         {
-            if (role.Player.inVent) return false;
-            if (!__instance.isActiveAndEnabled) return false;
-            if (role.EscapeButton.graphic.sprite == MarkSprite)
+            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.Escapist);
+            if (!flag) return true;
+            if (!PlayerControl.LocalPlayer.CanMove) return false;
+            if (PlayerControl.LocalPlayer.Data.IsDead) return false;
+            var role = Role.GetRole<Escapist>(PlayerControl.LocalPlayer);
+            if (__instance == role.EscapeButton)
             {
-                role.EscapePoint = PlayerControl.LocalPlayer.transform.position;
-                role.EscapeButton.graphic.sprite = EscapeSprite;
-                DestroyableSingleton<HudManager>.Instance.KillButton.SetTarget(null);
-                if (role.EscapeTimer() < 5f)
-                    role.LastEscape = DateTime.UtcNow.AddSeconds(5 - CustomGameOptions.EscapeCd);
-            }
-            else
-            {
-                if (__instance.isCoolingDown) return false;
-                if (role.EscapeTimer() != 0) return false;
-                Utils.Rpc(CustomRPC.Escape, PlayerControl.LocalPlayer.PlayerId, role.EscapePoint);
-                role.LastEscape = DateTime.UtcNow;
-                Escapist.Escape(role.Player);
+                if (role.Player.inVent) return false;
+                if (!__instance.isActiveAndEnabled) return false;
+                if (role.EscapeButton.graphic.sprite == MarkSprite)
+                {
+<<<<<<< Updated upstream
+=======
+                    var abilityUsed = Utils.AbilityUsed(PlayerControl.LocalPlayer);
+                    if (!abilityUsed) return false;
+>>>>>>> Stashed changes
+                    role.EscapePoint = PlayerControl.LocalPlayer.transform.position;
+                    role.EscapeButton.graphic.sprite = EscapeSprite;
+                    DestroyableSingleton<HudManager>.Instance.KillButton.SetTarget(null);
+                    if (role.EscapeTimer() < 5f)
+                        role.LastEscape = DateTime.UtcNow.AddSeconds(5 - CustomGameOptions.EscapeCd);
+                }
+                else
+                {
+                    if (__instance.isCoolingDown) return false;
+                    if (role.EscapeTimer() != 0) return false;
+<<<<<<< Updated upstream
+=======
+                    var abilityUsed = Utils.AbilityUsed(PlayerControl.LocalPlayer);
+                    if (!abilityUsed) return false;
+>>>>>>> Stashed changes
+                    Utils.Rpc(CustomRPC.Escape, PlayerControl.LocalPlayer.PlayerId, role.EscapePoint);
+                    role.LastEscape = DateTime.UtcNow;
+                    Escapist.Escape(role.Player);
+                }
+
+                return false;
             }
 
-            return false;
+            return true;
         }
-
-        return true;
     }
-}
 }

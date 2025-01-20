@@ -1,39 +1,39 @@
 using System.Linq;
 using HarmonyLib;
 using Reactor.Utilities.Extensions;
-using TownOfUsFusion.Roles;
+using TownOfUs.Roles;
 
-namespace TownOfUsFusion.CrewmateRoles.HaunterMod
+namespace TownOfUs.CrewmateRoles.HaunterMod
 {
     [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.FixedUpdate))]
-public class UpdateArrows
-{
-    public static void Postfix(PlayerControl __instance)
+    public class UpdateArrows
     {
-        foreach (var role in Role.AllRoles.Where(x => x.RoleType == RoleEnum.Haunter))
+        public static void Postfix(PlayerControl __instance)
         {
-            var haunter = (Haunter)role;
-            if (PlayerControl.LocalPlayer.Data.IsDead || haunter.Caught)
+            foreach (var role in Role.AllRoles.Where(x => x.RoleType == RoleEnum.Haunter))
             {
-                haunter.HaunterArrows.DestroyAll();
-                haunter.HaunterArrows.Clear();
-                haunter.ImpArrows.DestroyAll();
-                haunter.ImpArrows.Clear();
-            }
-
-            foreach (var arrow in haunter.ImpArrows) arrow.target = haunter.Player.transform.position;
-
-            foreach (var (arrow, target) in Utils.Zip(haunter.HaunterArrows, haunter.HaunterTargets))
-            {
-                if (target.Data.IsDead)
+                var haunter = (Haunter)role;
+                if (PlayerControl.LocalPlayer.Data.IsDead || haunter.Caught)
                 {
-                    arrow.Destroy();
-                    if (arrow.gameObject != null) arrow.gameObject.Destroy();
+                    haunter.HaunterArrows.DestroyAll();
+                    haunter.HaunterArrows.Clear();
+                    haunter.ImpArrows.DestroyAll();
+                    haunter.ImpArrows.Clear();
                 }
 
-                arrow.target = target.transform.position;
+                foreach (var arrow in haunter.ImpArrows) arrow.target = haunter.Player.transform.position;
+
+                foreach (var (arrow, target) in Utils.Zip(haunter.HaunterArrows, haunter.HaunterTargets))
+                {
+                    if (target.Data.IsDead)
+                    {
+                        arrow.Destroy();
+                        if (arrow.gameObject != null) arrow.gameObject.Destroy();
+                    }
+
+                    arrow.target = target.transform.position;
+                }
             }
         }
     }
-}
 }

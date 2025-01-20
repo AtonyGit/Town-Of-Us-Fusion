@@ -1,42 +1,42 @@
 using System.Linq;
 using HarmonyLib;
-using TownOfUsFusion.Roles;
+using TownOfUs.Roles;
 
-namespace TownOfUsFusion.CrewmateRoles.SnitchMod
+namespace TownOfUs.CrewmateRoles.SnitchMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
-public class UpdateArrows
-{
-    public static void Postfix(HudManager __instance)
+    public class UpdateArrows
     {
-        if (PlayerControl.AllPlayerControls.Count <= 1) return;
-        if (PlayerControl.LocalPlayer == null) return;
-        if (PlayerControl.LocalPlayer.Data == null) return;
-
-        foreach (var role in Role.AllRoles.Where(x => x.RoleType == RoleEnum.Snitch))
+        public static void Postfix(HudManager __instance)
         {
-            var snitch = (Snitch)role;
-            if (PlayerControl.LocalPlayer.Data.IsDead || snitch.Player.Data.IsDead)
-            {
-                snitch.SnitchArrows.Values.DestroyAll();
-                snitch.SnitchArrows.Clear();
-                snitch.ImpArrows.DestroyAll();
-                snitch.ImpArrows.Clear();
-            }
+            if (PlayerControl.AllPlayerControls.Count <= 1) return;
+            if (PlayerControl.LocalPlayer == null) return;
+            if (PlayerControl.LocalPlayer.Data == null) return;
 
-            foreach (var arrow in snitch.ImpArrows) arrow.target = snitch.Player.transform.position;
-
-            foreach (var arrow in snitch.SnitchArrows)
+            foreach (var role in Role.AllRoles.Where(x => x.RoleType == RoleEnum.Snitch))
             {
-                var player = Utils.PlayerById(arrow.Key);
-                if (player == null || player.Data == null || player.Data.IsDead || player.Data.Disconnected)
+                var snitch = (Snitch)role;
+                if (PlayerControl.LocalPlayer.Data.IsDead || snitch.Player.Data.IsDead)
                 {
-                    snitch.DestroyArrow(arrow.Key);
-                    continue;
+                    snitch.SnitchArrows.Values.DestroyAll();
+                    snitch.SnitchArrows.Clear();
+                    snitch.ImpArrows.DestroyAll();
+                    snitch.ImpArrows.Clear();
                 }
-                arrow.Value.target = player.transform.position;
+
+                foreach (var arrow in snitch.ImpArrows) arrow.target = snitch.Player.transform.position;
+
+                foreach (var arrow in snitch.SnitchArrows)
+                {
+                    var player = Utils.PlayerById(arrow.Key);
+                    if (player == null || player.Data == null || player.Data.IsDead || player.Data.Disconnected)
+                    {
+                        snitch.DestroyArrow(arrow.Key);
+                        continue;
+                    }
+                    arrow.Value.target = player.transform.position;
+                }
             }
         }
     }
-}
 }

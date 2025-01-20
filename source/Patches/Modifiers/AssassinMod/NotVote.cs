@@ -1,18 +1,18 @@
 using HarmonyLib;
-using TownOfUsFusion.Roles.Modifiers;
+using TownOfUs.Roles.Modifiers;
 
-namespace TownOfUsFusion.Modifiers.AssassinMod
+namespace TownOfUs.Modifiers.AssassinMod
 {
     [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.VotingComplete))] // BBFDNCCEJHI
-public static class VotingComplete
-{
-    public static void Postfix(MeetingHud __instance)
+    public static class VotingComplete
     {
-        if (PlayerControl.LocalPlayer.Is(AbilityEnum.Assassin))
+        public static void Postfix(MeetingHud __instance)
         {
-            var assassin = Ability.GetAbility<Assassin>(PlayerControl.LocalPlayer);
-            ShowHideButtons.HideButtons(assassin);
+            if (PlayerControl.LocalPlayer.Is(AbilityEnum.Assassin))
+            {
+                var assassin = Ability.GetAbility<Assassin>(PlayerControl.LocalPlayer);
+                ShowHideButtons.HideButtons(assassin);
+            }
         }
     }
-}
 }

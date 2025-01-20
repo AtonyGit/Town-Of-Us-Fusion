@@ -1,15 +1,15 @@
 using HarmonyLib;
 using Object = UnityEngine.Object;
 
-namespace TownOfUsFusion.Patches
+namespace TownOfUs.Patches
 {
     [HarmonyPatch(typeof(Object), nameof(Object.Destroy), typeof(Object))]
-public static class HUDClose
-{
-    public static void Postfix(Object obj)
+    public static class HUDClose
     {
-        if (ExileController.Instance == null || obj != ExileController.Instance.gameObject) return;
-        Utils.ResetCustomTimers();
+        public static void Postfix(Object obj)
+        {
+            if (ExileController.Instance == null || obj != ExileController.Instance.gameObject) return;
+            Utils.ResetCustomTimers();
+        }
     }
-}
 }

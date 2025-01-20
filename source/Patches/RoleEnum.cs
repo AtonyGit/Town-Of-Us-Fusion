@@ -1,171 +1,138 @@
-namespace TownOfUsFusion
+namespace TownOfUs
 {
     public enum RoleEnum
-{
-    // CREWMATE ASTRAL
-    Aurial,
-    Haunter,
-    Medium,
-    Mystic,
-    Oracle,
-    // CREWMATE INVESTIGATIVE
-    Detective,
-    Investigator,
-    Seer,
-    Snitch,
-    Spy,
-    Tracker,
-    Trapper,
-    // CREWMATE KILLING
-    Hunter,
-    Sheriff,
-    Trickster,
-    VampireHunter,
-    Veteran,
-    Vigilante,
-    // CREWMATE PROTECTIVE
-    Altruist,
-    Bodyguard,
-    Crusader,
-    Medic,
-    // CREWMATE SOVEREIGN
-    Captain,
-    Mayor,
-    Monarch,
-    Prosecutor,
-    Swapper,
-    // CREWMATE SUPPORT
-    Bartender,
-    Engineer,
-    Imitator,
-    Mage,
-    Transporter,
+    {
+        Sheriff,
+        Jester,
+        Engineer,
+        Mayor,
+        Swapper,
+        Investigator,
+        Medic,
+        Seer,
+        Executioner,
+        Spy,
+        Glitch,
+        Snitch,
+        Arsonist,
+        Altruist,
+        Phantom,
+        Vigilante,
+        Haunter,
+        Veteran,
+        Amnesiac,
+        Juggernaut,
+        Tracker,
+        Transporter,
+        Medium,
+        Trapper,
+        Survivor,
+        GuardianAngel,
+        Mystic,
+        Plaguebearer,
+        Pestilence,
+        Werewolf,
+        Detective,
+        Imitator,
+        Doomsayer,
+        Vampire,
+<<<<<<< Updated upstream
+        VampireHunter,
+=======
+>>>>>>> Stashed changes
+        Prosecutor,
+        Oracle,
+        Aurial,
+        Hunter,
+<<<<<<< Updated upstream
+=======
+        Politician,
+        Warden,
+        Jailor,
+        SoulCollector,
+>>>>>>> Stashed changes
 
+        Miner,
+        Swooper,
+        Morphling,
+        Janitor,
+        Undertaker,
+        Grenadier,
+        Traitor,
+        Blackmailer,
+        Escapist,
+        Bomber,
+        Warlock,
+        Venerer,
+<<<<<<< Updated upstream
+=======
+        Hypnotist,
+>>>>>>> Stashed changes
 
-    // NEUTRAL BENIGN
-    Amnesiac,
-    Survivor,
-    GuardianAngel,
-    // NEUTRAL EVIL
-    Doomsayer,
-    Executioner,
-    Inquisitor,
-    Jester,
-    Phantom,
-    Pirate,
-    // NEUTRAL CHAOS
-    Joker,
-    Fraud,
-    Tempest,
-    Tyrant,
-    Cannibal,
-    Witch,
-    // NEUTRAL KILLING
-    Arsonist,
-    Ghoul,
-    Glitch,
-    Mercenary,
-    SerialKiller,
-    Werewolf,
+        Crewmate,
+        Impostor,
 
-//  NEUTRAL NEOPHYTE
-    Apparitionist,
-    Husk,
-    Jackal,
-    NeoNecromancer,
-    Scourge,
-    Vampire,
-//  NEUTRAL APOCALYPSE
-    Baker,
-    Famine,
-    Berserker,
-    War,
-    Plaguebearer,
-    Pestilence,
-    SoulCollector,
-    Death,
+<<<<<<< Updated upstream
+        Necromancer,
+        Whisperer,
+        CultistSeer,
+        CultistMystic,
+        Chameleon,
+        CultistSnitch,
 
+        None
+    }
 
-    // IMPOSTOR CONCEALING
-    Escapist,
-    Grenadier,
-    Morphling,
-    Swooper,
-    Venerer,
-    // IMPOSTOR KILLING
-    Bomber,
-    Poisoner,
-    Traitor,
-    Warlock,
-    // IMPOSTOR SUPPORT
-    Blackmailer,
-    Janitor,
-    Miner,
-    Undertaker,
-    // CULTIST ROLES
-    Necromancer,
-    Whisperer,
-    CultistSeer,
-    CultistMystic,
-    Chameleon,
-    CultistSnitch,
-    // BASIC ROLES
-    Crewmate,
-    Impostor,
-    None
-}
-public enum ModifierEnum
-{
-    Torch,
-    Diseased,
-    Tiebreaker,
-    Giant,
-    ButtonBarry,
-    Bait,
-    Sleuth,
-    Aftermath,
-    Radar,
-    Disperser,
-    Multitasker,
-    DoubleShot,
-    Underdog,
-    Frosty,
-    
-    // TOU FUSION MODIFIERS
-    Drunk,
-    Dwarf,
-    Numb,
-    Eclipsed,
-    Ninja,
-    Oblivious,
-    Troll,
-    Tolerant,
-    None
-}
-public enum AllianceEnum
-{
-    Lover,
-    Recruit,
-    Crewpostor,
-    Crewpocalypse,
-    None
-}
+    public enum ModifierEnum
+    {
+        Lover,
+        Torch,
+        Diseased,
+        Flash,
+        Tiebreaker,
+        Giant,
+        Mini,
+        ButtonBarry,
+        Bait,
+        Sleuth,
+        Aftermath,
+        Radar,
+        Disperser,
+        Multitasker,
+        DoubleShot,
+        Underdog,
+        Frosty
+    }
 
-public enum InfoType
-{
-    Role,
-    Modifier,
-    Faction,
-    Alignment,
-    GameMode,
-    Symbol,
-    Other,
+=======
+        None
+    }
 
-    None
-}
+    public enum ModifierEnum
+    {
+        Lover,
+        Torch,
+        Diseased,
+        Flash,
+        Tiebreaker,
+        Giant,
+        ButtonBarry,
+        Bait,
+        Sleuth,
+        Aftermath,
+        Radar,
+        Disperser,
+        Multitasker,
+        DoubleShot,
+        Underdog,
+        Frosty,
+        SixthSense,
+        Shy
+    }
 
-public enum AbilityEnum
-{
-    Assassin
-}
+>>>>>>> Stashed changes
+    public enum AbilityEnum
+    {
+        Assassin
+    }
 }

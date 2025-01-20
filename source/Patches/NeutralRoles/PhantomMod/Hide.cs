@@ -1,34 +1,38 @@
 using HarmonyLib;
-using TownOfUsFusion.Extensions;
-using TownOfUsFusion.Roles;
+using TownOfUs.Extensions;
+using TownOfUs.Roles;
 using UnityEngine;
 
-namespace TownOfUsFusion.NeutralRoles.PhantomMod
+namespace TownOfUs.NeutralRoles.PhantomMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
-[HarmonyPriority(Priority.Last)]
-public class Hide
-{
-    public static void Postfix(HudManager __instance)
+    [HarmonyPriority(Priority.Last)]
+    public class Hide
     {
-        foreach (var role in Role.GetRoles(RoleEnum.Phantom))
+        public static void Postfix(HudManager __instance)
         {
-            var phantom = (Phantom)role;
-            if (role.Player.Data.Disconnected) return;
-            var caught = phantom.Caught;
-            if (!caught)
+            foreach (var role in Role.GetRoles(RoleEnum.Phantom))
             {
-                phantom.Fade();
-            }
-            else if (phantom.Faded)
-            {
-                Utils.Unmorph(phantom.Player);
-                phantom.Player.myRend().color = Color.white;
-                phantom.Player.gameObject.layer = LayerMask.NameToLayer("Ghost");
-                phantom.Faded = false;
-                phantom.Player.MyPhysics.ResetMoveState();
+                var phantom = (Phantom)role;
+<<<<<<< Updated upstream
+                if (role.Player.Data.Disconnected) return;
+=======
+                if (role.Player.Data != null && role.Player.Data.Disconnected) return;
+>>>>>>> Stashed changes
+                var caught = phantom.Caught;
+                if (!caught)
+                {
+                    phantom.Fade();
+                }
+                else if (phantom.Faded)
+                {
+                    Utils.Unmorph(phantom.Player);
+                    phantom.Player.myRend().color = Color.white;
+                    phantom.Player.gameObject.layer = LayerMask.NameToLayer("Ghost");
+                    phantom.Faded = false;
+                    phantom.Player.MyPhysics.ResetMoveState();
+                }
             }
         }
     }
-}
 }

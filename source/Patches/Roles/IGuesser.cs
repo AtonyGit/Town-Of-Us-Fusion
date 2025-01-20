@@ -2,10 +2,10 @@
 using UnityEngine;
 using TMPro;
 
-namespace TownOfUsFusion.Roles
+namespace TownOfUs.Roles
 {
     public interface IGuesser
-{
-    public Dictionary<byte, (GameObject, GameObject, GameObject, TMP_Text)> Buttons { get; set; }
-}
+    {
+        public Dictionary<byte, (GameObject, GameObject, GameObject, TMP_Text)> Buttons { get; set; }
+    }
 }

@@ -1,607 +1,470 @@
 using HarmonyLib;
 using Il2CppSystem.Collections.Generic;
 using System.Linq;
+<<<<<<< Updated upstream
+using TownOfUs.Roles;
+using TownOfUs.Roles.Modifiers;
+using TownOfUs.Extensions;
+=======
 using TownOfUsFusion.Roles;
-using TownOfUsFusion.Roles.Alliances;
+using TownOfUsFusion.Roles.Modifiers;
 using TownOfUsFusion.Extensions;
-using TownOfUsFusion.Roles.Apocalypse;
+>>>>>>> Stashed changes
 
-namespace TownOfUsFusion
+namespace TownOfUs
 {
+<<<<<<< Updated upstream
     [HarmonyPatch(typeof(EndGameManager), nameof(EndGameManager.Start))]
-public class EndGameManager_SetEverythingUp
-{
-    public static void Prefix()
+    public class EndGameManager_SetEverythingUp
     {
-        List<int> losers = new List<int>();
-        bool canWinWithNeutrals = false;
-        foreach (var role in Role.GetRoles(RoleEnum.Amnesiac))
+        public static void Prefix()
+=======
+    [HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.OnGameEnd))]
+    public class AmongUsClientGameEnd
+    {
+        public static void Postfix()
+>>>>>>> Stashed changes
         {
-            var amne = (Amnesiac)role;
-            losers.Add(amne.Player.GetDefaultOutfit().ColorId);
-        }
-        foreach (var role in Role.GetRoles(RoleEnum.GuardianAngel))
-        {
-            var ga = (GuardianAngel)role;
-            losers.Add(ga.Player.GetDefaultOutfit().ColorId);
-        }
-        foreach (var role in Role.GetRoles(RoleEnum.Survivor))
-        {
-            var surv = (Survivor)role;
-            losers.Add(surv.Player.GetDefaultOutfit().ColorId);
-        }
-        foreach (var role in Role.GetRoles(RoleEnum.Tyrant))
-        {
-            var ty = (Tyrant)role;
-            losers.Add(ty.Player.GetDefaultOutfit().ColorId);
-        }
-        foreach (var role in Role.GetRoles(RoleEnum.Cannibal))
-        {
-            var can = (Cannibal)role;
-            losers.Add(can.Player.GetDefaultOutfit().ColorId);
-        }
-        foreach (var role in Role.GetRoles(RoleEnum.Doomsayer))
-        {
-            var doom = (Doomsayer)role;
-            losers.Add(doom.Player.GetDefaultOutfit().ColorId);
-        }
-        foreach (var role in Role.GetRoles(RoleEnum.Inquisitor))
-        {
-            var inquis = (Inquisitor)role;
-            losers.Add(inquis.Player.GetDefaultOutfit().ColorId);
-        }
-        foreach (var role in Role.GetRoles(RoleEnum.Joker))
-        {
-            var jk = (Joker)role;
-            losers.Add(jk.Player.GetDefaultOutfit().ColorId);
-        }
-        foreach (var role in Role.GetRoles(RoleEnum.Executioner))
-        {
-            var exe = (Executioner)role;
-            losers.Add(exe.Player.GetDefaultOutfit().ColorId);
-        }
-        foreach (var role in Role.GetRoles(RoleEnum.Jester))
-        {
-            var jest = (Jester)role;
-            losers.Add(jest.Player.GetDefaultOutfit().ColorId);
-        }
-        foreach (var role in Role.GetRoles(RoleEnum.Phantom))
-        {
-            var phan = (Phantom)role;
-            losers.Add(phan.Player.GetDefaultOutfit().ColorId);
-        }
-        foreach (var role in Role.GetRoles(RoleEnum.Arsonist))
-        {
-            var arso = (Arsonist)role;
-            losers.Add(arso.Player.GetDefaultOutfit().ColorId);
-        }
-
-        foreach (var role in Role.GetRoles(RoleEnum.Jackal))
-        {
-            var jackal = (Jackal)role;
-            losers.Add(jackal.Player.GetDefaultOutfit().ColorId);
-        }
-        foreach (var alliance in Alliance.GetAlliances(AllianceEnum.Recruit))
-        {
-            if(PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(RoleEnum.Jackal)).ToList().Count > 0)
+            List<int> losers = new List<int>();
+            foreach (var role in Role.GetRoles(RoleEnum.Amnesiac))
             {
-            var jackal = (Recruit)alliance;
-            losers.Add(jackal.Player.GetDefaultOutfit().ColorId);
+                var amne = (Amnesiac)role;
+                losers.Add(amne.Player.GetDefaultOutfit().ColorId);
             }
-        }
-
-        // APOCALYPSE
-        foreach (var role in Role.GetRoles(RoleEnum.Baker))
-        {
-            var bak = (Baker)role;
-            losers.Add(bak.Player.GetDefaultOutfit().ColorId);
-        }
-        foreach (var role in Role.GetRoles(RoleEnum.Berserker))
-        {
-            var jugg = (Berserker)role;
-            losers.Add(jugg.Player.GetDefaultOutfit().ColorId);
-        }
-        foreach (var role in Role.GetRoles(RoleEnum.Plaguebearer))
-        {
-            var pb = (Plaguebearer)role;
-            losers.Add(pb.Player.GetDefaultOutfit().ColorId);
-        }
-        foreach (var role in Role.GetRoles(RoleEnum.SoulCollector))
-        {
-            var sc = (SoulCollector)role;
-            losers.Add(sc.Player.GetDefaultOutfit().ColorId);
-        }
-
-        foreach (var role in Role.GetRoles(RoleEnum.Famine))
-        {
-            var bak = (Famine)role;
-            losers.Add(bak.Player.GetDefaultOutfit().ColorId);
-        }
-        foreach (var role in Role.GetRoles(RoleEnum.War))
-        {
-            var jugg = (War)role;
-            losers.Add(jugg.Player.GetDefaultOutfit().ColorId);
-        }
-        foreach (var role in Role.GetRoles(RoleEnum.Pestilence))
-        {
-            var pest = (Pestilence)role;
-            losers.Add(pest.Player.GetDefaultOutfit().ColorId);
-        }
-        foreach (var role in Role.GetRoles(RoleEnum.Death))
-        {
-            var sc = (Death)role;
-            losers.Add(sc.Player.GetDefaultOutfit().ColorId);
-        }
-        foreach (var alliance in Alliance.GetAlliances(AllianceEnum.Crewpocalypse))
-        {
-            var crewpoc = (Crewpocalypse)alliance;
-            losers.Add(crewpoc.Player.GetDefaultOutfit().ColorId);
-        }
-        foreach (var alliance in Alliance.GetAlliances(AllianceEnum.Crewpostor))
-        {
-            var crewpost = (Crewpostor)alliance;
-            losers.Add(crewpost.Player.GetDefaultOutfit().ColorId);
-        }
-
-
-        foreach (var role in Role.GetRoles(RoleEnum.Glitch))
-        {
-            var glitch = (Glitch)role;
-            losers.Add(glitch.Player.GetDefaultOutfit().ColorId);
-        }
-        foreach (var role in Role.GetRoles(RoleEnum.Vampire))
-        {
-            var vamp = (Vampire)role;
-            losers.Add(vamp.Player.GetDefaultOutfit().ColorId);
-        }
-        foreach (var role in Role.GetRoles(RoleEnum.Werewolf))
-        {
-            var ww = (Werewolf)role;
-            losers.Add(ww.Player.GetDefaultOutfit().ColorId);
-        }
-
-        foreach (var role in Role.GetRoles(RoleEnum.NeoNecromancer))
-        {
-            var necro = (NeoNecromancer)role;
-            losers.Add(necro.Player.GetDefaultOutfit().ColorId);
-        }
-        foreach (var role in Role.GetRoles(RoleEnum.Scourge))
-        {
-            var scourge = (Scourge)role;
-            losers.Add(scourge.Player.GetDefaultOutfit().ColorId);
-        }
-        foreach (var role in Role.GetRoles(RoleEnum.Apparitionist))
-        {
-            var apparitionist = (Apparitionist)role;
-            losers.Add(apparitionist.Player.GetDefaultOutfit().ColorId);
-        }
-        foreach (var role in Role.GetRoles(RoleEnum.Husk))
-        {
-            var husk = (Husk)role;
-            losers.Add(husk.Player.GetDefaultOutfit().ColorId);
-        }
-
-        var toRemoveWinners = TempData.winners.ToArray().Where(o => losers.Contains(o.ColorId)).ToArray();
-        for (int i = 0; i < toRemoveWinners.Count(); i++) TempData.winners.Remove(toRemoveWinners[i]);
-
-        if (Role.NecroWins)
-        {
-            TempData.winners = new List<WinningPlayerData>();
-            foreach (var role in Role.GetRoles(RoleEnum.NeoNecromancer))
+            foreach (var role in Role.GetRoles(RoleEnum.GuardianAngel))
             {
-                canWinWithNeutrals = true;
-                var necro = (NeoNecromancer)role;
-                var necroData = new WinningPlayerData(necro.Player.Data);
-                if (PlayerControl.LocalPlayer != necro.Player) necroData.IsYou = false;
-                TempData.winners.Add(necroData);
+                var ga = (GuardianAngel)role;
+                losers.Add(ga.Player.GetDefaultOutfit().ColorId);
             }
-            foreach (var role in Role.GetRoles(RoleEnum.Scourge))
+            foreach (var role in Role.GetRoles(RoleEnum.Survivor))
             {
-                canWinWithNeutrals = true;
-                var scourge = (Scourge)role;
-                var scourgeData = new WinningPlayerData(scourge.Player.Data);
-                if (PlayerControl.LocalPlayer != scourge.Player) scourgeData.IsYou = false;
-                TempData.winners.Add(scourgeData);
+                var surv = (Survivor)role;
+                losers.Add(surv.Player.GetDefaultOutfit().ColorId);
             }
-            foreach (var role in Role.GetRoles(RoleEnum.Apparitionist))
+            foreach (var role in Role.GetRoles(RoleEnum.Doomsayer))
             {
-                canWinWithNeutrals = true;
-                var apparitionist = (Apparitionist)role;
-                var apparitionistData = new WinningPlayerData(apparitionist.Player.Data);
-                if (PlayerControl.LocalPlayer != apparitionist.Player) apparitionistData.IsYou = false;
-                TempData.winners.Add(apparitionistData);
+                var doom = (Doomsayer)role;
+                losers.Add(doom.Player.GetDefaultOutfit().ColorId);
             }
-            foreach (var role in Role.GetRoles(RoleEnum.Husk))
+            foreach (var role in Role.GetRoles(RoleEnum.Executioner))
             {
-                canWinWithNeutrals = true;
-                var husk = (Husk)role;
-                var huskData = new WinningPlayerData(husk.Player.Data);
-                if (PlayerControl.LocalPlayer != husk.Player) huskData.IsYou = false;
-                TempData.winners.Add(huskData);
+                var exe = (Executioner)role;
+                losers.Add(exe.Player.GetDefaultOutfit().ColorId);
             }
-            return;
-        }
+            foreach (var role in Role.GetRoles(RoleEnum.Jester))
+            {
+                var jest = (Jester)role;
+                losers.Add(jest.Player.GetDefaultOutfit().ColorId);
+            }
+            foreach (var role in Role.GetRoles(RoleEnum.Phantom))
+            {
+                var phan = (Phantom)role;
+                losers.Add(phan.Player.GetDefaultOutfit().ColorId);
+            }
+<<<<<<< Updated upstream
+=======
+            foreach (var role in Role.GetRoles(RoleEnum.SoulCollector))
+            {
+                var sc = (SoulCollector)role;
+                losers.Add(sc.Player.GetDefaultOutfit().ColorId);
+            }
+>>>>>>> Stashed changes
+            foreach (var role in Role.GetRoles(RoleEnum.Arsonist))
+            {
+                var arso = (Arsonist)role;
+                losers.Add(arso.Player.GetDefaultOutfit().ColorId);
+            }
+            foreach (var role in Role.GetRoles(RoleEnum.Juggernaut))
+            {
+                var jugg = (Juggernaut)role;
+                losers.Add(jugg.Player.GetDefaultOutfit().ColorId);
+            }
+            foreach (var role in Role.GetRoles(RoleEnum.Pestilence))
+            {
+                var pest = (Pestilence)role;
+                losers.Add(pest.Player.GetDefaultOutfit().ColorId);
+            }
+            foreach (var role in Role.GetRoles(RoleEnum.Plaguebearer))
+            {
+                var pb = (Plaguebearer)role;
+                losers.Add(pb.Player.GetDefaultOutfit().ColorId);
+            }
+            foreach (var role in Role.GetRoles(RoleEnum.Glitch))
+            {
+                var glitch = (Glitch)role;
+                losers.Add(glitch.Player.GetDefaultOutfit().ColorId);
+            }
+            foreach (var role in Role.GetRoles(RoleEnum.Vampire))
+            {
+                var vamp = (Vampire)role;
+                losers.Add(vamp.Player.GetDefaultOutfit().ColorId);
+            }
+            foreach (var role in Role.GetRoles(RoleEnum.Werewolf))
+            {
+                var ww = (Werewolf)role;
+                losers.Add(ww.Player.GetDefaultOutfit().ColorId);
+            }
 
-        if (Role.NobodyWins)
-        {
-            TempData.winners = new List<WinningPlayerData>();
-            return;
-        }
-        if (Role.SurvOnlyWins)
-        {
-            TempData.winners = new List<WinningPlayerData>();
+<<<<<<< Updated upstream
+            var toRemoveWinners = TempData.winners.ToArray().Where(o => losers.Contains(o.ColorId)).ToArray();
+            for (int i = 0; i < toRemoveWinners.Count(); i++) TempData.winners.Remove(toRemoveWinners[i]);
+
+            if (Role.NobodyWins)
+            {
+                TempData.winners = new List<WinningPlayerData>();
+=======
+            var toRemoveWinners = EndGameResult.CachedWinners.ToArray().Where(o => losers.Contains(o.ColorId)).ToArray();
+            for (int i = 0; i < toRemoveWinners.Count(); i++) EndGameResult.CachedWinners.Remove(toRemoveWinners[i]);
+
+            if (Role.NobodyWins)
+            {
+                EndGameResult.CachedWinners = new List<CachedPlayerData>();
+>>>>>>> Stashed changes
+                return;
+            }
+            if (Role.SurvOnlyWins)
+            {
+<<<<<<< Updated upstream
+                TempData.winners = new List<WinningPlayerData>();
+=======
+                EndGameResult.CachedWinners = new List<CachedPlayerData>();
+>>>>>>> Stashed changes
+                foreach (var role in Role.GetRoles(RoleEnum.Survivor))
+                {
+                    var surv = (Survivor)role;
+                    if (!surv.Player.Data.IsDead && !surv.Player.Data.Disconnected)
+                    {
+<<<<<<< Updated upstream
+                        var survData = new WinningPlayerData(surv.Player.Data);
+                        if (PlayerControl.LocalPlayer != surv.Player) survData.IsYou = false;
+                        TempData.winners.Add(new WinningPlayerData(surv.Player.Data));
+=======
+                        var survData = new CachedPlayerData(surv.Player.Data);
+                        if (PlayerControl.LocalPlayer != surv.Player) survData.IsYou = false;
+                        EndGameResult.CachedWinners.Add(survData);
+>>>>>>> Stashed changes
+                    }
+                }
+
+                return;
+            }
+
+            if (CustomGameOptions.NeutralEvilWinEndsGame)
+            {
+                foreach (var role in Role.AllRoles)
+                {
+                    var type = role.RoleType;
+
+                    if (type == RoleEnum.Jester)
+                    {
+                        var jester = (Jester)role;
+                        if (jester.VotedOut)
+                        {
+<<<<<<< Updated upstream
+                            TempData.winners = new List<WinningPlayerData>();
+                            var jestData = new WinningPlayerData(jester.Player.Data);
+                            jestData.IsDead = false;
+                            if (PlayerControl.LocalPlayer != jester.Player) jestData.IsYou = false;
+                            TempData.winners.Add(jestData);
+=======
+                            EndGameResult.CachedWinners = new List<CachedPlayerData>();
+                            var jestData = new CachedPlayerData(jester.Player.Data);
+                            jestData.IsDead = false;
+                            if (PlayerControl.LocalPlayer != jester.Player) jestData.IsYou = false;
+                            EndGameResult.CachedWinners.Add(jestData);
+>>>>>>> Stashed changes
+                            return;
+                        }
+                    }
+                    else if (type == RoleEnum.Executioner)
+                    {
+                        var executioner = (Executioner)role;
+                        if (executioner.TargetVotedOut)
+                        {
+<<<<<<< Updated upstream
+                            TempData.winners = new List<WinningPlayerData>();
+                            var exeData = new WinningPlayerData(executioner.Player.Data);
+                            if (PlayerControl.LocalPlayer != executioner.Player) exeData.IsYou = false;
+                            TempData.winners.Add(exeData);
+=======
+                            EndGameResult.CachedWinners = new List<CachedPlayerData>();
+                            var exeData = new CachedPlayerData(executioner.Player.Data);
+                            if (PlayerControl.LocalPlayer != executioner.Player) exeData.IsYou = false;
+                            EndGameResult.CachedWinners.Add(exeData);
+>>>>>>> Stashed changes
+                            return;
+                        }
+                    }
+                    else if (type == RoleEnum.Doomsayer)
+                    {
+                        var doom = (Doomsayer)role;
+                        if (doom.WonByGuessing)
+                        {
+<<<<<<< Updated upstream
+                            TempData.winners = new List<WinningPlayerData>();
+                            var doomData = new WinningPlayerData(doom.Player.Data);
+                            if (PlayerControl.LocalPlayer != doom.Player) doomData.IsYou = false;
+                            TempData.winners.Add(doomData);
+=======
+                            EndGameResult.CachedWinners = new List<CachedPlayerData>();
+                            var doomData = new CachedPlayerData(doom.Player.Data);
+                            if (PlayerControl.LocalPlayer != doom.Player) doomData.IsYou = false;
+                            EndGameResult.CachedWinners.Add(doomData);
+                            return;
+                        }
+                    }
+                    else if (type == RoleEnum.SoulCollector)
+                    {
+                        var sc = (SoulCollector)role;
+                        if (sc.CollectedSouls)
+                        {
+                            EndGameResult.CachedWinners = new List<CachedPlayerData>();
+                            var scData = new CachedPlayerData(sc.Player.Data);
+                            if (PlayerControl.LocalPlayer != sc.Player) scData.IsYou = false;
+                            EndGameResult.CachedWinners.Add(scData);
+>>>>>>> Stashed changes
+                            return;
+                        }
+                    }
+                    else if (type == RoleEnum.Phantom)
+                    {
+                        var phantom = (Phantom)role;
+                        if (phantom.CompletedTasks)
+                        {
+<<<<<<< Updated upstream
+                            TempData.winners = new List<WinningPlayerData>();
+                            var phantomData = new WinningPlayerData(phantom.Player.Data);
+                            if (PlayerControl.LocalPlayer != phantom.Player) phantomData.IsYou = false;
+                            TempData.winners.Add(phantomData);
+=======
+                            EndGameResult.CachedWinners = new List<CachedPlayerData>();
+                            var phantomData = new CachedPlayerData(phantom.Player.Data);
+                            if (PlayerControl.LocalPlayer != phantom.Player) phantomData.IsYou = false;
+                            EndGameResult.CachedWinners.Add(phantomData);
+>>>>>>> Stashed changes
+                            return;
+                        }
+                    }
+                }
+            }
+
+            foreach (var modifier in Modifier.AllModifiers)
+            {
+                var type = modifier.ModifierType;
+
+                if (type == ModifierEnum.Lover)
+                {
+                    var lover = (Lover)modifier;
+                    if (lover.LoveCoupleWins)
+                    {
+                        var otherLover = lover.OtherLover;
+<<<<<<< Updated upstream
+                        TempData.winners = new List<WinningPlayerData>();
+                        var loverOneData = new WinningPlayerData(lover.Player.Data);
+                        var loverTwoData = new WinningPlayerData(otherLover.Player.Data);
+                        if (PlayerControl.LocalPlayer != lover.Player) loverOneData.IsYou = false;
+                        if (PlayerControl.LocalPlayer != otherLover.Player) loverTwoData.IsYou = false;
+                        TempData.winners.Add(loverOneData);
+                        TempData.winners.Add(loverTwoData);
+=======
+                        EndGameResult.CachedWinners = new List<CachedPlayerData>();
+                        var loverOneData = new CachedPlayerData(lover.Player.Data);
+                        var loverTwoData = new CachedPlayerData(otherLover.Player.Data);
+                        if (PlayerControl.LocalPlayer != lover.Player) loverOneData.IsYou = false;
+                        if (PlayerControl.LocalPlayer != otherLover.Player) loverTwoData.IsYou = false;
+                        EndGameResult.CachedWinners.Add(loverOneData);
+                        EndGameResult.CachedWinners.Add(loverTwoData);
+>>>>>>> Stashed changes
+                        return;
+                    }
+                }
+            }
+
+            if (Role.VampireWins)
+            {
+<<<<<<< Updated upstream
+                TempData.winners = new List<WinningPlayerData>();
+                foreach (var role in Role.GetRoles(RoleEnum.Vampire))
+                {
+                    var vamp = (Vampire)role;
+                    var vampData = new WinningPlayerData(vamp.Player.Data);
+                    if (PlayerControl.LocalPlayer != vamp.Player) vampData.IsYou = false;
+                    TempData.winners.Add(vampData);
+=======
+                EndGameResult.CachedWinners = new List<CachedPlayerData>();
+                foreach (var role in Role.GetRoles(RoleEnum.Vampire))
+                {
+                    var vamp = (Vampire)role;
+                    var vampData = new CachedPlayerData(vamp.Player.Data);
+                    if (PlayerControl.LocalPlayer != vamp.Player) vampData.IsYou = false;
+                    EndGameResult.CachedWinners.Add(vampData);
+>>>>>>> Stashed changes
+                }
+            }
+
+            foreach (var role in Role.AllRoles)
+            {
+                var type = role.RoleType;
+
+                if (type == RoleEnum.Glitch)
+                {
+                    var glitch = (Glitch)role;
+                    if (glitch.GlitchWins)
+                    {
+<<<<<<< Updated upstream
+                        TempData.winners = new List<WinningPlayerData>();
+                        var glitchData = new WinningPlayerData(glitch.Player.Data);
+                        if (PlayerControl.LocalPlayer != glitch.Player) glitchData.IsYou = false;
+                        TempData.winners.Add(glitchData);
+=======
+                        EndGameResult.CachedWinners = new List<CachedPlayerData>();
+                        var glitchData = new CachedPlayerData(glitch.Player.Data);
+                        if (PlayerControl.LocalPlayer != glitch.Player) glitchData.IsYou = false;
+                        EndGameResult.CachedWinners.Add(glitchData);
+>>>>>>> Stashed changes
+                    }
+                }
+                else if (type == RoleEnum.Juggernaut)
+                {
+                    var juggernaut = (Juggernaut)role;
+                    if (juggernaut.JuggernautWins)
+                    {
+<<<<<<< Updated upstream
+                        TempData.winners = new List<WinningPlayerData>();
+                        var juggData = new WinningPlayerData(juggernaut.Player.Data);
+                        if (PlayerControl.LocalPlayer != juggernaut.Player) juggData.IsYou = false;
+                        TempData.winners.Add(juggData);
+=======
+                        EndGameResult.CachedWinners = new List<CachedPlayerData>();
+                        var juggData = new CachedPlayerData(juggernaut.Player.Data);
+                        if (PlayerControl.LocalPlayer != juggernaut.Player) juggData.IsYou = false;
+                        EndGameResult.CachedWinners.Add(juggData);
+>>>>>>> Stashed changes
+                    }
+                }
+                else if (type == RoleEnum.Arsonist)
+                {
+                    var arsonist = (Arsonist)role;
+                    if (arsonist.ArsonistWins)
+                    {
+<<<<<<< Updated upstream
+                        TempData.winners = new List<WinningPlayerData>();
+                        var arsonistData = new WinningPlayerData(arsonist.Player.Data);
+                        if (PlayerControl.LocalPlayer != arsonist.Player) arsonistData.IsYou = false;
+                        TempData.winners.Add(arsonistData);
+=======
+                        EndGameResult.CachedWinners = new List<CachedPlayerData>();
+                        var arsonistData = new CachedPlayerData(arsonist.Player.Data);
+                        if (PlayerControl.LocalPlayer != arsonist.Player) arsonistData.IsYou = false;
+                        EndGameResult.CachedWinners.Add(arsonistData);
+>>>>>>> Stashed changes
+                    }
+                }
+                else if (type == RoleEnum.Plaguebearer)
+                {
+                    var plaguebearer = (Plaguebearer)role;
+                    if (plaguebearer.PlaguebearerWins)
+                    {
+<<<<<<< Updated upstream
+                        TempData.winners = new List<WinningPlayerData>();
+                        var pbData = new WinningPlayerData(plaguebearer.Player.Data);
+                        if (PlayerControl.LocalPlayer != plaguebearer.Player) pbData.IsYou = false;
+                        TempData.winners.Add(pbData);
+=======
+                        EndGameResult.CachedWinners = new List<CachedPlayerData>();
+                        var pbData = new CachedPlayerData(plaguebearer.Player.Data);
+                        if (PlayerControl.LocalPlayer != plaguebearer.Player) pbData.IsYou = false;
+                        EndGameResult.CachedWinners.Add(pbData);
+>>>>>>> Stashed changes
+                    }
+                }
+                else if (type == RoleEnum.Pestilence)
+                {
+                    var pestilence = (Pestilence)role;
+                    if (pestilence.PestilenceWins)
+                    {
+<<<<<<< Updated upstream
+                        TempData.winners = new List<WinningPlayerData>();
+                        var pestilenceData = new WinningPlayerData(pestilence.Player.Data);
+                        if (PlayerControl.LocalPlayer != pestilence.Player) pestilenceData.IsYou = false;
+                        TempData.winners.Add(pestilenceData);
+=======
+                        EndGameResult.CachedWinners = new List<CachedPlayerData>();
+                        var pestilenceData = new CachedPlayerData(pestilence.Player.Data);
+                        if (PlayerControl.LocalPlayer != pestilence.Player) pestilenceData.IsYou = false;
+                        EndGameResult.CachedWinners.Add(pestilenceData);
+>>>>>>> Stashed changes
+                    }
+                }
+                else if (type == RoleEnum.Werewolf)
+                {
+                    var werewolf = (Werewolf)role;
+                    if (werewolf.WerewolfWins)
+                    {
+<<<<<<< Updated upstream
+                        TempData.winners = new List<WinningPlayerData>();
+                        var werewolfData = new WinningPlayerData(werewolf.Player.Data);
+                        if (PlayerControl.LocalPlayer != werewolf.Player) werewolfData.IsYou = false;
+                        TempData.winners.Add(werewolfData);
+=======
+                        EndGameResult.CachedWinners = new List<CachedPlayerData>();
+                        var werewolfData = new CachedPlayerData(werewolf.Player.Data);
+                        if (PlayerControl.LocalPlayer != werewolf.Player) werewolfData.IsYou = false;
+                        EndGameResult.CachedWinners.Add(werewolfData);
+>>>>>>> Stashed changes
+                    }
+                }
+            }
+
             foreach (var role in Role.GetRoles(RoleEnum.Survivor))
             {
                 var surv = (Survivor)role;
                 if (!surv.Player.Data.IsDead && !surv.Player.Data.Disconnected)
                 {
-                    var survData = new WinningPlayerData(surv.Player.Data);
-                    if (PlayerControl.LocalPlayer != surv.Player) survData.IsYou = false;
-                    TempData.winners.Add(new WinningPlayerData(surv.Player.Data));
+<<<<<<< Updated upstream
+                    var isImp = TempData.winners.Count != 0 && TempData.winners[0].IsImpostor;
+                    var survWinData = new WinningPlayerData(surv.Player.Data);
+                    if (isImp) survWinData.IsImpostor = true;
+                    if (PlayerControl.LocalPlayer != surv.Player) survWinData.IsYou = false;
+                    TempData.winners.Add(survWinData);
+=======
+                    var isImp = EndGameResult.CachedWinners.Count != 0 && EndGameResult.CachedWinners[0].IsImpostor;
+                    var survWinData = new CachedPlayerData(surv.Player.Data);
+                    if (isImp) survWinData.IsImpostor = true;
+                    if (PlayerControl.LocalPlayer != surv.Player) survWinData.IsYou = false;
+                    EndGameResult.CachedWinners.Add(survWinData);
+>>>>>>> Stashed changes
                 }
             }
-
-            return;
-        }
-
-        if (CustomGameOptions.NeutralEvilWinEndsGame)
-        {
-            foreach (var role in Role.AllRoles)
+            foreach (var role in Role.GetRoles(RoleEnum.GuardianAngel))
             {
-                var type = role.RoleType;
-                if (type == RoleEnum.Jester)
+                var ga = (GuardianAngel)role;
+<<<<<<< Updated upstream
+                var gaTargetData = new WinningPlayerData(ga.target.Data);
+                foreach (WinningPlayerData winner in TempData.winners.ToArray())
                 {
-                    var jester = (Jester)role;
-                    if (jester.VotedOut)
+                    if (gaTargetData.ColorId == winner.ColorId)
                     {
-                        canWinWithNeutrals = true;
-                        TempData.winners = new List<WinningPlayerData>();
-                        var jestData = new WinningPlayerData(jester.Player.Data);
-                        jestData.IsDead = false;
-                        if (PlayerControl.LocalPlayer != jester.Player) jestData.IsYou = false;
-                        TempData.winners.Add(jestData);
-                        foreach (var role2 in Role.GetRoles(RoleEnum.Tyrant))
-                        {
-                            var tyran = (Tyrant)role2;
-                            if (!tyran.Player.Data.IsDead && !tyran.Player.Data.Disconnected)
-                            {
-                                var isImp = TempData.winners.Count != 0 && TempData.winners[0].IsImpostor;
-
-                                if (!isImp && canWinWithNeutrals) {
-                                var tyranWinData = new WinningPlayerData(tyran.Player.Data);
-                                if (PlayerControl.LocalPlayer != tyran.Player) tyranWinData.IsYou = false;
-                                TempData.winners.Add(tyranWinData);
-                                }
-                            }
-                        }
-                        return;
-                    }
-                }
-                else if (type == RoleEnum.Executioner)
+                        var isImp = TempData.winners[0].IsImpostor;
+                        var gaWinData = new WinningPlayerData(ga.Player.Data);
+                        if (isImp) gaWinData.IsImpostor = true;
+                        if (PlayerControl.LocalPlayer != ga.Player) gaWinData.IsYou = false;
+                        TempData.winners.Add(gaWinData);
+=======
+                var gaTargetData = new CachedPlayerData(ga.target.Data);
+                foreach (CachedPlayerData winner in EndGameResult.CachedWinners.ToArray())
                 {
-                    var executioner = (Executioner)role;
-                    if (executioner.TargetVotedOut)
+                    if (gaTargetData.ColorId == winner.ColorId)
                     {
-                        canWinWithNeutrals = true;
-                        TempData.winners = new List<WinningPlayerData>();
-                        var exeData = new WinningPlayerData(executioner.Player.Data);
-                        if (PlayerControl.LocalPlayer != executioner.Player) exeData.IsYou = false;
-                        TempData.winners.Add(exeData);
-                        foreach (var role2 in Role.GetRoles(RoleEnum.Tyrant))
-                        {
-                            var tyran = (Tyrant)role2;
-                            if (!tyran.Player.Data.IsDead && !tyran.Player.Data.Disconnected)
-                            {
-                                var isImp = TempData.winners.Count != 0 && TempData.winners[0].IsImpostor;
-
-                                if (!isImp && canWinWithNeutrals) {
-                                var tyranWinData = new WinningPlayerData(tyran.Player.Data);
-                                if (PlayerControl.LocalPlayer != tyran.Player) tyranWinData.IsYou = false;
-                                TempData.winners.Add(tyranWinData);
-                                }
-                            }
-                        }
-                        return;
+                        var isImp = EndGameResult.CachedWinners[0].IsImpostor;
+                        var gaWinData = new CachedPlayerData(ga.Player.Data);
+                        if (isImp) gaWinData.IsImpostor = true;
+                        if (PlayerControl.LocalPlayer != ga.Player) gaWinData.IsYou = false;
+                        EndGameResult.CachedWinners.Add(gaWinData);
+>>>>>>> Stashed changes
                     }
-                }
-                else if (type == RoleEnum.Doomsayer)
-                {
-                    var doom = (Doomsayer)role;
-                    if (doom.WonByGuessing)
-                    {
-                        canWinWithNeutrals = true;
-                        TempData.winners = new List<WinningPlayerData>();
-                        var doomData = new WinningPlayerData(doom.Player.Data);
-                        if (PlayerControl.LocalPlayer != doom.Player) doomData.IsYou = false;
-                        TempData.winners.Add(doomData);
-                        foreach (var role2 in Role.GetRoles(RoleEnum.Tyrant))
-                        {
-                            var tyran = (Tyrant)role2;
-                            if (!tyran.Player.Data.IsDead && !tyran.Player.Data.Disconnected)
-                            {
-                                var isImp = TempData.winners.Count != 0 && TempData.winners[0].IsImpostor;
-
-                                if (!isImp && canWinWithNeutrals) {
-                                var tyranWinData = new WinningPlayerData(tyran.Player.Data);
-                                if (PlayerControl.LocalPlayer != tyran.Player) tyranWinData.IsYou = false;
-                                TempData.winners.Add(tyranWinData);
-                                }
-                            }
-                        }
-                        return;
-                    }
-                }
-                else if (type == RoleEnum.Phantom)
-                {
-                    var phantom = (Phantom)role;
-                    if (phantom.CompletedTasks)
-                    {
-                        TempData.winners = new List<WinningPlayerData>();
-                        var phantomData = new WinningPlayerData(phantom.Player.Data);
-                        if (PlayerControl.LocalPlayer != phantom.Player) phantomData.IsYou = false;
-                        TempData.winners.Add(phantomData);
-                        return;
-                    }
-                }
-            }
-        }
-
-        foreach (var alliance in Alliance.AllAlliances)
-        {
-            var type = alliance.AllianceType;
-
-            if (type == AllianceEnum.Lover)
-            {
-                var lover = (Lover)alliance;
-                if (lover.LoveCoupleWins)
-                {
-                    var otherLover = lover.OtherLover;
-                    TempData.winners = new List<WinningPlayerData>();
-                    var loverOneData = new WinningPlayerData(lover.Player.Data);
-                    var loverTwoData = new WinningPlayerData(otherLover.Player.Data);
-                    if (PlayerControl.LocalPlayer != lover.Player) loverOneData.IsYou = false;
-                    if (PlayerControl.LocalPlayer != otherLover.Player) loverTwoData.IsYou = false;
-                    TempData.winners.Add(loverOneData);
-                    TempData.winners.Add(loverTwoData);
-                    return;
-                }
-            } else
-            if (type == AllianceEnum.Crewpostor)
-            {
-                var crewpostor = (Crewpostor)alliance;
-                var isImp = TempData.winners.Count != 0 && TempData.winners[0].IsImpostor;
-                var crewpostorWinData = new WinningPlayerData(crewpostor.Player.Data);
-                if (isImp) crewpostorWinData.IsImpostor = true;
-                if (PlayerControl.LocalPlayer != crewpostor.Player) crewpostorWinData.IsYou = false;
-                if (!isImp) return;
-                TempData.winners.Add(crewpostorWinData);
-                return;
-            }
-        }
-        
-
-        if (Role.ApocWins)
-        {
-            TempData.winners = new List<WinningPlayerData>();
-            foreach (var role in Role.GetRoles(RoleEnum.Baker))
-            {
-                canWinWithNeutrals = true;
-                var apoc = (Baker)role;
-                var apocData = new WinningPlayerData(apoc.Player.Data);
-                if (PlayerControl.LocalPlayer != apoc.Player) apocData.IsYou = false;
-                TempData.winners.Add(apocData);
-            }
-            foreach (var role in Role.GetRoles(RoleEnum.Berserker))
-            {
-                canWinWithNeutrals = true;
-                var apoc = (Berserker)role;
-                var apocData = new WinningPlayerData(apoc.Player.Data);
-                if (PlayerControl.LocalPlayer != apoc.Player) apocData.IsYou = false;
-                TempData.winners.Add(apocData);
-            }
-            foreach (var role in Role.GetRoles(RoleEnum.Plaguebearer))
-            {
-                canWinWithNeutrals = true;
-                var apoc = (Plaguebearer)role;
-                var apocData = new WinningPlayerData(apoc.Player.Data);
-                if (PlayerControl.LocalPlayer != apoc.Player) apocData.IsYou = false;
-                TempData.winners.Add(apocData);
-            }
-            foreach (var role in Role.GetRoles(RoleEnum.SoulCollector))
-            {
-                canWinWithNeutrals = true;
-                var apoc = (SoulCollector)role;
-                var apocData = new WinningPlayerData(apoc.Player.Data);
-                if (PlayerControl.LocalPlayer != apoc.Player) apocData.IsYou = false;
-                TempData.winners.Add(apocData);
-            }
-            
-            foreach (var role in Role.GetRoles(RoleEnum.Famine))
-            {
-                canWinWithNeutrals = true;
-                var apoc = (Famine)role;
-                var apocData = new WinningPlayerData(apoc.Player.Data);
-                if (PlayerControl.LocalPlayer != apoc.Player) apocData.IsYou = false;
-                TempData.winners.Add(apocData);
-            }
-            foreach (var role in Role.GetRoles(RoleEnum.War))
-            {
-                canWinWithNeutrals = true;
-                var apoc = (War)role;
-                var apocData = new WinningPlayerData(apoc.Player.Data);
-                if (PlayerControl.LocalPlayer != apoc.Player) apocData.IsYou = false;
-                TempData.winners.Add(apocData);
-            }
-            foreach (var role in Role.GetRoles(RoleEnum.Pestilence))
-            {
-                canWinWithNeutrals = true;
-                var apoc = (Pestilence)role;
-                var apocData = new WinningPlayerData(apoc.Player.Data);
-                if (PlayerControl.LocalPlayer != apoc.Player) apocData.IsYou = false;
-                TempData.winners.Add(apocData);
-            }
-            foreach (var role in Role.GetRoles(RoleEnum.Death))
-            {
-                canWinWithNeutrals = true;
-                var apoc = (Death)role;
-                var apocData = new WinningPlayerData(apoc.Player.Data);
-                if (PlayerControl.LocalPlayer != apoc.Player) apocData.IsYou = false;
-                TempData.winners.Add(apocData);
-            }
-            foreach (var alliance in Alliance.GetAlliances(AllianceEnum.Crewpocalypse))
-            {
-                canWinWithNeutrals = true;
-                var apoc = (Crewpocalypse)alliance;
-                var apocData = new WinningPlayerData(apoc.Player.Data);
-                if (PlayerControl.LocalPlayer != apoc.Player) apocData.IsYou = false;
-                TempData.winners.Add(apocData);
-            }/*
-            foreach (var alliance in Alliance.AllAlliances)
-            {
-                if (alliance.AllianceType == AllianceEnum.Crewpocalypse)
-                {
-                    var apoc = (Crewpostor)alliance;
-                    var isApoc = TempData.winners.Count != 0 && TempData.winners[0].IsImpostor;
-                    var apocData = new WinningPlayerData(apoc.Player.Data);
-                if (isApoc) apocData.IsImpostor = true;
-                    if (PlayerControl.LocalPlayer != apoc.Player) apocData.IsYou = false;
-                    TempData.winners.Add(apocData);
-                }
-            }*/
-        }
-
-        if (Role.JackalWins)
-        {
-            TempData.winners = new List<WinningPlayerData>();
-            foreach (var role in Role.GetRoles(RoleEnum.Jackal))
-            {
-                canWinWithNeutrals = true;
-                var jackal = (Jackal)role;
-                var jackalData = new WinningPlayerData(jackal.Player.Data);
-                if (PlayerControl.LocalPlayer != jackal.Player) jackalData.IsYou = false;
-                TempData.winners.Add(jackalData);
-            }
-            foreach (var alliance in Alliance.GetAlliances(AllianceEnum.Recruit))
-            {
-                canWinWithNeutrals = true;
-                var recruit = (Recruit)alliance;
-                var recruitData = new WinningPlayerData(recruit.Player.Data);
-                if (PlayerControl.LocalPlayer != recruit.Player) recruitData.IsYou = false;
-                TempData.winners.Add(recruitData);
-            }
-        }
-
-        if (Role.VampireWins)
-        {
-            TempData.winners = new List<WinningPlayerData>();
-            foreach (var role in Role.GetRoles(RoleEnum.Vampire))
-            {
-                canWinWithNeutrals = true;
-                var vamp = (Vampire)role;
-                var vampData = new WinningPlayerData(vamp.Player.Data);
-                if (PlayerControl.LocalPlayer != vamp.Player) vampData.IsYou = false;
-                TempData.winners.Add(vampData);
-            }
-        }
-
-        foreach (var role in Role.AllRoles)
-        {
-            var type = role.RoleType;
-
-            if (type == RoleEnum.Cannibal)
-            {
-                var can = (Cannibal)role;
-                if (can.EatWin)
-                {
-                    TempData.winners = new List<WinningPlayerData>();
-                    var canData = new WinningPlayerData(can.Player.Data);
-                    canData.IsDead = false;
-                    if (PlayerControl.LocalPlayer != can.Player) canData.IsYou = false;
-                    TempData.winners.Add(canData);
-                    return;
-                }
-            }
-            else if (type == RoleEnum.Glitch)
-            {
-                var glitch = (Glitch)role;
-                if (glitch.GlitchWins)
-                {
-                    canWinWithNeutrals = true;
-                    TempData.winners = new List<WinningPlayerData>();
-                    var glitchData = new WinningPlayerData(glitch.Player.Data);
-                    if (PlayerControl.LocalPlayer != glitch.Player) glitchData.IsYou = false;
-                    TempData.winners.Add(glitchData);
-                }
-            }
-            else if (type == RoleEnum.Arsonist)
-            {
-                var arsonist = (Arsonist)role;
-                if (arsonist.ArsonistWins)
-                {
-                    canWinWithNeutrals = true;
-                    TempData.winners = new List<WinningPlayerData>();
-                    var arsonistData = new WinningPlayerData(arsonist.Player.Data);
-                    if (PlayerControl.LocalPlayer != arsonist.Player) arsonistData.IsYou = false;
-                    TempData.winners.Add(arsonistData);
-                }
-            }
-            else if (type == RoleEnum.Werewolf)
-            {
-                var werewolf = (Werewolf)role;
-                if (werewolf.WerewolfWins)
-                {
-                    canWinWithNeutrals = true;
-                    TempData.winners = new List<WinningPlayerData>();
-                    var werewolfData = new WinningPlayerData(werewolf.Player.Data);
-                    if (PlayerControl.LocalPlayer != werewolf.Player) werewolfData.IsYou = false;
-                    TempData.winners.Add(werewolfData);
-                }
-            }
-        }
-
-        foreach (var role in Role.GetRoles(RoleEnum.Survivor))
-        {
-            var surv = (Survivor)role;
-            if (!surv.Player.Data.IsDead && !surv.Player.Data.Disconnected)
-            {
-                var isImp = TempData.winners.Count != 0 && TempData.winners[0].IsImpostor;
-                var survWinData = new WinningPlayerData(surv.Player.Data);
-                if (isImp) survWinData.IsImpostor = true;
-                if (PlayerControl.LocalPlayer != surv.Player) survWinData.IsYou = false;
-                TempData.winners.Add(survWinData);
-            }
-        }
-
-        foreach (var role in Role.GetRoles(RoleEnum.Tyrant))
-        {
-            var surv = (Tyrant)role;
-            if (!surv.Player.Data.IsDead && !surv.Player.Data.Disconnected)
-            {
-                var isImp = TempData.winners.Count != 0 && TempData.winners[0].IsImpostor;
-
-                if (!isImp && canWinWithNeutrals) {
-                var survWinData = new WinningPlayerData(surv.Player.Data);
-                if (PlayerControl.LocalPlayer != surv.Player) survWinData.IsYou = false;
-                TempData.winners.Add(survWinData);
-                }
-            }
-        }
-        foreach (var role in Role.GetRoles(RoleEnum.GuardianAngel))
-        {
-            var ga = (GuardianAngel)role;
-            var gaTargetData = new WinningPlayerData(ga.target.Data);
-            foreach (WinningPlayerData winner in TempData.winners.ToArray())
-            {
-                if (gaTargetData.ColorId == winner.ColorId)
-                {
-                    var isImp = TempData.winners[0].IsImpostor;
-                    var gaWinData = new WinningPlayerData(ga.Player.Data);
-                    if (isImp) gaWinData.IsImpostor = true;
-                    if (PlayerControl.LocalPlayer != ga.Player) gaWinData.IsYou = false;
-                    TempData.winners.Add(gaWinData);
                 }
             }
         }
     }
-}
 }

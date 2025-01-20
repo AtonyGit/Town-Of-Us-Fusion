@@ -1,18 +1,18 @@
 using HarmonyLib;
 
-namespace TownOfUsFusion.Patches.CustomHats.Patches
+namespace TownOfUs.Patches.CustomHats.Patches
 {
     [HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.Awake))]
-public class AmongUsClient_Patches
-{
-    private static bool _executed;
-    public static void Prefix()
+    public class AmongUsClient_Patches
     {
-        if (!_executed)
+        private static bool _executed;
+        public static void Prefix()
         {
-            HatLoader.LoadHats();
-            _executed = true;
-        }
+            if (!_executed)
+            {
+                HatLoader.LoadHats();
+                _executed = true;
+            }
+        }        
     }
-}
 }

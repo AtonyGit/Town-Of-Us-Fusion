@@ -1,57 +1,87 @@
 ﻿using HarmonyLib;
+<<<<<<< Updated upstream
+using TownOfUs.Roles;
+=======
+using System.Linq;
 using TownOfUsFusion.Roles;
+>>>>>>> Stashed changes
 using UnityEngine;
 
-namespace TownOfUsFusion.NeutralRoles.WerewolfMod
+namespace TownOfUs.NeutralRoles.WerewolfMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
-public static class HudManagerUpdate
-{
-    public static Sprite RampageSprite => TownOfUsFusion.RampageSprite;
-
-    public static void Postfix(HudManager __instance)
+    public static class HudManagerUpdate
     {
-        if (PlayerControl.AllPlayerControls.Count <= 1) return;
-        if (PlayerControl.LocalPlayer == null) return;
-        if (PlayerControl.LocalPlayer.Data == null) return;
-        if (!PlayerControl.LocalPlayer.Is(RoleEnum.Werewolf)) return;
-        var role = Role.GetRole<Werewolf>(PlayerControl.LocalPlayer);
-
-        __instance.KillButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-        __instance.KillButton.SetCoolDown(role.KillTimer(), CustomGameOptions.RampageKillCd);
-
-        if (role.RampageButton == null)
+<<<<<<< Updated upstream
+        public static Sprite RampageSprite => TownOfUs.RampageSprite;
+=======
+        public static Sprite RampageSprite => TownOfUsFusion.RampageSprite;
+>>>>>>> Stashed changes
+        
+        public static void Postfix(HudManager __instance)
         {
-            role.RampageButton = Object.Instantiate(__instance.KillButton, __instance.KillButton.transform.parent);
-            role.RampageButton.graphic.enabled = true;
-            role.RampageButton.gameObject.SetActive(false);
-        }
+            if (PlayerControl.AllPlayerControls.Count <= 1) return;
+            if (PlayerControl.LocalPlayer == null) return;
+            if (PlayerControl.LocalPlayer.Data == null) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Werewolf)) return;
+            var role = Role.GetRole<Werewolf>(PlayerControl.LocalPlayer);
 
-        role.RampageButton.graphic.sprite = RampageSprite;
-        role.RampageButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
+            __instance.KillButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+            __instance.KillButton.SetCoolDown(role.KillTimer(), CustomGameOptions.RampageKillCd);
 
-        role.RampageButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+            if (role.RampageButton == null)
+            {
+                role.RampageButton = Object.Instantiate(__instance.KillButton, __instance.KillButton.transform.parent);
+                role.RampageButton.graphic.enabled = true;
+                role.RampageButton.gameObject.SetActive(false);
+            }
 
-        if (role.Rampaged)
-        {
-            role.RampageButton.SetCoolDown(role.TimeRemaining, CustomGameOptions.RampageDuration);
-            Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton, float.NaN);
+            role.RampageButton.graphic.sprite = RampageSprite;
+            role.RampageButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
 
-            return;
-        }
-        else
-        {
-            role.RampageButton.SetCoolDown(role.RampageTimer(), CustomGameOptions.RampageCd);
+            role.RampageButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
 
-            role.RampageButton.graphic.color = Palette.EnabledColor;
-            role.RampageButton.graphic.material.SetFloat("_Desat", 0f);
+            if (role.Rampaged)
+            {
+                role.RampageButton.SetCoolDown(role.TimeRemaining, CustomGameOptions.RampageDuration);
+<<<<<<< Updated upstream
+                Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton, float.NaN);
+=======
+                role.RampageButton.graphic.color = Palette.EnabledColor;
+                role.RampageButton.graphic.material.SetFloat("_Desat", 0f);
+                if ((CamouflageUnCamouflage.IsCamoed && CustomGameOptions.CamoCommsKillAnyone) || PlayerControl.LocalPlayer.IsHypnotised()) Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton);
+                else if (role.Player.IsLover()) Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton, float.NaN, PlayerControl.AllPlayerControls.ToArray().Where(x => !x.IsLover()).ToList());
+                else Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton);
+>>>>>>> Stashed changes
 
-            return;
+                return;
+            }
+            else
+            {
+                role.RampageButton.SetCoolDown(role.RampageTimer(), CustomGameOptions.RampageCd);
+
+<<<<<<< Updated upstream
+                role.RampageButton.graphic.color = Palette.EnabledColor;
+                role.RampageButton.graphic.material.SetFloat("_Desat", 0f);
+=======
+                if (role.RampageTimer() > 0f || !PlayerControl.LocalPlayer.moveable)
+                {
+                    role.RampageButton.graphic.color = Palette.DisabledClear;
+                    role.RampageButton.graphic.material.SetFloat("_Desat", 1f);
+                }
+                else
+                {
+                    role.RampageButton.graphic.color = Palette.EnabledColor;
+                    role.RampageButton.graphic.material.SetFloat("_Desat", 0f);
+                }
+>>>>>>> Stashed changes
+
+                return;
+            }
         }
     }
-}
 }

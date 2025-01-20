@@ -1,13 +1,13 @@
 ﻿using HarmonyLib;
 
-namespace TownOfUsFusion.NeutralRoles.GlitchMod
+namespace TownOfUs.NeutralRoles.GlitchMod
 {
     [HarmonyPatch(typeof(MapBehaviour), nameof(MapBehaviour.ShowSabotageMap))]
-internal class EngineerMapOpen
-{
-    private static bool Prefix(MapBehaviour __instance)
+    internal class EngineerMapOpen
     {
-        return !PlayerControl.LocalPlayer.Is(RoleEnum.Glitch);
+        private static bool Prefix(MapBehaviour __instance)
+        {
+            return !PlayerControl.LocalPlayer.Is(RoleEnum.Glitch);
+        }
     }
-}
 }

@@ -1,37 +1,37 @@
 ﻿using HarmonyLib;
 using UnityEngine;
 
-namespace TownOfUsFusion.RainbowMod
+namespace TownOfUs.RainbowMod
 {
     [HarmonyPatch(typeof(PlayerMaterial), nameof(PlayerMaterial.SetColors), typeof(int), typeof(Renderer))]
-public class SetPlayerMaterialPatch
-{
-    public static bool Prefix([HarmonyArgument(0)] int colorId, [HarmonyArgument(1)] Renderer rend)
+    public class SetPlayerMaterialPatch
     {
-        var r = rend.gameObject.GetComponent<RainbowBehaviour>();
-        if (r == null)
+        public static bool Prefix([HarmonyArgument(0)] int colorId, [HarmonyArgument(1)] Renderer rend)
         {
-            r = rend.gameObject.AddComponent<RainbowBehaviour>();
+            var r = rend.gameObject.GetComponent<RainbowBehaviour>();
+            if (r == null)
+            {
+                r = rend.gameObject.AddComponent<RainbowBehaviour>();
+            }
+
+            r.AddRend(rend, colorId);
+            return !RainbowUtils.IsRainbow(colorId);
         }
-
-        r.AddRend(rend, colorId);
-        return !RainbowUtils.IsGradient(colorId);
     }
-}
 
-[HarmonyPatch(typeof(PlayerMaterial), nameof(PlayerMaterial.SetColors), typeof(Color), typeof(Renderer))]
-public class SetPlayerMaterialPatch2
-{
-    public static bool Prefix([HarmonyArgument(1)] Renderer rend)
+    [HarmonyPatch(typeof(PlayerMaterial), nameof(PlayerMaterial.SetColors), typeof(Color), typeof(Renderer))]
+    public class SetPlayerMaterialPatch2
     {
-        var r = rend.gameObject.GetComponent<RainbowBehaviour>();
-        if (r == null)
+        public static bool Prefix([HarmonyArgument(1)] Renderer rend)
         {
-            r = rend.gameObject.AddComponent<RainbowBehaviour>();
-        }
+            var r = rend.gameObject.GetComponent<RainbowBehaviour>();
+            if (r == null)
+            {
+                r = rend.gameObject.AddComponent<RainbowBehaviour>();
+            }
 
-        r.AddRend(rend, 0);
-        return true;
+            r.AddRend(rend, 0);
+            return true;
+        }
     }
-}
 }

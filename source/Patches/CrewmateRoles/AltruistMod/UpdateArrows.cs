@@ -1,25 +1,25 @@
 using HarmonyLib;
 using Reactor.Utilities.Extensions;
 
-namespace TownOfUsFusion.CrewmateRoles.AltruistMod
+namespace TownOfUs.CrewmateRoles.AltruistMod
 {
     [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.FixedUpdate))]
-public class UpdateArrows
-{
-    public static void Postfix(PlayerControl __instance)
+    public class UpdateArrows
     {
-        foreach (var revived in Coroutine.Revived)
+        public static void Postfix(PlayerControl __instance)
         {
-            if (LobbyBehaviour.Instance || MeetingHud.Instance || PlayerControl.LocalPlayer.Data.IsDead ||
-                revived.Key.Data.IsDead)
+            foreach (var revived in Coroutine.Revived)
             {
-                revived.Value.gameObject.Destroy();
-                Coroutine.Revived.Remove(revived.Key);
-                return;
-            }
+                if (LobbyBehaviour.Instance || MeetingHud.Instance || PlayerControl.LocalPlayer.Data.IsDead ||
+                    revived.Key.Data.IsDead)
+                {
+                    revived.Value.gameObject.Destroy();
+                    Coroutine.Revived.Remove(revived.Key);
+                    return;
+                }
 
-            revived.Value.target = revived.Key.transform.position;
+                revived.Value.target = revived.Key.transform.position;
+            }
         }
     }
-}
 }

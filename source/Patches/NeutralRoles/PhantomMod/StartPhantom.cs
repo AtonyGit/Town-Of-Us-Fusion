@@ -1,16 +1,16 @@
 using HarmonyLib;
-using TownOfUsFusion.Roles;
+using TownOfUs.Roles;
 
-namespace TownOfUsFusion.NeutralRoles.PhantomMod
+namespace TownOfUs.NeutralRoles.PhantomMod
 {
     [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.Visible), MethodType.Setter)]
-public static class VisibleOverride
-{
-    public static void Prefix(PlayerControl __instance, [HarmonyArgument(0)] ref bool value)
+    public static class VisibleOverride
     {
-        if (!__instance.Is(RoleEnum.Phantom)) return;
-        if (Role.GetRole<Phantom>(__instance).Caught) return;
-        value = !__instance.inVent;
+        public static void Prefix(PlayerControl __instance, [HarmonyArgument(0)] ref bool value)
+        {
+            if (!__instance.Is(RoleEnum.Phantom)) return;
+            if (Role.GetRole<Phantom>(__instance).Caught) return;
+            value = !__instance.inVent;
+        }
     }
-}
 }

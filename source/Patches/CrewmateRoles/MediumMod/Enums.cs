@@ -1,10 +1,10 @@
 
-namespace TownOfUsFusion.CrewmateRoles.MediumMod
+namespace TownOfUs.CrewmateRoles.MediumMod
 {
     public enum DeadRevealed
-{
-    Oldest = 0,
-    Newest,
-    All
-}
+    {
+        Oldest = 0,
+        Newest,
+        All
+    }
 }

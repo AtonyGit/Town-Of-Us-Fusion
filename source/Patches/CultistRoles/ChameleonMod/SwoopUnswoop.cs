@@ -1,23 +1,23 @@
 using HarmonyLib;
-using TownOfUsFusion.Roles;
-using TownOfUsFusion.Roles.Cultist;
+using TownOfUs.Roles;
+using TownOfUs.Roles.Cultist;
 
-namespace TownOfUsFusion.CultistRoles.ChameleonMod
+namespace TownOfUs.CultistRoles.ChameleonMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
-[HarmonyPriority(Priority.Last)]
-public class SwoopUnSwoop
-{
     [HarmonyPriority(Priority.Last)]
-    public static void Postfix(HudManager __instance)
+    public class SwoopUnSwoop
     {
-        foreach (var role in Role.GetRoles(RoleEnum.Chameleon))
+        [HarmonyPriority(Priority.Last)]
+        public static void Postfix(HudManager __instance)
         {
-            var chameleon = (Chameleon)role;
-            if (chameleon.IsSwooped)
-                chameleon.Swoop();
-            else if (chameleon.Enabled) chameleon.UnSwoop();
+            foreach (var role in Role.GetRoles(RoleEnum.Chameleon))
+            {
+                var chameleon = (Chameleon) role;
+                if (chameleon.IsSwooped)
+                    chameleon.Swoop();
+                else if (chameleon.Enabled) chameleon.UnSwoop();
+            }
         }
     }
-}
 }

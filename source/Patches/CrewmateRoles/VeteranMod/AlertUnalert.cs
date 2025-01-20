@@ -1,22 +1,22 @@
 using HarmonyLib;
-using TownOfUsFusion.Roles;
+using TownOfUs.Roles;
 
-namespace TownOfUsFusion.CrewmateRoles.VeteranMod
+namespace TownOfUs.CrewmateRoles.VeteranMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
-[HarmonyPriority(Priority.Last)]
-public class AlertUnalert
-{
     [HarmonyPriority(Priority.Last)]
-    public static void Postfix(HudManager __instance)
+    public class AlertUnalert
     {
-        foreach (var role in Role.GetRoles(RoleEnum.Veteran))
+        [HarmonyPriority(Priority.Last)]
+        public static void Postfix(HudManager __instance)
         {
-            var veteran = (Veteran)role;
-            if (veteran.OnAlert)
-                veteran.Alert();
-            else if (veteran.Enabled) veteran.UnAlert();
+            foreach (var role in Role.GetRoles(RoleEnum.Veteran))
+            {
+                var veteran = (Veteran) role;
+                if (veteran.OnAlert)
+                    veteran.Alert();
+                else if (veteran.Enabled) veteran.UnAlert();
+            }
         }
     }
-}
 }

@@ -1,19 +1,19 @@
 ﻿using HarmonyLib;
-using TownOfUsFusion.Extensions;
+using TownOfUs.Extensions;
 
-namespace TownOfUsFusion.Patches
+namespace TownOfUs.Patches
 {
     [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.Start))]
-public class MeetingStart
-{
-    public static void Postfix(MeetingHud __instance)
+    public class MeetingStart
     {
-        if (ShowRoundOneShield.FirstRoundShielded != null && !ShowRoundOneShield.FirstRoundShielded.Data.Disconnected)
+        public static void Postfix(MeetingHud __instance)
         {
-            ShowRoundOneShield.FirstRoundShielded.myRend().material.SetColor("_VisorColor", Palette.VisorColor);
-            ShowRoundOneShield.FirstRoundShielded.myRend().material.SetFloat("_Outline", 0f);
-            ShowRoundOneShield.FirstRoundShielded = null;
+            if (ShowRoundOneShield.FirstRoundShielded != null && !ShowRoundOneShield.FirstRoundShielded.Data.Disconnected)
+            {
+                ShowRoundOneShield.FirstRoundShielded.myRend().material.SetColor("_VisorColor", Palette.VisorColor);
+                ShowRoundOneShield.FirstRoundShielded.myRend().material.SetFloat("_Outline", 0f);
+                ShowRoundOneShield.FirstRoundShielded = null;
+            }
         }
     }
-}
 }

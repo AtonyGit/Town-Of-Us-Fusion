@@ -1,17 +1,17 @@
 using HarmonyLib;
-using TownOfUsFusion.Roles;
+using TownOfUs.Roles;
 
-namespace TownOfUsFusion.NeutralRoles.PhantomMod
+namespace TownOfUs.NeutralRoles.PhantomMod
 {
     [HarmonyPatch(typeof(PlayerPhysics), nameof(PlayerPhysics.ResetMoveState))]
-public class ResetMoveState
-{
-    public static void Postfix(PlayerPhysics __instance)
+    public class ResetMoveState
     {
-        if (!__instance.myPlayer.Is(RoleEnum.Phantom)) return;
+        public static void Postfix(PlayerPhysics __instance)
+        {
+            if (!__instance.myPlayer.Is(RoleEnum.Phantom)) return;
 
-        var role = Role.GetRole<Phantom>(__instance.myPlayer);
-        __instance.myPlayer.Collider.enabled = !role.Caught;
+            var role = Role.GetRole<Phantom>(__instance.myPlayer);
+            __instance.myPlayer.Collider.enabled = !role.Caught;
+        }
     }
-}
 }

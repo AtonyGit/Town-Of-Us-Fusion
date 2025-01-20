@@ -1,42 +1,81 @@
 ﻿using HarmonyLib;
-using TownOfUsFusion.Roles;
+using TownOfUs.Roles;
 using UnityEngine;
 
-namespace TownOfUsFusion.ImpostorRoles.EscapistMod
+namespace TownOfUs.ImpostorRoles.EscapistMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
-public class HudManagerUpdate
-{
-    public static Sprite MarkSprite => TownOfUsFusion.MarkSprite;
-    public static Sprite EscapeSprite => TownOfUsFusion.EscapeSprite;
-
-
-    public static void Postfix(HudManager __instance)
+    public class HudManagerUpdate
     {
-        if (PlayerControl.AllPlayerControls.Count <= 1) return;
-        if (PlayerControl.LocalPlayer == null) return;
-        if (PlayerControl.LocalPlayer.Data == null) return;
-        if (!PlayerControl.LocalPlayer.Is(RoleEnum.Escapist)) return;
-        var role = Role.GetRole<Escapist>(PlayerControl.LocalPlayer);
-        if (role.EscapeButton == null)
+<<<<<<< Updated upstream
+        public static Sprite MarkSprite => TownOfUs.MarkSprite;
+        public static Sprite EscapeSprite => TownOfUs.EscapeSprite;
+=======
+        public static Sprite MarkSprite => TownOfUsFusion.MarkSprite;
+        public static Sprite EscapeSprite => TownOfUsFusion.EscapeSprite;
+>>>>>>> Stashed changes
+
+
+        public static void Postfix(HudManager __instance)
         {
-            role.EscapeButton = Object.Instantiate(__instance.KillButton, __instance.KillButton.transform.parent);
-            role.EscapeButton.graphic.enabled = true;
-            role.EscapeButton.graphic.sprite = MarkSprite;
-            role.EscapeButton.gameObject.SetActive(false);
+            if (PlayerControl.AllPlayerControls.Count <= 1) return;
+            if (PlayerControl.LocalPlayer == null) return;
+            if (PlayerControl.LocalPlayer.Data == null) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Escapist)) return;
+            var role = Role.GetRole<Escapist>(PlayerControl.LocalPlayer);
+            if (role.EscapeButton == null)
+            {
+                role.EscapeButton = Object.Instantiate(__instance.KillButton, __instance.KillButton.transform.parent);
+                role.EscapeButton.graphic.enabled = true;
+                role.EscapeButton.graphic.sprite = MarkSprite;
+                role.EscapeButton.gameObject.SetActive(false);
+<<<<<<< Updated upstream
 
+            }
+
+=======
+            }
+
+>>>>>>> Stashed changes
+            if (role.EscapeButton.graphic.sprite != MarkSprite && role.EscapeButton.graphic.sprite != EscapeSprite)
+                role.EscapeButton.graphic.sprite = MarkSprite;
+
+            role.EscapeButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+<<<<<<< Updated upstream
+            role.EscapeButton.graphic.color = Palette.EnabledColor;
+            role.EscapeButton.graphic.material.SetFloat("_Desat", 0f);
+            if (role.EscapeButton.graphic.sprite == MarkSprite) role.EscapeButton.SetCoolDown(0f, 1f);
+            else role.EscapeButton.SetCoolDown(role.EscapeTimer(), CustomGameOptions.EscapeCd);
+=======
+            if (role.EscapeButton.graphic.sprite == MarkSprite)
+            {
+                role.EscapeButton.SetCoolDown(0f, 1f);
+                if (PlayerControl.LocalPlayer.moveable)
+                {
+                    role.EscapeButton.graphic.color = Palette.EnabledColor;
+                    role.EscapeButton.graphic.material.SetFloat("_Desat", 0f);
+                }
+                else
+                {
+                    role.EscapeButton.graphic.color = Palette.DisabledClear;
+                    role.EscapeButton.graphic.material.SetFloat("_Desat", 1f);
+                }
+            }
+            else if (PlayerControl.LocalPlayer.moveable && role.EscapeTimer() == 0f)
+            {
+                role.EscapeButton.graphic.color = Palette.EnabledColor;
+                role.EscapeButton.graphic.material.SetFloat("_Desat", 0f);
+                role.EscapeButton.SetCoolDown(role.EscapeTimer(), CustomGameOptions.EscapeCd);
+            }
+            else
+            {
+                role.EscapeButton.graphic.color = Palette.DisabledClear;
+                role.EscapeButton.graphic.material.SetFloat("_Desat", 1f);
+                role.EscapeButton.SetCoolDown(role.EscapeTimer(), CustomGameOptions.EscapeCd);
+            }
+>>>>>>> Stashed changes
         }
-
-        if (role.EscapeButton.graphic.sprite != MarkSprite && role.EscapeButton.graphic.sprite != EscapeSprite)
-            role.EscapeButton.graphic.sprite = MarkSprite;
-
-        role.EscapeButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-        role.EscapeButton.graphic.color = Palette.EnabledColor;
-        role.EscapeButton.graphic.material.SetFloat("_Desat", 0f);
-        if (role.EscapeButton.graphic.sprite == MarkSprite) role.EscapeButton.SetCoolDown(0f, 1f);
-        else role.EscapeButton.SetCoolDown(role.EscapeTimer(), CustomGameOptions.EscapeCd);
     }
-}
 }

@@ -1,22 +1,22 @@
 using HarmonyLib;
-using TownOfUsFusion.Roles;
+using TownOfUs.Roles;
 
-namespace TownOfUsFusion.ImpostorRoles.VenererMod
+namespace TownOfUs.ImpostorRoles.VenererMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
-[HarmonyPriority(Priority.Last)]
-public class Ability
-{
     [HarmonyPriority(Priority.Last)]
-    public static void Postfix(HudManager __instance)
+    public class Ability
     {
-        foreach (var role in Role.GetRoles(RoleEnum.Venerer))
+        [HarmonyPriority(Priority.Last)]
+        public static void Postfix(HudManager __instance)
         {
-            var venerer = (Venerer)role;
-            if (venerer.IsCamouflaged)
-                venerer.Ability();
-            else if (venerer.Enabled) venerer.StopAbility();
+            foreach (var role in Role.GetRoles(RoleEnum.Venerer))
+            {
+                var venerer = (Venerer) role;
+                if (venerer.IsCamouflaged)
+                    venerer.Ability();
+                else if (venerer.Enabled) venerer.StopAbility();
+            }
         }
     }
-}
 }

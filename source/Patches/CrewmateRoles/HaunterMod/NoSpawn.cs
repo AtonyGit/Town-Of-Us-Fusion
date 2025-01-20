@@ -1,24 +1,24 @@
 using HarmonyLib;
-using TownOfUsFusion.Roles;
+using TownOfUs.Roles;
 
-namespace TownOfUsFusion.CrewmateRoles.HaunterMod
+namespace TownOfUs.CrewmateRoles.HaunterMod
 {
     [HarmonyPatch(typeof(SpawnInMinigame), nameof(SpawnInMinigame.Begin))]
-public class NoSpawn
-{
-    public static bool Prefix(SpawnInMinigame __instance)
+    public class NoSpawn
     {
-        if (PlayerControl.LocalPlayer.Is(RoleEnum.Haunter))
+        public static bool Prefix(SpawnInMinigame __instance)
         {
-            var caught = Role.GetRole<Haunter>(PlayerControl.LocalPlayer).Caught;
-            if (!caught)
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Haunter))
             {
-                __instance.Close();
-                return false;
+                var caught = Role.GetRole<Haunter>(PlayerControl.LocalPlayer).Caught;
+                if (!caught)
+                {
+                    __instance.Close();
+                    return false;
+                }
             }
-        }
 
-        return true;
+            return true;
+        }
     }
-}
 }

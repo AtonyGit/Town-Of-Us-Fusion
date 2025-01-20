@@ -2,24 +2,24 @@ using System;
 using System.Collections.Generic;
 using HarmonyLib;
 
-namespace TownOfUsFusion.CrewmateRoles.MedicMod
+namespace TownOfUs.CrewmateRoles.MedicMod
 {
     [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.MurderPlayer))]
-public class Murder
-{
-    public static List<DeadPlayer> KilledPlayers = new List<DeadPlayer>();
-
-    public static void Postfix(PlayerControl __instance, [HarmonyArgument(0)] PlayerControl target)
+    public class Murder
     {
-        //System.Console.WriteLine("FOURF");
-        var deadBody = new DeadPlayer
-        {
-            PlayerId = target.PlayerId,
-            KillerId = __instance.PlayerId,
-            KillTime = DateTime.UtcNow
-        };
+        public static List<DeadPlayer> KilledPlayers = new List<DeadPlayer>();
 
-        KilledPlayers.Add(deadBody);
+        public static void Postfix(PlayerControl __instance, [HarmonyArgument(0)] PlayerControl target)
+        {
+            //System.Console.WriteLine("FOURF");
+            var deadBody = new DeadPlayer
+            {
+                PlayerId = target.PlayerId,
+                KillerId = __instance.PlayerId,
+                KillTime = DateTime.UtcNow
+            };
+
+            KilledPlayers.Add(deadBody);
+        }
     }
-}
 }

@@ -1,22 +1,32 @@
 using HarmonyLib;
 using System.Linq;
+<<<<<<< Updated upstream
+using TownOfUs.Extensions;
+using TownOfUs.Roles;
+=======
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Modifiers;
+>>>>>>> Stashed changes
 using UnityEngine;
 
-namespace TownOfUsFusion.CrewmateRoles.HunterMod
+namespace TownOfUs.CrewmateRoles.HunterMod
 {
-    [HarmonyPatch(typeof(HudManager))]
-    public class HudManagerUpdate
+    [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
+    public static class HudManagerUpdate
     {
-        public static Sprite StalkSprite => TownOfUsFusion.StalkSprite;
+<<<<<<< Updated upstream
+        public static Sprite StalkSprite => TownOfUs.StalkSprite;
         [HarmonyPatch(nameof(HudManager.Update))]
         public static void Postfix(HudManager __instance)
         {
             UpdateKillButtons(__instance);
         }
+=======
+        public static Sprite StalkSprite => TownOfUsFusion.StalkSprite;
+>>>>>>> Stashed changes
 
-        public static void UpdateKillButtons(HudManager __instance)
+        public static void Postfix(HudManager __instance)
         {
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
@@ -25,12 +35,18 @@ namespace TownOfUsFusion.CrewmateRoles.HunterMod
 
             var role = Role.GetRole<Hunter>(PlayerControl.LocalPlayer);
 
-            foreach (var player in role.CaughtPlayers)
+            if (!PlayerControl.LocalPlayer.IsHypnotised())
             {
-                var data = player.Data;
-                if (data == null || data.Disconnected || data.IsDead || PlayerControl.LocalPlayer.Data.IsDead)
-                    continue;
-                player.nameText().color = Color.black;
+                foreach (var player in role.CaughtPlayers)
+                {
+                    var data = player.Data;
+                    if (data == null || data.Disconnected || data.IsDead || PlayerControl.LocalPlayer.Data.IsDead)
+                        continue;
+
+                    var colour = Color.black;
+                    if (player.Is(ModifierEnum.Shy)) colour.a = Modifier.GetModifier<Shy>(player).Opacity;
+                    player.nameText().color = colour;
+                }
             }
 
             if (role.StalkButton == null)
@@ -60,6 +76,8 @@ namespace TownOfUsFusion.CrewmateRoles.HunterMod
                 role.UsesText.text = role.UsesLeft + "";
             }
 
+            if (PlayerControl.LocalPlayer.Data.IsDead) role.StalkButton.SetTarget(null);
+
             role.StalkButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
@@ -70,13 +88,17 @@ namespace TownOfUsFusion.CrewmateRoles.HunterMod
             if (role.Stalking) role.StalkButton.SetCoolDown(role.StalkDuration, CustomGameOptions.HunterStalkDuration);
             else if (role.StalkUsable) role.StalkButton.SetCoolDown(role.StalkTimer(), CustomGameOptions.HunterStalkCd);
             else role.StalkButton.SetCoolDown(0f, CustomGameOptions.HunterStalkCd);
-            var notCaught = PlayerControl.AllPlayerControls.ToArray().Where(
-                pc => !role.CaughtPlayers.Contains(pc)
-            ).ToList();
-            Utils.SetTarget(ref role.ClosestStalkPlayer, role.StalkButton, float.NaN, notCaught);
 
             var renderer = role.StalkButton.graphic;
-            if (role.Stalking || (!role.StalkButton.isCoolingDown && role.StalkUsable && role.ClosestStalkPlayer != null))
+            if (role.Stalking || role.UsesLeft == 0 || !PlayerControl.LocalPlayer.moveable) role.StalkButton.SetTarget(null);
+            else
+            {
+                if ((CamouflageUnCamouflage.IsCamoed && CustomGameOptions.CamoCommsKillAnyone) || PlayerControl.LocalPlayer.IsHypnotised()) Utils.SetTarget(ref role.ClosestStalkPlayer, role.StalkButton, float.NaN);
+                else if (role.Player.IsLover()) Utils.SetTarget(ref role.ClosestStalkPlayer, role.StalkButton, float.NaN, PlayerControl.AllPlayerControls.ToArray().Where(x => !x.IsLover()).ToList());
+                else Utils.SetTarget(ref role.ClosestStalkPlayer, role.StalkButton, float.NaN);
+            }
+
+            if (role.Stalking || (role.StalkUsable && role.ClosestStalkPlayer != null && PlayerControl.LocalPlayer.moveable))
             {
                 renderer.color = Palette.EnabledColor;
                 renderer.material.SetFloat("_Desat", 0f);
@@ -91,13 +113,15 @@ namespace TownOfUsFusion.CrewmateRoles.HunterMod
                 role.UsesText.material.SetFloat("_Desat", 1f);
             }
 
-            var killButton = __instance.KillButton;
-
             __instance.KillButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
             __instance.KillButton.SetCoolDown(role.HunterKillTimer(), CustomGameOptions.HunterKillCd);
-            Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton, float.NaN, role.CaughtPlayers);
+            if ((CamouflageUnCamouflage.IsCamoed && CustomGameOptions.CamoCommsKillAnyone) || PlayerControl.LocalPlayer.IsHypnotised()) Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton, float.NaN, role.CaughtPlayers);
+            else if (role.Player.IsLover()) Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton, float.NaN, role.CaughtPlayers.Where(x => !x.IsLover()).ToList());
+            else Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton, float.NaN, role.CaughtPlayers);
+
+            return;
         }
     }
 }

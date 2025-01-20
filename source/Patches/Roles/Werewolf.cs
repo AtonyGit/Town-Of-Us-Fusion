@@ -1,110 +1,117 @@
 ﻿using System;
 using System.Linq;
 using UnityEngine;
-using TownOfUsFusion.Extensions;
+using TownOfUs.Extensions;
 
-namespace TownOfUsFusion.Roles
+namespace TownOfUs.Roles
 {
     public class Werewolf : Role
-{
-    private KillButton _rampageButton;
-    public bool Enabled;
-    public bool WerewolfWins;
-    public PlayerControl ClosestPlayer;
-    public DateTime LastRampaged;
-    public DateTime LastKilled;
-    public float TimeRemaining;
-
-
-    public Werewolf(PlayerControl player) : base(player)
     {
-        Name = "Werewolf";
-        ImpostorText = () => "Rampage To Kill Everyone";
-        TaskText = () => "Rampage to kill everyone\nFake Tasks:";
-        Color = Patches.Colors.Werewolf;
-        LastRampaged = DateTime.UtcNow;
-        LastKilled = DateTime.UtcNow;
-        RoleType = RoleEnum.Werewolf;
-        AddToRoleHistory(RoleType);
-        Faction = Faction.NeutralKilling;
-    }
+        private KillButton _rampageButton;
+        public bool Enabled;
+        public bool WerewolfWins;
+        public PlayerControl ClosestPlayer;
+        public DateTime LastRampaged;
+        public DateTime LastKilled;
+        public float TimeRemaining;
 
-    public KillButton RampageButton
-    {
-        get => _rampageButton;
-        set
+
+        public Werewolf(PlayerControl player) : base(player)
         {
-            _rampageButton = value;
-            ExtraButtons.Clear();
-            ExtraButtons.Add(value);
+            Name = "Werewolf";
+            ImpostorText = () => "Rampage To Kill Everyone";
+            TaskText = () => "Rampage to kill everyone\nFake Tasks:";
+            Color = Patches.Colors.Werewolf;
+            LastRampaged = DateTime.UtcNow;
+            LastKilled = DateTime.UtcNow;
+            RoleType = RoleEnum.Werewolf;
+            AddToRoleHistory(RoleType);
+            Faction = Faction.NeutralKilling;
         }
-    }
 
-    internal override bool NeutralWin(LogicGameFlowNormal __instance)
-    {
-        if (Player.Data.IsDead || Player.Data.Disconnected) return true;
-
-        if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected) <= 2 &&
-                PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
-                (x.Data.IsImpostor() || x.Is(Faction.NeutralNeophyte) || x.Is(Faction.NeutralNecro) || x.Is(Faction.NeutralKilling)|| x.Is(Faction.NeutralApocalypse))) == 1)
+        public KillButton RampageButton
         {
-            Utils.Rpc(CustomRPC.WerewolfWin, Player.PlayerId);
-            Wins();
-            Utils.EndGame();
+            get => _rampageButton;
+            set
+            {
+                _rampageButton = value;
+                ExtraButtons.Clear();
+                ExtraButtons.Add(value);
+            }
+        }
+
+<<<<<<< Updated upstream
+        internal override bool NeutralWin(LogicGameFlowNormal __instance)
+=======
+        internal override bool GameEnd(LogicGameFlowNormal __instance)
+>>>>>>> Stashed changes
+        {
+            if (Player.Data.IsDead || Player.Data.Disconnected) return true;
+
+            if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected) <= 2 &&
+                    PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
+<<<<<<< Updated upstream
+                    (x.Data.IsImpostor() || x.Is(Faction.NeutralKilling))) == 1)
+=======
+                    (x.Data.IsImpostor() || x.Is(Faction.NeutralKilling) || x.IsCrewKiller())) == 1)
+>>>>>>> Stashed changes
+            {
+                Utils.Rpc(CustomRPC.WerewolfWin, Player.PlayerId);
+                Wins();
+                Utils.EndGame();
+                return false;
+            }
 
             return false;
         }
 
-        return false;
-    }
-
-    public void Wins()
-    {
-        WerewolfWins = true;
-    }
-
-    protected override void IntroPrefix(IntroCutscene._ShowTeam_d__38 __instance)
-    {
-        var werewolfTeam = new Il2CppSystem.Collections.Generic.List<PlayerControl>();
-        werewolfTeam.Add(PlayerControl.LocalPlayer);
-        __instance.teamToShow = werewolfTeam;
-    }
-    public bool Rampaged => TimeRemaining > 0f;
-
-    public float RampageTimer()
-    {
-        var utcNow = DateTime.UtcNow;
-        var timeSpan = utcNow - LastRampaged;
-        var num = CustomGameOptions.RampageCd * 1000f;
-        var flag2 = num - (float)timeSpan.TotalMilliseconds < 0f;
-        if (flag2) return 0;
-        return (num - (float)timeSpan.TotalMilliseconds) / 1000f;
-    }
-
-    public void Rampage()
-    {
-        Enabled = true;
-        TimeRemaining -= Time.deltaTime;
-        if (Player.Data.IsDead)
+        public void Wins()
         {
-            TimeRemaining = 0f;
+            WerewolfWins = true;
+        }
+
+        protected override void IntroPrefix(IntroCutscene._ShowTeam_d__38 __instance)
+        {
+            var werewolfTeam = new Il2CppSystem.Collections.Generic.List<PlayerControl>();
+            werewolfTeam.Add(PlayerControl.LocalPlayer);
+            __instance.teamToShow = werewolfTeam;
+        }
+        public bool Rampaged => TimeRemaining > 0f;
+
+        public float RampageTimer()
+        {
+            var utcNow = DateTime.UtcNow;
+            var timeSpan = utcNow - LastRampaged;
+            var num = CustomGameOptions.RampageCd * 1000f;
+            var flag2 = num - (float) timeSpan.TotalMilliseconds < 0f;
+            if (flag2) return 0;
+            return (num - (float) timeSpan.TotalMilliseconds) / 1000f;
+        }
+
+        public void Rampage()
+        {
+            Enabled = true;
+            TimeRemaining -= Time.deltaTime;
+            if (Player.Data.IsDead)
+            {
+                TimeRemaining = 0f;
+            }
+        }
+
+        public void Unrampage()
+        {
+            Enabled = false;
+            LastRampaged = DateTime.UtcNow;
+        }
+
+        public float KillTimer()
+        {
+            var utcNow = DateTime.UtcNow;
+            var timeSpan = utcNow - LastKilled;
+            var num = CustomGameOptions.RampageKillCd * 1000f;
+            var flag2 = num - (float)timeSpan.TotalMilliseconds < 0f;
+            if (flag2) return 0;
+            return (num - (float)timeSpan.TotalMilliseconds) / 1000f;
         }
     }
-
-    public void Unrampage()
-    {
-        Enabled = false;
-        LastRampaged = DateTime.UtcNow;
-    }
-
-    public float KillTimer()
-    {
-        var utcNow = DateTime.UtcNow;
-        var timeSpan = utcNow - LastKilled;
-        var num = CustomGameOptions.RampageKillCd * 1000f;
-        var flag2 = num - (float)timeSpan.TotalMilliseconds < 0f;
-        if (flag2) return 0;
-        return (num - (float)timeSpan.TotalMilliseconds) / 1000f;
-    }
-}
 }

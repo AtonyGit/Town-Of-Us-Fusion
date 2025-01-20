@@ -1,45 +1,53 @@
 using HarmonyLib;
 using Reactor.Utilities;
-using TownOfUsFusion.Roles;
+using TownOfUs.Roles;
 using UnityEngine;
 using AmongUs.GameOptions;
-using TownOfUsFusion.Roles.Apocalypse;
 
-namespace TownOfUsFusion.CrewmateRoles.AltruistMod
+namespace TownOfUs.CrewmateRoles.AltruistMod
 {
     [HarmonyPatch(typeof(KillButton), nameof(KillButton.DoClick))]
-public class PerformKillButton
-{
-    public static bool Prefix(KillButton __instance)
+    public class PerformKillButton
     {
-        if (__instance != DestroyableSingleton<HudManager>.Instance.KillButton) return true;
-        var flag = PlayerControl.LocalPlayer.Is(RoleEnum.Altruist);
-        if (!flag) return true;
-        if (!PlayerControl.LocalPlayer.CanMove) return false;
-        if (PlayerControl.LocalPlayer.Data.IsDead) return false;
-        var role = Role.GetRole<Altruist>(PlayerControl.LocalPlayer);
-
-        var flag2 = __instance.isCoolingDown;
-        if (flag2) return false;
-        if (!__instance.enabled) return false;
-        var maxDistance = GameOptionsData.KillDistances[GameOptionsManager.Instance.currentNormalGameOptions.KillDistance];
-        if (role == null)
-            return false;
-        if (role.CurrentTarget == null)
-            return false;
-        if (Vector2.Distance(role.CurrentTarget.TruePosition,
-            PlayerControl.LocalPlayer.GetTruePosition()) > maxDistance) return false;
-        var playerId = role.CurrentTarget.ParentId;
-        var player = Utils.PlayerById(playerId);
-        if (player.IsInfected() || role.Player.IsInfected())
+        public static bool Prefix(KillButton __instance)
         {
-            foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(player, role.Player);
+            if (__instance != DestroyableSingleton<HudManager>.Instance.KillButton) return true;
+            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.Altruist);
+            if (!flag) return true;
+            if (!PlayerControl.LocalPlayer.CanMove) return false;
+            if (PlayerControl.LocalPlayer.Data.IsDead) return false;
+            var role = Role.GetRole<Altruist>(PlayerControl.LocalPlayer);
+
+            var flag2 = __instance.isCoolingDown;
+            if (flag2) return false;
+            if (!__instance.enabled) return false;
+            var maxDistance = GameOptionsData.KillDistances[GameOptionsManager.Instance.currentNormalGameOptions.KillDistance];
+            if (role == null)
+                return false;
+            if (role.CurrentTarget == null)
+                return false;
+            if (Vector2.Distance(role.CurrentTarget.TruePosition,
+                PlayerControl.LocalPlayer.GetTruePosition()) > maxDistance) return false;
+            var playerId = role.CurrentTarget.ParentId;
+            var player = Utils.PlayerById(playerId);
+<<<<<<< Updated upstream
+=======
+            var abilityUsed = Utils.AbilityUsed(PlayerControl.LocalPlayer);
+            if (!abilityUsed) return false;
+>>>>>>> Stashed changes
+            if (player.IsInfected() || role.Player.IsInfected())
+            {
+                foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(player, role.Player);
+            }
+
+<<<<<<< Updated upstream
+            Utils.Rpc(CustomRPC.AltruistRevive, PlayerControl.LocalPlayer.PlayerId, playerId);
+=======
+            Utils.Rpc(CustomRPC.AltruistRevive, PlayerControl.LocalPlayer.PlayerId, (byte)0, playerId);
+>>>>>>> Stashed changes
+
+            Coroutines.Start(Coroutine.AltruistRevive(role.CurrentTarget, role));
+            return false;
         }
-
-        Utils.Rpc(CustomRPC.AltruistRevive, PlayerControl.LocalPlayer.PlayerId, playerId);
-
-        Coroutines.Start(Coroutine.AltruistRevive(role.CurrentTarget, role));
-        return false;
     }
-}
 }

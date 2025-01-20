@@ -2,49 +2,47 @@ using HarmonyLib;
 using System.Linq;
 using UnityEngine;
 
-namespace TownOfUsFusion.NeutralRoles.PhantomMod
+namespace TownOfUs.NeutralRoles.PhantomMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
-public class RepickPhantom
-{
-    private static void Postfix(HudManager __instance)
+    public class RepickPhantom
     {
-        if (PlayerControl.AllPlayerControls.Count <= 1) return;
-        if (PlayerControl.LocalPlayer == null) return;
-        if (PlayerControl.LocalPlayer.Data == null) return;
-        if (PlayerControl.LocalPlayer != SetPhantom.WillBePhantom) return;
-        if (PlayerControl.LocalPlayer.Data.IsDead) return;
-        if (!PlayerControl.LocalPlayer.Is(Faction.NeutralKilling) && !PlayerControl.LocalPlayer.Is(Faction.NeutralChaos) && !PlayerControl.LocalPlayer.Is(Faction.NeutralEvil) && !PlayerControl.LocalPlayer.Is(Faction.NeutralBenign))
+        private static void Postfix(HudManager __instance)
         {
-            var toChooseFromAlive = PlayerControl.AllPlayerControls.ToArray().Where(x => (x.Is(Faction.NeutralKilling) || x.Is(Faction.NeutralChaos) || x.Is(Faction.NeutralEvil) || x.Is(Faction.NeutralBenign))
-            && !x.Is(AllianceEnum.Lover) && !x.Is(AllianceEnum.Crewpocalypse) && !x.Is(AllianceEnum.Crewpostor) && !x.Is(AllianceEnum.Recruit) && !x.Data.Disconnected).ToList();
-            if (toChooseFromAlive.Count == 0)
+            if (PlayerControl.AllPlayerControls.Count <= 1) return;
+            if (PlayerControl.LocalPlayer == null) return;
+            if (PlayerControl.LocalPlayer.Data == null) return;
+            if (PlayerControl.LocalPlayer != SetPhantom.WillBePhantom) return;
+            if (PlayerControl.LocalPlayer.Data.IsDead) return;
+            if (!PlayerControl.LocalPlayer.Is(Faction.NeutralKilling) && !PlayerControl.LocalPlayer.Is(Faction.NeutralEvil) && !PlayerControl.LocalPlayer.Is(Faction.NeutralBenign))
             {
-                SetPhantom.WillBePhantom = null;
+                var toChooseFromAlive = PlayerControl.AllPlayerControls.ToArray().Where(x => (x.Is(Faction.NeutralKilling) || x.Is(Faction.NeutralEvil) || x.Is(Faction.NeutralBenign)) && !x.Is(ModifierEnum.Lover) && !x.Data.Disconnected).ToList();
+                if (toChooseFromAlive.Count == 0)
+                {
+                    SetPhantom.WillBePhantom = null;
 
-                Utils.Rpc(CustomRPC.SetPhantom, byte.MaxValue);
+                    Utils.Rpc(CustomRPC.SetPhantom, byte.MaxValue);
+                }
+                else
+                {
+                    var rand2 = Random.RandomRangeInt(0, toChooseFromAlive.Count);
+                    var pc2 = toChooseFromAlive[rand2];
+
+                    SetPhantom.WillBePhantom = pc2;
+
+                    Utils.Rpc(CustomRPC.SetPhantom, pc2.PlayerId);
+                }
+                return;
             }
-            else
-            {
-                var rand2 = Random.RandomRangeInt(0, toChooseFromAlive.Count);
-                var pc2 = toChooseFromAlive[rand2];
+            var toChooseFrom = PlayerControl.AllPlayerControls.ToArray().Where(x => !x.Is(Faction.Crewmates) && !x.Is(Faction.Impostors) && !x.Is(ModifierEnum.Lover) && x.Data.IsDead && !x.Data.Disconnected).ToList();
+            if (toChooseFrom.Count == 0) return;
+            var rand = Random.RandomRangeInt(0, toChooseFrom.Count);
+            var pc = toChooseFrom[rand];
 
-                SetPhantom.WillBePhantom = pc2;
+            SetPhantom.WillBePhantom = pc;
 
-                Utils.Rpc(CustomRPC.SetPhantom, pc2.PlayerId);
-            }
+            Utils.Rpc(CustomRPC.SetPhantom, pc.PlayerId);
             return;
         }
-        var toChooseFrom = PlayerControl.AllPlayerControls.ToArray().Where(x => !x.Is(Faction.Crewmates) && !x.Is(Faction.Impostors)
-            && !x.Is(AllianceEnum.Lover) && !x.Is(AllianceEnum.Crewpocalypse) && !x.Is(AllianceEnum.Crewpostor) && !x.Is(AllianceEnum.Recruit) && x.Data.IsDead && !x.Data.Disconnected).ToList();
-        if (toChooseFrom.Count == 0) return;
-        var rand = Random.RandomRangeInt(0, toChooseFrom.Count);
-        var pc = toChooseFrom[rand];
-
-        SetPhantom.WillBePhantom = pc;
-
-        Utils.Rpc(CustomRPC.SetPhantom, pc.PlayerId);
-        return;
     }
-}
 }

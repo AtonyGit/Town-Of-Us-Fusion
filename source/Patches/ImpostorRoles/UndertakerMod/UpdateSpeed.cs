@@ -1,20 +1,20 @@
 using HarmonyLib;
-using TownOfUsFusion.Roles;
+using TownOfUs.Roles;
 
-namespace TownOfUsFusion.ImpostorRoles.UndertakerMod
+namespace TownOfUs.ImpostorRoles.UndertakerMod
 {
     [HarmonyPatch(typeof(PlayerPhysics), nameof(PlayerPhysics.FixedUpdate))]
-public static class PlayerPhysics_FixedUpdate
-{
-    public static void Postfix(PlayerPhysics __instance)
+    public static class PlayerPhysics_FixedUpdate
     {
-        if (__instance.myPlayer.Is(RoleEnum.Undertaker))
+        public static void Postfix(PlayerPhysics __instance)
         {
-            var role = Role.GetRole<Undertaker>(__instance.myPlayer);
-            if (role.CurrentlyDragging != null)
-                if (__instance.AmOwner && GameData.Instance && __instance.myPlayer.CanMove)
-                    __instance.body.velocity *= CustomGameOptions.UndertakerDragSpeed;
+            if (__instance.myPlayer.Is(RoleEnum.Undertaker))
+            {
+                var role = Role.GetRole<Undertaker>(__instance.myPlayer);
+                if (role.CurrentlyDragging != null)
+                    if (__instance.AmOwner && GameData.Instance && __instance.myPlayer.CanMove)
+                        __instance.body.velocity *= CustomGameOptions.UndertakerDragSpeed;
+            }
         }
     }
-}
 }

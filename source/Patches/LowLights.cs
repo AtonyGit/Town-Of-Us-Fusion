@@ -1,95 +1,94 @@
 using AmongUs.GameOptions;
 using HarmonyLib;
+<<<<<<< Updated upstream
+using TownOfUs.Extensions;
+using TownOfUs.Roles;
+=======
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;
-using TownOfUsFusion.Roles.Modifiers;
+>>>>>>> Stashed changes
 using UnityEngine;
 
-namespace TownOfUsFusion
+namespace TownOfUs
 {
     [HarmonyPatch(typeof(ShipStatus), nameof(ShipStatus.CalculateLightRadius))]
-public static class LowLights
-{
-    public static bool Prefix(ShipStatus __instance, [HarmonyArgument(0)] GameData.PlayerInfo player,
-        ref float __result)
+    public static class LowLights
     {
-        if (GameOptionsManager.Instance.CurrentGameOptions.GameMode == GameModes.HideNSeek)
+<<<<<<< Updated upstream
+        public static bool Prefix(ShipStatus __instance, [HarmonyArgument(0)] GameData.PlayerInfo player,
+=======
+        public static bool Prefix(ShipStatus __instance, [HarmonyArgument(0)] NetworkedPlayerInfo player,
+>>>>>>> Stashed changes
+            ref float __result)
         {
-            if (GameOptionsManager.Instance.currentHideNSeekGameOptions.useFlashlight)
+            if (GameOptionsManager.Instance.CurrentGameOptions.GameMode == GameModes.HideNSeek)
             {
-                if (player.IsImpostor()) __result = __instance.MaxLightRadius * GameOptionsManager.Instance.currentHideNSeekGameOptions.ImpostorFlashlightSize;
-                else __result = __instance.MaxLightRadius * GameOptionsManager.Instance.currentHideNSeekGameOptions.CrewmateFlashlightSize;
+                if (GameOptionsManager.Instance.currentHideNSeekGameOptions.useFlashlight)
+                {
+                    if (player.IsImpostor()) __result = __instance.MaxLightRadius * GameOptionsManager.Instance.currentHideNSeekGameOptions.ImpostorFlashlightSize;
+                    else __result = __instance.MaxLightRadius * GameOptionsManager.Instance.currentHideNSeekGameOptions.CrewmateFlashlightSize;
+                }
+                else
+                {
+                    if (player.IsImpostor()) __result = __instance.MaxLightRadius * GameOptionsManager.Instance.currentHideNSeekGameOptions.ImpostorLightMod;
+                    else __result = __instance.MaxLightRadius * GameOptionsManager.Instance.currentHideNSeekGameOptions.CrewLightMod;
+                }
+                return false;
             }
-            else
+
+            if (player == null || player.IsDead)
             {
-                if (player.IsImpostor()) __result = __instance.MaxLightRadius * GameOptionsManager.Instance.currentHideNSeekGameOptions.ImpostorLightMod;
-                else __result = __instance.MaxLightRadius * GameOptionsManager.Instance.currentHideNSeekGameOptions.CrewLightMod;
+                __result = __instance.MaxLightRadius;
+                return false;
             }
-            return false;
-        }
 
-        if (player == null || player.IsDead)
-        {
-            __result = __instance.MaxLightRadius;
-            return false;
-        }
-
-        var switchSystem = GameOptionsManager.Instance.currentNormalGameOptions.MapId == 5 ? null : __instance.Systems[SystemTypes.Electrical]?.TryCast<SwitchSystem>();
-        if (player.IsImpostor() || player._object.Is(RoleEnum.Glitch) ||
-            player._object.Is(RoleEnum.War) || player._object.Is(RoleEnum.Pestilence) ||
-            player._object.Is(RoleEnum.NeoNecromancer) ||
-            player._object.Is(RoleEnum.Death) || player._object.Is(RoleEnum.Famine) ||
-            (player._object.Is(RoleEnum.Jester) && CustomGameOptions.JesterImpVision) ||
-            (player._object.Is(RoleEnum.Arsonist) && CustomGameOptions.ArsoImpVision) ||
-            (player._object.Is(RoleEnum.Vampire) && CustomGameOptions.VampImpVision))
-        {
-            __result = __instance.MaxLightRadius * GameOptionsManager.Instance.currentNormalGameOptions.ImpostorLightMod;
-            return false;
-        }
-        else if (player._object.Is(RoleEnum.Werewolf))
-        {
-            var role = Role.GetRole<Werewolf>(player._object);
-            if (role.Rampaged)
+            var switchSystem = GameOptionsManager.Instance.currentNormalGameOptions.MapId == 5 ? null : __instance.Systems[SystemTypes.Electrical]?.TryCast<SwitchSystem>();
+            if (player.IsImpostor() || player._object.Is(RoleEnum.Glitch) ||
+                player._object.Is(RoleEnum.Juggernaut) || player._object.Is(RoleEnum.Pestilence) ||
+                (player._object.Is(RoleEnum.Jester) && CustomGameOptions.JesterImpVision) ||
+                (player._object.Is(RoleEnum.Arsonist) && CustomGameOptions.ArsoImpVision) ||
+                (player._object.Is(RoleEnum.Vampire) && CustomGameOptions.VampImpVision))
             {
                 __result = __instance.MaxLightRadius * GameOptionsManager.Instance.currentNormalGameOptions.ImpostorLightMod;
                 return false;
             }
-        }
-
-        if (Patches.SubmergedCompatibility.isSubmerged())
-        {
-            if (player._object.Is(ModifierEnum.Torch)) __result = Mathf.Lerp(__instance.MinLightRadius, __instance.MaxLightRadius, 1) * GameOptionsManager.Instance.currentNormalGameOptions.CrewLightMod;
-            if (player._object.Is(ModifierEnum.Eclipsed)) __result = Mathf.Lerp(__instance.MinLightRadius, __instance.MaxLightRadius, 1) * GameOptionsManager.Instance.currentNormalGameOptions.CrewLightMod * CustomGameOptions.EclipsedWithoutLights;
-            return false;
-        }
-
-        var t = switchSystem != null ? switchSystem.Value / 255f : 1;
-
-        if (player._object.Is(ModifierEnum.Torch)) t = 1;
-
-    //    if (player._object.Is(ModifierEnum.Eclipsed)) t = 1 / CustomGameOptions.EclipsedWithLights;
-
-        if (player._object.Is(RoleEnum.Mayor))
-        {
-            var role = Role.GetRole<Mayor>(player._object);
-            if (role.Revealed)
+            else if (player._object.Is(RoleEnum.Werewolf))
             {
-                __result = Mathf.Lerp(__instance.MinLightRadius, __instance.MaxLightRadius / 2, t) *
-                   GameOptionsManager.Instance.currentNormalGameOptions.CrewLightMod;
+                var role = Role.GetRole<Werewolf>(player._object);
+                if (role.Rampaged)
+                {
+                    __result = __instance.MaxLightRadius * GameOptionsManager.Instance.currentNormalGameOptions.ImpostorLightMod;
+                    return false;
+                }
+            }
+
+            if (Patches.SubmergedCompatibility.isSubmerged())
+            {
+                if (player._object.Is(ModifierEnum.Torch)) __result = Mathf.Lerp(__instance.MinLightRadius, __instance.MaxLightRadius, 1) * GameOptionsManager.Instance.currentNormalGameOptions.CrewLightMod;
                 return false;
             }
-        }
-        if (player._object.Is(ModifierEnum.Eclipsed))
-        {
-            // what the fuck dude
-                __result = Mathf.Lerp(2.5f * CustomGameOptions.EclipsedWithoutLights, 2.5f / CustomGameOptions.EclipsedWithLights, 1) *
-                   GameOptionsManager.Instance.currentNormalGameOptions.CrewLightMod;
-                return false;
-        }
 
-        __result = Mathf.Lerp(__instance.MinLightRadius, __instance.MaxLightRadius, t) *
-                   GameOptionsManager.Instance.currentNormalGameOptions.CrewLightMod;
-        return false;
+            var t = switchSystem != null ? switchSystem.Value / 255f : 1;
+
+            if (player._object.Is(ModifierEnum.Torch)) t = 1;
+
+<<<<<<< Updated upstream
+            if (player._object.Is(RoleEnum.Mayor))
+            {
+                var role = Role.GetRole<Mayor>(player._object);
+                if (role.Revealed)
+                {
+                    __result = Mathf.Lerp(__instance.MinLightRadius, __instance.MaxLightRadius/2, t) *
+                       GameOptionsManager.Instance.currentNormalGameOptions.CrewLightMod;
+                    return false;
+                }
+            }
+
+=======
+>>>>>>> Stashed changes
+            __result = Mathf.Lerp(__instance.MinLightRadius, __instance.MaxLightRadius, t) *
+                       GameOptionsManager.Instance.currentNormalGameOptions.CrewLightMod;
+            return false;
+        }
     }
-}
 }

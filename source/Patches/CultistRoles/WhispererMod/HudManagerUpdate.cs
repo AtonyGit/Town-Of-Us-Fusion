@@ -1,46 +1,46 @@
 using HarmonyLib;
-using TownOfUsFusion.Roles;
-using TownOfUsFusion.Roles.Cultist;
+using TownOfUs.Roles;
+using TownOfUs.Roles.Cultist;
 using UnityEngine;
 
-namespace TownOfUsFusion.CultistRoles.WhispererMod
+namespace TownOfUs.CultistRoles.WhispererMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
-public class HudManagerUpdate
-{
-    public static Sprite WhisperSprite => TownOfUsFusion.WhisperSprite;
-    public static void Postfix(HudManager __instance)
+    public class HudManagerUpdate
     {
-        if (PlayerControl.AllPlayerControls.Count <= 1) return;
-        if (PlayerControl.LocalPlayer == null) return;
-        if (PlayerControl.LocalPlayer.Data == null) return;
-        if (!PlayerControl.LocalPlayer.Is(RoleEnum.Whisperer)) return;
-        var role = Role.GetRole<Whisperer>(PlayerControl.LocalPlayer);
-        if (role.WhisperButton == null)
+        public static Sprite WhisperSprite => TownOfUs.WhisperSprite;
+        public static void Postfix(HudManager __instance)
         {
-            role.WhisperButton = Object.Instantiate(__instance.KillButton, __instance.KillButton.transform.parent);
-            role.WhisperButton.graphic.enabled = true;
-            role.WhisperButton.gameObject.SetActive(false);
+            if (PlayerControl.AllPlayerControls.Count <= 1) return;
+            if (PlayerControl.LocalPlayer == null) return;
+            if (PlayerControl.LocalPlayer.Data == null) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Whisperer)) return;
+            var role = Role.GetRole<Whisperer>(PlayerControl.LocalPlayer);
+            if (role.WhisperButton == null)
+            {
+                role.WhisperButton = Object.Instantiate(__instance.KillButton, __instance.KillButton.transform.parent);
+                role.WhisperButton.graphic.enabled = true;
+                role.WhisperButton.gameObject.SetActive(false);
+            }
+
+            role.WhisperButton.graphic.sprite = WhisperSprite;
+            role.WhisperButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+
+            role.WhisperButton.SetCoolDown(role.WhisperTimer(),
+                CustomGameOptions.WhisperCooldown + CustomGameOptions.IncreasedCooldownPerWhisper * role.WhisperCount);
+
+            var renderer = role.WhisperButton.graphic;
+            if (!role.WhisperButton.isCoolingDown && role.WhisperButton.gameObject.active)
+            {
+                renderer.color = Palette.EnabledColor;
+                renderer.material.SetFloat("_Desat", 0f);
+                return;
+            }
+
+            renderer.color = Palette.DisabledClear;
+            renderer.material.SetFloat("_Desat", 1f);
         }
-
-        role.WhisperButton.graphic.sprite = WhisperSprite;
-        role.WhisperButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-
-        role.WhisperButton.SetCoolDown(role.WhisperTimer(),
-            CustomGameOptions.WhisperCooldown + CustomGameOptions.IncreasedCooldownPerWhisper * role.WhisperCount);
-
-        var renderer = role.WhisperButton.graphic;
-        if (!role.WhisperButton.isCoolingDown && role.WhisperButton.gameObject.active)
-        {
-            renderer.color = Palette.EnabledColor;
-            renderer.material.SetFloat("_Desat", 0f);
-            return;
-        }
-
-        renderer.color = Palette.DisabledClear;
-        renderer.material.SetFloat("_Desat", 1f);
     }
-}
 }

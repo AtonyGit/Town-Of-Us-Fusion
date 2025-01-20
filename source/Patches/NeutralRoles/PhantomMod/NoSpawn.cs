@@ -1,24 +1,24 @@
 using HarmonyLib;
-using TownOfUsFusion.Roles;
+using TownOfUs.Roles;
 
-namespace TownOfUsFusion.NeutralRoles.PhantomMod
+namespace TownOfUs.NeutralRoles.PhantomMod
 {
     [HarmonyPatch(typeof(SpawnInMinigame), nameof(SpawnInMinigame.Begin))]
-public class NoSpawn
-{
-    public static bool Prefix(SpawnInMinigame __instance)
+    public class NoSpawn
     {
-        if (PlayerControl.LocalPlayer.Is(RoleEnum.Phantom))
+        public static bool Prefix(SpawnInMinigame __instance)
         {
-            var caught = Role.GetRole<Phantom>(PlayerControl.LocalPlayer).Caught;
-            if (!caught)
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Phantom))
             {
-                __instance.Close();
-                return false;
+                var caught = Role.GetRole<Phantom>(PlayerControl.LocalPlayer).Caught;
+                if (!caught)
+                {
+                    __instance.Close();
+                    return false;
+                }
             }
-        }
 
-        return true;
+            return true;
+        }
     }
-}
 }

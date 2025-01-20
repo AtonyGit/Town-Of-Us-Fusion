@@ -1,24 +1,24 @@
 using HarmonyLib;
-using TownOfUsFusion.Extensions;
+using TownOfUs.Extensions;
 using UnityEngine;
 
-namespace TownOfUsFusion.Patches
+namespace TownOfUs.Patches
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
-public class ShowRoundOneShield
-{
-    public static Color ShieldColor = Color.green;
-    public static string DiedFirst = "";
-    public static PlayerControl FirstRoundShielded = null;
-
-    public static void Postfix(HudManager __instance)
+    public class ShowRoundOneShield
     {
-        if (FirstRoundShielded != null && !FirstRoundShielded.Data.Disconnected)
+        public static Color ShieldColor = Color.green;
+        public static string DiedFirst = "";
+        public static PlayerControl FirstRoundShielded = null;
+
+        public static void Postfix(HudManager __instance)
         {
-            FirstRoundShielded.myRend().material.SetColor("_VisorColor", ShieldColor);
-            FirstRoundShielded.myRend().material.SetFloat("_Outline", 1f);
-            FirstRoundShielded.myRend().material.SetColor("_OutlineColor", ShieldColor);
+            if (FirstRoundShielded != null && !FirstRoundShielded.Data.Disconnected)
+            {
+                FirstRoundShielded.myRend().material.SetColor("_VisorColor", ShieldColor);
+                FirstRoundShielded.myRend().material.SetFloat("_Outline", 1f);
+                FirstRoundShielded.myRend().material.SetColor("_OutlineColor", ShieldColor);
+            }
         }
     }
-}
 }

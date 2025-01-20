@@ -1,9 +1,9 @@
 using System.Linq;
 using HarmonyLib;
-using TownOfUsFusion.CrewmateRoles.MedicMod;
+using TownOfUs.CrewmateRoles.MedicMod;
 using UnityEngine;
 
-namespace TownOfUsFusion.CrewmateRoles.HunterMod
+namespace TownOfUs.CrewmateRoles.HunterMod
 {
     [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.FixedUpdate))]
     public class CantReport

@@ -1,12 +1,12 @@
 using HarmonyLib;
-using TownOfUsFusion.Roles;
+using TownOfUs.Roles;
 using UnityEngine;
 using System.Linq;
 using System.Collections;
 using Reactor.Utilities;
 using AmongUs.QuickChat;
 
-namespace TownOfUsFusion.ImpostorRoles.BlackmailerMod
+namespace TownOfUs.ImpostorRoles.BlackmailerMod
 {
     public class BlackmailMeetingUpdate
     {
@@ -20,7 +20,7 @@ namespace TownOfUsFusion.ImpostorRoles.BlackmailerMod
         [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.Start))]
         public class MeetingHudStart
         {
-            public static Sprite Letter => TownOfUsFusion.BlackmailLetterSprite;
+            public static Sprite Letter => TownOfUs.BlackmailLetterSprite;
 
             public static void Postfix(MeetingHud __instance)
             {
@@ -72,7 +72,7 @@ namespace TownOfUsFusion.ImpostorRoles.BlackmailerMod
         [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.Update))]
         public class MeetingHud_Update
         {
-            public static Sprite Overlay => TownOfUsFusion.BlackmailOverlaySprite;
+            public static Sprite Overlay => TownOfUs.BlackmailOverlaySprite;
 
             public static void Postfix(MeetingHud __instance)
             {
@@ -89,19 +89,17 @@ namespace TownOfUsFusion.ImpostorRoles.BlackmailerMod
                         if (__instance.state != MeetingHud.VoteStates.Animating && shookAlready == false)
                         {
                             shookAlready = true;
-                            __instance.StartCoroutine(Effects.SwayX(playerState.transform));
+                            (__instance as MonoBehaviour).StartCoroutine(Effects.SwayX(playerState.transform));
                         }
                     }
                 }
             }
         }
 
-        [HarmonyPatch]
+        [HarmonyPatch(typeof(TextBoxTMP), nameof(TextBoxTMP.SetText))]
         public class StopChatting
         {
-            [HarmonyPatch(typeof(TextBoxTMP), nameof(TextBoxTMP.SetText))]
-
-            public static bool Prefix()
+            public static bool Prefix(TextBoxTMP __instance)
             {
                 var blackmailers = Role.AllRoles.Where(x => x.RoleType == RoleEnum.Blackmailer && x.Player != null).Cast<Blackmailer>();
                 foreach (var role in blackmailers)
@@ -113,17 +111,18 @@ namespace TownOfUsFusion.ImpostorRoles.BlackmailerMod
                 }
                 return true;
             }
+        }
 
-            [HarmonyPatch(typeof(QuickChatMenu), nameof(QuickChatMenu.CanSend), MethodType.Getter)]
-            
-            public static bool Prefix(ref bool __result)
+        [HarmonyPatch(typeof(QuickChatMenu), nameof(QuickChatMenu.Open))]
+        public class DisableQuickChat
+        {
+            public static bool Prefix(QuickChatMenu __instance)
             {
                 var blackmailers = Role.AllRoles.Where(x => x.RoleType == RoleEnum.Blackmailer && x.Player != null).Cast<Blackmailer>();
                 foreach (var role in blackmailers)
                 {
                     if (MeetingHud.Instance && role.Blackmailed != null && !role.Blackmailed.Data.IsDead && role.Blackmailed.PlayerId == PlayerControl.LocalPlayer.PlayerId)
                     {
-                        __result = false;
                         return false;
                     }
                 }

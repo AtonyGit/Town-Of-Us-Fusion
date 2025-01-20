@@ -2,36 +2,40 @@ using HarmonyLib;
 using System.Linq;
 using UnityEngine;
 
-namespace TownOfUsFusion.ImpostorRoles.TraitorMod
+namespace TownOfUs.ImpostorRoles.TraitorMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
-public class RepickTraitor
-{
-    private static void Postfix(HudManager __instance)
+    public class RepickTraitor
     {
-        if (PlayerControl.AllPlayerControls.Count <= 1) return;
-        if (PlayerControl.LocalPlayer == null) return;
-        if (PlayerControl.LocalPlayer.Data == null) return;
-        if (PlayerControl.LocalPlayer != SetTraitor.WillBeTraitor) return;
-        if (PlayerControl.LocalPlayer.Is(Faction.Impostors)) return;
-        if (!PlayerControl.LocalPlayer.Data.IsDead && !PlayerControl.LocalPlayer.Is(RoleEnum.Vampire)) return;
-        var toChooseFrom = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) && !x.Is(RoleEnum.Mayor) &&
-            !x.Is(AllianceEnum.Lover) && !x.Is(AllianceEnum.Crewpocalypse) && !x.Is(AllianceEnum.Crewpostor) && !x.Is(AllianceEnum.Recruit) && !x.Data.IsDead && !x.Data.Disconnected && !x.IsExeTarget()).ToList();
-        if (toChooseFrom.Count == 0)
+        private static void Postfix(HudManager __instance)
         {
-            SetTraitor.WillBeTraitor = null;
-            Utils.Rpc(CustomRPC.SetTraitor, byte.MaxValue);
-        }
-        else
-        {
-            var rand = Random.RandomRangeInt(0, toChooseFrom.Count);
-            var pc = toChooseFrom[rand];
+            if (PlayerControl.AllPlayerControls.Count <= 1) return;
+            if (PlayerControl.LocalPlayer == null) return;
+            if (PlayerControl.LocalPlayer.Data == null) return;
+            if (PlayerControl.LocalPlayer != SetTraitor.WillBeTraitor) return;
+            if (PlayerControl.LocalPlayer.Is(Faction.Impostors)) return;
+            if (!PlayerControl.LocalPlayer.Data.IsDead && !PlayerControl.LocalPlayer.Is(RoleEnum.Vampire)) return;
+<<<<<<< Updated upstream
+            var toChooseFrom = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) && !x.Is(RoleEnum.Mayor) &&
+=======
+            var toChooseFrom = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) && !x.Is(RoleEnum.Mayor) && !x.Is(RoleEnum.Politician) &&
+>>>>>>> Stashed changes
+                !x.Is(ModifierEnum.Lover) && !x.Data.IsDead && !x.Data.Disconnected && !x.IsExeTarget()).ToList();
+            if (toChooseFrom.Count == 0)
+            {
+                SetTraitor.WillBeTraitor = null;
+                Utils.Rpc(CustomRPC.SetTraitor, byte.MaxValue);
+            }
+            else
+            {
+                var rand = Random.RandomRangeInt(0, toChooseFrom.Count);
+                var pc = toChooseFrom[rand];
 
-            SetTraitor.WillBeTraitor = pc;
+                SetTraitor.WillBeTraitor = pc;
 
-            Utils.Rpc(CustomRPC.SetTraitor, pc.PlayerId);
+                Utils.Rpc(CustomRPC.SetTraitor, pc.PlayerId);
+            }
+            return;
         }
-        return;
     }
-}
 }

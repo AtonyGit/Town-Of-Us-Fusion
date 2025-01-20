@@ -1,105 +1,113 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using TownOfUsFusion.CrewmateRoles.MedicMod;
-using TownOfUsFusion.Extensions;
-using TownOfUsFusion.Patches;
+using TownOfUs.CrewmateRoles.MedicMod;
+using TownOfUs.Extensions;
+using TownOfUs.Patches;
 
-namespace TownOfUsFusion.Roles
+namespace TownOfUs.Roles
 {
     public class Arsonist : Role
-{
-    private KillButton _igniteButton;
-    public bool ArsonistWins;
-    public PlayerControl ClosestPlayerDouse;
-    public PlayerControl ClosestPlayerIgnite;
-    public List<byte> DousedPlayers = new List<byte>();
-    public DateTime LastDoused;
-    public bool LastKiller = false;
-
-    public int DousedAlive => DousedPlayers.Count(x => Utils.PlayerById(x) != null && Utils.PlayerById(x).Data != null && !Utils.PlayerById(x).Data.IsDead && !Utils.PlayerById(x).Data.Disconnected);
-
-
-    public Arsonist(PlayerControl player) : base(player)
     {
-        Name = "Arsonist";
-        ImpostorText = () => "Douse Players And Ignite The Light";
-        TaskText = () => "Douse players and ignite to kill all douses\nFake Tasks:";
-        Color = Patches.Colors.Arsonist;
-        LastDoused = DateTime.UtcNow;
-        RoleType = RoleEnum.Arsonist;
-        AddToRoleHistory(RoleType);
-        Faction = Faction.NeutralKilling;
-    }
+        private KillButton _igniteButton;
+        public bool ArsonistWins;
+        public PlayerControl ClosestPlayerDouse;
+        public PlayerControl ClosestPlayerIgnite;
+        public List<byte> DousedPlayers = new List<byte>();
+        public DateTime LastDoused;
+        public bool LastKiller = false;
 
-    public KillButton IgniteButton
-    {
-        get => _igniteButton;
-        set
+        public int DousedAlive => DousedPlayers.Count(x => Utils.PlayerById(x) != null && Utils.PlayerById(x).Data != null && !Utils.PlayerById(x).Data.IsDead && !Utils.PlayerById(x).Data.Disconnected);
+
+
+        public Arsonist(PlayerControl player) : base(player)
         {
-            _igniteButton = value;
-            ExtraButtons.Clear();
-            ExtraButtons.Add(value);
+            Name = "Arsonist";
+            ImpostorText = () => "Douse Players And Ignite The Light";
+            TaskText = () => "Douse players and ignite to kill all douses\nFake Tasks:";
+            Color = Patches.Colors.Arsonist;
+            LastDoused = DateTime.UtcNow;
+            RoleType = RoleEnum.Arsonist;
+            AddToRoleHistory(RoleType);
+            Faction = Faction.NeutralKilling;
         }
-    }
 
-    internal override bool NeutralWin(LogicGameFlowNormal __instance)
-    {
-        if (Player.Data.IsDead || Player.Data.Disconnected) return true;
-
-        if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected) <= 2 &&
-                PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
-                (x.Data.IsImpostor() || x.Is(Faction.NeutralNeophyte) || x.Is(Faction.NeutralNecro) || x.Is(Faction.NeutralKilling)|| x.Is(Faction.NeutralApocalypse))) == 1)
+        public KillButton IgniteButton
         {
-            Utils.Rpc(CustomRPC.ArsonistWin, Player.PlayerId);
-            Wins();
-            Utils.EndGame();
+            get => _igniteButton;
+            set
+            {
+                _igniteButton = value;
+                ExtraButtons.Clear();
+                ExtraButtons.Add(value);
+            }
+        }
+
+<<<<<<< Updated upstream
+        internal override bool NeutralWin(LogicGameFlowNormal __instance)
+=======
+        internal override bool GameEnd(LogicGameFlowNormal __instance)
+>>>>>>> Stashed changes
+        {
+            if (Player.Data.IsDead || Player.Data.Disconnected) return true;
+
+            if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected) <= 2 &&
+                    PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
+<<<<<<< Updated upstream
+                    (x.Data.IsImpostor() || x.Is(Faction.NeutralKilling))) == 1)
+=======
+                    (x.Data.IsImpostor() || x.Is(Faction.NeutralKilling) || x.IsCrewKiller())) == 1)
+>>>>>>> Stashed changes
+            {
+                Utils.Rpc(CustomRPC.ArsonistWin, Player.PlayerId);
+                Wins();
+                Utils.EndGame();
+                return false;
+            }
+
             return false;
         }
 
-        return false;
-    }
 
-
-    public void Wins()
-    {
-        ArsonistWins = true;
-    }
-
-    protected override void IntroPrefix(IntroCutscene._ShowTeam_d__38 __instance)
-    {
-        var arsonistTeam = new Il2CppSystem.Collections.Generic.List<PlayerControl>();
-        arsonistTeam.Add(PlayerControl.LocalPlayer);
-        __instance.teamToShow = arsonistTeam;
-    }
-
-    public float DouseTimer()
-    {
-        var utcNow = DateTime.UtcNow;
-        var timeSpan = utcNow - LastDoused;
-        var num = CustomGameOptions.DouseCd * 1000f;
-        var flag2 = num - (float)timeSpan.TotalMilliseconds < 0f;
-        if (flag2) return 0;
-        return (num - (float)timeSpan.TotalMilliseconds) / 1000f;
-    }
-
-    public void Ignite()
-    {
-        foreach (var playerId in DousedPlayers)
+        public void Wins()
         {
-            var player = Utils.PlayerById(playerId);
-            if (!player.Is(RoleEnum.Pestilence) && !player.IsShielded() && !player.IsProtected() && player != ShowRoundOneShield.FirstRoundShielded)
-            {
-                Utils.RpcMultiMurderPlayer(Player, player);
-            }
-            else if (player.IsShielded())
-            {
-                var medic = player.GetMedic().Player.PlayerId;
-                Utils.Rpc(CustomRPC.AttemptSound, medic, player.PlayerId);
-                StopKill.BreakShield(medic, player.PlayerId, CustomGameOptions.ShieldBreaks);
-            }
+            ArsonistWins = true;
         }
-        DousedPlayers.Clear();
+
+        protected override void IntroPrefix(IntroCutscene._ShowTeam_d__38 __instance)
+        {
+            var arsonistTeam = new Il2CppSystem.Collections.Generic.List<PlayerControl>();
+            arsonistTeam.Add(PlayerControl.LocalPlayer);
+            __instance.teamToShow = arsonistTeam;
+        }
+
+        public float DouseTimer()
+        {
+            var utcNow = DateTime.UtcNow;
+            var timeSpan = utcNow - LastDoused;
+            var num = CustomGameOptions.DouseCd * 1000f;
+            var flag2 = num - (float) timeSpan.TotalMilliseconds < 0f;
+            if (flag2) return 0;
+            return (num - (float) timeSpan.TotalMilliseconds) / 1000f;
+        }
+
+        public void Ignite()
+        {
+            foreach (var playerId in DousedPlayers)
+            {
+                var player = Utils.PlayerById(playerId);
+                if (!player.Is(RoleEnum.Pestilence) && !player.IsShielded() && !player.IsProtected() && player != ShowRoundOneShield.FirstRoundShielded)
+                {
+                    Utils.RpcMultiMurderPlayer(Player, player);
+                }
+                else if (player.IsShielded())
+                {
+                    var medic = player.GetMedic().Player.PlayerId;
+                    Utils.Rpc(CustomRPC.AttemptSound, medic, player.PlayerId);
+                    StopKill.BreakShield(medic, player.PlayerId, CustomGameOptions.ShieldBreaks);
+                }
+            }
+            DousedPlayers.Clear();
+        }
     }
-}
 }

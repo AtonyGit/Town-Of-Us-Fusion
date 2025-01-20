@@ -1,20 +1,20 @@
 using HarmonyLib;
-using TownOfUsFusion.Roles;
+using TownOfUs.Roles;
 
-namespace TownOfUsFusion.ImpostorRoles.MorphlingMod
+namespace TownOfUs.ImpostorRoles.MorphlingMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
-public class MorphUnmorph
-{
-    public static void Postfix(HudManager __instance)
+    public class MorphUnmorph
     {
-        foreach (var role in Role.GetRoles(RoleEnum.Morphling))
+        public static void Postfix(HudManager __instance)
         {
-            var morphling = (Morphling)role;
-            if (morphling.Morphed)
-                morphling.Morph();
-            else if (morphling.MorphedPlayer) morphling.Unmorph();
+            foreach (var role in Role.GetRoles(RoleEnum.Morphling))
+            {
+                var morphling = (Morphling) role;
+                if (morphling.Morphed)
+                    morphling.Morph();
+                else if (morphling.MorphedPlayer) morphling.Unmorph();
+            }
         }
     }
-}
 }

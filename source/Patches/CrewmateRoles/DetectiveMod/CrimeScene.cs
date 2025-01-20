@@ -1,12 +1,8 @@
 ﻿using AmongUs.GameOptions;
 using HarmonyLib;
-using Il2CppInterop.Runtime.Injection;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using TownOfUsFusion.Patches;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace TownOfUsFusion.CrewmateRoles.DetectiveMod
 {
@@ -14,7 +10,6 @@ namespace TownOfUsFusion.CrewmateRoles.DetectiveMod
     {
         public List<byte> ScenePlayers = new List<byte>();
         public PlayerControl DeadPlayer = null;
-        public CrimeScene(IntPtr ptr) : base(ptr) { }
 
         void FixedUpdate()
         {

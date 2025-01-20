@@ -1,35 +1,88 @@
 using HarmonyLib;
+<<<<<<< Updated upstream
+using TownOfUs.Extensions;
+using TownOfUs.Roles;
+=======
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Modifiers;
+>>>>>>> Stashed changes
 using UnityEngine;
 
-namespace TownOfUsFusion.CrewmateRoles.SeerMod
+namespace TownOfUs.CrewmateRoles.SeerMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
-public class Update
-{
-    private static void UpdateMeeting(MeetingHud __instance, Seer seer)
+    public class Update
     {
-        foreach (var player in PlayerControl.AllPlayerControls)
+        private static void UpdateMeeting(MeetingHud __instance, Seer seer)
         {
-            if (!seer.Investigated.Contains(player.PlayerId)) continue;
-            foreach (var state in __instance.playerStates)
+            foreach (var player in PlayerControl.AllPlayerControls)
             {
-                if (player.PlayerId != state.TargetPlayerId) continue;
+                if (!seer.Investigated.Contains(player.PlayerId)) continue;
+                foreach (var state in __instance.playerStates)
+<<<<<<< Updated upstream
+                {
+                    if (player.PlayerId != state.TargetPlayerId) continue;
+                    var roleType = Utils.GetRole(player);
+                    switch (roleType)
+                    {
+                        default:
+                            if ((player.Is(Faction.Crewmates) && !(player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.Hunter) || player.Is(RoleEnum.VampireHunter))) ||
+                            ((player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.Hunter) || player.Is(RoleEnum.VampireHunter)) && !CustomGameOptions.CrewKillingRed) ||
+                            (player.Is(Faction.NeutralBenign) && !CustomGameOptions.NeutBenignRed) ||
+                            (player.Is(Faction.NeutralEvil) && !CustomGameOptions.NeutEvilRed) ||
+                            (player.Is(Faction.NeutralKilling) && !CustomGameOptions.NeutKillingRed))
+                            {
+                                state.NameText.color = Color.green;
+                            }
+                            else if (player.Is(RoleEnum.Traitor) && CustomGameOptions.TraitorColourSwap)
+                            {
+                                foreach (var role in Role.GetRoles(RoleEnum.Traitor))
+                                {
+                                    var traitor = (Traitor)role;
+                                    if ((traitor.formerRole == RoleEnum.Sheriff || traitor.formerRole == RoleEnum.Vigilante ||
+                                        traitor.formerRole == RoleEnum.Veteran || traitor.formerRole == RoleEnum.VampireHunter)
+                                    && CustomGameOptions.CrewKillingRed) state.NameText.color = Color.red;
+                                    else state.NameText.color = Color.green;
+                                }
+                            }
+                            else
+                            {
+                                state.NameText.color = Color.red;
+                            }
+                            break;
+                    }
+                }
+            }
+        }
+
+        [HarmonyPriority(Priority.Last)]
+        private static void Postfix(HudManager __instance)
+
+        {
+            if (PlayerControl.AllPlayerControls.Count <= 1) return;
+            if (PlayerControl.LocalPlayer == null) return;
+            if (PlayerControl.LocalPlayer.Data == null) return;
+            if (PlayerControl.LocalPlayer.Data.IsDead) return;
+
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Seer)) return;
+            var seer = Role.GetRole<Seer>(PlayerControl.LocalPlayer);
+            if (MeetingHud.Instance != null) UpdateMeeting(MeetingHud.Instance, seer);
+
+            foreach (var player in PlayerControl.AllPlayerControls)
+            {
+                if (!seer.Investigated.Contains(player.PlayerId)) continue;
                 var roleType = Utils.GetRole(player);
                 switch (roleType)
                 {
                     default:
-                        if ((player.Is(Faction.Crewmates) && !(player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.VampireHunter) || player.Is(RoleEnum.Hunter))) ||
-                        ((player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.VampireHunter) || player.Is(RoleEnum.Hunter)) && !CustomGameOptions.CrewKillingRed) ||
-                        (player.Is(Faction.NeutralBenign) && !CustomGameOptions.NeutBenignRed) ||
-                        (player.Is(Faction.NeutralEvil) && !CustomGameOptions.NeutEvilRed) ||
-                        (player.Is(Faction.NeutralChaos) && !CustomGameOptions.NeutChaosRed) ||
-                        ((player.Is(Faction.NeutralNeophyte) || player.Is(Faction.NeutralNecro)) && !CustomGameOptions.NeutNeophyteRed) ||
-                        (player.Is(Faction.NeutralApocalypse) && !CustomGameOptions.NeutApocalypseRed) ||
-                        (player.Is(Faction.NeutralKilling) && !CustomGameOptions.NeutKillingRed))
+                        if ((player.Is(Faction.Crewmates) && !(player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.Hunter) || player.Is(RoleEnum.VampireHunter))) ||
+                            ((player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.Hunter) || player.Is(RoleEnum.VampireHunter)) && !CustomGameOptions.CrewKillingRed) ||
+                            (player.Is(Faction.NeutralBenign) && !CustomGameOptions.NeutBenignRed) ||
+                            (player.Is(Faction.NeutralEvil) && !CustomGameOptions.NeutEvilRed) ||
+                            (player.Is(Faction.NeutralKilling) && !CustomGameOptions.NeutKillingRed))
                         {
-                            state.NameText.color = Color.green;
+                            player.nameText().color = Color.green;
                         }
                         else if (player.Is(RoleEnum.Traitor) && CustomGameOptions.TraitorColourSwap)
                         {
@@ -37,71 +90,103 @@ public class Update
                             {
                                 var traitor = (Traitor)role;
                                 if ((traitor.formerRole == RoleEnum.Sheriff || traitor.formerRole == RoleEnum.Vigilante ||
-                                    traitor.formerRole == RoleEnum.Veteran ||
-                                    traitor.formerRole == RoleEnum.Hunter || traitor.formerRole == RoleEnum.VampireHunter)
-                                && CustomGameOptions.CrewKillingRed) state.NameText.color = Color.red;
-                                else state.NameText.color = Color.green;
+                                    traitor.formerRole == RoleEnum.Veteran || traitor.formerRole == RoleEnum.VampireHunter || traitor.formerRole == RoleEnum.Hunter)
+                                    && CustomGameOptions.CrewKillingRed) player.nameText().color = Color.red;
+                                else player.nameText().color = Color.green;
                             }
                         }
                         else
                         {
-                            state.NameText.color = Color.red;
+                            player.nameText().color = Color.red;
                         }
                         break;
+=======
+                {
+                    if (player.PlayerId != state.TargetPlayerId) continue;
+                    var roleType = Utils.GetRole(player);
+                    switch (roleType)
+                    {
+                        default:
+                            if ((player.Is(Faction.Crewmates) && !(player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.Hunter) || player.Is(RoleEnum.Jailor))) ||
+                            ((player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.Hunter) || player.Is(RoleEnum.Jailor)) && !CustomGameOptions.CrewKillingRed) ||
+                            (player.Is(Faction.NeutralBenign) && !CustomGameOptions.NeutBenignRed) ||
+                            (player.Is(Faction.NeutralEvil) && !CustomGameOptions.NeutEvilRed) ||
+                            (player.Is(Faction.NeutralKilling) && !CustomGameOptions.NeutKillingRed))
+                            {
+                                state.NameText.color = Color.green;
+                            }
+                            else if (player.Is(RoleEnum.Traitor) && CustomGameOptions.TraitorColourSwap)
+                            {
+                                foreach (var role in Role.GetRoles(RoleEnum.Traitor))
+                                {
+                                    var traitor = (Traitor)role;
+                                    if ((traitor.formerRole == RoleEnum.Sheriff || traitor.formerRole == RoleEnum.Vigilante ||
+                                        traitor.formerRole == RoleEnum.Veteran || traitor.formerRole == RoleEnum.Hunter ||
+                                        traitor.formerRole == RoleEnum.Jailor) && CustomGameOptions.CrewKillingRed) state.NameText.color = Color.red;
+                                    else state.NameText.color = Color.green;
+                                }
+                            }
+                            else
+                            {
+                                state.NameText.color = Color.red;
+                            }
+                            break;
+                    }
+                }
+            }
+        }
+
+        [HarmonyPriority(Priority.Last)]
+        private static void Postfix(HudManager __instance)
+
+        {
+            if (PlayerControl.AllPlayerControls.Count <= 1) return;
+            if (PlayerControl.LocalPlayer == null) return;
+            if (PlayerControl.LocalPlayer.Data == null) return;
+            if (PlayerControl.LocalPlayer.Data.IsDead) return;
+
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Seer)) return;
+            var seer = Role.GetRole<Seer>(PlayerControl.LocalPlayer);
+            if (MeetingHud.Instance != null) UpdateMeeting(MeetingHud.Instance, seer);
+
+            if (!PlayerControl.LocalPlayer.IsHypnotised())
+            {
+                foreach (var player in PlayerControl.AllPlayerControls)
+                {
+                    if (!seer.Investigated.Contains(player.PlayerId)) continue;
+                    var roleType = Utils.GetRole(player);
+                    switch (roleType)
+                    {
+                        default:
+                            var colour = Color.red;
+                            if ((player.Is(Faction.Crewmates) && !(player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.Hunter) || player.Is(RoleEnum.Jailor))) ||
+                                ((player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.Hunter) || player.Is(RoleEnum.Jailor)) && !CustomGameOptions.CrewKillingRed) ||
+                                (player.Is(Faction.NeutralBenign) && !CustomGameOptions.NeutBenignRed) ||
+                                (player.Is(Faction.NeutralEvil) && !CustomGameOptions.NeutEvilRed) ||
+                                (player.Is(Faction.NeutralKilling) && !CustomGameOptions.NeutKillingRed))
+                            {
+                                colour = Color.green;
+                            }
+                            else if (player.Is(RoleEnum.Traitor) && CustomGameOptions.TraitorColourSwap)
+                            {
+                                foreach (var role in Role.GetRoles(RoleEnum.Traitor))
+                                {
+                                    var traitor = (Traitor)role;
+                                    if ((traitor.formerRole == RoleEnum.Sheriff || traitor.formerRole == RoleEnum.Vigilante ||
+                                        traitor.formerRole == RoleEnum.Veteran || traitor.formerRole == RoleEnum.Hunter ||
+                                        traitor.formerRole == RoleEnum.Jailor) && CustomGameOptions.CrewKillingRed) colour = Color.red;
+                                    else colour = Color.green;
+                                }
+                            }
+
+                            if (player.Is(ModifierEnum.Shy)) colour.a = Modifier.GetModifier<Shy>(player).Opacity;
+                            player.nameText().color = colour;
+
+                            break;
+                    }
+>>>>>>> Stashed changes
                 }
             }
         }
     }
-
-    [HarmonyPriority(Priority.Last)]
-    private static void Postfix(HudManager __instance)
-
-    {
-        if (PlayerControl.AllPlayerControls.Count <= 1) return;
-        if (PlayerControl.LocalPlayer == null) return;
-        if (PlayerControl.LocalPlayer.Data == null) return;
-        if (PlayerControl.LocalPlayer.Data.IsDead) return;
-
-        if (!PlayerControl.LocalPlayer.Is(RoleEnum.Seer)) return;
-        var seer = Role.GetRole<Seer>(PlayerControl.LocalPlayer);
-        if (MeetingHud.Instance != null) UpdateMeeting(MeetingHud.Instance, seer);
-
-        foreach (var player in PlayerControl.AllPlayerControls)
-        {
-            if (!seer.Investigated.Contains(player.PlayerId)) continue;
-            var roleType = Utils.GetRole(player);
-            switch (roleType)
-            {
-                default:
-                    if ((player.Is(Faction.Crewmates) && !(player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.VampireHunter) || player.Is(RoleEnum.Hunter))) ||
-                        ((player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.VampireHunter) || player.Is(RoleEnum.Hunter)) && !CustomGameOptions.CrewKillingRed) ||
-                        (player.Is(Faction.NeutralBenign) && !CustomGameOptions.NeutBenignRed) ||
-                        (player.Is(Faction.NeutralEvil) && !CustomGameOptions.NeutEvilRed) ||
-                        (player.Is(Faction.NeutralChaos) && !CustomGameOptions.NeutChaosRed) ||
-                        ((player.Is(Faction.NeutralNeophyte) || player.Is(Faction.NeutralNecro)) && !CustomGameOptions.NeutNeophyteRed) ||
-                        (player.Is(Faction.NeutralApocalypse) && !CustomGameOptions.NeutApocalypseRed) ||
-                        (player.Is(Faction.NeutralKilling) && !CustomGameOptions.NeutKillingRed))
-                    {
-                        player.nameText().color = Color.green;
-                    }
-                    else if (player.Is(RoleEnum.Traitor) && CustomGameOptions.TraitorColourSwap)
-                    {
-                        foreach (var role in Role.GetRoles(RoleEnum.Traitor))
-                        {
-                            var traitor = (Traitor)role;
-                            if ((traitor.formerRole == RoleEnum.Sheriff || traitor.formerRole == RoleEnum.Vigilante ||
-                                    traitor.formerRole == RoleEnum.Hunter || traitor.formerRole == RoleEnum.VampireHunter)
-                                && CustomGameOptions.CrewKillingRed) player.nameText().color = Color.red;
-                            else player.nameText().color = Color.green;
-                        }
-                    }
-                    else
-                    {
-                        player.nameText().color = Color.red;
-                    }
-                    break;
-            }
-        }
-    }
-}
 }

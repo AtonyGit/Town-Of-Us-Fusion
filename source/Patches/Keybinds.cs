@@ -2,121 +2,125 @@
 using Rewired;
 using Rewired.Data;
 using System.Linq;
-using TownOfUsFusion.Roles;
-using TownOfUsFusion.Roles.Modifiers;
-using Ability = TownOfUsFusion.Roles.Modifiers.Ability;
+using TownOfUs.Roles;
+using TownOfUs.Roles.Modifiers;
+using Ability = TownOfUs.Roles.Modifiers.Ability;
 
-namespace TownOfUsFusion
+namespace TownOfUs
 {
     //thanks to TheOtherRolesAU/TheOtherRoles/pull/347 by dadoum for the patch and extension
     [HarmonyPatch(typeof(InputManager_Base), nameof(InputManager_Base.Awake))]
-public static class Keybinds
-{
-    [HarmonyPrefix]
-    private static void Prefix(InputManager_Base __instance)
+    public static class Keybinds
     {
-        //change the text shown on the screen for the kill keybind
-        __instance.userData.GetAction("ActionSecondary").descriptiveName = "Kill / Crew & neutral benign abilities / infect & douse";
-        __instance.userData.RegisterBind("ToU imp/nk", "Impostor abilities / ignite");
-        __instance.userData.RegisterBind("ToU bb/disperse/mimic", "Button barry / disperse / glitch mimic");
-        __instance.userData.RegisterBind("ToU hack", "Glitch's hack");
-        __instance.userData.RegisterBind("ToU cycle +", "Cycle forward mimic / transport / guess menu");
-        __instance.userData.RegisterBind("ToU cycle -", "Cycle backward mimic / transport / guess menu");
-        __instance.userData.RegisterBind("ToU cycle players", "Cycle players as guesser in meetings");
-        __instance.userData.RegisterBind("ToU confirm", "Confirm mimic / transport / guess");
-    }
-
-    private static int RegisterBind(this UserData self, string name, string description, int elementIdentifierId = -1, int category = 0, InputActionType type = InputActionType.Button)
-    {
-        self.AddAction(category);
-        var action = self.GetAction(self.actions.Count - 1)!;
-
-        action.name = name;
-        action.descriptiveName = description;
-        action.categoryId = category;
-        action.type = type;
-        action.userAssignable = true;
-
-        var map = new ActionElementMap
+        [HarmonyPrefix]
+        private static void Prefix(InputManager_Base __instance)
         {
-            _elementIdentifierId = elementIdentifierId,
-            _actionId = action.id,
-            _elementType = ControllerElementType.Button,
-            _axisContribution = Pole.Positive,
-            _modifierKey1 = ModifierKey.None,
-            _modifierKey2 = ModifierKey.None,
-            _modifierKey3 = ModifierKey.None
-        };
-        self.keyboardMaps[0].actionElementMaps.Add(map);
-        self.joystickMaps[0].actionElementMaps.Add(map);
-
-        return action.id;
-    }
-}
-
-[HarmonyPatch]
-public sealed class AssassinVigilanteKeybinds
-{
-    private static PlayerVoteArea HighlightedPlayer;
-
-    private static int PlayerIndex;
-
-    [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.Update))]
-    [HarmonyPostfix]
-    public static void Postfix(MeetingHud __instance)
-    {
-        if (PlayerControl.LocalPlayer.Data.IsDead) return;
-        if (__instance.state == MeetingHud.VoteStates.Discussion) return;
-        var role = Role.GetRole(PlayerControl.LocalPlayer);
-
-        foreach (var player in __instance.playerStates)
-        {
-            if (!HighlightedPlayer) break;
-            if (player.TargetPlayerId == HighlightedPlayer.TargetPlayerId)
-            {
-                player.SetHighlighted(true);
-            }
-            else player.SetHighlighted(false);
+            //change the text shown on the screen for the kill keybind
+            __instance.userData.GetAction("ActionSecondary").descriptiveName = "Kill / Crew & neutral benign abilities / infect & douse";
+            __instance.userData.RegisterBind("ToU imp/nk", "Impostor abilities / ignite");
+            __instance.userData.RegisterBind("ToU bb/disperse/mimic", "Button barry / disperse / glitch mimic");
+            __instance.userData.RegisterBind("ToU hack", "Glitch's hack");
+            __instance.userData.RegisterBind("ToU cycle +", "Cycle forward mimic / transport / guess menu");
+            __instance.userData.RegisterBind("ToU cycle -", "Cycle backward mimic / transport / guess menu");
+            __instance.userData.RegisterBind("ToU cycle players", "Cycle players as guesser in meetings");
+            __instance.userData.RegisterBind("ToU confirm", "Confirm mimic / transport / guess");
         }
 
-        if (role is Vigilante || role.Player.Is(AbilityEnum.Assassin) || role.Player.Is(RoleEnum.Doomsayer) || role.Player.Is(RoleEnum.Husk))
+        private static int RegisterBind(this UserData self, string name, string description, int elementIdentifierId = -1, int category = 0, InputActionType type = InputActionType.Button)
         {
-            dynamic guesser = role is Vigilante ? Role.GetRole<Vigilante>(role.Player) : Ability.GetAbility<Assassin>(role.Player);
-            if (guesser == null) guesser = role is Doomsayer ? Role.GetRole<Doomsayer>(role.Player) :Role.GetRole<Husk>(role.Player) ;
-            var players = __instance.playerStates.Where(x => (guesser as IGuesser).Buttons[x.TargetPlayerId] != (null, null, null, null)
-                                                              && x.TargetPlayerId != role.Player.PlayerId)
-                                                 .ToList();
+            self.AddAction(category);
+            var action = self.GetAction(self.actions.Count - 1)!;
 
-            if (ReInput.players.GetPlayer(0).GetButtonDown("ToU cycle players"))
-            {
-                HighlightedPlayer = players[PlayerIndex];
-                PlayerIndex = PlayerIndex == players.Count - 1 ? 0 : PlayerIndex + 1;
-            }
+            action.name = name;
+            action.descriptiveName = description;
+            action.categoryId = category;
+            action.type = type;
+            action.userAssignable = true;
 
-            if (!HighlightedPlayer) return;
-            if (ReInput.players.GetPlayer(0).GetButtonDown("ToU cycle +"))
+            var map = new ActionElementMap
             {
-                (guesser as IGuesser).Buttons[HighlightedPlayer.TargetPlayerId].Item2.GetComponent<PassiveButton>().OnClick.Invoke();
-            }
-            else if (ReInput.players.GetPlayer(0).GetButtonDown("ToU cycle -"))
-            {
-                (guesser as IGuesser).Buttons[HighlightedPlayer.TargetPlayerId].Item1.GetComponent<PassiveButton>().OnClick.Invoke();
-            }
-            else if (ReInput.players.GetPlayer(0).GetButtonDown("ToU confirm"))
-            {
-                (guesser as IGuesser).Buttons[HighlightedPlayer.TargetPlayerId].Item3.GetComponent<PassiveButton>().OnClick.Invoke();
-            }
+                _elementIdentifierId = elementIdentifierId,
+                _actionId = action.id,
+                _elementType = ControllerElementType.Button,
+                _axisContribution = Pole.Positive,
+                _modifierKey1 = ModifierKey.None,
+                _modifierKey2 = ModifierKey.None,
+                _modifierKey3 = ModifierKey.None
+            };
+            self.keyboardMaps[0].actionElementMaps.Add(map);
+            self.joystickMaps[0].actionElementMaps.Add(map);
+
+            return action.id;
         }
     }
 
-    [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.VotingComplete))]
-    [HarmonyPatch(typeof(LobbyBehaviour), nameof(LobbyBehaviour.Start))]
-    [HarmonyPostfix]
-
-    public static void Reset()
+    [HarmonyPatch]
+    public sealed class AssassinVigilanteKeybinds
     {
-        HighlightedPlayer = null;
-        PlayerIndex = 0;
+        private static PlayerVoteArea HighlightedPlayer;
+
+        private static int PlayerIndex;
+
+        [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.Update))]
+        [HarmonyPostfix]
+        public static void Postfix(MeetingHud __instance)
+        {
+            if (PlayerControl.LocalPlayer.Data.IsDead) return;
+<<<<<<< Updated upstream
+=======
+            if (PlayerControl.LocalPlayer.IsJailed()) return;
+>>>>>>> Stashed changes
+            if (__instance.state == MeetingHud.VoteStates.Discussion) return;
+            var role = Role.GetRole(PlayerControl.LocalPlayer);
+
+            foreach (var player in __instance.playerStates)
+            {
+                if (!HighlightedPlayer) break;
+                if (player.TargetPlayerId == HighlightedPlayer.TargetPlayerId)
+                {
+                    player.SetHighlighted(true);
+                }
+                else player.SetHighlighted(false);
+            }
+
+            if (role is Vigilante || role.Player.Is(AbilityEnum.Assassin) || role.Player.Is(RoleEnum.Doomsayer))
+            {
+                dynamic guesser = role is Vigilante ? Role.GetRole<Vigilante>(role.Player) : Ability.GetAbility<Assassin>(role.Player);
+                if (guesser == null) guesser = Role.GetRole<Doomsayer>(role.Player);
+                var players = __instance.playerStates.Where(x => (guesser as IGuesser).Buttons[x.TargetPlayerId] != (null, null, null, null)
+                                                                  && x.TargetPlayerId != role.Player.PlayerId)
+                                                     .ToList();
+
+                if (ReInput.players.GetPlayer(0).GetButtonDown("ToU cycle players"))
+                {
+                    HighlightedPlayer = players[PlayerIndex];
+                    PlayerIndex = PlayerIndex == players.Count - 1 ? 0 : PlayerIndex + 1;
+                }
+
+                if (!HighlightedPlayer) return;
+                if (ReInput.players.GetPlayer(0).GetButtonDown("ToU cycle +"))
+                {
+                    (guesser as IGuesser).Buttons[HighlightedPlayer.TargetPlayerId].Item2.GetComponent<PassiveButton>().OnClick.Invoke();
+                }
+                else if (ReInput.players.GetPlayer(0).GetButtonDown("ToU cycle -"))
+                {
+                    (guesser as IGuesser).Buttons[HighlightedPlayer.TargetPlayerId].Item1.GetComponent<PassiveButton>().OnClick.Invoke();
+                }
+                else if (ReInput.players.GetPlayer(0).GetButtonDown("ToU confirm"))
+                {
+                    (guesser as IGuesser).Buttons[HighlightedPlayer.TargetPlayerId].Item3.GetComponent<PassiveButton>().OnClick.Invoke();
+                }
+            }
+        }
+
+        [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.VotingComplete))]
+        [HarmonyPatch(typeof(LobbyBehaviour), nameof(LobbyBehaviour.Start))]
+        [HarmonyPostfix]
+
+        public static void Reset()
+        {
+            HighlightedPlayer = null;
+            PlayerIndex = 0;
+        }
     }
-}
 }

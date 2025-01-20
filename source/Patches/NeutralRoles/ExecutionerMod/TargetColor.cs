@@ -1,78 +1,96 @@
 using HarmonyLib;
+<<<<<<< Updated upstream
+using TownOfUs.Extensions;
+using TownOfUs.Roles;
+=======
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Modifiers;
+>>>>>>> Stashed changes
 using UnityEngine;
 
-namespace TownOfUsFusion.NeutralRoles.ExecutionerMod
+namespace TownOfUs.NeutralRoles.ExecutionerMod
 {
     public enum OnTargetDead
-{
-    Crew,
-    Amnesiac,
-    Survivor,
-    Jester
-}
-
-[HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
-public class TargetColor
-{
-    private static void UpdateMeeting(MeetingHud __instance, Executioner role)
     {
-        foreach (var player in __instance.playerStates)
-            if (player.TargetPlayerId == role.target.PlayerId)
-                player.NameText.color = Color.black;
+        Crew,
+        Amnesiac,
+        Survivor,
+        Jester
     }
 
-    private static void Postfix(HudManager __instance)
+    [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
+    public class TargetColor
     {
-        if (PlayerControl.AllPlayerControls.Count <= 1) return;
-        if (PlayerControl.LocalPlayer == null) return;
-        if (PlayerControl.LocalPlayer.Data == null) return;
-        if (!PlayerControl.LocalPlayer.Is(RoleEnum.Executioner)) return;
-        if (PlayerControl.LocalPlayer.Data.IsDead) return;
+        private static void UpdateMeeting(MeetingHud __instance, Executioner role)
+        {
+            foreach (var player in __instance.playerStates)
+                if (player.TargetPlayerId == role.target.PlayerId)
+                    player.NameText.color = Color.black;
+        }
 
-        var role = Role.GetRole<Executioner>(PlayerControl.LocalPlayer);
+        private static void Postfix(HudManager __instance)
+        {
+            if (PlayerControl.AllPlayerControls.Count <= 1) return;
+            if (PlayerControl.LocalPlayer == null) return;
+            if (PlayerControl.LocalPlayer.Data == null) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Executioner)) return;
+            if (PlayerControl.LocalPlayer.Data.IsDead) return;
 
-        if (MeetingHud.Instance != null) UpdateMeeting(MeetingHud.Instance, role);
+            var role = Role.GetRole<Executioner>(PlayerControl.LocalPlayer);
 
-        if (role.target && role.target.nameText()) role.target.nameText().color = Color.black;
+            if (MeetingHud.Instance != null) UpdateMeeting(MeetingHud.Instance, role);
 
-        if (!role.target.Data.IsDead && !role.target.Data.Disconnected && !role.target.Is(RoleEnum.Vampire)) return;
-        if (role.TargetVotedOut) return;
+<<<<<<< Updated upstream
+            if (role.target && role.target.nameText()) role.target.nameText().color = Color.black;
+=======
+            if (!PlayerControl.LocalPlayer.IsHypnotised())
+            {
+                if (role.target && role.target.nameText())
+                {
+                    var colour = Color.black;
+                    if (role.target.Is(ModifierEnum.Shy)) colour.a = Modifier.GetModifier<Shy>(role.target).Opacity;
+                    role.target.nameText().color = colour;
+                }
+            }
+>>>>>>> Stashed changes
 
-        Utils.Rpc(CustomRPC.ExecutionerToJester, PlayerControl.LocalPlayer.PlayerId);
+            if (!role.target.Data.IsDead && !role.target.Data.Disconnected && !role.target.Is(RoleEnum.Vampire)) return;
+            if (role.TargetVotedOut) return;
 
-        ExeToJes(PlayerControl.LocalPlayer);
+            Utils.Rpc(CustomRPC.ExecutionerToJester, PlayerControl.LocalPlayer.PlayerId);
+
+            ExeToJes(PlayerControl.LocalPlayer);
+        }
+
+        public static void ExeToJes(PlayerControl player)
+        {
+            player.myTasks.RemoveAt(0);
+            Role.RoleDictionary.Remove(player.PlayerId);
+
+
+            if (CustomGameOptions.OnTargetDead == OnTargetDead.Jester)
+            {
+                var jester = new Jester(player);
+                jester.SpawnedAs = false;
+                jester.RegenTask();
+            }
+            else if (CustomGameOptions.OnTargetDead == OnTargetDead.Amnesiac)
+            {
+                var amnesiac = new Amnesiac(player);
+                amnesiac.SpawnedAs = false;
+                amnesiac.RegenTask();
+            }
+            else if (CustomGameOptions.OnTargetDead == OnTargetDead.Survivor)
+            {
+                var surv = new Survivor(player);
+                surv.SpawnedAs = false;
+                surv.RegenTask();
+            }
+            else
+            {
+                new Crewmate(player);
+            }
+        }
     }
-
-    public static void ExeToJes(PlayerControl player)
-    {
-        player.myTasks.RemoveAt(0);
-        Role.RoleDictionary.Remove(player.PlayerId);
-
-
-        if (CustomGameOptions.OnTargetDead == OnTargetDead.Jester)
-        {
-            var jester = new Jester(player);
-            jester.SpawnedAs = false;
-            jester.RegenTask();
-        }
-        else if (CustomGameOptions.OnTargetDead == OnTargetDead.Amnesiac)
-        {
-            var amnesiac = new Amnesiac(player);
-            amnesiac.SpawnedAs = false;
-            amnesiac.RegenTask();
-        }
-        else if (CustomGameOptions.OnTargetDead == OnTargetDead.Survivor)
-        {
-            var surv = new Survivor(player);
-            surv.SpawnedAs = false;
-            surv.RegenTask();
-        }
-        else
-        {
-            new Crewmate(player);
-        }
-    }
-}
 }

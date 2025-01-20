@@ -1,23 +1,42 @@
 using HarmonyLib;
 
-namespace TownOfUsFusion
+namespace TownOfUs
 {
     internal class MedScan
-{
+<<<<<<< Updated upstream
+	{
 
-    [HarmonyPatch(typeof(MedScanMinigame))]
-    private static class MedScanMinigamePatch
+		[HarmonyPatch(typeof(MedScanMinigame))]
+		private static class MedScanMinigamePatch
+		{
+			[HarmonyPatch(nameof(MedScanMinigame.Begin))]
+			[HarmonyPostfix]
+			private static void BeginPostfix(MedScanMinigame __instance)
+			{
+				// Update medical details for Giant modifier
+				if (PlayerControl.LocalPlayer.Is(ModifierEnum.Giant))
+				{
+					__instance.completeString = __instance.completeString.Replace("3' 6\"", "5' 3\"").Replace("92lb", "184lb");
+				}
+			}
+		}
+	}
+=======
     {
-        [HarmonyPatch(nameof(MedScanMinigame.Begin))]
-        [HarmonyPostfix]
-        private static void BeginPostfix(MedScanMinigame __instance)
+        [HarmonyPatch(typeof(MedScanMinigame))]
+        private static class MedScanMinigamePatch
         {
-            // Update medical details for Giant modifier
-            if (PlayerControl.LocalPlayer.Is(ModifierEnum.Giant))
+            [HarmonyPatch(nameof(MedScanMinigame.Begin))]
+            [HarmonyPostfix]
+            private static void BeginPostfix(MedScanMinigame __instance)
             {
-                __instance.completeString = __instance.completeString.Replace("3' 6\"", "5' 3\"").Replace("92lb", "184lb");
+                // Update medical details for Giant modifier
+                if (PlayerControl.LocalPlayer.Is(ModifierEnum.Giant))
+                {
+                    __instance.completeString = __instance.completeString.Replace("3' 6\"", "5' 3\"").Replace("92lb", "184lb");
+                }
             }
         }
     }
-}
+>>>>>>> Stashed changes
 }

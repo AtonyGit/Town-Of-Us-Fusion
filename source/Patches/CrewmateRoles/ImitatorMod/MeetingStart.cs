@@ -1,48 +1,48 @@
 ﻿using HarmonyLib;
-using TownOfUsFusion.Roles;
+using TownOfUs.Roles;
 using System;
 using System.Linq;
-using TownOfUsFusion.CrewmateRoles.OracleMod;
+using TownOfUs.CrewmateRoles.OracleMod;
 
-namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
+namespace TownOfUs.CrewmateRoles.ImitatorMod
 {
     [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.Start))]
-public class MeetingStart
-{
-    public static void Postfix(MeetingHud __instance)
+    public class MeetingStart
     {
-        if (PlayerControl.LocalPlayer.Data.IsDead) return;
-        if (!PlayerControl.LocalPlayer.Is(RoleEnum.Imitator)) return;
-        var imitatorRole = Role.GetRole<Imitator>(PlayerControl.LocalPlayer);
-        if (imitatorRole.trappedPlayers != null)
+        public static void Postfix(MeetingHud __instance)
         {
-            if (imitatorRole.trappedPlayers.Count == 0)
+            if (PlayerControl.LocalPlayer.Data.IsDead) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Imitator)) return;
+            var imitatorRole = Role.GetRole<Imitator>(PlayerControl.LocalPlayer);
+            if (imitatorRole.trappedPlayers != null)
             {
-                DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, "No players entered any of your traps");
-            }
-            else if (imitatorRole.trappedPlayers.Count < CustomGameOptions.MinAmountOfPlayersInTrap)
-            {
-                DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, "Not enough players triggered your traps");
-            }
-            else
-            {
-                string message = "Roles caught in your trap:\n";
-                foreach (RoleEnum role in imitatorRole.trappedPlayers.OrderBy(x => Guid.NewGuid()))
+                if (imitatorRole.trappedPlayers.Count == 0)
                 {
-                    message += $" {role},";
+                    DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, "No players entered any of your traps");
                 }
-                message.Remove(message.Length - 1, 1);
-                if (DestroyableSingleton<HudManager>.Instance)
-                    DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, message);
+                else if (imitatorRole.trappedPlayers.Count < CustomGameOptions.MinAmountOfPlayersInTrap)
+                {
+                    DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, "Not enough players triggered your traps");
+                }
+                else
+                {
+                    string message = "Roles caught in your trap:\n";
+                    foreach (RoleEnum role in imitatorRole.trappedPlayers.OrderBy(x => Guid.NewGuid()))
+                    {
+                        message += $" {role},";
+                    }
+                    message.Remove(message.Length - 1, 1);
+                    if (DestroyableSingleton<HudManager>.Instance)
+                        DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, message);
+                }
+                imitatorRole.trappedPlayers.Clear();
             }
-            imitatorRole.trappedPlayers.Clear();
-        }
-        else if (imitatorRole.confessingPlayer != null)
-        {
-            var playerResults = MeetingStartOracle.PlayerReportFeedback(imitatorRole.confessingPlayer);
+            else if (imitatorRole.confessingPlayer != null)
+            {
+                var playerResults = MeetingStartOracle.PlayerReportFeedback(imitatorRole.confessingPlayer);
 
-            if (!string.IsNullOrWhiteSpace(playerResults)) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, playerResults);
+                if (!string.IsNullOrWhiteSpace(playerResults)) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, playerResults);
+            }
         }
     }
-}
 }

@@ -1,18 +1,22 @@
 using HarmonyLib;
-using TownOfUsFusion.Roles;
+using TownOfUs.Roles;
 
-namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
+namespace TownOfUs.NeutralRoles.DoomsayerMod
 {
     [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.VotingComplete))] // BBFDNCCEJHI
-public static class VotingComplete
-{
-    public static void Postfix(MeetingHud __instance)
+    public static class VotingComplete
     {
-        if (PlayerControl.LocalPlayer.Is(RoleEnum.Doomsayer))
+        public static void Postfix(MeetingHud __instance)
         {
-            var doomsayer = Role.GetRole<Doomsayer>(PlayerControl.LocalPlayer);
-            ShowHideButtonsDoom.HideButtonsDoom(doomsayer);
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Doomsayer))
+            {
+                var doomsayer = Role.GetRole<Doomsayer>(PlayerControl.LocalPlayer);
+                ShowHideButtonsDoom.HideButtonsDoom(doomsayer);
+<<<<<<< Updated upstream
+=======
+                ShowHideButtonsDoom.HideTextDoom(doomsayer);
+>>>>>>> Stashed changes
+            }
         }
     }
-}
 }

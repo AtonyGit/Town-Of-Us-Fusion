@@ -1,32 +1,32 @@
 ﻿using System.Linq;
 using HarmonyLib;
-using TownOfUsFusion.Extensions;
-using TownOfUsFusion.Roles.Modifiers;
+using TownOfUs.Extensions;
+using TownOfUs.Roles.Modifiers;
 
-namespace TownOfUsFusion.Modifiers.UnderdogMod
+namespace TownOfUs.Modifiers.UnderdogMod
 {
     [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.MurderPlayer))]
-public class PerformKill
-{
-    public static void Postfix(PlayerControl __instance, [HarmonyArgument(0)] PlayerControl target)
+    public class PerformKill
     {
-        var modifier = Modifier.GetModifier(__instance);
-        if (modifier?.ModifierType == ModifierEnum.Underdog)
-            ((Underdog)modifier).SetKillTimer();
-    }
+        public static void Postfix(PlayerControl __instance, [HarmonyArgument(0)] PlayerControl target)
+        {
+            var modifier = Modifier.GetModifier(__instance);
+            if (modifier?.ModifierType == ModifierEnum.Underdog)
+                ((Underdog)modifier).SetKillTimer();
+        }
 
-    internal static bool LastImp()
-    {
-        return PlayerControl.AllPlayerControls.ToArray()
-            .Count(x => x.Data.IsImpostor() && !x.Data.IsDead) == 1;
-    }
+        internal static bool LastImp()
+        {
+            return PlayerControl.AllPlayerControls.ToArray()
+                .Count(x => x.Data.IsImpostor() && !x.Data.IsDead) == 1;
+        }
 
-    internal static bool IncreasedKC()
-    {
-        if (CustomGameOptions.UnderdogIncreasedKC)
-            return false;
-        else
-            return true;
+        internal static bool IncreasedKC()
+        {
+            if (CustomGameOptions.UnderdogIncreasedKC)
+                return false;
+            else
+                return true;
+        }
     }
-}
 }

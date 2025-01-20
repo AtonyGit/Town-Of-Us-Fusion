@@ -1,37 +1,37 @@
 ﻿using HarmonyLib;
 using System;
 using System.Linq;
-using TownOfUsFusion.Roles;
+using TownOfUs.Roles;
 
-namespace TownOfUsFusion.CrewmateRoles.TrapperMod
+namespace TownOfUs.CrewmateRoles.TrapperMod
 {
     [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.Start))]
-public class MeetingStart
-{
-    public static void Postfix(MeetingHud __instance)
+    public class MeetingStart
     {
-        if (PlayerControl.LocalPlayer.Data.IsDead) return;
-        if (!PlayerControl.LocalPlayer.Is(RoleEnum.Trapper)) return;
-        var trapperRole = Role.GetRole<Trapper>(PlayerControl.LocalPlayer);
-        if (trapperRole.trappedPlayers.Count == 0)
+        public static void Postfix(MeetingHud __instance)
         {
-            DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, "No players entered any of your traps");
-        }
-        else if (trapperRole.trappedPlayers.Count < CustomGameOptions.MinAmountOfPlayersInTrap)
-        {
-            DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, "Not enough players triggered your traps");
-        }
-        else
-        {
-            string message = "Roles caught in your trap:\n";
-            foreach (RoleEnum role in trapperRole.trappedPlayers.OrderBy(x => Guid.NewGuid()))
+            if (PlayerControl.LocalPlayer.Data.IsDead) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Trapper)) return;
+            var trapperRole = Role.GetRole<Trapper>(PlayerControl.LocalPlayer);
+            if (trapperRole.trappedPlayers.Count == 0)
             {
-                message += $" {role},";
+                DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, "No players entered any of your traps");
             }
-            message.Remove(message.Length - 1, 1);
-            if (DestroyableSingleton<HudManager>.Instance)
-                DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, message);
+            else if (trapperRole.trappedPlayers.Count < CustomGameOptions.MinAmountOfPlayersInTrap)
+            {
+                DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, "Not enough players triggered your traps");
+            }
+            else
+            {
+                string message = "Roles caught in your trap:\n";
+                foreach (RoleEnum role in trapperRole.trappedPlayers.OrderBy(x => Guid.NewGuid()))
+                {
+                    message += $" {role},";
+                }
+                message.Remove(message.Length - 1, 1);
+                if (DestroyableSingleton<HudManager>.Instance)
+                    DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, message);
+            }
         }
     }
-}
 }
