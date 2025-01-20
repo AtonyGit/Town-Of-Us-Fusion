@@ -15,7 +15,7 @@ namespace TownOfUsFusion.RainbowMod
             }
 
             r.AddRend(rend, colorId);
-            return !RainbowUtils.IsRainbow(colorId);
+        return !RainbowUtils.IsGradient(colorId);
         }
     }
 
