@@ -10,7 +10,7 @@ namespace TownOfUsFusion
         static void Postfix(PingTracker __instance)
         {
             var touLogo = new GameObject("bannerLogo_TownOfUs");
-            touLogo.transform.localScale = new Vector3(0.8f, 0.8f, 1f);
+            touLogo.transform.localScale = new Vector3(0.4f, 0.4f, 1f);
 
             var renderer = touLogo.AddComponent<SpriteRenderer>();
             renderer.sprite = Sprite;

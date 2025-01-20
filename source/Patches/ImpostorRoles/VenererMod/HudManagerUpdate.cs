@@ -25,6 +25,7 @@ namespace TownOfUsFusion.ImpostorRoles.VenererMod
                 role.AbilityButton.graphic.enabled = true;
                 role.AbilityButton.gameObject.SetActive(false);
             }
+            role.AbilityButton.buttonLabelText.text = "Use";
             if (role.Kills == 0) role.AbilityButton.graphic.sprite = NoneSprite;
             else if (role.Kills == 1) role.AbilityButton.graphic.sprite = CamoSprite;
             else if (role.Kills == 2) role.AbilityButton.graphic.sprite = CamoSprintSprite;

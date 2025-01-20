@@ -32,17 +32,19 @@ namespace TownOfUsFusion
     {
 
         public const string Id = "com.FusionStudios.TownOfUsFusion";
-        public const string VersionString = "0.3.0";
+        public const string VersionString = "0.4.0";
         public const string TouVersionString = "5.0.4";
         public static System.Version Version = System.Version.Parse(VersionString);
         public const string VersionTag = "<color=#ff33fc></color>";
         public const bool isDevBuild = true;
-        public const string DevBuildVersion = "1";
+        public const string DevBuildVersion = "2";
 
         public static AssetLoader bundledAssets;
 
-        public static Sprite JanitorClean;
+        public static Sprite EngineerVent;
         public static Sprite EngineerFix;
+
+        public static Sprite JanitorClean;
         public static Sprite SwapperSwitch;
         public static Sprite SwapperSwitchDisabled;
         public static Sprite Footprint;
@@ -82,7 +84,7 @@ namespace TownOfUsFusion
         public static Sprite InfectSprite;
         public static Sprite RampageSprite;
         public static Sprite TrapSprite;
-        public static Sprite InspectSprite;
+        public static Sprite AutopsySprite;
         public static Sprite ExamineSprite;
         public static Sprite EscapeSprite;
         public static Sprite MarkSprite;
@@ -148,6 +150,16 @@ namespace TownOfUsFusion
             Generate.GenerateAll();
 
             bundledAssets = new();
+            // Astral Roles
+            TrackSprite = CreateScaledSprite("TownOfUsFusion.Resources.Track.png");
+            MediateSprite = CreateScaledSprite("TownOfUsFusion.Resources.Mediate.png");
+            AutopsySprite = CreateScaledSprite("TownOfUsFusion.Resources.Autopsy.png");
+            ExamineSprite = CreateScaledSprite("TownOfUsFusion.Resources.Examine.png");
+            EngineerVent = CreateVentSprite("TownOfUsFusion.Resources.VentEngineer.png");
+            // Investigative Roles
+            ProtectSprite = CreateScaledSprite("TownOfUsFusion.Resources.Protect.png");
+            MorphSprite = CreateScaledSprite("TownOfUsFusion.Resources.Morph.png");
+            SwoopSprite = CreateScaledSprite("TownOfUsFusion.Resources.Swoop.png");
 
             JanitorClean = CreateSprite("TownOfUsFusion.Resources.Janitor.png");
             EngineerFix = CreateSprite("TownOfUsFusion.Resources.Engineer.png");
@@ -158,10 +170,8 @@ namespace TownOfUsFusion
             MedicSprite = CreateSprite("TownOfUsFusion.Resources.Medic.png");
             SeerSprite = CreateSprite("TownOfUsFusion.Resources.Seer.png");
             SampleSprite = CreateSprite("TownOfUsFusion.Resources.Sample.png");
-            MorphSprite = CreateSprite("TownOfUsFusion.Resources.Morph.png");
             Arrow = CreateSprite("TownOfUsFusion.Resources.Arrow.png");
             MineSprite = CreateSprite("TownOfUsFusion.Resources.Mine.png");
-            SwoopSprite = CreateSprite("TownOfUsFusion.Resources.Swoop.png");
             DouseSprite = CreateSprite("TownOfUsFusion.Resources.Douse.png");
             IgniteSprite = CreateSprite("TownOfUsFusion.Resources.Ignite.png");
             ReviveSprite = CreateSprite("TownOfUsFusion.Resources.Revive.png");
@@ -175,13 +185,10 @@ namespace TownOfUsFusion
             FlashSprite = CreateSprite("TownOfUsFusion.Resources.Flash.png");
             AlertSprite = CreateSprite("TownOfUsFusion.Resources.Alert.png");
             RememberSprite = CreateSprite("TownOfUsFusion.Resources.Remember.png");
-            TrackSprite = CreateSprite("TownOfUsFusion.Resources.Track.png");
             PlantSprite = CreateSprite("TownOfUsFusion.Resources.Plant.png");
             DetonateSprite = CreateSprite("TownOfUsFusion.Resources.Detonate.png");
             TransportSprite = CreateSprite("TownOfUsFusion.Resources.Transport.png");
-            MediateSprite = CreateSprite("TownOfUsFusion.Resources.Mediate.png");
             VestSprite = CreateSprite("TownOfUsFusion.Resources.Vest.png");
-            ProtectSprite = CreateSprite("TownOfUsFusion.Resources.Protect.png");
             BlackmailSprite = CreateSprite("TownOfUsFusion.Resources.Blackmail.png");
             BlackmailLetterSprite = CreateSprite("TownOfUsFusion.Resources.BlackmailLetter.png");
             BlackmailOverlaySprite = CreateSprite("TownOfUsFusion.Resources.BlackmailOverlay.png");
@@ -190,8 +197,6 @@ namespace TownOfUsFusion
             InfectSprite = CreateSprite("TownOfUsFusion.Resources.Infect.png");
             RampageSprite = CreateSprite("TownOfUsFusion.Resources.Rampage.png");
             TrapSprite = CreateSprite("TownOfUsFusion.Resources.Trap.png");
-            InspectSprite = CreateSprite("TownOfUsFusion.Resources.Inspect.png");
-            ExamineSprite = CreateSprite("TownOfUsFusion.Resources.Examine.png");
             EscapeSprite = CreateSprite("TownOfUsFusion.Resources.Recall.png");
             MarkSprite = CreateSprite("TownOfUsFusion.Resources.Mark.png");
             ImitateSelectSprite = CreateSprite("TownOfUsFusion.Resources.ImitateSelect.png");
@@ -225,7 +230,7 @@ namespace TownOfUsFusion
             NeutralSettingsButtonSprite = CreateSprite("TownOfUsFusion.Resources.Neutral.png");
             ImposterSettingsButtonSprite = CreateSprite("TownOfUsFusion.Resources.Impostor.png");
             ModifierSettingsButtonSprite = CreateSprite("TownOfUsFusion.Resources.Modifiers.png");
-            ToUBanner = CreateSprite("TownOfUsFusion.Resources.TownOfUsBanner.png");
+            ToUBanner = CreateSprite("TownOfUsFusion.Resources.TownOfUsFusionBanner.png");
             UpdateTOUButton = CreateSprite("TownOfUsFusion.Resources.UpdateToUButton.png");
             UpdateSubmergedButton = CreateSprite("TownOfUsFusion.Resources.UpdateSubmergedButton.png");
 
@@ -260,6 +265,38 @@ namespace TownOfUsFusion
             var img = imageStream.ReadFully();
             LoadImage(tex, img, true);
             tex.DontDestroy();
+            var sprite = Sprite.Create(tex, new Rect(0.0f, 0.0f, tex.width, tex.height), pivot, pixelsPerUnit);
+            sprite.DontDestroy();
+            return sprite;
+        }
+        public static Sprite CreateScaledSprite(string name)
+        {
+            var pixelsPerUnit = 200f;
+            var pivot = new Vector2(0.5f, 0.5f);
+
+            var assembly = Assembly.GetExecutingAssembly();
+            var tex = AmongUsExtensions.CreateEmptyTexture();
+            var imageStream = assembly.GetManifestResourceStream(name);
+            var img = imageStream.ReadFully();
+            LoadImage(tex, img, true);
+            tex.DontDestroy();
+            pixelsPerUnit = tex.height;
+            var sprite = Sprite.Create(tex, new Rect(0.0f, 0.0f, tex.width, tex.height), pivot, pixelsPerUnit);
+            sprite.DontDestroy();
+            return sprite;
+        }
+        public static Sprite CreateVentSprite(string name)
+        {
+            var pixelsPerUnit = 200f;
+            var pivot = new Vector2(0.5f, 0.5f);
+
+            var assembly = Assembly.GetExecutingAssembly();
+            var tex = AmongUsExtensions.CreateEmptyTexture();
+            var imageStream = assembly.GetManifestResourceStream(name);
+            var img = imageStream.ReadFully();
+            LoadImage(tex, img, true);
+            tex.DontDestroy();
+            pixelsPerUnit = tex.height / 2;
             var sprite = Sprite.Create(tex, new Rect(0.0f, 0.0f, tex.width, tex.height), pivot, pixelsPerUnit);
             sprite.DontDestroy();
             return sprite;

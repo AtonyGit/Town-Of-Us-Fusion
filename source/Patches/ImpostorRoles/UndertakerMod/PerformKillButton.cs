@@ -42,6 +42,7 @@ namespace TownOfUsFusion.ImpostorRoles.UndertakerMod
 
                     KillButtonTarget.SetTarget(__instance, null, role);
                     __instance.graphic.sprite = TownOfUsFusion.DropSprite;
+                    __instance.buttonLabelText.text = "Drop";
                     return false;
                 }
                 else
@@ -71,6 +72,7 @@ namespace TownOfUsFusion.ImpostorRoles.UndertakerMod
                     foreach (var body2 in role.CurrentlyDragging.bodyRenderers) body2.material.SetFloat("_Outline", 0f);
                     role.CurrentlyDragging = null;
                     __instance.graphic.sprite = TownOfUsFusion.DragSprite;
+                    __instance.buttonLabelText.text = "Drag";
                     role.LastDragged = DateTime.UtcNow;
 
                     body.transform.position = position;

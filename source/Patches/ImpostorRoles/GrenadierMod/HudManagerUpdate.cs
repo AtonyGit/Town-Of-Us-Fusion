@@ -44,6 +44,7 @@ namespace TownOfUsFusion.ImpostorRoles.GrenadierMod
             }
 
             role.FlashButton.graphic.sprite = FlashSprite;
+            role.FlashButton.buttonLabelText.text = "Flash";
             role.FlashButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);

@@ -49,7 +49,7 @@ namespace TownOfUsFusion.Roles.Modifiers
                 {
                     if (blackmailer.Blackmailed.GetCustomOutfitType() != CustomPlayerOutfitType.Camouflage &&
                         blackmailer.Blackmailed.GetCustomOutfitType() != CustomPlayerOutfitType.Swooper)
-                        blackmailer.Blackmailed.nameText().color = Patches.Colors.Impostor;
+                        blackmailer.Blackmailed.nameText().color = Colors.Impostor;
                     else blackmailer.Blackmailed.nameText().color = Color.clear;
                 }
                 blackmailer.Blackmailed = player;
@@ -104,6 +104,7 @@ namespace TownOfUsFusion.Roles.Modifiers
                     Utils.Rpc(CustomRPC.Morph, PlayerControl.LocalPlayer.PlayerId, corpse.PlayerId);
                     morphling.TimeRemaining = CustomGameOptions.MorphlingDuration;
                     if (morphling.SampledPlayer == null) morphling._morphButton.graphic.sprite = TownOfUsFusion.MorphSprite;
+                    if (morphling.SampledPlayer == null) morphling._morphButton.buttonLabelText.text = "Morph";
                     morphling.SampledPlayer = corpse;
                     morphling.MorphedPlayer = corpse;
                     Utils.Morph(morphling.Player, corpse);

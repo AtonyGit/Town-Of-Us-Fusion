@@ -43,6 +43,8 @@ namespace TownOfUsFusion.CrewmateRoles.HunterMod
             }
 
             role.StalkButton.graphic.sprite = StalkSprite;
+            role.StalkButton.buttonLabelText.text = "Stalk";
+            role.StalkButton.buttonLabelText.color = Patches.Colors.Hunter;
             role.StalkButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
 
             if (role.UsesText == null && role.UsesLeft > 0)

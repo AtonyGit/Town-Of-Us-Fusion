@@ -31,7 +31,7 @@ namespace TownOfUsFusion.ImpostorRoles.BlackmailerMod
                     {
                         if (role.Blackmailed.GetCustomOutfitType() != CustomPlayerOutfitType.Camouflage &&
                             role.Blackmailed.GetCustomOutfitType() != CustomPlayerOutfitType.Swooper)
-                            role.Blackmailed.nameText().color = Patches.Colors.Impostor;
+                            role.Blackmailed.nameText().color = Colors.Impostor;
                         else role.Blackmailed.nameText().color = Color.clear;
                     }
                     role.Blackmailed = target;

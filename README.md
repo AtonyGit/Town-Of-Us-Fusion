@@ -799,8 +799,8 @@ However, as a consequence the Aurial cannot see who is who.
 -----------------------
 ## Detective
 ### **Team: Crewmates**
-The Detective is a Crewmate that can inspect bodies and then examine players.\
-The Detective must first find a body and inspect it.\
+The Detective is a Crewmate that can autopsy bodies and then examine players.\
+The Detective must first find a body and autopsy it.\
 During the same or following rounds the Detective can then examine players to see if they were the killer.\
 If the examined player is the killer they will receive a red flash, else the flash will be green.\
 If the killer of the inspected player dies, the following round the examine button will disable indicating to the Detective the killer is dead.

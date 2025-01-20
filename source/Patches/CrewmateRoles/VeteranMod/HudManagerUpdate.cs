@@ -20,6 +20,8 @@ namespace TownOfUsFusion.CrewmateRoles.VeteranMod
             if (PlayerControl.LocalPlayer.Data == null) return;
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Veteran)) return;
             var alertButton = __instance.KillButton;
+            alertButton.buttonLabelText.text = "Alert";
+            alertButton.buttonLabelText.color = Patches.Colors.Veteran;
 
             var role = Role.GetRole<Veteran>(PlayerControl.LocalPlayer);
 

@@ -1391,6 +1391,7 @@ namespace TownOfUsFusion
                 var escapist = Role.GetRole<Escapist>(PlayerControl.LocalPlayer);
                 escapist.LastEscape = DateTime.UtcNow;
                 escapist.EscapeButton.graphic.sprite = TownOfUsFusion.MarkSprite;
+                escapist.EscapeButton.buttonLabelText.text = "Mark";
             }
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Blackmailer))
             {
@@ -1425,6 +1426,7 @@ namespace TownOfUsFusion
             {
                 var bomber = Role.GetRole<Bomber>(PlayerControl.LocalPlayer);
                 bomber.PlantButton.graphic.sprite = TownOfUsFusion.PlantSprite;
+                bomber.PlantButton.buttonLabelText.text = "Plant";
                 bomber.Bomb.ClearBomb();
             }
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Grenadier))
@@ -1442,6 +1444,7 @@ namespace TownOfUsFusion
                 var morphling = Role.GetRole<Morphling>(PlayerControl.LocalPlayer);
                 morphling.LastMorphed = DateTime.UtcNow;
                 morphling.MorphButton.graphic.sprite = TownOfUsFusion.SampleSprite;
+                morphling.MorphButton.buttonLabelText.text = "Sample";
                 morphling.SampledPlayer = null;
             }
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Swooper))
@@ -1459,6 +1462,7 @@ namespace TownOfUsFusion
                 var undertaker = Role.GetRole<Undertaker>(PlayerControl.LocalPlayer);
                 undertaker.LastDragged = DateTime.UtcNow;
                 undertaker.DragDropButton.graphic.sprite = TownOfUsFusion.DragSprite;
+                undertaker.DragDropButton.buttonLabelText.text = "Drag";
                 undertaker.CurrentlyDragging = null;
             }
             #endregion

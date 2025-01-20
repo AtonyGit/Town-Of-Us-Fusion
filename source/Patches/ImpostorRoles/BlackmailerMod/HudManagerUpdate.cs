@@ -30,6 +30,7 @@ namespace TownOfUsFusion.ImpostorRoles.BlackmailerMod
             if (PlayerControl.LocalPlayer.Data.IsDead) role.BlackmailButton.SetTarget(null);
 
             role.BlackmailButton.graphic.sprite = Blackmail;
+            role.BlackmailButton.buttonLabelText.text = "Blackmail";
             role.BlackmailButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
@@ -65,7 +66,7 @@ namespace TownOfUsFusion.ImpostorRoles.BlackmailerMod
                     if (imp.GetCustomOutfitType() == CustomPlayerOutfitType.Camouflage ||
                         imp.GetCustomOutfitType() == CustomPlayerOutfitType.Swooper) imp.nameText().color = Color.clear;
                     else if (imp.nameText().color == Color.clear ||
-                        imp.nameText().color == new Color(0.3f, 0.0f, 0.0f)) imp.nameText().color = Patches.Colors.Impostor;
+                        imp.nameText().color == new Color(0.3f, 0.0f, 0.0f)) imp.nameText().color = Colors.Impostor;
                 }
             }
         }
