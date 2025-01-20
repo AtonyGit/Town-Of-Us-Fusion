@@ -11,11 +11,7 @@ namespace TownOfUsFusion.Roles
 
         public Dictionary<byte, ArrowBehaviour> MediatedPlayers = new Dictionary<byte, ArrowBehaviour>();
         
-<<<<<<< Updated upstream
         public static Sprite Arrow => TownOfUsFusion.Arrow;
-=======
-        public static Sprite Arrow => TownOfUsFusion.Arrow;
->>>>>>> Stashed changes
         
         public Medium(PlayerControl player) : base(player)
         {

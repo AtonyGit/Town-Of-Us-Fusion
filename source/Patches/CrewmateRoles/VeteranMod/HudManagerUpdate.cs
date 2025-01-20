@@ -51,11 +51,7 @@ namespace TownOfUsFusion.CrewmateRoles.VeteranMod
             else alertButton.SetCoolDown(0f, CustomGameOptions.AlertCd);
 
             var renderer = alertButton.graphic;
-<<<<<<< Updated upstream
-            if (role.OnAlert || (!alertButton.isCoolingDown && role.ButtonUsable))
-=======
             if (role.OnAlert || (!alertButton.isCoolingDown && role.ButtonUsable && PlayerControl.LocalPlayer.moveable))
->>>>>>> Stashed changes
             {
                 renderer.color = Palette.EnabledColor;
                 renderer.material.SetFloat("_Desat", 0f);

@@ -1,9 +1,5 @@
 using HarmonyLib;
-<<<<<<< Updated upstream
 using TownOfUsFusion.Roles;
-=======
-using TownOfUsFusion.Roles;
->>>>>>> Stashed changes
 using UnityEngine;
 
 namespace TownOfUsFusion.NeutralRoles.PlaguebearerMod

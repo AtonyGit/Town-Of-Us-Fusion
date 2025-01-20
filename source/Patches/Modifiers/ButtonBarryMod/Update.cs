@@ -8,11 +8,7 @@ namespace TownOfUsFusion.Modifiers.ButtonBarryMod
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class Update
     {
-<<<<<<< Updated upstream
         public static Sprite Button => TownOfUsFusion.ButtonSprite;
-=======
-        public static Sprite Button => TownOfUsFusion.ButtonSprite;
->>>>>>> Stashed changes
 
         public static void Postfix(HudManager __instance)
         {
@@ -32,11 +28,7 @@ namespace TownOfUsFusion.Modifiers.ButtonBarryMod
             if (role.ButtonButton == null)
             {
                 role.ButtonButton = Object.Instantiate(__instance.KillButton, __instance.transform.parent);
-<<<<<<< Updated upstream
-                role.ButtonButton.GetComponentsInChildren<TextMeshPro>()[0].text = "";
-=======
                 foreach (var text in role.ButtonButton.GetComponentsInChildren<TextMeshPro>()) text.text = "";
->>>>>>> Stashed changes
                 role.ButtonButton.graphic.enabled = true;
                 role.ButtonButton.graphic.sprite = Button;
             }

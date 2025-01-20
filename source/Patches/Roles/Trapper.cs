@@ -8,11 +8,7 @@ namespace TownOfUsFusion.Roles
 {
     public class Trapper : Role
     {
-<<<<<<< Updated upstream
         public static Material trapMaterial = TownOfUsFusion.bundledAssets.Get<Material>("trap");
-=======
-        public static Material trapMaterial = TownOfUsFusion.bundledAssets.Get<Material>("trap");
->>>>>>> Stashed changes
 
         public List<Trap> traps = new List<Trap>();
         public DateTime LastTrapped { get; set; }

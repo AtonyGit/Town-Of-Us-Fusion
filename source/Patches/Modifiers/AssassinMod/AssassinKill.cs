@@ -68,11 +68,7 @@ namespace TownOfUsFusion.Modifiers.AssassinMod
                 importantTextTask.transform.SetParent(AmongUsClient.Instance.transform, false);
                 if (!GameOptionsManager.Instance.currentNormalGameOptions.GhostsDoTasks)
                 {
-<<<<<<< Updated upstream
-                    for (int i = 0;i < player.myTasks.Count;i++)
-=======
                     for (int i = 0; i < player.myTasks.Count; i++)
->>>>>>> Stashed changes
                     {
                         PlayerTask playerTask = player.myTasks.ToArray()[i];
                         playerTask.OnRemove();
@@ -97,18 +93,6 @@ namespace TownOfUsFusion.Modifiers.AssassinMod
                 if (player.Is(RoleEnum.Swapper))
                 {
                     var swapper = Role.GetRole<Swapper>(PlayerControl.LocalPlayer);
-<<<<<<< Updated upstream
-                    swapper.ListOfActives.Clear();
-                    swapper.Buttons.Clear();
-                    SwapVotes.Swap1 = null;
-                    SwapVotes.Swap2 = null;
-                    Utils.Rpc(CustomRPC.SetSwaps, sbyte.MaxValue, sbyte.MaxValue);
-                    var buttons = Role.GetRole<Swapper>(player).Buttons;
-                    foreach (var button in buttons)
-                    {
-                        button.SetActive(false);
-                        button.GetComponent<PassiveButton>().OnClick = new Button.ButtonClickedEvent();
-=======
                     var buttons = Role.GetRole<Swapper>(player).Buttons;
                     foreach (var button in buttons)
                     {
@@ -117,7 +101,6 @@ namespace TownOfUsFusion.Modifiers.AssassinMod
                             button.SetActive(false);
                             button.GetComponent<PassiveButton>().OnClick = new Button.ButtonClickedEvent();
                         }
->>>>>>> Stashed changes
                     }
                     swapper.ListOfActives.Clear();
                     swapper.Buttons.Clear();
@@ -129,17 +112,6 @@ namespace TownOfUsFusion.Modifiers.AssassinMod
                 if (player.Is(RoleEnum.Imitator))
                 {
                     var imitator = Role.GetRole<Imitator>(PlayerControl.LocalPlayer);
-<<<<<<< Updated upstream
-                    imitator.ListOfActives.Clear();
-                    imitator.Buttons.Clear();
-                    SetImitate.Imitate = null;
-                    var buttons = Role.GetRole<Imitator>(player).Buttons;
-                    foreach (var button in buttons)
-                    {
-                        button.SetActive(false);
-                        button.GetComponent<PassiveButton>().OnClick = new Button.ButtonClickedEvent();
-                    }
-=======
                     var buttons = Role.GetRole<Imitator>(player).Buttons;
                     foreach (var button in buttons)
                     {
@@ -152,7 +124,6 @@ namespace TownOfUsFusion.Modifiers.AssassinMod
                     imitator.ListOfActives.Clear();
                     imitator.Buttons.Clear();
                     SetImitate.Imitate = null;
->>>>>>> Stashed changes
                 }
 
                 if (player.Is(RoleEnum.Vigilante))
@@ -173,22 +144,17 @@ namespace TownOfUsFusion.Modifiers.AssassinMod
                     ShowHideButtonsDoom.HideButtonsDoom(doomsayer);
                 }
 
-<<<<<<< Updated upstream
-=======
                 if (player.Is(RoleEnum.Politician))
                 {
                     var politician = Role.GetRole<Politician>(PlayerControl.LocalPlayer);
                     politician.RevealButton.Destroy();
                 }
 
->>>>>>> Stashed changes
                 if (player.Is(RoleEnum.Mayor))
                 {
                     var mayor = Role.GetRole<Mayor>(PlayerControl.LocalPlayer);
                     mayor.RevealButton.Destroy();
                 }
-<<<<<<< Updated upstream
-=======
 
                 if (player.Is(RoleEnum.Jailor))
                 {
@@ -202,7 +168,6 @@ namespace TownOfUsFusion.Modifiers.AssassinMod
                     var hypnotist = Role.GetRole<Hypnotist>(PlayerControl.LocalPlayer);
                     hypnotist.HysteriaButton.Destroy();
                 }
->>>>>>> Stashed changes
             }
             player.Die(DeathReason.Kill, false);
             if (checkLover && player.IsLover() && CustomGameOptions.BothLoversDie)
@@ -272,11 +237,7 @@ namespace TownOfUsFusion.Modifiers.AssassinMod
             {
                 var swapper = Role.GetRole<Swapper>(PlayerControl.LocalPlayer);
                 var button = swapper.Buttons[voteArea.TargetPlayerId];
-<<<<<<< Updated upstream
                 if (button.GetComponent<SpriteRenderer>().sprite == TownOfUsFusion.SwapperSwitch)
-=======
-                if (button.GetComponent<SpriteRenderer>().sprite == TownOfUsFusion.SwapperSwitch)
->>>>>>> Stashed changes
                 {
                     swapper.ListOfActives[voteArea.TargetPlayerId] = false;
                     if (SwapVotes.Swap1 == voteArea) SwapVotes.Swap1 = null;
@@ -302,8 +263,6 @@ namespace TownOfUsFusion.Modifiers.AssassinMod
                 meetingHud.ClearVote();
             }
 
-<<<<<<< Updated upstream
-=======
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Imitator) && !PlayerControl.LocalPlayer.Data.IsDead)
             {
                 var imitatorRole = Role.GetRole<Imitator>(PlayerControl.LocalPlayer);
@@ -315,7 +274,6 @@ namespace TownOfUsFusion.Modifiers.AssassinMod
                 }
             }
 
->>>>>>> Stashed changes
             if (AmongUsClient.Instance.AmHost) meetingHud.CheckForEndVoting();
 
             AddHauntPatch.AssassinatedPlayers.Add(player);

@@ -1,7 +1,4 @@
 using HarmonyLib;
-<<<<<<< Updated upstream
-using TownOfUsFusion.Roles;
-=======
 using Reactor.Utilities;
 using TownOfUsFusion.Patches.NeutralRoles;
 using TownOfUsFusion.Roles;
@@ -9,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Object = UnityEngine.Object;
->>>>>>> Stashed changes
 
 namespace TownOfUsFusion.CrewmateRoles.TransporterMod
 {
@@ -25,12 +21,6 @@ namespace TownOfUsFusion.CrewmateRoles.TransporterMod
             if (!__instance.enabled) return false;
             if (role.TransportTimer() != 0f) return false;
 
-<<<<<<< Updated upstream
-            if (role.TransportList == null && role.ButtonUsable)
-            {
-                role.PressedButton = true;
-                role.MenuClick = true;
-=======
             if (role.ButtonUsable)
             {
                 try
@@ -67,7 +57,6 @@ namespace TownOfUsFusion.CrewmateRoles.TransporterMod
                     });
                     Coroutines.Start(pk.Open(0f, true));
                 }
->>>>>>> Stashed changes
             }
 
             return false;

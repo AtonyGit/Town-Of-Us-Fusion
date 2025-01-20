@@ -7,11 +7,7 @@ namespace TownOfUsFusion.RainbowMod
     {
         public static void Postfix(ref string __result)
         {
-<<<<<<< Updated upstream
             __result += "_TOU";
-=======
-            __result += "_TOUF";
->>>>>>> Stashed changes
         }
     }
     [HarmonyPatch(typeof(AmongUs.Data.Legacy.LegacySaveManager), nameof(AmongUs.Data.Legacy.LegacySaveManager.GetPrefsName))]
@@ -19,11 +15,7 @@ namespace TownOfUsFusion.RainbowMod
     {
         public static void Postfix(ref string __result)
         {
-<<<<<<< Updated upstream
             __result += "_TOU";
-=======
-            __result += "_TOUF";
->>>>>>> Stashed changes
         }
     }
 }

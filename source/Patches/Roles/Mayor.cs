@@ -10,11 +10,7 @@ namespace TownOfUsFusion.Roles
         {
             Name = "Mayor";
             ImpostorText = () => "Reveal Yourself To Save The Town";
-<<<<<<< Updated upstream
-            TaskText = () => "Reveal yourself when the time is right";
-=======
             TaskText = () => "Lead the town to victory";
->>>>>>> Stashed changes
             Color = Patches.Colors.Mayor;
             RoleType = RoleEnum.Mayor;
             AddToRoleHistory(RoleType);
@@ -34,8 +30,6 @@ namespace TownOfUsFusion.Roles
             if (!Player.Data.IsDead) return Revealed || base.RoleCriteria();
             return false || base.RoleCriteria();
         }
-<<<<<<< Updated upstream
-=======
 
         internal override bool GameEnd(LogicGameFlowNormal __instance)
         {
@@ -45,6 +39,5 @@ namespace TownOfUsFusion.Roles
 
             return true;
         }
->>>>>>> Stashed changes
     }
 }

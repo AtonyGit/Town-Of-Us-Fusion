@@ -1,12 +1,7 @@
 using AmongUs.GameOptions;
 using HarmonyLib;
-<<<<<<< Updated upstream
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;
-=======
-using TownOfUsFusion.Extensions;
-using TownOfUsFusion.Roles;
->>>>>>> Stashed changes
 using UnityEngine;
 
 namespace TownOfUsFusion
@@ -14,11 +9,7 @@ namespace TownOfUsFusion
     [HarmonyPatch(typeof(ShipStatus), nameof(ShipStatus.CalculateLightRadius))]
     public static class LowLights
     {
-<<<<<<< Updated upstream
-        public static bool Prefix(ShipStatus __instance, [HarmonyArgument(0)] GameData.PlayerInfo player,
-=======
         public static bool Prefix(ShipStatus __instance, [HarmonyArgument(0)] NetworkedPlayerInfo player,
->>>>>>> Stashed changes
             ref float __result)
         {
             if (GameOptionsManager.Instance.CurrentGameOptions.GameMode == GameModes.HideNSeek)
@@ -72,20 +63,6 @@ namespace TownOfUsFusion
 
             if (player._object.Is(ModifierEnum.Torch)) t = 1;
 
-<<<<<<< Updated upstream
-            if (player._object.Is(RoleEnum.Mayor))
-            {
-                var role = Role.GetRole<Mayor>(player._object);
-                if (role.Revealed)
-                {
-                    __result = Mathf.Lerp(__instance.MinLightRadius, __instance.MaxLightRadius/2, t) *
-                       GameOptionsManager.Instance.currentNormalGameOptions.CrewLightMod;
-                    return false;
-                }
-            }
-
-=======
->>>>>>> Stashed changes
             __result = Mathf.Lerp(__instance.MinLightRadius, __instance.MaxLightRadius, t) *
                        GameOptionsManager.Instance.currentNormalGameOptions.CrewLightMod;
             return false;

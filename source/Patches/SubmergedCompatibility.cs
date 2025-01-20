@@ -21,11 +21,7 @@ namespace TownOfUsFusion.Patches
         {
             if (SubmergedCompatibility.isSubmerged())
             {
-<<<<<<< Updated upstream
-                Coroutines.Start(SubmergedCompatibility.waitStart(SubmergedCompatibility.resetTimers));
-=======
                 Coroutines.Start(SubmergedCompatibility.waitMeeting(SubmergedCompatibility.resetTimers));
->>>>>>> Stashed changes
             }
         }
     }
@@ -41,18 +37,6 @@ namespace TownOfUsFusion.Patches
             {
                 if (PlayerControl.LocalPlayer.Data.IsDead && PlayerControl.LocalPlayer.Is(RoleEnum.Haunter))
                 {
-<<<<<<< Updated upstream
-                    if (!Role.GetRole<Haunter>(PlayerControl.LocalPlayer).Caught) __instance.MapButton.transform.parent.Find(__instance.MapButton.name + "(Clone)").gameObject.SetActive(false);
-                    else __instance.MapButton.transform.parent.Find(__instance.MapButton.name + "(Clone)").gameObject.SetActive(true);
-                }
-                if (PlayerControl.LocalPlayer.Data.IsDead && PlayerControl.LocalPlayer.Is(RoleEnum.Phantom))
-                {
-                    if (!Role.GetRole<Phantom>(PlayerControl.LocalPlayer).Caught) __instance.MapButton.transform.parent.Find(__instance.MapButton.name + "(Clone)").gameObject.SetActive(false);
-                    else  __instance.MapButton.transform.parent.Find(__instance.MapButton.name + "(Clone)").gameObject.SetActive(true);
-                }
-            }
-                
-=======
                     if (!Role.GetRole<Haunter>(PlayerControl.LocalPlayer).Caught) __instance.MapButton.transform.parent.Find(__instance.MapButton.name + "(Clone)").gameObject?.SetActive(false);
                     else __instance.MapButton.transform.parent.Find(__instance.MapButton.name + "(Clone)").gameObject?.SetActive(true);
                 }
@@ -62,7 +46,6 @@ namespace TownOfUsFusion.Patches
                     else __instance.MapButton.transform.parent.Find(__instance.MapButton.name + "(Clone)").gameObject?.SetActive(true);
                 }
             }
->>>>>>> Stashed changes
         }
     }
 
@@ -160,12 +143,9 @@ namespace TownOfUsFusion.Patches
         private static MethodInfo GetMovementStageFromTime;
         private static FieldInfo getSubElevatorSystem;
 
-<<<<<<< Updated upstream
-=======
         private static Type ElevatorConsole;
         private static MethodInfo CanUse;
 
->>>>>>> Stashed changes
         private static Type SubmarineElevatorSystem;
         private static FieldInfo UpperDeckIsTargetFloor; 
 
@@ -215,23 +195,17 @@ namespace TownOfUsFusion.Patches
             GetMovementStageFromTime = AccessTools.Method(SubmarineElevator, "GetMovementStageFromTime");
             getSubElevatorSystem = AccessTools.Field(SubmarineElevator, "system");
 
-<<<<<<< Updated upstream
-=======
             ElevatorConsole = Types.First(t => t.Name == "ElevatorConsole");
             CanUse = AccessTools.Method(ElevatorConsole, "CanUse");
 
->>>>>>> Stashed changes
             SubmarineElevatorSystem = Types.First(t => t.Name == "SubmarineElevatorSystem");
             UpperDeckIsTargetFloor = AccessTools.Field(SubmarineElevatorSystem, "upperDeckIsTargetFloor");
             Harmony _harmony = new Harmony("tou.submerged.patch");
             var exilerolechangePostfix = SymbolExtensions.GetMethodInfo(() => ExileRoleChangePostfix());
             _harmony.Patch(SubmergedExileWrapUpMethod, null, new HarmonyMethod(exilerolechangePostfix));
-<<<<<<< Updated upstream
-=======
             var canusePrefix = SymbolExtensions.GetMethodInfo(() => CanUsePrefix());
             var canusePostfix = SymbolExtensions.GetMethodInfo(() => CanUsePostfix());
             _harmony.Patch(CanUse, new HarmonyMethod(canusePrefix), new HarmonyMethod(canusePostfix));
->>>>>>> Stashed changes
         }
 
         public static void CheckOutOfBoundsElevator(PlayerControl player)
@@ -288,21 +262,6 @@ namespace TownOfUsFusion.Patches
             Coroutines.Start(waitMeeting(GhostRoleBegin));
         }
 
-<<<<<<< Updated upstream
-        public static IEnumerator waitStart(Action next)
-        {
-            while (DestroyableSingleton<HudManager>.Instance.UICamera.transform.Find("SpawnInMinigame(Clone)") == null)
-            {
-                yield return null;
-            }
-            yield return new WaitForSeconds(0.5f);
-            while (DestroyableSingleton<HudManager>.Instance.UICamera.transform.Find("SpawnInMinigame(Clone)") != null)
-            {
-                yield return null;
-            }
-            next();
-        }
-=======
         public static void CanUsePrefix()
         {
             var player = PlayerControl.LocalPlayer;
@@ -320,7 +279,6 @@ namespace TownOfUsFusion.Patches
             if ((player.Is(RoleEnum.Phantom) || player.Is(RoleEnum.Haunter)) && !targetData.IsDead) targetData.IsDead = true;
         }
 
->>>>>>> Stashed changes
         public static IEnumerator waitMeeting(Action next)
         {
             while (!PlayerControl.LocalPlayer.moveable)
@@ -337,10 +295,6 @@ namespace TownOfUsFusion.Patches
 
         public static void resetTimers()
         {
-<<<<<<< Updated upstream
-            if (PlayerControl.LocalPlayer.Data.IsDead) return;
-=======
->>>>>>> Stashed changes
             Utils.ResetCustomTimers();
         }
 
@@ -390,11 +344,7 @@ namespace TownOfUsFusion.Patches
 
         public static void Ghostrolefix(PlayerPhysics __instance)
         {
-<<<<<<< Updated upstream
-            if (Loaded && __instance.myPlayer.Data.IsDead)
-=======
             if (Loaded && __instance.myPlayer.Data != null && __instance.myPlayer.Data.IsDead)
->>>>>>> Stashed changes
             {
                 PlayerControl player = __instance.myPlayer;
                 if (player.Is(RoleEnum.Phantom))

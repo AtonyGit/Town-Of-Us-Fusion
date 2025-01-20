@@ -1,10 +1,6 @@
-<<<<<<< Updated upstream
-namespace TownOfUsFusion.CustomOption
-=======
 using System;
 
 namespace TownOfUsFusion.CustomOption
->>>>>>> Stashed changes
 {
     public class CustomStringOption : CustomOption
     {
@@ -13,31 +9,19 @@ namespace TownOfUsFusion.CustomOption
             0)
         {
             Values = values;
-<<<<<<< Updated upstream
-            Format = value => Values[(int) value];
-=======
             Format = value => Values[(int)value];
->>>>>>> Stashed changes
         }
 
         protected string[] Values { get; set; }
 
         protected internal int Get()
         {
-<<<<<<< Updated upstream
-            return (int) Value;
-=======
             return (int)Value;
->>>>>>> Stashed changes
         }
 
         protected internal void Increase()
         {
-<<<<<<< Updated upstream
-            if (Get() >= Values.Length)
-=======
             if (Get() >= Values.Length - 1)
->>>>>>> Stashed changes
                 Set(0);
             else
                 Set(Get() + 1);
@@ -53,14 +37,8 @@ namespace TownOfUsFusion.CustomOption
 
         public override void OptionCreated()
         {
-<<<<<<< Updated upstream
-            var str = Setting.Cast<StringOption>();
-
-            str.TitleText.text = Name;
-=======
             base.OptionCreated();
             var str = Setting.Cast<StringOption>();
->>>>>>> Stashed changes
             str.Value = str.oldValue = Get();
             str.ValueText.text = ToString();
         }

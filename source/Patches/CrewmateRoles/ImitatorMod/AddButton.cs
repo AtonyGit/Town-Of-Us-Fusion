@@ -12,44 +12,6 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
     public class AddButtonImitator
     {
         private static int _mostRecentId;
-<<<<<<< Updated upstream
-        private static Sprite ActiveSprite => TownOfUsFusion.ImitateSelectSprite;
-        public static Sprite DisabledSprite => TownOfUsFusion.ImitateDeselectSprite;
-
-
-        public static void GenButton(Imitator role, int index, bool isDead)
-        {
-            if (!isDead)
-            {
-                role.Buttons.Add(null);
-                role.ListOfActives.Add(false);
-                return;
-            }
-
-            var confirmButton = MeetingHud.Instance.playerStates[index].Buttons.transform.GetChild(0).gameObject;
-
-            var newButton = Object.Instantiate(confirmButton, MeetingHud.Instance.playerStates[index].transform);
-            var renderer = newButton.GetComponent<SpriteRenderer>();
-            var passive = newButton.GetComponent<PassiveButton>();
-
-            renderer.sprite = DisabledSprite;
-            newButton.transform.position = confirmButton.transform.position - new Vector3(0.75f, 0f, 0f);
-            newButton.transform.localScale *= 0.8f;
-            newButton.layer = 5;
-            newButton.transform.parent = confirmButton.transform.parent.parent;
-
-            passive.OnClick = new Button.ButtonClickedEvent();
-            passive.OnClick.AddListener(SetActive(role, index));
-            role.Buttons.Add(newButton);
-            role.ListOfActives.Add(false);
-        }
-
-
-        private static Action SetActive(Imitator role, int index)
-        {
-            void Listener()
-            {
-=======
         private static Sprite ActiveSprite => TownOfUsFusion.ImitateSelectSprite;
         public static Sprite DisabledSprite => TownOfUsFusion.ImitateDeselectSprite;
 
@@ -90,7 +52,6 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
         {
             void Listener()
             {
->>>>>>> Stashed changes
                 if (role.ListOfActives.Count(x => x) == 1 &&
                     role.Buttons[index].GetComponent<SpriteRenderer>().sprite == DisabledSprite)
                 {
@@ -132,10 +93,7 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
 
             if (PlayerControl.LocalPlayer.Data.IsDead) return;
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Imitator)) return;
-<<<<<<< Updated upstream
-=======
             if (PlayerControl.LocalPlayer.IsJailed()) return;
->>>>>>> Stashed changes
             var imitatorRole = Role.GetRole<Imitator>(PlayerControl.LocalPlayer);
             for (var i = 0; i < __instance.playerStates.Length; i++)
             {
@@ -150,20 +108,7 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
                             var haunter = Role.GetRole<Haunter>(player);
                             imitatedRole = haunter.formerRole;
                         }
-<<<<<<< Updated upstream
-                        if (player.Data.IsDead && !player.Data.Disconnected && (imitatedRole == RoleEnum.Detective ||
-                            imitatedRole == RoleEnum.Investigator || imitatedRole == RoleEnum.Mystic ||
-                            imitatedRole == RoleEnum.Seer || imitatedRole == RoleEnum.Spy ||
-                            imitatedRole == RoleEnum.Tracker || imitatedRole == RoleEnum.Sheriff ||
-                            imitatedRole == RoleEnum.Veteran || imitatedRole == RoleEnum.Altruist ||
-                            imitatedRole == RoleEnum.Engineer || imitatedRole == RoleEnum.Medium ||
-                            imitatedRole == RoleEnum.Transporter || imitatedRole == RoleEnum.Trapper ||
-                            imitatedRole == RoleEnum.Medic || imitatedRole == RoleEnum.VampireHunter ||
-                            imitatedRole == RoleEnum.Aurial || imitatedRole == RoleEnum.Oracle || 
-                            imitatedRole == RoleEnum.Hunter)) imitatable = true;
-=======
                         if (player.Data.IsDead && !player.Data.Disconnected && imitatorRole.ImitatableRoles.Contains(imitatedRole)) imitatable = true;
->>>>>>> Stashed changes
                         GenButton(imitatorRole, i, imitatable);
                     }
                 }

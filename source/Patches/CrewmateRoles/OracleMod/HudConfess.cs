@@ -29,22 +29,6 @@ namespace TownOfUsFusion.CrewmateRoles.OracleMod
                 .ToList();
 
             Utils.SetTarget(ref role.ClosestPlayer, confessButton, float.NaN, notConfessing);
-<<<<<<< Updated upstream
-
-            var renderer = confessButton.graphic;
-
-            if (role.ClosestPlayer != null)
-            {
-                renderer.color = Palette.EnabledColor;
-                renderer.material.SetFloat("_Desat", 0f);
-            }
-            else
-            {
-                renderer.color = Palette.DisabledClear;
-                renderer.material.SetFloat("_Desat", 1f);
-            }
-=======
->>>>>>> Stashed changes
         }
     }
 }

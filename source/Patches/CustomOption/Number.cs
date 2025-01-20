@@ -19,15 +19,9 @@ namespace TownOfUsFusion.CustomOption
 
         protected internal float Get()
         {
-<<<<<<< Updated upstream
-            return (float) Value;
-        }
-       
-=======
             return (float)Value;
         }
 
->>>>>>> Stashed changes
         protected internal void Increase()
         {
             var increment = Increment > 5 && Input.GetKeyInt(KeyCode.LeftShift) ? 5 : Increment;
@@ -52,11 +46,6 @@ namespace TownOfUsFusion.CustomOption
         {
             base.OptionCreated();
             var number = Setting.Cast<NumberOption>();
-<<<<<<< Updated upstream
-
-            number.TitleText.text = Name;
-=======
->>>>>>> Stashed changes
             number.ValidRange = new FloatRange(Min, Max);
             number.Increment = Increment;
             number.Value = number.oldValue = Get();

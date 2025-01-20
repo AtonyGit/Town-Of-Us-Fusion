@@ -14,11 +14,7 @@ namespace TownOfUsFusion.Patches
         {
             foreach (var player in PlayerControl.AllPlayerControls.ToArray())
             {
-<<<<<<< Updated upstream
-                if (!(player.Data.IsDead || player.Data.Disconnected))
-=======
                 if (player.Data != null && !(player.Data.IsDead || player.Data.Disconnected))
->>>>>>> Stashed changes
                     player.transform.localScale = player.GetAppearance().SizeFactor;
                 else
                     player.transform.localScale = new Vector3(0.7f, 0.7f, 1.0f);

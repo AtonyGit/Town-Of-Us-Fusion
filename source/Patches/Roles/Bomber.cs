@@ -15,11 +15,7 @@ namespace TownOfUsFusion.Roles
         public bool Detonated = true;
         public Vector3 DetonatePoint;
         public Bomb Bomb = new Bomb();
-<<<<<<< Updated upstream
         public static Material bombMaterial = TownOfUsFusion.bundledAssets.Get<Material>("bomb");
-=======
-        public static Material bombMaterial = TownOfUsFusion.bundledAssets.Get<Material>("bomb");
->>>>>>> Stashed changes
         public DateTime StartingCooldown { get; set; }
 
         public Bomber(PlayerControl player) : base(player)

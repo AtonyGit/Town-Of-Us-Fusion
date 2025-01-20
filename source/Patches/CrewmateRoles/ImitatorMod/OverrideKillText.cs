@@ -14,11 +14,7 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
             if (PlayerControl.LocalPlayer.Data.IsDead) return;
             if (StartImitate.ImitatingPlayer == null) return;
             if (PlayerControl.LocalPlayer != StartImitate.ImitatingPlayer) return;
-<<<<<<< Updated upstream
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Sheriff)) __instance.KillButton.OverrideText("");
-=======
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Sheriff) && !PlayerControl.LocalPlayer.Is(RoleEnum.Hunter)) __instance.KillButton.OverrideText("");
->>>>>>> Stashed changes
             return;
         }
     }

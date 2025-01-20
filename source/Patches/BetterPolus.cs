@@ -2,11 +2,7 @@ using System.Linq;
 using HarmonyLib;
 using UnityEngine;
 
-<<<<<<< Updated upstream
 namespace TownOfUsFusion
-=======
-namespace TownOfUsFusion
->>>>>>> Stashed changes
 {
     [HarmonyPatch(typeof(ShipStatus))]
     public static class ShipStatusPatch

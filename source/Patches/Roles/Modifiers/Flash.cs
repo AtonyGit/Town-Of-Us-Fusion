@@ -1,12 +1,6 @@
-<<<<<<< Updated upstream
 using TownOfUsFusion.Extensions;
 
 namespace TownOfUsFusion.Roles.Modifiers
-=======
-using TownOfUsFusion.Extensions;
-
-namespace TownOfUsFusion.Roles.Modifiers
->>>>>>> Stashed changes
 {
     public class Flash : Modifier, IVisualAlteration
     {

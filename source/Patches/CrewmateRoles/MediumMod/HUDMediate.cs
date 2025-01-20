@@ -40,11 +40,7 @@ namespace TownOfUsFusion.CrewmateRoles.MediumMod
                         player.Visible = true;
                         if (!CustomGameOptions.ShowMediatePlayer)
                         {
-<<<<<<< Updated upstream
-                            player.SetOutfit(CustomPlayerOutfitType.Camouflage, new GameData.PlayerOutfit()
-=======
                             player.SetOutfit(CustomPlayerOutfitType.Camouflage, new NetworkedPlayerInfo.PlayerOutfit()
->>>>>>> Stashed changes
                             {
                                 ColorId = player.GetDefaultOutfit().ColorId,
                                 HatId = "",
@@ -60,11 +56,7 @@ namespace TownOfUsFusion.CrewmateRoles.MediumMod
                 mediateButton.SetCoolDown(role.MediateTimer(), CustomGameOptions.MediateCooldown);
 
                 var renderer = mediateButton.graphic;
-<<<<<<< Updated upstream
-                if (!mediateButton.isCoolingDown)
-=======
                 if (!mediateButton.isCoolingDown && PlayerControl.LocalPlayer.moveable)
->>>>>>> Stashed changes
                 {
                     renderer.color = Palette.EnabledColor;
                     renderer.material.SetFloat("_Desat", 0f);

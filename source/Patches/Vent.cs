@@ -3,12 +3,8 @@ using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;
 using UnityEngine;
 using AmongUs.GameOptions;
-<<<<<<< Updated upstream
-using TownOfUsFusion.Patches;
-=======
 using TownOfUsFusion.Patches;
 using System.Linq;
->>>>>>> Stashed changes
 
 namespace TownOfUsFusion
 {
@@ -21,13 +17,8 @@ namespace TownOfUsFusion
             if(__instance.ImpostorVentButton == null || __instance.ImpostorVentButton.gameObject == null || __instance.ImpostorVentButton.IsNullOrDestroyed())
                 return;
 
-<<<<<<< Updated upstream
-            bool active = PlayerControl.LocalPlayer != null && VentPatches.CanVent(PlayerControl.LocalPlayer, PlayerControl.LocalPlayer._cachedData) && !MeetingHud.Instance;
-            if(active != __instance.ImpostorVentButton.gameObject.active)
-=======
             bool active = PlayerControl.LocalPlayer != null && VentPatches.CanVent(PlayerControl.LocalPlayer, PlayerControl.LocalPlayer.CachedPlayerData) && !MeetingHud.Instance;
             if (active != __instance.ImpostorVentButton.gameObject.active)
->>>>>>> Stashed changes
             __instance.ImpostorVentButton.gameObject.SetActive(active);
         }
     }
@@ -35,18 +26,11 @@ namespace TownOfUsFusion
     [HarmonyPatch(typeof(Vent), nameof(Vent.CanUse))]
     public static class VentPatches
     {
-<<<<<<< Updated upstream
-        public static bool CanVent(PlayerControl player, GameData.PlayerInfo playerInfo)
-=======
         public static bool CanVent(PlayerControl player, NetworkedPlayerInfo playerInfo)
->>>>>>> Stashed changes
         {
             if (GameOptionsManager.Instance.CurrentGameOptions.GameMode == GameModes.HideNSeek) return false;
 
             if (player.inVent)
-<<<<<<< Updated upstream
-                return true;
-=======
             {
                 if (PlayerControl.AllPlayerControls.ToArray().Where(x => !x.Data.IsDead && !x.Data.Disconnected).ToList().Count <= 2 && !player.Is(RoleEnum.Haunter) && !player.Is(RoleEnum.Phantom))
                 {
@@ -55,17 +39,11 @@ namespace TownOfUsFusion
                 }
                 return true;
             }
->>>>>>> Stashed changes
 
             if (playerInfo.IsDead)
                 return false;
 
-<<<<<<< Updated upstream
-            if (CustomGameOptions.GameMode == GameMode.Cultist && !player.Is(RoleEnum.Engineer)) return false;
-            else if (CustomGameOptions.GameMode == GameMode.Cultist && player.Is(RoleEnum.Engineer)) return true;
-=======
             if (PlayerControl.AllPlayerControls.ToArray().Where(x => !x.Data.IsDead && !x.Data.Disconnected).ToList().Count <= 2) return false;
->>>>>>> Stashed changes
 
             if (player.Is(RoleEnum.Morphling) && !CustomGameOptions.MorphlingVent
                 || player.Is(RoleEnum.Swooper) && !CustomGameOptions.SwooperVent
@@ -84,11 +62,7 @@ namespace TownOfUsFusion
 
             if (player.Is(RoleEnum.Werewolf) && CustomGameOptions.WerewolfVent)
             {
-<<<<<<< Updated upstream
-                var role = Role.GetRole<Werewolf>(PlayerControl.LocalPlayer);
-=======
                 var role = Role.GetRole<Werewolf>(player);
->>>>>>> Stashed changes
                 if (role.Rampaged) return true;
             }
 
@@ -96,11 +70,7 @@ namespace TownOfUsFusion
         }
 
         public static void Postfix(Vent __instance,
-<<<<<<< Updated upstream
-            [HarmonyArgument(0)] GameData.PlayerInfo playerInfo,
-=======
             [HarmonyArgument(0)] NetworkedPlayerInfo playerInfo,
->>>>>>> Stashed changes
             [HarmonyArgument(1)] ref bool canUse,
             [HarmonyArgument(2)] ref bool couldUse,
             ref float __result)

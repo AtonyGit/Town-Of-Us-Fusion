@@ -1,19 +1,9 @@
-<<<<<<< Updated upstream
-using TownOfUsFusion.CrewmateRoles.MedicMod;
-using TownOfUsFusion.CustomOption;
-using TownOfUsFusion.NeutralRoles.ExecutionerMod;
-using TownOfUsFusion.CrewmateRoles.HaunterMod;
-using TownOfUsFusion.CrewmateRoles.MediumMod;
-using TownOfUsFusion.CrewmateRoles.VampireHunterMod;
-using TownOfUsFusion.NeutralRoles.GuardianAngelMod;
-=======
 using TownOfUsFusion.CrewmateRoles.MedicMod;
 using TownOfUsFusion.CustomOption;
 using TownOfUsFusion.NeutralRoles.ExecutionerMod;
 using TownOfUsFusion.CrewmateRoles.HaunterMod;
 using TownOfUsFusion.CrewmateRoles.MediumMod;
 using TownOfUsFusion.NeutralRoles.GuardianAngelMod;
->>>>>>> Stashed changes
 
 namespace TownOfUsFusion
 {
@@ -27,12 +17,7 @@ namespace TownOfUsFusion
     {
         Classic,
         AllAny,
-<<<<<<< Updated upstream
-        KillingOnly,
-        Cultist
-=======
         KillingOnly
->>>>>>> Stashed changes
     }
     public enum AdminDeadPlayers
     {
@@ -43,11 +28,7 @@ namespace TownOfUsFusion
     }
     public static class CustomGameOptions
     {
-<<<<<<< Updated upstream
-        public static int MayorOn => (int)Generate.MayorOn.Get();
-=======
         public static int PoliticianOn => (int)Generate.PoliticianOn.Get();
->>>>>>> Stashed changes
         public static int JesterOn => (int)Generate.JesterOn.Get();
         public static int SheriffOn => (int)Generate.SheriffOn.Get();
         public static int JanitorOn => (int)Generate.JanitorOn.Get();
@@ -90,31 +71,20 @@ namespace TownOfUsFusion
         public static int BomberOn => (int)Generate.BomberOn.Get();
         public static int DoomsayerOn => (int)Generate.DoomsayerOn.Get();
         public static int VampireOn => (int)Generate.VampireOn.Get();
-<<<<<<< Updated upstream
-        public static int VampireHunterOn => (int)Generate.VampireHunterOn.Get();
-=======
->>>>>>> Stashed changes
         public static int ProsecutorOn => (int)Generate.ProsecutorOn.Get();
         public static int WarlockOn => (int)Generate.WarlockOn.Get();
         public static int OracleOn => (int)Generate.OracleOn.Get();
         public static int VenererOn => (int)Generate.VenererOn.Get();
         public static int AurialOn => (int)Generate.AurialOn.Get();
-<<<<<<< Updated upstream
-=======
         public static int WardenOn => (int)Generate.WardenOn.Get();
         public static int HypnotistOn => (int)Generate.HypnotistOn.Get();
         public static int JailorOn => (int)Generate.JailorOn.Get();
         public static int SoulCollectorOn => (int)Generate.SoulCollectorOn.Get();
->>>>>>> Stashed changes
         public static int TorchOn => (int)Generate.TorchOn.Get();
         public static int DiseasedOn => (int)Generate.DiseasedOn.Get();
         public static int FlashOn => (int)Generate.FlashOn.Get();
         public static int TiebreakerOn => (int)Generate.TiebreakerOn.Get();
         public static int GiantOn => (int)Generate.GiantOn.Get();
-<<<<<<< Updated upstream
-        public static int MiniOn => (int)Generate.MiniOn.Get();
-=======
->>>>>>> Stashed changes
         public static int ButtonBarryOn => (int)Generate.ButtonBarryOn.Get();
         public static int BaitOn => (int)Generate.BaitOn.Get();
         public static int LoversOn => (int)Generate.LoversOn.Get();
@@ -126,21 +96,6 @@ namespace TownOfUsFusion
         public static int DoubleShotOn => (int)Generate.DoubleShotOn.Get();
         public static int UnderdogOn => (int)Generate.UnderdogOn.Get();
         public static int FrostyOn => (int)Generate.FrostyOn.Get();
-<<<<<<< Updated upstream
-        public static float InitialCooldowns => Generate.InitialCooldowns.Get();
-        public static bool BothLoversDie => Generate.BothLoversDie.Get();
-        public static bool NeutralLovers => Generate.NeutralLovers.Get();
-        public static bool SheriffKillOther => Generate.SheriffKillOther.Get();
-        public static bool SheriffKillsDoomsayer => Generate.SheriffKillsDoomsayer.Get();
-        public static bool SheriffKillsExecutioner => Generate.SheriffKillsExecutioner.Get();
-        public static bool SheriffKillsJester => Generate.SheriffKillsJester.Get();
-        public static bool SheriffKillsArsonist => Generate.SheriffKillsArsonist.Get();
-        public static bool SheriffKillsJuggernaut => Generate.SheriffKillsJuggernaut.Get();
-        public static bool SheriffKillsPlaguebearer => Generate.SheriffKillsPlaguebearer.Get();
-        public static bool SheriffKillsGlitch => Generate.SheriffKillsGlitch.Get();
-        public static bool SheriffKillsVampire => Generate.SheriffKillsVampire.Get();
-        public static bool SheriffKillsWerewolf => Generate.SheriffKillsWerewolf.Get();
-=======
         public static int SixthSenseOn => (int)Generate.SixthSenseOn.Get();
         public static int ShyOn => (int)Generate.ShyOn.Get();
         public static float InitialCooldowns => Generate.InitialCooldowns.Get();
@@ -150,7 +105,6 @@ namespace TownOfUsFusion
         public static bool SheriffKillOther => Generate.SheriffKillOther.Get();
         public static bool SheriffKillsNE => Generate.SheriffKillsNE.Get();
         public static bool SheriffKillsNK => Generate.SheriffKillsNK.Get();
->>>>>>> Stashed changes
         public static float SheriffKillCd => Generate.SheriffKillCd.Get();
         public static bool SwapperButton => Generate.SwapperButton.Get();
         public static float FootprintSize => Generate.FootprintSize.Get();
@@ -261,10 +215,7 @@ namespace TownOfUsFusion
         public static int VigilanteKills => (int)Generate.VigilanteKills.Get();
         public static bool VigilanteMultiKill => Generate.VigilanteMultiKill.Get();
         public static bool VigilanteAfterVoting => Generate.VigilanteAfterVoting.Get();
-<<<<<<< Updated upstream
-=======
         public static float CampaignCd => Generate.CampaignCooldown.Get();
->>>>>>> Stashed changes
         public static int HaunterTasksRemainingClicked => (int)Generate.HaunterTasksRemainingClicked.Get();
         public static int HaunterTasksRemainingAlert => (int)Generate.HaunterTasksRemainingAlert.Get();
         public static bool HaunterRevealsNeutrals => Generate.HaunterRevealsNeutrals.Get();
@@ -311,10 +262,6 @@ namespace TownOfUsFusion
         public static float BlackmailCd => Generate.BlackmailCooldown.Get();
         public static bool BlackmailInvisible => Generate.BlackmailInvisible.Get();
         public static float GiantSlow => Generate.GiantSlow.Get();
-<<<<<<< Updated upstream
-        public static float MiniSpeed => Generate.MiniSpeed.Get();
-=======
->>>>>>> Stashed changes
         public static float FlashSpeed => Generate.FlashSpeed.Get();
         public static float DiseasedMultiplier => Generate.DiseasedKillMultiplier.Get();
         public static float BaitMinDelay => Generate.BaitMinDelay.Get();
@@ -336,30 +283,19 @@ namespace TownOfUsFusion
         public static bool DetectiveReportOn => Generate.DetectiveReportOn.Get();
         public static float DetectiveRoleDuration => Generate.DetectiveRoleDuration.Get();
         public static float DetectiveFactionDuration => Generate.DetectiveFactionDuration.Get();
-<<<<<<< Updated upstream
-        public static bool CanDetectLastKiller => Generate.CanDetectLastKiller.Get();
-=======
->>>>>>> Stashed changes
         public static float EscapeCd => Generate.EscapeCooldown.Get();
         public static bool EscapistVent => Generate.EscapistVent.Get();
         public static float DetonateDelay => Generate.DetonateDelay.Get();
         public static int MaxKillsInDetonation => (int) Generate.MaxKillsInDetonation.Get();
         public static float DetonateRadius => Generate.DetonateRadius.Get();
         public static bool BomberVent => Generate.BomberVent.Get();
-<<<<<<< Updated upstream
-=======
         public static bool AllImpsSeeBomb => Generate.AllImpsSeeBomb.Get();
->>>>>>> Stashed changes
         public static float ObserveCooldown => Generate.ObserveCooldown.Get();
         public static bool DoomsayerGuessNeutralBenign => Generate.DoomsayerGuessNeutralBenign.Get();
         public static bool DoomsayerGuessNeutralEvil => Generate.DoomsayerGuessNeutralEvil.Get();
         public static bool DoomsayerGuessNeutralKilling => Generate.DoomsayerGuessNeutralKilling.Get();
         public static bool DoomsayerGuessImpostors => Generate.DoomsayerGuessImpostors.Get();
         public static bool DoomsayerAfterVoting => Generate.DoomsayerAfterVoting.Get();
-<<<<<<< Updated upstream
-        public static int DoomsayerGuessesToWin => (int)Generate.DoomsayerGuessesToWin.Get();
-=======
->>>>>>> Stashed changes
         public static float BiteCd => Generate.BiteCooldown.Get();
         public static bool VampImpVision => Generate.VampImpVision.Get();
         public static bool VampVent => Generate.VampVent.Get();
@@ -367,14 +303,6 @@ namespace TownOfUsFusion
         public static int MaxVampiresPerGame => (int)Generate.MaxVampiresPerGame.Get();
         public static bool CanBiteNeutralBenign => Generate.CanBiteNeutralBenign.Get();
         public static bool CanBiteNeutralEvil => Generate.CanBiteNeutralEvil.Get();
-<<<<<<< Updated upstream
-        public static float StakeCd => Generate.StakeCooldown.Get();
-        public static int MaxFailedStakesPerGame => (int)Generate.MaxFailedStakesPerGame.Get();
-        public static bool CanStakeRoundOne => Generate.CanStakeRoundOne.Get();
-        public static bool SelfKillAfterFinalStake => Generate.SelfKillAfterFinalStake.Get();
-        public static BecomeEnum BecomeOnVampDeaths => (BecomeEnum)Generate.BecomeOnVampDeaths.Get();
-=======
->>>>>>> Stashed changes
         public static bool ProsDiesOnIncorrectPros => Generate.ProsDiesOnIncorrectPros.Get();
         public static float ChargeUpDuration => Generate.ChargeUpDuration.Get();
         public static float ChargeUseDuration => Generate.ChargeUseDuration.Get();
@@ -385,25 +313,14 @@ namespace TownOfUsFusion
         public static bool NeutralKillingShowsEvil => Generate.NeutralKillingShowsEvil.Get();
         public static float AbilityCd => Generate.AbilityCooldown.Get();
         public static float AbilityDuration => Generate.AbilityDuration.Get();
-<<<<<<< Updated upstream
-=======
         public static float FortifyCd => Generate.FortifyCooldown.Get();
->>>>>>> Stashed changes
         public static float SprintSpeed => Generate.SprintSpeed.Get();
         public static float FreezeSpeed => Generate.FreezeSpeed.Get();
         public static float ChillDuration => Generate.ChillDuration.Get();
         public static float ChillStartSpeed => Generate.ChillStartSpeed.Get();
-<<<<<<< Updated upstream
-        public static float RadiateRange => (float)Generate.RadiateRange.Get();
-        public static float RadiateCooldown => (float)Generate.RadiateCooldown.Get();
-        public static float RadiateInvis => (float)Generate.RadiateInvis.Get();
-        public static int RadiateCount => (int)Generate.RadiateCount.Get();
-        public static int RadiateChance => (int)Generate.RadiateSucceedChance.Get();
-=======
         public static float AuraInnerRadius => (float)Generate.AuraInnerRadius.Get();
         public static float AuraOuterRadius => (float)Generate.AuraOuterRadius.Get();
         public static float SenseDuration => (float)Generate.SenseDuration.Get();
->>>>>>> Stashed changes
         public static AdminDeadPlayers WhoSeesDead => (AdminDeadPlayers)Generate.WhoSeesDead.Get();
         public static bool VentImprovements => Generate.VentImprovements.Get();
         public static bool VitalsLab => Generate.VitalsLab.Get();
@@ -416,11 +333,7 @@ namespace TownOfUsFusion
         public static float RandomMapAirship => Generate.RandomMapAirship.Get();
         public static float RandomMapFungle => Generate.RandomMapFungle.Get();
         public static float RandomMapSubmerged => Patches.SubmergedCompatibility.Loaded ? Generate.RandomMapSubmerged.Get() : 0f;
-<<<<<<< Updated upstream
-        public static bool AutoAdjustSettings => Generate.AutoAdjustSettings.Get();
-=======
         public static float RandomMapLevelImpostor => RandomMap.LevelImpLoaded ? Generate.RandomMapLevelImpostor.Get() : 0f;
->>>>>>> Stashed changes
         public static bool SmallMapHalfVision => Generate.SmallMapHalfVision.Get();
         public static float SmallMapDecreasedCooldown => Generate.SmallMapDecreasedCooldown.Get();
         public static float LargeMapIncreasedCooldown => Generate.LargeMapIncreasedCooldown.Get();
@@ -432,33 +345,8 @@ namespace TownOfUsFusion
             (DisableSkipButtonMeetings)Generate.SkipButtonDisable.Get();
         public static GameMode GameMode =>
             (GameMode)Generate.GameMode.Get();
-<<<<<<< Updated upstream
-        public static int MayorCultistOn => (int)Generate.MayorCultistOn.Get();
-        public static int SeerCultistOn => (int)Generate.SeerCultistOn.Get();
-        public static int SheriffCultistOn => (int)Generate.SheriffCultistOn.Get();
-        public static int SurvivorCultistOn => (int)Generate.SurvivorCultistOn.Get();
-        public static int SpecialRoleCount => (int)Generate.NumberOfSpecialRoles.Get();
-        public static int MaxChameleons => (int)Generate.MaxChameleons.Get();
-        public static int MaxEngineers => (int)Generate.MaxEngineers.Get();
-        public static int MaxInvestigators => (int)Generate.MaxInvestigators.Get();
-        public static int MaxMystics => (int)Generate.MaxMystics.Get();
-        public static int MaxSnitches => (int)Generate.MaxSnitches.Get();
-        public static int MaxSpies => (int)Generate.MaxSpies.Get();
-        public static int MaxTransporters => (int)Generate.MaxTransporters.Get();
-        public static int MaxVigilantes => (int)Generate.MaxVigilantes.Get();
-        public static float WhisperCooldown => Generate.WhisperCooldown.Get();
-        public static float IncreasedCooldownPerWhisper => Generate.IncreasedCooldownPerWhisper.Get();
-        public static float WhisperRadius => Generate.WhisperRadius.Get();
-        public static int ConversionPercentage => (int) Generate.ConversionPercentage.Get();
-        public static int DecreasedPercentagePerConversion => (int) Generate.DecreasedPercentagePerConversion.Get();
-        public static float ReviveCooldown => Generate.ReviveCooldown.Get();
-        public static float IncreasedCooldownPerRevive => Generate.IncreasedCooldownPerRevive.Get();
-        public static int MaxReveals => (int)Generate.MaxReveals.Get();
-        public static bool GhostsDoTasks => Generate.GhostsDoTasks.Get();
-=======
         public static bool CamoCommsKillAnyone => Generate.CamoCommsKillAnyone.Get();
         public static bool CrewKillersContinue => Generate.CrewKillersContinue.Get();
->>>>>>> Stashed changes
         public static float HunterKillCd => Generate.HunterKillCd.Get();
         public static float HunterStalkCd => Generate.HunterStalkCd.Get();
         public static float HunterStalkDuration => Generate.HunterStalkDuration.Get();
@@ -466,8 +354,6 @@ namespace TownOfUsFusion
         public static bool RetributionOnVote => Generate.RetributionOnVote.Get();
         public static bool HunterBodyReport => Generate.HunterBodyReport.Get();
         public static bool DoomsayerCantObserve => Generate.DoomsayerCantObserve.Get();
-<<<<<<< Updated upstream
-=======
         public static float HypnotiseCd => Generate.HypnotiseCooldown.Get();
         public static float JailCd => Generate.JailCooldown.Get();
         public static int MaxExecutes => (int)Generate.MaxExecutes.Get();
@@ -477,6 +363,5 @@ namespace TownOfUsFusion
         public static float InvisDelay => Generate.InvisDelay.Get();
         public static float TransformInvisDuration => Generate.TransformInvisDuration.Get();
         public static float FinalTransparency => Generate.FinalTransparency.Get();
->>>>>>> Stashed changes
     }
 }

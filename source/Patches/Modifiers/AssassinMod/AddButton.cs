@@ -3,16 +3,10 @@ using HarmonyLib;
 using Reactor.Utilities;
 using Reactor.Utilities.Extensions;
 using TMPro;
-<<<<<<< Updated upstream
-using TownOfUsFusion.Extensions;
-using TownOfUsFusion.Roles;
-using TownOfUsFusion.Roles.Modifiers;
-=======
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Patches;
 using TownOfUsFusion.Roles;
 using TownOfUsFusion.Roles.Modifiers;
->>>>>>> Stashed changes
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
@@ -22,26 +16,16 @@ namespace TownOfUsFusion.Modifiers.AssassinMod
     [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.Start))]
     public class AddButton
     {
-<<<<<<< Updated upstream
         private static Sprite CycleBackSprite => TownOfUsFusion.CycleBackSprite;
         private static Sprite CycleForwardSprite => TownOfUsFusion.CycleForwardSprite;
 
         private static Sprite GuessSprite => TownOfUsFusion.GuessSprite;
-=======
-        private static Sprite CycleBackSprite => TownOfUsFusion.CycleBackSprite;
-        private static Sprite CycleForwardSprite => TownOfUsFusion.CycleForwardSprite;
-
-        private static Sprite GuessSprite => TownOfUsFusion.GuessSprite;
->>>>>>> Stashed changes
 
         private static bool IsExempt(PlayerVoteArea voteArea)
         {
             if (voteArea.AmDead) return true;
             var player = Utils.PlayerById(voteArea.TargetPlayerId);
-<<<<<<< Updated upstream
-=======
             if (player.IsJailed()) return true;
->>>>>>> Stashed changes
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Vampire))
             {
                 if (
@@ -190,13 +174,9 @@ namespace TownOfUsFusion.Modifiers.AssassinMod
                 if (playerModifier != null)
                     toDie = (playerRole.Name == currentGuess || playerModifier.Name == currentGuess) ? playerRole.Player : role.Player;
 
-<<<<<<< Updated upstream
-                if (!toDie.Is(RoleEnum.Pestilence) || PlayerControl.LocalPlayer.Is(RoleEnum.Pestilence))
-=======
                 var fortified = toDie.IsFortified() && PlayerControl.LocalPlayer != toDie;
 
                 if ((!toDie.Is(RoleEnum.Pestilence) || PlayerControl.LocalPlayer.Is(RoleEnum.Pestilence)) && !fortified)
->>>>>>> Stashed changes
                 {
                     if (PlayerControl.LocalPlayer.Is(ModifierEnum.DoubleShot) && toDie == PlayerControl.LocalPlayer)
                     {
@@ -230,15 +210,12 @@ namespace TownOfUsFusion.Modifiers.AssassinMod
                             if (!lover.Is(RoleEnum.Pestilence)) ShowHideButtons.HideSingle(role, lover.PlayerId, false);
                         }
                     }
-<<<<<<< Updated upstream
-=======
                 }
                 else
                 {
                     ShowHideButtons.HideSingle(role, targetId, toDie == role.Player);
                     Coroutines.Start(Utils.FlashCoroutine(Colors.Warden));
                     if (toDie.IsFortified()) Utils.Rpc(CustomRPC.Fortify, (byte)1, toDie.GetWarden().Player.PlayerId);
->>>>>>> Stashed changes
                 }
             }
 
@@ -258,10 +235,7 @@ namespace TownOfUsFusion.Modifiers.AssassinMod
             if (PlayerControl.LocalPlayer.Data.IsDead) return;
             if (!PlayerControl.LocalPlayer.Is(AbilityEnum.Assassin)) return;
             if (PlayerControl.LocalPlayer.Is(Faction.NeutralBenign)) return;
-<<<<<<< Updated upstream
-=======
             if (PlayerControl.LocalPlayer.IsJailed()) return;
->>>>>>> Stashed changes
 
             var assassinRole = Ability.GetAbility<Assassin>(PlayerControl.LocalPlayer);
             if (assassinRole.RemainingKills <= 0) return;

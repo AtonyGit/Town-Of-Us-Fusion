@@ -8,11 +8,7 @@ namespace TownOfUsFusion.ImpostorRoles.GrenadierMod
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class HudManagerUpdate
     {
-<<<<<<< Updated upstream
         public static Sprite FlashSprite => TownOfUsFusion.FlashSprite;
-=======
-        public static Sprite FlashSprite => TownOfUsFusion.FlashSprite;
->>>>>>> Stashed changes
 
         public static void Postfix(HudManager __instance)
         {
@@ -55,11 +51,8 @@ namespace TownOfUsFusion.ImpostorRoles.GrenadierMod
             if (role.Flashed)
             {
                 role.FlashButton.SetCoolDown(role.TimeRemaining, CustomGameOptions.GrenadeDuration);
-<<<<<<< Updated upstream
-=======
                 role.FlashButton.graphic.color = Palette.EnabledColor;
                 role.FlashButton.graphic.material.SetFloat("_Desat", 0f);
->>>>>>> Stashed changes
                 return;
             }
 
@@ -68,11 +61,7 @@ namespace TownOfUsFusion.ImpostorRoles.GrenadierMod
             var system = ShipStatus.Instance.Systems[SystemTypes.Sabotage].Cast<SabotageSystemType>();
             var sabActive = system.AnyActive;
 
-<<<<<<< Updated upstream
-            if (sabActive)
-=======
             if (sabActive || !PlayerControl.LocalPlayer.moveable || role.FlashTimer() > 0f)
->>>>>>> Stashed changes
             {
                 role.FlashButton.graphic.color = Palette.DisabledClear;
                 role.FlashButton.graphic.material.SetFloat("_Desat", 1f);

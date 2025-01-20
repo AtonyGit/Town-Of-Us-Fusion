@@ -1,10 +1,6 @@
 ﻿using UnityEngine;
 
-<<<<<<< Updated upstream
 namespace TownOfUsFusion.Patches
-=======
-namespace TownOfUsFusion.Patches
->>>>>>> Stashed changes
 {
     class Colors {
 
@@ -29,23 +25,14 @@ namespace TownOfUsFusion.Patches
         public readonly static Color Mystic = new Color(0.3f, 0.6f, 0.9f, 1f);
         public readonly static Color Trapper = new Color(0.65f, 0.82f, 0.7f, 1f);
         public readonly static Color Detective = new Color(0.3f, 0.3f, 1f, 1f);
-<<<<<<< Updated upstream
-        public readonly static Color Chameleon = new Color(0.5f, 0.5f, 0f, 1f);
         public readonly static Color Imitator = new Color(0.7f, 0.85f, 0.3f, 1f);
-        public readonly static Color VampireHunter = new Color(0.7f, 0.7f, 0.9f, 1f);
-=======
-        public readonly static Color Imitator = new Color(0.7f, 0.85f, 0.3f, 1f);
->>>>>>> Stashed changes
         public readonly static Color Prosecutor = new Color(0.7f, 0.5f, 0f, 1f);
         public readonly static Color Oracle = new Color(0.75f, 0f, 0.75f, 1f);
         public readonly static Color Aurial = new Color(0.7f, 0.3f, 0.6f, 1f);
         public readonly static Color Hunter = new Color(0.16f, 0.67f, 0.53f, 1f);
-<<<<<<< Updated upstream
-=======
         public readonly static Color Politician = new Color(0.4f, 0f, 0.6f, 1f);
         public readonly static Color Warden = new Color(0.6f, 0f, 1f, 1f);
         public readonly static Color Jailor = new Color(0.65f, 0.65f, 0.65f, 1f);
->>>>>>> Stashed changes
 
         // Neutral Colors
         public readonly static Color Jester = new Color(1f, 0.75f, 0.8f, 1f);
@@ -62,10 +49,7 @@ namespace TownOfUsFusion.Patches
         public readonly static Color Werewolf = new Color(0.66f, 0.4f, 0.16f, 1f);
         public readonly static Color Doomsayer = new Color(0f, 1f, 0.5f, 1f);
         public readonly static Color Vampire = new Color(0.15f, 0.15f, 0.15f, 1f);
-<<<<<<< Updated upstream
-=======
         public readonly static Color SoulCollector = new Color(0.6f, 1f, 0.8f, 1f);
->>>>>>> Stashed changes
 
         //Imposter Colors
         public readonly static Color Impostor = Palette.ImpostorRed;
@@ -78,21 +62,14 @@ namespace TownOfUsFusion.Patches
         public readonly static Color ButtonBarry = new Color(0.9f, 0f, 1f, 1f);
         public readonly static Color Flash = new Color(1f, 0.5f, 0.5f, 1f);
         public readonly static Color Giant = new Color(1f, 0.7f, 0.3f, 1f);
-<<<<<<< Updated upstream
-        public readonly static Color Mini = new Color(0.6f, 0.5f, 1f, 1f);
-=======
->>>>>>> Stashed changes
         public readonly static Color Lovers = new Color(1f, 0.4f, 0.8f, 1f);
         public readonly static Color Sleuth = new Color(0.5f, 0.2f, 0.2f, 1f);
         public readonly static Color Tiebreaker = new Color(0.6f, 0.9f, 0.6f, 1f);
         public readonly static Color Radar = new Color(1f, 0f, 0.5f, 1f);
         public readonly static Color Multitasker = new Color(1f, 0.5f, 0.3f, 1f);
         public readonly static Color Frosty = new Color(0.6f, 1f, 1f, 1f);
-<<<<<<< Updated upstream
-=======
         public readonly static Color SixthSense = new Color(0.85f, 1f, 0.55f, 1f);
         public readonly static Color Shy = new Color(1f, 0.7f, 0.8f, 1f);
->>>>>>> Stashed changes
 
     }
 }

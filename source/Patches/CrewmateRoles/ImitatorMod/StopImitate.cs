@@ -4,11 +4,6 @@ using UnityEngine;
 using TownOfUsFusion.CrewmateRoles.InvestigatorMod;
 using TownOfUsFusion.CrewmateRoles.TrapperMod;
 using System.Collections.Generic;
-<<<<<<< Updated upstream
-using TownOfUsFusion.CrewmateRoles.AurialMod;
-using TownOfUsFusion.Patches.ScreenEffects;
-=======
->>>>>>> Stashed changes
 
 namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
 {
@@ -16,11 +11,7 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
     [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.StartMeeting))]
     class StartMeetingPatch
     {
-<<<<<<< Updated upstream
-        public static void Prefix(PlayerControl __instance, [HarmonyArgument(0)] GameData.PlayerInfo meetingTarget)
-=======
         public static void Prefix(PlayerControl __instance, [HarmonyArgument(0)] NetworkedPlayerInfo meetingTarget)
->>>>>>> Stashed changes
         {
             if (__instance == null)
             {
@@ -49,18 +40,11 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
                         Object.Destroy(trackerRole.UsesText);
                     }
 
-<<<<<<< Updated upstream
-                    if (PlayerControl.LocalPlayer.Is(RoleEnum.VampireHunter))
-                    {
-                        var vhRole = Role.GetRole<VampireHunter>(PlayerControl.LocalPlayer);
-                        Object.Destroy(vhRole.UsesText);
-=======
                     if (PlayerControl.LocalPlayer.Is(RoleEnum.Aurial))
                     {
                         var aurialRole = Role.GetRole<Aurial>(PlayerControl.LocalPlayer);
                         aurialRole.SenseArrows.Values.DestroyAll();
                         aurialRole.SenseArrows.Clear();
->>>>>>> Stashed changes
                     }
 
                     if (PlayerControl.LocalPlayer.Is(RoleEnum.Mystic))
@@ -74,17 +58,6 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
                     {
                         var transporterRole = Role.GetRole<Transporter>(PlayerControl.LocalPlayer);
                         Object.Destroy(transporterRole.UsesText);
-<<<<<<< Updated upstream
-                        if (transporterRole.TransportList != null)
-                        {
-                            transporterRole.TransportList.Toggle();
-                            transporterRole.TransportList.SetVisible(false);
-                            transporterRole.TransportList = null;
-                            transporterRole.PressedButton = false;
-                            transporterRole.TransportPlayer1 = null;
-                        }
-=======
->>>>>>> Stashed changes
                     }
 
                     if (PlayerControl.LocalPlayer.Is(RoleEnum.Veteran))
@@ -104,11 +77,6 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
                     if (PlayerControl.LocalPlayer.Is(RoleEnum.Oracle))
                     {
                         var oracleRole = Role.GetRole<Oracle>(PlayerControl.LocalPlayer);
-<<<<<<< Updated upstream
-                        confessingPlayer = oracleRole.Confessor;
-                    }
-
-=======
                         oracleRole.ClosestPlayer = null;
                         confessingPlayer = oracleRole.Confessor;
                     }
@@ -119,22 +87,11 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
                         wardenRole.ClosestPlayer = null;
                     }
 
->>>>>>> Stashed changes
                     if (PlayerControl.LocalPlayer.Is(RoleEnum.Detective))
                     {
                         var detecRole = Role.GetRole<Detective>(PlayerControl.LocalPlayer);
                         detecRole.ClosestPlayer = null;
                         detecRole.ExamineButton.gameObject.SetActive(false);
-<<<<<<< Updated upstream
-                    }
-
-                    if (PlayerControl.LocalPlayer.Is(RoleEnum.Aurial))
-                    {
-                        var aurialRole = Role.GetRole<Aurial>(PlayerControl.LocalPlayer);
-                        aurialRole.NormalVision = true;
-                        SeeAll.AllToNormal();
-                        CameraEffect.singleton.materials.Clear();
-=======
                         foreach (GameObject scene in detecRole.CrimeScenes)
                         {
                             UnityEngine.Object.Destroy(scene);
@@ -149,7 +106,6 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
                         hunterRole.ClosestStalkPlayer = null;
                         hunterRole.StalkButton.SetTarget(null);
                         hunterRole.StalkButton.gameObject.SetActive(false);
->>>>>>> Stashed changes
                     }
 
                     if (!PlayerControl.LocalPlayer.Is(RoleEnum.Investigator) && !PlayerControl.LocalPlayer.Is(RoleEnum.Mystic)

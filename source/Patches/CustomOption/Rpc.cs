@@ -36,11 +36,7 @@ namespace TownOfUsFusion.CustomOption
 
         public static void ReceiveRpc(MessageReader reader)
         {
-<<<<<<< Updated upstream
             PluginSingleton<TownOfUsFusion>.Instance.Log.LogInfo("Options received");
-=======
-            PluginSingleton<TownOfUsFusion>.Instance.Log.LogInfo("Options received");
->>>>>>> Stashed changes
             while (reader.BytesRemaining > 0)
             {
                 var id = reader.ReadInt32();
@@ -55,9 +51,6 @@ namespace TownOfUsFusion.CustomOption
 
                 customOption?.Set(value);
 
-<<<<<<< Updated upstream
-                //PluginSingleton<TownOfUsFusion>.Instance.Log.LogInfo($"{customOption?.Name} : {customOption}:");
-=======
                 var panels = GameObject.FindObjectsOfType<ViewSettingsInfoPanel>();
                 foreach (var panel in panels) {
                     if (panel.titleText.text == customOption.Name && customOption.Type != CustomOptionType.Header)
@@ -68,7 +61,6 @@ namespace TownOfUsFusion.CustomOption
                 }
 
                 //PluginSingleton<TownOfUsFusion>.Instance.Log.LogInfo($"{customOption?.Name} : {customOption}:");
->>>>>>> Stashed changes
             }
         }
     }

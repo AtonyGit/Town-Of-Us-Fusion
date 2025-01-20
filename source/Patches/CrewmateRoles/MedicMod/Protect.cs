@@ -14,10 +14,7 @@ namespace TownOfUsFusion.CrewmateRoles.MedicMod
             var role = Role.GetRole<Medic>(PlayerControl.LocalPlayer);
             if (!PlayerControl.LocalPlayer.CanMove) return false;
             if (PlayerControl.LocalPlayer.Data.IsDead) return false;
-<<<<<<< Updated upstream
-=======
             if (!__instance.enabled) return false;
->>>>>>> Stashed changes
             if (role.UsedAbility || role.ClosestPlayer == null) return false;
             if (role.StartTimer() > 0) return false;
 

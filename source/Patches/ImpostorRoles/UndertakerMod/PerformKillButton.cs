@@ -19,12 +19,8 @@ namespace TownOfUsFusion.ImpostorRoles.UndertakerMod
 
             if (__instance == role.DragDropButton)
             {
-<<<<<<< Updated upstream
-                if (role.DragDropButton.graphic.sprite == TownOfUsFusion.DragSprite)
-=======
                 if (role.Player.inVent) return false;
                 if (role.DragDropButton.graphic.sprite == TownOfUsFusion.DragSprite)
->>>>>>> Stashed changes
                 {
                     if (__instance.isCoolingDown) return false;
                     if (!__instance.enabled) return false;
@@ -33,11 +29,8 @@ namespace TownOfUsFusion.ImpostorRoles.UndertakerMod
                         PlayerControl.LocalPlayer.GetTruePosition()) > maxDistance) return false;
                     var playerId = role.CurrentTarget.ParentId;
                     var player = Utils.PlayerById(playerId);
-<<<<<<< Updated upstream
-=======
                     var abilityUsed = Utils.AbilityUsed(PlayerControl.LocalPlayer);
                     if (!abilityUsed) return false;
->>>>>>> Stashed changes
                     if ((player.IsInfected() || role.Player.IsInfected()) && !player.Is(RoleEnum.Plaguebearer))
                     {
                         foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(player, role.Player);
@@ -48,21 +41,14 @@ namespace TownOfUsFusion.ImpostorRoles.UndertakerMod
                     role.CurrentlyDragging = role.CurrentTarget;
 
                     KillButtonTarget.SetTarget(__instance, null, role);
-<<<<<<< Updated upstream
                     __instance.graphic.sprite = TownOfUsFusion.DropSprite;
-=======
-                    __instance.graphic.sprite = TownOfUsFusion.DropSprite;
->>>>>>> Stashed changes
                     return false;
                 }
                 else
                 {
                     if (!__instance.enabled) return false;
-<<<<<<< Updated upstream
-=======
                     var abilityUsed = Utils.AbilityUsed(PlayerControl.LocalPlayer);
                     if (!abilityUsed) return false;
->>>>>>> Stashed changes
                     Vector3 position = PlayerControl.LocalPlayer.transform.position;
 
                     if (Patches.SubmergedCompatibility.isSubmerged())
@@ -84,11 +70,7 @@ namespace TownOfUsFusion.ImpostorRoles.UndertakerMod
                     var body = role.CurrentlyDragging;
                     foreach (var body2 in role.CurrentlyDragging.bodyRenderers) body2.material.SetFloat("_Outline", 0f);
                     role.CurrentlyDragging = null;
-<<<<<<< Updated upstream
                     __instance.graphic.sprite = TownOfUsFusion.DragSprite;
-=======
-                    __instance.graphic.sprite = TownOfUsFusion.DragSprite;
->>>>>>> Stashed changes
                     role.LastDragged = DateTime.UtcNow;
 
                     body.transform.position = position;

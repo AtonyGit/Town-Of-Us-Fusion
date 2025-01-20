@@ -34,22 +34,6 @@ namespace TownOfUsFusion.CrewmateRoles.SeerMod
                 .ToList();
 
             Utils.SetTarget(ref role.ClosestPlayer, investigateButton, float.NaN, notInvestigated);
-<<<<<<< Updated upstream
-
-            var renderer = investigateButton.graphic;
-
-            if (role.ClosestPlayer != null)
-            {
-                renderer.color = Palette.EnabledColor;
-                renderer.material.SetFloat("_Desat", 0f);
-            }
-            else
-            {
-                renderer.color = Palette.DisabledClear;
-                renderer.material.SetFloat("_Desat", 1f);
-            }
-=======
->>>>>>> Stashed changes
         }
     }
 }

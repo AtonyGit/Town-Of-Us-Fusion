@@ -3,14 +3,9 @@ using System.Linq;
 using TMPro;
 using TownOfUsFusion.Patches;
 using UnityEngine;
-<<<<<<< Updated upstream
-using TownOfUsFusion.NeutralRoles.ExecutionerMod;
-using TownOfUsFusion.NeutralRoles.GuardianAngelMod;
-=======
 using TownOfUsFusion.NeutralRoles.ExecutionerMod;
 using TownOfUsFusion.NeutralRoles.GuardianAngelMod;
 using TownOfUsFusion.Extensions;
->>>>>>> Stashed changes
 
 namespace TownOfUsFusion.Roles
 {
@@ -50,10 +45,7 @@ namespace TownOfUsFusion.Roles
                 if (CustomGameOptions.BomberOn > 0) ColorMapping.Add("Bomber", Colors.Impostor);
                 if (CustomGameOptions.WarlockOn > 0) ColorMapping.Add("Warlock", Colors.Impostor);
                 if (CustomGameOptions.VenererOn > 0) ColorMapping.Add("Venerer", Colors.Impostor);
-<<<<<<< Updated upstream
-=======
                 if (CustomGameOptions.HypnotistOn > 0) ColorMapping.Add("Hypnotist", Colors.Impostor);
->>>>>>> Stashed changes
 
                 if (CustomGameOptions.VigilanteGuessNeutralBenign)
                 {
@@ -66,10 +58,7 @@ namespace TownOfUsFusion.Roles
                     if (CustomGameOptions.DoomsayerOn > 0) ColorMapping.Add("Doomsayer", Colors.Doomsayer);
                     if (CustomGameOptions.ExecutionerOn > 0) ColorMapping.Add("Executioner", Colors.Executioner);
                     if (CustomGameOptions.JesterOn > 0 || (CustomGameOptions.ExecutionerOn > 0 && CustomGameOptions.OnTargetDead == OnTargetDead.Jester) || (CustomGameOptions.GuardianAngelOn > 0 && CustomGameOptions.GaOnTargetDeath == BecomeOptions.Jester)) ColorMapping.Add("Jester", Colors.Jester);
-<<<<<<< Updated upstream
-=======
                     if (CustomGameOptions.SoulCollectorOn > 0) ColorMapping.Add("Soul Collector", Colors.SoulCollector);
->>>>>>> Stashed changes
                 }
                 if (CustomGameOptions.VigilanteGuessNeutralKilling)
                 {
@@ -82,11 +71,7 @@ namespace TownOfUsFusion.Roles
                 }
                 if (CustomGameOptions.VigilanteGuessLovers && CustomGameOptions.LoversOn > 0) ColorMapping.Add("Lover", Colors.Lovers);
             }
-<<<<<<< Updated upstream
-            else if (CustomGameOptions.GameMode == GameMode.KillingOnly)
-=======
             else
->>>>>>> Stashed changes
             {
                 ColorMapping.Add("Morphling", Colors.Impostor);
                 ColorMapping.Add("Miner", Colors.Impostor);
@@ -105,23 +90,6 @@ namespace TownOfUsFusion.Roles
                     if (CustomGameOptions.HiddenRoles) ColorMapping.Add("Juggernaut", Colors.Juggernaut);
                 }
             }
-<<<<<<< Updated upstream
-            else
-            {
-                ColorMapping.Add("Necromancer", Colors.Impostor);
-                ColorMapping.Add("Whisperer", Colors.Impostor);
-                if (CustomGameOptions.MaxChameleons > 0) ColorMapping.Add("Swooper", Colors.Impostor);
-                if (CustomGameOptions.MaxEngineers > 0) ColorMapping.Add("Demolitionist", Colors.Impostor);
-                if (CustomGameOptions.MaxInvestigators > 0) ColorMapping.Add("Consigliere", Colors.Impostor);
-                if (CustomGameOptions.MaxMystics > 0) ColorMapping.Add("Clairvoyant", Colors.Impostor);
-                if (CustomGameOptions.MaxSnitches > 0) ColorMapping.Add("Informant", Colors.Impostor);
-                if (CustomGameOptions.MaxSpies > 0) ColorMapping.Add("Rogue Agent", Colors.Impostor);
-                if (CustomGameOptions.MaxTransporters > 0) ColorMapping.Add("Escapist", Colors.Impostor);
-                if (CustomGameOptions.MaxVigilantes > 1) ColorMapping.Add("Assassin", Colors.Impostor);
-                ColorMapping.Add("Impostor", Colors.Impostor);
-            }
-=======
->>>>>>> Stashed changes
 
             SortedColorMapping = ColorMapping.OrderBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
         }
@@ -129,10 +97,6 @@ namespace TownOfUsFusion.Roles
         public bool GuessedThisMeeting { get; set; } = false;
 
         public int RemainingKills { get; set; }
-<<<<<<< Updated upstream
-
-        public List<string> PossibleGuesses => SortedColorMapping.Keys.ToList();
-=======
 
         public List<string> PossibleGuesses => SortedColorMapping.Keys.ToList();
 
@@ -144,6 +108,5 @@ namespace TownOfUsFusion.Roles
 
             return true;
         }
->>>>>>> Stashed changes
     }
 }

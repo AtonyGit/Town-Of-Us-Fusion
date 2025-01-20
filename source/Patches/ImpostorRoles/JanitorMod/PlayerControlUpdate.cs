@@ -26,12 +26,7 @@ namespace TownOfUsFusion.ImpostorRoles.JanitorMod
             role.CleanButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-<<<<<<< Updated upstream
             role.CleanButton.graphic.sprite = TownOfUsFusion.JanitorClean;
-
-=======
-            role.CleanButton.graphic.sprite = TownOfUsFusion.JanitorClean;
->>>>>>> Stashed changes
 
             var data = PlayerControl.LocalPlayer.Data;
             var isDead = data.IsDead;
@@ -42,10 +37,7 @@ namespace TownOfUsFusion.ImpostorRoles.JanitorMod
                        PlayerControl.LocalPlayer.CanMove;
             var allocs = Physics2D.OverlapCircleAll(truePosition, maxDistance,
                 LayerMask.GetMask(new[] { "Players", "Ghost" }));
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
             var killButton = role.CleanButton;
             DeadBody closestBody = null;
             var closestDistance = float.MaxValue;

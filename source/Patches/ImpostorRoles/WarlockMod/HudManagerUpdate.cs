@@ -44,8 +44,6 @@ namespace TownOfUsFusion.ImpostorRoles.WarlockMod
                     role.StartUseTime = DateTime.UtcNow;
                     role.Charging = false;
                 }
-<<<<<<< Updated upstream
-=======
                 if (PlayerControl.LocalPlayer.moveable && __instance.KillButton.currentTarget != null)
                 {
                     role.ChargeText.color = Palette.EnabledColor;
@@ -56,7 +54,6 @@ namespace TownOfUsFusion.ImpostorRoles.WarlockMod
                     role.ChargeText.color = Palette.DisabledClear;
                     role.ChargeText.material.SetFloat("_Desat", 1f);
                 }
->>>>>>> Stashed changes
             }
             else if (PlayerControl.LocalPlayer.killTimer == 0f)
             {
@@ -65,8 +62,6 @@ namespace TownOfUsFusion.ImpostorRoles.WarlockMod
                     role.StartChargeTime = DateTime.UtcNow;
                     role.Charging = true;
                 }
-<<<<<<< Updated upstream
-=======
                 if (PlayerControl.LocalPlayer.moveable && __instance.KillButton.currentTarget != null)
                 {
                     role.ChargeText.color = Palette.EnabledColor;
@@ -77,18 +72,14 @@ namespace TownOfUsFusion.ImpostorRoles.WarlockMod
                     role.ChargeText.color = Palette.DisabledClear;
                     role.ChargeText.material.SetFloat("_Desat", 1f);
                 }
->>>>>>> Stashed changes
             }
             else
             {
                 role.ChargePercent = 0;
                 role.Charging = false;
                 role.UsingCharge = false;
-<<<<<<< Updated upstream
-=======
                 role.ChargeText.color = Palette.DisabledClear;
                 role.ChargeText.material.SetFloat("_Desat", 1f);
->>>>>>> Stashed changes
             }
             return;
         }

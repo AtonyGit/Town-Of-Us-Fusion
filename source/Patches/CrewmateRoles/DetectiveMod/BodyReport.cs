@@ -8,11 +8,7 @@ namespace TownOfUsFusion.CrewmateRoles.DetectiveMod
     [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CmdReportDeadBody))]
     internal class BodyReportPatch
     {
-<<<<<<< Updated upstream
-        private static void Postfix(PlayerControl __instance, [HarmonyArgument(0)] GameData.PlayerInfo info)
-=======
         private static void Postfix(PlayerControl __instance, [HarmonyArgument(0)] NetworkedPlayerInfo info)
->>>>>>> Stashed changes
         {
             if (info == null) return;
             var matches = Murder.KilledPlayers.Where(x => x.PlayerId == info.PlayerId).ToArray();

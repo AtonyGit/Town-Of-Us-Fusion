@@ -12,63 +12,17 @@ using TownOfUsFusion.CrewmateRoles.VigilanteMod;
 using TownOfUsFusion.CrewmateRoles.SwapperMod;
 using TownOfUsFusion.Patches;
 using Reactor.Utilities.Extensions;
-<<<<<<< Updated upstream
 using TownOfUsFusion.CrewmateRoles.ImitatorMod;
-=======
-using TownOfUsFusion.CrewmateRoles.ImitatorMod;
->>>>>>> Stashed changes
 
 namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
 {
     public class DoomsayerKill
     {
         public static void RpcMurderPlayer(PlayerControl player, PlayerControl doomsayer)
-<<<<<<< Updated upstream
         {
             PlayerVoteArea voteArea = MeetingHud.Instance.playerStates.First(
                 x => x.TargetPlayerId == player.PlayerId
             );
-            RpcMurderPlayer(voteArea, player, doomsayer);
-        }
-        public static void RpcMurderPlayer(PlayerVoteArea voteArea, PlayerControl player, PlayerControl doomsayer)
-        {
-            DoomKillCount(player, doomsayer);
-            MurderPlayer(voteArea, player);
-            Utils.Rpc(CustomRPC.DoomsayerKill, player.PlayerId, doomsayer.PlayerId);
-        }
-
-        public static void MurderPlayer(PlayerControl player, bool checkLover = true, bool showKillAnim = true)
-=======
->>>>>>> Stashed changes
-        {
-            PlayerVoteArea voteArea = MeetingHud.Instance.playerStates.First(
-                x => x.TargetPlayerId == player.PlayerId
-            );
-<<<<<<< Updated upstream
-            MurderPlayer(voteArea, player, checkLover, showKillAnim);
-        }
-        public static void DoomKillCount(PlayerControl player, PlayerControl doomsayer)
-        {
-            var doom = Role.GetRole<Doomsayer>(doomsayer);
-            doom.CorrectAssassinKills += 1;
-            doom.GuessedCorrectly += 1;
-            if (doom.GuessedCorrectly == CustomGameOptions.DoomsayerGuessesToWin)
-            {
-                doom.WonByGuessing = true;
-                if (!CustomGameOptions.NeutralEvilWinEndsGame) MurderPlayer(doom.Player, true, false);
-            }
-        }
-        public static void MurderPlayer(
-            PlayerVoteArea voteArea,
-            PlayerControl player,
-            bool checkLover = true,
-            bool showKillAnim = true
-        )
-        {
-            var hudManager = DestroyableSingleton<HudManager>.Instance;
-            if (showKillAnim)
-            {
-=======
             RpcMurderPlayer(voteArea, player, doomsayer);
         }
         public static void RpcMurderPlayer(PlayerVoteArea voteArea, PlayerControl player, PlayerControl doomsayer)
@@ -102,7 +56,6 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
             var hudManager = DestroyableSingleton<HudManager>.Instance;
             if (showKillAnim)
             {
->>>>>>> Stashed changes
                 SoundManager.Instance.PlaySound(player.KillSfx, false, 0.8f);
                 hudManager.KillOverlay.ShowKillAnimation(player.Data, player.Data);
             }
@@ -142,18 +95,6 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
                 if (player.Is(RoleEnum.Swapper))
                 {
                     var swapper = Role.GetRole<Swapper>(PlayerControl.LocalPlayer);
-<<<<<<< Updated upstream
-                    swapper.ListOfActives.Clear();
-                    swapper.Buttons.Clear();
-                    SwapVotes.Swap1 = null;
-                    SwapVotes.Swap2 = null;
-                    Utils.Rpc(CustomRPC.SetSwaps, sbyte.MaxValue, sbyte.MaxValue);
-                    var buttons = Role.GetRole<Swapper>(player).Buttons;
-                    foreach (var button in buttons)
-                    {
-                        button.SetActive(false);
-                        button.GetComponent<PassiveButton>().OnClick = new Button.ButtonClickedEvent();
-=======
                     var buttons = Role.GetRole<Swapper>(player).Buttons;
                     foreach (var button in buttons)
                     {
@@ -162,7 +103,6 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
                             button.SetActive(false);
                             button.GetComponent<PassiveButton>().OnClick = new Button.ButtonClickedEvent();
                         }
->>>>>>> Stashed changes
                     }
                     swapper.ListOfActives.Clear();
                     swapper.Buttons.Clear();
@@ -174,17 +114,6 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
                 if (player.Is(RoleEnum.Imitator))
                 {
                     var imitator = Role.GetRole<Imitator>(PlayerControl.LocalPlayer);
-<<<<<<< Updated upstream
-                    imitator.ListOfActives.Clear();
-                    imitator.Buttons.Clear();
-                    SetImitate.Imitate = null;
-                    var buttons = Role.GetRole<Imitator>(player).Buttons;
-                    foreach (var button in buttons)
-                    {
-                        button.SetActive(false);
-                        button.GetComponent<PassiveButton>().OnClick = new Button.ButtonClickedEvent();
-                    }
-=======
                     var buttons = Role.GetRole<Imitator>(player).Buttons;
                     foreach (var button in buttons)
                     {
@@ -203,7 +132,6 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
                 {
                     var retributionist = Role.GetRole<Vigilante>(PlayerControl.LocalPlayer);
                     ShowHideButtonsVigi.HideButtonsVigi(retributionist);
->>>>>>> Stashed changes
                 }
 
                 if (player.Is(AbilityEnum.Assassin))
@@ -212,18 +140,6 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
                     ShowHideButtons.HideButtons(assassin);
                 }
 
-<<<<<<< Updated upstream
-                if (player.Is(RoleEnum.Vigilante))
-                {
-                    var vigilante = Role.GetRole<Vigilante>(PlayerControl.LocalPlayer);
-                    ShowHideButtonsVigi.HideButtonsVigi(vigilante);
-                }
-
-                if (player.Is(RoleEnum.Doomsayer))
-                {
-                    var doom = Role.GetRole<Doomsayer>(PlayerControl.LocalPlayer);
-                    ShowHideButtonsDoom.HideButtonsDoom(doom);
-=======
                 if (player.Is(RoleEnum.Doomsayer))
                 {
                     var doomsayer = Role.GetRole<Doomsayer>(PlayerControl.LocalPlayer);
@@ -234,7 +150,6 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
                 {
                     var politician = Role.GetRole<Politician>(PlayerControl.LocalPlayer);
                     politician.RevealButton.Destroy();
->>>>>>> Stashed changes
                 }
 
                 if (player.Is(RoleEnum.Mayor))
@@ -242,8 +157,6 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
                     var mayor = Role.GetRole<Mayor>(PlayerControl.LocalPlayer);
                     mayor.RevealButton.Destroy();
                 }
-<<<<<<< Updated upstream
-=======
 
                 if (player.Is(RoleEnum.Jailor))
                 {
@@ -257,7 +170,6 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
                     var hypnotist = Role.GetRole<Hypnotist>(PlayerControl.LocalPlayer);
                     hypnotist.HysteriaButton.Destroy();
                 }
->>>>>>> Stashed changes
             }
             player.Die(DeathReason.Kill, false);
             if (checkLover && player.IsLover() && CustomGameOptions.BothLoversDie)
@@ -327,11 +239,7 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
             {
                 var swapper = Role.GetRole<Swapper>(PlayerControl.LocalPlayer);
                 var button = swapper.Buttons[voteArea.TargetPlayerId];
-<<<<<<< Updated upstream
                 if (button.GetComponent<SpriteRenderer>().sprite == TownOfUsFusion.SwapperSwitch)
-=======
-                if (button.GetComponent<SpriteRenderer>().sprite == TownOfUsFusion.SwapperSwitch)
->>>>>>> Stashed changes
                 {
                     swapper.ListOfActives[voteArea.TargetPlayerId] = false;
                     if (SwapVotes.Swap1 == voteArea) SwapVotes.Swap1 = null;
@@ -357,8 +265,6 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
                 meetingHud.ClearVote();
             }
 
-<<<<<<< Updated upstream
-=======
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Imitator) && !PlayerControl.LocalPlayer.Data.IsDead)
             {
                 var imitatorRole = Role.GetRole<Imitator>(PlayerControl.LocalPlayer);
@@ -370,7 +276,6 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
                 }
             }
 
->>>>>>> Stashed changes
             if (AmongUsClient.Instance.AmHost) meetingHud.CheckForEndVoting();
 
             AddHauntPatch.AssassinatedPlayers.Add(player);

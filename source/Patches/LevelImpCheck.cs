@@ -19,7 +19,6 @@ namespace TownOfUsFusion.Patches
         public const string LEVELIMP_GUID = "com.DigiWorm.LevelImposter";
         public const ShipStatus.MapType LI_MAP_TYPE = (ShipStatus.MapType)7;
         private static bool _isLevelImpEnabled = false;
-        
         public static bool isLevelImp => _isLevelImpEnabled && ShipStatus.Instance.Type == LI_MAP_TYPE && Loaded && ShipStatus.Instance && GameOptionsManager.Instance.currentNormalGameOptions.MapId == 7;
         public static bool Loaded { get; private set; }
             public static void Init()

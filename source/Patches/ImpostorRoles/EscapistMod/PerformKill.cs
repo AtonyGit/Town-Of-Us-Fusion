@@ -8,13 +8,8 @@ namespace TownOfUsFusion.ImpostorRoles.EscapistMod
     [HarmonyPatch(typeof(KillButton), nameof(KillButton.DoClick))]
     public class PerformKill
     {
-<<<<<<< Updated upstream
         public static Sprite MarkSprite => TownOfUsFusion.MarkSprite;
         public static Sprite EscapeSprite => TownOfUsFusion.EscapeSprite;
-=======
-        public static Sprite MarkSprite => TownOfUsFusion.MarkSprite;
-        public static Sprite EscapeSprite => TownOfUsFusion.EscapeSprite;
->>>>>>> Stashed changes
 
         public static bool Prefix(KillButton __instance)
         {
@@ -29,11 +24,8 @@ namespace TownOfUsFusion.ImpostorRoles.EscapistMod
                 if (!__instance.isActiveAndEnabled) return false;
                 if (role.EscapeButton.graphic.sprite == MarkSprite)
                 {
-<<<<<<< Updated upstream
-=======
                     var abilityUsed = Utils.AbilityUsed(PlayerControl.LocalPlayer);
                     if (!abilityUsed) return false;
->>>>>>> Stashed changes
                     role.EscapePoint = PlayerControl.LocalPlayer.transform.position;
                     role.EscapeButton.graphic.sprite = EscapeSprite;
                     DestroyableSingleton<HudManager>.Instance.KillButton.SetTarget(null);
@@ -44,11 +36,8 @@ namespace TownOfUsFusion.ImpostorRoles.EscapistMod
                 {
                     if (__instance.isCoolingDown) return false;
                     if (role.EscapeTimer() != 0) return false;
-<<<<<<< Updated upstream
-=======
                     var abilityUsed = Utils.AbilityUsed(PlayerControl.LocalPlayer);
                     if (!abilityUsed) return false;
->>>>>>> Stashed changes
                     Utils.Rpc(CustomRPC.Escape, PlayerControl.LocalPlayer.PlayerId, role.EscapePoint);
                     role.LastEscape = DateTime.UtcNow;
                     Escapist.Escape(role.Player);

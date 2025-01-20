@@ -3,13 +3,9 @@ using UnityEngine;
 using System;
 using Object = UnityEngine.Object;
 using AmongUs.GameOptions;
-<<<<<<< Updated upstream
-using TownOfUsFusion.Roles;
-=======
 using TownOfUsFusion.Roles;
 using TownOfUsFusion.CrewmateRoles.HaunterMod;
 using TownOfUsFusion.NeutralRoles.PhantomMod;
->>>>>>> Stashed changes
 
 namespace TownOfUsFusion.Patches
 {
@@ -27,17 +23,11 @@ namespace TownOfUsFusion.Patches
                 ZoomButton = Object.Instantiate(__instance.MapButton.gameObject, __instance.MapButton.transform.parent);
                 ZoomButton.GetComponent<PassiveButton>().OnClick = new();
                 ZoomButton.GetComponent<PassiveButton>().OnClick.AddListener(new Action(Zoom));
-<<<<<<< Updated upstream
-            }
-
-            Pos = __instance.MapButton.transform.localPosition + new Vector3(0.02f, -0.66f, 0f);
-=======
                 ZoomButton.name = "Zoom";
             }
 
             Pos = __instance.MapButton.transform.localPosition + new Vector3(0f, -0.8f, 0f);
             if (SubmergedCompatibility.Loaded && GameOptionsManager.Instance.currentNormalGameOptions.MapId == 6) Pos = __instance.SettingsButton.transform.localPosition + new Vector3(0f, -0.8f, 0f);
->>>>>>> Stashed changes
             var dead = false;
             if (Utils.ShowDeadBodies)
             {
@@ -51,14 +41,6 @@ namespace TownOfUsFusion.Patches
                     var phantom = Role.GetRole<Phantom>(PlayerControl.LocalPlayer);
                     if (phantom.Caught) dead = true;
                 }
-<<<<<<< Updated upstream
-                else dead = true;
-            }
-            ZoomButton.SetActive(!MeetingHud.Instance && dead && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started
-                && GameOptionsManager.Instance.CurrentGameOptions.GameMode == GameModes.Normal);
-            ZoomButton.transform.localPosition = Pos;
-            ZoomButton.GetComponent<SpriteRenderer>().sprite = Zooming ? TownOfUsFusion.ZoomPlusButton : TownOfUsFusion.ZoomMinusButton;
-=======
                 else if (PlayerControl.LocalPlayer == SetHaunter.WillBeHaunter || PlayerControl.LocalPlayer == SetPhantom.WillBePhantom) dead = false;
                 // this works because if they are already haunter/phantom the code before it will run
                 else dead = true;
@@ -69,7 +51,6 @@ namespace TownOfUsFusion.Patches
             ZoomButton.transform.Find("Background").localPosition = Vector3.zero;
             ZoomButton.transform.Find("Inactive").GetComponent<SpriteRenderer>().sprite = Zooming ? TownOfUsFusion.ZoomPlusButton : TownOfUsFusion.ZoomMinusButton;
             ZoomButton.transform.Find("Active").GetComponent<SpriteRenderer>().sprite = Zooming ? TownOfUsFusion.ZoomPlusActiveButton : TownOfUsFusion.ZoomMinusActiveButton;
->>>>>>> Stashed changes
         }
 
         public static void Zoom()

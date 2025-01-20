@@ -1,32 +1,19 @@
 using System.Linq;
 using HarmonyLib;
 using TMPro;
-<<<<<<< Updated upstream
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;
 using TownOfUsFusion.Roles.Modifiers;
 using UnityEngine;
 
 namespace TownOfUsFusion.Modifiers.LoversMod
-=======
-using TownOfUsFusion.Extensions;
-using TownOfUsFusion.Roles;
-using TownOfUsFusion.Roles.Modifiers;
-using UnityEngine;
-
-namespace TownOfUsFusion.Modifiers.LoversMod
->>>>>>> Stashed changes
 {
     [HarmonyPatch(typeof(EndGameManager), nameof(EndGameManager.Start))]
     internal class Outro
     {
         public static void Postfix(EndGameManager __instance)
         {
-<<<<<<< Updated upstream
-            
-=======
 
->>>>>>> Stashed changes
             TextMeshPro text;
             Vector3 pos;
             if (Role.NobodyWins)
@@ -39,11 +26,7 @@ namespace TownOfUsFusion.Modifiers.LoversMod
                 pos = __instance.WinText.transform.localPosition;
                 pos.y = 1.5f;
                 text.transform.position = pos;
-<<<<<<< Updated upstream
-//				text.scale = 0.5f;
-=======
 //                text.scale = 0.5f;
->>>>>>> Stashed changes
                 return;
             }
 
@@ -52,10 +35,7 @@ namespace TownOfUsFusion.Modifiers.LoversMod
                 if (Role.GetRoles(RoleEnum.Jester).Any(x => ((Jester)x).VotedOut)) return;
                 if (Role.GetRoles(RoleEnum.Executioner).Any(x => ((Executioner)x).TargetVotedOut)) return;
                 if (Role.GetRoles(RoleEnum.Doomsayer).Any(x => ((Doomsayer)x).WonByGuessing)) return;
-<<<<<<< Updated upstream
-=======
                 if (Role.GetRoles(RoleEnum.SoulCollector).Any(x => ((SoulCollector)x).CollectedSouls)) return;
->>>>>>> Stashed changes
             }
             if (!Modifier.AllModifiers.Where(x => x.ModifierType == ModifierEnum.Lover)
                 .Any(x => ((Lover) x).LoveCoupleWins)) return;
@@ -88,11 +68,7 @@ namespace TownOfUsFusion.Modifiers.LoversMod
             pos = __instance.WinText.transform.localPosition;
             pos.y = 1.5f;
             text.transform.position = pos;
-<<<<<<< Updated upstream
-//			text.scale = 1f;
-=======
 //            text.scale = 1f;
->>>>>>> Stashed changes
         }
     }
 }

@@ -2,17 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Reactor.Utilities;
-<<<<<<< Updated upstream
 using TownOfUsFusion.Extensions;
 using UnityEngine;
 
 namespace TownOfUsFusion.Roles
-=======
-using TownOfUsFusion.Extensions;
-using UnityEngine;
-
-namespace TownOfUsFusion.Roles
->>>>>>> Stashed changes
 {
     public class Plaguebearer : Role
     {
@@ -36,21 +29,13 @@ namespace TownOfUsFusion.Roles
             InfectedPlayers.Add(player.PlayerId);
         }
 
-<<<<<<< Updated upstream
-        internal override bool NeutralWin(LogicGameFlowNormal __instance)
-=======
         internal override bool GameEnd(LogicGameFlowNormal __instance)
->>>>>>> Stashed changes
         {
             if (Player.Data.IsDead || Player.Data.Disconnected) return true;
 
             if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected) <= 2 &&
                     PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
-<<<<<<< Updated upstream
-                    (x.Data.IsImpostor() || x.Is(Faction.NeutralKilling))) == 1)
-=======
                     (x.Data.IsImpostor() || x.Is(Faction.NeutralKilling) || x.IsCrewKiller())) == 1)
->>>>>>> Stashed changes
             {
                 Utils.Rpc(CustomRPC.PlaguebearerWin, Player.PlayerId);
                 Wins();

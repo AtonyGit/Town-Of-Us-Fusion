@@ -30,11 +30,7 @@ namespace TownOfUsFusion.Roles
             __instance.teamToShow = exeTeam;
         }
 
-<<<<<<< Updated upstream
-        internal override bool NeutralWin(LogicGameFlowNormal __instance)
-=======
         internal override bool GameEnd(LogicGameFlowNormal __instance)
->>>>>>> Stashed changes
         {
             if (Player.Data.IsDead) return true;
             if (!CustomGameOptions.NeutralEvilWinEndsGame) return true;

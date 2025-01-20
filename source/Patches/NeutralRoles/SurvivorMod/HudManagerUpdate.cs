@@ -50,11 +50,7 @@ namespace TownOfUsFusion.NeutralRoles.SurvivorMod
             else vestButton.SetCoolDown(0f, CustomGameOptions.VestCd);
 
             var renderer = vestButton.graphic;
-<<<<<<< Updated upstream
-            if (role.Vesting || (!vestButton.isCoolingDown && role.ButtonUsable))
-=======
             if (role.Vesting || (!vestButton.isCoolingDown && role.ButtonUsable && PlayerControl.LocalPlayer.moveable))
->>>>>>> Stashed changes
             {
                 renderer.color = Palette.EnabledColor;
                 renderer.material.SetFloat("_Desat", 0f);

@@ -17,14 +17,10 @@ namespace TownOfUsFusion.ImpostorRoles.VenererMod
             {
                 if (__instance.isCoolingDown) return false;
                 if (!__instance.isActiveAndEnabled) return false;
-<<<<<<< Updated upstream
-                if (role.AbilityTimer() != 0 || role.Kills < 1) return false;
-=======
                 if (role.Player.inVent) return false;
                 if (role.AbilityTimer() != 0 || role.Kills < 1) return false;
                 var abilityUsed = Utils.AbilityUsed(PlayerControl.LocalPlayer);
                 if (!abilityUsed) return false;
->>>>>>> Stashed changes
 
                 Utils.Rpc(CustomRPC.Camouflage, PlayerControl.LocalPlayer.PlayerId, role.Kills);
                 role.TimeRemaining = CustomGameOptions.AbilityDuration;

@@ -12,13 +12,8 @@ namespace TownOfUsFusion.CrewmateRoles.SwapperMod
     public class AddButton
     {
         private static int _mostRecentId;
-<<<<<<< Updated upstream
         private static Sprite ActiveSprite => TownOfUsFusion.SwapperSwitch;
         public static Sprite DisabledSprite => TownOfUsFusion.SwapperSwitchDisabled;
-=======
-        private static Sprite ActiveSprite => TownOfUsFusion.SwapperSwitch;
-        public static Sprite DisabledSprite => TownOfUsFusion.SwapperSwitchDisabled;
->>>>>>> Stashed changes
 
         public static void GenButton(Swapper role, int index, bool isDead)
         {
@@ -31,10 +26,6 @@ namespace TownOfUsFusion.CrewmateRoles.SwapperMod
 
             var confirmButton = MeetingHud.Instance.playerStates[index].Buttons.transform.GetChild(0).gameObject;
 
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
             var newButton = Object.Instantiate(confirmButton, MeetingHud.Instance.playerStates[index].transform);
             var renderer = newButton.GetComponent<SpriteRenderer>();
             var passive = newButton.GetComponent<PassiveButton>();
@@ -107,16 +98,10 @@ namespace TownOfUsFusion.CrewmateRoles.SwapperMod
 
             if (PlayerControl.LocalPlayer.Data.IsDead) return;
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Swapper)) return;
-<<<<<<< Updated upstream
-            var swapperrole = Role.GetRole<Swapper>(PlayerControl.LocalPlayer);
-            for (var i = 0; i < __instance.playerStates.Length; i++)
-                GenButton(swapperrole, i, __instance.playerStates[i].AmDead);
-=======
             if (PlayerControl.LocalPlayer.IsJailed()) return;
             var swapperrole = Role.GetRole<Swapper>(PlayerControl.LocalPlayer);
             for (var i = 0; i < __instance.playerStates.Length; i++)
                 GenButton(swapperrole, i, __instance.playerStates[i].AmDead || Utils.PlayerById(__instance.playerStates[i].TargetPlayerId).IsJailed());
->>>>>>> Stashed changes
         }
     }
 }

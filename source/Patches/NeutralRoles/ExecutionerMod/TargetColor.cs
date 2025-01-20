@@ -1,12 +1,7 @@
 using HarmonyLib;
-<<<<<<< Updated upstream
-using TownOfUsFusion.Extensions;
-using TownOfUsFusion.Roles;
-=======
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;
 using TownOfUsFusion.Roles.Modifiers;
->>>>>>> Stashed changes
 using UnityEngine;
 
 namespace TownOfUsFusion.NeutralRoles.ExecutionerMod
@@ -41,9 +36,6 @@ namespace TownOfUsFusion.NeutralRoles.ExecutionerMod
 
             if (MeetingHud.Instance != null) UpdateMeeting(MeetingHud.Instance, role);
 
-<<<<<<< Updated upstream
-            if (role.target && role.target.nameText()) role.target.nameText().color = Color.black;
-=======
             if (!PlayerControl.LocalPlayer.IsHypnotised())
             {
                 if (role.target && role.target.nameText())
@@ -53,7 +45,6 @@ namespace TownOfUsFusion.NeutralRoles.ExecutionerMod
                     role.target.nameText().color = colour;
                 }
             }
->>>>>>> Stashed changes
 
             if (!role.target.Data.IsDead && !role.target.Data.Disconnected && !role.target.Is(RoleEnum.Vampire)) return;
             if (role.TargetVotedOut) return;

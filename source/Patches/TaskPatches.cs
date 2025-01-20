@@ -24,11 +24,7 @@ namespace TownOfUsFusion
                             playerInfo._object.Is(RoleEnum.Arsonist) || playerInfo._object.Is(RoleEnum.Juggernaut) ||
                             playerInfo._object.Is(RoleEnum.Plaguebearer) || playerInfo._object.Is(RoleEnum.Pestilence) ||
                             playerInfo._object.Is(RoleEnum.Werewolf) || playerInfo._object.Is(RoleEnum.Doomsayer) ||
-<<<<<<< Updated upstream
-                            playerInfo._object.Is(RoleEnum.Vampire) ||
-=======
                             playerInfo._object.Is(RoleEnum.Vampire) || playerInfo._object.Is(RoleEnum.SoulCollector) ||
->>>>>>> Stashed changes
                             playerInfo._object.Is(RoleEnum.Phantom) || playerInfo._object.Is(RoleEnum.Haunter)
                         ))
                         for (var j = 0; j < playerInfo.Tasks.Count; j++)
@@ -45,11 +41,7 @@ namespace TownOfUsFusion
         [HarmonyPatch(typeof(Console), nameof(Console.CanUse))]
         private class Console_CanUse
         {
-<<<<<<< Updated upstream
-            private static bool Prefix(Console __instance, [HarmonyArgument(0)] GameData.PlayerInfo playerInfo, ref float __result)
-=======
             private static bool Prefix(Console __instance, [HarmonyArgument(0)] NetworkedPlayerInfo playerInfo, ref float __result)
->>>>>>> Stashed changes
             {
                 var playerControl = playerInfo.Object;
 
@@ -62,12 +54,8 @@ namespace TownOfUsFusion
                            || playerControl.Is(RoleEnum.Pestilence)
                            || playerControl.Is(RoleEnum.Werewolf)
                            || playerControl.Is(RoleEnum.Doomsayer)
-<<<<<<< Updated upstream
-                           || playerControl.Is(RoleEnum.Vampire);
-=======
                            || playerControl.Is(RoleEnum.Vampire)
                            || playerControl.Is(RoleEnum.SoulCollector);
->>>>>>> Stashed changes
 
                 // If the console is not a sabotage repair console
                 if (flag && !__instance.AllowImpostor)
@@ -78,8 +66,6 @@ namespace TownOfUsFusion
 
                 return true;
             }
-<<<<<<< Updated upstream
-=======
         }
 
         [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CompleteTask))]
@@ -89,7 +75,6 @@ namespace TownOfUsFusion
             {
                 if (__instance.Is(RoleEnum.Haunter) || !__instance.Is(Faction.Crewmates)) GameData.Instance.CompletedTasks--;
             }
->>>>>>> Stashed changes
         }
     }
 }

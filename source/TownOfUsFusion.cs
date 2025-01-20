@@ -30,9 +30,10 @@ namespace TownOfUsFusion
     [ReactorModFlags(Reactor.Networking.ModFlags.RequireOnAllClients)]
     public class TownOfUsFusion : BasePlugin
     {
-        public const string Id = "com.fusionstudios.TownOfUsFusion";
-        public const string VersionString = "0.4.0";
-        public const string TouVersionString = "5.1.2";
+
+        public const string Id = "com.FusionStudios.TownOfUsFusion";
+        public const string VersionString = "0.3.0";
+        public const string TouVersionString = "5.0.4";
         public static System.Version Version = System.Version.Parse(VersionString);
         public const string VersionTag = "<color=#ff33fc></color>";
         public const bool isDevBuild = true;

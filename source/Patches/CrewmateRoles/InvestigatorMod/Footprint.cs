@@ -51,11 +51,7 @@ namespace TownOfUsFusion.CrewmateRoles.InvestigatorMod
             _gameObject.transform.SetParent(Player.transform.parent);
 
             _spriteRenderer = _gameObject.AddComponent<SpriteRenderer>();
-<<<<<<< Updated upstream
             _spriteRenderer.sprite = TownOfUsFusion.Footprint;
-=======
-            _spriteRenderer.sprite = TownOfUsFusion.Footprint;
->>>>>>> Stashed changes
             _spriteRenderer.color = Color;
             _gameObject.transform.localScale *= new Vector2(1.2f, 1f) * (CustomGameOptions.FootprintSize / 10);
 

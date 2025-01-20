@@ -6,29 +6,6 @@ using Hazel;
 using Reactor.Utilities;
 using Reactor.Utilities.Extensions;
 using Reactor.Networking.Extensions;
-<<<<<<< Updated upstream
-using TownOfUsFusion.CrewmateRoles.AltruistMod;
-using TownOfUsFusion.CrewmateRoles.MedicMod;
-using TownOfUsFusion.CrewmateRoles.SwapperMod;
-using TownOfUsFusion.CrewmateRoles.VigilanteMod;
-using TownOfUsFusion.NeutralRoles.DoomsayerMod;
-using TownOfUsFusion.CultistRoles.NecromancerMod;
-using TownOfUsFusion.CustomOption;
-using TownOfUsFusion.Extensions;
-using TownOfUsFusion.Modifiers.AssassinMod;
-using TownOfUsFusion.NeutralRoles.ExecutionerMod;
-using TownOfUsFusion.NeutralRoles.GuardianAngelMod;
-using TownOfUsFusion.ImpostorRoles.MinerMod;
-using TownOfUsFusion.CrewmateRoles.HaunterMod;
-using TownOfUsFusion.NeutralRoles.PhantomMod;
-using TownOfUsFusion.ImpostorRoles.TraitorMod;
-using TownOfUsFusion.CrewmateRoles.ImitatorMod;
-using TownOfUsFusion.Roles;
-using TownOfUsFusion.Roles.Cultist;
-using TownOfUsFusion.Roles.Modifiers;
-using UnityEngine;
-using Coroutine = TownOfUsFusion.ImpostorRoles.JanitorMod.Coroutine;
-=======
 using TownOfUsFusion.CrewmateRoles.AltruistMod;
 using TownOfUsFusion.CrewmateRoles.MedicMod;
 using TownOfUsFusion.CrewmateRoles.SwapperMod;
@@ -49,25 +26,17 @@ using TownOfUsFusion.Roles;
 using TownOfUsFusion.Roles.Modifiers;
 using UnityEngine;
 using Coroutine = TownOfUsFusion.ImpostorRoles.JanitorMod.Coroutine;
->>>>>>> Stashed changes
 using Object = UnityEngine.Object;
 using PerformKillButton = TownOfUsFusion.NeutralRoles.AmnesiacMod.PerformKillButton;
 using Random = UnityEngine.Random;
 using TownOfUsFusion.Patches;
 using AmongUs.GameOptions;
-<<<<<<< Updated upstream
-using TownOfUsFusion.NeutralRoles.VampireMod;
-using TownOfUsFusion.CrewmateRoles.MayorMod;
-using System.Reflection;
-using TownOfUsFusion.Patches.NeutralRoles;
-=======
 using TownOfUsFusion.NeutralRoles.VampireMod;
 using TownOfUsFusion.CrewmateRoles.MayorMod;
 using System.Reflection;
 using TownOfUsFusion.Patches.NeutralRoles;
 using TownOfUsFusion.ImpostorRoles.BomberMod;
 using TownOfUsFusion.CrewmateRoles.HunterMod;
->>>>>>> Stashed changes
 
 namespace TownOfUsFusion
 {
@@ -168,11 +137,7 @@ namespace TownOfUsFusion
             roles.Shuffle();
         }
 
-<<<<<<< Updated upstream
-        private static void GenEachRole(List<GameData.PlayerInfo> infected)
-=======
         private static void GenEachRole(List<NetworkedPlayerInfo> infected)
->>>>>>> Stashed changes
         {
             var impostors = Utils.GetImpostors(infected);
             var crewmates = Utils.GetCrewmates(impostors);
@@ -249,12 +214,6 @@ namespace TownOfUsFusion
                 NeutralEvilRoles.SortRoles(evil);
                 NeutralKillingRoles.SortRoles(killing);
 
-<<<<<<< Updated upstream
-                if (NeutralKillingRoles.Contains((typeof(Vampire), CustomGameOptions.VampireOn, true)) && CustomGameOptions.VampireHunterOn > 0)
-                    CrewmateRoles.Add((typeof(VampireHunter), CustomGameOptions.VampireHunterOn, true));
-
-=======
->>>>>>> Stashed changes
                 CrewmateRoles.SortRoles(crewmates.Count - NeutralBenignRoles.Count - NeutralEvilRoles.Count - NeutralKillingRoles.Count);
                 ImpostorRoles.SortRoles(impostors.Count);
 
@@ -428,11 +387,7 @@ namespace TownOfUsFusion
             }
 
             // Set the Traitor, if there is one enabled.
-<<<<<<< Updated upstream
-            var toChooseFromCrew = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) && !x.Is(RoleEnum.Mayor) && !x.Is(ModifierEnum.Lover)).ToList();
-=======
             var toChooseFromCrew = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) && !x.Is(RoleEnum.Politician) && !x.Is(ModifierEnum.Lover)).ToList();
->>>>>>> Stashed changes
             if (TraitorOn && toChooseFromCrew.Count != 0)
             {
                 var rand = Random.RandomRangeInt(0, toChooseFromCrew.Count);
@@ -478,11 +433,7 @@ namespace TownOfUsFusion
                 Utils.Rpc(CustomRPC.SetPhantom, byte.MaxValue);
             }
 
-<<<<<<< Updated upstream
-            var exeTargets = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) && !x.Is(ModifierEnum.Lover) && !x.Is(RoleEnum.Mayor) && !x.Is(RoleEnum.Swapper) && !x.Is(RoleEnum.Vigilante) && x != SetTraitor.WillBeTraitor).ToList();
-=======
             var exeTargets = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) && !x.Is(ModifierEnum.Lover) && !x.Is(RoleEnum.Politician) && !x.Is(RoleEnum.Prosecutor) && !x.Is(RoleEnum.Swapper) && !x.Is(RoleEnum.Vigilante) && !x.Is(RoleEnum.Jailor) && x != SetTraitor.WillBeTraitor).ToList();
->>>>>>> Stashed changes
             foreach (var role in Role.GetRoles(RoleEnum.Executioner))
             {
                 var exe = (Executioner)role;
@@ -936,14 +887,11 @@ namespace TownOfUsFusion
                         var oracle2 = Role.GetRole<Oracle>(Utils.PlayerById(reader.ReadByte()));
                         oracle2.SavedConfessor = true;
                         break;
-<<<<<<< Updated upstream
-=======
                     case CustomRPC.Retribution:
                         var hunter2 = Role.GetRole<Hunter>(Utils.PlayerById(reader.ReadByte()));
                         var hunterLastVoted = Utils.PlayerById(reader.ReadByte());
                         Retribution.MurderPlayer(hunter2, hunterLastVoted);
                         break;
->>>>>>> Stashed changes
                     case CustomRPC.ExecutionerToJester:
                         TargetColor.ExeToJes(Utils.PlayerById(reader.ReadByte()));
                         break;
@@ -1026,8 +974,6 @@ namespace TownOfUsFusion
                     case CustomRPC.Infect:
                         var pb = Role.GetRole<Plaguebearer>(Utils.PlayerById(reader.ReadByte()));
                         pb.SpreadInfection(Utils.PlayerById(reader.ReadByte()), Utils.PlayerById(reader.ReadByte()));
-<<<<<<< Updated upstream
-=======
                         break;
                     case CustomRPC.Collect:
                         var sc = Role.GetRole<SoulCollector>(Utils.PlayerById(reader.ReadByte()));
@@ -1051,7 +997,6 @@ namespace TownOfUsFusion
                                 }
                                 break;
                         }
->>>>>>> Stashed changes
                         break;
                     case CustomRPC.TurnPestilence:
                         Role.GetRole<Plaguebearer>(Utils.PlayerById(reader.ReadByte())).TurnPestilence();
@@ -1066,22 +1011,6 @@ namespace TownOfUsFusion
                     case CustomRPC.AltruistRevive:
                         readByte1 = reader.ReadByte();
                         var altruistPlayer = Utils.PlayerById(readByte1);
-<<<<<<< Updated upstream
-                        var altruistRole = Role.GetRole<Altruist>(altruistPlayer);
-                        readByte = reader.ReadByte();
-                        var theDeadBodies = Object.FindObjectsOfType<DeadBody>();
-                        foreach (var body in theDeadBodies)
-                            if (body.ParentId == readByte)
-                            {
-                                if (body.ParentId == PlayerControl.LocalPlayer.PlayerId)
-                                    Coroutines.Start(Utils.FlashCoroutine(altruistRole.Color,
-                                        CustomGameOptions.ReviveDuration, 0.5f));
-
-                                Coroutines.Start(
-                                    global::TownOfUsFusion.CrewmateRoles.AltruistMod.Coroutine.AltruistRevive(body,
-                                        altruistRole));
-                            }
-=======
                         switch (reader.ReadByte())
                         {
                             default:
@@ -1095,7 +1024,6 @@ namespace TownOfUsFusion
                                         if (body.ParentId == PlayerControl.LocalPlayer.PlayerId)
                                             Coroutines.Start(Utils.FlashCoroutine(altruistRole.Color,
                                                 CustomGameOptions.ReviveDuration, 0.5f));
->>>>>>> Stashed changes
 
                                         Coroutines.Start(
                                             global::TownOfUsFusion.CrewmateRoles.AltruistMod.Coroutine.AltruistRevive(body,
@@ -1241,24 +1169,6 @@ namespace TownOfUsFusion
                         escapistRole.EscapePoint = escapePos;
                         Escapist.Escape(escapist);
                         break;
-<<<<<<< Updated upstream
-                    case CustomRPC.Revive:
-                        var necromancer = Utils.PlayerById(reader.ReadByte());
-                        var necromancerRole = Role.GetRole<Necromancer>(necromancer);
-                        var revived = reader.ReadByte();
-                        var theDeadBodies2 = Object.FindObjectsOfType<DeadBody>();
-                        foreach (var body in theDeadBodies2)
-                            if (body.ParentId == revived)
-                            {
-                                PerformRevive.Revive(body, necromancerRole);
-                            }
-                        break;
-                    case CustomRPC.Convert:
-                        var convertedPlayer = Utils.PlayerById(reader.ReadByte());
-                        Utils.Convert(convertedPlayer);
-                        break;
-=======
->>>>>>> Stashed changes
                     case CustomRPC.RemoveAllBodies:
                         var buggedBodies = Object.FindObjectsOfType<DeadBody>();
                         foreach (var body in buggedBodies)
@@ -1316,25 +1226,6 @@ namespace TownOfUsFusion
                             var aurial = Role.GetRole<Aurial>(PlayerControl.LocalPlayer);
                             Coroutines.Start(aurial.Sense(abilityUser));
                         }
-                        break;
-
-                    case CustomRPC.HunterStalk:
-                        var stalker = Utils.PlayerById(reader.ReadByte());
-                        var stalked = Utils.PlayerById(reader.ReadByte());
-                        Hunter hunterRole = Role.GetRole<Hunter>(stalker);
-                        hunterRole.StalkDuration = CustomGameOptions.HunterStalkDuration;
-                        hunterRole.StalkedPlayer = stalked;
-                        hunterRole.Stalk();
-                        break;
-                    case CustomRPC.HunterCatchPlayer:
-                        var hunter = Utils.PlayerById(reader.ReadByte());
-                        var prey = Utils.PlayerById(reader.ReadByte());
-                        Hunter hunter2 = Role.GetRole<Hunter>(hunter);
-                        hunter2.CatchPlayer(prey);
-                        break;
-                    case CustomRPC.Retribution:
-                        var lastVoted = Utils.PlayerById(reader.ReadByte());
-                        AssassinKill.MurderPlayer(lastVoted);
                         break;
                 }
             }
@@ -1484,15 +1375,12 @@ namespace TownOfUsFusion
 
                     if (CustomGameOptions.AurialOn > 0)
                         CrewmateRoles.Add((typeof(Aurial), CustomGameOptions.AurialOn, false));
-<<<<<<< Updated upstream
-=======
 
                     if (CustomGameOptions.WardenOn > 0)
                         CrewmateRoles.Add((typeof(Warden), CustomGameOptions.WardenOn, false));
 
                     if (CustomGameOptions.JailorOn > 0)
                         CrewmateRoles.Add((typeof(Jailor), CustomGameOptions.JailorOn, true));
->>>>>>> Stashed changes
                     #endregion
                     #region Neutral Roles
                     if (CustomGameOptions.JesterOn > 0)
@@ -1507,12 +1395,9 @@ namespace TownOfUsFusion
                     if (CustomGameOptions.DoomsayerOn > 0)
                         NeutralEvilRoles.Add((typeof(Doomsayer), CustomGameOptions.DoomsayerOn, false));
 
-<<<<<<< Updated upstream
-=======
                     if (CustomGameOptions.SoulCollectorOn > 0)
                         NeutralEvilRoles.Add((typeof(SoulCollector), CustomGameOptions.SoulCollectorOn, true));
 
->>>>>>> Stashed changes
                     if (CustomGameOptions.SurvivorOn > 0)
                         NeutralBenignRoles.Add((typeof(Survivor), CustomGameOptions.SurvivorOn, false));
 
@@ -1570,12 +1455,9 @@ namespace TownOfUsFusion
 
                     if (CustomGameOptions.VenererOn > 0)
                         ImpostorRoles.Add((typeof(Venerer), CustomGameOptions.VenererOn, true));
-<<<<<<< Updated upstream
-=======
 
                     if (CustomGameOptions.HypnotistOn > 0)
                         ImpostorRoles.Add((typeof(Hypnotist), CustomGameOptions.HypnotistOn, true));
->>>>>>> Stashed changes
                     #endregion
                     #region Crewmate Modifiers
                     if (Check(CustomGameOptions.TorchOn))
@@ -1609,12 +1491,6 @@ namespace TownOfUsFusion
                     if (Check(CustomGameOptions.ButtonBarryOn))
                         ButtonModifiers.Add((typeof(ButtonBarry), CustomGameOptions.ButtonBarryOn));
 
-<<<<<<< Updated upstream
-                    if (Check(CustomGameOptions.MiniOn))
-                        GlobalModifiers.Add((typeof(Mini), CustomGameOptions.MiniOn));
-
-=======
->>>>>>> Stashed changes
                     if (Check(CustomGameOptions.LoversOn))
                         GlobalModifiers.Add((typeof(Lover), CustomGameOptions.LoversOn));
 

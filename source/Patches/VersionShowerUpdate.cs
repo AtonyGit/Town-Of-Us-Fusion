@@ -10,12 +10,7 @@ namespace TownOfUsFusion
         public static void Postfix(VersionShower __instance)
         {
             var text = __instance.text;
-<<<<<<< Updated upstream
             text.text += " - <color=#00FF00FF>TownOfUsFusion v" + TownOfUsFusion.VersionString + "</color>" + TownOfUsFusion.VersionTag;
-=======
-        text.text += $" - <color=#FF6A51FF>TOUR v{TownOfUsFusion.TouVersionString}</color>" +
-        $"<color=#8E5BF3FF> | Fusion v{TownOfUsFusion.VersionString}</color>" + (TownOfUsFusion.isDevBuild ? $"<color=#DA4291FF> Dev {TownOfUsFusion.DevBuildVersion}</color>" : "");
->>>>>>> Stashed changes
             text.transform.localPosition += new Vector3(-0.8f, -0.16f, 0f);
 
             if (GameObject.Find("RightPanel"))

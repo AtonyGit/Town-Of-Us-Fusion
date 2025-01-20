@@ -37,13 +37,8 @@ namespace TownOfUsFusion.CrewmateRoles.SwapperMod
         {
             public static void Postfix(MeetingHud __instance)
             {
-<<<<<<< Updated upstream
                 PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage(Swap1 == null ? "null" : Swap1.ToString());
                 PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage(Swap2 == null ? "null" : Swap2.ToString());
-=======
-                PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage(Swap1 == null ? "null" : Swap1.ToString());
-                PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage(Swap2 == null ? "null" : Swap2.ToString());
->>>>>>> Stashed changes
 
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Swapper))
                 {

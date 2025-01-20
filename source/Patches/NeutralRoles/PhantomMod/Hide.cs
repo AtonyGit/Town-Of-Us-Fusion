@@ -14,11 +14,7 @@ namespace TownOfUsFusion.NeutralRoles.PhantomMod
             foreach (var role in Role.GetRoles(RoleEnum.Phantom))
             {
                 var phantom = (Phantom)role;
-<<<<<<< Updated upstream
-                if (role.Player.Data.Disconnected) return;
-=======
                 if (role.Player.Data != null && role.Player.Data.Disconnected) return;
->>>>>>> Stashed changes
                 var caught = phantom.Caught;
                 if (!caught)
                 {

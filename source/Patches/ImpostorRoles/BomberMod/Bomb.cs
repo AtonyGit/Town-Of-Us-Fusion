@@ -32,8 +32,6 @@ namespace TownOfUsFusion.ImpostorRoles.BomberMod
             BombScript.transform = BombPref.transform;
             return BombScript;
         }
-<<<<<<< Updated upstream
-=======
     }
 
     public class BombTeammate
@@ -49,6 +47,5 @@ namespace TownOfUsFusion.ImpostorRoles.BomberMod
             try { BombExtentions.ClearBomb(TempBomb); }
             catch { }
         }
->>>>>>> Stashed changes
     }
 }

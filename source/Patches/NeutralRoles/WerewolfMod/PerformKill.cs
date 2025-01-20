@@ -21,11 +21,8 @@ namespace TownOfUsFusion.NeutralRoles.WerewolfMod
             {
                 if (role.RampageTimer() != 0) return false;
                 if (!__instance.isActiveAndEnabled || __instance.isCoolingDown) return false;
-<<<<<<< Updated upstream
-=======
                 var abilityUsed = Utils.AbilityUsed(PlayerControl.LocalPlayer);
                 if (!abilityUsed) return false;
->>>>>>> Stashed changes
 
                 role.TimeRemaining = CustomGameOptions.RampageDuration;
                 role.Rampage();

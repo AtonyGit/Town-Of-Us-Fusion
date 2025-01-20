@@ -45,17 +45,10 @@ namespace TownOfUsFusion
         }
     }
 
-<<<<<<< Updated upstream
-    [HarmonyPatch(typeof(ExileController), nameof(ExileController.Begin))]
-    public class ExileAnimStart
-    {
-        public static void Postfix(ExileController __instance, [HarmonyArgument(0)] GameData.PlayerInfo exiled, [HarmonyArgument(1)] bool tie)
-=======
     [HarmonyPatch(typeof(ExileController), nameof(ExileController.BeginForGameplay))]
     public class ExileAnimStart
     {
         public static void Postfix(ExileController __instance, [HarmonyArgument(0)] NetworkedPlayerInfo exiled, [HarmonyArgument(1)] bool tie)
->>>>>>> Stashed changes
         {
             Utils.ShowDeadBodies = PlayerControl.LocalPlayer.Data.IsDead || exiled?.PlayerId == PlayerControl.LocalPlayer.PlayerId;
         }

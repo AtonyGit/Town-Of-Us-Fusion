@@ -1,18 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-<<<<<<< Updated upstream
 using TownOfUsFusion.Patches;
 using UnityEngine;
 using TownOfUsFusion.Extensions;
 
 namespace TownOfUsFusion.Roles.Modifiers
-=======
-using TownOfUsFusion.Patches;
-using UnityEngine;
-using TownOfUsFusion.Extensions;
-
-namespace TownOfUsFusion.Roles.Modifiers
->>>>>>> Stashed changes
 {
     public class Lover : Modifier
     {
@@ -47,16 +39,9 @@ namespace TownOfUsFusion.Roles.Modifiers
 
             foreach(var player in canHaveModifiers)
             {
-<<<<<<< Updated upstream
-                if (player.Is(Faction.Impostors) || (player.Is(Faction.NeutralKilling) && !player.Is(RoleEnum.Vampire) && CustomGameOptions.NeutralLovers))
-                    impostors.Add(player);
-                else if (player.Is(Faction.Crewmates) || (player.Is(Faction.NeutralBenign) && CustomGameOptions.NeutralLovers)
-                     || (player.Is(Faction.NeutralEvil) && CustomGameOptions.NeutralLovers))
-=======
                 if (player.Is(Faction.Impostors) || (player.Is(Faction.NeutralKilling) && CustomGameOptions.NeutralLovers))
                     impostors.Add(player);
                 else if (player.Is(Faction.Crewmates) || ((player.Is(Faction.NeutralBenign) || player.Is(Faction.NeutralEvil)) && CustomGameOptions.NeutralLovers))
->>>>>>> Stashed changes
                     crewmates.Add(player);
             }
 

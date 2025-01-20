@@ -7,17 +7,10 @@ namespace TownOfUsFusion.ImpostorRoles.VenererMod
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class HudManagerUpdate
     {
-<<<<<<< Updated upstream
         public static Sprite NoneSprite => TownOfUsFusion.NoAbilitySprite;
         public static Sprite CamoSprite => TownOfUsFusion.CamouflageSprite;
         public static Sprite CamoSprintSprite => TownOfUsFusion.CamoSprintSprite;
         public static Sprite CamoSprintFreezeSprite => TownOfUsFusion.CamoSprintFreezeSprite;
-=======
-        public static Sprite NoneSprite => TownOfUsFusion.NoAbilitySprite;
-        public static Sprite CamoSprite => TownOfUsFusion.CamouflageSprite;
-        public static Sprite CamoSprintSprite => TownOfUsFusion.CamoSprintSprite;
-        public static Sprite CamoSprintFreezeSprite => TownOfUsFusion.CamoSprintFreezeSprite;
->>>>>>> Stashed changes
 
         public static void Postfix(HudManager __instance)
         {
@@ -43,24 +36,6 @@ namespace TownOfUsFusion.ImpostorRoles.VenererMod
             if (role.IsCamouflaged)
             {
                 role.AbilityButton.SetCoolDown(role.TimeRemaining, CustomGameOptions.AbilityDuration);
-<<<<<<< Updated upstream
-                return;
-            }
-
-            if (role.Kills > 0)
-            {
-                role.AbilityButton.SetCoolDown(role.AbilityTimer(), CustomGameOptions.AbilityCd);
-                role.AbilityButton.graphic.color = Palette.EnabledColor;
-                role.AbilityButton.graphic.material.SetFloat("_Desat", 0f);
-            }
-            else
-            {
-                role.AbilityButton.SetCoolDown(0, CustomGameOptions.AbilityCd);
-                role.AbilityButton.graphic.color = Palette.DisabledClear;
-                role.AbilityButton.graphic.material.SetFloat("_Desat", 1f);
-            }
-
-=======
                 role.AbilityButton.graphic.color = Palette.EnabledColor;
                 role.AbilityButton.graphic.material.SetFloat("_Desat", 0f);
             }
@@ -77,7 +52,6 @@ namespace TownOfUsFusion.ImpostorRoles.VenererMod
                 role.AbilityButton.graphic.material.SetFloat("_Desat", 1f);
             }
 
->>>>>>> Stashed changes
         }
     }
 }

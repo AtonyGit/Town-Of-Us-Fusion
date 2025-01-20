@@ -10,11 +10,7 @@ namespace TownOfUsFusion.CrewmateRoles.MysticMod
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class HudManagerUpdate
     {
-<<<<<<< Updated upstream
         public static Sprite Arrow => TownOfUsFusion.Arrow;
-=======
-        public static Sprite Arrow => TownOfUsFusion.Arrow;
->>>>>>> Stashed changes
 
         public static void Postfix(HudManager __instance)
         {

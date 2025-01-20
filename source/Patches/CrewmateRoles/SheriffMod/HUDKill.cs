@@ -1,14 +1,8 @@
-<<<<<<< Updated upstream
-﻿using HarmonyLib;
-using TownOfUsFusion.Extensions;
-using TownOfUsFusion.Roles;
-=======
 ﻿using AmongUs.GameOptions;
 using HarmonyLib;
 using System.Linq;
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;
->>>>>>> Stashed changes
 
 namespace TownOfUsFusion.CrewmateRoles.SheriffMod
 {
@@ -19,38 +13,6 @@ namespace TownOfUsFusion.CrewmateRoles.SheriffMod
 
         public static void Postfix(HudManager __instance)
         {
-<<<<<<< Updated upstream
-            UpdateKillButton(__instance);
-        }
-
-        private static void UpdateKillButton(HudManager __instance)
-        {
-            KillButton = __instance.KillButton;
-            if (PlayerControl.AllPlayerControls.Count <= 1) return;
-            if (PlayerControl.LocalPlayer == null) return;
-            if (PlayerControl.LocalPlayer.Data == null) return;
-            var flag7 = PlayerControl.AllPlayerControls.Count > 1;
-            if (!flag7) return;
-            var flag8 = PlayerControl.LocalPlayer.Is(RoleEnum.Sheriff);
-            if (flag8)
-            {
-                var role = Role.GetRole<Sheriff>(PlayerControl.LocalPlayer);
-                KillButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-                KillButton.SetCoolDown(role.SheriffKillTimer(), CustomGameOptions.SheriffKillCd);
-                Utils.SetTarget(ref role.ClosestPlayer, KillButton);
-            }
-            else
-            {
-                var isImpostor = PlayerControl.LocalPlayer.Data.IsImpostor();
-                if (!isImpostor) return;
-
-                __instance.KillButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-            }
-=======
             KillButton = __instance.KillButton;
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
@@ -94,7 +56,6 @@ namespace TownOfUsFusion.CrewmateRoles.SheriffMod
             else if (PlayerControl.LocalPlayer.IsLover()) Utils.SetTarget(ref target, killButton, float.NaN, PlayerControl.AllPlayerControls.ToArray().Where(x => !x.IsLover() && !x.Is(Faction.Impostors)).ToList());
             else Utils.SetTarget(ref target, killButton, float.NaN, PlayerControl.AllPlayerControls.ToArray().Where(x => !x.Is(Faction.Impostors)).ToList());
             killButton.SetTarget(target);
->>>>>>> Stashed changes
         }
     }
 }

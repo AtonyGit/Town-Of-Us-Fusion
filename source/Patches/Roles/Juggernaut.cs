@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Linq;
-<<<<<<< Updated upstream
 using TownOfUsFusion.Extensions;
 
 namespace TownOfUsFusion.Roles
-=======
-using TownOfUsFusion.Extensions;
-
-namespace TownOfUsFusion.Roles
->>>>>>> Stashed changes
 {
     public class Juggernaut : Role
     {
@@ -29,21 +23,13 @@ namespace TownOfUsFusion.Roles
         public bool JuggernautWins { get; set; }
         public int JuggKills { get; set; } = 0;
 
-<<<<<<< Updated upstream
-        internal override bool NeutralWin(LogicGameFlowNormal __instance)
-=======
         internal override bool GameEnd(LogicGameFlowNormal __instance)
->>>>>>> Stashed changes
         {
             if (Player.Data.IsDead || Player.Data.Disconnected) return true;
 
             if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected) <= 2 &&
                     PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
-<<<<<<< Updated upstream
-                    (x.Data.IsImpostor() || x.Is(Faction.NeutralKilling))) == 1)
-=======
                     (x.Data.IsImpostor() || x.Is(Faction.NeutralKilling) || x.IsCrewKiller())) == 1)
->>>>>>> Stashed changes
             {
                 Utils.Rpc(CustomRPC.JuggernautWin, Player.PlayerId);
                 Wins();

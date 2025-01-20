@@ -36,21 +36,14 @@ namespace TownOfUsFusion
         Imitator,
         Doomsayer,
         Vampire,
-<<<<<<< Updated upstream
-        VampireHunter,
-=======
->>>>>>> Stashed changes
         Prosecutor,
         Oracle,
         Aurial,
         Hunter,
-<<<<<<< Updated upstream
-=======
         Politician,
         Warden,
         Jailor,
         SoulCollector,
->>>>>>> Stashed changes
 
         Miner,
         Swooper,
@@ -64,47 +57,11 @@ namespace TownOfUsFusion
         Bomber,
         Warlock,
         Venerer,
-<<<<<<< Updated upstream
-=======
         Hypnotist,
->>>>>>> Stashed changes
 
         Crewmate,
         Impostor,
 
-<<<<<<< Updated upstream
-        Necromancer,
-        Whisperer,
-        CultistSeer,
-        CultistMystic,
-        Chameleon,
-        CultistSnitch,
-
-        None
-    }
-
-    public enum ModifierEnum
-    {
-        Lover,
-        Torch,
-        Diseased,
-        Flash,
-        Tiebreaker,
-        Giant,
-        Mini,
-        ButtonBarry,
-        Bait,
-        Sleuth,
-        Aftermath,
-        Radar,
-        Disperser,
-        Multitasker,
-        DoubleShot,
-        Underdog,
-        Frosty
-    }
-
-=======
         None
     }
 
@@ -130,7 +87,6 @@ namespace TownOfUsFusion
         Shy
     }
 
->>>>>>> Stashed changes
     public enum AbilityEnum
     {
         Assassin

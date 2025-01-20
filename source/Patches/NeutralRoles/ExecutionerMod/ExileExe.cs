@@ -6,11 +6,7 @@ using TownOfUsFusion.Patches;
 using TownOfUsFusion.Roles;
 using TownOfUsFusion.CrewmateRoles.AltruistMod;
 
-<<<<<<< Updated upstream
-namespace TownOfUsFusion.NeutraleRoles.ExecutionerMod
-=======
 namespace TownOfUsFusion.NeutralRoles.ExecutionerMod
->>>>>>> Stashed changes
 {
     [HarmonyPatch(typeof(AirshipExileController), nameof(AirshipExileController.WrapUpAndSpawn))]
     public static class AirshipExileController_WrapUpAndSpawn
@@ -23,11 +19,7 @@ namespace TownOfUsFusion.NeutralRoles.ExecutionerMod
     {
         public static void ExileControllerPostfix(ExileController __instance)
         {
-<<<<<<< Updated upstream
-            var exiled = __instance.exiled;
-=======
             var exiled = __instance.initData.networkedPlayer;
->>>>>>> Stashed changes
             if (exiled == null) return;
             var player = exiled.Object;
 

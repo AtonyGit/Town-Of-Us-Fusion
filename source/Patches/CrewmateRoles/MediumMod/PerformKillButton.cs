@@ -20,11 +20,8 @@ namespace TownOfUsFusion.CrewmateRoles.MediumMod
             if (!__instance.enabled) return false;
             if (role.MediateTimer() != 0f) return false;
 
-<<<<<<< Updated upstream
-=======
             var abilityUsed = Utils.AbilityUsed(PlayerControl.LocalPlayer);
             if (!abilityUsed) return false;
->>>>>>> Stashed changes
             role.LastMediated = DateTime.UtcNow;
 
             List<DeadPlayer> PlayersDead = Murder.KilledPlayers.GetRange(0, Murder.KilledPlayers.Count);

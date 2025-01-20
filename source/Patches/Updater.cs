@@ -17,23 +17,14 @@ namespace TownOfUsFusion
     [HarmonyPatch(typeof(MainMenuManager), nameof(MainMenuManager.Start))]
     public class ModUpdaterButton
     {
-<<<<<<< Updated upstream
         private static Sprite TOUUpdateSprite => TownOfUsFusion.UpdateTOUButton;
         private static Sprite SubmergedUpdateSprite => TownOfUsFusion.UpdateSubmergedButton;
-=======
-        private static Sprite TOUUpdateSprite => TownOfUsFusion.UpdateTOUButton;
-        private static Sprite SubmergedUpdateSprite => TownOfUsFusion.UpdateSubmergedButton;
->>>>>>> Stashed changes
         private static void Prefix(MainMenuManager __instance)
         {
             //Check if there's a ToU update
             ModUpdater.LaunchUpdater();
 
-<<<<<<< Updated upstream
             var data = GetVersioning().FirstOrDefault(x => x.ModVersion.Equals(TownOfUsFusion.VersionString));
-=======
-            var data = GetVersioning().FirstOrDefault(x => x.ModVersion.Equals(TownOfUsFusion.VersionString));
->>>>>>> Stashed changes
             if (data != null)
             {
                 var RequiredVersions = data.InternalVersions;
@@ -42,11 +33,7 @@ namespace TownOfUsFusion
                 {
                     string action = AUversion > RequiredVersions.Keys.Max() ? "downgrade" : "update";
                     string info =
-<<<<<<< Updated upstream
                         $"ALERT\nTown of Us {TownOfUsFusion.VersionString} requires {RequiredVersions.Values.Last()}\nyou have {Application.version}\nPlease {action} your among us version"
-=======
-                        $"ALERT\nTown of Us {TownOfUsFusion.VersionString} requires {RequiredVersions.Values.Last()}\nyou have {Application.version}\nPlease {action} your among us version"
->>>>>>> Stashed changes
                         + "\nvisit Github or Discord for any help";
                     TwitchManager man = DestroyableSingleton<TwitchManager>.Instance;
                     ModUpdater.InfoPopup = UnityEngine.Object.Instantiate(man.TwitchPopup);
@@ -141,11 +128,7 @@ namespace TownOfUsFusion
         {
             DefaultRequestHeaders = 
             {
-<<<<<<< Updated upstream
                 {"User-Agent", "TownOfUsFusion Updater"}
-=======
-                {"User-Agent", "TownOfUsFusion Updater"}
->>>>>>> Stashed changes
             } 
         };
 
@@ -159,11 +142,7 @@ namespace TownOfUsFusion
             //Only check of Submerged update if Submerged is already installed
             string codeBase = Assembly.GetExecutingAssembly().Location;
             UriBuilder uri = new(codeBase);
-<<<<<<< Updated upstream
             string submergedPath = Uri.UnescapeDataString(uri.Path.Replace("TownOfUsFusion", "Submerged"));
-=======
-            string submergedPath = Uri.UnescapeDataString(uri.Path.Replace("TownOfUsFusion", "Submerged"));
->>>>>>> Stashed changes
             if (File.Exists(submergedPath))
             {
                 checkForUpdate("Submerged").GetAwaiter().GetResult();
@@ -177,7 +156,7 @@ namespace TownOfUsFusion
             string info = "";
             if (updateType == "TOU")
             {
-                info = "Updating Town Of Us\nPlease wait...";
+                info = "Updating Town Of Us Fusion\nPlease wait...";
                 InfoPopup.Show(info);
                 if (UpdateTOUTask == null)
                 {
@@ -229,30 +208,18 @@ namespace TownOfUsFusion
             }
             catch (Exception e)
             {
-<<<<<<< Updated upstream
                 PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("Exception occured when clearing old versions:\n" + e);
-=======
-                PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("Exception occured when clearing old versions:\n" + e);
->>>>>>> Stashed changes
             }
         }
         public static async Task<bool> checkForUpdate(string updateType = "TOU")
         {
-<<<<<<< Updated upstream
-            //Checks the github api for Town Of Us tags. Compares current version (from VersionString in TownOfUsFusion.cs) to the latest tag version(on GitHub)
-=======
-            //Checks the github api for Town Of Us tags. Compares current version (from VersionString in TownOfUsFusion.cs) to the latest tag version(on GitHub)
->>>>>>> Stashed changes
+            //Checks the github api for Town Of Us Fusion tags. Compares current version (from VersionString in TownOfUsFusion.cs) to the latest tag version(on GitHub)
             try
             {
                 string githubURI = "";
                 if (updateType == "TOU")
                 {
-<<<<<<< Updated upstream
-                    githubURI = "https://api.github.com/repos/eDonnes124/Town-Of-Us-R/releases/latest";
-=======
-                    githubURI = "https://github.com/AtonyGit/Town-Of-Us-Fusion/releases/latest";
->>>>>>> Stashed changes
+                    githubURI = "https://api.github.com/repos/AtonyGit/Town-Of-Us-Fusion/releases/latest";
                 }
                 else if (updateType == "Submerged")
                 {
@@ -262,11 +229,7 @@ namespace TownOfUsFusion
 
                 if (response.StatusCode != HttpStatusCode.OK || response.Content == null)
                 {
-<<<<<<< Updated upstream
                     PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("Server returned no data: " + response.StatusCode.ToString());
-=======
-                    PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("Server returned no data: " + response.StatusCode.ToString());
->>>>>>> Stashed changes
                     return false;
                 }
                 string json = await response.Content.ReadAsStringAsync();
@@ -282,11 +245,7 @@ namespace TownOfUsFusion
                 Version ver = Version.Parse(tagname.Replace("v", ""));
                 if (updateType == "TOU")
                 { //Check TOU version
-<<<<<<< Updated upstream
                     diff = TownOfUsFusion.Version.CompareTo(ver);
-=======
-                    diff = TownOfUsFusion.Version.CompareTo(ver);
->>>>>>> Stashed changes
                     if (diff < 0)
                     { // TOU update required
                         HasTOUUpdate = true;
@@ -327,28 +286,20 @@ namespace TownOfUsFusion
             }
             catch (Exception ex)
             {
-<<<<<<< Updated upstream
                 PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage(ex);
-=======
-                PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage(ex);
->>>>>>> Stashed changes
             }
             return false;
         }
 
         public static async Task<bool> downloadUpdate(string updateType = "TOU")
         {
-<<<<<<< Updated upstream
             //Downloads the new TownOfUsFusion/Submerged dll from GitHub into the plugins folder
-=======
-            //Downloads the new TownOfUsFusion/Submerged dll from GitHub into the plugins folder
->>>>>>> Stashed changes
             string downloadDLL = "";
             string info = "";
             if (updateType == "TOU")
             {
                 downloadDLL = UpdateTOUURI;
-                info = "Town Of Us\nupdated successfully.\nPlease RESTART the game.";
+                info = "Town Of Us Fusion\nupdated successfully.\nPlease RESTART the game.";
             }
             else if (updateType == "Submerged")
             {
@@ -360,11 +311,7 @@ namespace TownOfUsFusion
                 var response = await  Httpclient.GetAsync(new System.Uri(downloadDLL), HttpCompletionOption.ResponseContentRead);
                 if (response.StatusCode != HttpStatusCode.OK || response.Content == null)
                 {
-<<<<<<< Updated upstream
                     PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("Server returned no data: " + response.StatusCode.ToString());
-=======
-                    PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("Server returned no data: " + response.StatusCode.ToString());
->>>>>>> Stashed changes
                     return false;
                 }
                 string codeBase = Assembly.GetExecutingAssembly().Location;
@@ -372,11 +319,7 @@ namespace TownOfUsFusion
                 string fullname = System.Uri.UnescapeDataString(uri.Path);
                 if (updateType == "Submerged")
                 {
-<<<<<<< Updated upstream
                     fullname = fullname.Replace("TownOfUsFusion", "Submerged"); //TODO A better solution than this to correctly name the dll files
-=======
-                    fullname = fullname.Replace("TownOfUsFusion", "Submerged"); //TODO A better solution than this to correctly name the dll files
->>>>>>> Stashed changes
                 }
                 if (File.Exists(fullname + ".old")) // Clear old file in case it wasnt;
                     File.Delete(fullname + ".old");
@@ -393,11 +336,7 @@ namespace TownOfUsFusion
             }
             catch (Exception ex)
             {
-<<<<<<< Updated upstream
                 PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage(ex);
-=======
-                PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage(ex);
->>>>>>> Stashed changes
             }
             showPopup("Update wasn't successful\nTry again later,\nor update manually.");
             return false;

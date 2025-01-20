@@ -51,11 +51,7 @@ namespace TownOfUsFusion.NeutralRoles.GuardianAngelMod
             else protectButton.SetCoolDown(0f, CustomGameOptions.ProtectCd);
 
             var renderer = protectButton.graphic;
-<<<<<<< Updated upstream
-            if (role.Protecting || (!protectButton.isCoolingDown && role.ButtonUsable))
-=======
             if (role.Protecting || (!protectButton.isCoolingDown && role.ButtonUsable && PlayerControl.LocalPlayer.moveable))
->>>>>>> Stashed changes
             {
                 renderer.color = Palette.EnabledColor;
                 renderer.material.SetFloat("_Desat", 0f);

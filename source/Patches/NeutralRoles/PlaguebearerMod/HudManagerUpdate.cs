@@ -2,12 +2,8 @@ using System.Linq;
 using HarmonyLib;
 using TownOfUsFusion.Roles;
 using UnityEngine;
-<<<<<<< Updated upstream
-using TownOfUsFusion.Extensions;
-=======
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles.Modifiers;
->>>>>>> Stashed changes
 
 namespace TownOfUsFusion.NeutralRoles.PlaguebearerMod
 {
@@ -24,44 +20,6 @@ namespace TownOfUsFusion.NeutralRoles.PlaguebearerMod
             var infectButton = __instance.KillButton;
             var role = Role.GetRole<Plaguebearer>(PlayerControl.LocalPlayer);
 
-<<<<<<< Updated upstream
-            foreach (var playerId in role.InfectedPlayers)
-            {
-                var player = Utils.PlayerById(playerId);
-                var data = player?.Data;
-                if (data == null || data.Disconnected || data.IsDead || PlayerControl.LocalPlayer.Data.IsDead || playerId == PlayerControl.LocalPlayer.PlayerId)
-                    continue;
-
-                player.myRend().material.SetColor("_VisorColor", role.Color);
-                player.nameText().color = Color.black;
-            }
-
-            infectButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-            infectButton.SetCoolDown(role.InfectTimer(), CustomGameOptions.InfectCd);
-
-            var notInfected = PlayerControl.AllPlayerControls.ToArray().Where(
-                player => !role.InfectedPlayers.Contains(player.PlayerId)
-            ).ToList();
-
-            Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton, float.NaN, notInfected);
-
-            if (role.CanTransform && (PlayerControl.AllPlayerControls.ToArray().Where(x => !x.Data.IsDead && !x.Data.Disconnected).ToList().Count > 1) && !isDead)
-            {
-                var transform = false;
-                var alives = PlayerControl.AllPlayerControls.ToArray().Where(x => !x.Data.IsDead && !x.Data.Disconnected && x != PlayerControl.LocalPlayer).ToList();
-                if (alives.Count <= 1)
-                {
-                    foreach (var player in alives)
-                    {
-                        if (player.Data.IsImpostor() || player.Is(Faction.NeutralKilling))
-                        {
-                            transform = true;
-                        }
-                    }
-                }
-=======
             if (!PlayerControl.LocalPlayer.IsHypnotised())
             {
                 foreach (var playerId in role.InfectedPlayers)
@@ -104,7 +62,6 @@ namespace TownOfUsFusion.NeutralRoles.PlaguebearerMod
                         }
                     }
                 }
->>>>>>> Stashed changes
                 else transform = true;
                 if (transform)
                 {

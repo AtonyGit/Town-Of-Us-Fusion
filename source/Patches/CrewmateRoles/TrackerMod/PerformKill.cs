@@ -10,11 +10,7 @@ namespace TownOfUsFusion.CrewmateRoles.TrackerMod
     [HarmonyPatch(typeof(KillButton), nameof(KillButton.DoClick))]
     public class PerformKill
     {
-<<<<<<< Updated upstream
         public static Sprite Sprite => TownOfUsFusion.Arrow;
-=======
-        public static Sprite Sprite => TownOfUsFusion.Arrow;
->>>>>>> Stashed changes
         public static bool Prefix(KillButton __instance)
         {
             if (__instance != DestroyableSingleton<HudManager>.Instance.KillButton) return true;

@@ -1,18 +1,10 @@
 using System;
 using HarmonyLib;
 using Hazel;
-<<<<<<< Updated upstream
-using TownOfUsFusion.NeutralRoles.ExecutionerMod;
-using TownOfUsFusion.NeutralRoles.GuardianAngelMod;
-using TownOfUsFusion.Roles;
-using TownOfUsFusion.Roles.Cultist;
-using TownOfUsFusion.Roles.Modifiers;
-=======
 using TownOfUsFusion.NeutralRoles.ExecutionerMod;
 using TownOfUsFusion.NeutralRoles.GuardianAngelMod;
 using TownOfUsFusion.Roles;
 using TownOfUsFusion.Roles.Modifiers;
->>>>>>> Stashed changes
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -21,11 +13,7 @@ namespace TownOfUsFusion.Patches
     [HarmonyPatch(typeof(IntroCutscene._CoBegin_d__35), nameof(IntroCutscene._CoBegin_d__35.MoveNext))]
     public static class Start
     {
-<<<<<<< Updated upstream
         public static Sprite Sprite => TownOfUsFusion.Arrow;
-=======
-        public static Sprite Sprite => TownOfUsFusion.Arrow;
->>>>>>> Stashed changes
         public static void Postfix(IntroCutscene._CoBegin_d__35 __instance)
         {
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Detective))
@@ -56,16 +44,6 @@ namespace TownOfUsFusion.Patches
                 oracle.LastConfessed = oracle.LastConfessed.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.ConfessCd);
             }
 
-<<<<<<< Updated upstream
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Aurial))
-            {
-                var aurial = Role.GetRole<Aurial>(PlayerControl.LocalPlayer);
-                aurial.LastRadiated = DateTime.UtcNow;
-                aurial.LastRadiated = aurial.LastRadiated.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.RadiateCooldown);
-            }
-
-=======
->>>>>>> Stashed changes
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Sheriff))
             {
                 var sheriff = Role.GetRole<Sheriff>(PlayerControl.LocalPlayer);
@@ -89,88 +67,6 @@ namespace TownOfUsFusion.Patches
                 hunter.LastKilled = hunter.LastKilled.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.HunterKillCd);
             }
 
-<<<<<<< Updated upstream
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.VampireHunter))
-            {
-                var vh = Role.GetRole<VampireHunter>(PlayerControl.LocalPlayer);
-                vh.LastStaked = DateTime.UtcNow;
-                vh.LastStaked = vh.LastStaked.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.StakeCd);
-            }
-
-            if (CustomGameOptions.CanStakeRoundOne)
-            {
-                foreach (var vh in Role.GetRoles(RoleEnum.VampireHunter))
-                {
-                    var vhRole = (VampireHunter)vh;
-                    vhRole.UsesLeft = CustomGameOptions.MaxFailedStakesPerGame;
-                    vhRole.AddedStakes = true;
-                }
-            }
-
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Transporter))
-            {
-                var transporter = Role.GetRole<Transporter>(PlayerControl.LocalPlayer);
-                transporter.LastTransported = DateTime.UtcNow;
-                transporter.LastTransported = transporter.LastTransported.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.TransportCooldown);
-            }
-
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Trapper))
-            {
-                var trapper = Role.GetRole<Trapper>(PlayerControl.LocalPlayer);
-                trapper.LastTrapped = DateTime.UtcNow;
-                trapper.LastTrapped = trapper.LastTrapped.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.TrapCooldown);
-            }
-
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Veteran))
-            {
-                var veteran = Role.GetRole<Veteran>(PlayerControl.LocalPlayer);
-                veteran.LastAlerted = DateTime.UtcNow;
-                veteran.LastAlerted = veteran.LastAlerted.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.AlertCd);
-            }
-
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Chameleon))
-            {
-                var chameleon = Role.GetRole<Chameleon>(PlayerControl.LocalPlayer);
-                chameleon.LastSwooped = DateTime.UtcNow;
-                chameleon.LastSwooped = chameleon.LastSwooped.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.SwoopCd);
-            }
-
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Necromancer))
-            {
-                var necro = Role.GetRole<Necromancer>(PlayerControl.LocalPlayer);
-                necro.LastRevived = DateTime.UtcNow;
-                necro.LastRevived = necro.LastRevived.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.ReviveCooldown);
-            }
-
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.CultistSeer))
-            {
-                var seer = Role.GetRole<CultistSeer>(PlayerControl.LocalPlayer);
-                seer.LastInvestigated = DateTime.UtcNow;
-                seer.LastInvestigated = seer.LastInvestigated.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.SeerCd);
-            }
-
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Whisperer))
-            {
-                var whisperer = Role.GetRole<Whisperer>(PlayerControl.LocalPlayer);
-                whisperer.LastWhispered = DateTime.UtcNow;
-                whisperer.LastWhispered = whisperer.LastWhispered.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.WhisperCooldown);
-            }
-
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Blackmailer))
-            {
-                var blackmailer = Role.GetRole<Blackmailer>(PlayerControl.LocalPlayer);
-                blackmailer.LastBlackmailed = DateTime.UtcNow;
-                blackmailer.LastBlackmailed = blackmailer.LastBlackmailed.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.BlackmailCd);
-            }
-
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Escapist))
-            {
-                var escapist = Role.GetRole<Escapist>(PlayerControl.LocalPlayer);
-                escapist.LastEscape = DateTime.UtcNow;
-                escapist.LastEscape = escapist.LastEscape.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.EscapeCd);
-            }
-
-=======
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Transporter))
             {
                 var transporter = Role.GetRole<Transporter>(PlayerControl.LocalPlayer);
@@ -234,7 +130,6 @@ namespace TownOfUsFusion.Patches
                 escapist.LastEscape = escapist.LastEscape.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.EscapeCd);
             }
 
->>>>>>> Stashed changes
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Grenadier))
             {
                 var grenadier = Role.GetRole<Grenadier>(PlayerControl.LocalPlayer);
@@ -372,8 +267,6 @@ namespace TownOfUsFusion.Patches
                 vamp.LastBit = vamp.LastBit.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.BiteCd);
             }
 
-<<<<<<< Updated upstream
-=======
             if (PlayerControl.LocalPlayer.Is(RoleEnum.SoulCollector))
             {
                 var sc = Role.GetRole<SoulCollector>(PlayerControl.LocalPlayer);
@@ -381,7 +274,6 @@ namespace TownOfUsFusion.Patches
                 sc.LastReaped = sc.LastReaped.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.ReapCd);
             }
 
->>>>>>> Stashed changes
             if (PlayerControl.LocalPlayer.Is(ModifierEnum.Radar))
             {
                 var radar = Modifier.GetModifier<Radar>(PlayerControl.LocalPlayer);

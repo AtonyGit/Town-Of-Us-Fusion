@@ -1,10 +1,6 @@
 ﻿using System.Linq;
 using HarmonyLib;
-<<<<<<< Updated upstream
 using TownOfUsFusion.Roles;
-=======
-using TownOfUsFusion.Roles;
->>>>>>> Stashed changes
 
 namespace TownOfUsFusion.NeutralRoles.VampireMod
 {
@@ -32,22 +28,6 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
                 .Where(x => !x.Is(RoleEnum.Vampire))
                 .ToList();
 
-<<<<<<< Updated upstream
-            Utils.SetTarget(ref role.ClosestPlayer, biteButton, float.NaN, notVampire);
-
-            var renderer = biteButton.graphic;
-
-            if (role.ClosestPlayer != null)
-            {
-                renderer.color = Palette.EnabledColor;
-                renderer.material.SetFloat("_Desat", 0f);
-            }
-            else
-            {
-                renderer.color = Palette.DisabledClear;
-                renderer.material.SetFloat("_Desat", 1f);
-            }
-=======
             var notVampireOrLover = PlayerControl.AllPlayerControls
                 .ToArray()
                 .Where(x => !x.Is(RoleEnum.Vampire) && !x.IsLover())
@@ -57,7 +37,6 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
             else if (PlayerControl.LocalPlayer.IsLover() && CustomGameOptions.ImpLoverKillTeammate) Utils.SetTarget(ref role.ClosestPlayer, biteButton, float.NaN, PlayerControl.AllPlayerControls.ToArray().Where(x => !x.IsLover()).ToList());
             else if (PlayerControl.LocalPlayer.IsLover()) Utils.SetTarget(ref role.ClosestPlayer, biteButton, float.NaN, notVampireOrLover);
             else Utils.SetTarget(ref role.ClosestPlayer, biteButton, float.NaN, notVampire);
->>>>>>> Stashed changes
         }
     }
 }

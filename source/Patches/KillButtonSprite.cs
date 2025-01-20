@@ -1,14 +1,8 @@
 ﻿using AmongUs.GameOptions;
 using HarmonyLib;
-<<<<<<< Updated upstream
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;
 using TownOfUsFusion.Roles.Modifiers;
-=======
-using TownOfUsFusion.Extensions;
-using TownOfUsFusion.Roles;
-using TownOfUsFusion.Roles.Modifiers;
->>>>>>> Stashed changes
 using UnityEngine;
 
 namespace TownOfUsFusion
@@ -25,29 +19,6 @@ namespace TownOfUsFusion
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class KillButtonSprite
     {
-<<<<<<< Updated upstream
-        private static Sprite Fix => TownOfUsFusion.EngineerFix;
-        private static Sprite Medic => TownOfUsFusion.MedicSprite;
-        private static Sprite Seer => TownOfUsFusion.SeerSprite;
-        private static Sprite Douse => TownOfUsFusion.DouseSprite;
-        private static Sprite Revive => TownOfUsFusion.ReviveSprite;
-        private static Sprite Alert => TownOfUsFusion.AlertSprite;
-        private static Sprite Remember => TownOfUsFusion.RememberSprite;
-        private static Sprite Track => TownOfUsFusion.TrackSprite;
-        private static Sprite Transport => TownOfUsFusion.TransportSprite;
-        private static Sprite Mediate => TownOfUsFusion.MediateSprite;
-        private static Sprite Vest => TownOfUsFusion.VestSprite;
-        private static Sprite Protect => TownOfUsFusion.ProtectSprite;
-        private static Sprite Infect => TownOfUsFusion.InfectSprite;
-        private static Sprite Trap => TownOfUsFusion.TrapSprite;
-        private static Sprite Inspect => TownOfUsFusion.InspectSprite;
-        private static Sprite Swoop => TownOfUsFusion.SwoopSprite;
-        private static Sprite Observe => TownOfUsFusion.ObserveSprite;
-        private static Sprite Bite => TownOfUsFusion.BiteSprite;
-        private static Sprite Stake => TownOfUsFusion.StakeSprite;
-        private static Sprite Confess => TownOfUsFusion.ConfessSprite;
-        private static Sprite Radiate => TownOfUsFusion.RadiateSprite;
-=======
         private static Sprite Fix => TownOfUsFusion.EngineerFix;
         private static Sprite Medic => TownOfUsFusion.MedicSprite;
         private static Sprite Seer => TownOfUsFusion.SeerSprite;
@@ -70,7 +41,6 @@ namespace TownOfUsFusion
         private static Sprite Fortify => TownOfUsFusion.FortifySprite;
         private static Sprite Jail => TownOfUsFusion.JailSprite;
         private static Sprite Collect => TownOfUsFusion.CollectSprite;
->>>>>>> Stashed changes
 
         private static Sprite Kill;
 
@@ -82,11 +52,7 @@ namespace TownOfUsFusion
             if (!Kill) Kill = __instance.KillButton.graphic.sprite;
 
             var flag = false;
-<<<<<<< Updated upstream
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Seer) || PlayerControl.LocalPlayer.Is(RoleEnum.CultistSeer))
-=======
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Seer))
->>>>>>> Stashed changes
             {
                 __instance.KillButton.graphic.sprite = Seer;
                 flag = true;
@@ -146,11 +112,7 @@ namespace TownOfUsFusion
                 __instance.KillButton.graphic.sprite = Infect;
                 flag = true;
             }
-<<<<<<< Updated upstream
-            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Engineer) && CustomGameOptions.GameMode != GameMode.Cultist)
-=======
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Engineer))
->>>>>>> Stashed changes
             {
                 __instance.KillButton.graphic.sprite = Fix;
                 flag = true;
@@ -165,14 +127,6 @@ namespace TownOfUsFusion
                 __instance.KillButton.graphic.sprite = Inspect;
                 flag = true;
             }
-<<<<<<< Updated upstream
-            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Chameleon))
-            {
-                __instance.KillButton.graphic.sprite = Swoop;
-                flag = true;
-            }
-=======
->>>>>>> Stashed changes
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Doomsayer))
             {
                 __instance.KillButton.graphic.sprite = Observe;
@@ -183,24 +137,11 @@ namespace TownOfUsFusion
                 __instance.KillButton.graphic.sprite = Bite;
                 flag = true;
             }
-<<<<<<< Updated upstream
-            else if (PlayerControl.LocalPlayer.Is(RoleEnum.VampireHunter))
-            {
-                __instance.KillButton.graphic.sprite = Stake;
-                flag = true;
-            }
-=======
->>>>>>> Stashed changes
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Oracle))
             {
                 __instance.KillButton.graphic.sprite = Confess;
                 flag = true;
             }
-<<<<<<< Updated upstream
-            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Aurial))
-            {
-                __instance.KillButton.graphic.sprite = Radiate;
-=======
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Politician))
             {
                 __instance.KillButton.graphic.sprite = Campaign;
@@ -219,7 +160,6 @@ namespace TownOfUsFusion
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.SoulCollector))
             {
                 __instance.KillButton.graphic.sprite = Collect;
->>>>>>> Stashed changes
                 flag = true;
             }
             else

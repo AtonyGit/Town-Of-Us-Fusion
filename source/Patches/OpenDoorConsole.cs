@@ -11,32 +11,20 @@ namespace TownOfUsFusion
     public class OpenDoorConsoleCanUse
     {
         public static void Prefix(OpenDoorConsole __instance,
-<<<<<<< Updated upstream
-            [HarmonyArgument(0)] GameData.PlayerInfo playerInfo,
-=======
             [HarmonyArgument(0)] NetworkedPlayerInfo playerInfo,
->>>>>>> Stashed changes
             ref bool __state)
         {
             __state = false;
 
             var playerControl = playerInfo.Object;
-<<<<<<< Updated upstream
-            if ((playerControl.Is(RoleEnum.Phantom) && !Role.GetRole<Phantom>(playerControl).Caught) || (playerControl.Is(RoleEnum.Haunter) && !Role.GetRole<Haunter>(playerControl).Caught) && playerInfo.IsDead)
-=======
             if (((playerControl.Is(RoleEnum.Phantom) && !Role.GetRole<Phantom>(playerControl).Caught) || (playerControl.Is(RoleEnum.Haunter) && !Role.GetRole<Haunter>(playerControl).Caught)) && playerInfo.IsDead)
->>>>>>> Stashed changes
             {
                 playerInfo.IsDead = false;
                 __state = true;
             }
         }
 
-<<<<<<< Updated upstream
-        public static void Postfix([HarmonyArgument(0)] GameData.PlayerInfo playerInfo, ref bool __state)
-=======
         public static void Postfix([HarmonyArgument(0)] NetworkedPlayerInfo playerInfo, ref bool __state)
->>>>>>> Stashed changes
         {
             if (__state)
                 playerInfo.IsDead = true;
@@ -61,32 +49,20 @@ namespace TownOfUsFusion
     public class DoorConsoleCanUse
     {
         public static void Prefix(DoorConsole __instance,
-<<<<<<< Updated upstream
-            [HarmonyArgument(0)] GameData.PlayerInfo playerInfo,
-=======
             [HarmonyArgument(0)] NetworkedPlayerInfo playerInfo,
->>>>>>> Stashed changes
             ref bool __state)
         {
             __state = false;
 
             var playerControl = playerInfo.Object;
-<<<<<<< Updated upstream
-            if ((playerControl.Is(RoleEnum.Phantom) && !Role.GetRole<Phantom>(playerControl).Caught) || (playerControl.Is(RoleEnum.Haunter) && !Role.GetRole<Haunter>(playerControl).Caught) && playerInfo.IsDead)
-=======
             if (((playerControl.Is(RoleEnum.Phantom) && !Role.GetRole<Phantom>(playerControl).Caught) || (playerControl.Is(RoleEnum.Haunter) && !Role.GetRole<Haunter>(playerControl).Caught)) && playerInfo.IsDead)
->>>>>>> Stashed changes
             {
                 playerInfo.IsDead = false;
                 __state = true;
             }
         }
 
-<<<<<<< Updated upstream
-        public static void Postfix([HarmonyArgument(0)] GameData.PlayerInfo playerInfo, ref bool __state,
-=======
         public static void Postfix([HarmonyArgument(0)] NetworkedPlayerInfo playerInfo, ref bool __state,
->>>>>>> Stashed changes
             [HarmonyArgument(1)] ref bool canUse, [HarmonyArgument(2)] ref bool couldUse)
         {
             if (__state)
@@ -99,10 +75,6 @@ namespace TownOfUsFusion
     {
         public static bool Prefix(DoorConsole __instance)
         {
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
             __instance.CanUse(PlayerControl.LocalPlayer.Data, out var canUse, out _);
             if (!canUse) return false;
             PlayerControl.LocalPlayer.NetTransform.Halt();
@@ -125,33 +97,20 @@ namespace TownOfUsFusion
     [HarmonyPatch(typeof(Ladder), nameof(Ladder.CanUse))]
     public class LadderCanUse
     {
-<<<<<<< Updated upstream
-        public static void Prefix(DoorConsole __instance,
-            [HarmonyArgument(0)] GameData.PlayerInfo playerInfo,
-=======
         public static void Prefix(Ladder __instance,
             [HarmonyArgument(0)] NetworkedPlayerInfo playerInfo,
->>>>>>> Stashed changes
             ref bool __state)
         {
             __state = false;
             var playerControl = playerInfo.Object;
-<<<<<<< Updated upstream
-            if ((playerControl.Is(RoleEnum.Phantom) && !Role.GetRole<Phantom>(playerControl).Caught) || (playerControl.Is(RoleEnum.Haunter) && !Role.GetRole<Haunter>(playerControl).Caught) && playerInfo.IsDead)
-=======
             if (((playerControl.Is(RoleEnum.Phantom) && !Role.GetRole<Phantom>(playerControl).Caught) || (playerControl.Is(RoleEnum.Haunter) && !Role.GetRole<Haunter>(playerControl).Caught)) && playerInfo.IsDead)
->>>>>>> Stashed changes
             {
                 playerInfo.IsDead = false;
                 __state = true;
             }
         }
 
-<<<<<<< Updated upstream
-        public static void Postfix([HarmonyArgument(0)] GameData.PlayerInfo playerInfo, ref bool __state)
-=======
         public static void Postfix([HarmonyArgument(0)] NetworkedPlayerInfo playerInfo, ref bool __state)
->>>>>>> Stashed changes
         {
             if (__state)
                 playerInfo.IsDead = true;
@@ -177,38 +136,24 @@ namespace TownOfUsFusion
     {
         public static void Prefix(
             PlatformConsole __instance,
-<<<<<<< Updated upstream
-            [HarmonyArgument(0)] GameData.PlayerInfo playerInfo,
-=======
             [HarmonyArgument(0)] NetworkedPlayerInfo playerInfo,
->>>>>>> Stashed changes
             ref bool __state)
         {
             __state = false;
             var playerControl = playerInfo.Object;
-<<<<<<< Updated upstream
-            if ((playerControl.Is(RoleEnum.Phantom) && !Role.GetRole<Phantom>(playerControl).Caught) || (playerControl.Is(RoleEnum.Haunter) && !Role.GetRole<Haunter>(playerControl).Caught) && playerInfo.IsDead)
-=======
             if (((playerControl.Is(RoleEnum.Phantom) && !Role.GetRole<Phantom>(playerControl).Caught) || (playerControl.Is(RoleEnum.Haunter) && !Role.GetRole<Haunter>(playerControl).Caught)) && playerInfo.IsDead)
->>>>>>> Stashed changes
             {
                 playerInfo.IsDead = false;
                 __state = true;
             }
         }
 
-<<<<<<< Updated upstream
-        public static void Postfix([HarmonyArgument(0)] GameData.PlayerInfo playerInfo, ref bool __state)
-=======
         public static void Postfix([HarmonyArgument(0)] NetworkedPlayerInfo playerInfo, ref bool __state)
->>>>>>> Stashed changes
         {
             if (__state)
                 playerInfo.IsDead = true;
         }
     }
-<<<<<<< Updated upstream
-=======
 
     [HarmonyPatch(typeof(PlatformConsole), nameof(PlatformConsole.Use))]
     public class PlatformConsoleUse
@@ -320,41 +265,27 @@ namespace TownOfUsFusion
                 player.Data.IsDead = true;
         }
     }
->>>>>>> Stashed changes
     #endregion
 
     #region DeconControl
     [HarmonyPatch(typeof(DeconControl), nameof(DeconControl.CanUse))]
     public class DeconControlUse
     {
-<<<<<<< Updated upstream
-        public static void Prefix(DoorConsole __instance,
-            [HarmonyArgument(0)] GameData.PlayerInfo playerInfo,
-=======
         public static void Prefix(DeconControl __instance,
             [HarmonyArgument(0)] NetworkedPlayerInfo playerInfo,
->>>>>>> Stashed changes
             ref bool __state)
         {
             __state = false;
 
             var playerControl = playerInfo.Object;
-<<<<<<< Updated upstream
-            if ((playerControl.Is(RoleEnum.Phantom) && !Role.GetRole<Phantom>(playerControl).Caught) || (playerControl.Is(RoleEnum.Haunter) && !Role.GetRole<Haunter>(playerControl).Caught) && playerInfo.IsDead)
-=======
             if (((playerControl.Is(RoleEnum.Phantom) && !Role.GetRole<Phantom>(playerControl).Caught) || (playerControl.Is(RoleEnum.Haunter) && !Role.GetRole<Haunter>(playerControl).Caught)) && playerInfo.IsDead)
->>>>>>> Stashed changes
             {
                 playerInfo.IsDead = false;
                 __state = true;
             }
         }
 
-<<<<<<< Updated upstream
-        public static void Postfix([HarmonyArgument(0)] GameData.PlayerInfo playerInfo, ref bool __state)
-=======
         public static void Postfix([HarmonyArgument(0)] NetworkedPlayerInfo playerInfo, ref bool __state)
->>>>>>> Stashed changes
         {
             if (__state)
                 playerInfo.IsDead = true;
@@ -367,32 +298,20 @@ namespace TownOfUsFusion
     public class ConsoleCanUsePatch
     {
         public static void Prefix(Console __instance,
-<<<<<<< Updated upstream
-            [HarmonyArgument(0)] GameData.PlayerInfo playerInfo,
-=======
             [HarmonyArgument(0)] NetworkedPlayerInfo playerInfo,
->>>>>>> Stashed changes
             ref bool __state)
         {
             __state = false;
 
             var playerControl = playerInfo.Object;
-<<<<<<< Updated upstream
-            if ((playerControl.Is(RoleEnum.Phantom) && !Role.GetRole<Phantom>(playerControl).Caught) || (playerControl.Is(RoleEnum.Haunter) && !Role.GetRole<Haunter>(playerControl).Caught) && playerInfo.IsDead)
-=======
             if (((playerControl.Is(RoleEnum.Phantom) && !Role.GetRole<Phantom>(playerControl).Caught) || (playerControl.Is(RoleEnum.Haunter) && !Role.GetRole<Haunter>(playerControl).Caught)) && playerInfo.IsDead)
->>>>>>> Stashed changes
             {
                 playerInfo.IsDead = false;
                 __state = true;
             }
         }
 
-<<<<<<< Updated upstream
-        public static void Postfix([HarmonyArgument(0)] GameData.PlayerInfo playerInfo, ref bool __state)
-=======
         public static void Postfix([HarmonyArgument(0)] NetworkedPlayerInfo playerInfo, ref bool __state)
->>>>>>> Stashed changes
         {
             if (__state)
                 playerInfo.IsDead = true;

@@ -6,11 +6,7 @@ namespace TownOfUsFusion
     [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.BloopAVoteIcon))]
     public static class DeadSeeVoteColorsPatch
     {
-<<<<<<< Updated upstream
-        public static bool Prefix(MeetingHud __instance, [HarmonyArgument(0)] GameData.PlayerInfo voterPlayer,
-=======
         public static bool Prefix(MeetingHud __instance, [HarmonyArgument(0)] NetworkedPlayerInfo voterPlayer,
->>>>>>> Stashed changes
             [HarmonyArgument(1)] int index, [HarmonyArgument(2)] Transform parent)
         {
             SpriteRenderer spriteRenderer = Object.Instantiate<SpriteRenderer>(__instance.PlayerVotePrefab);

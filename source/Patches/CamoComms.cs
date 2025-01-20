@@ -21,20 +21,12 @@ namespace TownOfUsFusion
                         case 2:
                         case 3:
                         case 4:
-<<<<<<< Updated upstream
-=======
-                        case 7:
->>>>>>> Stashed changes
                         case 6:
                             var comms1 = ShipStatus.Instance.Systems[SystemTypes.Comms].Cast<HudOverrideSystemType>();
                             if (comms1.IsActive)
                             {
                                 CommsEnabled = true;
-<<<<<<< Updated upstream
-                                Utils.Camouflage();
-=======
                                 Utils.GroupCamouflage();
->>>>>>> Stashed changes
                                 return;
                             }
 
@@ -45,11 +37,7 @@ namespace TownOfUsFusion
                             if (comms2.IsActive)
                             {
                                 CommsEnabled = true;
-<<<<<<< Updated upstream
-                                Utils.Camouflage();
-=======
                                 Utils.GroupCamouflage();
->>>>>>> Stashed changes
                                 return;
                             }
 

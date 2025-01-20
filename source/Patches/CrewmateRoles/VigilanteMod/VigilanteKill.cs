@@ -4,15 +4,6 @@ using TownOfUsFusion.Roles.Modifiers;
 using UnityEngine;
 using UnityEngine.UI;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
-<<<<<<< Updated upstream
-using TownOfUsFusion.CrewmateRoles.MedicMod;
-using TownOfUsFusion.Modifiers.AssassinMod;
-using TownOfUsFusion.ImpostorRoles.BlackmailerMod;
-using TownOfUsFusion.Extensions;
-using TownOfUsFusion.NeutralRoles.DoomsayerMod;
-using TownOfUsFusion.CrewmateRoles.SwapperMod;
-using TownOfUsFusion.Patches;
-=======
 using TownOfUsFusion.CrewmateRoles.MedicMod;
 using TownOfUsFusion.Modifiers.AssassinMod;
 using TownOfUsFusion.ImpostorRoles.BlackmailerMod;
@@ -22,7 +13,6 @@ using TownOfUsFusion.CrewmateRoles.SwapperMod;
 using TownOfUsFusion.Patches;
 using Reactor.Utilities.Extensions;
 using TownOfUsFusion.CrewmateRoles.ImitatorMod;
->>>>>>> Stashed changes
 
 namespace TownOfUsFusion.CrewmateRoles.VigilanteMod
 {
@@ -100,62 +90,6 @@ namespace TownOfUsFusion.CrewmateRoles.VigilanteMod
 
                 player.myTasks.Insert(0, importantTextTask);
 
-<<<<<<< Updated upstream
-                if (player.Is(AbilityEnum.Assassin))
-                {
-                    var assassin = Ability.GetAbility<Assassin>(PlayerControl.LocalPlayer);
-                    ShowHideButtons.HideButtons(assassin);
-                }
-
-                if (player.Is(RoleEnum.Doomsayer))
-                {
-                    var doomsayer = Role.GetRole<Doomsayer>(PlayerControl.LocalPlayer);
-                    ShowHideButtonsDoom.HideButtonsDoom(doomsayer);
-                }
-            }
-            player.Die(DeathReason.Kill, false);
-            if (checkLover && player.IsLover() && CustomGameOptions.BothLoversDie)
-            {
-                var otherLover = Modifier.GetModifier<Lover>(player).OtherLover.Player;
-                if (!otherLover.Is(RoleEnum.Pestilence)) MurderPlayer(otherLover, false);
-            }
-
-            var deadPlayer = new DeadPlayer
-            {
-                PlayerId = player.PlayerId,
-                KillerId = player.PlayerId,
-                KillTime = System.DateTime.UtcNow,
-            };
-
-            Murder.KilledPlayers.Add(deadPlayer);
-            if (voteArea == null) return;
-            if (voteArea.DidVote) voteArea.UnsetVote();
-            voteArea.AmDead = true;
-            voteArea.Overlay.gameObject.SetActive(true);
-            voteArea.Overlay.color = Color.white;
-            voteArea.XMark.gameObject.SetActive(true);
-            voteArea.XMark.transform.localScale = Vector3.one;
-
-            var meetingHud = MeetingHud.Instance;
-            if (amOwner)
-            {
-                meetingHud.SetForegroundForDead();
-            }
-
-            var blackmailers = Role.AllRoles.Where(x => x.RoleType == RoleEnum.Blackmailer && x.Player != null).Cast<Blackmailer>();
-            foreach (var role in blackmailers)
-            {
-                if (role.Blackmailed != null && voteArea.TargetPlayerId == role.Blackmailed.PlayerId)
-                {
-                    if (BlackmailMeetingUpdate.PrevXMark != null && BlackmailMeetingUpdate.PrevOverlay != null)
-                    {
-                        voteArea.XMark.sprite = BlackmailMeetingUpdate.PrevXMark;
-                        voteArea.Overlay.sprite = BlackmailMeetingUpdate.PrevOverlay;
-                        voteArea.XMark.transform.localPosition = new Vector3(
-                            voteArea.XMark.transform.localPosition.x - BlackmailMeetingUpdate.LetterXOffset,
-                            voteArea.XMark.transform.localPosition.y - BlackmailMeetingUpdate.LetterYOffset,
-                            voteArea.XMark.transform.localPosition.z);
-=======
                 if (player.Is(RoleEnum.Swapper))
                 {
                     var swapper = Role.GetRole<Swapper>(PlayerControl.LocalPlayer);
@@ -167,7 +101,6 @@ namespace TownOfUsFusion.CrewmateRoles.VigilanteMod
                             button.SetActive(false);
                             button.GetComponent<PassiveButton>().OnClick = new Button.ButtonClickedEvent();
                         }
->>>>>>> Stashed changes
                     }
                     swapper.ListOfActives.Clear();
                     swapper.Buttons.Clear();
@@ -175,10 +108,6 @@ namespace TownOfUsFusion.CrewmateRoles.VigilanteMod
                     SwapVotes.Swap2 = null;
                     Utils.Rpc(CustomRPC.SetSwaps, sbyte.MaxValue, sbyte.MaxValue);
                 }
-<<<<<<< Updated upstream
-            }
-
-=======
 
                 if (player.Is(RoleEnum.Imitator))
                 {
@@ -286,7 +215,6 @@ namespace TownOfUsFusion.CrewmateRoles.VigilanteMod
                 }
             }
 
->>>>>>> Stashed changes
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Vigilante) && !PlayerControl.LocalPlayer.Data.IsDead)
             {
                 var vigi = Role.GetRole<Vigilante>(PlayerControl.LocalPlayer);
@@ -309,11 +237,7 @@ namespace TownOfUsFusion.CrewmateRoles.VigilanteMod
             {
                 var swapper = Role.GetRole<Swapper>(PlayerControl.LocalPlayer);
                 var button = swapper.Buttons[voteArea.TargetPlayerId];
-<<<<<<< Updated upstream
                 if (button.GetComponent<SpriteRenderer>().sprite == TownOfUsFusion.SwapperSwitch)
-=======
-                if (button.GetComponent<SpriteRenderer>().sprite == TownOfUsFusion.SwapperSwitch)
->>>>>>> Stashed changes
                 {
                     swapper.ListOfActives[voteArea.TargetPlayerId] = false;
                     if (SwapVotes.Swap1 == voteArea) SwapVotes.Swap1 = null;
@@ -339,8 +263,6 @@ namespace TownOfUsFusion.CrewmateRoles.VigilanteMod
                 meetingHud.ClearVote();
             }
 
-<<<<<<< Updated upstream
-=======
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Imitator) && !PlayerControl.LocalPlayer.Data.IsDead)
             {
                 var imitatorRole = Role.GetRole<Imitator>(PlayerControl.LocalPlayer);
@@ -352,7 +274,6 @@ namespace TownOfUsFusion.CrewmateRoles.VigilanteMod
                 }
             }
 
->>>>>>> Stashed changes
             if (AmongUsClient.Instance.AmHost) meetingHud.CheckForEndVoting();
 
             AddHauntPatch.AssassinatedPlayers.Add(player);

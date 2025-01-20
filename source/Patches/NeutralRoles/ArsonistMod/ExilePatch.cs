@@ -20,18 +20,6 @@ namespace TownOfUsFusion.NeutralRoles.ArsonistMod
 
         public static void ExileControllerPostfix(ExileController __instance)
         {
-<<<<<<< Updated upstream
-            var exiled = __instance.exiled?.Object;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Arsonist)) return;
-            var alives = PlayerControl.AllPlayerControls.ToArray()
-                    .Where(x => !x.Data.IsDead && !x.Data.Disconnected).ToList();
-            foreach (var player in alives)
-            {
-                if (player.Data.IsImpostor() || player.Is(Faction.Impostors))
-                {
-                    return;
-                }
-=======
             var exiled = __instance.initData.networkedPlayer?.Object;
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Arsonist)) return;
             var alives = PlayerControl.AllPlayerControls.ToArray()
@@ -39,7 +27,6 @@ namespace TownOfUsFusion.NeutralRoles.ArsonistMod
             foreach (var player in alives)
             {
                 if (player.Is(Faction.Impostors) || player.Is(Faction.NeutralKilling)) return;
->>>>>>> Stashed changes
             }
             var role = Role.GetRole<Arsonist>(PlayerControl.LocalPlayer);
             role.LastKiller = true;

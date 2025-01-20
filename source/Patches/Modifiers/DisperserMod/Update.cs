@@ -8,11 +8,7 @@ namespace TownOfUsFusion.Modifiers.DisperserMod
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class Update
     {
-<<<<<<< Updated upstream
         public static Sprite DisperseButton => TownOfUsFusion.DisperseSprite;
-=======
-        public static Sprite DisperseButton => TownOfUsFusion.DisperseSprite;
->>>>>>> Stashed changes
 
         public static void Postfix(HudManager __instance)
         {
@@ -31,11 +27,7 @@ namespace TownOfUsFusion.Modifiers.DisperserMod
             if (role.DisperseButton == null)
             {
                 role.DisperseButton = Object.Instantiate(__instance.KillButton, __instance.transform.parent);
-<<<<<<< Updated upstream
-                role.DisperseButton.GetComponentsInChildren<TextMeshPro>()[0].text = "";
-=======
                 foreach (var text in role.DisperseButton.GetComponentsInChildren<TextMeshPro>()) text.text = "";
->>>>>>> Stashed changes
                 role.DisperseButton.graphic.enabled = true;
                 role.DisperseButton.graphic.sprite = DisperseButton;
             }

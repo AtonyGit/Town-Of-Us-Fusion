@@ -20,11 +20,8 @@ namespace TownOfUsFusion.NeutralRoles.SurvivorMod
                 if (__instance.isCoolingDown) return false;
                 if (!__instance.isActiveAndEnabled) return false;
                 if (role.VestTimer() != 0) return false;
-<<<<<<< Updated upstream
-=======
                 var abilityUsed = Utils.AbilityUsed(PlayerControl.LocalPlayer);
                 if (!abilityUsed) return false;
->>>>>>> Stashed changes
                 role.TimeRemaining = CustomGameOptions.VestDuration;
                 role.UsesLeft--;
                 role.Vest();

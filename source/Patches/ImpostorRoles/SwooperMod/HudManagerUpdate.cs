@@ -7,11 +7,7 @@ namespace TownOfUsFusion.ImpostorRoles.SwooperMod
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class HudManagerUpdate
     {
-<<<<<<< Updated upstream
         public static Sprite SwoopSprite => TownOfUsFusion.SwoopSprite;
-=======
-        public static Sprite SwoopSprite => TownOfUsFusion.SwoopSprite;
->>>>>>> Stashed changes
 
         public static void Postfix(HudManager __instance)
         {
@@ -34,16 +30,6 @@ namespace TownOfUsFusion.ImpostorRoles.SwooperMod
             if (role.IsSwooped)
             {
                 role.SwoopButton.SetCoolDown(role.TimeRemaining, CustomGameOptions.SwoopDuration);
-<<<<<<< Updated upstream
-                return;
-            }
-
-            role.SwoopButton.SetCoolDown(role.SwoopTimer(), CustomGameOptions.SwoopCd);
-
-
-            role.SwoopButton.graphic.color = Palette.EnabledColor;
-            role.SwoopButton.graphic.material.SetFloat("_Desat", 0f);
-=======
                 role.SwoopButton.graphic.color = Palette.EnabledColor;
                 role.SwoopButton.graphic.material.SetFloat("_Desat", 0f);
             }
@@ -59,7 +45,6 @@ namespace TownOfUsFusion.ImpostorRoles.SwooperMod
                 role.SwoopButton.graphic.color = Palette.DisabledClear;
                 role.SwoopButton.graphic.material.SetFloat("_Desat", 1f);
             }
->>>>>>> Stashed changes
         }
     }
 }

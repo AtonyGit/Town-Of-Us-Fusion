@@ -1,13 +1,8 @@
 ﻿using System.Linq;
 using HarmonyLib;
-<<<<<<< Updated upstream
-using TownOfUsFusion.Extensions;
-using TownOfUsFusion.Roles;
-=======
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;
 using TownOfUsFusion.Roles.Modifiers;
->>>>>>> Stashed changes
 using UnityEngine;
 
 namespace TownOfUsFusion.NeutralRoles.ArsonistMod
@@ -15,11 +10,7 @@ namespace TownOfUsFusion.NeutralRoles.ArsonistMod
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public static class HudManagerUpdate
     {
-<<<<<<< Updated upstream
         public static Sprite IgniteSprite => TownOfUsFusion.IgniteSprite;
-=======
-        public static Sprite IgniteSprite => TownOfUsFusion.IgniteSprite;
->>>>>>> Stashed changes
         
         public static void Postfix(HudManager __instance)
         {
@@ -29,17 +20,6 @@ namespace TownOfUsFusion.NeutralRoles.ArsonistMod
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Arsonist)) return;
             var role = Role.GetRole<Arsonist>(PlayerControl.LocalPlayer);
 
-<<<<<<< Updated upstream
-            foreach (var playerId in role.DousedPlayers)
-            {
-                var player = Utils.PlayerById(playerId);
-                var data = player?.Data;
-                if (data == null || data.Disconnected || data.IsDead || PlayerControl.LocalPlayer.Data.IsDead)
-                    continue;
-
-                player.myRend().material.SetColor("_VisorColor", role.Color);
-                player.nameText().color = Color.black;
-=======
             if (!PlayerControl.LocalPlayer.IsHypnotised())
             {
                 foreach (var playerId in role.DousedPlayers)
@@ -55,7 +35,6 @@ namespace TownOfUsFusion.NeutralRoles.ArsonistMod
                     if (player.Is(ModifierEnum.Shy)) colour.a = Modifier.GetModifier<Shy>(player).Opacity;
                     player.nameText().color = colour;
                 }
->>>>>>> Stashed changes
             }
 
             if (role.IgniteButton == null)
@@ -68,11 +47,8 @@ namespace TownOfUsFusion.NeutralRoles.ArsonistMod
             role.IgniteButton.graphic.sprite = IgniteSprite;
             role.IgniteButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
 
-<<<<<<< Updated upstream
-=======
             if (PlayerControl.LocalPlayer.Data.IsDead) role.IgniteButton.SetTarget(null);
 
->>>>>>> Stashed changes
             __instance.KillButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
@@ -95,15 +71,6 @@ namespace TownOfUsFusion.NeutralRoles.ArsonistMod
 
             if (role.DousedAlive < CustomGameOptions.MaxDoused)
             {
-<<<<<<< Updated upstream
-                Utils.SetTarget(ref role.ClosestPlayerDouse, __instance.KillButton, float.NaN, notDoused);
-            }
-
-            if (role.DousedAlive > 0)
-            {
-                Utils.SetTarget(ref role.ClosestPlayerIgnite, role.IgniteButton, float.NaN, doused);
-            }
-=======
                 if ((CamouflageUnCamouflage.IsCamoed && CustomGameOptions.CamoCommsKillAnyone) || PlayerControl.LocalPlayer.IsHypnotised()) Utils.SetTarget(ref role.ClosestPlayerDouse, __instance.KillButton, float.NaN, notDoused);
                 else if (role.Player.IsLover()) Utils.SetTarget(ref role.ClosestPlayerDouse, __instance.KillButton, float.NaN, PlayerControl.AllPlayerControls.ToArray().Where(x => !x.IsLover() && !role.DousedPlayers.Contains(x.PlayerId)).ToList());
                 else Utils.SetTarget(ref role.ClosestPlayerDouse, __instance.KillButton, float.NaN, notDoused);
@@ -117,7 +84,6 @@ namespace TownOfUsFusion.NeutralRoles.ArsonistMod
                 else Utils.SetTarget(ref role.ClosestPlayerIgnite, role.IgniteButton, float.NaN, doused);
             }
             else role.IgniteButton.SetTarget(null);
->>>>>>> Stashed changes
 
             return;
         }

@@ -7,10 +7,6 @@
         Morph,
         Camouflage,
         Swooper,
-<<<<<<< Updated upstream
-        Aurial,
-=======
->>>>>>> Stashed changes
         PlayerNameOnly
 
     }

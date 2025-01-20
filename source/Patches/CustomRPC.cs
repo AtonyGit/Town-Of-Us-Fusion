@@ -60,28 +60,15 @@ namespace TownOfUsFusion
         TurnPestilence,
         Disperse,
         Escape,
-<<<<<<< Updated upstream
-        Revive,
-        Convert,
-        ChameleonSwoop,
-        Imitate,
-        StartImitate,
-=======
         Imitate,
         StartImitate,
         Plant,
->>>>>>> Stashed changes
         Bite,
         Reveal,
         Prosecute,
         Confess,
         Bless,
         Camouflage,
-<<<<<<< Updated upstream
-        SnitchCultistReveal,
-        HunterStalk,
-        HunterCatchPlayer,
-=======
         HunterStalk,
         AbilityTrigger,
         Elect,
@@ -89,7 +76,6 @@ namespace TownOfUsFusion
         Hypnotise,
         Jail,
         Collect,
->>>>>>> Stashed changes
         Retribution,
 
         BypassKill,

@@ -1,12 +1,7 @@
 using System.Linq;
 using HarmonyLib;
-<<<<<<< Updated upstream
 using TownOfUsFusion.Roles;
 using TownOfUsFusion.Roles.Modifiers;
-=======
-using TownOfUsFusion.Roles;
-using TownOfUsFusion.Roles.Modifiers;
->>>>>>> Stashed changes
 
 namespace TownOfUsFusion.Patches
 {
@@ -25,11 +20,8 @@ namespace TownOfUsFusion.Patches
             if (jestRole != null) neWin = true;
             var phantomRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Phantom && ((Phantom)x).CompletedTasks && ((Phantom)x).Player == PlayerControl.LocalPlayer);
             if (phantomRole != null) neWin = true;
-<<<<<<< Updated upstream
-=======
             var scRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.SoulCollector && ((SoulCollector)x).CollectedSouls && ((SoulCollector)x).Player == PlayerControl.LocalPlayer);
             if (scRole != null) neWin = true;
->>>>>>> Stashed changes
             if (neWin)
             {
                 __instance.WinText.text = "</color><color=#008DFFFF>Victory";

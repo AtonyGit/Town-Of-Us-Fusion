@@ -43,11 +43,7 @@ namespace TownOfUsFusion.Roles
 
             if (Player.GetCustomOutfitType() != CustomPlayerOutfitType.PlayerNameOnly)
             {
-<<<<<<< Updated upstream
-                Player.SetOutfit(CustomPlayerOutfitType.PlayerNameOnly, new GameData.PlayerOutfit()
-=======
                 Player.SetOutfit(CustomPlayerOutfitType.PlayerNameOnly, new NetworkedPlayerInfo.PlayerOutfit()
->>>>>>> Stashed changes
                 {
                     ColorId = Player.GetDefaultOutfit().ColorId,
                     HatId = "",

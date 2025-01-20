@@ -66,10 +66,7 @@ namespace TownOfUsFusion
         public static void Postfix(MeetingHud __instance)
         {
             if (PlayerControl.LocalPlayer.Data.IsDead) return;
-<<<<<<< Updated upstream
-=======
             if (PlayerControl.LocalPlayer.IsJailed()) return;
->>>>>>> Stashed changes
             if (__instance.state == MeetingHud.VoteStates.Discussion) return;
             var role = Role.GetRole(PlayerControl.LocalPlayer);
 

@@ -34,14 +34,6 @@ namespace TownOfUsFusion.Patches
         public static bool Prefix(IGameOptions __instance, ref int __result)
         {
             if (GameOptionsManager.Instance.CurrentGameOptions.GameMode == GameModes.HideNSeek) return true;
-<<<<<<< Updated upstream
-            if (CustomGameOptions.GameMode == GameMode.Cultist)
-            {
-                __result = 1;
-                return false;
-            }
-=======
->>>>>>> Stashed changes
             if (CustomGameOptions.GameMode == GameMode.AllAny && CustomGameOptions.RandomNumberImps)
             {
                 var players = GameData.Instance.PlayerCount;

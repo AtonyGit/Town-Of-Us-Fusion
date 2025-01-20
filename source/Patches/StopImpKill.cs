@@ -1,16 +1,11 @@
 using HarmonyLib;
 using TownOfUsFusion.Extensions;
 using AmongUs.GameOptions;
-<<<<<<< Updated upstream
-using TownOfUsFusion.Modifiers.UnderdogMod;
-using TownOfUsFusion.Roles;
-=======
 using TownOfUsFusion.Modifiers.UnderdogMod;
 using TownOfUsFusion.CrewmateRoles.SheriffMod;
 using TownOfUsFusion.Roles;
 using Reactor.Utilities;
 using static TownOfUsFusion.Roles.Glitch;
->>>>>>> Stashed changes
 
 namespace TownOfUsFusion
 {
@@ -30,12 +25,6 @@ namespace TownOfUsFusion
                 if (!target.inVent) Utils.RpcMurderPlayer(PlayerControl.LocalPlayer, target);
                 return false;
             }
-<<<<<<< Updated upstream
-            var interact = Utils.Interact(PlayerControl.LocalPlayer, target, true);
-            if (interact[4] == true) return false;
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Warlock))
-            {
-=======
             HUDKill.ImpKillTarget(__instance);
             target = __instance.currentTarget;
             if (target == null) return false;
@@ -48,7 +37,6 @@ namespace TownOfUsFusion
             if (interact[4] == true) return false;
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Warlock))
             {
->>>>>>> Stashed changes
                 var warlock = Role.GetRole<Warlock>(PlayerControl.LocalPlayer);
                 if (warlock.Charging)
                 {

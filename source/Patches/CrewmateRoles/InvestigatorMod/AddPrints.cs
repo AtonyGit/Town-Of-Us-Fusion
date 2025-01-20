@@ -22,14 +22,6 @@ namespace TownOfUsFusion.CrewmateRoles.InvestigatorMod
 
         public static void Postfix(HudManager __instance)
         {
-<<<<<<< Updated upstream
-            if (!GameStarted || !PlayerControl.LocalPlayer.Is(RoleEnum.Investigator)) return;
-            // New Footprint
-            var investigator = Role.GetRole<Investigator>(PlayerControl.LocalPlayer);
-            _time += Time.deltaTime;
-            if (_time >= Interval)
-            {
-=======
             if ((GameManager.Instance && !GameManager.Instance.GameHasStarted) || !PlayerControl.LocalPlayer.Is(RoleEnum.Investigator)) return;
             if (MeetingHud.Instance) return;
             // New Footprint
@@ -44,7 +36,6 @@ namespace TownOfUsFusion.CrewmateRoles.InvestigatorMod
             _time += Time.deltaTime;
             if (_time >= Interval)
             {
->>>>>>> Stashed changes
                 _time -= Interval;
                 foreach (var player in PlayerControl.AllPlayerControls)
                 {

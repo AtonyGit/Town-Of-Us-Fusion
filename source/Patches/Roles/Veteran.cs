@@ -32,8 +32,6 @@ namespace TownOfUsFusion.Roles
 
         public bool OnAlert => TimeRemaining > 0f;
 
-<<<<<<< Updated upstream
-=======
         internal override bool GameEnd(LogicGameFlowNormal __instance)
         {
             if (Player.Data.IsDead || Player.Data.Disconnected || !CustomGameOptions.CrewKillersContinue) return true;
@@ -43,15 +41,10 @@ namespace TownOfUsFusion.Roles
             return true;
         }
 
->>>>>>> Stashed changes
         public float AlertTimer()
         {
             var utcNow = DateTime.UtcNow;
             var timeSpan = utcNow - LastAlerted;
-<<<<<<< Updated upstream
-            ;
-=======
->>>>>>> Stashed changes
             var num = CustomGameOptions.AlertCd * 1000f;
             var flag2 = num - (float) timeSpan.TotalMilliseconds < 0f;
             if (flag2) return 0;

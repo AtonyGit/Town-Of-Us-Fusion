@@ -1,10 +1,6 @@
 ﻿using HarmonyLib;
-<<<<<<< Updated upstream
-using TownOfUsFusion.Roles;
-=======
 using System.Linq;
 using TownOfUsFusion.Roles;
->>>>>>> Stashed changes
 using UnityEngine;
 
 namespace TownOfUsFusion.NeutralRoles.WerewolfMod
@@ -12,11 +8,7 @@ namespace TownOfUsFusion.NeutralRoles.WerewolfMod
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public static class HudManagerUpdate
     {
-<<<<<<< Updated upstream
         public static Sprite RampageSprite => TownOfUsFusion.RampageSprite;
-=======
-        public static Sprite RampageSprite => TownOfUsFusion.RampageSprite;
->>>>>>> Stashed changes
         
         public static void Postfix(HudManager __instance)
         {
@@ -48,15 +40,11 @@ namespace TownOfUsFusion.NeutralRoles.WerewolfMod
             if (role.Rampaged)
             {
                 role.RampageButton.SetCoolDown(role.TimeRemaining, CustomGameOptions.RampageDuration);
-<<<<<<< Updated upstream
-                Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton, float.NaN);
-=======
                 role.RampageButton.graphic.color = Palette.EnabledColor;
                 role.RampageButton.graphic.material.SetFloat("_Desat", 0f);
                 if ((CamouflageUnCamouflage.IsCamoed && CustomGameOptions.CamoCommsKillAnyone) || PlayerControl.LocalPlayer.IsHypnotised()) Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton);
                 else if (role.Player.IsLover()) Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton, float.NaN, PlayerControl.AllPlayerControls.ToArray().Where(x => !x.IsLover()).ToList());
                 else Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton);
->>>>>>> Stashed changes
 
                 return;
             }
@@ -64,10 +52,6 @@ namespace TownOfUsFusion.NeutralRoles.WerewolfMod
             {
                 role.RampageButton.SetCoolDown(role.RampageTimer(), CustomGameOptions.RampageCd);
 
-<<<<<<< Updated upstream
-                role.RampageButton.graphic.color = Palette.EnabledColor;
-                role.RampageButton.graphic.material.SetFloat("_Desat", 0f);
-=======
                 if (role.RampageTimer() > 0f || !PlayerControl.LocalPlayer.moveable)
                 {
                     role.RampageButton.graphic.color = Palette.DisabledClear;
@@ -78,7 +62,6 @@ namespace TownOfUsFusion.NeutralRoles.WerewolfMod
                     role.RampageButton.graphic.color = Palette.EnabledColor;
                     role.RampageButton.graphic.material.SetFloat("_Desat", 0f);
                 }
->>>>>>> Stashed changes
 
                 return;
             }

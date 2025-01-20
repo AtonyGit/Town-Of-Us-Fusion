@@ -4,13 +4,8 @@ using HarmonyLib;
 using Reactor.Utilities;
 using Reactor.Utilities.Extensions;
 using TMPro;
-<<<<<<< Updated upstream
 using TownOfUsFusion.Roles;
 using TownOfUsFusion.Roles.Modifiers;
-=======
-using TownOfUsFusion.Roles;
-using TownOfUsFusion.Roles.Modifiers;
->>>>>>> Stashed changes
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
@@ -20,26 +15,16 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
     [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.Start))]
     public class AddButton
     {
-<<<<<<< Updated upstream
         private static Sprite CycleBackSprite => TownOfUsFusion.CycleBackSprite;
         private static Sprite CycleForwardSprite => TownOfUsFusion.CycleForwardSprite;
 
         private static Sprite GuessSprite => TownOfUsFusion.GuessSprite;
-=======
-        private static Sprite CycleBackSprite => TownOfUsFusion.CycleBackSprite;
-        private static Sprite CycleForwardSprite => TownOfUsFusion.CycleForwardSprite;
-
-        private static Sprite GuessSprite => TownOfUsFusion.GuessSprite;
->>>>>>> Stashed changes
 
         private static bool IsExempt(PlayerVoteArea voteArea)
         {
             if (voteArea.AmDead) return true;
             var player = Utils.PlayerById(voteArea.TargetPlayerId);
-<<<<<<< Updated upstream
-=======
             if (player.IsJailed()) return true;
->>>>>>> Stashed changes
             if (
                     player == null ||
                     player.Data.IsDead ||
@@ -160,18 +145,6 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
                 var currentGuess = role.Guesses[targetId];
                 if (currentGuess == "None") return;
 
-<<<<<<< Updated upstream
-                var playerRole = Role.GetRole(voteArea);
-                var playerModifier = Modifier.GetModifier(voteArea);
-
-                var toDie = playerRole.Name == currentGuess ? playerRole.Player : role.Player;
-
-                if (toDie == playerRole.Player)
-                {
-                    DoomsayerKill.RpcMurderPlayer(toDie, PlayerControl.LocalPlayer);
-                    ShowHideButtonsDoom.HideSingle(role, targetId, toDie == role.Player);
-                    if (toDie.IsLover() && CustomGameOptions.BothLoversDie)
-=======
                 role.NumberOfGuesses++;
                 var playersAlive = PlayerControl.AllPlayerControls.ToArray().Where(x => !x.Data.IsDead && !x.Data.Disconnected).ToList().Count;
 
@@ -195,19 +168,10 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
                     var playerModifier = Modifier.GetModifier(voteArea);
                     DoomsayerKill.RpcMurderPlayer(playerRole.Player, PlayerControl.LocalPlayer);
                     if (playerRole.Player.IsLover() && CustomGameOptions.BothLoversDie)
->>>>>>> Stashed changes
                     {
                         var lover = ((Lover)playerModifier).OtherLover.Player;
                         if (!lover.Is(RoleEnum.Pestilence)) ShowHideButtonsDoom.HideSingle(role, lover.PlayerId, false);
                     }
-<<<<<<< Updated upstream
-                }
-                else
-                {
-                    ShowHideButtonsDoom.HideButtonsDoom(role);
-                    Coroutines.Start(Utils.FlashCoroutine(Color.red));
-=======
->>>>>>> Stashed changes
                 }
             }
 
@@ -225,17 +189,12 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
 
             if (PlayerControl.LocalPlayer.Data.IsDead) return;
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Doomsayer)) return;
-<<<<<<< Updated upstream
-
-            var doomsayerRole = Role.GetRole<Doomsayer>(PlayerControl.LocalPlayer);
-=======
             if (PlayerControl.LocalPlayer.IsJailed()) return;
 
             var doomsayerRole = Role.GetRole<Doomsayer>(PlayerControl.LocalPlayer);
             doomsayerRole.NumberOfGuesses = 0;
             doomsayerRole.IncorrectGuesses = 0;
             doomsayerRole.RoleGuess.Clear();
->>>>>>> Stashed changes
             foreach (var voteArea in __instance.playerStates)
             {
                 GenButton(doomsayerRole, voteArea);

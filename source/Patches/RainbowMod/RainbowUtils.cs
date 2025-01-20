@@ -7,6 +7,7 @@ public class RainbowUtils
     private static readonly int BodyColor = Shader.PropertyToID("_BodyColor");
     private static readonly int VisorColor = Shader.PropertyToID("_VisorColor");
 
+
     public static Color Rainbow => new HSBColor(PP(0, 1, 0.3f), 1, 1).ToColor();
     public static Color RainbowShadow => Shadow(Rainbow);
 

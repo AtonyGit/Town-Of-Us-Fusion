@@ -8,10 +8,6 @@ namespace TownOfUsFusion.CrewmateRoles.EngineerMod
     {
         public static bool Prefix(KillButton __instance)
         {
-<<<<<<< Updated upstream
-            if (CustomGameOptions.GameMode == GameMode.Cultist) return false;
-=======
->>>>>>> Stashed changes
             if (__instance != DestroyableSingleton<HudManager>.Instance.KillButton) return true;
             var flag = PlayerControl.LocalPlayer.Is(RoleEnum.Engineer);
             if (!flag) return true;
@@ -24,11 +20,8 @@ namespace TownOfUsFusion.CrewmateRoles.EngineerMod
             if (system == null) return false;
             var sabActive = system.AnyActive;
             if (!sabActive) return false;
-<<<<<<< Updated upstream
-=======
             var abilityUsed = Utils.AbilityUsed(PlayerControl.LocalPlayer);
             if (!abilityUsed) return false;
->>>>>>> Stashed changes
             role.UsesLeft -= 1;
             Utils.Rpc(CustomRPC.EngineerFix, PlayerControl.LocalPlayer.NetId);
             switch (GameOptionsManager.Instance.currentNormalGameOptions.MapId)

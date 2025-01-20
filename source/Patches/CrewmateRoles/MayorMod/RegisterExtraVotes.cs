@@ -98,22 +98,13 @@ namespace TownOfUsFusion.CrewmateRoles.MayorMod
         {
             public static void Postfix(MeetingHud __instance,
                 [HarmonyArgument(0)] Il2CppStructArray<MeetingHud.VoterState> states,
-<<<<<<< Updated upstream
-                [HarmonyArgument(1)] GameData.PlayerInfo exiled,
-=======
                 [HarmonyArgument(1)] NetworkedPlayerInfo exiled,
->>>>>>> Stashed changes
                 [HarmonyArgument(2)] bool tie)
             {
                 // __instance.exiledPlayer = __instance.wasTie ? null : __instance.exiledPlayer;
                 var exiledString = exiled == null ? "null" : exiled.PlayerName;
-<<<<<<< Updated upstream
                 PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"Exiled PlayerName = {exiledString}");
                 PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"Was a tie = {tie}");
-=======
-                PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"Exiled PlayerName = {exiledString}");
-                PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"Was a tie = {tie}");
->>>>>>> Stashed changes
             }
         }
 

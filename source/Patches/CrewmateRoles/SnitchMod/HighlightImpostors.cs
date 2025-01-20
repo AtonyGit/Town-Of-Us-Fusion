@@ -1,12 +1,7 @@
 using HarmonyLib;
-<<<<<<< Updated upstream
-using TownOfUsFusion.Extensions;
-using TownOfUsFusion.Roles;
-=======
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;
 using TownOfUsFusion.Roles.Modifiers;
->>>>>>> Stashed changes
 
 namespace TownOfUsFusion.CrewmateRoles.SnitchMod
 {
@@ -38,15 +33,6 @@ namespace TownOfUsFusion.CrewmateRoles.SnitchMod
             if (!role.TasksDone) return;
             if (MeetingHud.Instance && CustomGameOptions.SnitchSeesImpInMeeting) UpdateMeeting(MeetingHud.Instance);
 
-<<<<<<< Updated upstream
-            foreach (var player in PlayerControl.AllPlayerControls)
-            {
-                if (player.Data.IsImpostor() && !player.Is(RoleEnum.Traitor)) player.nameText().color = Palette.ImpostorRed;
-                else if (player.Is(RoleEnum.Traitor) && CustomGameOptions.SnitchSeesTraitor) player.nameText().color = Palette.ImpostorRed;
-                var playerRole = Role.GetRole(player);
-                if (playerRole.Faction == Faction.NeutralKilling && CustomGameOptions.SnitchSeesNeutrals)
-                    player.nameText().color = playerRole.Color;
-=======
             if (!PlayerControl.LocalPlayer.IsHypnotised())
             {
                 foreach (var player in PlayerControl.AllPlayerControls)
@@ -71,7 +57,6 @@ namespace TownOfUsFusion.CrewmateRoles.SnitchMod
                         player.nameText().color = colour;
                     }
                 }
->>>>>>> Stashed changes
             }
         }
     }

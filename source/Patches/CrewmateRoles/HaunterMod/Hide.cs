@@ -14,11 +14,7 @@ namespace TownOfUsFusion.CrewmateRoles.HaunterMod
             foreach (var role in Role.GetRoles(RoleEnum.Haunter))
             {
                 var haunter = (Haunter) role;
-<<<<<<< Updated upstream
-                if (role.Player.Data.Disconnected) return;
-=======
                 if (role.Player.Data != null && role.Player.Data.Disconnected) return;
->>>>>>> Stashed changes
                 var caught = haunter.Caught;
                 if (!caught)
                 {

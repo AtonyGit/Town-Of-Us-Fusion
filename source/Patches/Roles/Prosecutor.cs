@@ -1,11 +1,7 @@
-<<<<<<< Updated upstream
-namespace TownOfUsFusion.Roles
-=======
 using System.Linq;
 using TownOfUsFusion.Extensions;
 
 namespace TownOfUsFusion.Roles
->>>>>>> Stashed changes
 {
     public class Prosecutor : Role
     {
@@ -19,18 +15,11 @@ namespace TownOfUsFusion.Roles
             AddToRoleHistory(RoleType);
             StartProsecute = false;
             Prosecuted = false;
-<<<<<<< Updated upstream
-=======
             HasProsecuted = false;
->>>>>>> Stashed changes
             ProsecuteThisMeeting = false;
         }
         public bool ProsecuteThisMeeting { get; set; }
         public bool Prosecuted { get; set; }
-<<<<<<< Updated upstream
-        public bool StartProsecute { get; set; }
-        public PlayerVoteArea Prosecute { get; set; }
-=======
         public bool HasProsecuted { get; set; }
         public bool StartProsecute { get; set; }
         public PlayerVoteArea Prosecute { get; set; }
@@ -43,6 +32,5 @@ namespace TownOfUsFusion.Roles
 
             return true;
         }
->>>>>>> Stashed changes
     }
 }

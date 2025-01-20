@@ -33,11 +33,6 @@ namespace TownOfUsFusion.CustomOption
         protected internal CustomOptionType Type { get; set; }
         public object DefaultValue { get; set; }
 
-<<<<<<< Updated upstream
-        public static bool LobbyTextScroller { get; set; } = true;
-
-=======
->>>>>>> Stashed changes
         public override string ToString()
         {
             return Format(Value);

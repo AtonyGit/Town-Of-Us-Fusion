@@ -20,11 +20,8 @@ namespace TownOfUsFusion.NeutralRoles.GuardianAngelMod
                 if (__instance.isCoolingDown) return false;
                 if (!__instance.isActiveAndEnabled) return false;
                 if (role.ProtectTimer() != 0) return false;
-<<<<<<< Updated upstream
-=======
                 var abilityUsed = Utils.AbilityUsed(PlayerControl.LocalPlayer);
                 if (!abilityUsed) return false;
->>>>>>> Stashed changes
                 role.TimeRemaining = CustomGameOptions.ProtectDuration;
                 role.UsesLeft--;
                 role.Protect();

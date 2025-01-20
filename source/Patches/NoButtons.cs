@@ -2,11 +2,7 @@ using HarmonyLib;
 
 namespace TownOfUsFusion.Patches
 {
-<<<<<<< Updated upstream
-    [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.SetRole))]
-=======
     [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CoSetRole))]
->>>>>>> Stashed changes
     public class NoButtons
     {
         public static void Postfix()

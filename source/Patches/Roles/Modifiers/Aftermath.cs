@@ -78,14 +78,11 @@ namespace TownOfUsFusion.Roles.Modifiers
                     grenadier.Flash();
                 }
             }
-<<<<<<< Updated upstream
-=======
             else if (role is Hypnotist hypnotist)
             {
                 hypnotist.HypnotisedPlayers.Add(hypnotist.Player.PlayerId);
                 if (hypnotist.HysteriaActive) hypnotist.Hysteria();
             }
->>>>>>> Stashed changes
             else if (role is Janitor janitor)
             {
                 Utils.Rpc(CustomRPC.JanitorClean, PlayerControl.LocalPlayer.PlayerId, db.ParentId);
@@ -106,17 +103,10 @@ namespace TownOfUsFusion.Roles.Modifiers
                 {
                     Utils.Rpc(CustomRPC.Morph, PlayerControl.LocalPlayer.PlayerId, corpse.PlayerId);
                     morphling.TimeRemaining = CustomGameOptions.MorphlingDuration;
-<<<<<<< Updated upstream
-                    if (morphling.SampledPlayer == null) morphling._morphButton.graphic.sprite = TownOfUsFusion.MorphSprite;
-                    morphling.SampledPlayer = corpse;
-                    morphling.MorphedPlayer = corpse;
-                    Utils.Morph(morphling.Player, corpse, true);
-=======
                     if (morphling.SampledPlayer == null) morphling._morphButton.graphic.sprite = TownOfUsFusion.MorphSprite;
                     morphling.SampledPlayer = corpse;
                     morphling.MorphedPlayer = corpse;
                     Utils.Morph(morphling.Player, corpse);
->>>>>>> Stashed changes
                 }
             }
             else if (role is Swooper swooper)
@@ -158,11 +148,7 @@ namespace TownOfUsFusion.Roles.Modifiers
                 Utils.Rpc(CustomRPC.Drag, PlayerControl.LocalPlayer.PlayerId, db.ParentId);
                 undertaker.CurrentlyDragging = db;
                 ImpostorRoles.UndertakerMod.KillButtonTarget.SetTarget(undertaker._dragDropButton, null, undertaker);
-<<<<<<< Updated upstream
                 undertaker._dragDropButton.graphic.sprite = TownOfUsFusion.DropSprite;
-=======
-                undertaker._dragDropButton.graphic.sprite = TownOfUsFusion.DropSprite;
->>>>>>> Stashed changes
 
             }
             else if (role is Venerer venerer)
@@ -181,11 +167,7 @@ namespace TownOfUsFusion.Roles.Modifiers
                 var pos = PlayerControl.LocalPlayer.transform.position;
                 pos.z += 0.001f;
                 bomber.DetonatePoint = pos;
-<<<<<<< Updated upstream
                 bomber.PlantButton.graphic.sprite = TownOfUsFusion.DetonateSprite;
-=======
-                bomber.PlantButton.graphic.sprite = TownOfUsFusion.DetonateSprite;
->>>>>>> Stashed changes
                 bomber.TimeRemaining = CustomGameOptions.DetonateDelay;
                 bomber.PlantButton.SetCoolDown(bomber.TimeRemaining, CustomGameOptions.DetonateDelay);
                 if (PlayerControl.LocalPlayer.Is(ModifierEnum.Underdog))
@@ -198,10 +180,7 @@ namespace TownOfUsFusion.Roles.Modifiers
                 else PlayerControl.LocalPlayer.SetKillTimer(GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown + CustomGameOptions.DetonateDelay);
                 DestroyableSingleton<HudManager>.Instance.KillButton.SetTarget(null);
                 bomber.Bomb = BombExtentions.CreateBomb(pos);
-<<<<<<< Updated upstream
-=======
                 if (CustomGameOptions.AllImpsSeeBomb) Utils.Rpc(CustomRPC.Plant, pos.x, pos.y, pos.z);
->>>>>>> Stashed changes
             }
         }
     }

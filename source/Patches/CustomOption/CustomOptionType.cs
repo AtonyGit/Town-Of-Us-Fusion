@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
 namespace TownOfUsFusion.CustomOption
-=======
-namespace TownOfUsFusion.CustomOption
->>>>>>> Stashed changes
 {
     public enum CustomOptionType
     {

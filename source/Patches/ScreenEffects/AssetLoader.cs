@@ -32,11 +32,7 @@ namespace TownOfUsFusion.Patches.ScreenEffects
         private static AssetBundle loadBundle(string bundlename)
         {
             var assembly = Assembly.GetExecutingAssembly();
-<<<<<<< Updated upstream
             var stream = assembly.GetManifestResourceStream($"TownOfUsFusion.Resources.{bundlename}");
-=======
-            var stream = assembly.GetManifestResourceStream($"TownOfUsFusion.Resources.{bundlename}");
->>>>>>> Stashed changes
             var assets = stream.ReadFully();
             return AssetBundle.LoadFromMemory(assets);
         }

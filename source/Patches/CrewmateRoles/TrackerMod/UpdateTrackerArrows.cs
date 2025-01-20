@@ -9,11 +9,7 @@ namespace TownOfUsFusion.CrewmateRoles.TrackerMod
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class UpdateTrackerArrows
     {
-<<<<<<< Updated upstream
         public static Sprite Sprite => TownOfUsFusion.Arrow;
-=======
-        public static Sprite Sprite => TownOfUsFusion.Arrow;
->>>>>>> Stashed changes
         private static DateTime _time = DateTime.UnixEpoch;
         private static float Interval => CustomGameOptions.UpdateInterval;
         public static bool CamoedLastTick = false;

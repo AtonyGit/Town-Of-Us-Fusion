@@ -27,11 +27,7 @@ namespace TownOfUsFusion.CrewmateRoles.TrapperMod
             foreach (PlayerControl player in PlayerControl.AllPlayerControls)
             {
                 if (player.Data.IsDead) continue;
-<<<<<<< Updated upstream
                 //PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"player with byte {player.PlayerId} is {Vector2.Distance(transform.position, player.GetTruePosition())} away");
-=======
-                //PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"player with byte {player.PlayerId} is {Vector2.Distance(transform.position, player.GetTruePosition())} away");
->>>>>>> Stashed changes
                 if (Vector2.Distance(transform.position, player.GetTruePosition()) < (CustomGameOptions.TrapSize + 0.01f) * ShipStatus.Instance.MaxLightRadius)
                 {
                     if (!players.ContainsKey(player.PlayerId)) players.Add(player.PlayerId, 0f);
@@ -44,11 +40,7 @@ namespace TownOfUsFusion.CrewmateRoles.TrapperMod
                 if (players.ContainsKey(entry.PlayerId))
                 {
                     players[entry.PlayerId] += Time.deltaTime;
-<<<<<<< Updated upstream
                     //PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"player with byte {entry} is logged with time {players[entry]}");
-=======
-                    //PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"player with byte {entry} is logged with time {players[entry]}");
->>>>>>> Stashed changes
                     if (players[entry.PlayerId] > CustomGameOptions.MinAmountOfTimeInTrap)
                     {
                         foreach (Trapper t in Role.GetRoles(RoleEnum.Trapper))

@@ -1,7 +1,3 @@
-<<<<<<< Updated upstream
-﻿using HarmonyLib;
-using TownOfUsFusion.Modifiers.AssassinMod;
-=======
 using HarmonyLib;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -20,7 +16,6 @@ using TownOfUsFusion.ImpostorRoles.BlackmailerMod;
 using TownOfUsFusion.Modifiers.AssassinMod;
 using TownOfUsFusion.NeutralRoles.DoomsayerMod;
 using UnityEngine.UI;
->>>>>>> Stashed changes
 
 namespace TownOfUsFusion.CrewmateRoles.HunterMod
 {

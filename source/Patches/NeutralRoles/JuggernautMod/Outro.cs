@@ -1,18 +1,10 @@
 using System.Linq;
 using HarmonyLib;
-<<<<<<< Updated upstream
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;
 using UnityEngine;
 
 namespace TownOfUsFusion.NeutralRoles.JuggernautMod
-=======
-using TownOfUsFusion.Extensions;
-using TownOfUsFusion.Roles;
-using UnityEngine;
-
-namespace TownOfUsFusion.NeutralRoles.JuggernautMod
->>>>>>> Stashed changes
 {
     [HarmonyPatch(typeof(EndGameManager), nameof(EndGameManager.Start))]
     public static class Outro
@@ -24,10 +16,7 @@ namespace TownOfUsFusion.NeutralRoles.JuggernautMod
                 if (Role.GetRoles(RoleEnum.Jester).Any(x => ((Jester)x).VotedOut)) return;
                 if (Role.GetRoles(RoleEnum.Executioner).Any(x => ((Executioner)x).TargetVotedOut)) return;
                 if (Role.GetRoles(RoleEnum.Doomsayer).Any(x => ((Doomsayer)x).WonByGuessing)) return;
-<<<<<<< Updated upstream
-=======
                 if (Role.GetRoles(RoleEnum.SoulCollector).Any(x => ((SoulCollector)x).CollectedSouls)) return;
->>>>>>> Stashed changes
             }
             var role = Role.AllRoles.FirstOrDefault(x =>
                 x.RoleType == RoleEnum.Juggernaut && ((Juggernaut)x).JuggernautWins);

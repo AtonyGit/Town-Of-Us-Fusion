@@ -19,11 +19,7 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
         public static PlayerControl ImitatingPlayer;
         public static void ExileControllerPostfix(ExileController __instance)
         {
-<<<<<<< Updated upstream
-            var exiled = __instance.exiled?.Object;
-=======
             var exiled = __instance.initData.networkedPlayer?.Object;
->>>>>>> Stashed changes
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Imitator)) return;
             if (PlayerControl.LocalPlayer.Data.IsDead || PlayerControl.LocalPlayer.Data.Disconnected) return;
             if (exiled == PlayerControl.LocalPlayer) return;
@@ -59,10 +55,7 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
             var role = Role.GetRole(ImitatingPlayer);
             var killsList = (role.Kills, role.CorrectKills, role.IncorrectKills, role.CorrectAssassinKills, role.IncorrectAssassinKills);
             Role.RoleDictionary.Remove(ImitatingPlayer.PlayerId);
-<<<<<<< Updated upstream
-=======
             if (imitatorRole == RoleEnum.Aurial) new Aurial(ImitatingPlayer);
->>>>>>> Stashed changes
             if (imitatorRole == RoleEnum.Detective) new Detective(ImitatingPlayer);
             if (imitatorRole == RoleEnum.Investigator) new Investigator(ImitatingPlayer);
             if (imitatorRole == RoleEnum.Mystic) new Mystic(ImitatingPlayer);
@@ -77,32 +70,14 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
             if (imitatorRole == RoleEnum.Transporter) new Transporter(ImitatingPlayer);
             if (imitatorRole == RoleEnum.Trapper) new Trapper(ImitatingPlayer);
             if (imitatorRole == RoleEnum.Oracle) new Oracle(ImitatingPlayer);
-<<<<<<< Updated upstream
-=======
             if (imitatorRole == RoleEnum.Hunter) new Hunter(ImitatingPlayer);
             if (imitatorRole == RoleEnum.Warden) new Warden(ImitatingPlayer);
->>>>>>> Stashed changes
             if (imitatorRole == RoleEnum.Medic)
             {
                 var medic = new Medic(ImitatingPlayer);
                 medic.UsedAbility = true;
                 medic.StartingCooldown = medic.StartingCooldown.AddSeconds(-10f);
             }
-<<<<<<< Updated upstream
-            if (imitatorRole == RoleEnum.VampireHunter)
-            {
-                var vh = new VampireHunter(ImitatingPlayer);
-                vh.UsesLeft = CustomGameOptions.MaxFailedStakesPerGame;
-                vh.AddedStakes = true;
-            }
-            if (imitatorRole == RoleEnum.Aurial)
-            {
-                var aurial = new Aurial(ImitatingPlayer);
-                aurial.CannotSeeDelay = DateTime.UtcNow;
-                aurial.Loaded = true;
-            }
-=======
->>>>>>> Stashed changes
 
             var newRole = Role.GetRole(ImitatingPlayer);
             newRole.RemoveFromRoleHistory(newRole.RoleType);

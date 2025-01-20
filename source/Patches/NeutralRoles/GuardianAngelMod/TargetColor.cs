@@ -1,12 +1,7 @@
 using HarmonyLib;
-<<<<<<< Updated upstream
-using TownOfUsFusion.Extensions;
-using TownOfUsFusion.Roles;
-=======
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;
 using TownOfUsFusion.Roles.Modifiers;
->>>>>>> Stashed changes
 using UnityEngine;
 
 namespace TownOfUsFusion.NeutralRoles.GuardianAngelMod
@@ -42,9 +37,6 @@ namespace TownOfUsFusion.NeutralRoles.GuardianAngelMod
 
             if (MeetingHud.Instance != null) UpdateMeeting(MeetingHud.Instance, role);
 
-<<<<<<< Updated upstream
-            if (!CustomGameOptions.GAKnowsTargetRole) role.target.nameText().color = new Color(1f, 0.85f, 0f, 1f);
-=======
             if (!PlayerControl.LocalPlayer.IsHypnotised())
             {
                 if (!CustomGameOptions.GAKnowsTargetRole)
@@ -54,7 +46,6 @@ namespace TownOfUsFusion.NeutralRoles.GuardianAngelMod
                     role.target.nameText().color = colour;
                 }
             }
->>>>>>> Stashed changes
 
             if (!role.target.Data.IsDead && !role.target.Data.Disconnected) return;
 

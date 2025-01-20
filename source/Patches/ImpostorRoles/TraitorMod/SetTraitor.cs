@@ -8,15 +8,8 @@ using UnityEngine;
 using Reactor.Utilities;
 using TownOfUsFusion.Patches;
 using AmongUs.GameOptions;
-<<<<<<< Updated upstream
 using TownOfUsFusion.CrewmateRoles.ImitatorMod;
 using TownOfUsFusion.Roles.Modifiers;
-using TownOfUsFusion.CrewmateRoles.AurialMod;
-using TownOfUsFusion.Patches.ScreenEffects;
-=======
-using TownOfUsFusion.CrewmateRoles.ImitatorMod;
-using TownOfUsFusion.Roles.Modifiers;
->>>>>>> Stashed changes
 
 namespace TownOfUsFusion.ImpostorRoles.TraitorMod
 {
@@ -30,19 +23,11 @@ namespace TownOfUsFusion.ImpostorRoles.TraitorMod
     public class SetTraitor
     {
         public static PlayerControl WillBeTraitor;
-<<<<<<< Updated upstream
-        public static Sprite Sprite => TownOfUsFusion.Arrow;
-
-        public static void ExileControllerPostfix(ExileController __instance)
-        {
-            var exiled = __instance.exiled?.Object;
-=======
         public static Sprite Sprite => TownOfUsFusion.Arrow;
 
         public static void ExileControllerPostfix(ExileController __instance)
         {
             var exiled = __instance.initData.networkedPlayer?.Object;
->>>>>>> Stashed changes
             var alives = PlayerControl.AllPlayerControls.ToArray()
                     .Where(x => !x.Data.IsDead && !x.Data.Disconnected).ToList();
             foreach (var player in alives)
@@ -69,8 +54,6 @@ namespace TownOfUsFusion.ImpostorRoles.TraitorMod
 
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Investigator)) Footprint.DestroyAll(Role.GetRole<Investigator>(PlayerControl.LocalPlayer));
 
-<<<<<<< Updated upstream
-=======
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Detective))
                 {
                     var detecRole = Role.GetRole<Detective>(PlayerControl.LocalPlayer);
@@ -90,7 +73,6 @@ namespace TownOfUsFusion.ImpostorRoles.TraitorMod
                     HudManager.Instance.KillButton.buttonLabelText.gameObject.SetActive(false);
                 }
 
->>>>>>> Stashed changes
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Engineer))
                 {
                     var engineerRole = Role.GetRole<Engineer>(PlayerControl.LocalPlayer);
@@ -105,8 +87,6 @@ namespace TownOfUsFusion.ImpostorRoles.TraitorMod
                     Object.Destroy(trackerRole.UsesText);
                 }
 
-<<<<<<< Updated upstream
-=======
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Aurial))
                 {
                     var aurialRole = Role.GetRole<Aurial>(PlayerControl.LocalPlayer);
@@ -114,7 +94,6 @@ namespace TownOfUsFusion.ImpostorRoles.TraitorMod
                     aurialRole.SenseArrows.Clear();
                 }
 
->>>>>>> Stashed changes
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Transporter))
                 {
                     var transporterRole = Role.GetRole<Transporter>(PlayerControl.LocalPlayer);
@@ -140,17 +119,6 @@ namespace TownOfUsFusion.ImpostorRoles.TraitorMod
                     Object.Destroy(trapperRole.UsesText);
                 }
 
-<<<<<<< Updated upstream
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Aurial))
-                {
-                    var aurial = Role.GetRole<Aurial>(PlayerControl.LocalPlayer);
-                    aurial.NormalVision = true;
-                    SeeAll.AllToNormal();
-                    CameraEffect.singleton.materials.Clear();
-                }
-
-=======
->>>>>>> Stashed changes
                 if (PlayerControl.LocalPlayer == StartImitate.ImitatingPlayer) StartImitate.ImitatingPlayer = null;
 
                 var oldRole = Role.GetRole(PlayerControl.LocalPlayer);
@@ -186,11 +154,8 @@ namespace TownOfUsFusion.ImpostorRoles.TraitorMod
                 }
             }
 
-<<<<<<< Updated upstream
-=======
             WillBeTraitor = null;
 
->>>>>>> Stashed changes
             if (CustomGameOptions.TraitorCanAssassin) new Assassin(player);
 
             if (PlayerControl.LocalPlayer.PlayerId == player.PlayerId)

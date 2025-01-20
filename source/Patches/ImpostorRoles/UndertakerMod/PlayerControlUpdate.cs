@@ -20,7 +20,6 @@ namespace TownOfUsFusion.ImpostorRoles.UndertakerMod
             {
                 role.DragDropButton = Object.Instantiate(__instance.KillButton, __instance.KillButton.transform.parent);
                 role.DragDropButton.graphic.enabled = true;
-<<<<<<< Updated upstream
                 role.DragDropButton.graphic.sprite = TownOfUsFusion.DragSprite;
                 role.DragDropButton.gameObject.SetActive(false);
             }
@@ -30,28 +29,13 @@ namespace TownOfUsFusion.ImpostorRoles.UndertakerMod
 
             if (role.DragDropButton.graphic.sprite == TownOfUsFusion.DropSprite && role.CurrentlyDragging == null)
                 role.DragDropButton.graphic.sprite = TownOfUsFusion.DragSprite;
-=======
-                role.DragDropButton.graphic.sprite = TownOfUsFusion.DragSprite;
-                role.DragDropButton.gameObject.SetActive(false);
-            }
-            if (role.DragDropButton.graphic.sprite != TownOfUsFusion.DragSprite &&
-                role.DragDropButton.graphic.sprite != TownOfUsFusion.DropSprite)
-                role.DragDropButton.graphic.sprite = TownOfUsFusion.DragSprite;
-
-            if (role.DragDropButton.graphic.sprite == TownOfUsFusion.DropSprite && role.CurrentlyDragging == null)
-                role.DragDropButton.graphic.sprite = TownOfUsFusion.DragSprite;
->>>>>>> Stashed changes
 
             role.DragDropButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
 
 
-<<<<<<< Updated upstream
             if (role.DragDropButton.graphic.sprite == TownOfUsFusion.DragSprite)
-=======
-            if (role.DragDropButton.graphic.sprite == TownOfUsFusion.DragSprite)
->>>>>>> Stashed changes
             {
                 var data = PlayerControl.LocalPlayer.Data;
                 var isDead = data.IsDead;
@@ -83,21 +67,13 @@ namespace TownOfUsFusion.ImpostorRoles.UndertakerMod
                 KillButtonTarget.SetTarget(killButton, closestBody, role);
             }
 
-<<<<<<< Updated upstream
             if (role.DragDropButton.graphic.sprite == TownOfUsFusion.DragSprite)
-=======
-            if (role.DragDropButton.graphic.sprite == TownOfUsFusion.DragSprite)
->>>>>>> Stashed changes
             {
                 role.DragDropButton.SetCoolDown(role.DragTimer(), CustomGameOptions.DragCd);
             }
             else
             {
                 role.DragDropButton.SetCoolDown(0f, 1f);
-<<<<<<< Updated upstream
-                role.DragDropButton.graphic.color = Palette.EnabledColor;
-                role.DragDropButton.graphic.material.SetFloat("_Desat", 0f);
-=======
                 if (PlayerControl.LocalPlayer.moveable)
                 {
                     role.DragDropButton.graphic.color = Palette.EnabledColor;
@@ -108,7 +84,6 @@ namespace TownOfUsFusion.ImpostorRoles.UndertakerMod
                     role.DragDropButton.graphic.color = Palette.DisabledClear;
                     role.DragDropButton.graphic.material.SetFloat("_Desat", 1f);
                 }
->>>>>>> Stashed changes
             }
         }
     }

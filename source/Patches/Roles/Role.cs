@@ -11,11 +11,7 @@ using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 using TownOfUsFusion.Extensions;
 using AmongUs.GameOptions;
-<<<<<<< Updated upstream
 using TownOfUsFusion.ImpostorRoles.TraitorMod;
-=======
-using TownOfUsFusion.ImpostorRoles.TraitorMod;
->>>>>>> Stashed changes
 
 namespace TownOfUsFusion.Roles
 {
@@ -117,11 +113,7 @@ namespace TownOfUsFusion.Roles
 
         internal virtual bool ColorCriteria()
         {
-<<<<<<< Updated upstream
-            return SelfCriteria() || DeadCriteria() || ImpostorCriteria() || VampireCriteria() || RoleCriteria() || GuardianAngelCriteria();
-=======
             return SelfCriteria() || DeadCriteria() || ((ColourImpostorCriteria() || VampireCriteria() || RoleCriteria() || GuardianAngelCriteria()) && (!PlayerControl.LocalPlayer.IsHypnotised() || MeetingHud.Instance));
->>>>>>> Stashed changes
         }
 
         internal virtual bool DeadCriteria()
@@ -130,15 +122,12 @@ namespace TownOfUsFusion.Roles
             return false;
         }
 
-<<<<<<< Updated upstream
-=======
         internal virtual bool ColourImpostorCriteria()
         {
             if (Faction == Faction.Impostors && PlayerControl.LocalPlayer.Data.IsImpostor()) return true;
             return false;
         }
 
->>>>>>> Stashed changes
         internal virtual bool ImpostorCriteria()
         {
             if (Faction == Faction.Impostors && PlayerControl.LocalPlayer.Data.IsImpostor() &&
@@ -201,34 +190,22 @@ namespace TownOfUsFusion.Roles
             foreach (var jest in GetRoles(RoleEnum.Jester))
             {
                 var jestRole = (Jester)jest;
-<<<<<<< Updated upstream
-                if (jestRole.VotedOut) return;
-=======
                 if (jestRole.VotedOut && CustomGameOptions.NeutralEvilWinEndsGame) return;
->>>>>>> Stashed changes
             }
             foreach (var exe in GetRoles(RoleEnum.Executioner))
             {
                 var exeRole = (Executioner)exe;
-<<<<<<< Updated upstream
-                if (exeRole.TargetVotedOut) return;
-=======
                 if (exeRole.TargetVotedOut && CustomGameOptions.NeutralEvilWinEndsGame) return;
->>>>>>> Stashed changes
             }
             foreach (var doom in GetRoles(RoleEnum.Doomsayer))
             {
                 var doomRole = (Doomsayer)doom;
-<<<<<<< Updated upstream
-                if (doomRole.WonByGuessing) return;
-=======
                 if (doomRole.WonByGuessing && CustomGameOptions.NeutralEvilWinEndsGame) return;
             }
             foreach (var sc in GetRoles(RoleEnum.SoulCollector))
             {
                 var scRole = (SoulCollector)sc;
                 if (scRole.CollectedSouls && CustomGameOptions.NeutralEvilWinEndsGame) return;
->>>>>>> Stashed changes
             }
 
             VampireWins = true;
@@ -290,11 +267,7 @@ namespace TownOfUsFusion.Roles
             return true;
         }
 
-<<<<<<< Updated upstream
-        internal virtual bool NeutralWin(LogicGameFlowNormal __instance)
-=======
         internal virtual bool GameEnd(LogicGameFlowNormal __instance)
->>>>>>> Stashed changes
         {
             return true;
         }
@@ -303,12 +276,8 @@ namespace TownOfUsFusion.Roles
 
         protected virtual string NameText(bool revealTasks, bool revealRole, bool revealModifier, bool revealLover, PlayerVoteArea player = null)
         {
-<<<<<<< Updated upstream
-            if (CamouflageUnCamouflage.IsCamoed && player == null) return "";
-=======
             if (PlayerControl.LocalPlayer.IsHypnotised() && Player.GetCustomOutfitType() == CustomPlayerOutfitType.Morph && player == null) return PlayerControl.LocalPlayer.GetDefaultOutfit().PlayerName;
             else if (((CamouflageUnCamouflage.IsCamoed && !PlayerControl.LocalPlayer.IsHypnotised()) || (PlayerControl.LocalPlayer.IsHypnotised() && PlayerControl.LocalPlayer != Player)) && player == null) return "";
->>>>>>> Stashed changes
 
             if (Player == null) return "";
 
@@ -649,17 +618,10 @@ namespace TownOfUsFusion.Roles
             }
         }
 
-<<<<<<< Updated upstream
-        [HarmonyPatch(typeof(PlayerControl._CoSetTasks_d__126), nameof(PlayerControl._CoSetTasks_d__126.MoveNext))]
-        public static class PlayerControl_SetTasks
-        {
-            public static void Postfix(PlayerControl._CoSetTasks_d__126 __instance)
-=======
         [HarmonyPatch(typeof(PlayerControl._CoSetTasks_d__141), nameof(PlayerControl._CoSetTasks_d__141.MoveNext))]
         public static class PlayerControl_SetTasks
         {
             public static void Postfix(PlayerControl._CoSetTasks_d__141 __instance)
->>>>>>> Stashed changes
             {
                 if (__instance == null) return;
                 var player = __instance.__4__this;
@@ -713,24 +675,16 @@ namespace TownOfUsFusion.Roles
                     }
                 }
 
-<<<<<<< Updated upstream
-                if (GameData.Instance.TotalTasks <= GameData.Instance.CompletedTasks) return true;
-=======
                 if (GameData.Instance.TotalTasks <= GameData.Instance.CompletedTasks)
                 {
                     GameManager.Instance.RpcEndGame(GameOverReason.HumansByTask, false);
                     return false;
                 }
->>>>>>> Stashed changes
                 
                 var result = true;
                 foreach (var role in AllRoles)
                 {
-<<<<<<< Updated upstream
-                    var roleIsEnd = role.NeutralWin(__instance);
-=======
                     var roleIsEnd = role.GameEnd(__instance);
->>>>>>> Stashed changes
                     var modifier = Modifier.GetModifier(role.Player);
                     bool modifierIsEnd = true;
                     var alives = PlayerControl.AllPlayerControls.ToArray().Where(x => !x.Data.IsDead && !x.Data.Disconnected).ToList();
@@ -751,8 +705,6 @@ namespace TownOfUsFusion.Roles
             }
         }
 
-<<<<<<< Updated upstream
-=======
         [HarmonyPatch]
         public static class EndGameDisconnect
         {
@@ -780,7 +732,6 @@ namespace TownOfUsFusion.Roles
             }
         }
 
->>>>>>> Stashed changes
         [HarmonyPatch(typeof(LobbyBehaviour), nameof(LobbyBehaviour.Start))]
         public static class LobbyBehaviour_Start
         {
@@ -797,14 +748,11 @@ namespace TownOfUsFusion.Roles
                     ((Tracker)role).TrackerArrows.Values.DestroyAll();
                     ((Tracker)role).TrackerArrows.Clear();
                 }
-<<<<<<< Updated upstream
-=======
                 foreach (var role in AllRoles.Where(x => x.RoleType == RoleEnum.Aurial))
                 {
                     ((Aurial)role).SenseArrows.Values.DestroyAll();
                     ((Aurial)role).SenseArrows.Clear();
                 }
->>>>>>> Stashed changes
                 foreach (var role in AllRoles.Where(x => x.RoleType == RoleEnum.Amnesiac))
                 {
                     ((Amnesiac)role).BodyArrows.Values.DestroyAll();
@@ -838,11 +786,7 @@ namespace TownOfUsFusion.Roles
                 switch (name)
                 {
                     case StringNames.NoExileTie:
-<<<<<<< Updated upstream
-                        if (ExileController.Instance.exiled == null)
-=======
                         if (ExileController.Instance.initData.networkedPlayer == null)
->>>>>>> Stashed changes
                         {
                             foreach (var oracle in GetRoles(RoleEnum.Oracle))
                             {
@@ -860,13 +804,8 @@ namespace TownOfUsFusion.Roles
                     case StringNames.ExileTextPP:
                     case StringNames.ExileTextSP:
                         {
-<<<<<<< Updated upstream
-                            if (ExileController.Instance.exiled == null) return;
-                            var info = ExileController.Instance.exiled;
-=======
                             if (ExileController.Instance.initData.networkedPlayer == null) return;
                             var info = ExileController.Instance.initData.networkedPlayer;
->>>>>>> Stashed changes
                             var role = GetRole(info.Object);
                             if (role == null) return;
                             var roleName = role.RoleType == RoleEnum.Glitch ? role.Name : $"The {role.Name}";
@@ -880,12 +819,6 @@ namespace TownOfUsFusion.Roles
         [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
         public static class HudManager_Update
         {
-<<<<<<< Updated upstream
-            private static Vector3 oldScale = Vector3.zero;
-            private static Vector3 oldPosition = Vector3.zero;
-
-=======
->>>>>>> Stashed changes
             private static void UpdateMeeting(MeetingHud __instance)
             {
                 foreach (var player in __instance.playerStates)
@@ -893,11 +826,7 @@ namespace TownOfUsFusion.Roles
                     player.ColorBlindName.transform.localPosition = new Vector3(-0.93f, -0.2f, -0.1f);
 
                     var role = GetRole(player);
-<<<<<<< Updated upstream
-                    if (role != null && role.Criteria())
-=======
                     if (role != null)
->>>>>>> Stashed changes
                     {
                         bool selfFlag = role.SelfCriteria();
                         bool deadFlag = role.DeadCriteria();
@@ -969,11 +898,6 @@ namespace TownOfUsFusion.Roles
                                 player.nameText().color = role.Color;
                         }
                     }
-<<<<<<< Updated upstream
-
-                    if (player.Data != null && PlayerControl.LocalPlayer.Data.IsImpostor() && player.Data.IsImpostor()) continue;
-=======
->>>>>>> Stashed changes
                 }
             }
         }

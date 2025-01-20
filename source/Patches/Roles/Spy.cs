@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
 namespace TownOfUsFusion.Roles
-=======
-namespace TownOfUsFusion.Roles
->>>>>>> Stashed changes
 {
     public class Spy : Role
     {

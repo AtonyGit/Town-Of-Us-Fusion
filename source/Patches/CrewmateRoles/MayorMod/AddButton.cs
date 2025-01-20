@@ -14,11 +14,7 @@ namespace TownOfUsFusion.CrewmateRoles.MayorMod
     [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.Start))]
     public class AddRevealButton
     {
-<<<<<<< Updated upstream
         public static Sprite RevealSprite => TownOfUsFusion.RevealSprite;
-=======
-        public static Sprite RevealSprite => TownOfUsFusion.RevealSprite;
->>>>>>> Stashed changes
 
         public static void GenButton(Mayor role, int index)
         {
@@ -65,15 +61,12 @@ namespace TownOfUsFusion.CrewmateRoles.MayorMod
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Doomsayer))
             {
                 var doomsayer = Role.GetRole<Doomsayer>(PlayerControl.LocalPlayer);
-<<<<<<< Updated upstream
-=======
                 var roleText = doomsayer.RoleGuess[voteArea.TargetPlayerId];
                 if (roleText != null)
                 {
                     roleText.gameObject.SetActive(false);
                     voteArea.NameText.transform.localPosition += new Vector3(-0.2f, -0.1f, 0f);
                 }
->>>>>>> Stashed changes
                 var (cycleBack, cycleForward, guess, guessText) = doomsayer.Buttons[voteArea.TargetPlayerId];
                 if (cycleBack == null || cycleForward == null) return;
                 cycleBack.SetActive(false);
@@ -118,10 +111,7 @@ namespace TownOfUsFusion.CrewmateRoles.MayorMod
 
             if (PlayerControl.LocalPlayer.Data.IsDead) return;
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Mayor)) return;
-<<<<<<< Updated upstream
-=======
             if (PlayerControl.LocalPlayer.IsJailed()) return;
->>>>>>> Stashed changes
             var mayorrole = Role.GetRole<Mayor>(PlayerControl.LocalPlayer);
             if (mayorrole.Revealed) return;
             for (var i = 0; i < __instance.playerStates.Length; i++)

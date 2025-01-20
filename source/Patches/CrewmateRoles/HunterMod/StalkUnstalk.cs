@@ -1,11 +1,7 @@
 using HarmonyLib;
 using TownOfUsFusion.Roles;
 
-<<<<<<< Updated upstream
-namespace TownOfUsFusion.CrewmateRoles.VeteranMod
-=======
 namespace TownOfUsFusion.CrewmateRoles.HunterMod
->>>>>>> Stashed changes
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     [HarmonyPriority(Priority.Last)]

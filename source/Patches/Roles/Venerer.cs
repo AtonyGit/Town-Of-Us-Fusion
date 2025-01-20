@@ -51,34 +51,11 @@ namespace TownOfUsFusion.Roles
         {
             Enabled = true;
             TimeRemaining -= Time.deltaTime;
-<<<<<<< Updated upstream
-=======
             Utils.Camouflage(Player);
->>>>>>> Stashed changes
             if (Player.Data.IsDead)
             {
                 TimeRemaining = 0f;
             }
-<<<<<<< Updated upstream
-
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Aurial) && !Role.GetRole<Aurial>(PlayerControl.LocalPlayer).NormalVision) return;
-            if (Player.GetCustomOutfitType() != CustomPlayerOutfitType.Camouflage)
-            {
-                Player.SetOutfit(CustomPlayerOutfitType.Camouflage, new GameData.PlayerOutfit()
-                {
-                    ColorId = Player.GetDefaultOutfit().ColorId,
-                    HatId = "",
-                    SkinId = "",
-                    VisorId = "",
-                    PlayerName = " ",
-                    PetId = ""
-                });
-                PlayerMaterial.SetColors(Color.grey, Player.myRend());
-                Player.nameText().color = Color.clear;
-                Player.cosmetics.colorBlindText.color = Color.clear;
-            }
-=======
->>>>>>> Stashed changes
         }
 
 

@@ -7,13 +7,8 @@ namespace TownOfUsFusion.ImpostorRoles.BomberMod
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class HudManagerUpdate
     {
-<<<<<<< Updated upstream
         public static Sprite PlantSprite => TownOfUsFusion.PlantSprite;
         public static Sprite DetonateSprite => TownOfUsFusion.DetonateSprite;
-=======
-        public static Sprite PlantSprite => TownOfUsFusion.PlantSprite;
-        public static Sprite DetonateSprite => TownOfUsFusion.DetonateSprite;
->>>>>>> Stashed changes
 
         [HarmonyPriority(Priority.Last)]
         public static void Postfix(HudManager __instance)
@@ -38,11 +33,8 @@ namespace TownOfUsFusion.ImpostorRoles.BomberMod
             if (role.Detonating)
             {
                 role.PlantButton.graphic.sprite = DetonateSprite;
-<<<<<<< Updated upstream
-=======
                 role.PlantButton.graphic.color = Palette.EnabledColor;
                 role.PlantButton.graphic.material.SetFloat("_Desat", 0f);
->>>>>>> Stashed changes
                 role.DetonateTimer();
                 role.PlantButton.SetCoolDown(role.TimeRemaining, CustomGameOptions.DetonateDelay);
             }
@@ -50,11 +42,7 @@ namespace TownOfUsFusion.ImpostorRoles.BomberMod
             {
                 role.PlantButton.graphic.sprite = PlantSprite;
                 if (!role.Detonated) role.DetonateKillStart();
-<<<<<<< Updated upstream
-                if (PlayerControl.LocalPlayer.killTimer > 0)
-=======
                 if (PlayerControl.LocalPlayer.killTimer > 0 || !PlayerControl.LocalPlayer.moveable)
->>>>>>> Stashed changes
                 {
                     role.PlantButton.graphic.color = Palette.DisabledClear;
                     role.PlantButton.graphic.material.SetFloat("_Desat", 1f);
@@ -68,11 +56,6 @@ namespace TownOfUsFusion.ImpostorRoles.BomberMod
                     GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown);
             }
 
-<<<<<<< Updated upstream
-            role.PlantButton.graphic.color = Palette.EnabledColor;
-            role.PlantButton.graphic.material.SetFloat("_Desat", 0f);
-=======
->>>>>>> Stashed changes
             if (role.PlantButton.graphic.sprite == PlantSprite) role.PlantButton.SetCoolDown(PlayerControl.LocalPlayer.killTimer, 
                 GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown);
             else role.PlantButton.SetCoolDown(role.TimeRemaining, CustomGameOptions.DetonateDelay);

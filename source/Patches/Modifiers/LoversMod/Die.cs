@@ -1,17 +1,9 @@
 using HarmonyLib;
-<<<<<<< Updated upstream
 using TownOfUsFusion.CrewmateRoles.AltruistMod;
 using TownOfUsFusion.Roles.Modifiers;
 using TownOfUsFusion.Roles;
 
 namespace TownOfUsFusion.Modifiers.LoversMod
-=======
-using TownOfUsFusion.CrewmateRoles.AltruistMod;
-using TownOfUsFusion.Roles.Modifiers;
-using TownOfUsFusion.Roles;
-
-namespace TownOfUsFusion.Modifiers.LoversMod
->>>>>>> Stashed changes
 {
     [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.Die))]
     public class Die

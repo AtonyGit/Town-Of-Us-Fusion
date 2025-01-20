@@ -24,21 +24,14 @@ namespace TownOfUsFusion.CrewmateRoles.ProsecutorMod
                 var pros = (Prosecutor)role;
                 if (pros.ProsecuteThisMeeting)
                 {
-<<<<<<< Updated upstream
-                    var exiled = __instance.exiled?.Object;
-=======
                     var exiled = __instance.initData.networkedPlayer?.Object;
->>>>>>> Stashed changes
                     if (exiled != null && exiled.Is(Faction.Crewmates) && !exiled.IsLover() && CustomGameOptions.ProsDiesOnIncorrectPros)
                     {
                         KillButtonTarget.DontRevive = pros.Player.PlayerId;
                         pros.Player.Exiled();
                     }
                     pros.ProsecuteThisMeeting = false;
-<<<<<<< Updated upstream
-=======
                     pros.HasProsecuted = true;
->>>>>>> Stashed changes
                 }
             }
         }

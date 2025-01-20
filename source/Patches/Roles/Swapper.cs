@@ -21,8 +21,6 @@ namespace TownOfUsFusion.Roles
             RoleType = RoleEnum.Swapper;
             AddToRoleHistory(RoleType);
         }
-<<<<<<< Updated upstream
-=======
 
         internal override bool GameEnd(LogicGameFlowNormal __instance)
         {
@@ -32,6 +30,5 @@ namespace TownOfUsFusion.Roles
 
             return true;
         }
->>>>>>> Stashed changes
     }
 }

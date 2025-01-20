@@ -1,11 +1,7 @@
 using System;
 using HarmonyLib;
 
-<<<<<<< Updated upstream
 namespace TownOfUsFusion.Modifiers.LoversMod
-=======
-namespace TownOfUsFusion.Modifiers.LoversMod
->>>>>>> Stashed changes
 {
     public static class Chat
     {

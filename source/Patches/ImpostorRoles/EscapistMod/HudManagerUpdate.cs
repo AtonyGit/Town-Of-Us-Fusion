@@ -7,13 +7,8 @@ namespace TownOfUsFusion.ImpostorRoles.EscapistMod
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class HudManagerUpdate
     {
-<<<<<<< Updated upstream
         public static Sprite MarkSprite => TownOfUsFusion.MarkSprite;
         public static Sprite EscapeSprite => TownOfUsFusion.EscapeSprite;
-=======
-        public static Sprite MarkSprite => TownOfUsFusion.MarkSprite;
-        public static Sprite EscapeSprite => TownOfUsFusion.EscapeSprite;
->>>>>>> Stashed changes
 
 
         public static void Postfix(HudManager __instance)
@@ -29,26 +24,14 @@ namespace TownOfUsFusion.ImpostorRoles.EscapistMod
                 role.EscapeButton.graphic.enabled = true;
                 role.EscapeButton.graphic.sprite = MarkSprite;
                 role.EscapeButton.gameObject.SetActive(false);
-<<<<<<< Updated upstream
-
             }
 
-=======
-            }
-
->>>>>>> Stashed changes
             if (role.EscapeButton.graphic.sprite != MarkSprite && role.EscapeButton.graphic.sprite != EscapeSprite)
                 role.EscapeButton.graphic.sprite = MarkSprite;
 
             role.EscapeButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-<<<<<<< Updated upstream
-            role.EscapeButton.graphic.color = Palette.EnabledColor;
-            role.EscapeButton.graphic.material.SetFloat("_Desat", 0f);
-            if (role.EscapeButton.graphic.sprite == MarkSprite) role.EscapeButton.SetCoolDown(0f, 1f);
-            else role.EscapeButton.SetCoolDown(role.EscapeTimer(), CustomGameOptions.EscapeCd);
-=======
             if (role.EscapeButton.graphic.sprite == MarkSprite)
             {
                 role.EscapeButton.SetCoolDown(0f, 1f);
@@ -75,7 +58,6 @@ namespace TownOfUsFusion.ImpostorRoles.EscapistMod
                 role.EscapeButton.graphic.material.SetFloat("_Desat", 1f);
                 role.EscapeButton.SetCoolDown(role.EscapeTimer(), CustomGameOptions.EscapeCd);
             }
->>>>>>> Stashed changes
         }
     }
 }

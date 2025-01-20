@@ -6,17 +6,10 @@ namespace TownOfUsFusion
     [HarmonyPatch(typeof(MainMenuManager), nameof(MainMenuManager.Start))]
     public static class LogoPatch
     {
-<<<<<<< Updated upstream
         private static Sprite Sprite => TownOfUsFusion.ToUBanner;
         static void Postfix(PingTracker __instance)
         {
             var touLogo = new GameObject("bannerLogo_TownOfUs");
-=======
-        private static Sprite Sprite => TownOfUsFusion.ToUBanner;
-        static void Postfix(PingTracker __instance)
-        {
-            var touLogo = new GameObject("bannerLogo_TownOfUsFusion");
->>>>>>> Stashed changes
             touLogo.transform.localScale = new Vector3(0.8f, 0.8f, 1f);
 
             var renderer = touLogo.AddComponent<SpriteRenderer>();

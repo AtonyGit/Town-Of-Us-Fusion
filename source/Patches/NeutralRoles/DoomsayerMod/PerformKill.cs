@@ -14,10 +14,7 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
             if (!flag) return true;
             if (PlayerControl.LocalPlayer.Data.IsDead) return false;
             if (!PlayerControl.LocalPlayer.CanMove) return false;
-<<<<<<< Updated upstream
-=======
             if (!__instance.isActiveAndEnabled || __instance.isCoolingDown) return false;
->>>>>>> Stashed changes
             var role = Role.GetRole<Doomsayer>(PlayerControl.LocalPlayer);
             if (role.ObserveTimer() != 0) return false;
 

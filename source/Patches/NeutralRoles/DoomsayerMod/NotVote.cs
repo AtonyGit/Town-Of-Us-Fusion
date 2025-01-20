@@ -12,10 +12,7 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
             {
                 var doomsayer = Role.GetRole<Doomsayer>(PlayerControl.LocalPlayer);
                 ShowHideButtonsDoom.HideButtonsDoom(doomsayer);
-<<<<<<< Updated upstream
-=======
                 ShowHideButtonsDoom.HideTextDoom(doomsayer);
->>>>>>> Stashed changes
             }
         }
     }

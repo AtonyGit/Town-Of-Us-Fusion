@@ -9,24 +9,10 @@ namespace TownOfUsFusion.RainbowMod
         public int Id;
 
         public void AddRend(Renderer rend, int id)
-<<<<<<< Updated upstream
-=======
         {
             Renderer = rend;
             Id = id;
         }
-
-        public void Update()
-        {
-            if (Renderer == null) return;
-
-        if (RainbowUtils.IsGradient(Id))
->>>>>>> Stashed changes
-        {
-            Renderer = rend;
-            Id = id;
-        }
-<<<<<<< Updated upstream
 
         public void Update()
         {
@@ -38,10 +24,6 @@ namespace TownOfUsFusion.RainbowMod
             }
         }
 
-=======
-        }
-
->>>>>>> Stashed changes
         public RainbowBehaviour(IntPtr ptr) : base(ptr) { }
     }
 }

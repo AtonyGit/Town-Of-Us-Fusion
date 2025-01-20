@@ -4,13 +4,7 @@ using TownOfUsFusion.Roles;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
-<<<<<<< Updated upstream
 using TownOfUsFusion.Patches;
-using TownOfUsFusion.CrewmateRoles.AurialMod;
-using TownOfUsFusion.Patches.ScreenEffects;
-=======
-using TownOfUsFusion.Patches;
->>>>>>> Stashed changes
 using System.Linq;
 using System.Collections.Generic;
 
@@ -31,40 +25,18 @@ namespace TownOfUsFusion.CrewmateRoles.HaunterMod
         public static void ExileControllerPostfix(ExileController __instance)
         {
             if (WillBeHaunter == null) return;
-<<<<<<< Updated upstream
-            var exiled = __instance.exiled?.Object;
-=======
             var exiled = __instance.initData.networkedPlayer?.Object;
->>>>>>> Stashed changes
             if (!WillBeHaunter.Data.IsDead && exiled.Is(Faction.Crewmates) && !exiled.IsLover()) WillBeHaunter = exiled;
             if (WillBeHaunter.Data.Disconnected) return;
             if (!WillBeHaunter.Data.IsDead && WillBeHaunter != exiled) return;
 
             if (!WillBeHaunter.Is(RoleEnum.Haunter))
             {
-<<<<<<< Updated upstream
-                if (WillBeHaunter == PlayerControl.LocalPlayer)
-                {
-                    if (PlayerControl.LocalPlayer.Is(RoleEnum.Aurial))
-                    {
-                        var aurial = Role.GetRole<Aurial>(PlayerControl.LocalPlayer);
-                        aurial.NormalVision = true;
-                        SeeAll.AllToNormal();
-                        CameraEffect.singleton.materials.Clear();
-                    }
-                }
                 var oldRole = Role.GetRole(WillBeHaunter);
                 var killsList = (oldRole.CorrectKills, oldRole.IncorrectKills, oldRole.CorrectAssassinKills, oldRole.IncorrectAssassinKills);
                 Role.RoleDictionary.Remove(WillBeHaunter.PlayerId);
                 if (PlayerControl.LocalPlayer == WillBeHaunter)
                 {
-=======
-                var oldRole = Role.GetRole(WillBeHaunter);
-                var killsList = (oldRole.CorrectKills, oldRole.IncorrectKills, oldRole.CorrectAssassinKills, oldRole.IncorrectAssassinKills);
-                Role.RoleDictionary.Remove(WillBeHaunter.PlayerId);
-                if (PlayerControl.LocalPlayer == WillBeHaunter)
-                {
->>>>>>> Stashed changes
                     var role = new Haunter(PlayerControl.LocalPlayer);
                     role.formerRole = oldRole.RoleType;
                     role.CorrectKills = killsList.CorrectKills;
@@ -117,10 +89,6 @@ namespace TownOfUsFusion.CrewmateRoles.HaunterMod
 
             PlayerControl.LocalPlayer.transform.position = pos;
             PlayerControl.LocalPlayer.NetTransform.SnapTo(pos);
-<<<<<<< Updated upstream
-            PlayerControl.LocalPlayer.NetTransform.RpcSnapTo(pos);
-=======
->>>>>>> Stashed changes
             PlayerControl.LocalPlayer.MyPhysics.RpcEnterVent(startingVent.Id);
         }
 

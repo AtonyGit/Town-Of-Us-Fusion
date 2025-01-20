@@ -7,12 +7,8 @@ using Reactor.Utilities.Extensions;
 using Object = UnityEngine.Object;
 using Reactor.Networking.Extensions;
 using System;
-<<<<<<< Updated upstream
-using TownOfUsFusion.Patches;
-=======
 using TownOfUsFusion.Patches;
 using TownOfUsFusion.Modifiers.ShyMod;
->>>>>>> Stashed changes
 
 namespace TownOfUsFusion.Roles.Modifiers
 {
@@ -30,13 +26,8 @@ namespace TownOfUsFusion.Roles.Modifiers
             StartingCooldown = DateTime.UtcNow;
             ModifierType = ModifierEnum.Disperser;
 
-<<<<<<< Updated upstream
             Logger<TownOfUsFusion>.Info("DISPERSER -==-=-=-=-=-=-=-=-=----------");
             if (PlayerControl.LocalPlayer == player) Logger<TownOfUsFusion>.Info("ME -==-=-=-=-=-=-=-=-=----------");
-=======
-            Logger<TownOfUsFusion>.Info("DISPERSER -==-=-=-=-=-=-=-=-=----------");
-            if (PlayerControl.LocalPlayer == player) Logger<TownOfUsFusion>.Info("ME -==-=-=-=-=-=-=-=-=----------");
->>>>>>> Stashed changes
         }
         public float StartTimer()
         {
@@ -97,8 +88,6 @@ namespace TownOfUsFusion.Roles.Modifiers
                 PlayerControl player = Utils.PlayerById(key);
                 player.transform.position = value;
                 if (PlayerControl.LocalPlayer == player) PlayerControl.LocalPlayer.NetTransform.RpcSnapTo(value);
-<<<<<<< Updated upstream
-=======
                 if (player.Is(ModifierEnum.Shy))
                 {
                     var shy = GetModifier<Shy>(player);
@@ -106,7 +95,6 @@ namespace TownOfUsFusion.Roles.Modifiers
                     HudManagerUpdate.SetVisiblity(player, shy.Opacity);
                     shy.Moving = true;
                 }
->>>>>>> Stashed changes
             }
 
             if (PlayerControl.LocalPlayer.walkingToVent)

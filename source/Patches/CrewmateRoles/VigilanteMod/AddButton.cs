@@ -3,15 +3,9 @@ using HarmonyLib;
 using Reactor.Utilities;
 using Reactor.Utilities.Extensions;
 using TMPro;
-<<<<<<< Updated upstream
-using TownOfUsFusion.Extensions;
-using TownOfUsFusion.Roles;
-using TownOfUsFusion.Roles.Modifiers;
-=======
 using TownOfUsFusion.Patches;
 using TownOfUsFusion.Roles;
 using TownOfUsFusion.Roles.Modifiers;
->>>>>>> Stashed changes
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
@@ -21,47 +15,21 @@ namespace TownOfUsFusion.CrewmateRoles.VigilanteMod
     [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.Start))]
     public class AddButton
     {
-<<<<<<< Updated upstream
         private static Sprite CycleBackSprite => TownOfUsFusion.CycleBackSprite;
         private static Sprite CycleForwardSprite => TownOfUsFusion.CycleForwardSprite;
 
         private static Sprite GuessSprite => TownOfUsFusion.GuessSprite;
-=======
-        private static Sprite CycleBackSprite => TownOfUsFusion.CycleBackSprite;
-        private static Sprite CycleForwardSprite => TownOfUsFusion.CycleForwardSprite;
-
-        private static Sprite GuessSprite => TownOfUsFusion.GuessSprite;
->>>>>>> Stashed changes
 
         private static bool IsExempt(PlayerVoteArea voteArea)
         {
             if (voteArea.AmDead) return true;
             var player = Utils.PlayerById(voteArea.TargetPlayerId);
-<<<<<<< Updated upstream
-            if (!PlayerControl.LocalPlayer.Is(Faction.Impostors))
-            {
-                if (
-=======
             if (player.IsJailed()) return true;
             if (
->>>>>>> Stashed changes
                     player == null ||
                     player.Data.IsDead ||
                     player.Data.Disconnected
                 ) return true;
-<<<<<<< Updated upstream
-            }
-            else
-            {
-                if (
-                    player == null ||
-                    player.Data.IsImpostor() ||
-                    player.Data.IsDead ||
-                    player.Data.Disconnected
-                ) return true;
-            }
-=======
->>>>>>> Stashed changes
             var role = Role.GetRole(player);
             return role != null && role.Criteria();
         }
@@ -183,23 +151,10 @@ namespace TownOfUsFusion.CrewmateRoles.VigilanteMod
                 var toDie = playerRole.Name == currentGuess ? playerRole.Player : role.Player;
                 if (playerModifier != null)
                     toDie = (playerRole.Name == currentGuess || playerModifier.Name == currentGuess) ? playerRole.Player : role.Player;
-<<<<<<< Updated upstream
-                
-                if (toDie.Is(RoleEnum.Necromancer) || toDie.Is(RoleEnum.Whisperer))
-                {
-                    foreach (var player in PlayerControl.AllPlayerControls)
-                    {
-                        if (player.Data.IsImpostor()) Utils.RpcMurderPlayer(player, player);
-                    }
-                }
-
-                if (!toDie.Is(RoleEnum.Pestilence))
-=======
 
                 var fortified = toDie.IsFortified() && PlayerControl.LocalPlayer != toDie;
 
                 if (!toDie.Is(RoleEnum.Pestilence) && !fortified)
->>>>>>> Stashed changes
                 {
                     VigilanteKill.RpcMurderPlayer(toDie, PlayerControl.LocalPlayer);
                     role.RemainingKills--;
@@ -209,15 +164,12 @@ namespace TownOfUsFusion.CrewmateRoles.VigilanteMod
                         var lover = ((Lover)playerModifier).OtherLover.Player;
                         if (!lover.Is(RoleEnum.Pestilence)) ShowHideButtonsVigi.HideSingle(role, lover.PlayerId, false);
                     }
-<<<<<<< Updated upstream
-=======
                 }
                 else
                 {
                     ShowHideButtonsVigi.HideSingle(role, targetId, toDie == role.Player);
                     Coroutines.Start(Utils.FlashCoroutine(Colors.Warden));
                     if (toDie.IsFortified()) Utils.Rpc(CustomRPC.Fortify, (byte)1, toDie.GetWarden().Player.PlayerId);
->>>>>>> Stashed changes
                 }
             }
 
@@ -236,10 +188,7 @@ namespace TownOfUsFusion.CrewmateRoles.VigilanteMod
 
             if (PlayerControl.LocalPlayer.Data.IsDead) return;
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Vigilante)) return;
-<<<<<<< Updated upstream
-=======
             if (PlayerControl.LocalPlayer.IsJailed()) return;
->>>>>>> Stashed changes
 
             var retributionistRole = Role.GetRole<Vigilante>(PlayerControl.LocalPlayer);
             if (retributionistRole.RemainingKills <= 0) return;

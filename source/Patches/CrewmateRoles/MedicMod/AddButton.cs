@@ -12,13 +12,8 @@ namespace TownOfUsFusion.CrewmateRoles.MedicMod
     [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.Start))]
     public class AddButton
     {
-<<<<<<< Updated upstream
         private static Sprite LighterSprite => TownOfUsFusion.LighterSprite;
         public static Sprite DarkerSprite => TownOfUsFusion.DarkerSprite;
-=======
-        private static Sprite LighterSprite => TownOfUsFusion.LighterSprite;
-        public static Sprite DarkerSprite => TownOfUsFusion.DarkerSprite;
->>>>>>> Stashed changes
 
         private static bool IsExempt(PlayerVoteArea voteArea)
         {

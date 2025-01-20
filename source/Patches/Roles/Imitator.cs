@@ -11,12 +11,9 @@ namespace TownOfUsFusion.Roles
 
         public readonly List<bool> ListOfActives = new List<bool>();
         public PlayerControl ImitatePlayer = null;
-<<<<<<< Updated upstream
-=======
         public List<RoleEnum> ImitatableRoles = [RoleEnum.Detective, RoleEnum.Investigator, RoleEnum.Mystic, RoleEnum.Seer, RoleEnum.Spy, RoleEnum.Tracker, RoleEnum.Sheriff,
                             RoleEnum.Veteran, RoleEnum.Altruist, RoleEnum.Engineer, RoleEnum.Medium, RoleEnum.Transporter, RoleEnum.Trapper, RoleEnum.Medic, RoleEnum.Aurial,
                             RoleEnum.Oracle, RoleEnum.Hunter, RoleEnum.Warden];
->>>>>>> Stashed changes
 
         public List<RoleEnum> trappedPlayers = null;
         public PlayerControl confessingPlayer = null;
@@ -31,8 +28,6 @@ namespace TownOfUsFusion.Roles
             RoleType = RoleEnum.Imitator;
             AddToRoleHistory(RoleType);
         }
-<<<<<<< Updated upstream
-=======
 
         internal override bool GameEnd(LogicGameFlowNormal __instance)
         {
@@ -44,6 +39,5 @@ namespace TownOfUsFusion.Roles
 
             return true;
         }
->>>>>>> Stashed changes
     }
 }

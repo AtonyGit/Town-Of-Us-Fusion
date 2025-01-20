@@ -17,19 +17,13 @@ namespace TownOfUsFusion.ImpostorRoles.GrenadierMod
             {
                 if (__instance.isCoolingDown) return false;
                 if (!__instance.isActiveAndEnabled) return false;
-<<<<<<< Updated upstream
-=======
                 if (role.Player.inVent) return false;
->>>>>>> Stashed changes
                 var system = ShipStatus.Instance.Systems[SystemTypes.Sabotage].Cast<SabotageSystemType>();
                 var sabActive = system.AnyActive;
                 if (sabActive) return false;
                 if (role.FlashTimer() != 0) return false;
-<<<<<<< Updated upstream
-=======
                 var abilityUsed = Utils.AbilityUsed(PlayerControl.LocalPlayer);
                 if (!abilityUsed) return false;
->>>>>>> Stashed changes
 
                 Utils.Rpc(CustomRPC.FlashGrenade, PlayerControl.LocalPlayer.PlayerId);
                 role.TimeRemaining = CustomGameOptions.GrenadeDuration;

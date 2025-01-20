@@ -26,27 +26,6 @@ namespace TownOfUsFusion.Extensions
             return result;
         }
 
-<<<<<<< Updated upstream
-        public static KeyValuePair<byte, int> MaxPair(this byte[] self, out bool tie)
-        {
-            tie = true;
-            var result = new KeyValuePair<byte, int>(byte.MaxValue, int.MinValue);
-            for (byte i = 0; i < self.Length; i++)
-                if (self[i] > result.Value)
-                {
-                    result = new KeyValuePair<byte, int>(i, self[i]);
-                    tie = false;
-                }
-                else if (self[i] == result.Value)
-                {
-                    tie = true;
-                }
-
-            return result;
-        }
-
-=======
->>>>>>> Stashed changes
         public static VisualAppearance GetDefaultAppearance(this PlayerControl player)
         {
             return new VisualAppearance();
@@ -70,35 +49,17 @@ namespace TownOfUsFusion.Extensions
             else
                 return player.GetDefaultAppearance();
         }
-<<<<<<< Updated upstream
-        public static bool IsImpostor(this GameData.PlayerInfo playerinfo)
-=======
         public static bool IsImpostor(this NetworkedPlayerInfo playerinfo)
->>>>>>> Stashed changes
         {
             return playerinfo?.Role?.TeamType == RoleTeamTypes.Impostor;
         }
 
-<<<<<<< Updated upstream
-        public static void SetImpostor(this GameData.PlayerInfo playerinfo, bool impostor)
-        {
-            if (playerinfo.Role != null)
-                playerinfo.Role.TeamType = impostor ? RoleTeamTypes.Impostor : RoleTeamTypes.Crewmate;
-        }
-
-        public static GameData.PlayerOutfit GetDefaultOutfit(this PlayerControl playerControl)
-=======
         public static NetworkedPlayerInfo.PlayerOutfit GetDefaultOutfit(this PlayerControl playerControl)
->>>>>>> Stashed changes
         {
             return playerControl.Data.DefaultOutfit;
         }
 
-<<<<<<< Updated upstream
-        public static void SetOutfit(this PlayerControl playerControl, CustomPlayerOutfitType CustomOutfitType, GameData.PlayerOutfit outfit)
-=======
         public static void SetOutfit(this PlayerControl playerControl, CustomPlayerOutfitType CustomOutfitType, NetworkedPlayerInfo.PlayerOutfit outfit)
->>>>>>> Stashed changes
         {
             playerControl.Data.SetOutfit((PlayerOutfitType)CustomOutfitType, outfit);
             playerControl.SetOutfit(CustomOutfitType);

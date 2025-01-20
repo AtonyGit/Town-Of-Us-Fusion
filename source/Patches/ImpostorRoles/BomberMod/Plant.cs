@@ -8,13 +8,8 @@ namespace TownOfUsFusion.ImpostorRoles.BomberMod
     [HarmonyPatch(typeof(KillButton), nameof(KillButton.DoClick))]
     public class Plant
     {
-<<<<<<< Updated upstream
         public static Sprite PlantSprite => TownOfUsFusion.PlantSprite;
         public static Sprite DetonateSprite => TownOfUsFusion.DetonateSprite;
-=======
-        public static Sprite PlantSprite => TownOfUsFusion.PlantSprite;
-        public static Sprite DetonateSprite => TownOfUsFusion.DetonateSprite;
->>>>>>> Stashed changes
         public static bool Prefix(KillButton __instance)
         {
             var flag = PlayerControl.LocalPlayer.Is(RoleEnum.Bomber);
@@ -32,11 +27,8 @@ namespace TownOfUsFusion.ImpostorRoles.BomberMod
                 if (!__instance.isActiveAndEnabled) return false;
                 if (role.PlantButton.graphic.sprite == PlantSprite)
                 {
-<<<<<<< Updated upstream
-=======
                     var abilityUsed = Utils.AbilityUsed(PlayerControl.LocalPlayer);
                     if (!abilityUsed) return false;
->>>>>>> Stashed changes
                     role.Detonated = false;
                     var pos = PlayerControl.LocalPlayer.transform.position;
                     pos.z += 0.001f;
@@ -54,10 +46,7 @@ namespace TownOfUsFusion.ImpostorRoles.BomberMod
                     else PlayerControl.LocalPlayer.SetKillTimer(GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown + CustomGameOptions.DetonateDelay);
                     DestroyableSingleton<HudManager>.Instance.KillButton.SetTarget(null);
                     role.Bomb = BombExtentions.CreateBomb(pos);
-<<<<<<< Updated upstream
-=======
                     if (CustomGameOptions.AllImpsSeeBomb) Utils.Rpc(CustomRPC.Plant, pos.x, pos.y, pos.z);
->>>>>>> Stashed changes
                     return false;
                 }
                 else return false;

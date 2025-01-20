@@ -4,11 +4,7 @@ using TownOfUsFusion.CrewmateRoles.MedicMod;
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;
 using AmongUs.GameOptions;
-<<<<<<< Updated upstream
 using TownOfUsFusion.Patches;
-=======
-using TownOfUsFusion.Patches;
->>>>>>> Stashed changes
 
 namespace TownOfUsFusion.CrewmateRoles.SheriffMod
 {
@@ -32,24 +28,11 @@ namespace TownOfUsFusion.CrewmateRoles.SheriffMod
             if (!flag3) return false;
 
             var flag4 = role.ClosestPlayer.Data.IsImpostor() ||
-<<<<<<< Updated upstream
-                        role.ClosestPlayer.Is(RoleEnum.Doomsayer) && CustomGameOptions.SheriffKillsDoomsayer ||
-                        role.ClosestPlayer.Is(RoleEnum.Vampire) && CustomGameOptions.SheriffKillsVampire ||
-                        role.ClosestPlayer.Is(RoleEnum.Jester) && CustomGameOptions.SheriffKillsJester ||
-                        role.ClosestPlayer.Is(RoleEnum.Glitch) && CustomGameOptions.SheriffKillsGlitch ||
-                        role.ClosestPlayer.Is(RoleEnum.Juggernaut) && CustomGameOptions.SheriffKillsJuggernaut ||
-                        role.ClosestPlayer.Is(RoleEnum.Executioner) && CustomGameOptions.SheriffKillsExecutioner ||
-                        role.ClosestPlayer.Is(RoleEnum.Arsonist) && CustomGameOptions.SheriffKillsArsonist ||
-                        role.ClosestPlayer.Is(RoleEnum.Werewolf) && CustomGameOptions.SheriffKillsWerewolf ||
-                        role.ClosestPlayer.Is(RoleEnum.Plaguebearer) && CustomGameOptions.SheriffKillsPlaguebearer;
-
-=======
                         (role.ClosestPlayer.Is(Faction.NeutralEvil) && CustomGameOptions.SheriffKillsNE) ||
                         (role.ClosestPlayer.Is(Faction.NeutralKilling) && CustomGameOptions.SheriffKillsNK);
 
             var abilityUsed = Utils.AbilityUsed(PlayerControl.LocalPlayer);
             if (!abilityUsed) return false;
->>>>>>> Stashed changes
             if (role.ClosestPlayer.Is(RoleEnum.Pestilence))
             {
                 Utils.RpcMurderPlayer(role.ClosestPlayer, PlayerControl.LocalPlayer);
@@ -59,14 +42,6 @@ namespace TownOfUsFusion.CrewmateRoles.SheriffMod
             {
                 foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(role.ClosestPlayer, role.Player);
             }
-<<<<<<< Updated upstream
-            foreach (Role hunterRole in Role.GetRoles(RoleEnum.Hunter))
-            {
-                Hunter hunter = (Hunter)hunterRole;
-                hunter.CatchPlayer(role.Player);
-            }
-=======
->>>>>>> Stashed changes
             if (role.ClosestPlayer.IsOnAlert())
             {
                 if (role.ClosestPlayer.IsShielded())
@@ -118,8 +93,6 @@ namespace TownOfUsFusion.CrewmateRoles.SheriffMod
                 Utils.RpcMurderPlayer(PlayerControl.LocalPlayer, PlayerControl.LocalPlayer);
 
                 return false;
-<<<<<<< Updated upstream
-=======
             }
             else if (role.ClosestPlayer.IsProtected())
             {
@@ -129,34 +102,6 @@ namespace TownOfUsFusion.CrewmateRoles.SheriffMod
                 }
                 role.LastKilled.AddSeconds(CustomGameOptions.ProtectKCReset);
                 return false;
-            }
-
-            if (!flag4)
-            {
-                if (CustomGameOptions.SheriffKillOther)
-                    Utils.RpcMurderPlayer(PlayerControl.LocalPlayer, role.ClosestPlayer);
-                Utils.RpcMurderPlayer(PlayerControl.LocalPlayer, PlayerControl.LocalPlayer);
-                role.LastKilled = DateTime.UtcNow;
->>>>>>> Stashed changes
-            }
-            else if (role.ClosestPlayer.IsProtected())
-            {
-<<<<<<< Updated upstream
-                if (!flag4)
-                {
-                    Utils.RpcMurderPlayer(PlayerControl.LocalPlayer, PlayerControl.LocalPlayer);
-                }
-                role.LastKilled.AddSeconds(CustomGameOptions.ProtectKCReset);
-                return false;
-            }
-
-            if (role.ClosestPlayer.Is(RoleEnum.Necromancer) || role.ClosestPlayer.Is(RoleEnum.Whisperer))
-            {
-                foreach (var player in PlayerControl.AllPlayerControls)
-                {
-                    if (player.Data.IsImpostor() && !player.Is(RoleEnum.Necromancer)
-                        && !player.Is(RoleEnum.Whisperer)) Utils.RpcMurderPlayer(player, player);
-                }
             }
 
             if (!flag4)
@@ -168,8 +113,6 @@ namespace TownOfUsFusion.CrewmateRoles.SheriffMod
             }
             else
             {
-=======
->>>>>>> Stashed changes
                 Utils.RpcMurderPlayer(PlayerControl.LocalPlayer, role.ClosestPlayer);
                 role.LastKilled = DateTime.UtcNow;
             }
