@@ -1,15 +1,15 @@
 using HarmonyLib;
-using TownOfUs.Roles;
-using TownOfUs.Roles.Cultist;
+using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Cultist;
 using UnityEngine;
 using AmongUs.GameOptions;
 
-namespace TownOfUs.CultistRoles.NecromancerMod
+namespace TownOfUsFusion.CultistRoles.NecromancerMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class ReviveHudManagerUpdate
     {
-        public static Sprite ReviveSprite => TownOfUs.Revive2Sprite;
+        public static Sprite ReviveSprite => TownOfUsFusion.Revive2Sprite;
         public static byte DontRevive = byte.MaxValue;
 
         public static void Postfix(HudManager __instance)

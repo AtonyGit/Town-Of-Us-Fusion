@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace TownOfUs.Roles.Modifiers
+namespace TownOfUsFusion.Roles.Modifiers
 {
     public class Sleuth : Modifier
     {

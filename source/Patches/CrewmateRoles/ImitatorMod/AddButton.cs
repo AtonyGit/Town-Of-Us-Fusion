@@ -1,20 +1,20 @@
 using System;
 using System.Linq;
 using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
-namespace TownOfUs.CrewmateRoles.ImitatorMod
+namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
 {
     [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.Start))]
     public class AddButtonImitator
     {
         private static int _mostRecentId;
 <<<<<<< Updated upstream
-        private static Sprite ActiveSprite => TownOfUs.ImitateSelectSprite;
-        public static Sprite DisabledSprite => TownOfUs.ImitateDeselectSprite;
+        private static Sprite ActiveSprite => TownOfUsFusion.ImitateSelectSprite;
+        public static Sprite DisabledSprite => TownOfUsFusion.ImitateDeselectSprite;
 
 
         public static void GenButton(Imitator role, int index, bool isDead)

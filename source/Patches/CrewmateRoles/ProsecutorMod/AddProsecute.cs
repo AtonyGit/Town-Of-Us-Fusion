@@ -1,9 +1,9 @@
 using HarmonyLib;
 using TMPro;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using UnityEngine;
 
-namespace TownOfUs.CrewmateRoles.ProsecutorMod
+namespace TownOfUsFusion.CrewmateRoles.ProsecutorMod
 {
     public class AddProsecute
     {

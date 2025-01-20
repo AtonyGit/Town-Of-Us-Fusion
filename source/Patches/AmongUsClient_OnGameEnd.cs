@@ -2,16 +2,16 @@ using HarmonyLib;
 using Il2CppSystem.Collections.Generic;
 using System.Linq;
 <<<<<<< Updated upstream
-using TownOfUs.Roles;
-using TownOfUs.Roles.Modifiers;
-using TownOfUs.Extensions;
+using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Modifiers;
+using TownOfUsFusion.Extensions;
 =======
 using TownOfUsFusion.Roles;
 using TownOfUsFusion.Roles.Modifiers;
 using TownOfUsFusion.Extensions;
 >>>>>>> Stashed changes
 
-namespace TownOfUs
+namespace TownOfUsFusion
 {
 <<<<<<< Updated upstream
     [HarmonyPatch(typeof(EndGameManager), nameof(EndGameManager.Start))]

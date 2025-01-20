@@ -1,9 +1,9 @@
 using HarmonyLib;
-using TownOfUs.Extensions;
-using TownOfUs.Roles;
+using TownOfUsFusion.Extensions;
+using TownOfUsFusion.Roles;
 using UnityEngine;
 
-namespace TownOfUs.CrewmateRoles.MedicMod
+namespace TownOfUsFusion.CrewmateRoles.MedicMod
 {
     public enum ShieldOptions
     {

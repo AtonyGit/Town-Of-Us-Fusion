@@ -1,9 +1,9 @@
 using System;
 using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using AmongUs.GameOptions;
 
-namespace TownOfUs.NeutralRoles.PestilenceMod
+namespace TownOfUsFusion.NeutralRoles.PestilenceMod
 {
     [HarmonyPatch(typeof(KillButton), nameof(KillButton.DoClick))]
     public class PerformKill

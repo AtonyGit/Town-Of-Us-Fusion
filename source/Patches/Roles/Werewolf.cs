@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using UnityEngine;
-using TownOfUs.Extensions;
+using TownOfUsFusion.Extensions;
 
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 {
     public class Werewolf : Role
     {

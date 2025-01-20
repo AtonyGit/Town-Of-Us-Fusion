@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using HarmonyLib;
 using Reactor.Utilities;
-using TownOfUs.Extensions;
-using TownOfUs.Roles;
-using TownOfUs.Roles.Modifiers;
+using TownOfUsFusion.Extensions;
+using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Modifiers;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace TownOfUs.CrewmateRoles.MayorMod
+namespace TownOfUsFusion.CrewmateRoles.MayorMod
 {
     [HarmonyPatch(typeof(MeetingHud))]
     public class RegisterExtraVotes
@@ -108,8 +108,8 @@ namespace TownOfUs.CrewmateRoles.MayorMod
                 // __instance.exiledPlayer = __instance.wasTie ? null : __instance.exiledPlayer;
                 var exiledString = exiled == null ? "null" : exiled.PlayerName;
 <<<<<<< Updated upstream
-                PluginSingleton<TownOfUs>.Instance.Log.LogMessage($"Exiled PlayerName = {exiledString}");
-                PluginSingleton<TownOfUs>.Instance.Log.LogMessage($"Was a tie = {tie}");
+                PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"Exiled PlayerName = {exiledString}");
+                PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"Was a tie = {tie}");
 =======
                 PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"Exiled PlayerName = {exiledString}");
                 PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"Was a tie = {tie}");

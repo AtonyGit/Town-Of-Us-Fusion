@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 {
     public class Medic : Role
     {

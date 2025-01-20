@@ -2,7 +2,7 @@ using HarmonyLib;
 using System.Linq;
 using UnityEngine;
 <<<<<<< Updated upstream
-using TownOfUs.ImpostorRoles.TraitorMod;
+using TownOfUsFusion.ImpostorRoles.TraitorMod;
 =======
 using TownOfUsFusion.ImpostorRoles.TraitorMod;
 using TownOfUsFusion.Roles;
@@ -18,7 +18,7 @@ using TownOfUsFusion.ImpostorRoles.BlackmailerMod;
 using Reactor.Utilities.Extensions;
 >>>>>>> Stashed changes
 
-namespace TownOfUs.Patches
+namespace TownOfUsFusion.Patches
 {
     [HarmonyPatch(typeof(GameData))]
     public class DisconnectHandler

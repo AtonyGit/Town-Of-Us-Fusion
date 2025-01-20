@@ -1,6 +1,6 @@
 using HarmonyLib;
 <<<<<<< Updated upstream
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 =======
 using Reactor.Utilities;
 using TownOfUsFusion.Patches.NeutralRoles;
@@ -11,7 +11,7 @@ using System.Linq;
 using Object = UnityEngine.Object;
 >>>>>>> Stashed changes
 
-namespace TownOfUs.CrewmateRoles.TransporterMod
+namespace TownOfUsFusion.CrewmateRoles.TransporterMod
 {
     [HarmonyPatch(typeof(KillButton), nameof(KillButton.DoClick))]
     public class PerformKillButton

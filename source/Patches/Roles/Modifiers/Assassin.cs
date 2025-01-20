@@ -1,18 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using TownOfUs.Patches;
+using TownOfUsFusion.Patches;
 using UnityEngine;
 <<<<<<< Updated upstream
-using TownOfUs.NeutralRoles.ExecutionerMod;
-using TownOfUs.NeutralRoles.GuardianAngelMod;
-using TownOfUs.CrewmateRoles.VampireHunterMod;
+using TownOfUsFusion.NeutralRoles.ExecutionerMod;
+using TownOfUsFusion.NeutralRoles.GuardianAngelMod;
+using TownOfUsFusion.CrewmateRoles.VampireHunterMod;
 =======
 using TownOfUsFusion.NeutralRoles.ExecutionerMod;
 using TownOfUsFusion.NeutralRoles.GuardianAngelMod;
 >>>>>>> Stashed changes
 
-namespace TownOfUs.Roles.Modifiers
+namespace TownOfUsFusion.Roles.Modifiers
 {
     public class Assassin : Ability, IGuesser
     {

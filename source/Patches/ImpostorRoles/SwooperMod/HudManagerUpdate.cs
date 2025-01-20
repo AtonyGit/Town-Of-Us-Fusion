@@ -1,14 +1,14 @@
 using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using UnityEngine;
 
-namespace TownOfUs.ImpostorRoles.SwooperMod
+namespace TownOfUsFusion.ImpostorRoles.SwooperMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class HudManagerUpdate
     {
 <<<<<<< Updated upstream
-        public static Sprite SwoopSprite => TownOfUs.SwoopSprite;
+        public static Sprite SwoopSprite => TownOfUsFusion.SwoopSprite;
 =======
         public static Sprite SwoopSprite => TownOfUsFusion.SwoopSprite;
 >>>>>>> Stashed changes

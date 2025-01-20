@@ -1,15 +1,15 @@
 ﻿using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using UnityEngine;
 
-namespace TownOfUs.ImpostorRoles.MorphlingMod
+namespace TownOfUsFusion.ImpostorRoles.MorphlingMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class HudManagerUpdate
     {
 <<<<<<< Updated upstream
-        public static Sprite SampleSprite => TownOfUs.SampleSprite;
-        public static Sprite MorphSprite => TownOfUs.MorphSprite;
+        public static Sprite SampleSprite => TownOfUsFusion.SampleSprite;
+        public static Sprite MorphSprite => TownOfUsFusion.MorphSprite;
 =======
         public static Sprite SampleSprite => TownOfUsFusion.SampleSprite;
         public static Sprite MorphSprite => TownOfUsFusion.MorphSprite;

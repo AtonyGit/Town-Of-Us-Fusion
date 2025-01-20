@@ -8,7 +8,7 @@ using System.Reflection;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
 
-namespace TownOfUs.Patches.ScreenEffects
+namespace TownOfUsFusion.Patches.ScreenEffects
 {
     // could parts of this code be wildly optimised? yes
     // do i care? no
@@ -33,7 +33,7 @@ namespace TownOfUs.Patches.ScreenEffects
         {
             var assembly = Assembly.GetExecutingAssembly();
 <<<<<<< Updated upstream
-            var stream = assembly.GetManifestResourceStream($"TownOfUs.Resources.{bundlename}");
+            var stream = assembly.GetManifestResourceStream($"TownOfUsFusion.Resources.{bundlename}");
 =======
             var stream = assembly.GetManifestResourceStream($"TownOfUsFusion.Resources.{bundlename}");
 >>>>>>> Stashed changes

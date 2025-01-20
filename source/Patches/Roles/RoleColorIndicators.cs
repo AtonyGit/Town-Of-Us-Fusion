@@ -1,12 +1,12 @@
 ﻿using HarmonyLib;
 <<<<<<< Updated upstream
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 =======
 using TownOfUsFusion.Roles;
 >>>>>>> Stashed changes
 using UnityEngine;
 
-namespace TownOfUs.Patches.Roles
+namespace TownOfUsFusion.Patches.Roles
 {
     public class RoleColorIndicators
     {

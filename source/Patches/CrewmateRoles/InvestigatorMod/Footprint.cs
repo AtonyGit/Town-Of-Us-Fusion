@@ -1,9 +1,9 @@
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using UnityEngine;
-using TownOfUs.Extensions;
-using TownOfUs.Patches;
+using TownOfUsFusion.Extensions;
+using TownOfUsFusion.Patches;
 
-namespace TownOfUs.CrewmateRoles.InvestigatorMod
+namespace TownOfUsFusion.CrewmateRoles.InvestigatorMod
 {
     public class Footprint
     {
@@ -52,7 +52,7 @@ namespace TownOfUs.CrewmateRoles.InvestigatorMod
 
             _spriteRenderer = _gameObject.AddComponent<SpriteRenderer>();
 <<<<<<< Updated upstream
-            _spriteRenderer.sprite = TownOfUs.Footprint;
+            _spriteRenderer.sprite = TownOfUsFusion.Footprint;
 =======
             _spriteRenderer.sprite = TownOfUsFusion.Footprint;
 >>>>>>> Stashed changes

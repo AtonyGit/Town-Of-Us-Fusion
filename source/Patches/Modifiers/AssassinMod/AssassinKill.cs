@@ -1,20 +1,20 @@
 ﻿using System.Linq;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using UnityEngine;
 using UnityEngine.UI;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
-using TownOfUs.CrewmateRoles.MedicMod;
-using TownOfUs.CrewmateRoles.SwapperMod;
-using TownOfUs.CrewmateRoles.VigilanteMod;
-using TownOfUs.NeutralRoles.DoomsayerMod;
-using TownOfUs.ImpostorRoles.BlackmailerMod;
-using TownOfUs.Roles.Modifiers;
-using TownOfUs.Extensions;
-using TownOfUs.CrewmateRoles.ImitatorMod;
-using TownOfUs.Patches;
+using TownOfUsFusion.CrewmateRoles.MedicMod;
+using TownOfUsFusion.CrewmateRoles.SwapperMod;
+using TownOfUsFusion.CrewmateRoles.VigilanteMod;
+using TownOfUsFusion.NeutralRoles.DoomsayerMod;
+using TownOfUsFusion.ImpostorRoles.BlackmailerMod;
+using TownOfUsFusion.Roles.Modifiers;
+using TownOfUsFusion.Extensions;
+using TownOfUsFusion.CrewmateRoles.ImitatorMod;
+using TownOfUsFusion.Patches;
 using Reactor.Utilities.Extensions;
 
-namespace TownOfUs.Modifiers.AssassinMod
+namespace TownOfUsFusion.Modifiers.AssassinMod
 {
     public class AssassinKill
     {
@@ -273,7 +273,7 @@ namespace TownOfUs.Modifiers.AssassinMod
                 var swapper = Role.GetRole<Swapper>(PlayerControl.LocalPlayer);
                 var button = swapper.Buttons[voteArea.TargetPlayerId];
 <<<<<<< Updated upstream
-                if (button.GetComponent<SpriteRenderer>().sprite == TownOfUs.SwapperSwitch)
+                if (button.GetComponent<SpriteRenderer>().sprite == TownOfUsFusion.SwapperSwitch)
 =======
                 if (button.GetComponent<SpriteRenderer>().sprite == TownOfUsFusion.SwapperSwitch)
 >>>>>>> Stashed changes

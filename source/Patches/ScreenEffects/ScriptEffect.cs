@@ -2,7 +2,7 @@ using Reactor.Utilities;
 using System.Collections;
 using UnityEngine;
 
-namespace TownOfUs.Patches.ScreenEffects
+namespace TownOfUsFusion.Patches.ScreenEffects
 {
     public abstract class ScriptEffect
     {

@@ -1,10 +1,10 @@
 using System;
 using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using UnityEngine;
 using AmongUs.GameOptions;
 
-namespace TownOfUs.ImpostorRoles.UndertakerMod
+namespace TownOfUsFusion.ImpostorRoles.UndertakerMod
 {
     [HarmonyPatch(typeof(KillButton), nameof(KillButton.DoClick))]
     public class PerformKillButton
@@ -20,7 +20,7 @@ namespace TownOfUs.ImpostorRoles.UndertakerMod
             if (__instance == role.DragDropButton)
             {
 <<<<<<< Updated upstream
-                if (role.DragDropButton.graphic.sprite == TownOfUs.DragSprite)
+                if (role.DragDropButton.graphic.sprite == TownOfUsFusion.DragSprite)
 =======
                 if (role.Player.inVent) return false;
                 if (role.DragDropButton.graphic.sprite == TownOfUsFusion.DragSprite)
@@ -49,7 +49,7 @@ namespace TownOfUs.ImpostorRoles.UndertakerMod
 
                     KillButtonTarget.SetTarget(__instance, null, role);
 <<<<<<< Updated upstream
-                    __instance.graphic.sprite = TownOfUs.DropSprite;
+                    __instance.graphic.sprite = TownOfUsFusion.DropSprite;
 =======
                     __instance.graphic.sprite = TownOfUsFusion.DropSprite;
 >>>>>>> Stashed changes
@@ -85,7 +85,7 @@ namespace TownOfUs.ImpostorRoles.UndertakerMod
                     foreach (var body2 in role.CurrentlyDragging.bodyRenderers) body2.material.SetFloat("_Outline", 0f);
                     role.CurrentlyDragging = null;
 <<<<<<< Updated upstream
-                    __instance.graphic.sprite = TownOfUs.DragSprite;
+                    __instance.graphic.sprite = TownOfUsFusion.DragSprite;
 =======
                     __instance.graphic.sprite = TownOfUsFusion.DragSprite;
 >>>>>>> Stashed changes

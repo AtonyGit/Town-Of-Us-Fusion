@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using Reactor.Utilities.Extensions;
 <<<<<<< Updated upstream
-using TownOfUs.CrewmateRoles.MedicMod;
-using TownOfUs.Extensions;
-using TownOfUs.Roles;
+using TownOfUsFusion.CrewmateRoles.MedicMod;
+using TownOfUsFusion.Extensions;
+using TownOfUsFusion.Roles;
 using UnityEngine;
 using Object = UnityEngine.Object;
-using TownOfUs.Roles.Modifiers;
+using TownOfUsFusion.Roles.Modifiers;
 using AmongUs.GameOptions;
 =======
 using TownOfUsFusion.CrewmateRoles.MedicMod;
@@ -22,13 +22,13 @@ using AmongUs.GameOptions;
 using Reactor.Utilities;
 >>>>>>> Stashed changes
 
-namespace TownOfUs.CrewmateRoles.AltruistMod
+namespace TownOfUsFusion.CrewmateRoles.AltruistMod
 {
     public class Coroutine
     {
         public static Dictionary<PlayerControl, ArrowBehaviour> Revived = new();
 <<<<<<< Updated upstream
-        public static Sprite Sprite => TownOfUs.Arrow;
+        public static Sprite Sprite => TownOfUsFusion.Arrow;
 
         public static IEnumerator AltruistRevive(DeadBody target, Altruist role)
         {

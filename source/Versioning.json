@@ -3,20 +3,13 @@
     "InternalVersions": { // Keep internal versions in order if multiple
       "50595550": "2023.11.28"
     },
-<<<<<<< Updated upstream
-    "ModVersion": "5.0.3"
-=======
     "ModVersion": "0.3.0"
->>>>>>> Stashed changes
   },
   {
     "InternalVersions": {
       "50603750": "2024.6.4",
       "50603650": "2024.3.5"
     },
-<<<<<<< Updated upstream
-    "ModVersion": "5.0.4"
-=======
     "ModVersion": "0.3.6"
   },
   {
@@ -36,6 +29,5 @@
       "50614900": "2024.10.29"
     },
     "ModVersion": "0.4.0"
->>>>>>> Stashed changes
   }
 ]

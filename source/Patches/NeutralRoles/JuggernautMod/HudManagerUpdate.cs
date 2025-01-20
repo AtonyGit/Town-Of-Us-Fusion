@@ -1,8 +1,8 @@
 using HarmonyLib;
 <<<<<<< Updated upstream
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 
-namespace TownOfUs.NeutralRoles.JuggernautMod
+namespace TownOfUsFusion.NeutralRoles.JuggernautMod
 =======
 using System.Linq;
 using TownOfUsFusion.Roles;

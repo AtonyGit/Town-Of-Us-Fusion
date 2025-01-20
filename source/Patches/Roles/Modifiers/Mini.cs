@@ -1,9 +1,9 @@
-﻿using TownOfUs.Roles.Modifiers;
-using TownOfUs.Roles;
-using TownOfUs.Extensions;
+﻿using TownOfUsFusion.Roles.Modifiers;
+using TownOfUsFusion.Roles;
+using TownOfUsFusion.Extensions;
 using UnityEngine;
 
-namespace TownOfUs.Roles.Modifiers
+namespace TownOfUsFusion.Roles.Modifiers
 {
     public class Mini : Modifier, IVisualAlteration
     {

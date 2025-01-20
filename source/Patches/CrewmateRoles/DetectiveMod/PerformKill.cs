@@ -1,9 +1,9 @@
 ﻿using System;
 using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using UnityEngine;
 <<<<<<< Updated upstream
-using TownOfUs.CrewmateRoles.MedicMod;
+using TownOfUsFusion.CrewmateRoles.MedicMod;
 using Reactor.Utilities;
 using AmongUs.GameOptions;
 =======
@@ -12,7 +12,7 @@ using AmongUs.GameOptions;
 using TownOfUsFusion.Extensions;
 >>>>>>> Stashed changes
 
-namespace TownOfUs.CrewmateRoles.DetectiveMod
+namespace TownOfUsFusion.CrewmateRoles.DetectiveMod
 {
     [HarmonyPatch(typeof(KillButton), nameof(KillButton.DoClick))]
     public class PerformKill

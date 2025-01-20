@@ -1,10 +1,10 @@
 using System;
 using HarmonyLib;
 <<<<<<< Updated upstream
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using AmongUs.GameOptions;
 
-namespace TownOfUs.NeutralRoles.JuggernautMod
+namespace TownOfUsFusion.NeutralRoles.JuggernautMod
 =======
 using TownOfUsFusion.Roles;
 using AmongUs.GameOptions;

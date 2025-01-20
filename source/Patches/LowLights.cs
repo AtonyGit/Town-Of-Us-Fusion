@@ -1,15 +1,15 @@
 using AmongUs.GameOptions;
 using HarmonyLib;
 <<<<<<< Updated upstream
-using TownOfUs.Extensions;
-using TownOfUs.Roles;
+using TownOfUsFusion.Extensions;
+using TownOfUsFusion.Roles;
 =======
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;
 >>>>>>> Stashed changes
 using UnityEngine;
 
-namespace TownOfUs
+namespace TownOfUsFusion
 {
     [HarmonyPatch(typeof(ShipStatus), nameof(ShipStatus.CalculateLightRadius))]
     public static class LowLights

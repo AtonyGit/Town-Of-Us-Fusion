@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using TMPro;
-using TownOfUs.CrewmateRoles.TrapperMod;
+using TownOfUsFusion.CrewmateRoles.TrapperMod;
 using UnityEngine;
 
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 {
     public class Trapper : Role
     {
 <<<<<<< Updated upstream
-        public static Material trapMaterial = TownOfUs.bundledAssets.Get<Material>("trap");
+        public static Material trapMaterial = TownOfUsFusion.bundledAssets.Get<Material>("trap");
 =======
         public static Material trapMaterial = TownOfUsFusion.bundledAssets.Get<Material>("trap");
 >>>>>>> Stashed changes

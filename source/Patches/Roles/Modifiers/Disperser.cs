@@ -8,13 +8,13 @@ using Object = UnityEngine.Object;
 using Reactor.Networking.Extensions;
 using System;
 <<<<<<< Updated upstream
-using TownOfUs.Patches;
+using TownOfUsFusion.Patches;
 =======
 using TownOfUsFusion.Patches;
 using TownOfUsFusion.Modifiers.ShyMod;
 >>>>>>> Stashed changes
 
-namespace TownOfUs.Roles.Modifiers
+namespace TownOfUsFusion.Roles.Modifiers
 {
     public class Disperser : Modifier
     {
@@ -31,8 +31,8 @@ namespace TownOfUs.Roles.Modifiers
             ModifierType = ModifierEnum.Disperser;
 
 <<<<<<< Updated upstream
-            Logger<TownOfUs>.Info("DISPERSER -==-=-=-=-=-=-=-=-=----------");
-            if (PlayerControl.LocalPlayer == player) Logger<TownOfUs>.Info("ME -==-=-=-=-=-=-=-=-=----------");
+            Logger<TownOfUsFusion>.Info("DISPERSER -==-=-=-=-=-=-=-=-=----------");
+            if (PlayerControl.LocalPlayer == player) Logger<TownOfUsFusion>.Info("ME -==-=-=-=-=-=-=-=-=----------");
 =======
             Logger<TownOfUsFusion>.Info("DISPERSER -==-=-=-=-=-=-=-=-=----------");
             if (PlayerControl.LocalPlayer == player) Logger<TownOfUsFusion>.Info("ME -==-=-=-=-=-=-=-=-=----------");

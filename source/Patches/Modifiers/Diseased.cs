@@ -1,6 +1,6 @@
 using HarmonyLib;
 
-namespace TownOfUs.Modifiers
+namespace TownOfUsFusion.Modifiers
 {
     public class Diseased
     {

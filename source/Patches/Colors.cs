@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 <<<<<<< Updated upstream
-namespace TownOfUs.Patches
+namespace TownOfUsFusion.Patches
 =======
 namespace TownOfUsFusion.Patches
 >>>>>>> Stashed changes

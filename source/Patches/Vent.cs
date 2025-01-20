@@ -1,16 +1,16 @@
 using HarmonyLib;
-using TownOfUs.Extensions;
-using TownOfUs.Roles;
+using TownOfUsFusion.Extensions;
+using TownOfUsFusion.Roles;
 using UnityEngine;
 using AmongUs.GameOptions;
 <<<<<<< Updated upstream
-using TownOfUs.Patches;
+using TownOfUsFusion.Patches;
 =======
 using TownOfUsFusion.Patches;
 using System.Linq;
 >>>>>>> Stashed changes
 
-namespace TownOfUs
+namespace TownOfUsFusion
 {
     [HarmonyPatch(typeof(HudManager))]
     public static class HudManagerVentPatch

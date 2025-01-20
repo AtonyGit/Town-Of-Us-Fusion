@@ -7,12 +7,12 @@ using System.Linq;
 using Reactor.Utilities;
 using Reactor.Utilities.Extensions;
 <<<<<<< Updated upstream
-using TownOfUs.CrewmateRoles.MedicMod;
-using TownOfUs.Extensions;
-using TownOfUs.Patches;
-using TownOfUs.Roles;
-using TownOfUs.Roles.Cultist;
-using TownOfUs.Roles.Modifiers;
+using TownOfUsFusion.CrewmateRoles.MedicMod;
+using TownOfUsFusion.Extensions;
+using TownOfUsFusion.Patches;
+using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Cultist;
+using TownOfUsFusion.Roles.Modifiers;
 =======
 using TownOfUsFusion.CrewmateRoles.MedicMod;
 using TownOfUsFusion.Extensions;
@@ -24,15 +24,15 @@ using Il2CppInterop.Runtime.InteropTypes;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using UnityEngine;
 using Object = UnityEngine.Object;
-using PerformKill = TownOfUs.Modifiers.UnderdogMod.PerformKill;
+using PerformKill = TownOfUsFusion.Modifiers.UnderdogMod.PerformKill;
 using Random = UnityEngine.Random;
 using AmongUs.GameOptions;
 <<<<<<< Updated upstream
-using TownOfUs.CrewmateRoles.TrapperMod;
-using TownOfUs.ImpostorRoles.BomberMod;
-using TownOfUs.CrewmateRoles.VampireHunterMod;
-using TownOfUs.CrewmateRoles.ImitatorMod;
-using TownOfUs.CrewmateRoles.AurialMod;
+using TownOfUsFusion.CrewmateRoles.TrapperMod;
+using TownOfUsFusion.ImpostorRoles.BomberMod;
+using TownOfUsFusion.CrewmateRoles.VampireHunterMod;
+using TownOfUsFusion.CrewmateRoles.ImitatorMod;
+using TownOfUsFusion.CrewmateRoles.AurialMod;
 using Reactor.Networking;
 using Reactor.Networking.Extensions;
 =======
@@ -46,7 +46,7 @@ using static TownOfUsFusion.Roles.Glitch;
 using TownOfUsFusion.Patches.NeutralRoles;
 >>>>>>> Stashed changes
 
-namespace TownOfUs
+namespace TownOfUsFusion
 {
     [HarmonyPatch]
     public static class Utils
@@ -2005,7 +2005,7 @@ namespace TownOfUs
                 else
                 {
 <<<<<<< Updated upstream
-                    Logger<TownOfUs>.Error($"unknown data type entered for rpc write: item - {nameof(item)}, {item.GetType().FullName}, rpc - {data[0]}");
+                    Logger<TownOfUsFusion>.Error($"unknown data type entered for rpc write: item - {nameof(item)}, {item.GetType().FullName}, rpc - {data[0]}");
 =======
                     Logger<TownOfUsFusion>.Error($"unknown data type entered for rpc write: item - {nameof(item)}, {item.GetType().FullName}, rpc - {data[0]}");
 >>>>>>> Stashed changes
@@ -2355,7 +2355,7 @@ namespace TownOfUs
                 var escapist = Role.GetRole<Escapist>(PlayerControl.LocalPlayer);
                 escapist.LastEscape = DateTime.UtcNow;
 <<<<<<< Updated upstream
-                escapist.EscapeButton.graphic.sprite = TownOfUs.MarkSprite;
+                escapist.EscapeButton.graphic.sprite = TownOfUsFusion.MarkSprite;
 =======
                 escapist.EscapeButton.graphic.sprite = TownOfUsFusion.MarkSprite;
 >>>>>>> Stashed changes
@@ -2378,7 +2378,7 @@ namespace TownOfUs
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Bomber))
             {
                 var bomber = Role.GetRole<Bomber>(PlayerControl.LocalPlayer);
-                bomber.PlantButton.graphic.sprite = TownOfUs.PlantSprite;
+                bomber.PlantButton.graphic.sprite = TownOfUsFusion.PlantSprite;
 =======
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Hypnotist))
             {
@@ -2417,7 +2417,7 @@ namespace TownOfUs
                 var morphling = Role.GetRole<Morphling>(PlayerControl.LocalPlayer);
                 morphling.LastMorphed = DateTime.UtcNow;
 <<<<<<< Updated upstream
-                morphling.MorphButton.graphic.sprite = TownOfUs.SampleSprite;
+                morphling.MorphButton.graphic.sprite = TownOfUsFusion.SampleSprite;
 =======
                 morphling.MorphButton.graphic.sprite = TownOfUsFusion.SampleSprite;
 >>>>>>> Stashed changes
@@ -2438,7 +2438,7 @@ namespace TownOfUs
                 var undertaker = Role.GetRole<Undertaker>(PlayerControl.LocalPlayer);
                 undertaker.LastDragged = DateTime.UtcNow;
 <<<<<<< Updated upstream
-                undertaker.DragDropButton.graphic.sprite = TownOfUs.DragSprite;
+                undertaker.DragDropButton.graphic.sprite = TownOfUsFusion.DragSprite;
                 undertaker.CurrentlyDragging = null;
             }
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Necromancer))

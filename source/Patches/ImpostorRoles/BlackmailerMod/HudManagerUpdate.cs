@@ -1,18 +1,18 @@
 using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using UnityEngine;
 using System.Linq;
-using TownOfUs.Extensions;
+using TownOfUsFusion.Extensions;
 using AmongUs.GameOptions;
 using TownOfUsFusion.Roles.Modifiers;
 
-namespace TownOfUs.ImpostorRoles.BlackmailerMod
+namespace TownOfUsFusion.ImpostorRoles.BlackmailerMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class HudManagerUpdate
     {
 <<<<<<< Updated upstream
-        public static Sprite Blackmail => TownOfUs.BlackmailSprite;
+        public static Sprite Blackmail => TownOfUsFusion.BlackmailSprite;
 =======
         public static Sprite Blackmail => TownOfUsFusion.BlackmailSprite;
 >>>>>>> Stashed changes

@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 using TownOfUsFusion.Extensions;
 
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 {
     public class Swapper : Role
     {

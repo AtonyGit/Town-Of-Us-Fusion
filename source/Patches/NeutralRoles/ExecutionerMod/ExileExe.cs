@@ -2,12 +2,12 @@ using System;
 using HarmonyLib;
 using UnityEngine;
 using Object = UnityEngine.Object;
-using TownOfUs.Patches;
-using TownOfUs.Roles;
-using TownOfUs.CrewmateRoles.AltruistMod;
+using TownOfUsFusion.Patches;
+using TownOfUsFusion.Roles;
+using TownOfUsFusion.CrewmateRoles.AltruistMod;
 
 <<<<<<< Updated upstream
-namespace TownOfUs.NeutraleRoles.ExecutionerMod
+namespace TownOfUsFusion.NeutraleRoles.ExecutionerMod
 =======
 namespace TownOfUsFusion.NeutralRoles.ExecutionerMod
 >>>>>>> Stashed changes

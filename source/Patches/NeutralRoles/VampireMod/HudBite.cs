@@ -1,12 +1,12 @@
 ﻿using System.Linq;
 using HarmonyLib;
 <<<<<<< Updated upstream
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 =======
 using TownOfUsFusion.Roles;
 >>>>>>> Stashed changes
 
-namespace TownOfUs.NeutralRoles.VampireMod
+namespace TownOfUsFusion.NeutralRoles.VampireMod
 {
     [HarmonyPatch(typeof(HudManager))]
     public class HudBite

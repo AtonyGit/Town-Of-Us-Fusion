@@ -1,10 +1,10 @@
 using System.Linq;
 using HarmonyLib;
-using TownOfUs.Extensions;
-using TownOfUs.Roles;
+using TownOfUsFusion.Extensions;
+using TownOfUsFusion.Roles;
 using UnityEngine;
 
-namespace TownOfUs.NeutralRoles.GlitchMod
+namespace TownOfUsFusion.NeutralRoles.GlitchMod
 {
     [HarmonyPatch(typeof(EndGameManager), nameof(EndGameManager.Start))]
     public class Outro

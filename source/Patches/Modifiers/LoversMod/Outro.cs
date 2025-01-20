@@ -2,12 +2,12 @@ using System.Linq;
 using HarmonyLib;
 using TMPro;
 <<<<<<< Updated upstream
-using TownOfUs.Extensions;
-using TownOfUs.Roles;
-using TownOfUs.Roles.Modifiers;
+using TownOfUsFusion.Extensions;
+using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Modifiers;
 using UnityEngine;
 
-namespace TownOfUs.Modifiers.LoversMod
+namespace TownOfUsFusion.Modifiers.LoversMod
 =======
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;

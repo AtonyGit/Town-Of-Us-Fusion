@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
 using TMPro;
-using TownOfUs.Extensions;
+using TownOfUsFusion.Extensions;
 
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 {
     public class GuardianAngel : Role
     {

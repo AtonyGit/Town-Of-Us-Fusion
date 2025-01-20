@@ -2,7 +2,7 @@ using HarmonyLib;
 using System.Linq;
 using UnityEngine;
 
-namespace TownOfUs.NeutralRoles.PhantomMod
+namespace TownOfUsFusion.NeutralRoles.PhantomMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class RepickPhantom

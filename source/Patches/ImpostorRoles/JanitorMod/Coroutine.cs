@@ -1,8 +1,8 @@
 using System.Collections;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using UnityEngine;
 
-namespace TownOfUs.ImpostorRoles.JanitorMod
+namespace TownOfUsFusion.ImpostorRoles.JanitorMod
 {
     public class Coroutine
     {

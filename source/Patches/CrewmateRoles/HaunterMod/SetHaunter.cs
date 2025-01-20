@@ -1,20 +1,20 @@
 using System;
 using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 <<<<<<< Updated upstream
-using TownOfUs.Patches;
-using TownOfUs.CrewmateRoles.AurialMod;
-using TownOfUs.Patches.ScreenEffects;
+using TownOfUsFusion.Patches;
+using TownOfUsFusion.CrewmateRoles.AurialMod;
+using TownOfUsFusion.Patches.ScreenEffects;
 =======
 using TownOfUsFusion.Patches;
 >>>>>>> Stashed changes
 using System.Linq;
 using System.Collections.Generic;
 
-namespace TownOfUs.CrewmateRoles.HaunterMod
+namespace TownOfUsFusion.CrewmateRoles.HaunterMod
 {
     [HarmonyPatch(typeof(AirshipExileController), nameof(AirshipExileController.WrapUpAndSpawn))]
     public static class AirshipExileController_WrapUpAndSpawn

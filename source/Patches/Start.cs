@@ -2,11 +2,11 @@ using System;
 using HarmonyLib;
 using Hazel;
 <<<<<<< Updated upstream
-using TownOfUs.NeutralRoles.ExecutionerMod;
-using TownOfUs.NeutralRoles.GuardianAngelMod;
-using TownOfUs.Roles;
-using TownOfUs.Roles.Cultist;
-using TownOfUs.Roles.Modifiers;
+using TownOfUsFusion.NeutralRoles.ExecutionerMod;
+using TownOfUsFusion.NeutralRoles.GuardianAngelMod;
+using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Cultist;
+using TownOfUsFusion.Roles.Modifiers;
 =======
 using TownOfUsFusion.NeutralRoles.ExecutionerMod;
 using TownOfUsFusion.NeutralRoles.GuardianAngelMod;
@@ -16,13 +16,13 @@ using TownOfUsFusion.Roles.Modifiers;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace TownOfUs.Patches
+namespace TownOfUsFusion.Patches
 {
     [HarmonyPatch(typeof(IntroCutscene._CoBegin_d__35), nameof(IntroCutscene._CoBegin_d__35.MoveNext))]
     public static class Start
     {
 <<<<<<< Updated upstream
-        public static Sprite Sprite => TownOfUs.Arrow;
+        public static Sprite Sprite => TownOfUsFusion.Arrow;
 =======
         public static Sprite Sprite => TownOfUsFusion.Arrow;
 >>>>>>> Stashed changes

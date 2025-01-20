@@ -1,10 +1,10 @@
 using System.Linq;
 using HarmonyLib;
-using TownOfUs.Roles.Modifiers;
+using TownOfUsFusion.Roles.Modifiers;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace TownOfUs.Modifiers.RadarMod
+namespace TownOfUsFusion.Modifiers.RadarMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class UpdateArrow

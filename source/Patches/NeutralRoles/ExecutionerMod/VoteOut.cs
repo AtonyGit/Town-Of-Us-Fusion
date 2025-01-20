@@ -1,10 +1,10 @@
 using HarmonyLib;
 using Reactor.Utilities;
 using System.Linq;
-using TownOfUs.Patches.NeutralRoles;
-using TownOfUs.Roles;
+using TownOfUsFusion.Patches.NeutralRoles;
+using TownOfUsFusion.Roles;
 
-namespace TownOfUs.NeutralRoles.ExecutionerMod
+namespace TownOfUsFusion.NeutralRoles.ExecutionerMod
 {
 <<<<<<< Updated upstream
     [HarmonyPatch(typeof(ExileController), nameof(ExileController.Begin))]

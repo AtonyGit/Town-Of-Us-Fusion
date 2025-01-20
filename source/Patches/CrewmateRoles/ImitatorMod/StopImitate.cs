@@ -1,16 +1,16 @@
 using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using UnityEngine;
-using TownOfUs.CrewmateRoles.InvestigatorMod;
-using TownOfUs.CrewmateRoles.TrapperMod;
+using TownOfUsFusion.CrewmateRoles.InvestigatorMod;
+using TownOfUsFusion.CrewmateRoles.TrapperMod;
 using System.Collections.Generic;
 <<<<<<< Updated upstream
-using TownOfUs.CrewmateRoles.AurialMod;
-using TownOfUs.Patches.ScreenEffects;
+using TownOfUsFusion.CrewmateRoles.AurialMod;
+using TownOfUsFusion.Patches.ScreenEffects;
 =======
 >>>>>>> Stashed changes
 
-namespace TownOfUs.CrewmateRoles.ImitatorMod
+namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
 {
 
     [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.StartMeeting))]

@@ -1,7 +1,7 @@
 <<<<<<< Updated upstream
 ﻿using HarmonyLib;
-using TownOfUs.Extensions;
-using TownOfUs.Roles;
+using TownOfUsFusion.Extensions;
+using TownOfUsFusion.Roles;
 =======
 ﻿using AmongUs.GameOptions;
 using HarmonyLib;
@@ -10,7 +10,7 @@ using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;
 >>>>>>> Stashed changes
 
-namespace TownOfUs.CrewmateRoles.SheriffMod
+namespace TownOfUsFusion.CrewmateRoles.SheriffMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class HUDKill

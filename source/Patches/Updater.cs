@@ -12,14 +12,14 @@ using System.Collections.Generic;
 using Twitch;
 using Reactor.Utilities;
 
-namespace TownOfUs
+namespace TownOfUsFusion
 {
     [HarmonyPatch(typeof(MainMenuManager), nameof(MainMenuManager.Start))]
     public class ModUpdaterButton
     {
 <<<<<<< Updated upstream
-        private static Sprite TOUUpdateSprite => TownOfUs.UpdateTOUButton;
-        private static Sprite SubmergedUpdateSprite => TownOfUs.UpdateSubmergedButton;
+        private static Sprite TOUUpdateSprite => TownOfUsFusion.UpdateTOUButton;
+        private static Sprite SubmergedUpdateSprite => TownOfUsFusion.UpdateSubmergedButton;
 =======
         private static Sprite TOUUpdateSprite => TownOfUsFusion.UpdateTOUButton;
         private static Sprite SubmergedUpdateSprite => TownOfUsFusion.UpdateSubmergedButton;
@@ -30,7 +30,7 @@ namespace TownOfUs
             ModUpdater.LaunchUpdater();
 
 <<<<<<< Updated upstream
-            var data = GetVersioning().FirstOrDefault(x => x.ModVersion.Equals(TownOfUs.VersionString));
+            var data = GetVersioning().FirstOrDefault(x => x.ModVersion.Equals(TownOfUsFusion.VersionString));
 =======
             var data = GetVersioning().FirstOrDefault(x => x.ModVersion.Equals(TownOfUsFusion.VersionString));
 >>>>>>> Stashed changes
@@ -43,7 +43,7 @@ namespace TownOfUs
                     string action = AUversion > RequiredVersions.Keys.Max() ? "downgrade" : "update";
                     string info =
 <<<<<<< Updated upstream
-                        $"ALERT\nTown of Us {TownOfUs.VersionString} requires {RequiredVersions.Values.Last()}\nyou have {Application.version}\nPlease {action} your among us version"
+                        $"ALERT\nTown of Us {TownOfUsFusion.VersionString} requires {RequiredVersions.Values.Last()}\nyou have {Application.version}\nPlease {action} your among us version"
 =======
                         $"ALERT\nTown of Us {TownOfUsFusion.VersionString} requires {RequiredVersions.Values.Last()}\nyou have {Application.version}\nPlease {action} your among us version"
 >>>>>>> Stashed changes
@@ -142,7 +142,7 @@ namespace TownOfUs
             DefaultRequestHeaders = 
             {
 <<<<<<< Updated upstream
-                {"User-Agent", "TownOfUs Updater"}
+                {"User-Agent", "TownOfUsFusion Updater"}
 =======
                 {"User-Agent", "TownOfUsFusion Updater"}
 >>>>>>> Stashed changes
@@ -160,7 +160,7 @@ namespace TownOfUs
             string codeBase = Assembly.GetExecutingAssembly().Location;
             UriBuilder uri = new(codeBase);
 <<<<<<< Updated upstream
-            string submergedPath = Uri.UnescapeDataString(uri.Path.Replace("TownOfUs", "Submerged"));
+            string submergedPath = Uri.UnescapeDataString(uri.Path.Replace("TownOfUsFusion", "Submerged"));
 =======
             string submergedPath = Uri.UnescapeDataString(uri.Path.Replace("TownOfUsFusion", "Submerged"));
 >>>>>>> Stashed changes
@@ -230,7 +230,7 @@ namespace TownOfUs
             catch (Exception e)
             {
 <<<<<<< Updated upstream
-                PluginSingleton<TownOfUs>.Instance.Log.LogMessage("Exception occured when clearing old versions:\n" + e);
+                PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("Exception occured when clearing old versions:\n" + e);
 =======
                 PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("Exception occured when clearing old versions:\n" + e);
 >>>>>>> Stashed changes
@@ -239,7 +239,7 @@ namespace TownOfUs
         public static async Task<bool> checkForUpdate(string updateType = "TOU")
         {
 <<<<<<< Updated upstream
-            //Checks the github api for Town Of Us tags. Compares current version (from VersionString in TownOfUs.cs) to the latest tag version(on GitHub)
+            //Checks the github api for Town Of Us tags. Compares current version (from VersionString in TownOfUsFusion.cs) to the latest tag version(on GitHub)
 =======
             //Checks the github api for Town Of Us tags. Compares current version (from VersionString in TownOfUsFusion.cs) to the latest tag version(on GitHub)
 >>>>>>> Stashed changes
@@ -263,7 +263,7 @@ namespace TownOfUs
                 if (response.StatusCode != HttpStatusCode.OK || response.Content == null)
                 {
 <<<<<<< Updated upstream
-                    PluginSingleton<TownOfUs>.Instance.Log.LogMessage("Server returned no data: " + response.StatusCode.ToString());
+                    PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("Server returned no data: " + response.StatusCode.ToString());
 =======
                     PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("Server returned no data: " + response.StatusCode.ToString());
 >>>>>>> Stashed changes
@@ -283,7 +283,7 @@ namespace TownOfUs
                 if (updateType == "TOU")
                 { //Check TOU version
 <<<<<<< Updated upstream
-                    diff = TownOfUs.Version.CompareTo(ver);
+                    diff = TownOfUsFusion.Version.CompareTo(ver);
 =======
                     diff = TownOfUsFusion.Version.CompareTo(ver);
 >>>>>>> Stashed changes
@@ -328,7 +328,7 @@ namespace TownOfUs
             catch (Exception ex)
             {
 <<<<<<< Updated upstream
-                PluginSingleton<TownOfUs>.Instance.Log.LogMessage(ex);
+                PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage(ex);
 =======
                 PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage(ex);
 >>>>>>> Stashed changes
@@ -339,7 +339,7 @@ namespace TownOfUs
         public static async Task<bool> downloadUpdate(string updateType = "TOU")
         {
 <<<<<<< Updated upstream
-            //Downloads the new TownOfUs/Submerged dll from GitHub into the plugins folder
+            //Downloads the new TownOfUsFusion/Submerged dll from GitHub into the plugins folder
 =======
             //Downloads the new TownOfUsFusion/Submerged dll from GitHub into the plugins folder
 >>>>>>> Stashed changes
@@ -361,7 +361,7 @@ namespace TownOfUs
                 if (response.StatusCode != HttpStatusCode.OK || response.Content == null)
                 {
 <<<<<<< Updated upstream
-                    PluginSingleton<TownOfUs>.Instance.Log.LogMessage("Server returned no data: " + response.StatusCode.ToString());
+                    PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("Server returned no data: " + response.StatusCode.ToString());
 =======
                     PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("Server returned no data: " + response.StatusCode.ToString());
 >>>>>>> Stashed changes
@@ -373,7 +373,7 @@ namespace TownOfUs
                 if (updateType == "Submerged")
                 {
 <<<<<<< Updated upstream
-                    fullname = fullname.Replace("TownOfUs", "Submerged"); //TODO A better solution than this to correctly name the dll files
+                    fullname = fullname.Replace("TownOfUsFusion", "Submerged"); //TODO A better solution than this to correctly name the dll files
 =======
                     fullname = fullname.Replace("TownOfUsFusion", "Submerged"); //TODO A better solution than this to correctly name the dll files
 >>>>>>> Stashed changes
@@ -394,7 +394,7 @@ namespace TownOfUs
             catch (Exception ex)
             {
 <<<<<<< Updated upstream
-                PluginSingleton<TownOfUs>.Instance.Log.LogMessage(ex);
+                PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage(ex);
 =======
                 PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage(ex);
 >>>>>>> Stashed changes

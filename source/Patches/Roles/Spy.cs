@@ -1,5 +1,5 @@
 <<<<<<< Updated upstream
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 =======
 namespace TownOfUsFusion.Roles
 >>>>>>> Stashed changes

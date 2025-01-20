@@ -2,7 +2,7 @@ using System;
 using HarmonyLib;
 
 <<<<<<< Updated upstream
-namespace TownOfUs.Modifiers.LoversMod
+namespace TownOfUsFusion.Modifiers.LoversMod
 =======
 namespace TownOfUsFusion.Modifiers.LoversMod
 >>>>>>> Stashed changes

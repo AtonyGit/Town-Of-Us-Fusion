@@ -1,17 +1,17 @@
 ﻿using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using System.Linq;
-using TownOfUs.CrewmateRoles.MedicMod;
+using TownOfUsFusion.CrewmateRoles.MedicMod;
 
-namespace TownOfUs.CrewmateRoles.MysticMod
+namespace TownOfUsFusion.CrewmateRoles.MysticMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class HudManagerUpdate
     {
 <<<<<<< Updated upstream
-        public static Sprite Arrow => TownOfUs.Arrow;
+        public static Sprite Arrow => TownOfUsFusion.Arrow;
 =======
         public static Sprite Arrow => TownOfUsFusion.Arrow;
 >>>>>>> Stashed changes

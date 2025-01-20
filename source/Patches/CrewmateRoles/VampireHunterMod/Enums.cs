@@ -1,4 +1,4 @@
-namespace TownOfUs.CrewmateRoles.VampireHunterMod
+namespace TownOfUsFusion.CrewmateRoles.VampireHunterMod
 {
     public enum BecomeEnum
     {

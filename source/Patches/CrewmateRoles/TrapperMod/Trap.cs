@@ -2,11 +2,11 @@
 using Reactor.Utilities;
 using System.Collections;
 using System.Collections.Generic;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace TownOfUs.CrewmateRoles.TrapperMod
+namespace TownOfUsFusion.CrewmateRoles.TrapperMod
 {
     public class Trap
     {
@@ -28,7 +28,7 @@ namespace TownOfUs.CrewmateRoles.TrapperMod
             {
                 if (player.Data.IsDead) continue;
 <<<<<<< Updated upstream
-                //PluginSingleton<TownOfUs>.Instance.Log.LogMessage($"player with byte {player.PlayerId} is {Vector2.Distance(transform.position, player.GetTruePosition())} away");
+                //PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"player with byte {player.PlayerId} is {Vector2.Distance(transform.position, player.GetTruePosition())} away");
 =======
                 //PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"player with byte {player.PlayerId} is {Vector2.Distance(transform.position, player.GetTruePosition())} away");
 >>>>>>> Stashed changes
@@ -45,7 +45,7 @@ namespace TownOfUs.CrewmateRoles.TrapperMod
                 {
                     players[entry.PlayerId] += Time.deltaTime;
 <<<<<<< Updated upstream
-                    //PluginSingleton<TownOfUs>.Instance.Log.LogMessage($"player with byte {entry} is logged with time {players[entry]}");
+                    //PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"player with byte {entry} is logged with time {players[entry]}");
 =======
                     //PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"player with byte {entry} is logged with time {players[entry]}");
 >>>>>>> Stashed changes

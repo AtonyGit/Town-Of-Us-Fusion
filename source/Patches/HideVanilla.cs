@@ -1,7 +1,7 @@
 ﻿using HarmonyLib;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 
-namespace TownOfUs
+namespace TownOfUsFusion
 {
     [HarmonyPatch]
 

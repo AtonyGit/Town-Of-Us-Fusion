@@ -11,7 +11,7 @@ using Il2CppSystem.Text;
 using Reactor.Utilities;
 using System.Collections;
 
-namespace TownOfUs.CustomOption
+namespace TownOfUsFusion.CustomOption
 {
     public static class Patches
     {
@@ -253,17 +253,17 @@ namespace TownOfUs.CustomOption
                 switch (index)
                 {
                     default:
-                        return TownOfUs.SettingsButtonSprite;
+                        return TownOfUsFusion.SettingsButtonSprite;
                     case 0:
-                        return TownOfUs.SettingsButtonSprite;
+                        return TownOfUsFusion.SettingsButtonSprite;
                     case 1:
-                        return TownOfUs.CrewSettingsButtonSprite;
+                        return TownOfUsFusion.CrewSettingsButtonSprite;
                     case 2:
-                        return TownOfUs.NeutralSettingsButtonSprite;
+                        return TownOfUsFusion.NeutralSettingsButtonSprite;
                     case 3:
-                        return TownOfUs.ImposterSettingsButtonSprite;
+                        return TownOfUsFusion.ImposterSettingsButtonSprite;
                     case 4:
-                        return TownOfUs.ModifierSettingsButtonSprite;
+                        return TownOfUsFusion.ModifierSettingsButtonSprite;
                 }
             }
         }

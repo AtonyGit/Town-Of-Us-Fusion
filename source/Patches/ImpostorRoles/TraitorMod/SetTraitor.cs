@@ -1,24 +1,24 @@
 using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using System.Linq;
-using TownOfUs.CrewmateRoles.InvestigatorMod;
-using TownOfUs.CrewmateRoles.SnitchMod;
-using TownOfUs.Extensions;
+using TownOfUsFusion.CrewmateRoles.InvestigatorMod;
+using TownOfUsFusion.CrewmateRoles.SnitchMod;
+using TownOfUsFusion.Extensions;
 using UnityEngine;
 using Reactor.Utilities;
-using TownOfUs.Patches;
+using TownOfUsFusion.Patches;
 using AmongUs.GameOptions;
 <<<<<<< Updated upstream
-using TownOfUs.CrewmateRoles.ImitatorMod;
-using TownOfUs.Roles.Modifiers;
-using TownOfUs.CrewmateRoles.AurialMod;
-using TownOfUs.Patches.ScreenEffects;
+using TownOfUsFusion.CrewmateRoles.ImitatorMod;
+using TownOfUsFusion.Roles.Modifiers;
+using TownOfUsFusion.CrewmateRoles.AurialMod;
+using TownOfUsFusion.Patches.ScreenEffects;
 =======
 using TownOfUsFusion.CrewmateRoles.ImitatorMod;
 using TownOfUsFusion.Roles.Modifiers;
 >>>>>>> Stashed changes
 
-namespace TownOfUs.ImpostorRoles.TraitorMod
+namespace TownOfUsFusion.ImpostorRoles.TraitorMod
 {
     [HarmonyPatch(typeof(AirshipExileController), nameof(AirshipExileController.WrapUpAndSpawn))]
     public static class AirshipExileController_WrapUpAndSpawn
@@ -31,7 +31,7 @@ namespace TownOfUs.ImpostorRoles.TraitorMod
     {
         public static PlayerControl WillBeTraitor;
 <<<<<<< Updated upstream
-        public static Sprite Sprite => TownOfUs.Arrow;
+        public static Sprite Sprite => TownOfUsFusion.Arrow;
 
         public static void ExileControllerPostfix(ExileController __instance)
         {

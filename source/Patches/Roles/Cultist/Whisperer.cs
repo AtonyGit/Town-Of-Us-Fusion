@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace TownOfUs.Roles.Cultist
+namespace TownOfUsFusion.Roles.Cultist
 {
     public class Whisperer : Role
     {

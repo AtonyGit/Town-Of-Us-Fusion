@@ -1,7 +1,7 @@
 ﻿using HarmonyLib;
 using System.Linq;
 
-namespace TownOfUs.Patches
+namespace TownOfUsFusion.Patches
 {
     [HarmonyPatch(typeof(OverlayKillAnimation), nameof(OverlayKillAnimation.Initialize))]
     static class OverlayKillAnimationPatch

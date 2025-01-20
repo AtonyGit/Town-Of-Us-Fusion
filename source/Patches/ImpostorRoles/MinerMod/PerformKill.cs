@@ -1,12 +1,12 @@
 using System;
 using System.Linq;
 using HarmonyLib;
-using TownOfUs.Patches;
-using TownOfUs.Roles;
+using TownOfUsFusion.Patches;
+using TownOfUsFusion.Roles;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace TownOfUs.ImpostorRoles.MinerMod
+namespace TownOfUsFusion.ImpostorRoles.MinerMod
 {
     [HarmonyPatch(typeof(KillButton), nameof(KillButton.DoClick))]
     public class PlaceVent

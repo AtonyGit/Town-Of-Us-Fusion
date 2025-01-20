@@ -1,4 +1,4 @@
-namespace TownOfUs.CustomOption
+namespace TownOfUsFusion.CustomOption
 {
     public class CustomHeaderOption : CustomOption
     {

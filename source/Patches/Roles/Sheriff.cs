@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using TownOfUsFusion.Extensions;
 
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 {
     public class Sheriff : Role
     {

@@ -1,13 +1,13 @@
 using HarmonyLib;
 using UnityEngine;
 
-namespace TownOfUs
+namespace TownOfUsFusion
 {
     [HarmonyPatch(typeof(MainMenuManager), nameof(MainMenuManager.Start))]
     public static class LogoPatch
     {
 <<<<<<< Updated upstream
-        private static Sprite Sprite => TownOfUs.ToUBanner;
+        private static Sprite Sprite => TownOfUsFusion.ToUBanner;
         static void Postfix(PingTracker __instance)
         {
             var touLogo = new GameObject("bannerLogo_TownOfUs");

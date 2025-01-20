@@ -1,13 +1,13 @@
 using Reactor.Utilities;
 using System;
 using System.Collections;
-using TownOfUs.Extensions;
-using TownOfUs.ImpostorRoles.BomberMod;
+using TownOfUsFusion.Extensions;
+using TownOfUsFusion.ImpostorRoles.BomberMod;
 using UnityEngine;
-using TownOfUs.Modifiers.UnderdogMod;
+using TownOfUsFusion.Modifiers.UnderdogMod;
 using Object = UnityEngine.Object;
 
-namespace TownOfUs.Roles.Modifiers
+namespace TownOfUsFusion.Roles.Modifiers
 {
     public class Aftermath : Modifier
     {
@@ -107,7 +107,7 @@ namespace TownOfUs.Roles.Modifiers
                     Utils.Rpc(CustomRPC.Morph, PlayerControl.LocalPlayer.PlayerId, corpse.PlayerId);
                     morphling.TimeRemaining = CustomGameOptions.MorphlingDuration;
 <<<<<<< Updated upstream
-                    if (morphling.SampledPlayer == null) morphling._morphButton.graphic.sprite = TownOfUs.MorphSprite;
+                    if (morphling.SampledPlayer == null) morphling._morphButton.graphic.sprite = TownOfUsFusion.MorphSprite;
                     morphling.SampledPlayer = corpse;
                     morphling.MorphedPlayer = corpse;
                     Utils.Morph(morphling.Player, corpse, true);
@@ -159,7 +159,7 @@ namespace TownOfUs.Roles.Modifiers
                 undertaker.CurrentlyDragging = db;
                 ImpostorRoles.UndertakerMod.KillButtonTarget.SetTarget(undertaker._dragDropButton, null, undertaker);
 <<<<<<< Updated upstream
-                undertaker._dragDropButton.graphic.sprite = TownOfUs.DropSprite;
+                undertaker._dragDropButton.graphic.sprite = TownOfUsFusion.DropSprite;
 =======
                 undertaker._dragDropButton.graphic.sprite = TownOfUsFusion.DropSprite;
 >>>>>>> Stashed changes
@@ -182,7 +182,7 @@ namespace TownOfUs.Roles.Modifiers
                 pos.z += 0.001f;
                 bomber.DetonatePoint = pos;
 <<<<<<< Updated upstream
-                bomber.PlantButton.graphic.sprite = TownOfUs.DetonateSprite;
+                bomber.PlantButton.graphic.sprite = TownOfUsFusion.DetonateSprite;
 =======
                 bomber.PlantButton.graphic.sprite = TownOfUsFusion.DetonateSprite;
 >>>>>>> Stashed changes

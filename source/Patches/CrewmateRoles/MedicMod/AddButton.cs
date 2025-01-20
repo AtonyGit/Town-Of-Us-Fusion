@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Linq;
 using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
-using TownOfUs.Extensions;
+using TownOfUsFusion.Extensions;
 
-namespace TownOfUs.CrewmateRoles.MedicMod
+namespace TownOfUsFusion.CrewmateRoles.MedicMod
 {
     [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.Start))]
     public class AddButton
     {
 <<<<<<< Updated upstream
-        private static Sprite LighterSprite => TownOfUs.LighterSprite;
-        public static Sprite DarkerSprite => TownOfUs.DarkerSprite;
+        private static Sprite LighterSprite => TownOfUsFusion.LighterSprite;
+        public static Sprite DarkerSprite => TownOfUsFusion.DarkerSprite;
 =======
         private static Sprite LighterSprite => TownOfUsFusion.LighterSprite;
         public static Sprite DarkerSprite => TownOfUsFusion.DarkerSprite;

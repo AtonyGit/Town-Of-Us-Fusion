@@ -1,6 +1,6 @@
 using System;
 
-namespace TownOfUs.Roles.Modifiers
+namespace TownOfUsFusion.Roles.Modifiers
 {
     public class ButtonBarry : Modifier
     {

@@ -1,9 +1,9 @@
 using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using UnityEngine;
 using AmongUs.GameOptions;
 
-namespace TownOfUs.ImpostorRoles.UndertakerMod
+namespace TownOfUsFusion.ImpostorRoles.UndertakerMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class PlayerControlUpdate
@@ -21,15 +21,15 @@ namespace TownOfUs.ImpostorRoles.UndertakerMod
                 role.DragDropButton = Object.Instantiate(__instance.KillButton, __instance.KillButton.transform.parent);
                 role.DragDropButton.graphic.enabled = true;
 <<<<<<< Updated upstream
-                role.DragDropButton.graphic.sprite = TownOfUs.DragSprite;
+                role.DragDropButton.graphic.sprite = TownOfUsFusion.DragSprite;
                 role.DragDropButton.gameObject.SetActive(false);
             }
-            if (role.DragDropButton.graphic.sprite != TownOfUs.DragSprite &&
-                role.DragDropButton.graphic.sprite != TownOfUs.DropSprite)
-                role.DragDropButton.graphic.sprite = TownOfUs.DragSprite;
+            if (role.DragDropButton.graphic.sprite != TownOfUsFusion.DragSprite &&
+                role.DragDropButton.graphic.sprite != TownOfUsFusion.DropSprite)
+                role.DragDropButton.graphic.sprite = TownOfUsFusion.DragSprite;
 
-            if (role.DragDropButton.graphic.sprite == TownOfUs.DropSprite && role.CurrentlyDragging == null)
-                role.DragDropButton.graphic.sprite = TownOfUs.DragSprite;
+            if (role.DragDropButton.graphic.sprite == TownOfUsFusion.DropSprite && role.CurrentlyDragging == null)
+                role.DragDropButton.graphic.sprite = TownOfUsFusion.DragSprite;
 =======
                 role.DragDropButton.graphic.sprite = TownOfUsFusion.DragSprite;
                 role.DragDropButton.gameObject.SetActive(false);
@@ -48,7 +48,7 @@ namespace TownOfUs.ImpostorRoles.UndertakerMod
 
 
 <<<<<<< Updated upstream
-            if (role.DragDropButton.graphic.sprite == TownOfUs.DragSprite)
+            if (role.DragDropButton.graphic.sprite == TownOfUsFusion.DragSprite)
 =======
             if (role.DragDropButton.graphic.sprite == TownOfUsFusion.DragSprite)
 >>>>>>> Stashed changes
@@ -84,7 +84,7 @@ namespace TownOfUs.ImpostorRoles.UndertakerMod
             }
 
 <<<<<<< Updated upstream
-            if (role.DragDropButton.graphic.sprite == TownOfUs.DragSprite)
+            if (role.DragDropButton.graphic.sprite == TownOfUsFusion.DragSprite)
 =======
             if (role.DragDropButton.graphic.sprite == TownOfUsFusion.DragSprite)
 >>>>>>> Stashed changes

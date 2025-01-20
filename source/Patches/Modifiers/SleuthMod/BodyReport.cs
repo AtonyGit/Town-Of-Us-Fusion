@@ -1,7 +1,7 @@
 using HarmonyLib;
-using TownOfUs.Roles.Modifiers;
+using TownOfUsFusion.Roles.Modifiers;
 
-namespace TownOfUs.Modifiers
+namespace TownOfUsFusion.Modifiers
 {
     [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CmdReportDeadBody))]
     public class BodyReport

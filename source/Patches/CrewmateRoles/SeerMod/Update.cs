@@ -1,7 +1,7 @@
 using HarmonyLib;
 <<<<<<< Updated upstream
-using TownOfUs.Extensions;
-using TownOfUs.Roles;
+using TownOfUsFusion.Extensions;
+using TownOfUsFusion.Roles;
 =======
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;
@@ -9,7 +9,7 @@ using TownOfUsFusion.Roles.Modifiers;
 >>>>>>> Stashed changes
 using UnityEngine;
 
-namespace TownOfUs.CrewmateRoles.SeerMod
+namespace TownOfUsFusion.CrewmateRoles.SeerMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class Update

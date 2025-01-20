@@ -8,7 +8,7 @@ using TMPro;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace TownOfUs.Patches.CustomHats
+namespace TownOfUsFusion.Patches.CustomHats
 {
 
     [HarmonyPatch(typeof(HatsTab), nameof(HatsTab.OnEnable))]

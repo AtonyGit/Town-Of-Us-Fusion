@@ -1,9 +1,9 @@
 using HarmonyLib;
-using TownOfUs.Extensions;
+using TownOfUsFusion.Extensions;
 using AmongUs.GameOptions;
 <<<<<<< Updated upstream
-using TownOfUs.Modifiers.UnderdogMod;
-using TownOfUs.Roles;
+using TownOfUsFusion.Modifiers.UnderdogMod;
+using TownOfUsFusion.Roles;
 =======
 using TownOfUsFusion.Modifiers.UnderdogMod;
 using TownOfUsFusion.CrewmateRoles.SheriffMod;
@@ -12,7 +12,7 @@ using Reactor.Utilities;
 using static TownOfUsFusion.Roles.Glitch;
 >>>>>>> Stashed changes
 
-namespace TownOfUs
+namespace TownOfUsFusion
 {
     [HarmonyPatch(typeof(KillButton), nameof(KillButton.DoClick))]
     public class StopImpKill

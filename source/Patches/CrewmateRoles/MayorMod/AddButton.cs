@@ -2,20 +2,20 @@ using System;
 using System.Linq;
 using HarmonyLib;
 using Reactor.Utilities.Extensions;
-using TownOfUs.Modifiers.AssassinMod;
-using TownOfUs.Roles;
-using TownOfUs.Roles.Modifiers;
+using TownOfUsFusion.Modifiers.AssassinMod;
+using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Modifiers;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
-namespace TownOfUs.CrewmateRoles.MayorMod
+namespace TownOfUsFusion.CrewmateRoles.MayorMod
 {
     [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.Start))]
     public class AddRevealButton
     {
 <<<<<<< Updated upstream
-        public static Sprite RevealSprite => TownOfUs.RevealSprite;
+        public static Sprite RevealSprite => TownOfUsFusion.RevealSprite;
 =======
         public static Sprite RevealSprite => TownOfUsFusion.RevealSprite;
 >>>>>>> Stashed changes

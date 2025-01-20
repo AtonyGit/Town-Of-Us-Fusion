@@ -4,7 +4,7 @@ using Hazel;
 using Reactor.Utilities;
 using UnityEngine;
 
-namespace TownOfUs.CustomOption
+namespace TownOfUsFusion.CustomOption
 {
     public static class Rpc
     {
@@ -37,7 +37,7 @@ namespace TownOfUs.CustomOption
         public static void ReceiveRpc(MessageReader reader)
         {
 <<<<<<< Updated upstream
-            PluginSingleton<TownOfUs>.Instance.Log.LogInfo("Options received");
+            PluginSingleton<TownOfUsFusion>.Instance.Log.LogInfo("Options received");
 =======
             PluginSingleton<TownOfUsFusion>.Instance.Log.LogInfo("Options received");
 >>>>>>> Stashed changes
@@ -56,7 +56,7 @@ namespace TownOfUs.CustomOption
                 customOption?.Set(value);
 
 <<<<<<< Updated upstream
-                //PluginSingleton<TownOfUs>.Instance.Log.LogInfo($"{customOption?.Name} : {customOption}:");
+                //PluginSingleton<TownOfUsFusion>.Instance.Log.LogInfo($"{customOption?.Name} : {customOption}:");
 =======
                 var panels = GameObject.FindObjectsOfType<ViewSettingsInfoPanel>();
                 foreach (var panel in panels) {

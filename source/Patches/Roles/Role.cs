@@ -4,20 +4,20 @@ using System.Collections.Generic;
 using System.Linq;
 using Reactor.Utilities.Extensions;
 using TMPro;
-using TownOfUs.Roles.Modifiers;
+using TownOfUsFusion.Roles.Modifiers;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
-using TownOfUs.Extensions;
+using TownOfUsFusion.Extensions;
 using AmongUs.GameOptions;
 <<<<<<< Updated upstream
-using TownOfUs.ImpostorRoles.TraitorMod;
+using TownOfUsFusion.ImpostorRoles.TraitorMod;
 =======
 using TownOfUsFusion.ImpostorRoles.TraitorMod;
 >>>>>>> Stashed changes
 
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 {
     public abstract class Role
     {

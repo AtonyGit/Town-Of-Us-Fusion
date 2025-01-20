@@ -1,7 +1,7 @@
 using HarmonyLib;
 using Object = UnityEngine.Object;
 
-namespace TownOfUs.Patches
+namespace TownOfUsFusion.Patches
 {
     [HarmonyPatch(typeof(Object), nameof(Object.Destroy), typeof(Object))]
     public static class HUDClose

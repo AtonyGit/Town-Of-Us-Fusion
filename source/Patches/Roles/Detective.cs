@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 {
     public class Detective : Role
     {

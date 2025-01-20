@@ -1,8 +1,8 @@
 using HarmonyLib;
-using TownOfUs.Roles;
-using TownOfUs.Modifiers.UnderdogMod;
+using TownOfUsFusion.Roles;
+using TownOfUsFusion.Modifiers.UnderdogMod;
 
-namespace TownOfUs.ImpostorRoles.WarlockMod
+namespace TownOfUsFusion.ImpostorRoles.WarlockMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     [HarmonyPriority(Priority.Last)]

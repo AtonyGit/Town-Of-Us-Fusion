@@ -1,14 +1,14 @@
 using System.Linq;
 using HarmonyLib;
 <<<<<<< Updated upstream
-using TownOfUs.Roles;
-using TownOfUs.Roles.Modifiers;
+using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Modifiers;
 =======
 using TownOfUsFusion.Roles;
 using TownOfUsFusion.Roles.Modifiers;
 >>>>>>> Stashed changes
 
-namespace TownOfUs.Patches
+namespace TownOfUsFusion.Patches
 {
     [HarmonyPatch(typeof(EndGameManager), nameof(EndGameManager.Start))]
     public static class NEWin

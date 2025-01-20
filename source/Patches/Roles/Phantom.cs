@@ -1,7 +1,7 @@
-using TownOfUs.Extensions;
+using TownOfUsFusion.Extensions;
 using UnityEngine;
 
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 {
     public class Phantom : Role
     {

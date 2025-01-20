@@ -1,15 +1,15 @@
 using HarmonyLib;
-using TownOfUs.Roles.Modifiers;
+using TownOfUsFusion.Roles.Modifiers;
 using UnityEngine;
 using TMPro;
 
-namespace TownOfUs.Modifiers.ButtonBarryMod
+namespace TownOfUsFusion.Modifiers.ButtonBarryMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class Update
     {
 <<<<<<< Updated upstream
-        public static Sprite Button => TownOfUs.ButtonSprite;
+        public static Sprite Button => TownOfUsFusion.ButtonSprite;
 =======
         public static Sprite Button => TownOfUsFusion.ButtonSprite;
 >>>>>>> Stashed changes

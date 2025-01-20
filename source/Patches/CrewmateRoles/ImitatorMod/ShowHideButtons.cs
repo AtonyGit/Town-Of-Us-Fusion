@@ -1,10 +1,10 @@
 using System.Linq;
 using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace TownOfUs.CrewmateRoles.ImitatorMod
+namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
 {
     public class ShowHideButtonsImitator
     {

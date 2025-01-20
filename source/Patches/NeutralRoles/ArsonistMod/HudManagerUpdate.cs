@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using HarmonyLib;
 <<<<<<< Updated upstream
-using TownOfUs.Extensions;
-using TownOfUs.Roles;
+using TownOfUsFusion.Extensions;
+using TownOfUsFusion.Roles;
 =======
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;
@@ -10,13 +10,13 @@ using TownOfUsFusion.Roles.Modifiers;
 >>>>>>> Stashed changes
 using UnityEngine;
 
-namespace TownOfUs.NeutralRoles.ArsonistMod
+namespace TownOfUsFusion.NeutralRoles.ArsonistMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public static class HudManagerUpdate
     {
 <<<<<<< Updated upstream
-        public static Sprite IgniteSprite => TownOfUs.IgniteSprite;
+        public static Sprite IgniteSprite => TownOfUsFusion.IgniteSprite;
 =======
         public static Sprite IgniteSprite => TownOfUsFusion.IgniteSprite;
 >>>>>>> Stashed changes

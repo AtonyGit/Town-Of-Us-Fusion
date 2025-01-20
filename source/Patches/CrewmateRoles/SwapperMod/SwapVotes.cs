@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using HarmonyLib;
 using Reactor.Utilities;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using UnityEngine;
 
-namespace TownOfUs.CrewmateRoles.SwapperMod
+namespace TownOfUsFusion.CrewmateRoles.SwapperMod
 {
     [HarmonyPatch(typeof(MeetingHud))]
     public class SwapVotes
@@ -38,8 +38,8 @@ namespace TownOfUs.CrewmateRoles.SwapperMod
             public static void Postfix(MeetingHud __instance)
             {
 <<<<<<< Updated upstream
-                PluginSingleton<TownOfUs>.Instance.Log.LogMessage(Swap1 == null ? "null" : Swap1.ToString());
-                PluginSingleton<TownOfUs>.Instance.Log.LogMessage(Swap2 == null ? "null" : Swap2.ToString());
+                PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage(Swap1 == null ? "null" : Swap1.ToString());
+                PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage(Swap2 == null ? "null" : Swap2.ToString());
 =======
                 PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage(Swap1 == null ? "null" : Swap1.ToString());
                 PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage(Swap2 == null ? "null" : Swap2.ToString());

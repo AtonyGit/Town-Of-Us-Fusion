@@ -1,5 +1,5 @@
 <<<<<<< Updated upstream
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 =======
 using System.Linq;
 using TownOfUsFusion.Extensions;

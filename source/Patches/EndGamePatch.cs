@@ -4,16 +4,16 @@ using UnityEngine;
 using System.Text;
 using System.Linq;
 using Reactor.Utilities.Extensions;
-using TownOfUs.Roles;
-using TownOfUs.Extensions;
+using TownOfUsFusion.Roles;
+using TownOfUsFusion.Extensions;
 using AmongUs.GameOptions;
 <<<<<<< Updated upstream
-using TownOfUs.Patches.ScreenEffects;
+using TownOfUsFusion.Patches.ScreenEffects;
 =======
 using TownOfUsFusion.Patches.ScreenEffects;
 >>>>>>> Stashed changes
 
-namespace TownOfUs.Patches {
+namespace TownOfUsFusion.Patches {
 
     static class AdditionalTempData {
         public static List<PlayerRoleInfo> playerRoles = new List<PlayerRoleInfo>();

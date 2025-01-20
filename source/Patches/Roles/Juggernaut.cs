@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 <<<<<<< Updated upstream
-using TownOfUs.Extensions;
+using TownOfUsFusion.Extensions;
 
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 =======
 using TownOfUsFusion.Extensions;
 

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using TownOfUs.CrewmateRoles.InvestigatorMod;
+using TownOfUsFusion.CrewmateRoles.InvestigatorMod;
 
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 {
     public class Investigator : Role
     {

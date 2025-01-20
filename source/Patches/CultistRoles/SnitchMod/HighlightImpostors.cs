@@ -1,9 +1,9 @@
 using HarmonyLib;
-using TownOfUs.Roles;
-using TownOfUs.Roles.Cultist;
+using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Cultist;
 using UnityEngine;
 
-namespace TownOfUs.CultistRoles.SnitchMod
+namespace TownOfUsFusion.CultistRoles.SnitchMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class HighlightImpostor

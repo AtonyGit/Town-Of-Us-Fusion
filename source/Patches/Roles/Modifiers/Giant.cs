@@ -1,7 +1,7 @@
-using TownOfUs.Extensions;
+using TownOfUsFusion.Extensions;
 using UnityEngine;
 
-namespace TownOfUs.Roles.Modifiers
+namespace TownOfUsFusion.Roles.Modifiers
 {
     public class Giant : Modifier, IVisualAlteration
     {

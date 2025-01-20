@@ -4,7 +4,7 @@ using TMPro;
 using System.Linq;
 using TownOfUsFusion.Extensions;
 
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 {
     public class Veteran : Role
     {

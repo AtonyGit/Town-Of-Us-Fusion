@@ -1,8 +1,8 @@
 ﻿using HarmonyLib;
 using System.Linq;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 
-namespace TownOfUs.Patches
+namespace TownOfUsFusion.Patches
 {
     [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.SetTasks))]
     class SetTasks

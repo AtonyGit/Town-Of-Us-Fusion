@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TownOfUs.CustomOption
+namespace TownOfUsFusion.CustomOption
 {
     public class CustomTabOption : CustomButtonOption
     {

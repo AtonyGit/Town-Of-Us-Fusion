@@ -1,7 +1,7 @@
 ﻿using System;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 
-namespace TownOfUs.CrewmateRoles.DetectiveMod
+namespace TownOfUsFusion.CrewmateRoles.DetectiveMod
 {
     public class BodyReport
     {

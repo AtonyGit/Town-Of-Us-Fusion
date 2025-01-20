@@ -1,30 +1,30 @@
 using HarmonyLib;
-using TownOfUs.CrewmateRoles.InvestigatorMod;
-using TownOfUs.CrewmateRoles.SnitchMod;
-using TownOfUs.CrewmateRoles.TrapperMod;
-using TownOfUs.Roles;
+using TownOfUsFusion.CrewmateRoles.InvestigatorMod;
+using TownOfUsFusion.CrewmateRoles.SnitchMod;
+using TownOfUsFusion.CrewmateRoles.TrapperMod;
+using TownOfUsFusion.Roles;
 using UnityEngine;
 using System;
-using TownOfUs.Extensions;
-using TownOfUs.CrewmateRoles.ImitatorMod;
+using TownOfUsFusion.Extensions;
+using TownOfUsFusion.CrewmateRoles.ImitatorMod;
 using AmongUs.GameOptions;
 <<<<<<< Updated upstream
-using TownOfUs.Roles.Modifiers;
-using TownOfUs.ImpostorRoles.BomberMod;
-using TownOfUs.CrewmateRoles.AurialMod;
-using TownOfUs.Patches.ScreenEffects;
+using TownOfUsFusion.Roles.Modifiers;
+using TownOfUsFusion.ImpostorRoles.BomberMod;
+using TownOfUsFusion.CrewmateRoles.AurialMod;
+using TownOfUsFusion.Patches.ScreenEffects;
 =======
 using TownOfUsFusion.Roles.Modifiers;
 using TownOfUsFusion.ImpostorRoles.BomberMod;
 >>>>>>> Stashed changes
 
-namespace TownOfUs.NeutralRoles.AmnesiacMod
+namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
 {
     [HarmonyPatch(typeof(KillButton), nameof(KillButton.DoClick))]
     public class PerformKillButton
     {
 <<<<<<< Updated upstream
-        public static Sprite Sprite => TownOfUs.Arrow;
+        public static Sprite Sprite => TownOfUsFusion.Arrow;
 =======
         public static Sprite Sprite => TownOfUsFusion.Arrow;
 >>>>>>> Stashed changes

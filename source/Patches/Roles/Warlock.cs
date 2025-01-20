@@ -1,7 +1,7 @@
 using TMPro;
 using System;
 
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 {
     public class Warlock : Role
     {

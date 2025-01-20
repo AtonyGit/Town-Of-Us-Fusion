@@ -1,15 +1,15 @@
 using System.Linq;
 using HarmonyLib;
 <<<<<<< Updated upstream
-using TownOfUs.Extensions;
-using TownOfUs.Roles;
+using TownOfUsFusion.Extensions;
+using TownOfUsFusion.Roles;
 =======
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;
 >>>>>>> Stashed changes
 using UnityEngine;
 
-namespace TownOfUs.NeutralRoles.PlaguebearerMod
+namespace TownOfUsFusion.NeutralRoles.PlaguebearerMod
 {
     [HarmonyPatch(typeof(EndGameManager), nameof(EndGameManager.Start))]
     public static class Outro

@@ -1,9 +1,9 @@
 using System.Linq;
 using HarmonyLib;
-using TownOfUs.Roles;
-using TownOfUs.Roles.Cultist;
+using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Cultist;
 
-namespace TownOfUs.CultistRoles.SnitchMod
+namespace TownOfUsFusion.CultistRoles.SnitchMod
 {
     [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CompleteTask))]
     public class CompleteTask

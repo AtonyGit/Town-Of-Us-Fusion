@@ -1,20 +1,20 @@
 using System;
 using System.Linq;
 using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
-namespace TownOfUs.CrewmateRoles.SwapperMod
+namespace TownOfUsFusion.CrewmateRoles.SwapperMod
 {
     [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.Start))]
     public class AddButton
     {
         private static int _mostRecentId;
 <<<<<<< Updated upstream
-        private static Sprite ActiveSprite => TownOfUs.SwapperSwitch;
-        public static Sprite DisabledSprite => TownOfUs.SwapperSwitchDisabled;
+        private static Sprite ActiveSprite => TownOfUsFusion.SwapperSwitch;
+        public static Sprite DisabledSprite => TownOfUsFusion.SwapperSwitchDisabled;
 =======
         private static Sprite ActiveSprite => TownOfUsFusion.SwapperSwitch;
         public static Sprite DisabledSprite => TownOfUsFusion.SwapperSwitchDisabled;

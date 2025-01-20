@@ -1,10 +1,10 @@
 using HarmonyLib;
 <<<<<<< Updated upstream
-using TownOfUs.CrewmateRoles.AltruistMod;
-using TownOfUs.Roles.Modifiers;
-using TownOfUs.Roles;
+using TownOfUsFusion.CrewmateRoles.AltruistMod;
+using TownOfUsFusion.Roles.Modifiers;
+using TownOfUsFusion.Roles;
 
-namespace TownOfUs.Modifiers.LoversMod
+namespace TownOfUsFusion.Modifiers.LoversMod
 =======
 using TownOfUsFusion.CrewmateRoles.AltruistMod;
 using TownOfUsFusion.Roles.Modifiers;

@@ -1,8 +1,8 @@
 using HarmonyLib;
 using System;
 <<<<<<< Updated upstream
-using TownOfUs.Patches;
-using TownOfUs.CustomOption;
+using TownOfUsFusion.Patches;
+using TownOfUsFusion.CustomOption;
 using AmongUs.GameOptions;
 =======
 using TownOfUsFusion.Patches;
@@ -11,7 +11,7 @@ using AmongUs.GameOptions;
 using BepInEx.Unity.IL2CPP;
 >>>>>>> Stashed changes
 
-namespace TownOfUs
+namespace TownOfUsFusion
 {
     [HarmonyPatch]
     class RandomMap

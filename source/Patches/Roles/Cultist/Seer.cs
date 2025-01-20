@@ -1,7 +1,7 @@
 using System;
 using TMPro;
 
-namespace TownOfUs.Roles.Cultist
+namespace TownOfUsFusion.Roles.Cultist
 {
     public class CultistSeer : Role
     {

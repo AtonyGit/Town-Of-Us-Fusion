@@ -3,7 +3,7 @@ using UnityEngine;
 using Reactor.Utilities;
 using System.Collections.Generic;
 
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 {
     public class Medium : Role
     {
@@ -12,7 +12,7 @@ namespace TownOfUs.Roles
         public Dictionary<byte, ArrowBehaviour> MediatedPlayers = new Dictionary<byte, ArrowBehaviour>();
         
 <<<<<<< Updated upstream
-        public static Sprite Arrow => TownOfUs.Arrow;
+        public static Sprite Arrow => TownOfUsFusion.Arrow;
 =======
         public static Sprite Arrow => TownOfUsFusion.Arrow;
 >>>>>>> Stashed changes

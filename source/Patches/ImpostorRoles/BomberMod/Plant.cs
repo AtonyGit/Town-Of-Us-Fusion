@@ -1,16 +1,16 @@
 ﻿using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using UnityEngine;
-using TownOfUs.Modifiers.UnderdogMod;
+using TownOfUsFusion.Modifiers.UnderdogMod;
 
-namespace TownOfUs.ImpostorRoles.BomberMod
+namespace TownOfUsFusion.ImpostorRoles.BomberMod
 {
     [HarmonyPatch(typeof(KillButton), nameof(KillButton.DoClick))]
     public class Plant
     {
 <<<<<<< Updated upstream
-        public static Sprite PlantSprite => TownOfUs.PlantSprite;
-        public static Sprite DetonateSprite => TownOfUs.DetonateSprite;
+        public static Sprite PlantSprite => TownOfUsFusion.PlantSprite;
+        public static Sprite DetonateSprite => TownOfUsFusion.DetonateSprite;
 =======
         public static Sprite PlantSprite => TownOfUsFusion.PlantSprite;
         public static Sprite DetonateSprite => TownOfUsFusion.DetonateSprite;

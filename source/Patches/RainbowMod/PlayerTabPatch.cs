@@ -1,7 +1,7 @@
 ﻿using HarmonyLib;
 using UnityEngine;
 
-namespace TownOfUs.RainbowMod
+namespace TownOfUsFusion.RainbowMod
 {
     [HarmonyPatch(typeof(PlayerTab))]
     public static class PlayerTabPatch

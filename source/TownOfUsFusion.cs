@@ -142,7 +142,7 @@ namespace TownOfUsFusion
             ReactorCredits.Register<TownOfUsFusion>(ReactorCredits.AlwaysShow);
             System.Console.WriteLine("000.000.000.000/000000000000000000");
 
-            _harmony = new Harmony("com.slushiegoose.TownOfUsFusion");
+            _harmony = new Harmony("com.fusionstudios.TownOfUsFusion");
 
             Generate.GenerateAll();
 

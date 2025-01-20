@@ -4,14 +4,14 @@ using System;
 using Object = UnityEngine.Object;
 using AmongUs.GameOptions;
 <<<<<<< Updated upstream
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 =======
 using TownOfUsFusion.Roles;
 using TownOfUsFusion.CrewmateRoles.HaunterMod;
 using TownOfUsFusion.NeutralRoles.PhantomMod;
 >>>>>>> Stashed changes
 
-namespace TownOfUs.Patches
+namespace TownOfUsFusion.Patches
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public static class HudUpdate
@@ -57,7 +57,7 @@ namespace TownOfUs.Patches
             ZoomButton.SetActive(!MeetingHud.Instance && dead && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started
                 && GameOptionsManager.Instance.CurrentGameOptions.GameMode == GameModes.Normal);
             ZoomButton.transform.localPosition = Pos;
-            ZoomButton.GetComponent<SpriteRenderer>().sprite = Zooming ? TownOfUs.ZoomPlusButton : TownOfUs.ZoomMinusButton;
+            ZoomButton.GetComponent<SpriteRenderer>().sprite = Zooming ? TownOfUsFusion.ZoomPlusButton : TownOfUsFusion.ZoomMinusButton;
 =======
                 else if (PlayerControl.LocalPlayer == SetHaunter.WillBeHaunter || PlayerControl.LocalPlayer == SetPhantom.WillBePhantom) dead = false;
                 // this works because if they are already haunter/phantom the code before it will run

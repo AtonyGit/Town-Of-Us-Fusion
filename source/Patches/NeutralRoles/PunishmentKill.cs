@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace TownOfUs.Patches.NeutralRoles
+namespace TownOfUsFusion.Patches.NeutralRoles
 {
     public class PunishmentKill
     {
@@ -36,7 +36,7 @@ namespace TownOfUs.Patches.NeutralRoles
             yield return new WaitForSecondsRealtime(delay);
             while (ExileController.Instance != null) { yield return 0; }
             Targets = PlayerControl.AllPlayerControls.ToArray().Where(x => Inclusion(x) && !x.Data.IsDead && !x.Data.Disconnected).ToList();
-            Reactor.Utilities.Logger<TownOfUs>.Warning($"Targets {Targets.Count}");
+            Reactor.Utilities.Logger<TownOfUsFusion>.Warning($"Targets {Targets.Count}");
             if (Menu == null)
             {
                 if (Camera.main == null)

@@ -1,15 +1,15 @@
 using System.Linq;
 using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using UnityEngine;
 
-namespace TownOfUs.ImpostorRoles.MinerMod
+namespace TownOfUsFusion.ImpostorRoles.MinerMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class HudManagerUpdate
     {
 <<<<<<< Updated upstream
-        public static Sprite MineSprite => TownOfUs.MineSprite;
+        public static Sprite MineSprite => TownOfUsFusion.MineSprite;
 =======
         public static Sprite MineSprite => TownOfUsFusion.MineSprite;
 >>>>>>> Stashed changes

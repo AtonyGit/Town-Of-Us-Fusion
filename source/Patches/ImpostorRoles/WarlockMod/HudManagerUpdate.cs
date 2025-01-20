@@ -1,9 +1,9 @@
 using HarmonyLib;
 using System;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using UnityEngine;
 
-namespace TownOfUs.ImpostorRoles.WarlockMod
+namespace TownOfUsFusion.ImpostorRoles.WarlockMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class HudManagerUpdate

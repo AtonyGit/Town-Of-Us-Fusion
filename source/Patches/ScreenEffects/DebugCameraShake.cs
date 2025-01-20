@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace TownOfUs.Patches.ScreenEffects
+namespace TownOfUsFusion.Patches.ScreenEffects
 {
 #if DEBUG
     [Obsolete("There is a built in shake Enumerator, but this is just an example")]

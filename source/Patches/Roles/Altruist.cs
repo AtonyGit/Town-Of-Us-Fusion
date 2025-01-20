@@ -1,4 +1,4 @@
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 {
     public class Altruist : Role
     {

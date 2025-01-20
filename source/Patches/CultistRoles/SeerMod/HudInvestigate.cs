@@ -1,9 +1,9 @@
 ﻿using HarmonyLib;
-using TownOfUs.Roles;
-using TownOfUs.Roles.Cultist;
+using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Cultist;
 using UnityEngine;
 
-namespace TownOfUs.CultistRoles.SeerMod
+namespace TownOfUsFusion.CultistRoles.SeerMod
 {
     [HarmonyPatch(typeof(HudManager))]
     public class HudInvestigate

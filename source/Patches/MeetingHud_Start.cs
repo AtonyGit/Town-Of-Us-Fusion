@@ -2,9 +2,9 @@ using HarmonyLib;
 using Object = UnityEngine.Object;
 using Reactor.Utilities.Extensions;
 using UnityEngine;
-using TownOfUs.Patches;
+using TownOfUsFusion.Patches;
 
-namespace TownOfUs
+namespace TownOfUsFusion
 {
     [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.Start))]
     public class MeetingHud_Start

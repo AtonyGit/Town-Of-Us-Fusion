@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Reactor.Utilities;
 <<<<<<< Updated upstream
-using TownOfUs.Extensions;
+using TownOfUsFusion.Extensions;
 using UnityEngine;
 
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 =======
 using TownOfUsFusion.Extensions;
 using UnityEngine;

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TownOfUs
+namespace TownOfUsFusion
 {
     public class VisualAppearance
     {

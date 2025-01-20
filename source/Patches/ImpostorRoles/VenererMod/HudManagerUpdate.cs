@@ -1,17 +1,17 @@
 using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using UnityEngine;
 
-namespace TownOfUs.ImpostorRoles.VenererMod
+namespace TownOfUsFusion.ImpostorRoles.VenererMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class HudManagerUpdate
     {
 <<<<<<< Updated upstream
-        public static Sprite NoneSprite => TownOfUs.NoAbilitySprite;
-        public static Sprite CamoSprite => TownOfUs.CamouflageSprite;
-        public static Sprite CamoSprintSprite => TownOfUs.CamoSprintSprite;
-        public static Sprite CamoSprintFreezeSprite => TownOfUs.CamoSprintFreezeSprite;
+        public static Sprite NoneSprite => TownOfUsFusion.NoAbilitySprite;
+        public static Sprite CamoSprite => TownOfUsFusion.CamouflageSprite;
+        public static Sprite CamoSprintSprite => TownOfUsFusion.CamoSprintSprite;
+        public static Sprite CamoSprintFreezeSprite => TownOfUsFusion.CamoSprintFreezeSprite;
 =======
         public static Sprite NoneSprite => TownOfUsFusion.NoAbilitySprite;
         public static Sprite CamoSprite => TownOfUsFusion.CamouflageSprite;

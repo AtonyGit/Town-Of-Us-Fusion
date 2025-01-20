@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace TownOfUs
+namespace TownOfUsFusion
 {
     public class WaitForLerp : IEnumerator
     {

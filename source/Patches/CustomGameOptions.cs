@@ -1,11 +1,11 @@
 <<<<<<< Updated upstream
-using TownOfUs.CrewmateRoles.MedicMod;
-using TownOfUs.CustomOption;
-using TownOfUs.NeutralRoles.ExecutionerMod;
-using TownOfUs.CrewmateRoles.HaunterMod;
-using TownOfUs.CrewmateRoles.MediumMod;
-using TownOfUs.CrewmateRoles.VampireHunterMod;
-using TownOfUs.NeutralRoles.GuardianAngelMod;
+using TownOfUsFusion.CrewmateRoles.MedicMod;
+using TownOfUsFusion.CustomOption;
+using TownOfUsFusion.NeutralRoles.ExecutionerMod;
+using TownOfUsFusion.CrewmateRoles.HaunterMod;
+using TownOfUsFusion.CrewmateRoles.MediumMod;
+using TownOfUsFusion.CrewmateRoles.VampireHunterMod;
+using TownOfUsFusion.NeutralRoles.GuardianAngelMod;
 =======
 using TownOfUsFusion.CrewmateRoles.MedicMod;
 using TownOfUsFusion.CustomOption;
@@ -15,7 +15,7 @@ using TownOfUsFusion.CrewmateRoles.MediumMod;
 using TownOfUsFusion.NeutralRoles.GuardianAngelMod;
 >>>>>>> Stashed changes
 
-namespace TownOfUs
+namespace TownOfUsFusion
 {
     public enum DisableSkipButtonMeetings
     {

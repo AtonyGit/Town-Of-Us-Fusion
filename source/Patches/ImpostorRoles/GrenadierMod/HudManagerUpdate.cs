@@ -1,15 +1,15 @@
 using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using UnityEngine;
-using TownOfUs.Extensions;
+using TownOfUsFusion.Extensions;
 
-namespace TownOfUs.ImpostorRoles.GrenadierMod
+namespace TownOfUsFusion.ImpostorRoles.GrenadierMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class HudManagerUpdate
     {
 <<<<<<< Updated upstream
-        public static Sprite FlashSprite => TownOfUs.FlashSprite;
+        public static Sprite FlashSprite => TownOfUsFusion.FlashSprite;
 =======
         public static Sprite FlashSprite => TownOfUsFusion.FlashSprite;
 >>>>>>> Stashed changes

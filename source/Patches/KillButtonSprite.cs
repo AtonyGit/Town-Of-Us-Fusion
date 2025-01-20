@@ -1,9 +1,9 @@
 ﻿using AmongUs.GameOptions;
 using HarmonyLib;
 <<<<<<< Updated upstream
-using TownOfUs.Extensions;
-using TownOfUs.Roles;
-using TownOfUs.Roles.Modifiers;
+using TownOfUsFusion.Extensions;
+using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Modifiers;
 =======
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;
@@ -11,7 +11,7 @@ using TownOfUsFusion.Roles.Modifiers;
 >>>>>>> Stashed changes
 using UnityEngine;
 
-namespace TownOfUs
+namespace TownOfUsFusion
 {
     [HarmonyPatch(typeof(KillButton), nameof(KillButton.Start))]
     public static class KillButtonAwake
@@ -26,27 +26,27 @@ namespace TownOfUs
     public class KillButtonSprite
     {
 <<<<<<< Updated upstream
-        private static Sprite Fix => TownOfUs.EngineerFix;
-        private static Sprite Medic => TownOfUs.MedicSprite;
-        private static Sprite Seer => TownOfUs.SeerSprite;
-        private static Sprite Douse => TownOfUs.DouseSprite;
-        private static Sprite Revive => TownOfUs.ReviveSprite;
-        private static Sprite Alert => TownOfUs.AlertSprite;
-        private static Sprite Remember => TownOfUs.RememberSprite;
-        private static Sprite Track => TownOfUs.TrackSprite;
-        private static Sprite Transport => TownOfUs.TransportSprite;
-        private static Sprite Mediate => TownOfUs.MediateSprite;
-        private static Sprite Vest => TownOfUs.VestSprite;
-        private static Sprite Protect => TownOfUs.ProtectSprite;
-        private static Sprite Infect => TownOfUs.InfectSprite;
-        private static Sprite Trap => TownOfUs.TrapSprite;
-        private static Sprite Inspect => TownOfUs.InspectSprite;
-        private static Sprite Swoop => TownOfUs.SwoopSprite;
-        private static Sprite Observe => TownOfUs.ObserveSprite;
-        private static Sprite Bite => TownOfUs.BiteSprite;
-        private static Sprite Stake => TownOfUs.StakeSprite;
-        private static Sprite Confess => TownOfUs.ConfessSprite;
-        private static Sprite Radiate => TownOfUs.RadiateSprite;
+        private static Sprite Fix => TownOfUsFusion.EngineerFix;
+        private static Sprite Medic => TownOfUsFusion.MedicSprite;
+        private static Sprite Seer => TownOfUsFusion.SeerSprite;
+        private static Sprite Douse => TownOfUsFusion.DouseSprite;
+        private static Sprite Revive => TownOfUsFusion.ReviveSprite;
+        private static Sprite Alert => TownOfUsFusion.AlertSprite;
+        private static Sprite Remember => TownOfUsFusion.RememberSprite;
+        private static Sprite Track => TownOfUsFusion.TrackSprite;
+        private static Sprite Transport => TownOfUsFusion.TransportSprite;
+        private static Sprite Mediate => TownOfUsFusion.MediateSprite;
+        private static Sprite Vest => TownOfUsFusion.VestSprite;
+        private static Sprite Protect => TownOfUsFusion.ProtectSprite;
+        private static Sprite Infect => TownOfUsFusion.InfectSprite;
+        private static Sprite Trap => TownOfUsFusion.TrapSprite;
+        private static Sprite Inspect => TownOfUsFusion.InspectSprite;
+        private static Sprite Swoop => TownOfUsFusion.SwoopSprite;
+        private static Sprite Observe => TownOfUsFusion.ObserveSprite;
+        private static Sprite Bite => TownOfUsFusion.BiteSprite;
+        private static Sprite Stake => TownOfUsFusion.StakeSprite;
+        private static Sprite Confess => TownOfUsFusion.ConfessSprite;
+        private static Sprite Radiate => TownOfUsFusion.RadiateSprite;
 =======
         private static Sprite Fix => TownOfUsFusion.EngineerFix;
         private static Sprite Medic => TownOfUsFusion.MedicSprite;

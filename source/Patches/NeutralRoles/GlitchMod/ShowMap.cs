@@ -1,6 +1,6 @@
 ﻿using HarmonyLib;
 
-namespace TownOfUs.NeutralRoles.GlitchMod
+namespace TownOfUsFusion.NeutralRoles.GlitchMod
 {
     [HarmonyPatch(typeof(MapBehaviour), nameof(MapBehaviour.ShowSabotageMap))]
     internal class EngineerMapOpen

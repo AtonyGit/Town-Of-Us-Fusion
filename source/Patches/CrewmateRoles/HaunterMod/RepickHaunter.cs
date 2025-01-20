@@ -2,7 +2,7 @@ using HarmonyLib;
 using System.Linq;
 using UnityEngine;
 
-namespace TownOfUs.CrewmateRoles.HaunterMod
+namespace TownOfUsFusion.CrewmateRoles.HaunterMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class RepickHaunter

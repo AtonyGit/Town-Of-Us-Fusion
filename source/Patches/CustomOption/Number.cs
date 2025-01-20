@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace TownOfUs.CustomOption
+namespace TownOfUsFusion.CustomOption
 {
     public class CustomNumberOption : CustomOption
     {

@@ -1,19 +1,19 @@
 ﻿using HarmonyLib;
 <<<<<<< Updated upstream
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 =======
 using System.Linq;
 using TownOfUsFusion.Roles;
 >>>>>>> Stashed changes
 using UnityEngine;
 
-namespace TownOfUs.NeutralRoles.WerewolfMod
+namespace TownOfUsFusion.NeutralRoles.WerewolfMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public static class HudManagerUpdate
     {
 <<<<<<< Updated upstream
-        public static Sprite RampageSprite => TownOfUs.RampageSprite;
+        public static Sprite RampageSprite => TownOfUsFusion.RampageSprite;
 =======
         public static Sprite RampageSprite => TownOfUsFusion.RampageSprite;
 >>>>>>> Stashed changes

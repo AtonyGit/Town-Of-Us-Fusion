@@ -1,17 +1,17 @@
 ﻿using System;
 using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using UnityEngine;
-using TownOfUs.Extensions;
+using TownOfUsFusion.Extensions;
 using AmongUs.GameOptions;
 
-namespace TownOfUs.CrewmateRoles.TrackerMod
+namespace TownOfUsFusion.CrewmateRoles.TrackerMod
 {
     [HarmonyPatch(typeof(KillButton), nameof(KillButton.DoClick))]
     public class PerformKill
     {
 <<<<<<< Updated upstream
-        public static Sprite Sprite => TownOfUs.Arrow;
+        public static Sprite Sprite => TownOfUsFusion.Arrow;
 =======
         public static Sprite Sprite => TownOfUsFusion.Arrow;
 >>>>>>> Stashed changes

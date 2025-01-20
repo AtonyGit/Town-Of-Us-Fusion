@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TownOfUs.Patches.CustomHats
+namespace TownOfUsFusion.Patches.CustomHats
 {
     public class PaddedComparer<T> : IComparer<T> where T : IComparable
     {

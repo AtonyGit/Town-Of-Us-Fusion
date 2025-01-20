@@ -1,8 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
-using TownOfUs.Extensions;
+using TownOfUsFusion.Extensions;
 
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 {
     public class Haunter : Role
     {

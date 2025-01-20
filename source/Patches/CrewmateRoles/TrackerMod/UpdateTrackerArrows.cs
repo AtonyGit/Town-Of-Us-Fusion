@@ -1,16 +1,16 @@
 using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using UnityEngine;
-using TownOfUs.Extensions;
+using TownOfUsFusion.Extensions;
 using System;
 
-namespace TownOfUs.CrewmateRoles.TrackerMod
+namespace TownOfUsFusion.CrewmateRoles.TrackerMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class UpdateTrackerArrows
     {
 <<<<<<< Updated upstream
-        public static Sprite Sprite => TownOfUs.Arrow;
+        public static Sprite Sprite => TownOfUsFusion.Arrow;
 =======
         public static Sprite Sprite => TownOfUsFusion.Arrow;
 >>>>>>> Stashed changes

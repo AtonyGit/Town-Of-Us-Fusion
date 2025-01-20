@@ -1,7 +1,7 @@
 <<<<<<< Updated upstream
-using TownOfUs.Extensions;
+using TownOfUsFusion.Extensions;
 
-namespace TownOfUs.Roles.Modifiers
+namespace TownOfUsFusion.Roles.Modifiers
 =======
 using TownOfUsFusion.Extensions;
 

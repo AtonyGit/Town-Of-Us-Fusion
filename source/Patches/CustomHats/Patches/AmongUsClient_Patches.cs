@@ -1,6 +1,6 @@
 using HarmonyLib;
 
-namespace TownOfUs.Patches.CustomHats.Patches
+namespace TownOfUsFusion.Patches.CustomHats.Patches
 {
     [HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.Awake))]
     public class AmongUsClient_Patches

@@ -3,7 +3,7 @@ using HarmonyLib;
 using UnityEngine;
 
 <<<<<<< Updated upstream
-namespace TownOfUs
+namespace TownOfUsFusion
 =======
 namespace TownOfUsFusion
 >>>>>>> Stashed changes

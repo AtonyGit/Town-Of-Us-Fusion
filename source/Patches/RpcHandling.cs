@@ -7,27 +7,27 @@ using Reactor.Utilities;
 using Reactor.Utilities.Extensions;
 using Reactor.Networking.Extensions;
 <<<<<<< Updated upstream
-using TownOfUs.CrewmateRoles.AltruistMod;
-using TownOfUs.CrewmateRoles.MedicMod;
-using TownOfUs.CrewmateRoles.SwapperMod;
-using TownOfUs.CrewmateRoles.VigilanteMod;
-using TownOfUs.NeutralRoles.DoomsayerMod;
-using TownOfUs.CultistRoles.NecromancerMod;
-using TownOfUs.CustomOption;
-using TownOfUs.Extensions;
-using TownOfUs.Modifiers.AssassinMod;
-using TownOfUs.NeutralRoles.ExecutionerMod;
-using TownOfUs.NeutralRoles.GuardianAngelMod;
-using TownOfUs.ImpostorRoles.MinerMod;
-using TownOfUs.CrewmateRoles.HaunterMod;
-using TownOfUs.NeutralRoles.PhantomMod;
-using TownOfUs.ImpostorRoles.TraitorMod;
-using TownOfUs.CrewmateRoles.ImitatorMod;
-using TownOfUs.Roles;
-using TownOfUs.Roles.Cultist;
-using TownOfUs.Roles.Modifiers;
+using TownOfUsFusion.CrewmateRoles.AltruistMod;
+using TownOfUsFusion.CrewmateRoles.MedicMod;
+using TownOfUsFusion.CrewmateRoles.SwapperMod;
+using TownOfUsFusion.CrewmateRoles.VigilanteMod;
+using TownOfUsFusion.NeutralRoles.DoomsayerMod;
+using TownOfUsFusion.CultistRoles.NecromancerMod;
+using TownOfUsFusion.CustomOption;
+using TownOfUsFusion.Extensions;
+using TownOfUsFusion.Modifiers.AssassinMod;
+using TownOfUsFusion.NeutralRoles.ExecutionerMod;
+using TownOfUsFusion.NeutralRoles.GuardianAngelMod;
+using TownOfUsFusion.ImpostorRoles.MinerMod;
+using TownOfUsFusion.CrewmateRoles.HaunterMod;
+using TownOfUsFusion.NeutralRoles.PhantomMod;
+using TownOfUsFusion.ImpostorRoles.TraitorMod;
+using TownOfUsFusion.CrewmateRoles.ImitatorMod;
+using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Cultist;
+using TownOfUsFusion.Roles.Modifiers;
 using UnityEngine;
-using Coroutine = TownOfUs.ImpostorRoles.JanitorMod.Coroutine;
+using Coroutine = TownOfUsFusion.ImpostorRoles.JanitorMod.Coroutine;
 =======
 using TownOfUsFusion.CrewmateRoles.AltruistMod;
 using TownOfUsFusion.CrewmateRoles.MedicMod;
@@ -51,15 +51,15 @@ using UnityEngine;
 using Coroutine = TownOfUsFusion.ImpostorRoles.JanitorMod.Coroutine;
 >>>>>>> Stashed changes
 using Object = UnityEngine.Object;
-using PerformKillButton = TownOfUs.NeutralRoles.AmnesiacMod.PerformKillButton;
+using PerformKillButton = TownOfUsFusion.NeutralRoles.AmnesiacMod.PerformKillButton;
 using Random = UnityEngine.Random;
-using TownOfUs.Patches;
+using TownOfUsFusion.Patches;
 using AmongUs.GameOptions;
 <<<<<<< Updated upstream
-using TownOfUs.NeutralRoles.VampireMod;
-using TownOfUs.CrewmateRoles.MayorMod;
+using TownOfUsFusion.NeutralRoles.VampireMod;
+using TownOfUsFusion.CrewmateRoles.MayorMod;
 using System.Reflection;
-using TownOfUs.Patches.NeutralRoles;
+using TownOfUsFusion.Patches.NeutralRoles;
 =======
 using TownOfUsFusion.NeutralRoles.VampireMod;
 using TownOfUsFusion.CrewmateRoles.MayorMod;
@@ -69,7 +69,7 @@ using TownOfUsFusion.ImpostorRoles.BomberMod;
 using TownOfUsFusion.CrewmateRoles.HunterMod;
 >>>>>>> Stashed changes
 
-namespace TownOfUs
+namespace TownOfUsFusion
 {
     public static class RpcHandling
     {
@@ -738,7 +738,7 @@ namespace TownOfUs
                         readSByte2 = reader.ReadSByte();
                         SwapVotes.Swap2 =
                             MeetingHud.Instance.playerStates.FirstOrDefault(x => x.TargetPlayerId == readSByte2);
-                        PluginSingleton<TownOfUs>.Instance.Log.LogMessage("Bytes received - " + readSByte + " - " +
+                        PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("Bytes received - " + readSByte + " - " +
                                                                           readSByte2);
                         break;
 
@@ -1078,7 +1078,7 @@ namespace TownOfUs
                                         CustomGameOptions.ReviveDuration, 0.5f));
 
                                 Coroutines.Start(
-                                    global::TownOfUs.CrewmateRoles.AltruistMod.Coroutine.AltruistRevive(body,
+                                    global::TownOfUsFusion.CrewmateRoles.AltruistMod.Coroutine.AltruistRevive(body,
                                         altruistRole));
                             }
 =======
@@ -1345,7 +1345,7 @@ namespace TownOfUs
         {
             public static void Postfix()
             {
-                PluginSingleton<TownOfUs>.Instance.Log.LogMessage("RPC SET ROLE");
+                PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("RPC SET ROLE");
                 var infected = GameData.Instance.AllPlayers.ToArray().Where(o => o.IsImpostor());
 
                 Utils.ShowDeadBodies = false;

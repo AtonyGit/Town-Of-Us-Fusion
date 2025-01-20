@@ -1,6 +1,6 @@
 <<<<<<< Updated upstream
 ﻿using HarmonyLib;
-using TownOfUs.Modifiers.AssassinMod;
+using TownOfUsFusion.Modifiers.AssassinMod;
 =======
 using HarmonyLib;
 using UnityEngine;
@@ -22,7 +22,7 @@ using TownOfUsFusion.NeutralRoles.DoomsayerMod;
 using UnityEngine.UI;
 >>>>>>> Stashed changes
 
-namespace TownOfUs.CrewmateRoles.HunterMod
+namespace TownOfUsFusion.CrewmateRoles.HunterMod
 {
     [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.CastVote))]
     internal class CastVote

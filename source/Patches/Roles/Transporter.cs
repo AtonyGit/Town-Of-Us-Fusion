@@ -5,11 +5,11 @@ using System.Linq;
 using TMPro;
 using Reactor.Utilities;
 using System.Collections.Generic;
-using TownOfUs.Patches;
+using TownOfUsFusion.Patches;
 using System.Collections;
 <<<<<<< Updated upstream
-using TownOfUs.Extensions;
-using TownOfUs.CrewmateRoles.MedicMod;
+using TownOfUsFusion.Extensions;
+using TownOfUsFusion.CrewmateRoles.MedicMod;
 =======
 using TownOfUsFusion.CrewmateRoles.MedicMod;
 using TownOfUsFusion.Patches.NeutralRoles;
@@ -17,7 +17,7 @@ using TownOfUsFusion.Roles.Modifiers;
 using TownOfUsFusion.Modifiers.ShyMod;
 >>>>>>> Stashed changes
 
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 {
     public class Transporter : Role
     {

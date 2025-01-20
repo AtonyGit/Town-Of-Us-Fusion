@@ -3,7 +3,7 @@ using UnityEngine;
 using Object = UnityEngine.Object;
 using System.Collections;
 
-namespace TownOfUs.ImpostorRoles.BomberMod
+namespace TownOfUsFusion.ImpostorRoles.BomberMod
 {
     public class Bomb
     {

@@ -1,4 +1,4 @@
-namespace TownOfUs.CrewmateRoles.HaunterMod
+namespace TownOfUsFusion.CrewmateRoles.HaunterMod
 {
     public enum HaunterCanBeClickedBy
     {

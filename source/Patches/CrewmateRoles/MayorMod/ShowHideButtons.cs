@@ -1,8 +1,8 @@
 using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using Reactor.Utilities.Extensions;
 
-namespace TownOfUs.CrewmateRoles.MayorMod
+namespace TownOfUsFusion.CrewmateRoles.MayorMod
 {
     public class ShowHideButtonsMayor
     {

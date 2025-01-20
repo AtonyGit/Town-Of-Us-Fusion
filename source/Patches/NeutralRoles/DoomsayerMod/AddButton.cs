@@ -5,8 +5,8 @@ using Reactor.Utilities;
 using Reactor.Utilities.Extensions;
 using TMPro;
 <<<<<<< Updated upstream
-using TownOfUs.Roles;
-using TownOfUs.Roles.Modifiers;
+using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Modifiers;
 =======
 using TownOfUsFusion.Roles;
 using TownOfUsFusion.Roles.Modifiers;
@@ -15,16 +15,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
-namespace TownOfUs.NeutralRoles.DoomsayerMod
+namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
 {
     [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.Start))]
     public class AddButton
     {
 <<<<<<< Updated upstream
-        private static Sprite CycleBackSprite => TownOfUs.CycleBackSprite;
-        private static Sprite CycleForwardSprite => TownOfUs.CycleForwardSprite;
+        private static Sprite CycleBackSprite => TownOfUsFusion.CycleBackSprite;
+        private static Sprite CycleForwardSprite => TownOfUsFusion.CycleForwardSprite;
 
-        private static Sprite GuessSprite => TownOfUs.GuessSprite;
+        private static Sprite GuessSprite => TownOfUsFusion.GuessSprite;
 =======
         private static Sprite CycleBackSprite => TownOfUsFusion.CycleBackSprite;
         private static Sprite CycleForwardSprite => TownOfUsFusion.CycleForwardSprite;

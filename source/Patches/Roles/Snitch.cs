@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using TownOfUs.Extensions;
+using TownOfUsFusion.Extensions;
 using UnityEngine;
 using System.Linq;
 
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 {
     public class Snitch : Role
     {

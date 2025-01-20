@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using HarmonyLib;
-using TownOfUs.CrewmateRoles.MayorMod;
-using TownOfUs.Extensions;
-using TownOfUs.Roles;
+using TownOfUsFusion.CrewmateRoles.MayorMod;
+using TownOfUsFusion.Extensions;
+using TownOfUsFusion.Roles;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace TownOfUs.CrewmateRoles.SwapperMod
+namespace TownOfUsFusion.CrewmateRoles.SwapperMod
 {
     public class ShowHideButtonsSwapper
     {

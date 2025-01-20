@@ -1,18 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using TownOfUs.Patches;
+using TownOfUsFusion.Patches;
 using UnityEngine;
 <<<<<<< Updated upstream
-using TownOfUs.NeutralRoles.ExecutionerMod;
-using TownOfUs.NeutralRoles.GuardianAngelMod;
+using TownOfUsFusion.NeutralRoles.ExecutionerMod;
+using TownOfUsFusion.NeutralRoles.GuardianAngelMod;
 =======
 using TownOfUsFusion.NeutralRoles.ExecutionerMod;
 using TownOfUsFusion.NeutralRoles.GuardianAngelMod;
 using TownOfUsFusion.Extensions;
 >>>>>>> Stashed changes
 
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 {
     public class Vigilante : Role, IGuesser
     {

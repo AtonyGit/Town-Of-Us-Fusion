@@ -1,11 +1,11 @@
 using System.Linq;
 using HarmonyLib;
 <<<<<<< Updated upstream
-using TownOfUs.Extensions;
-using TownOfUs.Roles;
+using TownOfUsFusion.Extensions;
+using TownOfUsFusion.Roles;
 using UnityEngine;
 
-namespace TownOfUs.NeutralRoles.JuggernautMod
+namespace TownOfUsFusion.NeutralRoles.JuggernautMod
 =======
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;

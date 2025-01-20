@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 
 
-namespace TownOfUs.Patches.Modifiers.Giant
+namespace TownOfUsFusion.Patches.Modifiers.Giant
 {
     [HarmonyPatch]
     public static class LadderFix

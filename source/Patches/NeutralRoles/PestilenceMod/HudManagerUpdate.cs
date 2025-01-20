@@ -1,12 +1,12 @@
 using HarmonyLib;
 <<<<<<< Updated upstream
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 =======
 using System.Linq;
 using TownOfUsFusion.Roles;
 >>>>>>> Stashed changes
 
-namespace TownOfUs.NeutralRoles.PestilenceMod
+namespace TownOfUsFusion.NeutralRoles.PestilenceMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public static class HudManagerUpdate

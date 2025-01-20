@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using TownOfUs.Roles;
-using TownOfUs.Roles.Modifiers;
+using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Modifiers;
 using UnityEngine;
 using System;
 
-namespace TownOfUs.Extensions
+namespace TownOfUsFusion.Extensions
 {
     public static class AmongUsExtensions
     {

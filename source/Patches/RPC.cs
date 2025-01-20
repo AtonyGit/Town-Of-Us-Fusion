@@ -1,4 +1,4 @@
-namespace TownOfUs
+namespace TownOfUsFusion
 {
     internal enum RPC
     {

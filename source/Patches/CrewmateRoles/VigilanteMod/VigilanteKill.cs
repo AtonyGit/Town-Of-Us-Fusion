@@ -1,17 +1,17 @@
 ﻿using System.Linq;
-using TownOfUs.Roles;
-using TownOfUs.Roles.Modifiers;
+using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Modifiers;
 using UnityEngine;
 using UnityEngine.UI;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 <<<<<<< Updated upstream
-using TownOfUs.CrewmateRoles.MedicMod;
-using TownOfUs.Modifiers.AssassinMod;
-using TownOfUs.ImpostorRoles.BlackmailerMod;
-using TownOfUs.Extensions;
-using TownOfUs.NeutralRoles.DoomsayerMod;
-using TownOfUs.CrewmateRoles.SwapperMod;
-using TownOfUs.Patches;
+using TownOfUsFusion.CrewmateRoles.MedicMod;
+using TownOfUsFusion.Modifiers.AssassinMod;
+using TownOfUsFusion.ImpostorRoles.BlackmailerMod;
+using TownOfUsFusion.Extensions;
+using TownOfUsFusion.NeutralRoles.DoomsayerMod;
+using TownOfUsFusion.CrewmateRoles.SwapperMod;
+using TownOfUsFusion.Patches;
 =======
 using TownOfUsFusion.CrewmateRoles.MedicMod;
 using TownOfUsFusion.Modifiers.AssassinMod;
@@ -24,7 +24,7 @@ using Reactor.Utilities.Extensions;
 using TownOfUsFusion.CrewmateRoles.ImitatorMod;
 >>>>>>> Stashed changes
 
-namespace TownOfUs.CrewmateRoles.VigilanteMod
+namespace TownOfUsFusion.CrewmateRoles.VigilanteMod
 {
     public class VigilanteKill
     {
@@ -310,7 +310,7 @@ namespace TownOfUs.CrewmateRoles.VigilanteMod
                 var swapper = Role.GetRole<Swapper>(PlayerControl.LocalPlayer);
                 var button = swapper.Buttons[voteArea.TargetPlayerId];
 <<<<<<< Updated upstream
-                if (button.GetComponent<SpriteRenderer>().sprite == TownOfUs.SwapperSwitch)
+                if (button.GetComponent<SpriteRenderer>().sprite == TownOfUsFusion.SwapperSwitch)
 =======
                 if (button.GetComponent<SpriteRenderer>().sprite == TownOfUsFusion.SwapperSwitch)
 >>>>>>> Stashed changes

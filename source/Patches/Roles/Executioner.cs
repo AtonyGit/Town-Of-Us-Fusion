@@ -1,6 +1,6 @@
 using Il2CppSystem.Collections.Generic;
 
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 {
     public class Executioner : Role
     {

@@ -1,7 +1,7 @@
 using HarmonyLib;
-using TownOfUs.Roles.Modifiers;
+using TownOfUsFusion.Roles.Modifiers;
 
-namespace TownOfUs.Modifiers.ButtonBarryMod
+namespace TownOfUsFusion.Modifiers.ButtonBarryMod
 {
     [HarmonyPatch(typeof(KillButton), nameof(KillButton.DoClick))]
     public class PerformKill

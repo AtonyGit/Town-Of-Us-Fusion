@@ -1,6 +1,6 @@
 using System;
 
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 {
     public class Blackmailer : Role
     {

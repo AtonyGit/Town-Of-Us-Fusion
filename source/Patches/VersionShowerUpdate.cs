@@ -1,7 +1,7 @@
 using HarmonyLib;
 using UnityEngine;
 
-namespace TownOfUs
+namespace TownOfUsFusion
 {
     [HarmonyPriority(Priority.VeryHigh)] // to show this message first, or be overrided if any plugins do
     [HarmonyPatch(typeof(VersionShower), nameof(VersionShower.Start))]
@@ -11,7 +11,7 @@ namespace TownOfUs
         {
             var text = __instance.text;
 <<<<<<< Updated upstream
-            text.text += " - <color=#00FF00FF>TownOfUs v" + TownOfUs.VersionString + "</color>" + TownOfUs.VersionTag;
+            text.text += " - <color=#00FF00FF>TownOfUsFusion v" + TownOfUsFusion.VersionString + "</color>" + TownOfUsFusion.VersionTag;
 =======
         text.text += $" - <color=#FF6A51FF>TOUR v{TownOfUsFusion.TouVersionString}</color>" +
         $"<color=#8E5BF3FF> | Fusion v{TownOfUsFusion.VersionString}</color>" + (TownOfUsFusion.isDevBuild ? $"<color=#DA4291FF> Dev {TownOfUsFusion.DevBuildVersion}</color>" : "");

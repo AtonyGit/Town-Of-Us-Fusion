@@ -1,8 +1,8 @@
 using HarmonyLib;
 using System.Linq;
 <<<<<<< Updated upstream
-using TownOfUs.Extensions;
-using TownOfUs.Roles;
+using TownOfUsFusion.Extensions;
+using TownOfUsFusion.Roles;
 =======
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;
@@ -10,13 +10,13 @@ using TownOfUsFusion.Roles.Modifiers;
 >>>>>>> Stashed changes
 using UnityEngine;
 
-namespace TownOfUs.CrewmateRoles.HunterMod
+namespace TownOfUsFusion.CrewmateRoles.HunterMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public static class HudManagerUpdate
     {
 <<<<<<< Updated upstream
-        public static Sprite StalkSprite => TownOfUs.StalkSprite;
+        public static Sprite StalkSprite => TownOfUsFusion.StalkSprite;
         [HarmonyPatch(nameof(HudManager.Update))]
         public static void Postfix(HudManager __instance)
         {

@@ -1,7 +1,7 @@
 <<<<<<< Updated upstream
 ﻿using System;
 using System.Collections.Generic;
-using TownOfUs.Patches.ScreenEffects;
+using TownOfUsFusion.Patches.ScreenEffects;
 =======
 ﻿using System.Collections;
 >>>>>>> Stashed changes
@@ -11,13 +11,13 @@ using System.Linq;
 using Object = UnityEngine.Object;
 using TownOfUsFusion.Extensions;
 
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 {
     public class Aurial : Role
     {
 <<<<<<< Updated upstream
         public Dictionary<byte,int> knownPlayerRoles = new Dictionary<byte,int>();
-        public static Material ViewMat = TownOfUs.bundledAssets.Get<Material>("SoundV");
+        public static Material ViewMat = TownOfUsFusion.bundledAssets.Get<Material>("SoundV");
         public DateTime LastRadiated { get; set; }
         public DateTime CannotSeeDelay { get; set; }
         public bool NormalVision { get; set; } = false;

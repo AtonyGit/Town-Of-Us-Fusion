@@ -5,8 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Reactor.Utilities;
 using Reactor.Utilities.Extensions;
-using TownOfUs.Extensions;
-using TownOfUs.Roles.Modifiers;
+using TownOfUsFusion.Extensions;
+using TownOfUsFusion.Roles.Modifiers;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using AmongUs.GameOptions;
@@ -14,14 +14,14 @@ using TownOfUsFusion.Patches;
 using static TownOfUsFusion.DisableAbilities;
 using TownOfUsFusion.Patches.NeutralRoles;
 
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 {
     public class Glitch : Role, IVisualAlteration
     {
 <<<<<<< Updated upstream
-        public static Sprite MimicSprite = TownOfUs.MimicSprite;
-        public static Sprite HackSprite = TownOfUs.HackSprite;
-        public static Sprite LockSprite = TownOfUs.LockSprite;
+        public static Sprite MimicSprite = TownOfUsFusion.MimicSprite;
+        public static Sprite HackSprite = TownOfUsFusion.HackSprite;
+        public static Sprite LockSprite = TownOfUsFusion.LockSprite;
 
         public bool lastMouse;
 

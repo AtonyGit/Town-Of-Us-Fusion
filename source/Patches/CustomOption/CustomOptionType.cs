@@ -1,5 +1,5 @@
 <<<<<<< Updated upstream
-namespace TownOfUs.CustomOption
+namespace TownOfUsFusion.CustomOption
 =======
 namespace TownOfUsFusion.CustomOption
 >>>>>>> Stashed changes

@@ -1,10 +1,10 @@
 ﻿using HarmonyLib;
 using System;
-using TownOfUs.Extensions;
-using TownOfUs.Roles;
-using TownOfUs.Roles.Modifiers;
+using TownOfUsFusion.Extensions;
+using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Modifiers;
 
-namespace TownOfUs.Patches
+namespace TownOfUsFusion.Patches
 {
     [HarmonyPatch]
     public static class SpeedPatch

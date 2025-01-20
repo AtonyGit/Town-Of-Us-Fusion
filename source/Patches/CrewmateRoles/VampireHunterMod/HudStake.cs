@@ -1,8 +1,8 @@
 ﻿using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using UnityEngine;
 
-namespace TownOfUs.CrewmateRoles.VampireHunterMod
+namespace TownOfUsFusion.CrewmateRoles.VampireHunterMod
 {
     [HarmonyPatch(typeof(HudManager))]
     public class HudStake

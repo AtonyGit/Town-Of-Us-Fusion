@@ -3,7 +3,7 @@ using AmongUs.GameOptions;
 using HarmonyLib;
 using UnityEngine;
 
-namespace TownOfUs.CrewmateRoles.SpyMod
+namespace TownOfUsFusion.CrewmateRoles.SpyMod
 {
     [HarmonyPatch(typeof(MapCountOverlay), nameof(MapCountOverlay.Update))]
     public static class Admin

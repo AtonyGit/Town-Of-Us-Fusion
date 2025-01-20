@@ -1,8 +1,8 @@
 using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 
 <<<<<<< Updated upstream
-namespace TownOfUs.CrewmateRoles.VeteranMod
+namespace TownOfUsFusion.CrewmateRoles.VeteranMod
 =======
 namespace TownOfUsFusion.CrewmateRoles.HunterMod
 >>>>>>> Stashed changes

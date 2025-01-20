@@ -1,11 +1,11 @@
 using HarmonyLib;
 <<<<<<< Updated upstream
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 =======
 using TownOfUsFusion.Roles;
 >>>>>>> Stashed changes
 
-namespace TownOfUs.NeutralRoles.PlaguebearerMod
+namespace TownOfUsFusion.NeutralRoles.PlaguebearerMod
 {
     [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CmdReportDeadBody))]
     public class BodyReport

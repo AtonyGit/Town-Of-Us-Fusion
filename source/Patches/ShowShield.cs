@@ -1,8 +1,8 @@
 using HarmonyLib;
-using TownOfUs.Extensions;
+using TownOfUsFusion.Extensions;
 using UnityEngine;
 
-namespace TownOfUs.Patches
+namespace TownOfUsFusion.Patches
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class ShowRoundOneShield

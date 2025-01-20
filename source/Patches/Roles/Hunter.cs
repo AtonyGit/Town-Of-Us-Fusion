@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using TownOfUsFusion.Extensions;
 
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 {
     public class Hunter : Role
     {

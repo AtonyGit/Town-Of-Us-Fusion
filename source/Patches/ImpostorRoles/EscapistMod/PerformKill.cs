@@ -1,16 +1,16 @@
 ﻿using System;
 using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using UnityEngine;
 
-namespace TownOfUs.ImpostorRoles.EscapistMod
+namespace TownOfUsFusion.ImpostorRoles.EscapistMod
 {
     [HarmonyPatch(typeof(KillButton), nameof(KillButton.DoClick))]
     public class PerformKill
     {
 <<<<<<< Updated upstream
-        public static Sprite MarkSprite => TownOfUs.MarkSprite;
-        public static Sprite EscapeSprite => TownOfUs.EscapeSprite;
+        public static Sprite MarkSprite => TownOfUsFusion.MarkSprite;
+        public static Sprite EscapeSprite => TownOfUsFusion.EscapeSprite;
 =======
         public static Sprite MarkSprite => TownOfUsFusion.MarkSprite;
         public static Sprite EscapeSprite => TownOfUsFusion.EscapeSprite;

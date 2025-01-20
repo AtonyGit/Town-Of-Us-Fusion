@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 
-namespace TownOfUs.CrewmateRoles.OracleMod
+namespace TownOfUsFusion.CrewmateRoles.OracleMod
 {
     [HarmonyPatch(typeof(HudManager))]
     public class HudConfess

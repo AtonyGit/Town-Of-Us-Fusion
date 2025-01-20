@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using TownOfUs.Patches;
+using TownOfUsFusion.Patches;
 using UnityEngine;
-using TownOfUs.NeutralRoles.ExecutionerMod;
-using TownOfUs.NeutralRoles.GuardianAngelMod;
+using TownOfUsFusion.NeutralRoles.ExecutionerMod;
+using TownOfUsFusion.NeutralRoles.GuardianAngelMod;
 using System;
 <<<<<<< Updated upstream
-using TownOfUs.CrewmateRoles.VampireHunterMod;
+using TownOfUsFusion.CrewmateRoles.VampireHunterMod;
 =======
 >>>>>>> Stashed changes
 
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 {
     public class Doomsayer : Role, IGuesser
     {

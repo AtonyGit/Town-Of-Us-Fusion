@@ -1,12 +1,12 @@
 ﻿using System;
 using HarmonyLib;
 using Reactor.Utilities;
-using TownOfUs.Roles;
-using TownOfUs.Roles.Cultist;
+using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Cultist;
 using UnityEngine;
 using AmongUs.GameOptions;
 
-namespace TownOfUs.CultistRoles.SeerMod
+namespace TownOfUsFusion.CultistRoles.SeerMod
 {
     [HarmonyPatch(typeof(KillButton), nameof(KillButton.DoClick))]
     public class PerformKill

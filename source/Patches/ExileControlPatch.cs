@@ -1,6 +1,6 @@
 using HarmonyLib;
 
-namespace TownOfUs.Patches
+namespace TownOfUsFusion.Patches
 {
 <<<<<<< Updated upstream
     [HarmonyPatch(typeof(ExileController), nameof(ExileController.Begin))]

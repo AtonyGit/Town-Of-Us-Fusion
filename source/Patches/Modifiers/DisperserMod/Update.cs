@@ -1,15 +1,15 @@
 using HarmonyLib;
-using TownOfUs.Roles.Modifiers;
+using TownOfUsFusion.Roles.Modifiers;
 using UnityEngine;
 using TMPro;
 
-namespace TownOfUs.Modifiers.DisperserMod
+namespace TownOfUsFusion.Modifiers.DisperserMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class Update
     {
 <<<<<<< Updated upstream
-        public static Sprite DisperseButton => TownOfUs.DisperseSprite;
+        public static Sprite DisperseButton => TownOfUsFusion.DisperseSprite;
 =======
         public static Sprite DisperseButton => TownOfUsFusion.DisperseSprite;
 >>>>>>> Stashed changes

@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 <<<<<<< Updated upstream
-using TownOfUs.Patches;
+using TownOfUsFusion.Patches;
 using UnityEngine;
-using TownOfUs.Extensions;
+using TownOfUsFusion.Extensions;
 
-namespace TownOfUs.Roles.Modifiers
+namespace TownOfUsFusion.Roles.Modifiers
 =======
 using TownOfUsFusion.Patches;
 using UnityEngine;

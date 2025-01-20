@@ -2,7 +2,7 @@ using HarmonyLib;
 using System.Linq;
 using UnityEngine;
 
-namespace TownOfUs.ImpostorRoles.TraitorMod
+namespace TownOfUsFusion.ImpostorRoles.TraitorMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class RepickTraitor

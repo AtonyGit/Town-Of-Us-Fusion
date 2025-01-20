@@ -1,10 +1,10 @@
 using UnityEngine;
 using System;
-using TownOfUs.ImpostorRoles.BomberMod;
-using TownOfUs.CrewmateRoles.MedicMod;
-using TownOfUs.Patches;
+using TownOfUsFusion.ImpostorRoles.BomberMod;
+using TownOfUsFusion.CrewmateRoles.MedicMod;
+using TownOfUsFusion.Patches;
 
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 {
     public class Bomber : Role
 
@@ -16,7 +16,7 @@ namespace TownOfUs.Roles
         public Vector3 DetonatePoint;
         public Bomb Bomb = new Bomb();
 <<<<<<< Updated upstream
-        public static Material bombMaterial = TownOfUs.bundledAssets.Get<Material>("bomb");
+        public static Material bombMaterial = TownOfUsFusion.bundledAssets.Get<Material>("bomb");
 =======
         public static Material bombMaterial = TownOfUsFusion.bundledAssets.Get<Material>("bomb");
 >>>>>>> Stashed changes

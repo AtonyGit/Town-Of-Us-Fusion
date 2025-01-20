@@ -2,11 +2,11 @@ using System;
 using HarmonyLib;
 using UnityEngine;
 using Object = UnityEngine.Object;
-using TownOfUs.Patches;
-using TownOfUs.Roles;
-using TownOfUs.CrewmateRoles.AltruistMod;
+using TownOfUsFusion.Patches;
+using TownOfUsFusion.Roles;
+using TownOfUsFusion.CrewmateRoles.AltruistMod;
 
-namespace TownOfUs.CrewmateRoles.ProsecutorMod
+namespace TownOfUsFusion.CrewmateRoles.ProsecutorMod
 {
     [HarmonyPatch(typeof(AirshipExileController), nameof(AirshipExileController.WrapUpAndSpawn))]
     public static class AirshipExileController_WrapUpAndSpawn

@@ -1,15 +1,15 @@
 ﻿using AmongUs.GameOptions;
 using HarmonyLib;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 using UnityEngine;
 
-namespace TownOfUs.CrewmateRoles.DetectiveMod
+namespace TownOfUsFusion.CrewmateRoles.DetectiveMod
 {
     [HarmonyPatch(typeof(HudManager))]
     public class HudExamine
     {
 <<<<<<< Updated upstream
-        public static Sprite ExamineSprite => TownOfUs.ExamineSprite;
+        public static Sprite ExamineSprite => TownOfUsFusion.ExamineSprite;
 =======
         public static Sprite ExamineSprite => TownOfUsFusion.ExamineSprite;
 >>>>>>> Stashed changes

@@ -2,13 +2,13 @@ using System;
 using System.Linq;
 using Il2CppSystem.Collections.Generic;
 <<<<<<< Updated upstream
-using TownOfUs.Extensions;
+using TownOfUsFusion.Extensions;
 =======
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles.Modifiers;
 >>>>>>> Stashed changes
 
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 {
     public class Vampire : Role
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using Object = UnityEngine.Object;
 using TMPro;
 
-namespace TownOfUs.Roles
+namespace TownOfUsFusion.Roles
 {
     public class Tracker : Role
     {

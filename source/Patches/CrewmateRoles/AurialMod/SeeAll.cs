@@ -1,9 +1,9 @@
 ﻿using HarmonyLib;
-using TownOfUs.Extensions;
-using TownOfUs.Roles;
+using TownOfUsFusion.Extensions;
+using TownOfUsFusion.Roles;
 using Color = UnityEngine.Color;
 
-namespace TownOfUs.CrewmateRoles.AurialMod
+namespace TownOfUsFusion.CrewmateRoles.AurialMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class SeeAll

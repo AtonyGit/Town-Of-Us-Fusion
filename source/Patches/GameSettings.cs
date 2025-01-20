@@ -3,12 +3,12 @@ using System.Reflection;
 using System.Text;
 using HarmonyLib;
 using Reactor.Utilities.Extensions;
-using TownOfUs.CustomOption;
+using TownOfUsFusion.CustomOption;
 using AmongUs.GameOptions;
 using System.Linq;
 using UnityEngine;
 
-namespace TownOfUs
+namespace TownOfUsFusion
 {
     [HarmonyPatch]
     public static class GameSettings

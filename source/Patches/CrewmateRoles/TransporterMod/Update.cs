@@ -1,8 +1,8 @@
 ﻿using HarmonyLib;
 using InnerNet;
-using TownOfUs.Roles;
+using TownOfUsFusion.Roles;
 
-namespace TownOfUs.CrewmateRoles.TransporterMod
+namespace TownOfUsFusion.CrewmateRoles.TransporterMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class Update
