@@ -37,7 +37,7 @@ namespace TownOfUsFusion
         public static System.Version Version = System.Version.Parse(VersionString);
         public const string VersionTag = "<color=#ff33fc></color>";
         public const bool isDevBuild = true;
-        public const string DevBuildVersion = "2";
+        public const string DevBuildVersion = "5";
 
         public static AssetLoader bundledAssets;
 
@@ -56,6 +56,7 @@ namespace TownOfUsFusion
         public static Sprite Arrow;
         public static Sprite MineSprite;
         public static Sprite SwoopSprite;
+        public static Sprite SwoopingSprite;
         public static Sprite DouseSprite;
         public static Sprite IgniteSprite;
         public static Sprite ReviveSprite;
@@ -113,6 +114,11 @@ namespace TownOfUsFusion
         public static Sprite CollectSprite;
         public static Sprite ReapSprite;
         public static Sprite SoulSprite;
+        public static Sprite PerceptSprite;
+        public static Sprite WatchSprite;
+        public static Sprite InquisKill;
+        public static Sprite SheriffKill;
+        public static Sprite PoisonSprite;
 
         public static Sprite SettingsButtonSprite;
         public static Sprite CrewSettingsButtonSprite;
@@ -151,79 +157,101 @@ namespace TownOfUsFusion
 
             bundledAssets = new();
             // Astral Roles
-            TrackSprite = CreateScaledSprite("TownOfUsFusion.Resources.Track.png");
-            MediateSprite = CreateScaledSprite("TownOfUsFusion.Resources.Mediate.png");
-            AutopsySprite = CreateScaledSprite("TownOfUsFusion.Resources.Autopsy.png");
-            ExamineSprite = CreateScaledSprite("TownOfUsFusion.Resources.Examine.png");
-            EngineerVent = CreateVentSprite("TownOfUsFusion.Resources.VentEngineer.png");
+                PerceptSprite = CreateScaledSprite("TownOfUsFusion.Resources.Percept.png");
+                WatchSprite = CreateScaledSprite("TownOfUsFusion.Resources.Watch.png");
+                MediateSprite = CreateScaledSprite("TownOfUsFusion.Resources.Mediate.png");
             // Investigative Roles
-            ProtectSprite = CreateScaledSprite("TownOfUsFusion.Resources.Protect.png");
-            MorphSprite = CreateScaledSprite("TownOfUsFusion.Resources.Morph.png");
-            SwoopSprite = CreateScaledSprite("TownOfUsFusion.Resources.Swoop.png");
+                AutopsySprite = CreateScaledSprite("TownOfUsFusion.Resources.Autopsy.png");
+                ExamineSprite = CreateScaledSprite("TownOfUsFusion.Resources.Examine.png");
+                SeerSprite = CreateScaledSprite("TownOfUsFusion.Resources.Seer.png");
+                TrackSprite = CreateScaledSprite("TownOfUsFusion.Resources.Track.png");
+                TrapSprite = CreateSprite("TownOfUsFusion.Resources.Trap.png");
+            // Killing Roles
+                SheriffKill = CreateScaledSprite("TownOfUsFusion.Resources.SheriffKill.png");
+                AlertSprite = CreateSprite("TownOfUsFusion.Resources.Alert.png");
+                StalkSprite = CreateSprite("TownOfUsFusion.Resources.Stalk.png");
+                JailSprite = CreateSprite("TownOfUsFusion.Resources.Jail.png");
+                InJailSprite = CreateSprite("TownOfUsFusion.Resources.InJail.png");
+                ExecuteSprite = CreateSprite("TownOfUsFusion.Resources.Execute.png");
+            // Protective Roles
+                ReviveSprite = CreateSprite("TownOfUsFusion.Resources.Revive.png");
+                MedicSprite = CreateSprite("TownOfUsFusion.Resources.Medic.png");
+                ConfessSprite = CreateSprite("TownOfUsFusion.Resources.Confess.png");
+                FortifySprite = CreateSprite("TownOfUsFusion.Resources.Fortify.png");
+            // Sovereign Roles
+                CampaignSprite = CreateSprite("TownOfUsFusion.Resources.Campaign.png");
+                RevealSprite = CreateSprite("TownOfUsFusion.Resources.Reveal.png");
+                SwapperSwitch = CreateSprite("TownOfUsFusion.Resources.SwapperSwitch.png");
+                SwapperSwitchDisabled = CreateSprite("TownOfUsFusion.Resources.SwapperSwitchDisabled.png");
+            // Utility Roles
+                EngineerFix = CreateSprite("TownOfUsFusion.Resources.Engineer.png");
+                EngineerVent = CreateVentSprite("TownOfUsFusion.Resources.VentEngineer.png");
+                ImitateSelectSprite = CreateSprite("TownOfUsFusion.Resources.ImitateSelect.png");
+                ImitateDeselectSprite = CreateSprite("TownOfUsFusion.Resources.ImitateDeselect.png");
+                TransportSprite = CreateSprite("TownOfUsFusion.Resources.Transport.png");
 
-            JanitorClean = CreateSprite("TownOfUsFusion.Resources.Janitor.png");
-            EngineerFix = CreateSprite("TownOfUsFusion.Resources.Engineer.png");
-            SwapperSwitch = CreateSprite("TownOfUsFusion.Resources.SwapperSwitch.png");
-            SwapperSwitchDisabled = CreateSprite("TownOfUsFusion.Resources.SwapperSwitchDisabled.png");
+            // Benign Roles
+                RememberSprite = CreateSprite("TownOfUsFusion.Resources.Remember.png");
+                ProtectSprite = CreateScaledSprite("TownOfUsFusion.Resources.Protect.png");
+                VestSprite = CreateSprite("TownOfUsFusion.Resources.Vest.png");
+            // Evil Roles
+                ObserveSprite = CreateSprite("TownOfUsFusion.Resources.Observe.png");
+            // Chaos Roles
+                InquisKill = CreateScaledSprite("TownOfUsFusion.Resources.InquisKill.png");
+            // Killing Roles
+                DouseSprite = CreateSprite("TownOfUsFusion.Resources.Douse.png");
+                IgniteSprite = CreateSprite("TownOfUsFusion.Resources.Ignite.png");
+                HackSprite = CreateSprite("TownOfUsFusion.Resources.Hack.png");
+                MimicSprite = CreateSprite("TownOfUsFusion.Resources.Mimic.png");
+                RampageSprite = CreateSprite("TownOfUsFusion.Resources.Rampage.png");
+            // Neophyte Roles
+                BiteSprite = CreateSprite("TownOfUsFusion.Resources.Bite.png");
+            // Apocalypse Roles
+                InfectSprite = CreateSprite("TownOfUsFusion.Resources.Infect.png");
+                CollectSprite = CreateSprite("TownOfUsFusion.Resources.Collect.png");
+                ReapSprite = CreateSprite("TownOfUsFusion.Resources.Reap.png");
+                SoulSprite = CreateSprite("TownOfUsFusion.Resources.Soul.png");
+
+            // Concealing Roles
+                EscapeSprite = CreateScaledSprite("TownOfUsFusion.Resources.Recall.png");
+                MarkSprite = CreateScaledSprite("TownOfUsFusion.Resources.Mark.png");
+                SampleSprite = CreateScaledSprite("TownOfUsFusion.Resources.Sample.png");
+                MorphSprite = CreateScaledSprite("TownOfUsFusion.Resources.Morph.png");
+                SwoopSprite = CreateScaledSprite("TownOfUsFusion.Resources.Swoop.png");
+                SwoopingSprite = CreateScaledSprite("TownOfUsFusion.Resources.Swooping.png");
+                FlashSprite = CreateScaledSprite("TownOfUsFusion.Resources.Flash.png");
+                NoAbilitySprite = CreateScaledSprite("TownOfUsFusion.Resources.VenNone.png");
+                CamouflageSprite = CreateScaledSprite("TownOfUsFusion.Resources.VenCamo.png");
+                CamoSprintSprite = CreateScaledSprite("TownOfUsFusion.Resources.VenCamoSprint.png");
+                CamoSprintFreezeSprite = CreateScaledSprite("TownOfUsFusion.Resources.VenCamoSprintFreeze.png");
+            // Killing Roles
+                PlantSprite = CreateScaledSprite("TownOfUsFusion.Resources.Plant.png");
+                DetonateSprite = CreateScaledSprite("TownOfUsFusion.Resources.Detonate.png");
+                PoisonSprite = CreateScaledSprite("TownOfUsFusion.Resources.Poison.png");
+            // Support Roles
+                BlackmailSprite = CreateScaledSprite("TownOfUsFusion.Resources.Blackmail.png");
+                BlackmailLetterSprite = CreateSprite("TownOfUsFusion.Resources.BlackmailLetter.png");
+                BlackmailOverlaySprite = CreateSprite("TownOfUsFusion.Resources.BlackmailOverlay.png");
+                HypnotiseSprite = CreateScaledSprite("TownOfUsFusion.Resources.Hypnotise.png");
+                HysteriaSprite = CreateSprite("TownOfUsFusion.Resources.Hysteria.png");
+                JanitorClean = CreateScaledSprite("TownOfUsFusion.Resources.Janitor.png");
+                MineSprite = CreateSprite("TownOfUsFusion.Resources.Mine.png");
+                DragSprite = CreateSprite("TownOfUsFusion.Resources.Drag.png");
+                DropSprite = CreateSprite("TownOfUsFusion.Resources.Drop.png");
+
+                ButtonSprite = CreateScaledSprite("TownOfUsFusion.Resources.Button.png");
+                DisperseSprite = CreateSprite("TownOfUsFusion.Resources.Disperse.png");
+
             Footprint = CreateSprite("TownOfUsFusion.Resources.Footprint.png");
             NormalKill = CreateSprite("TownOfUsFusion.Resources.NormalKill.png");
-            MedicSprite = CreateSprite("TownOfUsFusion.Resources.Medic.png");
-            SeerSprite = CreateSprite("TownOfUsFusion.Resources.Seer.png");
-            SampleSprite = CreateSprite("TownOfUsFusion.Resources.Sample.png");
             Arrow = CreateSprite("TownOfUsFusion.Resources.Arrow.png");
-            MineSprite = CreateSprite("TownOfUsFusion.Resources.Mine.png");
-            DouseSprite = CreateSprite("TownOfUsFusion.Resources.Douse.png");
-            IgniteSprite = CreateSprite("TownOfUsFusion.Resources.Ignite.png");
-            ReviveSprite = CreateSprite("TownOfUsFusion.Resources.Revive.png");
-            ButtonSprite = CreateSprite("TownOfUsFusion.Resources.Button.png");
-            DisperseSprite = CreateSprite("TownOfUsFusion.Resources.Disperse.png");
-            DragSprite = CreateSprite("TownOfUsFusion.Resources.Drag.png");
-            DropSprite = CreateSprite("TownOfUsFusion.Resources.Drop.png");
             CycleBackSprite = CreateSprite("TownOfUsFusion.Resources.CycleBack.png");
             CycleForwardSprite = CreateSprite("TownOfUsFusion.Resources.CycleForward.png");
             GuessSprite = CreateSprite("TownOfUsFusion.Resources.Guess.png");
-            FlashSprite = CreateSprite("TownOfUsFusion.Resources.Flash.png");
-            AlertSprite = CreateSprite("TownOfUsFusion.Resources.Alert.png");
-            RememberSprite = CreateSprite("TownOfUsFusion.Resources.Remember.png");
-            PlantSprite = CreateSprite("TownOfUsFusion.Resources.Plant.png");
-            DetonateSprite = CreateSprite("TownOfUsFusion.Resources.Detonate.png");
-            TransportSprite = CreateSprite("TownOfUsFusion.Resources.Transport.png");
-            VestSprite = CreateSprite("TownOfUsFusion.Resources.Vest.png");
-            BlackmailSprite = CreateSprite("TownOfUsFusion.Resources.Blackmail.png");
-            BlackmailLetterSprite = CreateSprite("TownOfUsFusion.Resources.BlackmailLetter.png");
-            BlackmailOverlaySprite = CreateSprite("TownOfUsFusion.Resources.BlackmailOverlay.png");
             LighterSprite = CreateSprite("TownOfUsFusion.Resources.Lighter.png");
             DarkerSprite = CreateSprite("TownOfUsFusion.Resources.Darker.png");
-            InfectSprite = CreateSprite("TownOfUsFusion.Resources.Infect.png");
-            RampageSprite = CreateSprite("TownOfUsFusion.Resources.Rampage.png");
-            TrapSprite = CreateSprite("TownOfUsFusion.Resources.Trap.png");
-            EscapeSprite = CreateSprite("TownOfUsFusion.Resources.Recall.png");
-            MarkSprite = CreateSprite("TownOfUsFusion.Resources.Mark.png");
-            ImitateSelectSprite = CreateSprite("TownOfUsFusion.Resources.ImitateSelect.png");
-            ImitateDeselectSprite = CreateSprite("TownOfUsFusion.Resources.ImitateDeselect.png");
-            ObserveSprite = CreateSprite("TownOfUsFusion.Resources.Observe.png");
-            BiteSprite = CreateSprite("TownOfUsFusion.Resources.Bite.png");
-            RevealSprite = CreateSprite("TownOfUsFusion.Resources.Reveal.png");
-            ConfessSprite = CreateSprite("TownOfUsFusion.Resources.Confess.png");
-            NoAbilitySprite = CreateSprite("TownOfUsFusion.Resources.NoAbility.png");
-            CamouflageSprite = CreateSprite("TownOfUsFusion.Resources.Camouflage.png");
-            CamoSprintSprite = CreateSprite("TownOfUsFusion.Resources.CamoSprint.png");
-            CamoSprintFreezeSprite = CreateSprite("TownOfUsFusion.Resources.CamoSprintFreeze.png");
-            HackSprite = CreateSprite("TownOfUsFusion.Resources.Hack.png");
-            MimicSprite = CreateSprite("TownOfUsFusion.Resources.Mimic.png");
             LockSprite = CreateSprite("TownOfUsFusion.Resources.Lock.png");
-            StalkSprite = CreateSprite("TownOfUsFusion.Resources.Stalk.png");
             CrimeSceneSprite = CreateSprite("TownOfUsFusion.Resources.CrimeScene.png");
-            CampaignSprite = CreateSprite("TownOfUsFusion.Resources.Campaign.png");
-            FortifySprite = CreateSprite("TownOfUsFusion.Resources.Fortify.png");
-            HypnotiseSprite = CreateSprite("TownOfUsFusion.Resources.Hypnotise.png");
-            HysteriaSprite = CreateSprite("TownOfUsFusion.Resources.Hysteria.png");
-            JailSprite = CreateSprite("TownOfUsFusion.Resources.Jail.png");
-            InJailSprite = CreateSprite("TownOfUsFusion.Resources.InJail.png");
-            ExecuteSprite = CreateSprite("TownOfUsFusion.Resources.Execute.png");
-            CollectSprite = CreateSprite("TownOfUsFusion.Resources.Collect.png");
-            ReapSprite = CreateSprite("TownOfUsFusion.Resources.Reap.png");
-            SoulSprite = CreateSprite("TownOfUsFusion.Resources.Soul.png");
 
             SettingsButtonSprite = CreateSprite("TownOfUsFusion.Resources.SettingsButton.png");
             CrewSettingsButtonSprite = CreateSprite("TownOfUsFusion.Resources.Crewmate.png");
@@ -296,7 +324,7 @@ namespace TownOfUsFusion
             var img = imageStream.ReadFully();
             LoadImage(tex, img, true);
             tex.DontDestroy();
-            pixelsPerUnit = tex.height / 2;
+            pixelsPerUnit = (int)(tex.height * 1.5);
             var sprite = Sprite.Create(tex, new Rect(0.0f, 0.0f, tex.width, tex.height), pivot, pixelsPerUnit);
             sprite.DontDestroy();
             return sprite;

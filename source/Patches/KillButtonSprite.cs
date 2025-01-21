@@ -44,6 +44,7 @@ namespace TownOfUsFusion
         private static Sprite Collect => TownOfUsFusion.CollectSprite;
 
         private static Sprite Kill;
+        private static Sprite SheriffKill => TownOfUsFusion.SheriffKill;
 
 
         public static void Postfix(HudManager __instance)
@@ -57,183 +58,227 @@ namespace TownOfUsFusion
             {
                 __instance.KillButton.graphic.sprite = Seer;
                 __instance.KillButton.buttonLabelText.text = "Reveal";
-                __instance.KillButton.buttonLabelText.color = Patches.Colors.Seer;
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Seer);
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Medic))
             {
                 __instance.KillButton.graphic.sprite = Medic;
                 __instance.KillButton.buttonLabelText.text = "Shield";
-                __instance.KillButton.buttonLabelText.color = Patches.Colors.Medic;
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Medic);
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Arsonist))
             {
                 __instance.KillButton.graphic.sprite = Douse;
                 __instance.KillButton.buttonLabelText.text = "Douse";
-                __instance.KillButton.buttonLabelText.color = Patches.Colors.Arsonist;
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Arsonist);
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Altruist))
             {
                 __instance.KillButton.graphic.sprite = Revive;
                 __instance.KillButton.buttonLabelText.text = "Altruist";
-                __instance.KillButton.buttonLabelText.color = Patches.Colors.Altruist;
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Altruist);
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Veteran))
             {
                 __instance.KillButton.graphic.sprite = Alert;
                 __instance.KillButton.buttonLabelText.text = "Alert";
-                __instance.KillButton.buttonLabelText.color = Patches.Colors.Veteran;
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Veteran);
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Amnesiac))
             {
                 __instance.KillButton.graphic.sprite = Remember;
                 __instance.KillButton.buttonLabelText.text = "Remember";
-                __instance.KillButton.buttonLabelText.color = Patches.Colors.Amnesiac;
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Amnesiac);
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Tracker))
             {
                 __instance.KillButton.graphic.sprite = Track;
                 __instance.KillButton.buttonLabelText.text = "Track";
-                __instance.KillButton.buttonLabelText.color = Patches.Colors.Track;
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Tracker);
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Transporter))
             {
                 __instance.KillButton.graphic.sprite = Transport;
                 __instance.KillButton.buttonLabelText.text = "Transport";
-                __instance.KillButton.buttonLabelText.color = Patches.Colors.Transport;
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Transporter);
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Medium))
             {
                 __instance.KillButton.graphic.sprite = Mediate;
                 __instance.KillButton.buttonLabelText.text = "Mediate";
-                __instance.KillButton.buttonLabelText.color = Patches.Colors.Mediate;
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Medium);
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Survivor))
             {
                 __instance.KillButton.graphic.sprite = Vest;
                 __instance.KillButton.buttonLabelText.text = "Vest";
-                __instance.KillButton.buttonLabelText.color = Patches.Colors.Survivor;
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Survivor);
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.GuardianAngel))
             {
                 __instance.KillButton.graphic.sprite = Protect;
                 __instance.KillButton.buttonLabelText.text = "Protect";
-                __instance.KillButton.buttonLabelText.color = Patches.Colors.GuardianAngel;
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.GuardianAngel);
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Plaguebearer))
             {
                 __instance.KillButton.graphic.sprite = Infect;
                 __instance.KillButton.buttonLabelText.text = "Infect";
-                __instance.KillButton.buttonLabelText.color = Patches.Colors.Plaguebearer;
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Plaguebearer);
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Engineer))
             {
                 __instance.KillButton.graphic.sprite = Fix;
                 __instance.KillButton.buttonLabelText.text = "Fix";
-                __instance.KillButton.buttonLabelText.color = Patches.Colors.Engineer;
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Engineer);
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Trapper))
             {
                 __instance.KillButton.graphic.sprite = Trap;
                 __instance.KillButton.buttonLabelText.text = "Trap";
-                __instance.KillButton.buttonLabelText.color = Patches.Colors.Trapper;
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Trapper);
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Detective))
             {
                 __instance.KillButton.graphic.sprite = Autopsy;
                 __instance.KillButton.buttonLabelText.text = "Autopsy";
-                __instance.KillButton.buttonLabelText.color = Patches.Colors.Detective;
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Detective);
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Doomsayer))
             {
                 __instance.KillButton.graphic.sprite = Observe;
                 __instance.KillButton.buttonLabelText.text = "Observe";
-                __instance.KillButton.buttonLabelText.color = Patches.Colors.Doomsayer;
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Doomsayer);
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Vampire))
             {
                 __instance.KillButton.graphic.sprite = Bite;
                 __instance.KillButton.buttonLabelText.text = "Bite";
-                __instance.KillButton.buttonLabelText.color = Patches.Colors.Vampire;
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Vampire);
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Oracle))
             {
                 __instance.KillButton.graphic.sprite = Confess;
                 __instance.KillButton.buttonLabelText.text = "Confess";
-                __instance.KillButton.buttonLabelText.color = Patches.Colors.Oracle;
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Oracle);
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Politician))
             {
                 __instance.KillButton.graphic.sprite = Campaign;
                 __instance.KillButton.buttonLabelText.text = "Campaign";
-                __instance.KillButton.buttonLabelText.color = Patches.Colors.Politician;
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Politician);
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Warden))
             {
                 __instance.KillButton.graphic.sprite = Fortify;
                 __instance.KillButton.buttonLabelText.text = "Fortify";
-                __instance.KillButton.buttonLabelText.color = Patches.Colors.Warden;
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Warden);
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Jailor))
             {
                 __instance.KillButton.graphic.sprite = Jail;
                 __instance.KillButton.buttonLabelText.text = "Jail";
-                __instance.KillButton.buttonLabelText.color = Patches.Colors.Jailor;
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Jailor);
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.SoulCollector))
             {
                 __instance.KillButton.graphic.sprite = Collect;
                 __instance.KillButton.buttonLabelText.text = "Collect";
-                __instance.KillButton.buttonLabelText.color = Patches.Colors.SoulCollector;
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.SoulCollector);
                 flag = true;
             }
-            else
+            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Sheriff))
             {
-                __instance.KillButton.graphic.sprite = Kill;
-                __instance.KillButton.buttonLabelText.text = "Kill";
-                flag = PlayerControl.LocalPlayer.Is(RoleEnum.Sheriff) || PlayerControl.LocalPlayer.Is(RoleEnum.Pestilence) ||
-                    PlayerControl.LocalPlayer.Is(RoleEnum.Werewolf) || PlayerControl.LocalPlayer.Is(RoleEnum.Juggernaut);
+                __instance.KillButton.graphic.sprite = SheriffKill;
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Sheriff);
+                flag = true;
             }
+            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Pestilence))
+            {
+                //__instance.KillButton.graphic.sprite = PestKill;
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Pestilence);
+                flag = true;
+            }
+            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Werewolf))
+            {
+                //__instance.KillButton.graphic.sprite = WolfKill;
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Werewolf);
+                flag = true;
+            }
+            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Juggernaut))
+            {
+                //__instance.KillButton.graphic.sprite = JuggKill;
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Juggernaut);
+                flag = true;
+            }
+            
             if (!PlayerControl.LocalPlayer.Is(Faction.Impostors) &&
                 GameOptionsManager.Instance.CurrentGameOptions.GameMode != GameModes.HideNSeek)
             {
                 __instance.KillButton.transform.localPosition = new Vector3(0f, 1f, 0f);
             }
-            if(PlayerControl.LocalPlayer.Is(RoleEnum.Glitch)
-                 || PlayerControl.LocalPlayer.Is(RoleEnum.Pestilence) || PlayerControl.LocalPlayer.Is(RoleEnum.Juggernaut)
-                 || PlayerControl.LocalPlayer.Is(RoleEnum.Vampire))
+            
+            if(PlayerControl.LocalPlayer.Is(RoleEnum.Glitch))
             {
                 __instance.ImpostorVentButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
+                //__instance.ImpostorVentButton.graphic.sprite = GlitchVent;
+                __instance.ImpostorVentButton.buttonLabelText.SetOutlineColor(Patches.Colors.Glitch);
+            }
+            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Pestilence))
+            {
+                __instance.ImpostorVentButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
+                //__instance.ImpostorVentButton.graphic.sprite = PestVent;
+                __instance.ImpostorVentButton.buttonLabelText.SetOutlineColor(Patches.Colors.Pestilence);
+            }
+            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Juggernaut))
+            {
+                __instance.ImpostorVentButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
+                //__instance.ImpostorVentButton.graphic.sprite = JuggVent;
+                __instance.ImpostorVentButton.buttonLabelText.SetOutlineColor(Patches.Colors.Juggernaut);
+            }
+            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Vampire))
+            {
+                __instance.ImpostorVentButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
+                //__instance.ImpostorVentButton.graphic.sprite = VampVent;
+                __instance.ImpostorVentButton.buttonLabelText.SetOutlineColor(Patches.Colors.Vampire);
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Engineer))
             {
                 __instance.ImpostorVentButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
                 __instance.ImpostorVentButton.graphic.sprite = EngiVent;
-                __instance.ImpostorVentButton.buttonLabelText.color = Patches.Colors.Engineer;
+                __instance.ImpostorVentButton.buttonLabelText.SetOutlineColor(Patches.Colors.Engineer);
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Werewolf))
             {
                 __instance.ImpostorVentButton.transform.localPosition = new Vector3(-1f, 1f, 0f);
+                //__instance.ImpostorVentButton.graphic.sprite = WolfVent;
+                __instance.ImpostorVentButton.buttonLabelText.SetOutlineColor(Patches.Colors.Werewolf);
+            }
+            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Jester))
+            {
+                //__instance.ImpostorVentButton.graphic.sprite = JestVent;
+                __instance.ImpostorVentButton.buttonLabelText.SetOutlineColor(Patches.Colors.Jester);
             }
 
             bool KillKey = Rewired.ReInput.players.GetPlayer(0).GetButtonDown("Kill");

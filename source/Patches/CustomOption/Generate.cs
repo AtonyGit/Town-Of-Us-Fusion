@@ -66,6 +66,7 @@ namespace TownOfUsFusion.CustomOption
 
         public static CustomHeaderOption ImpostorKillingRoles;
         public static CustomNumberOption BomberOn;
+        public static CustomNumberOption PoisonerOn;
         public static CustomNumberOption TraitorOn;
         public static CustomNumberOption WarlockOn;
 
@@ -407,6 +408,10 @@ namespace TownOfUsFusion.CustomOption
         public static CustomToggleOption BomberVent;
         public static CustomToggleOption AllImpsSeeBomb;
 
+        public static CustomHeaderOption Poisoner;
+        public static CustomNumberOption PoisonDuration;
+        public static CustomToggleOption PoisonerVent;
+
         public static CustomHeaderOption Doomsayer;
         public static CustomNumberOption ObserveCooldown;
         public static CustomToggleOption DoomsayerGuessNeutralBenign;
@@ -612,6 +617,8 @@ namespace TownOfUsFusion.CustomOption
 
             ImpostorKillingRoles = new CustomHeaderOption(num++, MultiMenu.imposter, "Impostor Killing Roles");
             BomberOn = new CustomNumberOption(num++, MultiMenu.imposter, "<color=#FF0000FF>Bomber</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            PoisonerOn = new CustomNumberOption(num++, MultiMenu.imposter, "<color=#FF0000FF>Poisoner</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             TraitorOn = new CustomNumberOption(num++, MultiMenu.imposter, "<color=#FF0000FF>Traitor</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
@@ -1211,6 +1218,13 @@ namespace TownOfUsFusion.CustomOption
             AllImpsSeeBomb =
                 new CustomToggleOption(num++, MultiMenu.imposter, "All Impostors See Bomb", false);
 
+            Poisoner =
+                new CustomHeaderOption(num++, MultiMenu.imposter, "<color=#FF0000FF>Poisoner</color>");
+            PoisonDuration =
+                new CustomNumberOption(num++, MultiMenu.imposter, "Poison Kill Delay", 5, 1, 15, 1f, CooldownFormat);
+            PoisonerVent =
+                new CustomToggleOption(num++, MultiMenu.imposter, "Poisoner Can Vent", false);
+                
             Traitor = new CustomHeaderOption(num++, MultiMenu.imposter, "<color=#FF0000FF>Traitor</color>");
             LatestSpawn = new CustomNumberOption(num++, MultiMenu.imposter, "Minimum People Alive When Traitor Can Spawn", 5, 3, 15, 1);
             NeutralKillingStopsTraitor =

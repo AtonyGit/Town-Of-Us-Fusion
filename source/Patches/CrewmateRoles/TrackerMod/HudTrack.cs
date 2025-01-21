@@ -24,7 +24,7 @@ namespace TownOfUsFusion.CrewmateRoles.TrackerMod
             var isDead = data.IsDead;
             var trackButton = __instance.KillButton;
             trackButton.buttonLabelText.text = "Track";
-            trackButton.buttonLabelText.color = Patches.Colors.Tracker;
+            trackButton.buttonLabelText.SetOutlineColor(Patches.Colors.Tracker);
 
             var role = Role.GetRole<Tracker>(PlayerControl.LocalPlayer);
 

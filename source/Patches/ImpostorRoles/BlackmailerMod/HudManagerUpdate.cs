@@ -66,7 +66,7 @@ namespace TownOfUsFusion.ImpostorRoles.BlackmailerMod
                     if (imp.GetCustomOutfitType() == CustomPlayerOutfitType.Camouflage ||
                         imp.GetCustomOutfitType() == CustomPlayerOutfitType.Swooper) imp.nameText().color = Color.clear;
                     else if (imp.nameText().color == Color.clear ||
-                        imp.nameText().color == new Color(0.3f, 0.0f, 0.0f)) imp.nameText().color = Colors.Impostor;
+                        imp.nameText().color == new Color(0.3f, 0.0f, 0.0f)) imp.nameText().color = Patches.Colors.Impostor;
                 }
             }
         }

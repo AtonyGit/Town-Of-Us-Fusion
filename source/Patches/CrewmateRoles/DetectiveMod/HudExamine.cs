@@ -28,7 +28,7 @@ namespace TownOfUsFusion.CrewmateRoles.DetectiveMod
             }
 
             role.ExamineButton.graphic.sprite = ExamineSprite;
-            role.ExamineButton.buttonLabelText.color = Patches.Colors.Detective;
+            role.ExamineButton.buttonLabelText.SetOutlineColor(Patches.Colors.Detective);
             role.ExamineButton.buttonLabelText.text = "Examine";
             role.ExamineButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
 

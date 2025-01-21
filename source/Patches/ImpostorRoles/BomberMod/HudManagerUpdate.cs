@@ -33,7 +33,7 @@ namespace TownOfUsFusion.ImpostorRoles.BomberMod
             if (role.Detonating)
             {
                 role.PlantButton.graphic.sprite = DetonateSprite;
-                role.PlantButton.buttonLabelText.text = "Detonate";
+                role.PlantButton.buttonLabelText.text = "Detonating";
                 role.PlantButton.graphic.color = Palette.EnabledColor;
                 role.PlantButton.graphic.material.SetFloat("_Desat", 0f);
                 role.DetonateTimer();

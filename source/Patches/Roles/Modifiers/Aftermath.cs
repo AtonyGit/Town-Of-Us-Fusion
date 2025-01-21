@@ -49,7 +49,7 @@ namespace TownOfUsFusion.Roles.Modifiers
                 {
                     if (blackmailer.Blackmailed.GetCustomOutfitType() != CustomPlayerOutfitType.Camouflage &&
                         blackmailer.Blackmailed.GetCustomOutfitType() != CustomPlayerOutfitType.Swooper)
-                        blackmailer.Blackmailed.nameText().color = Colors.Impostor;
+                        blackmailer.Blackmailed.nameText().color = Patches.Colors.Impostor;
                     else blackmailer.Blackmailed.nameText().color = Color.clear;
                 }
                 blackmailer.Blackmailed = player;

@@ -4,6 +4,9 @@ namespace TownOfUsFusion
     {
         SetRole = 100,
         SetModifier,
+        SetAlliance,
+        SetRecruits,
+        SetHeretics,
         SetCouple,
         SetAssassin,
         SetTarget,
@@ -29,7 +32,14 @@ namespace TownOfUsFusion
         WerewolfWin,
         SurvivorOnlyWin,
         VampireWin,
+        CannibalWin,
+        NecroWin,
+        ApocWin,
+        JackalWin,
 
+        Poison,
+        RemoteBite,
+        
         JanitorClean,
         FixLights,
         EngineerFix,
@@ -92,6 +102,7 @@ namespace TownOfUsFusion
         FixAnimation,
         SetPos,
         SetSettings,
+        SyncSettingsTarget,
         
         RemoveAllBodies,
         CheckMurder,

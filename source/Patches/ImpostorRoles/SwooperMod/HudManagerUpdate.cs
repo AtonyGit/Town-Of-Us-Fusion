@@ -8,6 +8,7 @@ namespace TownOfUsFusion.ImpostorRoles.SwooperMod
     public class HudManagerUpdate
     {
         public static Sprite SwoopSprite => TownOfUsFusion.SwoopSprite;
+        public static Sprite SwoopingSprite => TownOfUsFusion.SwoopingSprite;
 
         public static void Postfix(HudManager __instance)
         {
@@ -22,26 +23,30 @@ namespace TownOfUsFusion.ImpostorRoles.SwooperMod
                 role.SwoopButton.graphic.enabled = true;
                 role.SwoopButton.gameObject.SetActive(false);
             }
-            role.SwoopButton.graphic.sprite = SwoopSprite;
-            role.SwoopButton.buttonLabelText.text = "Swoop";
             role.SwoopButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
 
             if (role.IsSwooped)
             {
+                role.SwoopButton.graphic.sprite = SwoopingSprite;
+                role.SwoopButton.buttonLabelText.text = "Swooping";
                 role.SwoopButton.SetCoolDown(role.TimeRemaining, CustomGameOptions.SwoopDuration);
                 role.SwoopButton.graphic.color = Palette.EnabledColor;
                 role.SwoopButton.graphic.material.SetFloat("_Desat", 0f);
             }
             else if (PlayerControl.LocalPlayer.moveable && role.SwoopTimer() == 0f)
             {
+                role.SwoopButton.graphic.sprite = SwoopSprite;
+                role.SwoopButton.buttonLabelText.text = "Swoop";
                 role.SwoopButton.SetCoolDown(role.SwoopTimer(), CustomGameOptions.SwoopCd);
                 role.SwoopButton.graphic.color = Palette.EnabledColor;
                 role.SwoopButton.graphic.material.SetFloat("_Desat", 0f);
             }
             else
             {
+                role.SwoopButton.graphic.sprite = SwoopSprite;
+                role.SwoopButton.buttonLabelText.text = "Swoop";
                 role.SwoopButton.SetCoolDown(role.SwoopTimer(), CustomGameOptions.SwoopCd);
                 role.SwoopButton.graphic.color = Palette.DisabledClear;
                 role.SwoopButton.graphic.material.SetFloat("_Desat", 1f);

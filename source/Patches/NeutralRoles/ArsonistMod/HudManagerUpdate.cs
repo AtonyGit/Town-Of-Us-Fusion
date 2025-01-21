@@ -46,7 +46,7 @@ namespace TownOfUsFusion.NeutralRoles.ArsonistMod
 
             role.IgniteButton.graphic.sprite = IgniteSprite;
             role.IgniteButton.buttonLabelText.text = "Ignite";
-            role.IgniteButton.buttonLabelText.color = Patches.Colors.Arsonist;
+            role.IgniteButton.buttonLabelText.SetOutlineColor(Patches.Colors.Arsonist);
             role.IgniteButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
 
             if (PlayerControl.LocalPlayer.Data.IsDead) role.IgniteButton.SetTarget(null);

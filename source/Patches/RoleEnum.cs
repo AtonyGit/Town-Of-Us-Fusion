@@ -52,6 +52,7 @@ namespace TownOfUsFusion
         Undertaker,
         Grenadier,
         Traitor,
+        Poisoner,
         Blackmailer,
         Escapist,
         Bomber,

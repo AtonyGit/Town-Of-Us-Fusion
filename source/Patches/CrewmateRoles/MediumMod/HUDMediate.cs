@@ -26,7 +26,7 @@ namespace TownOfUsFusion.CrewmateRoles.MediumMod
             {
                 var mediateButton = __instance.KillButton;
                 mediateButton.buttonLabelText.text = "Mediate";
-                mediateButton.buttonLabelText.color = Patches.Colors.Medium;
+                mediateButton.buttonLabelText.SetOutlineColor(Patches.Colors.Medium);
 
                 var role = Role.GetRole<Medium>(PlayerControl.LocalPlayer);
                 mediateButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)

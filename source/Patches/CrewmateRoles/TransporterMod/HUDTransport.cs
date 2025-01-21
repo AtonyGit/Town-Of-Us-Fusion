@@ -17,7 +17,7 @@ namespace TownOfUsFusion.CrewmateRoles.TransporterMod
             var data = PlayerControl.LocalPlayer.Data;
             var transportButton = __instance.KillButton;
             transportButton.buttonLabelText.text = "Transport";
-            transportButton.buttonLabelText.color = Patches.Colors.Transporter;
+            transportButton.buttonLabelText.SetOutlineColor(Patches.Colors.Transporter);
 
             var role = Role.GetRole<Transporter>(PlayerControl.LocalPlayer);
 

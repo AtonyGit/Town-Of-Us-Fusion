@@ -804,6 +804,18 @@ namespace TownOfUsFusion
                         morphRole.TimeRemaining = CustomGameOptions.MorphlingDuration;
                         morphRole.MorphedPlayer = morphTarget;
                         break;
+                    case CustomRPC.Poison:
+                        var poisoner = Utils.PlayerById(reader.ReadByte());
+                        var poisoned = Utils.PlayerById(reader.ReadByte());
+                        var poisonerRole = Role.GetRole<Poisoner>(poisoner);
+                        poisonerRole.PoisonedPlayer = poisoned;
+                        break;
+                    case CustomRPC.RemoteBite:
+                        var vamp = Utils.PlayerById(reader.ReadByte());
+                        var bitten = Utils.PlayerById(reader.ReadByte());
+                        var vampRole = Role.GetRole<Vampire>(vamp);
+                        //vampRole.BittenPlayer = bitten;
+                        break;
                     case CustomRPC.SetTarget:
                         var exe = Utils.PlayerById(reader.ReadByte());
                         var exeTarget = Utils.PlayerById(reader.ReadByte());
@@ -1007,6 +1019,10 @@ namespace TownOfUsFusion
                         break;
                     case CustomRPC.SyncCustomSettings:
                         Rpc.ReceiveRpc(reader);
+                        break;
+                    case CustomRPC.SyncSettingsTarget:
+                        var joined = Utils.PlayerById(reader.ReadByte());
+                        if (joined != null && joined.AmOwner) Rpc.ReceiveRpc(reader);
                         break;
                     case CustomRPC.AltruistRevive:
                         readByte1 = reader.ReadByte();
@@ -1449,6 +1465,9 @@ namespace TownOfUsFusion
 
                     if (CustomGameOptions.BomberOn > 0)
                         ImpostorRoles.Add((typeof(Bomber), CustomGameOptions.BomberOn, true));
+
+                    if (CustomGameOptions.PoisonerOn > 0)
+                        ImpostorRoles.Add((typeof(Poisoner), CustomGameOptions.PoisonerOn, true));
 
                     if (CustomGameOptions.WarlockOn > 0)
                         ImpostorRoles.Add((typeof(Warlock), CustomGameOptions.WarlockOn, false));

@@ -69,6 +69,9 @@ namespace TownOfUsFusion
         public static int EscapistOn => (int)Generate.EscapistOn.Get();
         public static int ImitatorOn => (int)Generate.ImitatorOn.Get();
         public static int BomberOn => (int)Generate.BomberOn.Get();
+        public static int PoisonerOn => (int)Generate.PoisonerOn.Get();
+            public static float PoisonDuration => Generate.PoisonDuration.Get();
+            public static bool PoisonerVent => Generate.PoisonerVent.Get();
         public static int DoomsayerOn => (int)Generate.DoomsayerOn.Get();
         public static int VampireOn => (int)Generate.VampireOn.Get();
         public static int ProsecutorOn => (int)Generate.ProsecutorOn.Get();
