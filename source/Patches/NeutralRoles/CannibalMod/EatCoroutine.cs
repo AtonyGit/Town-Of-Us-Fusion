@@ -52,6 +52,8 @@ namespace TownOfUsFusion.NeutralRoles.CannibalMod
             }
         Object.Destroy(body.gameObject);
         role.EatNeed -= 1;
+        role.Eaten = true;
+        role.RegenTask();
     }
 }
 }

@@ -1,30 +1,24 @@
+﻿/*using System;
 using HarmonyLib;
-using Reactor.Utilities.Extensions;
-using TownOfUsFusion.CrewmateRoles.MedicMod;
 using TownOfUsFusion.Roles;
-using UnityEngine;
-using System.Collections.Generic;
-using System.Linq;
-using Object = UnityEngine.Object;
-using System;
 using AmongUs.GameOptions;
 
-namespace TownOfUsFusion.NeutralRoles.NeoNecromancerMod
+namespace TownOfUsFusion.NeutralRoles.CursedSoulMod
 {
     [HarmonyPatch(typeof(KillButton), nameof(KillButton.DoClick))]
-public class NeoNecroKill
+public class ImpKillFix
 {
-    [HarmonyPriority(Priority.First)]
     public static bool Prefix(KillButton __instance)
     {
-        var flag = PlayerControl.LocalPlayer.Is(RoleEnum.NeoNecromancer);
+        var flag = PlayerControl.LocalPlayer.Is(RoleEnum.Werewolf);
         if (!flag) return true;
-        if (!PlayerControl.LocalPlayer.CanMove) return false;
         if (PlayerControl.LocalPlayer.Data.IsDead) return false;
-        var role = Role.GetRole<NeoNecromancer>(PlayerControl.LocalPlayer);
-        if (__instance == role.ResurrectButton) return true;
-        if (role.NecroKillTimer() != 0) return false;
-        if (!role.CanKill) return false;
+        if (!PlayerControl.LocalPlayer.CanMove) return false;
+        var role = Role.GetRole<Werewolf>(PlayerControl.LocalPlayer);
+        if (role.Player.inVent) return false;
+
+        if (role.KillTimer() != 0) return false;
+        if (__instance != DestroyableSingleton<HudManager>.Instance.KillButton) return true;
         if (!__instance.isActiveAndEnabled || __instance.isCoolingDown) return false;
         if (role.ClosestPlayer == null) return false;
         var distBetweenPlayers = Utils.GetDistBetweenPlayers(PlayerControl.LocalPlayer, role.ClosestPlayer);
@@ -37,19 +31,19 @@ public class NeoNecroKill
         else if (interact[0] == true)
         {
             role.LastKilled = DateTime.UtcNow;
-            role.CanKill = false;
+
             return false;
         }
         else if (interact[1] == true)
         {
             role.LastKilled = DateTime.UtcNow;
-            role.LastKilled = role.LastKilled.AddSeconds(CustomGameOptions.ProtectKCReset - CustomGameOptions.NecroKillCooldown);
+            role.LastKilled = role.LastKilled.AddSeconds(CustomGameOptions.ProtectKCReset - CustomGameOptions.RampageKillCd);
             return false;
         }
         else if (interact[2] == true)
         {
             role.LastKilled = DateTime.UtcNow;
-            role.LastKilled = role.LastKilled.AddSeconds(CustomGameOptions.VestKCReset - CustomGameOptions.NecroKillCooldown);
+            role.LastKilled = role.LastKilled.AddSeconds(CustomGameOptions.VestKCReset - CustomGameOptions.RampageKillCd);
             return false;
         }
         else if (interact[3] == true) return false;
@@ -57,3 +51,4 @@ public class NeoNecroKill
     }
 }
 }
+*/

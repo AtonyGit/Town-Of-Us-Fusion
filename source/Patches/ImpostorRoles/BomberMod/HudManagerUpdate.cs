@@ -18,6 +18,18 @@ public class HudManagerUpdate
         if (PlayerControl.LocalPlayer.Data == null) return;
         if (!PlayerControl.LocalPlayer.Is(RoleEnum.Bomber)) return;
         var role = Role.GetRole<Bomber>(PlayerControl.LocalPlayer);
+        
+        if (!PlayerControl.LocalPlayer.Is(Faction.Impostors))
+        {
+        __instance.KillButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+
+        __instance.KillButton.SetCoolDown(PlayerControl.LocalPlayer.killTimer, 
+        GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown);
+        //Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton, float.NaN);
+        }
+
         if (role.PlantButton == null)
         {
             role.PlantButton = Object.Instantiate(__instance.KillButton, __instance.KillButton.transform.parent);

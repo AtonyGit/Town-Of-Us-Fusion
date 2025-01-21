@@ -19,8 +19,6 @@ public class PerformKillButton
         if (PlayerControl.LocalPlayer.Data.IsDead) return false;
         var role = Role.GetRole<Cannibal>(PlayerControl.LocalPlayer);
 
-        if (__instance == role.EatButton)
-        {
             var flag2 = __instance.isCoolingDown;
             if (flag2) return false;
             if (!__instance.enabled) return false;
@@ -38,9 +36,6 @@ public class PerformKillButton
 
             Coroutines.Start(EatCoroutine.CannibalCoroutine(role.CurrentTarget, role));
             return false;
-        }
-
-        return true;
     }
 }
 }

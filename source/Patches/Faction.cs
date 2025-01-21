@@ -11,7 +11,12 @@ namespace TownOfUsFusion
     NeutralKilling,
     NeutralNeophyte,
     NeutralNecro,
+    CrewSentinel,
+    ChaosSentinel,
+    NeutralSentinel,
+    ImpSentinel,
     NeutralApocalypse,
+    NeutralCursed,
     None
 }
     public enum Alignment

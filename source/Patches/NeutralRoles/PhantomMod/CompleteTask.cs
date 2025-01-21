@@ -24,7 +24,7 @@ public class CompleteTask
             if (AmongUsClient.Instance.AmHost)
             {
                 Utils.Rpc(CustomRPC.PhantomWin, role.Player.PlayerId);
-                if (CustomGameOptions.NeutralEvilWinEndsGame) Utils.EndGame();
+                if (CustomGameOptions.NeutralEvilWinEndsGame) Utils.EndGameWompWomp();
                 else
                 {
                     role.Caught = true;

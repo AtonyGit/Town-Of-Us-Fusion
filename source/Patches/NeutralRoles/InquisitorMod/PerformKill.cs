@@ -22,6 +22,7 @@ public class PerformVanquish
         var role = Role.GetRole<Inquisitor>(PlayerControl.LocalPlayer);
         
         var distBetweenPlayers = Utils.GetDistBetweenPlayers(PlayerControl.LocalPlayer, role.ClosestPlayer);
+        
         if (__instance == role.InquireButton)
         {
         if (role.InquireTimer() != 0) return false;
@@ -53,6 +54,7 @@ public class PerformVanquish
         }
 
         if (!role.canVanquish) return false;
+        if (!CustomGameOptions.VanquishEnabled) return false;
         if (role.lostVanquish) return false;
         var flag2 = role.VanquishTimer() == 0f;
         if (!flag2) return false;
@@ -60,8 +62,7 @@ public class PerformVanquish
         var flag3 = distBetweenPlayers < GameOptionsData.KillDistances[GameOptionsManager.Instance.currentNormalGameOptions.KillDistance];
         if (!flag3) return false;
 
-        var flag4 = role.ClosestPlayer == role.heretic1 || role.ClosestPlayer == role.heretic2 || role.ClosestPlayer == role.heretic3;
-
+        var flag4 = role.invalidHeretics ? true : role.ClosestPlayer == role.heretic1 || role.ClosestPlayer == role.heretic2 || role.ClosestPlayer == role.heretic3;
         var interactAlt = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer, true);
         if (interactAlt[4] == true) return false;
         else if (interactAlt[0] == true)
@@ -71,21 +72,16 @@ public class PerformVanquish
                 Utils.RpcMurderPlayer(PlayerControl.LocalPlayer, role.ClosestPlayer);
                 role.LastVanquished = DateTime.UtcNow;
                 role.lostVanquish = true;
-                //__instance.OverrideText("Disabled");
             }
             else
             {
                 Utils.RpcMurderPlayer(PlayerControl.LocalPlayer, role.ClosestPlayer);
                 role.LastVanquished = DateTime.UtcNow;
-                if (role.heretic1.Data.IsDead && role.heretic2.Data.IsDead && role.heretic3.Data.IsDead) {
+                if (role.invalidHeretics || role.heretic1.Data.IsDead && role.heretic2.Data.IsDead && role.heretic3.Data.IsDead) {
                     role.didWin = true;
-                    //Utils.MurderPlayer(PlayerControl.LocalPlayer, PlayerControl.LocalPlayer, false);
+                    role.RegenTask();
                 }
             }
-/*
-                    Utils.Rpc(CustomRPC.VanquishClean, PlayerControl.LocalPlayer.PlayerId, PlayerControl.LocalPlayer.PlayerId);
-
-                    Coroutines.Start(VanquishCoroutine.InquisitorCoroutine(role.CurrentBodyTarget, role));*/
             return false;
         }
         else if (interactAlt[1] == true)

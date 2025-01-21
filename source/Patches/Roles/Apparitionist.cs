@@ -7,7 +7,6 @@ namespace TownOfUsFusion.Roles
     public class Apparitionist : Role
 {
     public DeadBody CurrentTarget;
-    public KillButton _ResurrectButton;
     public DateTime LastResurrected;
     public int ResurrectCount;
 
@@ -25,16 +24,6 @@ namespace TownOfUsFusion.Roles
         Faction = Faction.NeutralNecro;
     }
 
-    public KillButton ResurrectButton
-    {
-        get => _ResurrectButton;
-        set
-        {
-            _ResurrectButton = value;
-            ExtraButtons.Clear();
-            ExtraButtons.Add(value);
-        }
-    }
 
     protected override void IntroPrefix(IntroCutscene._ShowTeam_d__38 __instance)
     {

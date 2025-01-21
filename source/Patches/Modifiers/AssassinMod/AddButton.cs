@@ -34,7 +34,8 @@ public class AddButton
                 player.Data.Disconnected
             ) return true;
         }
-        else if (PlayerControl.LocalPlayer.Is(Faction.NeutralKilling))
+        else if (PlayerControl.LocalPlayer.Is(Faction.NeutralKilling) || PlayerControl.LocalPlayer.Is(Faction.NeutralNeophyte) || PlayerControl.LocalPlayer.Is(Faction.NeutralNecro) || PlayerControl.LocalPlayer.Is(Faction.NeutralApocalypse)
+        || PlayerControl.LocalPlayer.Is(Faction.NeutralSentinel) || PlayerControl.LocalPlayer.Is(Faction.ChaosSentinel))
         {
             if (
                 player == null ||

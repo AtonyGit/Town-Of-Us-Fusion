@@ -22,13 +22,11 @@ public class PerformResurrect2
         if (!PlayerControl.LocalPlayer.CanMove) return false;
         if (PlayerControl.LocalPlayer.Data.IsDead) return false;
         var role = Role.GetRole<Apparitionist>(PlayerControl.LocalPlayer);
-        if (__instance == role.ResurrectButton)
-        {
             if (__instance.isCoolingDown) return false;
             if (!__instance.isActiveAndEnabled) return false;
             if (role.ResurrectTimer() != 0) return false;
 
-            var flag2 = role.ResurrectButton.isCoolingDown;
+            var flag2 = __instance.isCoolingDown;
             if (flag2) return false;
             if (!__instance.enabled) return false;
             var maxDistance = GameOptionsData.KillDistances[GameOptionsManager.Instance.currentNormalGameOptions.KillDistance];
@@ -41,7 +39,7 @@ public class PerformResurrect2
             var playerId = role.CurrentTarget.ParentId;
             var player = Utils.PlayerById(playerId);
 
-            if (player.Is(AllianceEnum.Lover) || player.Is(AllianceEnum.Crewpocalypse) || player.Is(AllianceEnum.Crewpostor) || player.Is(AllianceEnum.Recruit)
+            if (player.Is(AllianceEnum.Lover) || player.Is(AllianceEnum.Crewpocalypse) || player.Is(AllianceEnum.Crewpostor) || player.Is(AllianceEnum.Egotist) || player.Is(AllianceEnum.Recruit)
             || player.Is(Faction.Impostors) || player.Is(Faction.NeutralNeophyte) || player.Is(Faction.NeutralApocalypse) || player.Is(Faction.NeutralChaos)
             || player.Is(RoleEnum.Detective) || player.Is(RoleEnum.Seer) || player.Is(RoleEnum.Investigator) || player.Is(RoleEnum.Tracker) || player.Is(RoleEnum.Snitch) || player.Is(RoleEnum.Spy) || player.Is(RoleEnum.Trapper)
             || player.Is(RoleEnum.Mayor) || player.Is(RoleEnum.Prosecutor) || player.Is(RoleEnum.Swapper) || player.Is(RoleEnum.Amnesiac) || player.Is(RoleEnum.Survivor)) return false;
@@ -54,9 +52,6 @@ public class PerformResurrect2
 
             Resurrect2(role.CurrentTarget, role);
             return false;
-        }
-
-        return true;
     }
 
     public static void Resurrect2(DeadBody target, Apparitionist role)

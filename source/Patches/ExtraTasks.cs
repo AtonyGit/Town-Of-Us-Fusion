@@ -23,9 +23,9 @@ public class ShipStatusPatch
         var commonTask = __instance.CommonTasks.Count;
         var normalTask = __instance.ShortTasks.Count;
         var longTask = __instance.LongTasks.Count;
-        if (GameOptionsManager.Instance.currentNormalGameOptions.NumCommonTasks > commonTask) GameOptionsManager.Instance.currentNormalGameOptions.NumCommonTasks = commonTask;
-        if (GameOptionsManager.Instance.currentNormalGameOptions.NumShortTasks > normalTask) GameOptionsManager.Instance.currentNormalGameOptions.NumShortTasks = normalTask;
-        if (GameOptionsManager.Instance.currentNormalGameOptions.NumLongTasks > longTask) GameOptionsManager.Instance.currentNormalGameOptions.NumLongTasks = longTask;
+        if (GameOptionsManager.Instance.currentNormalGameOptions.NumCommonTasks > commonTask) GameOptionsManager.Instance.currentNormalGameOptions.NumCommonTasks = commonTask/* + CustomGameOptions.TMCommonTasks*/;
+        if (GameOptionsManager.Instance.currentNormalGameOptions.NumShortTasks > normalTask) GameOptionsManager.Instance.currentNormalGameOptions.NumShortTasks = normalTask/* + CustomGameOptions.TMShortTasks*/;
+        if (GameOptionsManager.Instance.currentNormalGameOptions.NumLongTasks > longTask) GameOptionsManager.Instance.currentNormalGameOptions.NumLongTasks = longTask/* + CustomGameOptions.TMLongTasks*/;
         return true;
     }
 }
@@ -46,7 +46,7 @@ public class GetAdjustedImposters
             var randomCount = Random.RandomRangeInt(CustomGameOptions.MinImpostorRoles * 30, CustomGameOptions.MaxImpostorRoles * 30);
             var trueCount = Convert.ToInt32(randomCount/25);
             __result = trueCount;
-            PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"Randomized value: {randomCount}, Final value: {trueCount}");
+            if (TownOfUsFusion.isDevBuild) PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"Randomized value: {randomCount}, Final value: {trueCount}");
             return false;
         }
 

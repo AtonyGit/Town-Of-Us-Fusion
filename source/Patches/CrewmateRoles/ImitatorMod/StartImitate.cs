@@ -81,6 +81,12 @@ public class StartImitate
             vh.UsesLeft = CustomGameOptions.MaxFailedStakesPerGame;
             vh.AddedStakes = true;
         }
+        if (imitatorRole == RoleEnum.Trickster)
+        {
+            var trickster = new Trickster(ImitatingPlayer);
+            trickster.UsesLeft = CustomGameOptions.MaxFailedTricksPerGame;
+            trickster.AddedTricks = true;
+        }
         if (imitatorRole == RoleEnum.Sheriff)
         {
             var sh = new Sheriff(ImitatingPlayer);

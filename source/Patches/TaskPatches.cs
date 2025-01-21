@@ -38,7 +38,7 @@ namespace TownOfUsFusion
                         playerInfo._object.Is(RoleEnum.Plaguebearer) || playerInfo._object.Is(RoleEnum.Pestilence) ||
                         playerInfo._object.Is(RoleEnum.SoulCollector) || playerInfo._object.Is(RoleEnum.Death) ||
                         playerInfo._object.Is(AllianceEnum.Crewpostor) || playerInfo._object.Is(AllianceEnum.Crewpocalypse)
-                        || playerInfo._object.Is(AllianceEnum.Recruit)
+                         || playerInfo._object.Is(AllianceEnum.Egotist) || playerInfo._object.Is(AllianceEnum.Recruit)
                     ))
                     for (var j = 0; j < playerInfo.Tasks.Count; j++)
                     {

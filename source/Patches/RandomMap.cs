@@ -14,6 +14,8 @@ using Reactor.Utilities;
 //using LevelImposter.Shop.Util.MapSync;
 using AmongUs.GameOptions;
 using Reactor.Utilities.Extensions;
+using TownOfUsFusion.Roles;
+using BepInEx.Unity.IL2CPP.Utils.Collections;
 
 namespace TownOfUsFusion
 {
@@ -66,12 +68,10 @@ class RandomMap
                 if (GameOptionsManager.Instance.currentNormalGameOptions.MapId is 4 or 5 or 6) AdjustCooldowns(-CustomGameOptions.LargeMapIncreasedCooldown);
             }
             if (CustomGameOptions.RandomMapEnabled) GameOptionsManager.Instance.currentNormalGameOptions.MapId = previousMap;
-            if (!(commonTasks == 0 && shortTasks == 0 && longTasks == 0))
-            {
-                GameOptionsManager.Instance.currentNormalGameOptions.NumCommonTasks = commonTasks;
-                GameOptionsManager.Instance.currentNormalGameOptions.NumShortTasks = shortTasks;
-                GameOptionsManager.Instance.currentNormalGameOptions.NumLongTasks = longTasks;
-            }
+            
+                GameOptionsManager.Instance.currentNormalGameOptions.NumCommonTasks = commonTasks/* + CustomGameOptions.TMCommonTasks*/;
+                GameOptionsManager.Instance.currentNormalGameOptions.NumShortTasks = shortTasks/* + CustomGameOptions.TMShortTasks*/;
+                GameOptionsManager.Instance.currentNormalGameOptions.NumLongTasks = longTasks/* + CustomGameOptions.TMLongTasks*/;
         }
     }
 
@@ -262,14 +262,21 @@ class RandomMap
         Generate.BiteCooldown.Set((float)Generate.BiteCooldown.Value + change, false);
         Generate.StakeCooldown.Set((float)Generate.StakeCooldown.Value + change, false);
         Generate.TrickCooldown.Set((float)Generate.TrickCooldown.Value + change, false);
+        
         Generate.InquireCooldown.Set((float)Generate.InquireCooldown.Value + change, false);
         Generate.VanquishCooldown.Set((float)Generate.VanquishCooldown.Value + change, false);
+
         Generate.ConfessCooldown.Set((float)Generate.ConfessCooldown.Value + change, false);
         Generate.ChargeUpDuration.Set((float)Generate.ChargeUpDuration.Value + change, false);
         Generate.AbilityCooldown.Set((float)Generate.AbilityCooldown.Value + change, false);
         Generate.RadiateCooldown.Set((float)Generate.RadiateCooldown.Value + change, false);
         Generate.ReviveCooldown.Set((float)Generate.ReviveCooldown.Value + change, false);
         Generate.WhisperCooldown.Set((float)Generate.WhisperCooldown.Value + change, false);
+
+        Generate.SentinelKillCooldown.Set((float)Generate.SentinelKillCooldown.Value + change, false);
+        Generate.SentinelChargeCooldown.Set((float)Generate.SentinelChargeCooldown.Value + change, false);
+        Generate.SentinelPlaceCooldown.Set((float)Generate.SentinelPlaceCooldown.Value + change, false);
+        Generate.SentinelStunCooldown.Set((float)Generate.SentinelStunCooldown.Value + change, false);
         GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown += change;
         if (change % 5 != 0)
         {

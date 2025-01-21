@@ -33,7 +33,7 @@ namespace TownOfUsFusion.Roles
 
         if (CustomGameOptions.GameMode == GameMode.Classic || CustomGameOptions.GameMode == GameMode.AllAny)
         {
-            var IsAllied = player.Is(AllianceEnum.Crewpostor) || player.Is(AllianceEnum.Crewpocalypse) || player.Is(AllianceEnum.Recruit);
+            var IsAllied = player.Is(AllianceEnum.Crewpostor) || player.Is(AllianceEnum.Crewpocalypse) || player.Is(AllianceEnum.Egotist) || player.Is(AllianceEnum.Recruit);
             if (IsAllied)
             {
             if (CustomGameOptions.MayorOn > 0) ColorMapping.Add("Mayor", Colors.Mayor);
@@ -53,6 +53,9 @@ namespace TownOfUsFusion.Roles
             if (CustomGameOptions.ProsecutorOn > 0) ColorMapping.Add("Prosecutor", Colors.Prosecutor);
             if (CustomGameOptions.OracleOn > 0) ColorMapping.Add("Oracle", Colors.Oracle);
             if (CustomGameOptions.AurialOn > 0) ColorMapping.Add("Aurial", Colors.Aurial);
+            if (CustomGameOptions.TaskmasterOn > 0) ColorMapping.Add("Taskmaster", Colors.Taskmaster);
+            if (CustomGameOptions.TricksterOn > 0) ColorMapping.Add("Trickster", Colors.Trickster);
+            if (CustomGameOptions.BodyguardOn > 0) ColorMapping.Add("Bodyguard", Colors.Bodyguard);
             }
             if (!player.Is(AllianceEnum.Crewpostor))
             {
@@ -71,8 +74,7 @@ namespace TownOfUsFusion.Roles
             if (CustomGameOptions.WarlockOn > 0) ColorMapping.Add("Warlock", Colors.Impostor);
             if (CustomGameOptions.VenererOn > 0) ColorMapping.Add("Venerer", Colors.Impostor);
             }
-            if (player.Is(AllianceEnum.Crewpostor) || player.Is(AllianceEnum.Crewpocalypse))
-            {
+            
         if (CustomGameOptions.AssassinGuessCrewInvestigative && IsAllied)
         {
         if (CustomGameOptions.TrackerOn > 0) ColorMapping.Add("Tracker", Colors.Tracker);
@@ -83,8 +85,6 @@ namespace TownOfUsFusion.Roles
         if (CustomGameOptions.SnitchOn > 0) ColorMapping.Add("Snitch", Colors.Snitch);
         if (CustomGameOptions.SpyOn > 0) ColorMapping.Add("Spy", Colors.Spy);
         }
-
-            }
 
             if (CustomGameOptions.VigilanteGuessNeutralBenign || (IsAllied && CustomGameOptions.AssassinGuessNeutralBenign))
             {
@@ -103,6 +103,7 @@ namespace TownOfUsFusion.Roles
                 if (CustomGameOptions.TyrantOn > 0) ColorMapping.Add("Tyrant", Colors.Tyrant);
                 if (CustomGameOptions.JokerOn > 0) ColorMapping.Add("Joker", Colors.Joker);
                 if (CustomGameOptions.CannibalOn > 0) ColorMapping.Add("Cannibal", Colors.Cannibal);
+                if (CustomGameOptions.CursedSoulOn > 0) ColorMapping.Add(Utils.GradientColorText("79FFB3", "B579FF", "Cursed Soul"), Colors.CursedSoul);
                 if (CustomGameOptions.InquisitorOn > 0) ColorMapping.Add("Inquisitor", Colors.Inquisitor);
             //    if (CustomGameOptions.JesterOn > 0 || (CustomGameOptions.ExecutionerOn > 0 && CustomGameOptions.OnTargetDead == OnTargetDead.Jester) || (CustomGameOptions.GuardianAngelOn > 0 && CustomGameOptions.GaOnTargetDeath == BecomeOptions.Jester)) ColorMapping.Add("Jester", Colors.Jester);
             }
@@ -111,6 +112,7 @@ namespace TownOfUsFusion.Roles
                 if (CustomGameOptions.ArsonistOn > 0) ColorMapping.Add("Arsonist", Colors.Arsonist);
                 if (CustomGameOptions.GlitchOn > 0) ColorMapping.Add("The Glitch", Colors.Glitch);
                 if (CustomGameOptions.WerewolfOn > 0) ColorMapping.Add("Werewolf", Colors.Werewolf);
+                if (CustomGameOptions.SentinelOn > 0) ColorMapping.Add("The Sentinel", Colors.Sentinel);
             }
             if (CustomGameOptions.VigilanteGuessNeutralNeophyte || (IsAllied && CustomGameOptions.AssassinGuessNeutralNeophyte))
             {
@@ -130,6 +132,7 @@ namespace TownOfUsFusion.Roles
             }
                 if (CustomGameOptions.VigilanteGuessRecruits && !player.Is(AllianceEnum.Recruit) && CustomGameOptions.JackalOn > 0) ColorMapping.Add(Utils.GradientColorText("B7B9BA", "5E576B", "Recruit"), Colors.Recruit);
                 if (CustomGameOptions.VigilanteGuessEvilCrew && !player.Is(AllianceEnum.Crewpostor) && CustomGameOptions.CrewpostorOn > 0) ColorMapping.Add("Crewpostor", Colors.Impostor);
+                if (CustomGameOptions.VigilanteGuessEvilCrew && !player.Is(AllianceEnum.Egotist) && CustomGameOptions.EgotistOn > 0) ColorMapping.Add("Egotist", Colors.Egotist);
                 if (CustomGameOptions.VigilanteGuessEvilCrew && !player.Is(AllianceEnum.Crewpocalypse) && CustomGameOptions.CrewpocalypseOn > 0) ColorMapping.Add("Crewpocalypse", Colors.RegularApoc);
             if (CustomGameOptions.VigilanteGuessLovers && CustomGameOptions.LoversOn > 0) ColorMapping.Add("Lover", Colors.Lovers);
         }

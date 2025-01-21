@@ -92,6 +92,11 @@ namespace TownOfUsFusion.Roles.Modifiers
             ImpostorRoles.MinerMod.PlaceVent.SpawnVent(id, miner, position, position.z + 0.001f);
             miner.LastMined = DateTime.UtcNow;
         }
+        else if (role is Inquisitor inquisitor)
+        {
+            inquisitor.LastInquiredPlayer = inquisitor.Player;
+            inquisitor.LastInquired = DateTime.UtcNow;
+        }
         else if (role is Morphling morphling)
         {
             if (morphling.Player.GetCustomOutfitType() != CustomPlayerOutfitType.Morph)
@@ -155,17 +160,16 @@ namespace TownOfUsFusion.Roles.Modifiers
                 venerer.KillsAtStartAbility = venerer.Kills;
                 venerer.Ability();
             }
-        }/*
+        }
         else if (role is Poisoner poisoner)
         {
             if (!poisoner.Enabled)
             {
-                Utils.Rpc(CustomRPC.Camouflage, PlayerControl.LocalPlayer.PlayerId, poisoner.Kills);
-                poisoner.TimeRemaining = CustomGameOptions.AbilityDuration;
-                poisoner.KillsAtStartAbility = poisoner.Kills;
-                poisoner.Ability();
+                Utils.Rpc(CustomRPC.Poison, PlayerControl.LocalPlayer.PlayerId, PlayerControl.LocalPlayer.PlayerId);
+                poisoner.TimeRemaining = CustomGameOptions.PoisonDuration;
+                poisoner.Poison();
             }
-        }*/
+        }
         else if (role is Bomber bomber)
         {
             bomber.Detonated = false;

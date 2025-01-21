@@ -46,6 +46,7 @@ public static class Kill
 
                     role.ClosestPlayer.Is(AllianceEnum.Crewpocalypse) && CustomGameOptions.SheriffKillsAlliedCrew ||
                     role.ClosestPlayer.Is(AllianceEnum.Crewpostor) && CustomGameOptions.SheriffKillsAlliedCrew ||
+                    role.ClosestPlayer.Is(AllianceEnum.Egotist) && CustomGameOptions.SheriffKillsAlliedCrew ||
                     role.ClosestPlayer.Is(AllianceEnum.Recruit) && CustomGameOptions.SheriffKillsAlliedCrew ||
 
                     role.ClosestPlayer.Is(RoleEnum.Berserker) && CustomGameOptions.SheriffKillsApocalypse ||
@@ -136,7 +137,8 @@ public static class Kill
             }
         }
 
-        if (!flag4 && !PlayerControl.LocalPlayer.Is(AllianceEnum.Crewpostor) && !PlayerControl.LocalPlayer.Is(AllianceEnum.Crewpocalypse) && !PlayerControl.LocalPlayer.Is(AllianceEnum.Recruit))
+        if (!flag4 && !PlayerControl.LocalPlayer.Is(AllianceEnum.Crewpostor) && !PlayerControl.LocalPlayer.Is(AllianceEnum.Crewpocalypse)
+         && !PlayerControl.LocalPlayer.Is(AllianceEnum.Egotist) && !PlayerControl.LocalPlayer.Is(AllianceEnum.Recruit))
         {
             if (CustomGameOptions.SheriffKillOther)
                 Utils.RpcMurderPlayer(PlayerControl.LocalPlayer, role.ClosestPlayer);

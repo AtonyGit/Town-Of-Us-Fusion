@@ -267,7 +267,7 @@ public static class HudUpdate
     }
     public static void Open()
     {
-        PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("Guide was opened via button!");
+        if (TownOfUsFusion.isDevBuild) PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("Guide was opened via button!");
         OpenedPhone = !OpenedPhone;
         if (!Phone)
         {
@@ -328,17 +328,17 @@ public static class HudUpdate
     
     public static void OpenCrewTab()
     {
-        PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("Crewmate Guide tab was opened!");
+        if (TownOfUsFusion.isDevBuild) PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("Crewmate Guide tab was opened!");
         CurTab = "Crew";
     }
     public static void OpenNeutTab()
     {
-        PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("Neutral Guide tab was opened!");
+        if (TownOfUsFusion.isDevBuild) PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("Neutral Guide tab was opened!");
         CurTab = "Neut";
     }
     public static void OpenImpTab()
     {
-        PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("Impostor Guide tab was opened!");
+        if (TownOfUsFusion.isDevBuild) PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("Impostor Guide tab was opened!");
         CurTab = "Imp";
             /*KILLYOURSELF = CreateButton("kys", "GO KILL YOURSELF VIC", () =>
             {
@@ -346,7 +346,7 @@ public static class HudUpdate
     }
     public static void OpenModifyTab()
     {
-        PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("Modifiers Guide tab was opened!");
+        if (TownOfUsFusion.isDevBuild) PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("Modifiers Guide tab was opened!");
         CurTab = "Modify";
     }
     public static void OpenRoleCard()

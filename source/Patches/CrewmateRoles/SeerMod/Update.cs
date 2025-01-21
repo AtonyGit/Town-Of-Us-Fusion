@@ -20,14 +20,14 @@ public class Update
                 switch (roleType)
                 {
                     default:
-                        if ((player.Is(Faction.Crewmates) && !(player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.VampireHunter) || player.Is(RoleEnum.Hunter))) ||
-                        ((player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.VampireHunter) || player.Is(RoleEnum.Hunter)) && !CustomGameOptions.CrewKillingRed) ||
-                        (player.Is(Faction.NeutralBenign) && !CustomGameOptions.NeutBenignRed) ||
-                        (player.Is(Faction.NeutralEvil) && !CustomGameOptions.NeutEvilRed) ||
-                        (player.Is(Faction.NeutralChaos) && !CustomGameOptions.NeutChaosRed) ||
-                        ((player.Is(Faction.NeutralNeophyte) || player.Is(Faction.NeutralNecro)) && !CustomGameOptions.NeutNeophyteRed) ||
-                        (player.Is(Faction.NeutralApocalypse) && !CustomGameOptions.NeutApocalypseRed) ||
-                        (player.Is(Faction.NeutralKilling) && !CustomGameOptions.NeutKillingRed))
+                        if ((player.Is(Faction.CrewSentinel) || player.Is(Faction.Crewmates) && !(player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.VampireHunter) || player.Is(RoleEnum.Hunter))) ||
+                            ((player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.VampireHunter) || player.Is(RoleEnum.Hunter)) && !CustomGameOptions.CrewKillingRed) ||
+                            (player.Is(Faction.NeutralBenign) && !CustomGameOptions.NeutBenignRed) ||
+                            (player.Is(Faction.NeutralEvil) && !CustomGameOptions.NeutEvilRed) ||
+                            ((player.Is(Faction.NeutralChaos) || player.Is(Faction.ChaosSentinel)) && !CustomGameOptions.NeutChaosRed) ||
+                            ((player.Is(Faction.NeutralNeophyte) || player.Is(Faction.NeutralNecro)) && !CustomGameOptions.NeutNeophyteRed) ||
+                            (player.Is(Faction.NeutralApocalypse) && !CustomGameOptions.NeutApocalypseRed) ||
+                            ((player.Is(Faction.NeutralKilling) || player.Is(Faction.NeutralSentinel)) && !CustomGameOptions.NeutKillingRed))
                         {
                             state.NameText.color = Color.green;
                         }
@@ -73,14 +73,14 @@ public class Update
             switch (roleType)
             {
                 default:
-                    if ((player.Is(Faction.Crewmates) && !(player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.VampireHunter) || player.Is(RoleEnum.Hunter))) ||
+                    if ((player.Is(Faction.CrewSentinel) || player.Is(Faction.Crewmates) && !(player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.VampireHunter) || player.Is(RoleEnum.Hunter))) ||
                         ((player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.VampireHunter) || player.Is(RoleEnum.Hunter)) && !CustomGameOptions.CrewKillingRed) ||
                         (player.Is(Faction.NeutralBenign) && !CustomGameOptions.NeutBenignRed) ||
                         (player.Is(Faction.NeutralEvil) && !CustomGameOptions.NeutEvilRed) ||
-                        (player.Is(Faction.NeutralChaos) && !CustomGameOptions.NeutChaosRed) ||
+                        ((player.Is(Faction.NeutralChaos) || player.Is(Faction.ChaosSentinel)) && !CustomGameOptions.NeutChaosRed) ||
                         ((player.Is(Faction.NeutralNeophyte) || player.Is(Faction.NeutralNecro)) && !CustomGameOptions.NeutNeophyteRed) ||
                         (player.Is(Faction.NeutralApocalypse) && !CustomGameOptions.NeutApocalypseRed) ||
-                        (player.Is(Faction.NeutralKilling) && !CustomGameOptions.NeutKillingRed))
+                        ((player.Is(Faction.NeutralKilling) || player.Is(Faction.NeutralSentinel)) && !CustomGameOptions.NeutKillingRed))
                     {
                         player.nameText().color = Color.green;
                     }

@@ -26,7 +26,8 @@ public class CompleteTask
             {
                 Coroutines.Start(Utils.FlashCoroutine(role.Color));
             }
-            else if (PlayerControl.LocalPlayer.Data.IsImpostor() || ((PlayerControl.LocalPlayer.Is(Faction.NeutralKilling) || PlayerControl.LocalPlayer.Is(Faction.NeutralNeophyte) || PlayerControl.LocalPlayer.Is(Faction.NeutralNecro) || PlayerControl.LocalPlayer.Is(Faction.NeutralApocalypse)) && CustomGameOptions.HaunterRevealsNeutrals))
+            else if (PlayerControl.LocalPlayer.Data.IsImpostor() || PlayerControl.LocalPlayer.Is(Faction.ImpSentinel) || ((PlayerControl.LocalPlayer.Is(Faction.NeutralKilling) || PlayerControl.LocalPlayer.Is(Faction.NeutralNeophyte) || PlayerControl.LocalPlayer.Is(Faction.NeutralNecro) || PlayerControl.LocalPlayer.Is(Faction.NeutralApocalypse)
+            || PlayerControl.LocalPlayer.Is(Faction.NeutralSentinel) || PlayerControl.LocalPlayer.Is(Faction.ChaosSentinel)) && CustomGameOptions.HaunterRevealsNeutrals))
             {
                 role.Revealed = true;
                 Coroutines.Start(Utils.FlashCoroutine(role.Color));
@@ -48,7 +49,8 @@ public class CompleteTask
             {
                 Coroutines.Start(Utils.FlashCoroutine(Color.white));
             }
-            else if (PlayerControl.LocalPlayer.Data.IsImpostor() || (PlayerControl.LocalPlayer.Is(Faction.NeutralKilling) && CustomGameOptions.HaunterRevealsNeutrals))
+            else if (PlayerControl.LocalPlayer.Data.IsImpostor() || PlayerControl.LocalPlayer.Is(Faction.ImpSentinel) || (PlayerControl.LocalPlayer.Is(Faction.NeutralKilling) || PlayerControl.LocalPlayer.Is(Faction.NeutralNeophyte) || PlayerControl.LocalPlayer.Is(Faction.NeutralNecro) || PlayerControl.LocalPlayer.Is(Faction.NeutralApocalypse)
+            || PlayerControl.LocalPlayer.Is(Faction.ChaosSentinel) || PlayerControl.LocalPlayer.Is(Faction.NeutralSentinel)) && CustomGameOptions.HaunterRevealsNeutrals)
             {
                 Coroutines.Start(Utils.FlashCoroutine(Color.white));
             }

@@ -14,7 +14,7 @@ namespace TownOfUsFusion.Roles.Alliances
     {
         Name = Utils.GradientColorText("B7B9BA", "5E576B", "Recruit");
         SymbolName = "§";
-        TaskText = () => "You and " + OtherRecruit.Player.GetDefaultOutfit().PlayerName + " are recruited together";
+        TaskText = () => Utils.GradientColorText("B7B9BA", "5E576B", "You and " + OtherRecruit.Player.GetDefaultOutfit().PlayerName + " are recruited together by a Jackal");
         Color = Colors.Recruit;
         AllianceType = AllianceEnum.Recruit;
     }
@@ -36,114 +36,73 @@ namespace TownOfUsFusion.Roles.Alliances
     public static void Gen(List<PlayerControl> canHaveAlliances)
     {
         List<PlayerControl> allPlayers = new List<PlayerControl>();
-        List<PlayerControl> passives = new List<PlayerControl>();
-        List<PlayerControl> teams = new List<PlayerControl>();
-        List<PlayerControl> jackal = new List<PlayerControl>();
 
         foreach (var player in canHaveAlliances)
         {
-                allPlayers.Add(player);
-            if (player.Is(Faction.Crewmates) || player.Is(Faction.NeutralBenign) || player.Is(Faction.NeutralEvil))
-                passives.Add(player);
-            else if (player.Is(Faction.NeutralKilling) || player.Is(Faction.NeutralApocalypse) || player.Is(Faction.Impostors))
-                teams.Add(player);
-            else if (player.Is(RoleEnum.Jackal))
-                jackal.Add(player);
+                if (!player.Is(RoleEnum.Jackal) && !player.Is(Faction.NeutralNeophyte) && !player.Is(Faction.NeutralChaos)) 
+                {
+                    allPlayers.Add(player);
+                    if (TownOfUsFusion.isDevBuild) PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"ADDING PLAYER TO POSSIBLE RECRUIT LIST: {player.Data.PlayerName} | {Role.GetRole(player).RoleType}");
+                }
 
-            allPlayers.Shuffle();
-            teams.Shuffle();
-            teams.Shuffle();
+            //allPlayers.Shuffle();
+            if (TownOfUsFusion.isDevBuild) PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"ADDED TO RECRUIT LIST: {player.Data.PlayerName}");
         }
-        if (passives.Count + teams.Count < 5) return;
+        //if (passives.Count + teams.Count < 5) return;
 
-        var num = Random.RandomRangeInt(0, passives.Count);
-        var firstRecruit = passives[num];
-        canHaveAlliances.Remove(firstRecruit);
-
-        var lovingEvil = Random.RandomRangeInt(0, 100);
-
-        PlayerControl secondRecruit;
-        if (60 < lovingEvil)
+        var num = Random.RandomRangeInt(0, allPlayers.Count);
+        var firstRecruit = allPlayers[num];
+        if (allPlayers.Count < 5)
         {
-            var num3 = Random.RandomRangeInt(0, teams.Count);
-            secondRecruit = teams[num3];
-        }
-        else if (passives.Count < 2)
-        {
-            var num3 = Random.RandomRangeInt(0, teams.Count);
-            secondRecruit = teams[num3];
-        }
-        else
-        {
-            var num3 = Random.RandomRangeInt(0, passives.Count);
-            while (num3 == num)
+            foreach (var role in Role.GetRoles(RoleEnum.Jackal))
             {
-                num3 = Random.RandomRangeInt(0, passives.Count);
+            var jackalPrime = (Jackal)role;
+            jackalPrime.Recruit1 = null;
+            jackalPrime.Recruit2 = null;
+            if (TownOfUsFusion.isDevBuild) PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"RECRUITS FAILED TO SPAWN, JACKAL IS SOLO");
+            jackalPrime.CanKill = true;
             }
-            secondRecruit = passives[num3];
+            return;
         }
-/*
-        if ((passives.Count + NKs.Count + NAs.Count + imps.Count < 6 && allPlayers.Count < 5) || jackal.Count < 1)
-        {
-            AllianceDictionary.Remove(PlayerControl.LocalPlayer.PlayerId);
-            PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("NO RECRUITS WILL SPAWN");
-                return;
-        }
-        PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("SETTING RECRUITS");
-        var num = Random.RandomRangeInt(0, passives.Count);
-        var firstRecruit = passives[num];
         canHaveAlliances.Remove(firstRecruit);
-        allPlayers.Remove(firstRecruit);
-        passives.Remove(firstRecruit);
-        teams.Remove(firstRecruit);
-        allPlayers.Remove(jackal[num]);
+        if (TownOfUsFusion.isDevBuild) PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"FIRST RECRUIT: {firstRecruit.Data.PlayerName} | {Role.GetRole(firstRecruit).RoleType}");
 
-        var listChance = Random.RandomRangeInt(0, 100);
+        if (firstRecruit.Is(Faction.Crewmates) || firstRecruit.Is(Faction.NeutralBenign) || firstRecruit.Is(Faction.NeutralEvil))
+            foreach (var player2 in canHaveAlliances)
+            {
+                if(player2.Is(Faction.Crewmates) || player2.Is(Faction.NeutralBenign) || player2.Is(Faction.NeutralEvil))
+                {
+                allPlayers.Remove(player2);
+                if (TownOfUsFusion.isDevBuild) PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"REMOVED FROM LIST: {player2.Data.PlayerName} | {Role.GetRole(player2).RoleType}");
+                }
+            }
+        else if (firstRecruit.Is(Faction.NeutralApocalypse))
+            foreach (var player3 in canHaveAlliances)
+            {
+                if(player3.Is(Faction.NeutralApocalypse))
+                {
+                allPlayers.Remove(player3);
+                if (TownOfUsFusion.isDevBuild) PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"REMOVED FROM LIST: {player3.Data.PlayerName} | {Role.GetRole(player3).RoleType}");
+                }
+            }
+        else if(firstRecruit.Is(Faction.Impostors))
+            foreach (var player4 in canHaveAlliances)
+            {
+                if (player4.Is(Faction.Impostors))
+                {
+                allPlayers.Remove(player4);
+                if (TownOfUsFusion.isDevBuild) PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"REMOVED FROM LIST: {player4.Data.PlayerName} | {Role.GetRole(player4).RoleType}");
+                }
+            }
+            //allPlayers.Shuffle();
+
 
         PlayerControl secondRecruit;
-        if (listChance <= 24 && !firstRecruit.Is(Faction.Crewmates) && !firstRecruit.Is(Faction.NeutralBenign)
-        && !firstRecruit.Is(Faction.NeutralEvil))
-        {
-            var num3 = Random.RandomRangeInt(0, passives.Count);
-            secondRecruit = passives[num3];
-            allPlayers.RemoveAll(player => player.Is(Faction.Crewmates));
-            allPlayers.RemoveAll(player => player.Is(Faction.NeutralBenign));
-            allPlayers.RemoveAll(player => player.Is(Faction.NeutralEvil));
-            PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("SETTING RECRUIT: PASSIVE ROLE");
-        }
-        else if (listChance <= 70 && !firstRecruit.Is(Faction.NeutralApocalypse))
-        {
-            teams.RemoveAll(player => player.Is(Faction.NeutralApocalypse));
-            var num3 = Random.RandomRangeInt(0, teams.Count);
-            secondRecruit = teams[num3];
-            allPlayers.RemoveAll(player => player.Is(Faction.NeutralApocalypse));
-            PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("SETTING RECRUIT: APOCALYPSE");
-        }
-        else if (listChance <= 70 && !firstRecruit.Is(Faction.Impostors))
-        {
-            teams.RemoveAll(player => player.Is(Faction.Impostors));
-            var num3 = Random.RandomRangeInt(0, teams.Count);
-            secondRecruit = teams[num3];
-            allPlayers.RemoveAll(player => player.Is(Faction.Impostors));
-            PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("SETTING RECRUIT: IMPOSTOR");
-        }
-        else if (listChance <= 70)
-        {
-            var num3 = Random.RandomRangeInt(0, teams.Count);
-            secondRecruit = teams[num3];
-            PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("SETTING RECRUIT: NEUTRAL KILLING");
-        }
-        else
-        {
             var num3 = Random.RandomRangeInt(0, allPlayers.Count);
-            while (num3 == num)
-            {
-                num3 = Random.RandomRangeInt(0, allPlayers.Count);
-            }
             secondRecruit = allPlayers[num3];
-            PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("SETTING RECRUIT: WILDCARD");
-        }*/
         canHaveAlliances.Remove(secondRecruit);
+        allPlayers.Remove(secondRecruit);
+        if (TownOfUsFusion.isDevBuild) PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"SECOND RECRUIT: {secondRecruit.Data.PlayerName} | {Role.GetRole(secondRecruit).RoleType}");
 
         Utils.Rpc(CustomRPC.SetRecruits, firstRecruit.PlayerId, secondRecruit.PlayerId);
         var Recruit1 = new Recruit(firstRecruit);
@@ -156,6 +115,7 @@ namespace TownOfUsFusion.Roles.Alliances
             var jackalPrime = (Jackal)role;
             jackalPrime.Recruit1 = Recruit1.OtherRecruit;
             jackalPrime.Recruit2 = Recruit2.OtherRecruit;
+            if (TownOfUsFusion.isDevBuild) PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"SET RECRUITS: {Recruit1.OtherRecruit.PlayerName}, {Recruit2.OtherRecruit.PlayerName}");
             if(Recruit1 == null || Recruit2 == null) jackalPrime.CanKill = true;
             }
     }

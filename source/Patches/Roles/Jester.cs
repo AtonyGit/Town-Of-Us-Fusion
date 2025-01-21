@@ -30,7 +30,7 @@ namespace TownOfUsFusion.Roles
     {
         if (!VotedOut || !Player.Data.IsDead && !Player.Data.Disconnected) return true;
         if (!CustomGameOptions.NeutralEvilWinEndsGame) return true;
-        Utils.EndGame();
+        Utils.EndGameWompWomp();
         return false;
     }
 

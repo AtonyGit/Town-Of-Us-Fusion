@@ -37,11 +37,12 @@ namespace TownOfUsFusion.Roles
     internal override bool RoleCriteria()
     {
         var localPlayer = PlayerControl.LocalPlayer;
-        if (localPlayer.Data.IsImpostor() && !Player.Data.IsDead)
+        if ((localPlayer.Data.IsImpostor() || GetRole(localPlayer).Faction == Faction.ImpSentinel) && !Player.Data.IsDead)
         {
             return Revealed || base.RoleCriteria();
         }
-        else if (GetRole(localPlayer).Faction == Faction.NeutralKilling || GetRole(localPlayer).Faction == Faction.NeutralApocalypse || GetRole(localPlayer).Faction == Faction.NeutralNeophyte || GetRole(localPlayer).Faction == Faction.NeutralNecro && !Player.Data.IsDead)
+        else if ((GetRole(localPlayer).Faction == Faction.NeutralKilling || GetRole(localPlayer).Faction == Faction.NeutralApocalypse || GetRole(localPlayer).Faction == Faction.NeutralNeophyte || GetRole(localPlayer).Faction == Faction.NeutralNecro
+        || GetRole(localPlayer).Faction == Faction.NeutralSentinel || GetRole(localPlayer).Faction == Faction.ChaosSentinel) && !Player.Data.IsDead)
         {
             return Revealed && CustomGameOptions.SnitchSeesNeutrals || base.RoleCriteria();
         }

@@ -37,8 +37,8 @@ public class SwapVotes
     {
         public static void Postfix(MeetingHud __instance)
         {
-            PluginSingleton < TownOfUsFusion >.Instance.Log.LogMessage(Swap1 == null ? "null" : Swap1.ToString());
-            PluginSingleton < TownOfUsFusion >.Instance.Log.LogMessage(Swap2 == null ? "null" : Swap2.ToString());
+            if (TownOfUsFusion.isDevBuild) PluginSingleton < TownOfUsFusion >.Instance.Log.LogMessage(Swap1 == null ? "null" : Swap1.ToString());
+            if (TownOfUsFusion.isDevBuild) PluginSingleton < TownOfUsFusion >.Instance.Log.LogMessage(Swap2 == null ? "null" : Swap2.ToString());
 
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Swapper))
             {

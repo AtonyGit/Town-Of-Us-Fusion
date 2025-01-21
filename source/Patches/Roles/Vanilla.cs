@@ -8,8 +8,8 @@ namespace TownOfUsFusion.Roles
         Hidden = true;
         Faction = Faction.Impostors;
         RoleType = RoleEnum.Impostor;
-        AddToRoleHistory(RoleType);
         Color = Palette.ImpostorRed;
+        AddToRoleHistory(RoleType);
     }
 }
 
@@ -21,8 +21,8 @@ public class Crewmate : Role
         Hidden = true;
         Faction = Faction.Crewmates;
         RoleType = RoleEnum.Crewmate;
-        AddToRoleHistory(RoleType);
         Color = Patches.Colors.Crewmate;
+        AddToRoleHistory(RoleType);
     }
 }
 }

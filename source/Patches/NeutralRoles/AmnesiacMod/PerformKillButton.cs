@@ -89,6 +89,9 @@ public class PerformKillButton
             case RoleEnum.Transporter:
             case RoleEnum.Medium:
             case RoleEnum.Mystic:
+            case RoleEnum.Trickster:
+            case RoleEnum.Bodyguard:
+            case RoleEnum.Taskmaster:
             case RoleEnum.Trapper:
             case RoleEnum.Detective:
             case RoleEnum.Imitator:
@@ -106,18 +109,27 @@ public class PerformKillButton
             case RoleEnum.Executioner:
 
             case RoleEnum.Tyrant:
+            case RoleEnum.Inquisitor:
+            case RoleEnum.Joker:
             case RoleEnum.Cannibal:
 
             case RoleEnum.Arsonist:
             case RoleEnum.Amnesiac:
             case RoleEnum.Glitch:
-            case RoleEnum.Berserker:
             case RoleEnum.Survivor:
             case RoleEnum.GuardianAngel:
-            case RoleEnum.Plaguebearer:
-            case RoleEnum.Pestilence:
             case RoleEnum.Werewolf:
             case RoleEnum.Doomsayer:
+
+            case RoleEnum.Berserker:
+            case RoleEnum.War:
+            case RoleEnum.Baker:
+            case RoleEnum.Famine:
+            case RoleEnum.Plaguebearer:
+            case RoleEnum.Pestilence:
+            case RoleEnum.SoulCollector:
+            case RoleEnum.Death:
+
 
             case RoleEnum.Jackal:
             case RoleEnum.Vampire:
@@ -174,7 +186,7 @@ public class PerformKillButton
             else
             {             
                 // If role is not Vampire, turn dead player into Survivor
-                if (role != RoleEnum.Vampire) {
+                if (role is not RoleEnum.Vampire and not (RoleEnum)Faction.NeutralApocalypse) {
                 var survivor = new Survivor(other);
                 survivor.RegenTask();
                 }
@@ -285,6 +297,14 @@ public class PerformKillButton
             if (vhRole.AddedStakes) vhRole.UsesLeft = CustomGameOptions.MaxFailedStakesPerGame;
             else vhRole.UsesLeft = 0;
             vhRole.LastStaked = DateTime.UtcNow;
+        }
+
+        else if (role == RoleEnum.Trickster)
+        {
+            var vhRole = Role.GetRole<Trickster>(amnesiac);
+            if (vhRole.AddedTricks) vhRole.UsesLeft = CustomGameOptions.MaxFailedTricksPerGame;
+            else vhRole.UsesLeft = 0;
+            vhRole.LastKilled = DateTime.UtcNow;
         }
 
         else if (role == RoleEnum.Detective)
@@ -422,6 +442,14 @@ public class PerformKillButton
             blackmailerRole.Blackmailed = null;
         }
 
+        else if (role == RoleEnum.Inquisitor)
+        {
+            var inquisRole = Role.GetRole<Inquisitor>(amnesiac);
+            inquisRole.LastVanquished = DateTime.UtcNow;
+            inquisRole.LastInquired = DateTime.UtcNow;
+            if (CustomGameOptions.VanquishRoundOne && CustomGameOptions.VanquishEnabled) inquisRole.canVanquish = true;
+        }
+
         else if (role == RoleEnum.Miner)
         {
             var minerRole = Role.GetRole<Miner>(amnesiac);
@@ -446,7 +474,7 @@ public class PerformKillButton
             var necroRole = Role.GetRole<NeoNecromancer>(amnesiac);
             necroRole.LastKilled = DateTime.UtcNow;
             necroRole.LastResurrected = DateTime.UtcNow;
-            necroRole.CanKill = false;
+            necroRole.CanKill = true;
         }
 
         else if (role == RoleEnum.Doomsayer)

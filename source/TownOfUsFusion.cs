@@ -33,10 +33,12 @@ namespace TownOfUsFusion
     public class TownOfUsFusion : BasePlugin
     {
         public const string Id = "com.FusionStudios.TownOfUsFusion";
-        public const string VersionString = "0.2.5";
+        public const string VersionString = "0.3.0";
         public const string TouVersionString = "5.0.4";
         public static System.Version Version = System.Version.Parse(VersionString);
         public static string STR_DiscordText = "Lobby";
+        public const bool isDevBuild = true;
+        public const string DevBuildVersion = "1";
 
         public static AssetLoader bundledAssets;
 

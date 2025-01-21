@@ -20,7 +20,7 @@ public class PerformKillButton
         if (PlayerControl.LocalPlayer.Data.IsDead) return false;
         var role = Role.GetRole<Spy>(PlayerControl.LocalPlayer);
         var data = PlayerControl.LocalPlayer.Data;
-        if (__instance == role.portableAdminButton)
+        if (__instance == role.impBugButton)
         {
         var ab = DestroyableSingleton<HudManager>.Instance.AdminButton;
         ab.DoClick();

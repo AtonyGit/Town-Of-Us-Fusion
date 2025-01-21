@@ -81,6 +81,12 @@ public class SeeAll
                 case Faction.Crewmates:
                     ColorChar(player, Color.green);
                     break;
+                case Faction.CrewSentinel:
+                    ColorChar(player, Color.green);
+                    break;
+                case Faction.ImpSentinel:
+                    ColorChar(player, Color.red);
+                    break;
                 case Faction.Impostors:
                     ColorChar(player, Color.red);
                     break;
@@ -88,6 +94,12 @@ public class SeeAll
                 case Faction.NeutralEvil:
                 case Faction.NeutralChaos:
                 case Faction.NeutralKilling:
+                    ColorChar(player, Color.gray);
+                    break;
+                case Faction.NeutralSentinel:
+                    ColorChar(player, Color.gray);
+                    break;
+                case Faction.ChaosSentinel:
                     ColorChar(player, Color.gray);
                     break;
                 case Faction.NeutralNeophyte:

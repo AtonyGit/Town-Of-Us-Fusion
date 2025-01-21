@@ -34,7 +34,7 @@ public class SetTraitor
                 .Where(x => !x.Data.IsDead && !x.Data.Disconnected).ToList();
         foreach (var player in alives)
         {
-            if (player.Data.IsImpostor() || (player.Is(Faction.NeutralKilling) && CustomGameOptions.NeutralKillingStopsTraitor))
+            if (player.Data.IsImpostor() || player.Is(Faction.ImpSentinel) || ((player.Is(Faction.NeutralKilling) || player.Is(Faction.NeutralNeophyte) || player.Is(Faction.NeutralNecro) || player.Is(Faction.NeutralApocalypse) || player.Is(Faction.NeutralSentinel) || player.Is(Faction.ChaosSentinel)) && CustomGameOptions.NeutralKillingStopsTraitor))
             {
                 return;
             }

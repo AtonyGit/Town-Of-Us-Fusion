@@ -47,6 +47,7 @@ public static class CustomGameOptions
     public static int ExecutionerOn => (int)Generate.ExecutionerOn.Get();
     public static int SpyOn => (int)Generate.SpyOn.Get();
     public static int SnitchOn => (int)Generate.SnitchOn.Get();
+    public static int TaskmasterOn => (int)Generate.TaskmasterOn.Get();
     public static int MinerOn => (int)Generate.MinerOn.Get();
     public static int SwooperOn => (int)Generate.SwooperOn.Get();
     public static int ArsonistOn => (int)Generate.ArsonistOn.Get();
@@ -93,7 +94,7 @@ public static class CustomGameOptions
     public static int InquisitorOn => (int)Generate.InquisitorOn.Get();
     public static int PirateOn => (int)Generate.PirateOn.Get();
 
-    public static int FraudOn => (int)Generate.FraudOn.Get();
+    public static int CursedSoulOn => (int)Generate.CursedSoulOn.Get();
     public static int TempestOn => (int)Generate.TempestOn.Get();
     public static int TyrantOn => (int)Generate.TyrantOn.Get();
     public static int CannibalOn => (int)Generate.CannibalOn.Get();
@@ -165,6 +166,7 @@ public static class CustomGameOptions
     public static bool JesterVent => Generate.JesterVent.Get();
     public static bool JesterImpVision => Generate.JesterImpVision.Get();
     public static bool JesterHaunt => Generate.JesterHaunt.Get();
+
 
     public static float GuardCd => Generate.GuardCd.Get();
     public static float GuardDuration => Generate.GuardDuration.Get();
@@ -302,6 +304,7 @@ public static class CustomGameOptions
     public static bool GrenadierVent => Generate.GrenadierVent.Get();
     public static float FlashRadius => Generate.FlashRadius.Get();
     public static int LovingImpPercent => (int)Generate.LovingImpPercent.Get();
+    public static int SentinelSoloPercent => (int)Generate.SentinelSoloPercent.Get();
     public static bool KilledOnAlert => Generate.KilledOnAlert.Get();
     public static float AlertCd => Generate.AlertCooldown.Get();
     public static float AlertDuration => Generate.AlertDuration.Get();
@@ -322,10 +325,16 @@ public static class CustomGameOptions
     public static bool TransporterVitals => Generate.TransporterVitals.Get();
     public static bool RememberArrows => Generate.RememberArrows.Get();
     public static float RememberArrowDelay => Generate.RememberArrowDelay.Get();
-
+    // CANNIBAL
     public static bool CannibalArrows => Generate.CannibalArrows.Get();
     public static float CannibalArrowDelay => Generate.CannibalArrowDelay.Get();
     public static int BodiesNeededToWin => (int)Generate.BodiesNeededToWin.Get();
+    // TASKMASTER
+    public static bool TMSeesNeutrals => Generate.TMSeesNeutrals.Get();
+    public static int TMTasksRemaining => (int)Generate.TMTasksRemaining.Get();
+    public static int TMCommonTasks => (int)Generate.TMCommonTasks.Get();
+    public static int TMLongTasks => (int)Generate.TMLongTasks.Get();
+    public static int TMShortTasks => (int)Generate.TMShortTasks.Get();
 
     public static float MediateCooldown => Generate.MediateCooldown.Get();
     public static bool ShowMediatePlayer => Generate.ShowMediatePlayer.Get();
@@ -388,6 +397,27 @@ public static class CustomGameOptions
     public static bool DoomsayerGuessImpostors => Generate.DoomsayerGuessImpostors.Get();
     public static bool DoomsayerAfterVoting => Generate.DoomsayerAfterVoting.Get();
     public static int DoomsayerGuessesToWin => (int)Generate.DoomsayerGuessesToWin.Get();
+
+    public static int SentinelOn => (int)Generate.SentinelOn.Get();
+    public static float SentinelKillCd => Generate.SentinelKillCooldown.Get();
+    public static bool SentinelVent => Generate.SentinelVent.Get();
+
+    public static float SentinelChargeCd => Generate.SentinelChargeCooldown.Get();
+    public static float ChargeDelay => Generate.ChargeDelay.Get();
+    public static int MaxKillsInCharge => (int)Generate.MaxKillsInCharge.Get();
+    public static float ChargeRadius => Generate.ChargeRadius.Get();
+    public static int MaxChargeUses => (int)Generate.MaxChargeUses.Get();
+
+    public static float SentinelPlaceCd => Generate.SentinelPlaceCooldown.Get();
+    public static int MaxKillsInPlaced => (int)Generate.MaxKillsInPlaced.Get();
+    public static float PlaceRadius => Generate.PlaceRadius.Get();
+    public static int MaxPlaceUses => (int)Generate.MaxPlaceUses.Get();
+
+    public static float SentinelStunCd => Generate.SentinelStunCooldown.Get();
+    public static int MaxStunUses => (int)Generate.MaxStunUses.Get();
+    public static float StunDelay => Generate.StunDelay.Get();
+    public static bool StunInverts => Generate.StunInverts.Get();
+    public static float StunDuration => Generate.StunDuration.Get();
 
     public static float BiteCd => Generate.BiteCooldown.Get();
     public static bool VampImpVision => Generate.VampImpVision.Get();
@@ -493,6 +523,9 @@ public static class CustomGameOptions
     public static bool GhostsDoTasks => Generate.GhostsDoTasks.Get();
     public static bool DoomsayerCantObserve => Generate.DoomsayerCantObserve.Get();
 
+    public static float SoulSwapCooldown => Generate.SoulSwapCooldown.Get();
+    public static int SoulSwapGuarantee => (int)Generate.SoulSwapGuarantee.Get();
+
     public static float JackalKillCooldown => Generate.JackalKillCooldown.Get();
     public static bool DoJackalRecruitsDie => Generate.DoJackalRecruitsDie.Get();
     public static bool JackalCanAlwaysKill => Generate.JackalCanAlwaysKill.Get();
@@ -546,6 +579,7 @@ public static class CustomGameOptions
     public static int LargeMapDecreasedShortTasks => (int)Generate.LargeMapDecreasedShortTasks.Get();
     public static int LargeMapDecreasedLongTasks => (int)Generate.LargeMapDecreasedLongTasks.Get();
     public static int CurMapVariant;
+    public static float RandomVentSpawn => Generate.RandomVentSpawn.Get();
     //              BETTER SKELD
     public static bool BetterSkeldEnabled => Generate.BetterSkeldEnabled.Get();
     public static bool BSVentImprovements => Generate.BSVentImprovements.Get();
@@ -569,6 +603,7 @@ public static class CustomGameOptions
         
     public static int CrewpocalypseOn => (int)Generate.CrewpocalypseOn.Get();
     public static int CrewpostorOn => (int)Generate.CrewpostorOn.Get();
+    public static int EgotistOn => (int)Generate.EgotistOn.Get();
     public static int LoversOn => (int)Generate.LoversOn.Get();
     public static bool BothLoversDie => Generate.BothLoversDie.Get();
     public static bool NeutralLovers => Generate.NeutralLovers.Get();

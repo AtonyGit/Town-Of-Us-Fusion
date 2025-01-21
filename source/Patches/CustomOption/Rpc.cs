@@ -36,7 +36,7 @@ namespace TownOfUsFusion.CustomOption
 
     public static void ReceiveRpc(MessageReader reader)
     {
-        //PluginSingleton < TownOfUsFusion >.Instance.Log.LogInfo("Options received:");
+        PluginSingleton < TownOfUsFusion >.Instance.Log.LogInfo("Options received:");
         while (reader.BytesRemaining > 0)
         {
             var id = reader.ReadInt32();
@@ -51,7 +51,6 @@ namespace TownOfUsFusion.CustomOption
 
             customOption?.Set(value);
 
-           // PluginSingleton < TownOfUsFusion >.Instance.Log.LogInfo($"{customOption?.Name} : {customOption}:");
         }
     }
 }

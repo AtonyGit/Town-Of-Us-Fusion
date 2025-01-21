@@ -40,6 +40,7 @@ namespace TownOfUsFusion
     Imitator,
     Mage,
     Transporter,
+    Taskmaster,
 
 
     // NEUTRAL BENIGN
@@ -54,6 +55,7 @@ namespace TownOfUsFusion
     Phantom,
     Pirate,
     // NEUTRAL CHAOS
+    CursedSoul,
     Joker,
     Fraud,
     Tempest,
@@ -65,6 +67,7 @@ namespace TownOfUsFusion
     Ghoul,
     Glitch,
     Mercenary,
+    Sentinel,
     SerialKiller,
     Werewolf,
 
@@ -101,6 +104,7 @@ namespace TownOfUsFusion
     Blackmailer,
     Janitor,
     Miner,
+    Operative,
     Undertaker,
     // CULTIST ROLES
     Necromancer,
@@ -148,6 +152,12 @@ public enum AllianceEnum
     Recruit,
     Crewpostor,
     Crewpocalypse,
+    Egotist,
+    None
+}
+public enum TagEnum
+{
+    Heretic,
     None
 }
 

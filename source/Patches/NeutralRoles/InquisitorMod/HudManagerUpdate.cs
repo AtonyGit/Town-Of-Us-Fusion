@@ -20,7 +20,7 @@ public static class HudManagerUpdate
         killButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                 && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead && CustomGameOptions.VanquishEnabled
                 && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-            killButton.SetCoolDown(role.VanquishTimer(), CustomGameOptions.NecroKillCooldown);
+            killButton.SetCoolDown(role.VanquishTimer(), CustomGameOptions.VanquishCooldown);
             Utils.SetTarget(ref role.ClosestPlayer, killButton, float.NaN);
 
         if (role.InquireButton == null)

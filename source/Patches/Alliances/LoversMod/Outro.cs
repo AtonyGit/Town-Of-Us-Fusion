@@ -18,29 +18,36 @@ internal class Outro
         Vector3 pos;
         if (Role.NobodyWins)
         {
-            text = Object.Instantiate(__instance.WinText);
-            var color = __instance.WinText.color;
-            color.a = 1f;
-            text.color = color;
-            text.text = "Only Neutral Roles Were Left";
-            pos = __instance.WinText.transform.localPosition;
-            pos.y = 1.5f;
-            text.transform.position = pos;
-            //				text.scale = 0.5f;
+            __instance.WinText.text = "</color><color=#8C8C8CFF>Match Draw</color>";
             return;
         }
 
         if (CustomGameOptions.NeutralEvilWinEndsGame)
         {
-            if (Role.GetRoles(RoleEnum.Jester).Any(x => ((Jester)x).VotedOut)) return;
-            if (Role.GetRoles(RoleEnum.Executioner).Any(x => ((Executioner)x).TargetVotedOut)) return;
-            if (Role.GetRoles(RoleEnum.Doomsayer).Any(x => ((Doomsayer)x).WonByGuessing)) return;
+            if (Role.GetRoles(RoleEnum.Jester).Any(x => ((Jester)x).VotedOut))
+            {
+                __instance.WinText.text = "</color><color=#8C8C8CFF>Match Draw</color>";
+                return;
+            }
+            if (Role.GetRoles(RoleEnum.Executioner).Any(x => ((Executioner)x).TargetVotedOut))
+            {
+                __instance.WinText.text = "</color><color=#8C8C8CFF>Match Draw</color>";
+                return;
+            }
+            if (Role.GetRoles(RoleEnum.Doomsayer).Any(x => ((Doomsayer)x).WonByGuessing))
+            {
+                __instance.WinText.text = "</color><color=#8C8C8CFF>Match Draw</color>";
+                return;
+            }
         }
-        if (Role.GetRoles(RoleEnum.Joker).Any(x => ((Joker)x).TargetVotedOut)) return;
         if (!Alliance.AllAlliances.Where(x => x.AllianceType == AllianceEnum.Lover)
             .Any(x => ((Lover)x).LoveCoupleWins)) return;
 
-        if (Role.GetRoles(RoleEnum.Cannibal).Any(x => ((Cannibal)x).EatWin)) return;
+        if (Role.GetRoles(RoleEnum.Cannibal).Any(x => ((Cannibal)x).EatWin))
+            {
+                __instance.WinText.text = "</color><color=#8C8C8CFF>Match Draw</color>";
+                return;
+            }
 
         PoolablePlayer[] array = Object.FindObjectsOfType<PoolablePlayer>();
         if (array[0] != null)

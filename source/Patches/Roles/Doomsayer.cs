@@ -61,6 +61,9 @@ namespace TownOfUsFusion.Roles
             if (CustomGameOptions.ProsecutorOn > 0) ColorMapping.Add("Prosecutor", Colors.Prosecutor);
             if (CustomGameOptions.OracleOn > 0) ColorMapping.Add("Oracle", Colors.Oracle);
             if (CustomGameOptions.AurialOn > 0) ColorMapping.Add("Aurial", Colors.Aurial);
+            if (CustomGameOptions.TaskmasterOn > 0) ColorMapping.Add("Taskmaster", Colors.Taskmaster);
+            if (CustomGameOptions.TricksterOn > 0) ColorMapping.Add("Trickster", Colors.Trickster);
+            if (CustomGameOptions.BodyguardOn > 0) ColorMapping.Add("Bodyguard", Colors.Bodyguard);
 
             if (CustomGameOptions.DoomsayerGuessImpostors && !PlayerControl.LocalPlayer.Is(Faction.Impostors))
             {
@@ -95,6 +98,7 @@ namespace TownOfUsFusion.Roles
             if (CustomGameOptions.DoomsayerGuessNeutralChaos)
             {
                 if (CustomGameOptions.TyrantOn > 0) ColorMapping.Add("Tyrant", Colors.Tyrant);
+                if (CustomGameOptions.CursedSoulOn > 0) ColorMapping.Add(Utils.GradientColorText("79FFB3", "B579FF", "Cursed Soul"), Colors.CursedSoul);
                 if (CustomGameOptions.CannibalOn > 0) ColorMapping.Add("Cannibal", Colors.Cannibal);
                 if (CustomGameOptions.InquisitorOn > 0) ColorMapping.Add("Inquisitor", Colors.Inquisitor);
                 if (CustomGameOptions.JokerOn > 0) ColorMapping.Add("Joker", Colors.Joker);
@@ -103,6 +107,7 @@ namespace TownOfUsFusion.Roles
             {
                 if (CustomGameOptions.ArsonistOn > 0) ColorMapping.Add("Arsonist", Colors.Arsonist);
                 if (CustomGameOptions.GlitchOn > 0) ColorMapping.Add("The Glitch", Colors.Glitch);
+                if (CustomGameOptions.SentinelOn > 0) ColorMapping.Add("The Sentinel", Colors.Sentinel);
                 if (CustomGameOptions.WerewolfOn > 0) ColorMapping.Add("Werewolf", Colors.Werewolf);
             }
             if (CustomGameOptions.DoomsayerGuessNeutralNeophyte)
@@ -111,6 +116,7 @@ namespace TownOfUsFusion.Roles
                 if (CustomGameOptions.NeoNecromancerOn > 0) ColorMapping.Add("Husk", Colors.NeoNecromancer);
                 if (CustomGameOptions.NeoNecromancerOn > 0) ColorMapping.Add("Scourge", Colors.NeoNecromancer);
                 if (CustomGameOptions.NeoNecromancerOn > 0) ColorMapping.Add("Apparitionist", Colors.NeoNecromancer);
+                
                 if (!player.Is(AllianceEnum.Recruit) && CustomGameOptions.JackalOn > 0) ColorMapping.Add(Utils.GradientColorText("B7B9BA", "5E576B", "Jackal"), Colors.Recruit);
                 if (CustomGameOptions.VampireOn > 0) ColorMapping.Add("Vampire", Colors.Vampire);
             }

@@ -14,9 +14,10 @@ public class HighlightImpostors
             {
                 if (player.PlayerId != state.TargetPlayerId) continue;
                 var role = Role.GetRole(player);
-                if (player.Is(Faction.Impostors))
+                if (player.Is(Faction.Impostors) || player.Is(Faction.ImpSentinel))
                     state.NameText.color = Palette.ImpostorRed;
-                if ((player.Is(Faction.NeutralKilling) || player.Is(Faction.NeutralNecro) || player.Is(Faction.NeutralNeophyte) || player.Is(Faction.NeutralApocalypse)) && CustomGameOptions.HaunterRevealsNeutrals)
+                if ((player.Is(Faction.NeutralKilling) || player.Is(Faction.NeutralNecro) || player.Is(Faction.NeutralNeophyte) || player.Is(Faction.NeutralApocalypse)
+                || player.Is(Faction.ChaosSentinel) || player.Is(Faction.NeutralSentinel)) && CustomGameOptions.HaunterRevealsNeutrals)
                     state.NameText.color = role.Color;
             }
         }

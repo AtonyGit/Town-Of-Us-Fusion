@@ -7,6 +7,6 @@ namespace TownOfUsFusion
         Guessed,
         Killed,
         Suicide,
-        MetCondition
+        Disconnected
     }
 }

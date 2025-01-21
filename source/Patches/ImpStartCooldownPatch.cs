@@ -13,7 +13,16 @@ public static class PatchKillTimer
     [HarmonyPriority(Priority.First)]
     public static void Prefix(PlayerControl __instance, ref float time)
     {
-        if (__instance.Data.IsImpostor() && time <= 11f
+        bool isCursedSoul = (PlayerControl.LocalPlayer.Is(Faction.NeutralCursed));
+        bool isCursedImp = (PlayerControl.LocalPlayer.Is(RoleEnum.Impostor) || PlayerControl.LocalPlayer.Is(RoleEnum.Blackmailer)
+        || PlayerControl.LocalPlayer.Is(RoleEnum.Bomber) || PlayerControl.LocalPlayer.Is(RoleEnum.Escapist)
+        || PlayerControl.LocalPlayer.Is(RoleEnum.Grenadier) || PlayerControl.LocalPlayer.Is(RoleEnum.Janitor)
+        || PlayerControl.LocalPlayer.Is(RoleEnum.Miner) || PlayerControl.LocalPlayer.Is(RoleEnum.Morphling)
+        || PlayerControl.LocalPlayer.Is(RoleEnum.Poisoner) || PlayerControl.LocalPlayer.Is(RoleEnum.Swooper)
+        || PlayerControl.LocalPlayer.Is(RoleEnum.Traitor) || PlayerControl.LocalPlayer.Is(RoleEnum.Undertaker)
+        || PlayerControl.LocalPlayer.Is(RoleEnum.Venerer) || PlayerControl.LocalPlayer.Is(RoleEnum.Warlock));
+
+        if ((__instance.Data.IsImpostor() || (isCursedSoul && isCursedImp)) && time <= 11f
             && Math.Abs(__instance.killTimer - time) > 2 * Time.deltaTime
             && GameStarted == false)
         {

@@ -54,6 +54,12 @@ public static class Start
             aurial.LastRadiated = aurial.LastRadiated.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.RadiateCooldown);
         }
 
+        if (PlayerControl.LocalPlayer.Is(RoleEnum.CursedSoul))
+        {
+            var cs = Role.GetRole<CursedSoul>(PlayerControl.LocalPlayer);
+            cs.LastSoulSwapped = DateTime.UtcNow;
+        }
+
         if (PlayerControl.LocalPlayer.Is(RoleEnum.Sheriff))
         {
             var sheriff = Role.GetRole<Sheriff>(PlayerControl.LocalPlayer);
@@ -76,6 +82,14 @@ public static class Start
             inquis.LastInquired = inquis.LastInquired.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.InquireCooldown);
             inquis.LastVanquished = DateTime.UtcNow;
             inquis.LastVanquished = inquis.LastVanquished.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.VanquishCooldown);
+        }
+        if (CustomGameOptions.VanquishRoundOne && CustomGameOptions.VanquishEnabled)
+        {
+            foreach (var sh in Role.GetRoles(RoleEnum.Inquisitor))
+            {
+                var shRole = (Inquisitor)sh;
+                shRole.canVanquish = true;
+            }
         }
 
         if (PlayerControl.LocalPlayer.Is(RoleEnum.Tracker))
@@ -152,6 +166,19 @@ public static class Start
             necro.LastKilled = DateTime.UtcNow;
             necro.LastResurrected = necro.LastResurrected.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.NecroResurrectCooldown);
             necro.LastKilled = necro.LastKilled.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.NecroKillCooldown);
+        }
+
+        if (PlayerControl.LocalPlayer.Is(RoleEnum.Sentinel))
+        {
+            var sent = Role.GetRole<Sentinel>(PlayerControl.LocalPlayer);
+            sent.LastCharged = DateTime.UtcNow;
+            sent.LastKilled = DateTime.UtcNow;
+            sent.LastPlaced = DateTime.UtcNow;
+            sent.LastStunned = DateTime.UtcNow;
+            sent.LastStunned = sent.LastStunned.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.SentinelStunCd);
+            sent.LastPlaced = sent.LastPlaced.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.SentinelPlaceCd);
+            sent.LastCharged = sent.LastCharged.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.SentinelChargeCd);
+            sent.LastKilled = sent.LastKilled.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.SentinelChargeCd);
         }
 
         if (PlayerControl.LocalPlayer.Is(RoleEnum.Transporter))

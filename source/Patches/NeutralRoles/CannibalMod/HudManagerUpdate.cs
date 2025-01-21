@@ -27,15 +27,17 @@ public class HudManagerUpdate
         var isDead = data.IsDead;
         var truePosition = PlayerControl.LocalPlayer.GetTruePosition();
         var maxDistance = GameOptionsData.KillDistances[GameOptionsManager.Instance.currentNormalGameOptions.KillDistance];
-        var flag = (GameOptionsManager.Instance.currentNormalGameOptions.GhostsDoTasks || !data.IsDead) &&
-                   (!AmongUsClient.Instance || !AmongUsClient.Instance.IsGameOver) &&
-                   PlayerControl.LocalPlayer.CanMove;
 
         var killButton = __instance.KillButton;
         DeadBody closestBody = null;
         var closestDistance = float.MaxValue;
         var allBodies = Object.FindObjectsOfType<DeadBody>();
 
+        killButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+        killButton.SetCoolDown(0f, 0f);
+        
         foreach (var body in allBodies.Where(x => Vector2.Distance(x.TruePosition, truePosition) <= maxDistance))
         {
             var distance = Vector2.Distance(truePosition, body.TruePosition);

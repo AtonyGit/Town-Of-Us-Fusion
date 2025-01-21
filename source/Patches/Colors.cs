@@ -50,13 +50,16 @@ namespace TownOfUsFusion.Patches
     // TOU FUSION ROLES
     
     public readonly static Color Bodyguard = new(0.5f, 0.83f, 0.67f, 1f);
+    public readonly static Color Taskmaster = new(0.77f, 1f, 1f, 1f);
     public readonly static Color Mage = Palette.ImpostorRed;
     public readonly static Color Captain = Palette.ImpostorRed;
     public readonly static Color Monarch = Palette.ImpostorRed;
+    public readonly static Color Sentinel = new(0.56f, 0.64f, 0.55f, 1f);
     public readonly static Color Bartender = Palette.ImpostorRed;
     
     public readonly static Color Joker = new(0.75f, 1f, 0.52f, 1f);
     public readonly static Color Pirate = Palette.ImpostorRed;
+    public readonly static Color CursedSoul = new(0.64f, 0.64f, 0.91f, 1f);
     public readonly static Color Fraud = Palette.ImpostorRed;
     public readonly static Color Tempest = Palette.ImpostorRed;
     public readonly static Color Tyrant = new(0.92f, 0.33f, 0.36f, 1f);
@@ -94,6 +97,7 @@ namespace TownOfUsFusion.Patches
     public readonly static Color Recruit = new(0.31f, 0.3f, 0.36f, 1f);
     public readonly static Color Lovers = new(1f, 0.4f, 0.53f, 1f);
     public readonly static Color Crewpocalypse = new(1f, 0.4f, 0.8f, 1f);
+    public readonly static Color Egotist = new(0.23f, 0.38f, 0.25f, 1f);
     // OTHER STUFF
     public readonly static Color Role = Color.white;
     public readonly static Color Modifier = Color.white;

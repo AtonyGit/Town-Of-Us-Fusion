@@ -16,7 +16,7 @@ public class RepickTraitor
         if (PlayerControl.LocalPlayer.Is(Faction.Impostors)) return;
         if (!PlayerControl.LocalPlayer.Data.IsDead && !PlayerControl.LocalPlayer.Is(RoleEnum.Vampire)) return;
         var toChooseFrom = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) && !x.Is(RoleEnum.Mayor) &&
-            !x.Is(AllianceEnum.Lover) && !x.Is(AllianceEnum.Crewpocalypse) && !x.Is(AllianceEnum.Crewpostor) && !x.Is(AllianceEnum.Recruit) && !x.Data.IsDead && !x.Data.Disconnected && !x.IsExeTarget()).ToList();
+            !x.Is(AllianceEnum.Lover) && !x.Is(AllianceEnum.Crewpocalypse) && !x.Is(AllianceEnum.Crewpostor) && !x.Is(AllianceEnum.Egotist) && !x.Is(AllianceEnum.Recruit) && !x.Data.IsDead && !x.Data.Disconnected && !x.IsExeTarget()).ToList();
         if (toChooseFrom.Count == 0)
         {
             SetTraitor.WillBeTraitor = null;

@@ -17,17 +17,16 @@ namespace TownOfUsFusion.Roles
         RoleType = RoleEnum.Jackal;
         AddToRoleHistory(RoleType);
         ImpostorText = () => Utils.GradientColorText("B7B9BA", "5E576B", "Lead Your Recruits To Victory");
-        //TaskText = () => "Your recruits are this and that\nFake Tasks:";
-        TaskText = () => Recruit1 != null && Recruit2 != null ? "Your recruits are " + Recruit1.Player.GetDefaultOutfit().PlayerName + " and " + Recruit2.Player.GetDefaultOutfit().PlayerName + "\nFake Tasks:" : "Avenge your Recruits.\nFake Tasks:";
+        TaskText = () => Recruit1 != null && Recruit2 != null ? "Your recruits are " + Recruit1.Player.GetDefaultOutfit().PlayerName + " and " + Recruit2.Player.GetDefaultOutfit().PlayerName + "\nFake Tasks:" : "Your Recruits are not present.\nFake Tasks:";
         Faction = Faction.NeutralNeophyte;
-        CanKill = CustomGameOptions.JackalCanAlwaysKill;
+        CanKill = Recruit1 != null && Recruit2 != null ? CustomGameOptions.JackalCanAlwaysKill : true;
     }
-    public bool CanKill = CustomGameOptions.JackalCanAlwaysKill;
 
     public Recruit Recruit1 { get; set; }
     public Recruit Recruit2 { get; set; }
     public PlayerControl ClosestPlayer;
     public DateTime LastKill { get; set; }
+    public bool CanKill = CustomGameOptions.JackalCanAlwaysKill;
     
     internal override bool NeutralWin(LogicGameFlowNormal __instance)
     {
@@ -35,7 +34,7 @@ namespace TownOfUsFusion.Roles
 
         if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected) <= 2 &&
                 PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
-                (x.Data.IsImpostor() || x.Is(Faction.NeutralNeophyte) || x.Is(Faction.NeutralNecro) || x.Is(Faction.NeutralKilling)|| x.Is(Faction.NeutralApocalypse))) == 1)
+                (x.Data.IsImpostor() || x.Is(Faction.NeutralNeophyte) || x.Is(Faction.NeutralNecro) || x.Is(Faction.NeutralKilling) || x.Is(Faction.NeutralSentinel) || x.Is(Faction.ImpSentinel) || x.Is(Faction.NeutralApocalypse))) == 1)
         {
             JackalWin();
             Utils.EndGame();
@@ -86,8 +85,11 @@ namespace TownOfUsFusion.Roles
     {
         var jackalTeam = new Il2CppSystem.Collections.Generic.List<PlayerControl>();
         jackalTeam.Add(PlayerControl.LocalPlayer);
+        if (Recruit1 != null && Recruit2 != null)
+        {
         jackalTeam.Add(Recruit1.Player);
         jackalTeam.Add(Recruit2.Player);
+        }
         __instance.teamToShow = jackalTeam;
     }
 }

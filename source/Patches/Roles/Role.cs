@@ -15,6 +15,8 @@ using TownOfUsFusion.ImpostorRoles.TraitorMod;
 using TownOfUsFusion.CrewmateRoles.MedicMod;
 using TownOfUsFusion.Roles.Alliances;
 using TownOfUsFusion.Patches;
+using TownOfUsFusion.Roles.Tags;
+using Il2CppInterop.Runtime.Runtime;
 
 namespace TownOfUsFusion.Roles
 {
@@ -25,7 +27,10 @@ namespace TownOfUsFusion.Roles
 
     public static bool NobodyWins;
     public static bool SurvOnlyWins;
+    public static bool SentinelCrewWins;
     public static bool VampireWins;
+    public static bool CSWins;
+    public static bool TaskmasterWins;
     public static bool JackalWins;
     public static bool ApocWins;
     public static bool NecroWins;
@@ -40,8 +45,6 @@ namespace TownOfUsFusion.Roles
     {
         Player = player;
         RoleDictionary.Add(player.PlayerId, this);
-        //TotalTasks = player.Data.Tasks.Count;
-        //TasksLeft = TotalTasks;
     }
 
     public static IEnumerable<Role> AllRoles => RoleDictionary.Values.ToList();
@@ -79,6 +82,8 @@ namespace TownOfUsFusion.Roles
     protected internal string KilledBy { get; set; } = "";
     protected internal Faction Faction { get; set; } = Faction.Crewmates;
     protected internal AllianceEnum IsAlliance { get; set; }
+    protected internal Faction IsFaction { get; set; }
+    protected internal TagEnum IsTag { get; set; }
 
     public static uint NetId => PlayerControl.LocalPlayer.NetId;
     public string PlayerName { get; set; }
@@ -279,9 +284,19 @@ namespace TownOfUsFusion.Roles
     {
         NobodyWins = true;
     }
+    public static void TaskmasterWin()
+    {
+        TaskmasterWins = true;
+
+        Utils.Rpc(CustomRPC.TaskmasterWin);
+    }
     public static void SurvOnlyWin()
     {
         SurvOnlyWins = true;
+    }
+    public static void SentinelCrewWin()
+    {
+        SentinelCrewWins = true;
     }
     public static void JackalWin()
     {
@@ -314,6 +329,39 @@ namespace TownOfUsFusion.Roles
         JackalWins = true;
 
         Utils.Rpc(CustomRPC.JackalWin);
+    }
+
+    public static void CSWin()
+    {
+        foreach (var jest in GetRoles(RoleEnum.Jester))
+        {
+            var jestRole = (Jester)jest;
+            if (jestRole.VotedOut) return;
+        }
+        foreach (var exe in GetRoles(RoleEnum.Executioner))
+        {
+            var exeRole = (Executioner)exe;
+            if (exeRole.TargetVotedOut) return;
+        }
+        foreach (var can in GetRoles(RoleEnum.Cannibal))
+        {
+            var canRole = (Cannibal)can;
+            if (canRole.EatWin) return;
+        }
+        foreach (var jk in GetRoles(RoleEnum.Joker))
+        {
+            var jkRole = (Joker)jk;
+            if (jkRole.TargetVotedOut) return;
+        }
+        foreach (var doom in GetRoles(RoleEnum.Doomsayer))
+        {
+            var doomRole = (Doomsayer)doom;
+            if (doomRole.WonByGuessing) return;
+        }
+
+        CSWins = true;
+
+        Utils.Rpc(CustomRPC.CSWin);
     }
 
     public static void VampWin()
@@ -420,12 +468,12 @@ namespace TownOfUsFusion.Roles
         {
             var alives = PlayerControl.AllPlayerControls.ToArray()
                 .Where(x => !x.Data.IsDead && !x.Data.Disconnected).ToList();
-            if (alives.Count == 0) return false;
+            if (alives.Count == 0) return true;
             var flag = alives.All(x =>
             {
                 var role = GetRole(x);
                 if (role == null) return false;
-                var flag2 = role.Faction == Faction.NeutralEvil || role.Faction == Faction.NeutralBenign || role.Faction == Faction.NeutralChaos;
+                var flag2 = role.RoleType == RoleEnum.Sentinel || role.Faction == Faction.NeutralEvil || role.Faction == Faction.NeutralBenign || role.Faction == Faction.NeutralChaos || role.Faction == Faction.NeutralCursed;
 
                 return flag2;
             });
@@ -446,9 +494,34 @@ namespace TownOfUsFusion.Roles
             return flag;
         }
 
+        bool SentinelOnly()
+        {
+            var alives = PlayerControl.AllPlayerControls.ToArray()
+                .Where(x => !x.Data.IsDead && !x.Data.Disconnected).ToList();
+            if (alives.Count == 0) return false;
+            var flag = false;
+            foreach (var player in alives)
+            {
+                if (player.Is(Faction.ImpSentinel) || player.Is(Faction.ChaosSentinel) || player.Is(Faction.NeutralSentinel) || player.Is(Faction.CrewSentinel)) flag = true;
+            }
+            return flag;
+        }
+
         if (CheckNoImpsNoCrews())
         {
-            if (SurvOnly())
+            if (SentinelOnly())
+            {
+                Utils.Rpc(CustomRPC.SentinelWin);
+
+                foreach (var role7 in Role.GetRoles(RoleEnum.Sentinel))
+                {
+                    var sent = (Sentinel)role7;
+                    sent.SentinelWins = true;
+                }
+                Utils.EndGame();
+                return false;
+            }
+            else if (SurvOnly())
             {
                 Utils.Rpc(CustomRPC.SurvivorOnlyWin);
 
@@ -461,7 +534,7 @@ namespace TownOfUsFusion.Roles
                 Utils.Rpc(CustomRPC.NobodyWins);
 
                 NobodyWinsFunc();
-                Utils.EndGame();
+                Utils.EndGameWompWomp();
                 return false;
             }
         }
@@ -496,18 +569,20 @@ namespace TownOfUsFusion.Roles
         foreach (var role in GetRoles(RoleEnum.Jackal))
         {
             var jackal = (Jackal)role;
-            if (Player == jackal.Recruit1.Player && jackal.Recruit1 != null && ((Player == PlayerControl.LocalPlayer)
+            if (jackal.Recruit1 != null && jackal.Recruit2 != null) {
+            if (Player == jackal.Recruit1.Player && ((Player == PlayerControl.LocalPlayer)
                 || (PlayerControl.LocalPlayer.Data.IsDead && !jackal.Player.Data.IsDead)))
             {
                 PlayerName = Utils.GradientColorText("B7B9BA", "5E576B", PlayerName);
                 //PlayerName += "<color=#" + Colors.Recruit.ToHtmlStringRGBA() + "> §</color> >";
             }
-            if (Player == jackal.Recruit2.Player && jackal.Recruit2 != null && ((Player == PlayerControl.LocalPlayer)
+            if (Player == jackal.Recruit2.Player && ((Player == PlayerControl.LocalPlayer)
                 || (PlayerControl.LocalPlayer.Data.IsDead && !jackal.Player.Data.IsDead)))
             {
                 PlayerName = Utils.GradientColorText("B7B9BA", "5E576B", PlayerName);
                 //PlayerName += "<color=#" + Colors.Recruit.ToHtmlStringRGBA() + "> §</color> >";
             }
+        }
         }
         /*
         foreach (var role in GetRoles(RoleEnum.Medic))
@@ -559,14 +634,13 @@ namespace TownOfUsFusion.Roles
             else if (alliance.AllianceType != AllianceEnum.Lover && revealAlliance)
                 PlayerName += $" {alliance.GetColoredSymbol()}";
             else if (alliance.AllianceType == AllianceEnum.Recruit && (revealAlliance || revealRecruit))
-                PlayerName += $" {alliance.GetColoredSymbol()}";
+                PlayerName = Utils.GradientColorText("B7B9BA", "5E576B", PlayerName);
             else if (alliance.AllianceType != AllianceEnum.Recruit && revealAlliance)
-                PlayerName += $" {alliance.GetColoredSymbol()}";
+                PlayerName = Utils.GradientColorText("B7B9BA", "5E576B", PlayerName);
         }
 
-        if (revealTasks && (Faction == Faction.Crewmates || RoleType == RoleEnum.Phantom))
+        if (revealTasks && (Faction == Faction.Crewmates || RoleType == RoleEnum.Phantom) || Faction == Faction.CrewSentinel)
         {
-
             if ((PlayerControl.LocalPlayer.Data.IsDead && CustomGameOptions.SeeTasksWhenDead) || (MeetingHud.Instance && CustomGameOptions.SeeTasksDuringMeeting) || (!PlayerControl.LocalPlayer.Data.IsDead && !MeetingHud.Instance && CustomGameOptions.SeeTasksDuringRound))
             {
                 PlayerName += $" ({TotalTasks - TasksLeft}/{TotalTasks})";
@@ -652,6 +726,15 @@ namespace TownOfUsFusion.Roles
         Utils.Rpc(CustomRPC.SetAlliance, player.PlayerId, (string)type.FullName);
         return alliance;
     }
+
+    public static T GenTag<T>(Type type, PlayerControl player)
+    {
+        var tag = (T)Activator.CreateInstance(type, new object[] { player });
+
+        Utils.Rpc(CustomRPC.SetTag, player.PlayerId, (string)type.FullName);
+        return tag;
+    }
+
     public static T GenRole<T>(Type type, List<PlayerControl> players)
     {
         var player = players[Random.RandomRangeInt(0, players.Count)];
@@ -675,6 +758,14 @@ namespace TownOfUsFusion.Roles
         var alliance = GenAlliance<T>(type, player);
         players.Remove(player);
         return alliance;
+    }
+    public static T GenTag<T>(Type type, List<PlayerControl> players)
+    {
+        var player = players[Random.RandomRangeInt(0, players.Count)];
+
+        var tag = GenTag<T>(type, player);
+        players.Remove(player);
+        return tag;
     }
 
     public static Role GetRole(PlayerControl player)
@@ -714,6 +805,18 @@ namespace TownOfUsFusion.Roles
         {
             public static void Postfix(IntroCutscene __instance)
             {
+                var role = GetRole(PlayerControl.LocalPlayer);
+                // var alpha = __instance.__4__this.RoleText.color.a;
+                if (role != null && !role.Hidden)
+                {
+                    if (role.RoleType == RoleEnum.Medic || role.RoleType == RoleEnum.Altruist || role.RoleType == RoleEnum.Bodyguard)
+                        PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Scientist);
+                    if (role.RoleType == RoleEnum.Engineer || role.RoleType == RoleEnum.Imitator || role.RoleType == RoleEnum.Transporter || role.RoleType == RoleEnum.Taskmaster)
+                        PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Engineer);
+                    if (role.RoleType == RoleEnum.Crusader || role.RoleType == RoleEnum.Hunter || role.RoleType == RoleEnum.Sheriff || role.RoleType == RoleEnum.Trickster
+                        || role.RoleType == RoleEnum.VampireHunter || role.RoleType == RoleEnum.Veteran || role.RoleType == RoleEnum.Vigilante)
+                        PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Impostor);
+                }
                 var modifier = Modifier.GetModifier(PlayerControl.LocalPlayer);
                 if (modifier != null)
                     ModifierText = Object.Instantiate(__instance.RoleText, __instance.RoleText.transform.parent, false);
@@ -751,12 +854,14 @@ namespace TownOfUsFusion.Roles
                 // var alpha = __instance.__4__this.RoleText.color.a;
                 if (role != null && !role.Hidden)
                 {
-                    if (role.Faction == Faction.NeutralKilling || role.Faction == Faction.NeutralEvil || role.Faction == Faction.NeutralChaos || role.Faction == Faction.NeutralBenign || role.Faction == Faction.NeutralNeophyte || role.Faction == Faction.NeutralNecro || role.Faction == Faction.NeutralApocalypse)
+                    if (role.Faction == Faction.NeutralKilling || role.Faction == Faction.CrewSentinel || role.Faction == Faction.ImpSentinel || role.Faction == Faction.NeutralSentinel || role.Faction == Faction.NeutralSentinel || role.Faction == Faction.ChaosSentinel || role.Faction == Faction.NeutralEvil || role.Faction == Faction.NeutralChaos || role.Faction == Faction.NeutralBenign || role.Faction == Faction.NeutralNeophyte || role.Faction == Faction.NeutralNecro || role.Faction == Faction.NeutralApocalypse || role.Faction == Faction.NeutralCursed)
                     {
                         __instance.__4__this.TeamTitle.text = "Neutral";
                         __instance.__4__this.TeamTitle.color = Color.white;
                         __instance.__4__this.BackgroundBar.material.color = Color.white;
-                        PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Shapeshifter);
+                        
+                    if (role.Faction == Faction.NeutralBenign) PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Crewmate);
+                        else PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Shapeshifter);
                     }
                     __instance.__4__this.RoleText.text = role.Name;
                     __instance.__4__this.RoleText.color = role.Color;
@@ -795,13 +900,26 @@ namespace TownOfUsFusion.Roles
                 var role = GetRole(PlayerControl.LocalPlayer);
                 if (role != null && !role.Hidden)
                 {
-                    if (role.Faction == Faction.NeutralKilling || role.Faction == Faction.NeutralChaos || role.Faction == Faction.NeutralEvil || role.Faction == Faction.NeutralBenign || role.Faction == Faction.NeutralNeophyte || role.Faction == Faction.NeutralNecro || role.Faction == Faction.NeutralApocalypse)
+                    if (role.Faction == Faction.NeutralKilling || role.Faction == Faction.CrewSentinel || role.Faction == Faction.ImpSentinel || role.Faction == Faction.NeutralSentinel || role.Faction == Faction.ChaosSentinel || role.Faction == Faction.NeutralChaos || role.Faction == Faction.NeutralEvil || role.Faction == Faction.NeutralBenign || role.Faction == Faction.NeutralNeophyte || role.Faction == Faction.NeutralNecro || role.Faction == Faction.NeutralApocalypse || role.Faction == Faction.NeutralCursed)
                     {
                         __instance.__4__this.TeamTitle.text = "Neutral";
                         __instance.__4__this.TeamTitle.color = Color.white;
                         __instance.__4__this.BackgroundBar.material.color = Color.white;
-                        PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Shapeshifter);
+                    if (role.Faction == Faction.NeutralBenign) PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Crewmate);
+                        else PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Shapeshifter);
                     }
+
+                    if (role.RoleType == RoleEnum.Detective || role.RoleType == RoleEnum.Investigator || role.RoleType == RoleEnum.Seer || role.RoleType == RoleEnum.Snitch
+                        || role.RoleType == RoleEnum.Spy || role.RoleType == RoleEnum.Tracker || role.RoleType == RoleEnum.Trapper)
+                        PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.CrewmateGhost);
+                    if (role.RoleType == RoleEnum.Medic || role.RoleType == RoleEnum.Altruist || role.RoleType == RoleEnum.Bodyguard)
+                        PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Scientist);
+                    if (role.RoleType == RoleEnum.Engineer || role.RoleType == RoleEnum.Imitator || role.RoleType == RoleEnum.Transporter || role.RoleType == RoleEnum.Taskmaster)
+                        PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Engineer);
+                    if (role.RoleType == RoleEnum.Crusader || role.RoleType == RoleEnum.Hunter || role.RoleType == RoleEnum.Sheriff || role.RoleType == RoleEnum.Trickster
+                        || role.RoleType == RoleEnum.VampireHunter || role.RoleType == RoleEnum.Veteran || role.RoleType == RoleEnum.Vigilante)
+                        PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Impostor);
+
                     __instance.__4__this.RoleText.text = role.Name;
                     __instance.__4__this.RoleText.color = role.Color;
                     __instance.__4__this.YouAreText.color = role.Color;
@@ -834,13 +952,26 @@ namespace TownOfUsFusion.Roles
                 var role = GetRole(PlayerControl.LocalPlayer);
                 if (role != null && !role.Hidden)
                 {
-                    if (role.Faction == Faction.NeutralKilling || role.Faction == Faction.NeutralChaos || role.Faction == Faction.NeutralEvil || role.Faction == Faction.NeutralBenign || role.Faction == Faction.NeutralNeophyte || role.Faction == Faction.NeutralNecro || role.Faction == Faction.NeutralApocalypse)
+                    if (role.Faction == Faction.NeutralKilling || role.Faction == Faction.CrewSentinel || role.Faction == Faction.ImpSentinel || role.Faction == Faction.NeutralSentinel || role.Faction == Faction.ChaosSentinel || role.Faction == Faction.NeutralChaos || role.Faction == Faction.NeutralEvil || role.Faction == Faction.NeutralBenign || role.Faction == Faction.NeutralNeophyte || role.Faction == Faction.NeutralNecro || role.Faction == Faction.NeutralApocalypse || role.Faction == Faction.NeutralCursed)
                     {
                         __instance.__4__this.TeamTitle.text = "Neutral";
                         __instance.__4__this.TeamTitle.color = Color.white;
                         __instance.__4__this.BackgroundBar.material.color = Color.white;
-                        PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Shapeshifter);
+                    if (role.Faction == Faction.NeutralBenign) PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Crewmate);
+                        else PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Shapeshifter);
                     }
+
+                    if (role.RoleType == RoleEnum.Detective || role.RoleType == RoleEnum.Investigator || role.RoleType == RoleEnum.Seer || role.RoleType == RoleEnum.Snitch
+                        || role.RoleType == RoleEnum.Spy || role.RoleType == RoleEnum.Tracker || role.RoleType == RoleEnum.Trapper)
+                        PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.CrewmateGhost);
+                    if (role.RoleType == RoleEnum.Medic || role.RoleType == RoleEnum.Altruist || role.RoleType == RoleEnum.Bodyguard)
+                        PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Scientist);
+                    if (role.RoleType == RoleEnum.Engineer || role.RoleType == RoleEnum.Imitator || role.RoleType == RoleEnum.Transporter || role.RoleType == RoleEnum.Taskmaster)
+                        PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Engineer);
+                    if (role.RoleType == RoleEnum.Crusader || role.RoleType == RoleEnum.Hunter || role.RoleType == RoleEnum.Sheriff || role.RoleType == RoleEnum.Trickster
+                        || role.RoleType == RoleEnum.VampireHunter || role.RoleType == RoleEnum.Veteran || role.RoleType == RoleEnum.Vigilante)
+                        PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Impostor);
+
                     __instance.__4__this.RoleText.text = role.Name;
                     __instance.__4__this.RoleText.color = role.Color;
                     __instance.__4__this.YouAreText.color = role.Color;
@@ -876,6 +1007,18 @@ namespace TownOfUsFusion.Roles
             var role = GetRole(player);
             var modifier = Modifier.GetModifier(player);
             var alliance = Alliance.GetAlliance(player);
+            var tag = Tag.GetTag(player);
+
+            if (tag != null)
+            {
+                if (!tag.Hidden) {
+                var modTask = new GameObject(tag.Name + "Task").AddComponent<ImportantTextTask>();
+                modTask.transform.SetParent(player.transform, false);
+                modTask.Text =
+                    $"<size=80%>{tag.ColorString}Tag: {tag.Name}\n{tag.TaskText()}</color></size>";
+                player.myTasks.Insert(0, modTask);
+                }
+            }
 
             if (alliance != null)
             {
@@ -999,11 +1142,18 @@ namespace TownOfUsFusion.Roles
                 ((Cannibal)role).BodyArrows.Values.DestroyAll();
                 ((Cannibal)role).BodyArrows.Clear();
             }
+            foreach (var role in AllRoles.Where(x => x.RoleType == RoleEnum.Taskmaster))
+            {
+                ((Taskmaster)role).ImpArrows.DestroyAll();
+                ((Taskmaster)role).TaskmasterArrows.Values.DestroyAll();
+                ((Taskmaster)role).TaskmasterArrows.Clear();
+            }
 
             RoleDictionary.Clear();
             RoleHistory.Clear();
             Modifier.ModifierDictionary.Clear();
             Alliance.AllianceDictionary.Clear();
+            Tag.TagDictionary.Clear();
             Ability.AbilityDictionary.Clear();
         }
     }
@@ -1040,8 +1190,10 @@ namespace TownOfUsFusion.Roles
                         var info = ExileController.Instance.exiled;
                         var role = GetRole(info.Object);
                         if (role == null) return;
-                        var roleName = role.RoleType == RoleEnum.Glitch ? role.Name : $"The {role.Name}";
-                        __result = $"{info.PlayerName} was {roleName}.";
+                        var hasThe = role.RoleType == RoleEnum.Glitch || role.RoleType == RoleEnum.Sentinel;
+                        var roleName = hasThe ? role.Name : $"The {role.Name}";
+                        if (role.RoleType != RoleEnum.Jackal) __result = $"{info.PlayerName} was {roleName}.";
+                        else __result = $"{info.PlayerName} was The Jackal.";
                         role.DeathReason = DeathReasonEnum.Ejected;
                         role.KilledBy = " ";
                         return;
@@ -1121,6 +1273,12 @@ namespace TownOfUsFusion.Roles
                 var role = GetRole(player);
                 if (role != null)
                 {
+                //__instance.ReportButton.buttonLabelText.SetOutlineColor(role.Color);
+                //__instance.UseButton.buttonLabelText.SetOutlineColor(role.Color);
+                //__instance.PetButton.buttonLabelText.SetOutlineColor(role.Color);
+                //__instance.SabotageButton.buttonLabelText.SetOutlineColor(role.Color);
+                //__instance.KillButton.buttonLabelText.SetOutlineColor(role.Color);
+                //__instance.ImpostorVentButton.buttonLabelText.SetOutlineColor(role.Color);
                     if (role.Criteria())
                     {
                         bool selfFlag = role.SelfCriteria();

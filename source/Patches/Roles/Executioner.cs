@@ -35,7 +35,7 @@ namespace TownOfUsFusion.Roles
         if (Player.Data.IsDead) return true;
         if (!CustomGameOptions.NeutralEvilWinEndsGame) return true;
         if (!TargetVotedOut || !target.Data.IsDead) return true;
-        Utils.EndGame();
+        Utils.EndGameWompWomp();
         return false;
     }
 

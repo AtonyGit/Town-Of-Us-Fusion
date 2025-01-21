@@ -27,9 +27,11 @@ public class MeetingStart
     {
         var inquisRole = Role.GetRole<Inquisitor>(PlayerControl.LocalPlayer);
         if (player == inquisRole.heretic1 || player == inquisRole.heretic2 || player == inquisRole.heretic3)
-            return $"Your inquiry about {player.GetDefaultOutfit().PlayerName} informs you that they are a Heretic!";
+            return $"Your Inquiry about {player.GetDefaultOutfit().PlayerName} informs you that they are a Heretic!";
+        else if (player == PlayerControl.LocalPlayer)
+            return $"Your Inquiry reveals that you know enough about yourself.";
         else
-            return $"Your inquiry about {player.GetDefaultOutfit().PlayerName} informs you that they are not a Heretic.";
+            return $"Your Inquiry about {player.GetDefaultOutfit().PlayerName} informs you that they are not a Heretic.";
     }
 
     public static string RoleReportFeedback(PlayerControl player)

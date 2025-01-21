@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace TownOfUsFusion
 {
-    //[HarmonyPriority(Priority.VeryHigh)] // to show this message first, or be overrided if any plugins do
+    [HarmonyPriority(Priority.VeryHigh)] // to show this message first, or be overrided if any plugins do
     [HarmonyPatch(typeof(PingTracker), nameof(PingTracker.Update))]
 public static class PingTracker_Update
 {
@@ -18,8 +18,8 @@ public static class PingTracker_Update
         if (AmongUsClient.Instance.GameState != InnerNet.InnerNetClient.GameStates.Ended) {
             // this is so the logs aren't spammed with this shit because it clogs it up too much
         __instance.text.text =
-            "<size=2><color=#FF6A51FF>TownOfUs v" + TownOfUsFusion.TouVersionString + "</color>" +
-            "<size=2><color=#8E5BF3FF> | Fusion v" + TownOfUsFusion.VersionString + "</color>\n" +
+            $"<size=2><color=#FF6A51FF>TOUR v{TownOfUsFusion.TouVersionString}</color>" +
+            $"<size=2><color=#8E5BF3FF> | Fusion v{TownOfUsFusion.VersionString}</color>" + (TownOfUsFusion.isDevBuild ? $"<color=#DA4291FF> Dev {TownOfUsFusion.DevBuildVersion}</color>" : "") + "\n" +
             $"Ping: {AmongUsClient.Instance.Ping}ms\n" +
             /*(!MeetingHud.Instance
                 ?  "<size=1.7><color=#8E5BF3FF>Fork By: Atony</color>\n" +

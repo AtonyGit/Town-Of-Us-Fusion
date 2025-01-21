@@ -1,6 +1,7 @@
 using HarmonyLib;
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;
+using TownOfUsFusion.NeutralRoles.SentinelMod;
 using UnityEngine;
 using AmongUs.GameOptions;
 using TownOfUsFusion.Patches;
@@ -52,7 +53,8 @@ public static class VentPatches
             (player.Is(RoleEnum.Glitch) && CustomGameOptions.GlitchVent) || (player.Is(RoleEnum.Berserker) && CustomGameOptions.JuggVent) ||
             (player.Is(RoleEnum.Husk) && CustomGameOptions.CanHuskVent) ||
             (player.Is(RoleEnum.Pestilence) && CustomGameOptions.PestVent) || (player.Is(RoleEnum.Jester) && CustomGameOptions.JesterVent) ||
-            (player.Is(RoleEnum.Vampire) && CustomGameOptions.VampVent))
+            (player.Is(RoleEnum.Vampire) && CustomGameOptions.VampVent) ||
+            (player.Is(RoleEnum.Sentinel) && CustomGameOptions.SentinelVent))
             return true;
 
         if (player.Is(RoleEnum.Werewolf) && CustomGameOptions.WerewolfVent)
@@ -108,6 +110,20 @@ public static class JesterEnterVent
 {
     public static bool Prefix(Vent __instance)
     {
+        foreach (var sent in Role.GetRoles(RoleEnum.Sentinel))
+        {
+            var sentRole = (Sentinel)sent;
+            var sentinel = Role.GetRole<Sentinel>(sent.Player);
+
+            float num = float.MaxValue;
+            Vector3 center = sentRole.DynamitePoint;
+            Vector3 position = PlayerControl.LocalPlayer.transform.position;
+            num = Vector2.Distance((Vector2)center, (Vector2)position);
+            if (Utils.GetClosestPlayers(center, CustomGameOptions.PlaceRadius, false).Contains(PlayerControl.LocalPlayer) && !PlayerControl.LocalPlayer.Is(RoleEnum.Sentinel))
+            {
+                sentRole.DynamiteTriggered = true;
+            }
+        }
         if (PlayerControl.LocalPlayer.Is(RoleEnum.Jester) && CustomGameOptions.JesterVent)
             return false;
         return true;

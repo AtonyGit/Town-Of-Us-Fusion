@@ -43,9 +43,10 @@ public class KillButtonSprite
     private static Sprite Radiate => TownOfUsFusion.RadiateSprite;
     // TOU FUSION STUFF
     private static Sprite Consume => TownOfUsFusion.ConsumeSprite;
+    private static Sprite Resurrect => TownOfUsFusion.ResurrectSprite;
     private static Sprite Guard => TownOfUsFusion.GuardSprite;
     private static Sprite Taunt => TownOfUsFusion.TauntSprite;
-    private static Sprite PortAdmin => TownOfUsFusion.PortableAdSprite;
+    private static Sprite Bug => TownOfUsFusion.BugSprite;
 
     private static Sprite Kill;
 
@@ -69,7 +70,7 @@ public class KillButtonSprite
         }
         else if (PlayerControl.LocalPlayer.Is(RoleEnum.Spy))
         {
-            __instance.KillButton.graphic.sprite = PortAdmin;
+            __instance.KillButton.graphic.sprite = Bug;
             flag = true;
         }
         else if (PlayerControl.LocalPlayer.Is(RoleEnum.Bodyguard))
@@ -177,6 +178,11 @@ public class KillButtonSprite
             __instance.KillButton.graphic.sprite = Taunt;
             flag = true;
         }
+        else if (PlayerControl.LocalPlayer.Is(RoleEnum.Apparitionist))
+        {
+            __instance.KillButton.graphic.sprite = Resurrect;
+            flag = true;
+        }
         else if (PlayerControl.LocalPlayer.Is(RoleEnum.Cannibal))
         {
             __instance.KillButton.graphic.sprite = Consume;
@@ -188,7 +194,7 @@ public class KillButtonSprite
             __instance.KillButton.buttonLabelText.gameObject.SetActive(true);
             __instance.KillButton.buttonLabelText.text = "Kill";
             flag = PlayerControl.LocalPlayer.Is(RoleEnum.Sheriff) || PlayerControl.LocalPlayer.Is(RoleEnum.Pestilence) || PlayerControl.LocalPlayer.Is(RoleEnum.Trickster) || PlayerControl.LocalPlayer.Is(RoleEnum.Scourge) || PlayerControl.LocalPlayer.Is(RoleEnum.Jackal) || 
-                PlayerControl.LocalPlayer.Is(RoleEnum.Werewolf) || PlayerControl.LocalPlayer.Is(RoleEnum.NeoNecromancer) || PlayerControl.LocalPlayer.Is(RoleEnum.Berserker) || PlayerControl.LocalPlayer.Is(RoleEnum.Inquisitor) || PlayerControl.LocalPlayer.Is(RoleEnum.War);
+                PlayerControl.LocalPlayer.Is(RoleEnum.Werewolf) || PlayerControl.LocalPlayer.Is(RoleEnum.NeoNecromancer) || PlayerControl.LocalPlayer.Is(RoleEnum.Berserker) || PlayerControl.LocalPlayer.Is(RoleEnum.Inquisitor) || PlayerControl.LocalPlayer.Is(RoleEnum.Sentinel) || PlayerControl.LocalPlayer.Is(RoleEnum.War);
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Sheriff))  {
                 if (!Role.GetRole<Sheriff>(PlayerControl.LocalPlayer).CanShoot) {
                 __instance.KillButton.gameObject.SetActive(false);
@@ -206,9 +212,14 @@ public class KillButtonSprite
                 __instance.KillButton.buttonLabelText.text = "Destroy";
                 } else
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Inquisitor))  {
-                if (!Role.GetRole<Inquisitor>(PlayerControl.LocalPlayer).canVanquish || Role.GetRole<Inquisitor>(PlayerControl.LocalPlayer).lostVanquish) {
+                if (!Role.GetRole<Inquisitor>(PlayerControl.LocalPlayer).canVanquish) {
                 __instance.KillButton.gameObject.SetActive(false);
                 __instance.KillButton.buttonLabelText.text = "Waiting";
+                __instance.KillButton.cooldownTimerText.gameObject.SetActive(false);
+                }
+                else if (Role.GetRole<Inquisitor>(PlayerControl.LocalPlayer).lostVanquish) {
+                __instance.KillButton.gameObject.SetActive(false);
+                __instance.KillButton.buttonLabelText.text = "Revoked";
                 __instance.KillButton.cooldownTimerText.gameObject.SetActive(false);
                 }
                 __instance.KillButton.buttonLabelText.text = "Vanquish";
@@ -229,7 +240,7 @@ public class KillButtonSprite
         }
         if (PlayerControl.LocalPlayer.Is(RoleEnum.Engineer) || PlayerControl.LocalPlayer.Is(RoleEnum.Glitch)
              || PlayerControl.LocalPlayer.Is(RoleEnum.Pestilence) || PlayerControl.LocalPlayer.Is(RoleEnum.Berserker)
-             || PlayerControl.LocalPlayer.Is(RoleEnum.Vampire))
+             || PlayerControl.LocalPlayer.Is(RoleEnum.Vampire) || PlayerControl.LocalPlayer.Is(RoleEnum.Sentinel))
         {
             __instance.ImpostorVentButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
         }

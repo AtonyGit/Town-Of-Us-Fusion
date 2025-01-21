@@ -48,6 +48,9 @@ namespace TownOfUsFusion.Roles.Modifiers
         if (CustomGameOptions.ProsecutorOn > 0) ColorMapping.Add("Prosecutor", Colors.Prosecutor);
         if (CustomGameOptions.OracleOn > 0) ColorMapping.Add("Oracle", Colors.Oracle);
         if (CustomGameOptions.AurialOn > 0) ColorMapping.Add("Aurial", Colors.Aurial);
+        if (CustomGameOptions.TaskmasterOn > 0) ColorMapping.Add("Taskmaster", Colors.Taskmaster);
+        if (CustomGameOptions.TricksterOn > 0) ColorMapping.Add("Trickster", Colors.Trickster);
+        if (CustomGameOptions.BodyguardOn > 0) ColorMapping.Add("Bodyguard", Colors.Bodyguard);
 
         if (CustomGameOptions.AssassinGuessCrewInvestigative)
         {
@@ -77,6 +80,7 @@ namespace TownOfUsFusion.Roles.Modifiers
             if (CustomGameOptions.TyrantOn > 0) ColorMapping.Add("Tyrant", Colors.Tyrant);
             if (CustomGameOptions.JokerOn > 0) ColorMapping.Add("Joker", Colors.Joker);
             if (CustomGameOptions.InquisitorOn > 0) ColorMapping.Add("Inquisitor", Colors.Inquisitor);
+            if (CustomGameOptions.CursedSoulOn > 0) ColorMapping.Add(Utils.GradientColorText("79FFB3", "B579FF", "Cursed Soul"), Colors.CursedSoul);
             if (CustomGameOptions.CannibalOn > 0) ColorMapping.Add("Cannibal", Colors.Cannibal);
         }
         if (CustomGameOptions.AssassinGuessNeutralKilling)
@@ -84,6 +88,7 @@ namespace TownOfUsFusion.Roles.Modifiers
             if (CustomGameOptions.ArsonistOn > 0 && !PlayerControl.LocalPlayer.Is(RoleEnum.Arsonist)) ColorMapping.Add("Arsonist", Colors.Arsonist);
             if (CustomGameOptions.GlitchOn > 0 && !PlayerControl.LocalPlayer.Is(RoleEnum.Glitch)) ColorMapping.Add("The Glitch", Colors.Glitch);
             if (CustomGameOptions.WerewolfOn > 0 && !PlayerControl.LocalPlayer.Is(RoleEnum.Werewolf)) ColorMapping.Add("Werewolf", Colors.Werewolf);
+            if (CustomGameOptions.SentinelOn > 0 && !PlayerControl.LocalPlayer.Is(RoleEnum.Sentinel)) ColorMapping.Add("The Sentinel", Colors.Sentinel);
         }
             if (CustomGameOptions.AssassinGuessNeutralNeophyte)
             {

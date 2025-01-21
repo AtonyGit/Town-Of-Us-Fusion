@@ -6,17 +6,16 @@ namespace TownOfUsFusion.Roles
 {
     public class Cannibal : Role
 {
-    public KillButton _eatButton;
     public Dictionary<byte, ArrowBehaviour> BodyArrows = new Dictionary<byte, ArrowBehaviour>();
     public int EatNeed { get; set; } = CustomGameOptions.BodiesNeededToWin;
-    public bool Eaten { get; set; }
+    public bool Eaten { get; set; } = false;
     public bool EatWin => EatNeed == 0;
 //    public bool CanEat => !Eaten;
     public Cannibal(PlayerControl player) : base(player)
     {
         Name = "Cannibal";
         ImpostorText = () => "Feast on The Flesh Of The Dead";
-        TaskText = () => Eaten ? "You are satiated" : $"Eat {EatNeed} {(EatNeed == 1 ? "one more body!" : "bodies in total!")}\nFake Tasks:";
+        TaskText = () => !Eaten ? $"You are satiated. Consume {EatNeed} bodies\nFake Tasks:" : $"Eat {EatNeed} {(EatNeed == 1 ? "one more body!" : "bodies in total!")}";
         Color = Patches.Colors.Cannibal;
         RoleType = RoleEnum.Cannibal;
         AddToRoleHistory(RoleType);
@@ -25,16 +24,6 @@ namespace TownOfUsFusion.Roles
 
     public DeadBody CurrentTarget;
 
-    public KillButton EatButton
-    {
-        get => _eatButton;
-        set
-        {
-            _eatButton = value;
-            ExtraButtons.Clear();
-            ExtraButtons.Add(value);
-        }
-    }
     protected override void IntroPrefix(IntroCutscene._ShowTeam_d__38 __instance)
     {
         var cannibalTeam = new Il2CppSystem.Collections.Generic.List<PlayerControl>();
@@ -59,7 +48,7 @@ namespace TownOfUsFusion.Roles
         {
             Utils.Rpc(CustomRPC.CannibalWin, Player.PlayerId);
             Wins();
-            Utils.EndGame();
+            Utils.EndGameWompWomp();
 
             return false;
         }

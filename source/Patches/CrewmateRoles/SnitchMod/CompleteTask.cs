@@ -35,8 +35,8 @@ public class CompleteTask
                     {
                         Coroutines.Start(Utils.FlashCoroutine(role.Color));
                     }
-                    else if ((PlayerControl.LocalPlayer.Data.IsImpostor() && (!PlayerControl.LocalPlayer.Is(RoleEnum.Traitor) || CustomGameOptions.SnitchSeesTraitor))
-                        || ((PlayerControl.LocalPlayer.Is(Faction.NeutralKilling) || PlayerControl.LocalPlayer.Is(Faction.NeutralNeophyte) || PlayerControl.LocalPlayer.Is(Faction.NeutralNecro) || PlayerControl.LocalPlayer.Is(Faction.NeutralApocalypse)) && CustomGameOptions.SnitchSeesNeutrals))
+                    else if ((PlayerControl.LocalPlayer.Is(Faction.ImpSentinel) || PlayerControl.LocalPlayer.Data.IsImpostor() && (!PlayerControl.LocalPlayer.Is(RoleEnum.Traitor) || CustomGameOptions.SnitchSeesTraitor))
+                        || ((PlayerControl.LocalPlayer.Is(Faction.NeutralSentinel) || PlayerControl.LocalPlayer.Is(Faction.ChaosSentinel) || PlayerControl.LocalPlayer.Is(Faction.NeutralKilling) || PlayerControl.LocalPlayer.Is(Faction.NeutralNeophyte) || PlayerControl.LocalPlayer.Is(Faction.NeutralNecro) || PlayerControl.LocalPlayer.Is(Faction.NeutralApocalypse)) && CustomGameOptions.SnitchSeesNeutrals))
                     {
                         Coroutines.Start(Utils.FlashCoroutine(role.Color));
                         var gameObj = new GameObject();
@@ -56,7 +56,7 @@ public class CompleteTask
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Snitch))
                 {
                     Coroutines.Start(Utils.FlashCoroutine(Color.green));
-                    var impostors = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Data.IsImpostor());
+                    var impostors = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Data.IsImpostor() || x.Is(Faction.ImpSentinel));
                     var traitor = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(RoleEnum.Traitor));
                     foreach (var imp in impostors)
                     {
@@ -73,7 +73,7 @@ public class CompleteTask
                         }
                     }
                 }
-                else if (PlayerControl.LocalPlayer.Data.IsImpostor() || (PlayerControl.LocalPlayer.Is(Faction.NeutralKilling) && CustomGameOptions.SnitchSeesNeutrals))
+                else if (PlayerControl.LocalPlayer.Data.IsImpostor() || PlayerControl.LocalPlayer.Is(Faction.ImpSentinel) || PlayerControl.LocalPlayer.Is(Faction.ChaosSentinel) || PlayerControl.LocalPlayer.Is(Faction.NeutralSentinel) || (PlayerControl.LocalPlayer.Is(Faction.NeutralKilling) || PlayerControl.LocalPlayer.Is(Faction.NeutralNeophyte) || PlayerControl.LocalPlayer.Is(Faction.NeutralNecro) || PlayerControl.LocalPlayer.Is(Faction.NeutralApocalypse)) && CustomGameOptions.SnitchSeesNeutrals)
                 {
                     Coroutines.Start(Utils.FlashCoroutine(Color.green));
                 }

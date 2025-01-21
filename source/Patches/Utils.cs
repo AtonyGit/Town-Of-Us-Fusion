@@ -38,6 +38,7 @@ using Reactor.Networking.Extensions;
 using TownOfUsFusion.Roles.Alliances;
 using TownOfUsFusion.Roles.Apocalypse;
 using TownOfUsFusion.NeutralRoles.InquisitorMod;
+using TownOfUsFusion.Roles.Tags;
 
 namespace TownOfUsFusion
 {
@@ -97,6 +98,10 @@ public static class Utils
         if (!self.Contains(item)) self.Add(item);
     }
 
+    public static bool IsHeretic(this PlayerControl player)
+    {
+        return player.Is(TagEnum.Heretic);
+    }
     public static bool IsRecruit(this PlayerControl player)
     {
         return player.Is(AllianceEnum.Recruit);
@@ -104,6 +109,10 @@ public static class Utils
     public static bool IsLover(this PlayerControl player)
     {
         return player.Is(AllianceEnum.Lover);
+    }
+    public static bool IsEgotist(this PlayerControl player)
+    {
+        return player.Is(AllianceEnum.Egotist);
     }
 
     public static bool Is(this PlayerControl player, RoleEnum roleType)
@@ -125,6 +134,10 @@ public static class Utils
         return Ability.GetAbility(player)?.AbilityType == abilityType;
     }
 
+    public static bool Is(this PlayerControl player, TagEnum tagType)
+    {
+        return Tag.GetTag(player)?.TagType == tagType;
+    }
     public static bool Is(this PlayerControl player, Faction faction)
     {
         return Role.GetRole(player)?.Faction == faction;
@@ -557,6 +570,12 @@ public static class Utils
                 var ww = Role.GetRole<Werewolf>(player);
                 ww.LastKilled = DateTime.UtcNow;
             }
+            else if (player.Is(RoleEnum.Inquisitor))
+            {
+                var inquis = Role.GetRole<Inquisitor>(player);
+                inquis.LastVanquished = DateTime.UtcNow;
+                inquis.LastInquired = DateTime.UtcNow;
+            }
             RpcMurderPlayer(player, target);
             abilityUsed = true;
             fullCooldownReset = true;
@@ -691,19 +710,16 @@ public static class Utils
             if (killer == PlayerControl.LocalPlayer)
                 SoundManager.Instance.PlaySound(PlayerControl.LocalPlayer.KillSfx, false, 0.8f);
 
-            if ((!killer.Is(Faction.Crewmates) || killer.Is(AllianceEnum.Crewpocalypse) || killer.Is(AllianceEnum.Crewpostor) || killer.Is(AllianceEnum.Recruit)) && killer != target
+            if ((!killer.Is(Faction.Crewmates) || killer.Is(AllianceEnum.Crewpocalypse) || killer.Is(AllianceEnum.Crewpostor) || killer.Is(AllianceEnum.Egotist) || killer.Is(AllianceEnum.Recruit) || !killer.Is(Faction.ChaosSentinel)) && killer != target
                 && GameOptionsManager.Instance.CurrentGameOptions.GameMode == GameModes.Normal) Role.GetRole(killer).Kills += 1;
 
-            if (killer.Is(RoleEnum.Sheriff) && !killer.Is(AllianceEnum.Crewpocalypse) && !killer.Is(AllianceEnum.Crewpostor) && !killer.Is(AllianceEnum.Recruit))
+            if (killer.Is(RoleEnum.Sheriff) && !killer.Is(AllianceEnum.Crewpocalypse) && !killer.Is(AllianceEnum.Egotist) && !killer.Is(AllianceEnum.Crewpostor) && !killer.Is(AllianceEnum.Recruit))
             {
                 var sheriff = Role.GetRole<Sheriff>(killer);
                 if (target.Is(Faction.Impostors) ||
                     target.Is(RoleEnum.Glitch) && CustomGameOptions.SheriffKillsGlitch ||
                     target.Is(RoleEnum.Arsonist) && CustomGameOptions.SheriffKillsArsonist ||
-                    target.Is(RoleEnum.Plaguebearer) && CustomGameOptions.SheriffKillsApocalypse ||
-                    target.Is(RoleEnum.Pestilence) && CustomGameOptions.SheriffKillsApocalypse ||
                     target.Is(RoleEnum.Werewolf) && CustomGameOptions.SheriffKillsWerewolf ||
-                    target.Is(RoleEnum.Berserker) && CustomGameOptions.SheriffKillsApocalypse ||
                     target.Is(RoleEnum.Executioner) && CustomGameOptions.SheriffKillsExecutioner ||
                     target.Is(RoleEnum.Doomsayer) && CustomGameOptions.SheriffKillsDoomsayer ||
 
@@ -714,6 +730,7 @@ public static class Utils
 
                     target.Is(AllianceEnum.Crewpocalypse) && CustomGameOptions.SheriffKillsAlliedCrew ||
                     target.Is(AllianceEnum.Crewpostor) && CustomGameOptions.SheriffKillsAlliedCrew ||
+                    target.Is(AllianceEnum.Egotist) && CustomGameOptions.SheriffKillsAlliedCrew ||
                     target.Is(AllianceEnum.Recruit) && CustomGameOptions.SheriffKillsAlliedCrew ||
 
                     target.Is(Faction.NeutralApocalypse) && CustomGameOptions.SheriffKillsApocalypse ||
@@ -721,11 +738,14 @@ public static class Utils
                     target.Is(RoleEnum.Jester) && CustomGameOptions.SheriffKillsJester) sheriff.CorrectKills += 1;
                 else if (killer == target) sheriff.IncorrectKills += 1;
             }
-            if (killer.Is(RoleEnum.Trickster) && !killer.Is(AllianceEnum.Crewpocalypse) && !killer.Is(AllianceEnum.Crewpostor) && !killer.Is(AllianceEnum.Recruit))
+            if (killer.Is(RoleEnum.Trickster) && !killer.Is(AllianceEnum.Crewpocalypse) && !killer.Is(AllianceEnum.Crewpostor) && !killer.Is(AllianceEnum.Egotist) && !killer.Is(AllianceEnum.Recruit))
             {
                 var trickster = Role.GetRole<Trickster>(killer);
                 if (target.Is(Faction.Impostors) ||
                     target.Is(Faction.NeutralKilling) ||
+                    target.Is(Faction.NeutralSentinel) ||
+                    target.Is(Faction.ImpSentinel) ||
+                    target.Is(Faction.ChaosSentinel) ||
                     target.Is(Faction.NeutralChaos) ||
                     target.Is(Faction.NeutralNecro) ||
                     target.Is(Faction.NeutralNeophyte) ||
@@ -733,24 +753,26 @@ public static class Utils
                 else trickster.IncorrectKills += 1;
             }
 
-            if (killer.Is(RoleEnum.VampireHunter) && !killer.Is(AllianceEnum.Crewpocalypse) && !killer.Is(AllianceEnum.Crewpostor) && !killer.Is(AllianceEnum.Recruit))
+            if (killer.Is(RoleEnum.VampireHunter) && !killer.Is(AllianceEnum.Crewpocalypse) && !killer.Is(AllianceEnum.Crewpostor) && !killer.Is(AllianceEnum.Egotist) && !killer.Is(AllianceEnum.Recruit))
             {
                 var vh = Role.GetRole<VampireHunter>(killer);
                 if (killer != target) vh.CorrectKills += 1;
             }
 
-            if (killer.Is(RoleEnum.Veteran) && !killer.Is(AllianceEnum.Crewpocalypse) && !killer.Is(AllianceEnum.Crewpostor) && !killer.Is(AllianceEnum.Recruit))
+            if (killer.Is(RoleEnum.Veteran) && !killer.Is(AllianceEnum.Crewpocalypse) && !killer.Is(AllianceEnum.Crewpostor) && !killer.Is(AllianceEnum.Egotist) && !killer.Is(AllianceEnum.Recruit))
             {
                 var veteran = Role.GetRole<Veteran>(killer);
                 if (target.Is(Faction.Impostors) || target.Is(Faction.NeutralKilling) || target.Is(Faction.NeutralEvil) || target.Is(Faction.NeutralChaos)
-                || target.Is(Faction.NeutralNeophyte) || target.Is(Faction.NeutralNecro) || target.Is(Faction.NeutralApocalypse) || target.Is(AllianceEnum.Crewpocalypse) || target.Is(AllianceEnum.Crewpostor) || target.Is(AllianceEnum.Recruit)) veteran.CorrectKills += 1;
+                || target.Is(Faction.NeutralNeophyte) || target.Is(Faction.NeutralNecro) || target.Is(Faction.NeutralSentinel) || target.Is(Faction.ImpSentinel) ||
+                target.Is(Faction.ChaosSentinel) || target.Is(Faction.NeutralApocalypse) || target.Is(AllianceEnum.Crewpocalypse) || target.Is(AllianceEnum.Egotist) || target.Is(AllianceEnum.Crewpostor) || target.Is(AllianceEnum.Recruit)) veteran.CorrectKills += 1;
                 else if (killer != target) veteran.IncorrectKills += 1;
             }
-                if (killer.Is(RoleEnum.Hunter) && !killer.Is(AllianceEnum.Crewpocalypse) && !killer.Is(AllianceEnum.Crewpostor) && !killer.Is(AllianceEnum.Recruit))
+                if (killer.Is(RoleEnum.Hunter) && !killer.Is(AllianceEnum.Crewpocalypse) && !killer.Is(AllianceEnum.Crewpostor) && !killer.Is(AllianceEnum.Egotist) && !killer.Is(AllianceEnum.Recruit))
                 {
                     var hunter = Role.GetRole<Hunter>(killer);
                     if (target.Is(RoleEnum.Doomsayer) || target.Is(Faction.Impostors) || target.Is(Faction.NeutralKilling) || target.Is(Faction.NeutralNeophyte) || target.Is(Faction.NeutralNecro)
-                    || target.Is(Faction.NeutralApocalypse) || target.Is(AllianceEnum.Crewpocalypse) || target.Is(AllianceEnum.Crewpostor) || target.Is(AllianceEnum.Recruit) || target.Is(Faction.NeutralChaos))
+                     || target.Is(Faction.NeutralSentinel) || target.Is(Faction.ImpSentinel) || target.Is(Faction.ChaosSentinel) ||
+                     target.Is(Faction.NeutralApocalypse) || target.Is(AllianceEnum.Crewpocalypse) || target.Is(AllianceEnum.Crewpostor) || target.Is(AllianceEnum.Egotist) || target.Is(AllianceEnum.Recruit) || target.Is(Faction.NeutralChaos))
                     {
                         hunter.CorrectKills += 1;
                     }
@@ -760,11 +782,12 @@ public static class Utils
                     }
                 }
 
-                if (killer.Is(RoleEnum.Bodyguard) && !killer.Is(AllianceEnum.Crewpocalypse) && !killer.Is(AllianceEnum.Crewpostor) && !killer.Is(AllianceEnum.Recruit))
+                if (killer.Is(RoleEnum.Bodyguard) && !killer.Is(AllianceEnum.Crewpocalypse) && !killer.Is(AllianceEnum.Crewpostor) && !killer.Is(AllianceEnum.Recruit) && !killer.Is(AllianceEnum.Egotist))
                 {
                     var bg = Role.GetRole<Bodyguard>(killer);
                     if (target.Is(Faction.Impostors) || target.Is(Faction.NeutralKilling) || target.Is(Faction.NeutralNeophyte) || target.Is(Faction.NeutralNecro) || target.Is(Faction.NeutralChaos)
-                    || target.Is(Faction.NeutralApocalypse) || target.Is(AllianceEnum.Crewpocalypse) || target.Is(AllianceEnum.Crewpostor) || target.Is(AllianceEnum.Recruit))
+                    || target.Is(Faction.NeutralApocalypse) || target.Is(Faction.ChaosSentinel) || target.Is(Faction.NeutralSentinel) || target.Is(Faction.ImpSentinel)
+                    || target.Is(AllianceEnum.Crewpocalypse) || target.Is(AllianceEnum.Crewpostor) || target.Is(AllianceEnum.Egotist) || target.Is(AllianceEnum.Recruit))
                     {
                         bg.CorrectKills += 1;
                     }
@@ -778,7 +801,58 @@ public static class Utils
             {
                 foreach (var player2 in PlayerControl.AllPlayerControls)
                 {
-                    if (!player2.Is(RoleEnum.NeoNecromancer) || player2.Is(Faction.NeutralNecro)) Utils.MurderPlayer(player2, player2, true);
+                    if (!player2.Is(RoleEnum.NeoNecromancer) && player2.Is(Faction.NeutralNecro)) MurderPlayer(player2, player2, true);
+                }
+            }
+
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Sentinel) && !PlayerControl.LocalPlayer.Data.IsDead && killer.Is(RoleEnum.Sentinel))
+            {
+                var sentinalthingy = Role.GetRole<Sentinel>(killer);
+                if (killer.Is(Faction.CrewSentinel)) {
+                    if (target.Is(Faction.Crewmates) && !target.Is(AllianceEnum.Recruit) && !target.Is(AllianceEnum.Crewpostor) && !target.Is(AllianceEnum.Egotist) && !target.Is(AllianceEnum.Crewpocalypse))
+                    {
+                        sentinalthingy.IncorrectKills += 1;
+                        Coroutines.Start(FlashCoroutine(Color.red));
+                    }
+                    else if (target.Is(Faction.NeutralBenign))
+                    {
+                        sentinalthingy.IncorrectKills += 1;
+                        Coroutines.Start(FlashCoroutine(Color.grey));
+                    }
+                    else
+                    {
+                        sentinalthingy.CorrectKills += 1;
+                        Coroutines.Start(FlashCoroutine(Color.green));
+                    }
+                } else
+                if (killer.Is(Faction.ChaosSentinel)) {
+                    if (target.Is(Faction.NeutralKilling) || target.Is(Faction.NeutralNeophyte) || target.Is(Faction.NeutralNecro) || target.Is(AllianceEnum.Recruit) || target.Is(AllianceEnum.Egotist))
+                    {
+                        sentinalthingy.IncorrectKills += 1;
+                        Coroutines.Start(FlashCoroutine(Color.red));
+                    }
+                    else if (target.Is(Faction.NeutralEvil) || target.Is(Faction.NeutralChaos) || target.Is(Faction.NeutralBenign))
+                    {
+                        sentinalthingy.IncorrectKills += 1;
+                        Coroutines.Start(FlashCoroutine(Color.grey));
+                    }
+                    else
+                    {
+                        sentinalthingy.CorrectKills += 1;
+                        Coroutines.Start(FlashCoroutine(Color.green));
+                    }
+                } else
+                if (killer.Is(Faction.ImpSentinel)) {
+                    if (target.Is(Faction.Impostors) || target.Is(AllianceEnum.Crewpostor))
+                    {
+                        sentinalthingy.IncorrectKills += 1;
+                        Coroutines.Start(FlashCoroutine(Color.red));
+                    }
+                    else
+                    {
+                        sentinalthingy.CorrectKills += 1;
+                        Coroutines.Start(FlashCoroutine(Color.green));
+                    }
                 }
             }
 
@@ -787,9 +861,7 @@ public static class Utils
                 if (killer.Is(RoleEnum.Inquisitor)) {
                 var inquis = Role.GetRole<Inquisitor>(killer);
                 
-                    //Utils.Rpc(CustomRPC.VanquishClean, PlayerControl.LocalPlayer.PlayerId, PlayerControl.LocalPlayer.PlayerId);
-                    //Coroutines.Start(VanquishCoroutine.InquisitorCoroutine(inquis.CurrentBodyTarget, inquis));
-                if (target == inquis.heretic1 || target == inquis.heretic2 || target == inquis.heretic3)
+                if (inquis.invalidHeretics || target == inquis.heretic1 || target == inquis.heretic2 || target == inquis.heretic3)
                 {
                     inquis.CorrectKills += 1;
                 }
@@ -803,13 +875,9 @@ public static class Utils
         foreach (var role in Role.GetRoles(RoleEnum.Inquisitor))
         {
             var inquis3 = (Inquisitor)role;
-                if (inquis3.heretic1.Data.IsDead && inquis3.heretic2.Data.IsDead && inquis3.heretic3.Data.IsDead) {
+                if (inquis3.invalidHeretics || inquis3.heretic1.Data.IsDead && inquis3.heretic2.Data.IsDead && inquis3.heretic3.Data.IsDead) {
                     inquis3.didWin = true;
                     PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"INQUISITOR MET WIN CONDITION: {inquis2}");
-                    //Utils.MurderPlayer(PlayerControl.LocalPlayer, PlayerControl.LocalPlayer, true);
-                    //Utils.Rpc(CustomRPC.VanquishClean, PlayerControl.LocalPlayer.PlayerId, PlayerControl.LocalPlayer.PlayerId);
-
-                    //Coroutines.Start(VanquishCoroutine.InquisitorCoroutine(inquis2.CurrentBodyTarget, inquis2));
                 }
         }
             }
@@ -926,7 +994,7 @@ public static class Utils
                     else targetRole.KilledBy = " By " + ColorString(killerRole.Color, killerRole.PlayerName);
                     targetRole.DeathReason = DeathReasonEnum.Killed;
                 }
-                else if (killer == target && killer.Is(RoleEnum.Inquisitor)) targetRole.DeathReason = DeathReasonEnum.MetCondition;
+                //else if (killer == target && killer.Is(RoleEnum.Inquisitor)) targetRole.DeathReason = DeathReasonEnum.Disconnected;
                 else targetRole.DeathReason = DeathReasonEnum.Suicide;
 
 
@@ -1253,7 +1321,7 @@ public static class Utils
             encha.RegenTask();
             isOther = false;
         }
-        if (player.Is(Faction.NeutralKilling) || player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Hunter) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.VampireHunter) || player.Is(RoleEnum.Vigilante))
+        if (player.Is(Faction.NeutralKilling) || player.Is(Faction.NeutralSentinel) || player.Is(Faction.CrewSentinel) || player.Is(Faction.ChaosSentinel) || player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Hunter) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.VampireHunter) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.Trickster))
         {
             Role.RoleDictionary.Remove(player.PlayerId);
             var scourge = new Scourge(player);
@@ -1277,8 +1345,6 @@ public static class Utils
             husk.RegenTask();
         }
 
-        //player.Data.Role.TeamType = RoleTeamTypes.Impostor;
-        //RoleManager.Instance.SetRole(player, RoleTypes.Impostor);
         player.SetKillTimer(GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown);
 
         foreach (var player2 in PlayerControl.AllPlayerControls)
@@ -1506,6 +1572,59 @@ public static class Utils
             }
     }
 
+    public static void RemoveBasicTasks(PlayerControl player)
+    {
+        var totalCommonTasks = GameOptionsManager.Instance.currentNormalGameOptions.NumCommonTasks;
+        var totalShortTasks = GameOptionsManager.Instance.currentNormalGameOptions.NumShortTasks;
+        var totalLongTasks = GameOptionsManager.Instance.currentNormalGameOptions.NumLongTasks;
+
+        foreach (var task in player.myTasks)
+            if (task.TryCast<NormalPlayerTask>() != null)
+            {
+                var normalPlayerTask = task.Cast<NormalPlayerTask>();
+                normalPlayerTask.taskStep = 0;
+                normalPlayerTask.Initialize();
+                var taskInfo = player.Data.FindTaskById(task.Id);
+                taskInfo.Complete = false;
+                if (normalPlayerTask.Length == NormalPlayerTask.TaskLength.Common)
+                {
+                    totalCommonTasks -= 1;
+                    if (totalCommonTasks < 0) 
+                    {
+                        normalPlayerTask.ShowTaskStep = false;
+                        normalPlayerTask.ShowTaskTimer = false;
+                        normalPlayerTask.taskStep = normalPlayerTask.MaxStep;
+                        taskInfo.Complete = true;
+                        normalPlayerTask = null;
+                    }
+                }
+                if (normalPlayerTask.Length == NormalPlayerTask.TaskLength.Short)
+                {
+                    totalShortTasks -= 1;
+                    if (totalShortTasks < 0) 
+                    {
+                        normalPlayerTask.ShowTaskStep = false;
+                        normalPlayerTask.ShowTaskTimer = false;
+                        normalPlayerTask.taskStep = normalPlayerTask.MaxStep;
+                        taskInfo.Complete = true;
+                        normalPlayerTask = null;
+                    }
+                }
+                if (normalPlayerTask.Length == NormalPlayerTask.TaskLength.Long)
+                {
+                    totalLongTasks -= 1;
+                    if (totalLongTasks < 0) 
+                    {
+                        normalPlayerTask.ShowTaskStep = false;
+                        normalPlayerTask.ShowTaskTimer = false;
+                        normalPlayerTask.taskStep = normalPlayerTask.MaxStep;
+                        taskInfo.Complete = true;
+                        normalPlayerTask = null;
+                    }
+                }
+            }
+            if (TownOfUsFusion.isDevBuild) PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"Taskmaster Info: {player.Data.PlayerName} | CT: {totalCommonTasks * -1} | ST: {totalShortTasks * -1} | LT: {totalLongTasks * -1}");
+    }
     public static void DestroyAll(this IEnumerable<Component> listie)
     {
         foreach (var item in listie)
@@ -1522,7 +1641,19 @@ public static class Utils
         GameManager.Instance.RpcEndGame(reason, showAds);
     }
 
+    public static void EndGameWompWomp(GameOverReason reason = GameOverReason.ImpostorDisconnect, bool showAds = false)
+    {
+        GameManager.Instance.RpcEndGame(reason, showAds);
+    }
+    public static void EndGameAlt(GameOverReason reason = GameOverReason.HumansByTask, bool showAds = false)
+    {
+        GameManager.Instance.RpcEndGame(reason, showAds);
+    }
 
+    public static void EndGameCrew(GameOverReason reason = GameOverReason.HumansByVote, bool showAds = false)
+    {
+        GameManager.Instance.RpcEndGame(reason, showAds);
+    }
     public static void Rpc(params object[] data)
     {
         if (data[0] is not CustomRPC) throw new ArgumentException($"first parameter must be a {typeof(CustomRPC).FullName}");
@@ -1646,10 +1777,10 @@ public static string DeathReason(this PlayerControl player)
                 die = "Alive";
             else if (role.DeathReason == DeathReasonEnum.Suicide)
                 die = "Suicide";
-            else if (role.DeathReason == DeathReasonEnum.MetCondition)
+            else if (role.DeathReason == DeathReasonEnum.Disconnected)
                 die = "Left";
 
-            if (role.DeathReason != DeathReasonEnum.Alive && role.DeathReason != DeathReasonEnum.Ejected && role.DeathReason != DeathReasonEnum.Suicide && role.DeathReason != DeathReasonEnum.MetCondition)
+            if (role.DeathReason != DeathReasonEnum.Alive && role.DeathReason != DeathReasonEnum.Ejected && role.DeathReason != DeathReasonEnum.Suicide && role.DeathReason != DeathReasonEnum.Disconnected)
                 killedBy = role.KilledBy;
 
             result = die + killedBy;
@@ -1731,11 +1862,44 @@ public static string DeathReason(this PlayerControl player)
                 tracker.TrackerArrows.Clear();
             }
         }
+        if (PlayerControl.LocalPlayer.Is(RoleEnum.Bodyguard))
+        {
+            var bg = Role.GetRole<Bodyguard>(PlayerControl.LocalPlayer);
+            bg.LastGuarded = DateTime.UtcNow;
+        }
+        foreach (var bg in Role.GetRoles(RoleEnum.Bodyguard))
+        {
+            var bgRole = (Bodyguard)bg;
+                bgRole.exGuarded = bgRole.GuardedPlayer;
+                bgRole.GuardedPlayer = null;
+        }
+
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Hunter))
             {
                 var hunter = Role.GetRole<Hunter>(PlayerControl.LocalPlayer);
                 hunter.LastKilled = DateTime.UtcNow;
             }
+        if (PlayerControl.LocalPlayer.Is(RoleEnum.Trickster))
+        {
+            var vh = Role.GetRole<Trickster>(PlayerControl.LocalPlayer);
+            vh.LastKilled = DateTime.UtcNow;
+        }
+        foreach (var vh in Role.GetRoles(RoleEnum.Trickster))
+        {
+            var vhRole = (Trickster)vh;
+            if (!vhRole.AddedTricks)
+            {
+                vhRole.UsesLeft = CustomGameOptions.MaxFailedTricksPerGame;
+                vhRole.AddedTricks = true;
+            }
+        }
+
+        foreach (var sh in Role.GetRoles(RoleEnum.Inquisitor))
+        {
+            var shRole = (Inquisitor)sh;
+            if (!shRole.canVanquish && CustomGameOptions.VanquishRoundOne && CustomGameOptions.VanquishEnabled) shRole.canVanquish = true;
+        }
+
         if (PlayerControl.LocalPlayer.Is(RoleEnum.VampireHunter))
         {
             var vh = Role.GetRole<VampireHunter>(PlayerControl.LocalPlayer);
@@ -1890,7 +2054,7 @@ public static string DeathReason(this PlayerControl player)
         {
             var jackalRole = Role.GetRole<Jackal>(PlayerControl.LocalPlayer);
             jackalRole.LastKill = DateTime.UtcNow;
-            if (!jackalRole.CanKill && (jackalRole.Recruit1.Player.Data.IsDead || jackalRole.Recruit2.Player.Data.IsDead)) jackalRole.CanKill = true;
+            if (jackalRole.Recruit1 == null || jackalRole.Recruit2 == null || (!jackalRole.CanKill && (jackalRole.Recruit1.Player.Data.IsDead || jackalRole.Recruit2.Player.Data.IsDead))) jackalRole.CanKill = true;
         }
 
         if (PlayerControl.LocalPlayer.Is(RoleEnum.Berserker))
