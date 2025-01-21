@@ -34,7 +34,6 @@ namespace TownOfUsFusion.ImpostorRoles.EscapistMod
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
             if (role.EscapeButton.graphic.sprite == MarkSprite)
             {
-                role.EscapeButton.buttonLabelText.text = "Mark";
                 role.EscapeButton.SetCoolDown(0f, 1f);
                 if (PlayerControl.LocalPlayer.moveable)
                 {

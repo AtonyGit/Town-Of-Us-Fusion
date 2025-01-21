@@ -33,13 +33,9 @@ namespace TownOfUsFusion.Roles
             int colourID = player.GetDefaultOutfit().ColorId;
             if (CheckRange(player, CustomGameOptions.AuraInnerRadius) && !CamouflageUnCamouflage.IsCamoed)
             {
-                if (RainbowUtils.IsGradient(colourID))
+                if (RainbowUtils.IsRainbow(colourID))
                 {
-                    if (RainbowUtils.IsRainbow(colourID)) renderer.color = RainbowUtils.Rainbow;
-                    if (RainbowUtils.IsGalaxy(colourID)) renderer.color = RainbowUtils.Galaxy;
-                    if (RainbowUtils.IsFire(colourID)) renderer.color = RainbowUtils.Fire;
-                    if (RainbowUtils.IsAcid(colourID)) renderer.color = RainbowUtils.Acid;
-                    if (RainbowUtils.IsMonochrome(colourID)) renderer.color = RainbowUtils.Monochrome;
+                    renderer.color = RainbowUtils.Rainbow;
                 }
                 else
                 {

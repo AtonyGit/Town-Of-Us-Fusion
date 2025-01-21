@@ -566,8 +566,32 @@ namespace TownOfUsFusion.Roles
                         ModifierText.gameObject.SetActive(true);
                     }
 
-                    if (CustomGameOptions.GameMode == GameMode.AllAny && CustomGameOptions.RandomNumberImps)
-                        __instance.__4__this.ImpostorText.text = "There are an <color=#FF0000FF>Unknown Number of Impostors</color> among us";
+                    var players = GameData.Instance.PlayerCount;
+                    if (players > 6)
+                    {
+                        List<RoleOptions> buckets = [CustomGameOptions.Slot1, CustomGameOptions.Slot2, CustomGameOptions.Slot3, CustomGameOptions.Slot4, CustomGameOptions.Slot5, CustomGameOptions.Slot6, CustomGameOptions.Slot7];
+                        bool isAny = false;
+
+                        if (players > 7) buckets.Add(CustomGameOptions.Slot8);
+                        if (players > 8) buckets.Add(CustomGameOptions.Slot9);
+                        if (players > 9) buckets.Add(CustomGameOptions.Slot10);
+                        if (players > 10) buckets.Add(CustomGameOptions.Slot11);
+                        if (players > 11) buckets.Add(CustomGameOptions.Slot12);
+                        if (players > 12) buckets.Add(CustomGameOptions.Slot13);
+                        if (players > 13) buckets.Add(CustomGameOptions.Slot14);
+                        if (players > 14) buckets.Add(CustomGameOptions.Slot15);
+
+                        foreach (var roleOption in buckets)
+                        {
+                            if (roleOption == RoleOptions.Any)
+                            {
+                                isAny = true;
+                                break;
+                            }
+                        }
+
+                        if (isAny) __instance.__4__this.ImpostorText.text = "There are an <color=#FF0000FF>Unknown Number of Impostors</color> among us";
+                    }
                 }
             }
 
@@ -612,8 +636,32 @@ namespace TownOfUsFusion.Roles
                         ModifierText.gameObject.SetActive(true);
                     }
 
-                    if (CustomGameOptions.GameMode == GameMode.AllAny && CustomGameOptions.RandomNumberImps)
-                        __instance.__4__this.ImpostorText.text = "There are an <color=#FF0000FF>Unknown Number of Impostors</color> among us";
+                    var players = GameData.Instance.PlayerCount;
+                    if (players > 6)
+                    {
+                        List<RoleOptions> buckets = [CustomGameOptions.Slot1, CustomGameOptions.Slot2, CustomGameOptions.Slot3, CustomGameOptions.Slot4, CustomGameOptions.Slot5, CustomGameOptions.Slot6, CustomGameOptions.Slot7];
+                        bool isAny = false;
+
+                        if (players > 7) buckets.Add(CustomGameOptions.Slot8);
+                        if (players > 8) buckets.Add(CustomGameOptions.Slot9);
+                        if (players > 9) buckets.Add(CustomGameOptions.Slot10);
+                        if (players > 10) buckets.Add(CustomGameOptions.Slot11);
+                        if (players > 11) buckets.Add(CustomGameOptions.Slot12);
+                        if (players > 12) buckets.Add(CustomGameOptions.Slot13);
+                        if (players > 13) buckets.Add(CustomGameOptions.Slot14);
+                        if (players > 14) buckets.Add(CustomGameOptions.Slot15);
+
+                        foreach (var roleOption in buckets)
+                        {
+                            if (roleOption == RoleOptions.Any)
+                            {
+                                isAny = true;
+                                break;
+                            }
+                        }
+
+                        if (isAny) __instance.__4__this.ImpostorText.text = "There are an <color=#FF0000FF>Unknown Number of Impostors</color> among us";
+                    }
                 }
             }
         }
@@ -768,6 +816,10 @@ namespace TownOfUsFusion.Roles
                     ((Mystic)role).BodyArrows.Values.DestroyAll();
                     ((Mystic)role).BodyArrows.Clear();
                 }
+                foreach (var role in AllRoles.Where(x => x.RoleType == RoleEnum.Scavenger))
+                {
+                    ((Scavenger)role).PreyArrow.Destroy();
+                }
 
                 RoleDictionary.Clear();
                 RoleHistory.Clear();
@@ -897,6 +949,7 @@ namespace TownOfUsFusion.Roles
                             if (role.ColorCriteria())
                                 player.nameText().color = role.Color;
                         }
+                        else player.nameText().transform.localPosition = new Vector3(0f, 0f, 0f);
                     }
                 }
             }

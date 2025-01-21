@@ -16,7 +16,7 @@ using Il2CppInterop.Runtime.Injection;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using UnityEngine;
 using TownOfUsFusion.Patches.ScreenEffects;
-using TownOfUsFusion.CrewmateRoles.DetectiveMod;
+using TownOfUsFusion.CrewmateRoles.CoronerMod;
 using TownOfUsFusion.NeutralRoles.SoulCollectorMod;
 using System.IO;
 using Reactor.Utilities;
@@ -33,7 +33,7 @@ namespace TownOfUsFusion
 
         public const string Id = "com.FusionStudios.TownOfUsFusion";
         public const string VersionString = "0.4.0";
-        public const string TouVersionString = "5.0.4";
+        public const string TouVersionString = "5.2.0";
         public static System.Version Version = System.Version.Parse(VersionString);
         public const string VersionTag = "<color=#ff33fc></color>";
         public const bool isDevBuild = true;
@@ -41,6 +41,12 @@ namespace TownOfUsFusion
 
         public static AssetLoader bundledAssets;
 
+        public static Sprite JesterVent;
+        public static Sprite VampireVent;
+        public static Sprite WerewolfVent;
+        public static Sprite GlitchVent;
+        public static Sprite GlitchKill;
+        public static Sprite WerewolfKill;
         public static Sprite EngineerVent;
         public static Sprite EngineerFix;
 
@@ -119,6 +125,8 @@ namespace TownOfUsFusion
         public static Sprite InquisKill;
         public static Sprite SheriffKill;
         public static Sprite PoisonSprite;
+        public static Sprite CampSprite;
+        public static Sprite ShootSprite;
 
         public static Sprite SettingsButtonSprite;
         public static Sprite CrewSettingsButtonSprite;
@@ -165,12 +173,14 @@ namespace TownOfUsFusion
                 ExamineSprite = CreateScaledSprite("TownOfUsFusion.Resources.Examine.png");
                 SeerSprite = CreateScaledSprite("TownOfUsFusion.Resources.Seer.png");
                 TrackSprite = CreateScaledSprite("TownOfUsFusion.Resources.Track.png");
-                TrapSprite = CreateSprite("TownOfUsFusion.Resources.Trap.png");
+                TrapSprite = CreateScaledSprite("TownOfUsFusion.Resources.Trap.png");
             // Killing Roles
+                CampSprite = CreateSprite("TownOfUsFusion.Resources.Camp.png");
+                ShootSprite = CreateSprite("TownOfUsFusion.Resources.Shoot.png");
                 SheriffKill = CreateScaledSprite("TownOfUsFusion.Resources.SheriffKill.png");
                 AlertSprite = CreateSprite("TownOfUsFusion.Resources.Alert.png");
                 StalkSprite = CreateSprite("TownOfUsFusion.Resources.Stalk.png");
-                JailSprite = CreateSprite("TownOfUsFusion.Resources.Jail.png");
+                JailSprite = CreateScaledSprite("TownOfUsFusion.Resources.Jail.png");
                 InJailSprite = CreateSprite("TownOfUsFusion.Resources.InJail.png");
                 ExecuteSprite = CreateSprite("TownOfUsFusion.Resources.Execute.png");
             // Protective Roles
@@ -196,6 +206,7 @@ namespace TownOfUsFusion
                 VestSprite = CreateSprite("TownOfUsFusion.Resources.Vest.png");
             // Evil Roles
                 ObserveSprite = CreateSprite("TownOfUsFusion.Resources.Observe.png");
+                JesterVent = CreateVentSprite("TownOfUsFusion.Resources.JesterVent.png");
             // Chaos Roles
                 InquisKill = CreateScaledSprite("TownOfUsFusion.Resources.InquisKill.png");
             // Killing Roles
@@ -203,9 +214,14 @@ namespace TownOfUsFusion
                 IgniteSprite = CreateSprite("TownOfUsFusion.Resources.Ignite.png");
                 HackSprite = CreateSprite("TownOfUsFusion.Resources.Hack.png");
                 MimicSprite = CreateSprite("TownOfUsFusion.Resources.Mimic.png");
+                GlitchKill = CreateScaledSprite("TownOfUsFusion.Resources.GlitchKill.png");
+                GlitchVent = CreateVentSprite("TownOfUsFusion.Resources.GlitchVent.png");
                 RampageSprite = CreateSprite("TownOfUsFusion.Resources.Rampage.png");
+                WerewolfKill = CreateScaledSprite("TownOfUsFusion.Resources.WerewolfKill.png");
+                WerewolfVent = CreateVentSprite("TownOfUsFusion.Resources.WerewolfVent.png");
             // Neophyte Roles
                 BiteSprite = CreateSprite("TownOfUsFusion.Resources.Bite.png");
+                VampireVent = CreateVentSprite("TownOfUsFusion.Resources.VampireVent.png");
             // Apocalypse Roles
                 InfectSprite = CreateSprite("TownOfUsFusion.Resources.Infect.png");
                 CollectSprite = CreateSprite("TownOfUsFusion.Resources.Collect.png");
@@ -271,6 +287,21 @@ namespace TownOfUsFusion
             ClassInjector.RegisterTypeInIl2Cpp<RainbowBehaviour>();
             ClassInjector.RegisterTypeInIl2Cpp<CrimeScene>();
             ClassInjector.RegisterTypeInIl2Cpp<Soul>();
+
+            for (int i = 1; i <= 5; i++)
+            {
+                try
+                {
+                    var filePath = Application.persistentDataPath;
+                    var file = filePath + $"/GameSettings-Slot{i}";
+                    if (File.Exists(file))
+                    {
+                        string newFile = Path.Combine(filePath, $"Saved Settings {i}.txt");
+                        File.Move(file, newFile);
+                    }
+                }
+                catch { }
+            }
 
             // RegisterInIl2CppAttribute.Register();
 

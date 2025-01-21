@@ -57,6 +57,15 @@ namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
 
         public static void Remember(Amnesiac amneRole, PlayerControl other)
         {
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Lookout))
+            {
+                var lookout = Role.GetRole<Lookout>(PlayerControl.LocalPlayer);
+                if (lookout.Watching.ContainsKey(other.PlayerId))
+                {
+                    if (!lookout.Watching[other.PlayerId].Contains(RoleEnum.Amnesiac)) lookout.Watching[other.PlayerId].Add(RoleEnum.Amnesiac);
+                }
+            }
+
             var role = Utils.GetRole(other);
             var amnesiac = amneRole.Player;
 
@@ -70,7 +79,14 @@ namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
                 var amnesiacRole = Role.GetRole<Amnesiac>(amnesiac);
                 amnesiacRole.BodyArrows.Values.DestroyAll();
                 amnesiacRole.BodyArrows.Clear();
-                foreach (var body in amnesiacRole.CurrentTarget.bodyRenderers) body.material.SetFloat("_Outline", 0f);
+                try
+                {
+                    foreach (var body in amnesiacRole.CurrentTarget.bodyRenderers) body.material.SetFloat("_Outline", 0f);
+                }
+                catch
+                {
+
+                }
             }
 
             switch (role)
@@ -94,7 +110,7 @@ namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
                 case RoleEnum.Medium:
                 case RoleEnum.Mystic:
                 case RoleEnum.Trapper:
-                case RoleEnum.Detective:
+                case RoleEnum.Coroner:
                 case RoleEnum.Imitator:
                 case RoleEnum.Prosecutor:
                 case RoleEnum.Oracle:
@@ -102,6 +118,8 @@ namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
                 case RoleEnum.Politician:
                 case RoleEnum.Warden:
                 case RoleEnum.Jailor:
+                case RoleEnum.Lookout:
+                case RoleEnum.Deputy:
 
                     rememberImp = false;
                     rememberNeut = false;
@@ -141,9 +159,9 @@ namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
 
             if (role == RoleEnum.Snitch) CompleteTask.Postfix(amnesiac);
 
-            if (role == RoleEnum.Detective && PlayerControl.LocalPlayer == other)
+            if (role == RoleEnum.Coroner && PlayerControl.LocalPlayer == other)
             {
-                var detecRole = Role.GetRole<Detective>(other);
+                var detecRole = Role.GetRole<Coroner>(other);
                 foreach (GameObject scene in detecRole.CrimeScenes)
                 {
                     UnityEngine.Object.Destroy(scene);
@@ -257,6 +275,7 @@ namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
                 var medicRole = Role.GetRole<Medic>(amnesiac);
                 if (amnesiac != StartImitate.ImitatingPlayer) medicRole.UsedAbility = false;
                 else medicRole.UsedAbility = true;
+                medicRole.StartingCooldown = medicRole.StartingCooldown.AddSeconds(-10f);
             }
 
             else if (role == RoleEnum.Mayor)
@@ -311,6 +330,14 @@ namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
                 trackerRole.LastTracked = DateTime.UtcNow;
             }
 
+            else if (role == RoleEnum.Lookout)
+            {
+                var loRole = Role.GetRole<Lookout>(amnesiac);
+                loRole.UsesLeft = CustomGameOptions.MaxWatches;
+                loRole.Watching.Clear();
+                loRole.LastWatched = DateTime.UtcNow;
+            }
+
             else if (role == RoleEnum.Aurial)
             {
                 var aurialRole = Role.GetRole<Aurial>(amnesiac);
@@ -322,13 +349,22 @@ namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
             else if (role == RoleEnum.Warden)
             {
                 var wardenRole = Role.GetRole<Warden>(amnesiac);
-                wardenRole.LastFortified = DateTime.UtcNow;
                 wardenRole.Fortified = null;
+                wardenRole.StartingCooldown = wardenRole.StartingCooldown.AddSeconds(-10f);
             }
 
-            else if (role == RoleEnum.Detective)
+            else if (role == RoleEnum.Deputy)
             {
-                var detectiveRole = Role.GetRole<Detective>(amnesiac);
+                var deputyRole = Role.GetRole<Deputy>(amnesiac);
+                deputyRole.Camping = null;
+                deputyRole.Killer = null;
+                deputyRole.CampedThisRound = false;
+                deputyRole.StartingCooldown = deputyRole.StartingCooldown.AddSeconds(-10f);
+            }
+
+            else if (role == RoleEnum.Coroner)
+            {
+                var detectiveRole = Role.GetRole<Coroner>(amnesiac);
                 detectiveRole.LastExamined = DateTime.UtcNow;
                 detectiveRole.CurrentTarget = null;
             }

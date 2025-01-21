@@ -32,14 +32,9 @@ namespace TownOfUsFusion
         WerewolfWin,
         SurvivorOnlyWin,
         VampireWin,
-        CannibalWin,
-        NecroWin,
-        ApocWin,
-        JackalWin,
 
         Poison,
         RemoteBite,
-        
         JanitorClean,
         FixLights,
         EngineerFix,
@@ -87,6 +82,7 @@ namespace TownOfUsFusion
         Jail,
         Collect,
         Retribution,
+        Camp,
 
         BypassKill,
         BypassMultiKill,
@@ -102,7 +98,6 @@ namespace TownOfUsFusion
         FixAnimation,
         SetPos,
         SetSettings,
-        SyncSettingsTarget,
         
         RemoveAllBodies,
         CheckMurder,

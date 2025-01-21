@@ -3,7 +3,7 @@ using HarmonyLib;
 using TownOfUsFusion.Roles;
 using UnityEngine;
 
-namespace TownOfUsFusion.CrewmateRoles.DetectiveMod
+namespace TownOfUsFusion.CrewmateRoles.CoronerMod
 {
     [HarmonyPatch(typeof(HudManager))]
     public class HudExamine
@@ -16,9 +16,9 @@ namespace TownOfUsFusion.CrewmateRoles.DetectiveMod
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Detective)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Coroner)) return;
 
-            var role = Role.GetRole<Detective>(PlayerControl.LocalPlayer);
+            var role = Role.GetRole<Coroner>(PlayerControl.LocalPlayer);
 
             if (role.ExamineButton == null)
             {
@@ -28,8 +28,6 @@ namespace TownOfUsFusion.CrewmateRoles.DetectiveMod
             }
 
             role.ExamineButton.graphic.sprite = ExamineSprite;
-            role.ExamineButton.buttonLabelText.SetOutlineColor(Patches.Colors.Detective);
-            role.ExamineButton.buttonLabelText.text = "Examine";
             role.ExamineButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
 
             if (PlayerControl.LocalPlayer.Data.IsDead) role.ExamineButton.SetTarget(null);

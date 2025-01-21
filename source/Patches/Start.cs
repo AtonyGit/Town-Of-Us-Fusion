@@ -16,9 +16,17 @@ namespace TownOfUsFusion.Patches
         public static Sprite Sprite => TownOfUsFusion.Arrow;
         public static void Postfix(IntroCutscene._CoBegin_d__35 __instance)
         {
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Detective))
+            foreach (var player in PlayerControl.AllPlayerControls)
             {
-                var detective = Role.GetRole<Detective>(PlayerControl.LocalPlayer);
+                if (player.Is(ModifierEnum.Mini) && player.transform.localPosition.y > 4 && GameOptionsManager.Instance.currentNormalGameOptions.MapId == 1)
+                {
+                    player.transform.localPosition = new Vector3(player.transform.localPosition.x, 4f, player.transform.localPosition.z);
+                }
+            }
+
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Coroner))
+            {
+                var detective = Role.GetRole<Coroner>(PlayerControl.LocalPlayer);
                 detective.LastExamined = DateTime.UtcNow;
                 detective.LastExamined = detective.LastExamined.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.ExamineCd);
             }
@@ -58,6 +66,13 @@ namespace TownOfUsFusion.Patches
                 tracker.LastTracked = tracker.LastTracked.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.TrackCd);
             }
 
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Lookout))
+            {
+                var lo = Role.GetRole<Lookout>(PlayerControl.LocalPlayer);
+                lo.LastWatched = DateTime.UtcNow;
+                lo.LastWatched = lo.LastWatched.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.WatchCooldown);
+            }
+
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Hunter))
             {
                 var hunter = Role.GetRole<Hunter>(PlayerControl.LocalPlayer);
@@ -93,13 +108,6 @@ namespace TownOfUsFusion.Patches
                 var politician = Role.GetRole<Politician>(PlayerControl.LocalPlayer);
                 politician.LastCampaigned = DateTime.UtcNow;
                 politician.LastCampaigned = politician.LastCampaigned.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.CampaignCd);
-            }
-
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Warden))
-            {
-                var warden = Role.GetRole<Warden>(PlayerControl.LocalPlayer);
-                warden.LastFortified = DateTime.UtcNow;
-                warden.LastFortified = warden.LastFortified.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.FortifyCd);
             }
 
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Jailor))

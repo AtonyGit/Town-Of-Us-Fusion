@@ -46,8 +46,6 @@ namespace TownOfUsFusion.NeutralRoles.SoulCollectorMod
             }
 
             role.ReapButton.graphic.sprite = ReapSprite;
-            role.ReapButton.buttonLabelText.text = "Reap";
-            role.ReapButton.buttonLabelText.SetOutlineColor(Patches.Colors.SoulCollector);
             role.ReapButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
 
             if (role.CollectedText == null)

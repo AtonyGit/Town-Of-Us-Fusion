@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace TownOfUsFusion.CrewmateRoles.DetectiveMod
+namespace TownOfUsFusion.CrewmateRoles.CoronerMod
 {
     public class CrimeScene : MonoBehaviour
     {

@@ -33,7 +33,6 @@ namespace TownOfUsFusion.ImpostorRoles.BomberMod
             if (role.Detonating)
             {
                 role.PlantButton.graphic.sprite = DetonateSprite;
-                role.PlantButton.buttonLabelText.text = "Detonating";
                 role.PlantButton.graphic.color = Palette.EnabledColor;
                 role.PlantButton.graphic.material.SetFloat("_Desat", 0f);
                 role.DetonateTimer();
@@ -42,7 +41,6 @@ namespace TownOfUsFusion.ImpostorRoles.BomberMod
             else
             {
                 role.PlantButton.graphic.sprite = PlantSprite;
-                role.PlantButton.buttonLabelText.text = "Plant";
                 if (!role.Detonated) role.DetonateKillStart();
                 if (PlayerControl.LocalPlayer.killTimer > 0 || !PlayerControl.LocalPlayer.moveable)
                 {

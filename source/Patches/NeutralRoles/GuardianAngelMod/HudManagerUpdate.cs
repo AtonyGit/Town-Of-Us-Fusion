@@ -20,8 +20,6 @@ namespace TownOfUsFusion.NeutralRoles.GuardianAngelMod
             if (PlayerControl.LocalPlayer.Data == null) return;
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.GuardianAngel)) return;
             var protectButton = __instance.KillButton;
-            protectButton.buttonLabelText.text = "Protect";
-            protectButton.buttonLabelText.SetOutlineColor(Patches.Colors.GuardianAngel);
 
             var role = Role.GetRole<GuardianAngel>(PlayerControl.LocalPlayer);
 

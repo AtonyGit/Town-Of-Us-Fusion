@@ -128,7 +128,7 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
 
             if (PlayerControl.LocalPlayer == newVamp)
             {
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Detective)) Role.GetRole<Detective>(PlayerControl.LocalPlayer).ExamineButton.SetTarget(null);
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.Coroner)) Role.GetRole<Coroner>(PlayerControl.LocalPlayer).ExamineButton.SetTarget(null);
                 else if (PlayerControl.LocalPlayer.Is(RoleEnum.Hunter)) Role.GetRole<Hunter>(PlayerControl.LocalPlayer).StalkButton.SetTarget(null);
                 else if (PlayerControl.LocalPlayer.Is(RoleEnum.SoulCollector)) Role.GetRole<SoulCollector>(PlayerControl.LocalPlayer).ReapButton.SetTarget(null);
                 else if (PlayerControl.LocalPlayer.Is(RoleEnum.Altruist)) CrewmateRoles.AltruistMod.KillButtonTarget.SetTarget(HudManager.Instance.KillButton, null, Role.GetRole<Altruist>(PlayerControl.LocalPlayer));
@@ -150,6 +150,12 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
                     trackerRole.TrackerArrows.Values.DestroyAll();
                     trackerRole.TrackerArrows.Clear();
                     UnityEngine.Object.Destroy(trackerRole.UsesText);
+                }
+
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.Lookout))
+                {
+                    var loRole = Role.GetRole<Lookout>(PlayerControl.LocalPlayer);
+                    UnityEngine.Object.Destroy(loRole.UsesText);
                 }
 
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Aurial))
@@ -190,9 +196,9 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
                     trapperRole.traps.ClearTraps();
                 }
 
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Detective))
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.Coroner))
                 {
-                    var detecRole = Role.GetRole<Detective>(PlayerControl.LocalPlayer);
+                    var detecRole = Role.GetRole<Coroner>(PlayerControl.LocalPlayer);
                     detecRole.ExamineButton.gameObject.SetActive(false);
                     foreach (GameObject scene in detecRole.CrimeScenes)
                     {

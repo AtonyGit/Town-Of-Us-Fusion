@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using TownOfUsFusion.CrewmateRoles.DetectiveMod;
+using TownOfUsFusion.CrewmateRoles.CoronerMod;
 using UnityEngine;
 
 namespace TownOfUsFusion.Roles
 {
-    public class Detective : Role
+    public class Coroner : Role
     {
         private KillButton _examineButton;
         public PlayerControl ClosestPlayer;
@@ -15,14 +15,14 @@ namespace TownOfUsFusion.Roles
         public List<byte> InvestigatedPlayers = new List<byte>();
         public List<GameObject> CrimeScenes = new List<GameObject>();
 
-        public Detective(PlayerControl player) : base(player)
+        public Coroner(PlayerControl player) : base(player)
         {
-            Name = "Detective";
-            ImpostorText = () => "Autopsy Crime Scenes To Catch The Killer";
-            TaskText = () => "Autopsy crime scenes, then examine players for clues";
-            Color = Patches.Colors.Detective;
+            Name = "Coroner";
+            ImpostorText = () => "Inspect Crime Scenes To Catch The Killer";
+            TaskText = () => "Inspect crime scenes, then examine players for clues";
+            Color = Patches.Colors.Coroner;
             LastExamined = DateTime.UtcNow;
-            RoleType = RoleEnum.Detective;
+            RoleType = RoleEnum.Coroner;
             AddToRoleHistory(RoleType);
         }
 

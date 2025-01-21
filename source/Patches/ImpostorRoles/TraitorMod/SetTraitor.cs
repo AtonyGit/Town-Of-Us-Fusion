@@ -10,6 +10,7 @@ using TownOfUsFusion.Patches;
 using AmongUs.GameOptions;
 using TownOfUsFusion.CrewmateRoles.ImitatorMod;
 using TownOfUsFusion.Roles.Modifiers;
+using Il2CppSystem.Linq;
 
 namespace TownOfUsFusion.ImpostorRoles.TraitorMod
 {
@@ -54,9 +55,9 @@ namespace TownOfUsFusion.ImpostorRoles.TraitorMod
 
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Investigator)) Footprint.DestroyAll(Role.GetRole<Investigator>(PlayerControl.LocalPlayer));
 
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Detective))
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.Coroner))
                 {
-                    var detecRole = Role.GetRole<Detective>(PlayerControl.LocalPlayer);
+                    var detecRole = Role.GetRole<Coroner>(PlayerControl.LocalPlayer);
                     detecRole.ExamineButton.gameObject.SetActive(false);
                     foreach (GameObject scene in detecRole.CrimeScenes)
                     {
@@ -92,6 +93,12 @@ namespace TownOfUsFusion.ImpostorRoles.TraitorMod
                     var aurialRole = Role.GetRole<Aurial>(PlayerControl.LocalPlayer);
                     aurialRole.SenseArrows.Values.DestroyAll();
                     aurialRole.SenseArrows.Clear();
+                }
+
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.Lookout))
+                {
+                    var loRole = Role.GetRole<Lookout>(PlayerControl.LocalPlayer);
+                    Object.Destroy(loRole.UsesText);
                 }
 
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Transporter))
@@ -150,7 +157,7 @@ namespace TownOfUsFusion.ImpostorRoles.TraitorMod
             {
                 if (player2.Data.IsImpostor() && PlayerControl.LocalPlayer.Data.IsImpostor())
                 {
-                    player2.nameText().color = Colors.Impostor;
+                    player2.nameText().color = Patches.Colors.Impostor;
                 }
             }
 

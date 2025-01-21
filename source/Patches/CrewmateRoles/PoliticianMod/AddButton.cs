@@ -48,6 +48,7 @@ namespace TownOfUsFusion.CrewmateRoles.PoliticianMod
                     Role.RoleDictionary.Remove(role.Player.PlayerId);
                     var mayorRole = new Mayor(role.Player);
                     mayorRole.Revealed = true;
+                    mayorRole.RegenTask();
                     Utils.Rpc(CustomRPC.Elect, role.Player.PlayerId);
                 }
                 else role.CanCampaign = false;

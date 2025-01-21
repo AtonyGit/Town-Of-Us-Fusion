@@ -2,48 +2,80 @@ namespace TownOfUsFusion
 {
     public enum RoleEnum
     {
-        Sheriff,
-        Jester,
-        Engineer,
-        Mayor,
-        Swapper,
-        Investigator,
-        Medic,
-        Seer,
-        Executioner,
-        Spy,
-        Glitch,
-        Snitch,
-        Arsonist,
-        Altruist,
-        Phantom,
-        Vigilante,
+        Aurial,
         Haunter,
-        Veteran,
-        Amnesiac,
-        Juggernaut,
-        Tracker,
-        Transporter,
+        Lookout,
         Medium,
+        Snitch,
+
+        Coroner,
+        Investigator,
+        Psychic,
+        Spy,
+        Tracker,
         Trapper,
-        Survivor,
+
+        Deputy,
+        Sheriff,
+        Veteran,
+        Vigilante,
+        Hunter,
+        Jailor,
+        Trickster,
+
+        Bodyguard,
+        Medic,
+        MirrorMaster,
+        Oracle,
+        
+        Captain,
+        Politician,
+        Mayor,
+        Prosecutor,
+        Swapper,
+
+        Engineer,
+        Imitator,
+        Transporter,
+
+        Amnesiac,
         GuardianAngel,
-        Mystic,
+        Lawyer,
+        Survivor,
+
+        Doomsayer,
+        Executioner,
+        Jester,
+        Phantom,
+
+        Cannibal,
+        Inquisitor,
+        Puppet,
+        Tyrant,
+
+        Arsonist,
+        BountyHunter,
+        SerialKiller,
+        Glitch,
+        Werewolf,
+
+        Jackal,
+        Necromancer,
+        Vampire,
+
+        Juggernaut,
+        Armaggedon,
         Plaguebearer,
         Pestilence,
-        Werewolf,
-        Detective,
-        Imitator,
-        Doomsayer,
-        Vampire,
-        Prosecutor,
-        Oracle,
-        Aurial,
-        Hunter,
-        Politician,
-        Warden,
-        Jailor,
         SoulCollector,
+        Death,
+
+
+
+        Seer,
+        Altruist,
+        Mystic,
+        Warden,
 
         Miner,
         Swooper,
@@ -52,13 +84,13 @@ namespace TownOfUsFusion
         Undertaker,
         Grenadier,
         Traitor,
-        Poisoner,
         Blackmailer,
         Escapist,
         Bomber,
         Warlock,
         Venerer,
         Hypnotist,
+        Scavenger,
 
         Crewmate,
         Impostor,
@@ -85,7 +117,17 @@ namespace TownOfUsFusion
         Underdog,
         Frosty,
         SixthSense,
-        Shy
+        Shy,
+        Mini,
+        Saboteur
+    }
+    public enum AllianceEnum
+    {
+        Lover,
+        Recruit,
+        Crewpostor,
+        Crewpocalypse,
+        Egotist
     }
 
     public enum AbilityEnum

@@ -30,7 +30,6 @@ namespace TownOfUsFusion.ImpostorRoles.MorphlingMod
                     if (!abilityUsed) return false;
                     role.SampledPlayer = target;
                     role.MorphButton.graphic.sprite = MorphSprite;
-                    role.MorphButton.buttonLabelText.text = "Morph";
                     role.MorphButton.SetTarget(null);
                     DestroyableSingleton<HudManager>.Instance.KillButton.SetTarget(null);
                     if (role.MorphTimer() < 5f)

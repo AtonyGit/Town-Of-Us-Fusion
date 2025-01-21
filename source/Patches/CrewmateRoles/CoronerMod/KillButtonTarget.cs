@@ -2,7 +2,7 @@ using HarmonyLib;
 using TownOfUsFusion.Roles;
 using UnityEngine;
 
-namespace TownOfUsFusion.CrewmateRoles.DetectiveMod
+namespace TownOfUsFusion.CrewmateRoles.CoronerMod
 {
     [HarmonyPatch(typeof(KillButton), nameof(KillButton.SetTarget))]
     public class KillButtonTarget
@@ -11,16 +11,16 @@ namespace TownOfUsFusion.CrewmateRoles.DetectiveMod
 
         public static bool Prefix(KillButton __instance)
         {
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Detective)) return true;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Coroner)) return true;
             else
             {
-                var detective = Role.GetRole<Detective>(PlayerControl.LocalPlayer);
+                var detective = Role.GetRole<Coroner>(PlayerControl.LocalPlayer);
                 if (__instance == detective.ExamineButton) return true;
                 else return false;
             }
         }
 
-        public static void SetTarget(KillButton __instance, CrimeScene target, Detective role)
+        public static void SetTarget(KillButton __instance, CrimeScene target, Coroner role)
         {
             if (role.CurrentTarget && role.CurrentTarget != target)
             {

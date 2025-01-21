@@ -27,7 +27,6 @@ namespace TownOfUsFusion.ImpostorRoles.JanitorMod
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
             role.CleanButton.graphic.sprite = TownOfUsFusion.JanitorClean;
-            role.CleanButton.buttonLabelText.text = "Clean";
 
             var data = PlayerControl.LocalPlayer.Data;
             var isDead = data.IsDead;

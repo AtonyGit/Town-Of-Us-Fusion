@@ -26,13 +26,9 @@ namespace TownOfUsFusion.CrewmateRoles.AurialMod
 
             foreach (var arrow in role.SenseArrows)
             {
-                if (RainbowUtils.IsGradient(arrow.Key.Item2))
+                if (RainbowUtils.IsRainbow(arrow.Key.Item2))
                 {
-                    if (RainbowUtils.IsRainbow(arrow.Key.Item2)) arrow.Value.image.color = RainbowUtils.Rainbow;
-                    if (RainbowUtils.IsGalaxy(arrow.Key.Item2)) arrow.Value.image.color = RainbowUtils.Galaxy;
-                    if (RainbowUtils.IsFire(arrow.Key.Item2)) arrow.Value.image.color = RainbowUtils.Fire;
-                    if (RainbowUtils.IsAcid(arrow.Key.Item2)) arrow.Value.image.color = RainbowUtils.Acid;
-                    if (RainbowUtils.IsMonochrome(arrow.Key.Item2)) arrow.Value.image.color = RainbowUtils.Monochrome;
+                    arrow.Value.image.color = RainbowUtils.Rainbow;
                 }
             }
         }

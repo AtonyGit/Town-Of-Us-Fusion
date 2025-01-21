@@ -6,15 +6,15 @@ using Reactor.Utilities;
 using AmongUs.GameOptions;
 using TownOfUsFusion.Extensions;
 
-namespace TownOfUsFusion.CrewmateRoles.DetectiveMod
+namespace TownOfUsFusion.CrewmateRoles.CoronerMod
 {
     [HarmonyPatch(typeof(KillButton), nameof(KillButton.DoClick))]
     public class PerformKill
     {
         public static bool Prefix(KillButton __instance)
         {
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Detective)) return true;
-            var role = Role.GetRole<Detective>(PlayerControl.LocalPlayer);
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Coroner)) return true;
+            var role = Role.GetRole<Coroner>(PlayerControl.LocalPlayer);
             if (PlayerControl.LocalPlayer.Data.IsDead) return false;
             if (!PlayerControl.LocalPlayer.CanMove) return false;
             if (!__instance.enabled) return false;

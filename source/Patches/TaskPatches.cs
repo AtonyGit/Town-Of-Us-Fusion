@@ -1,5 +1,6 @@
 using HarmonyLib;
 using TownOfUsFusion.Extensions;
+using TownOfUsFusion.Roles.Modifiers;
 
 namespace TownOfUsFusion
 {
@@ -25,13 +26,16 @@ namespace TownOfUsFusion
                             playerInfo._object.Is(RoleEnum.Plaguebearer) || playerInfo._object.Is(RoleEnum.Pestilence) ||
                             playerInfo._object.Is(RoleEnum.Werewolf) || playerInfo._object.Is(RoleEnum.Doomsayer) ||
                             playerInfo._object.Is(RoleEnum.Vampire) || playerInfo._object.Is(RoleEnum.SoulCollector) ||
-                            playerInfo._object.Is(RoleEnum.Phantom) || playerInfo._object.Is(RoleEnum.Haunter)
+                            playerInfo._object.Is(RoleEnum.Phantom) || playerInfo._object.Is(RoleEnum.Haunter) ||
+                            (playerInfo._object.Is(ModifierEnum.Lover) && !Modifier.GetModifier<Lover>(playerInfo._object).OtherLover.Player.Is(Faction.Crewmates))
                         ))
+                    {
                         for (var j = 0; j < playerInfo.Tasks.Count; j++)
                         {
                             __instance.TotalTasks++;
                             if (playerInfo.Tasks.ToArray()[j].Complete) __instance.CompletedTasks++;
                         }
+                    }
                 }
 
                 return false;

@@ -4,6 +4,7 @@ using UnityEngine;
 using TownOfUsFusion.CrewmateRoles.InvestigatorMod;
 using TownOfUsFusion.CrewmateRoles.TrapperMod;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
 {
@@ -20,7 +21,9 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
             if (StartImitate.ImitatingPlayer != null && !StartImitate.ImitatingPlayer.Is(RoleEnum.Traitor))
             {
                 List<RoleEnum> trappedPlayers = null;
+                Dictionary<byte, List<RoleEnum>> seenPlayers = null;
                 PlayerControl confessingPlayer = null;
+                PlayerControl jailedPlayer = null;
 
                 if (PlayerControl.LocalPlayer == StartImitate.ImitatingPlayer)
                 {
@@ -38,6 +41,13 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
                         trackerRole.TrackerArrows.Values.DestroyAll();
                         trackerRole.TrackerArrows.Clear();
                         Object.Destroy(trackerRole.UsesText);
+                    }
+
+                    if (PlayerControl.LocalPlayer.Is(RoleEnum.Lookout))
+                    {
+                        var loRole = Role.GetRole<Lookout>(PlayerControl.LocalPlayer);
+                        Object.Destroy(loRole.UsesText);
+                        seenPlayers = loRole.Watching;
                     }
 
                     if (PlayerControl.LocalPlayer.Is(RoleEnum.Aurial))
@@ -87,9 +97,15 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
                         wardenRole.ClosestPlayer = null;
                     }
 
-                    if (PlayerControl.LocalPlayer.Is(RoleEnum.Detective))
+                    if (PlayerControl.LocalPlayer.Is(RoleEnum.Deputy))
                     {
-                        var detecRole = Role.GetRole<Detective>(PlayerControl.LocalPlayer);
+                        var deputyRole = Role.GetRole<Deputy>(PlayerControl.LocalPlayer);
+                        deputyRole.ClosestPlayer = null;
+                    }
+
+                    if (PlayerControl.LocalPlayer.Is(RoleEnum.Coroner))
+                    {
+                        var detecRole = Role.GetRole<Coroner>(PlayerControl.LocalPlayer);
                         detecRole.ClosestPlayer = null;
                         detecRole.ExamineButton.gameObject.SetActive(false);
                         foreach (GameObject scene in detecRole.CrimeScenes)
@@ -108,8 +124,23 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
                         hunterRole.StalkButton.gameObject.SetActive(false);
                     }
 
-                    if (!PlayerControl.LocalPlayer.Is(RoleEnum.Investigator) && !PlayerControl.LocalPlayer.Is(RoleEnum.Mystic)
-                        && !PlayerControl.LocalPlayer.Is(RoleEnum.Spy)) DestroyableSingleton<HudManager>.Instance.KillButton.gameObject.SetActive(false);
+                    if (PlayerControl.LocalPlayer.Is(RoleEnum.Politician))
+                    {
+                        var politicianRole = Role.GetRole<Politician>(PlayerControl.LocalPlayer);
+                        politicianRole.ClosestPlayer = null;
+                    }
+
+                    if (PlayerControl.LocalPlayer.Is(RoleEnum.Jailor))
+                    {
+                        var jailorRole = Role.GetRole<Jailor>(PlayerControl.LocalPlayer);
+                        jailorRole.ClosestPlayer = null;
+                    }
+
+                    try
+                    {
+                        DestroyableSingleton<HudManager>.Instance.KillButton.gameObject.SetActive(false);
+                    }
+                    catch { }
                 }
 
                 if (StartImitate.ImitatingPlayer.Is(RoleEnum.Medium))
@@ -119,12 +150,29 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
                     medRole.MediatedPlayers.Clear();
                 }
 
+                if (StartImitate.ImitatingPlayer.Is(RoleEnum.Snitch))
+                {
+                    var snitchRole = Role.GetRole<Snitch>(StartImitate.ImitatingPlayer);
+                    snitchRole.SnitchArrows.Values.DestroyAll();
+                    snitchRole.SnitchArrows.Clear();
+                    snitchRole.ImpArrows.DestroyAll();
+                    snitchRole.ImpArrows.Clear();
+                }
+
+                if (StartImitate.ImitatingPlayer.Is(RoleEnum.Jailor))
+                {
+                    var jailorRole = Role.GetRole<Jailor>(StartImitate.ImitatingPlayer);
+                    jailedPlayer = jailorRole.Jailed;
+                }
+
                 var role = Role.GetRole(StartImitate.ImitatingPlayer);
                 var killsList = (role.Kills, role.CorrectKills, role.IncorrectKills, role.CorrectAssassinKills, role.IncorrectAssassinKills);
                 Role.RoleDictionary.Remove(StartImitate.ImitatingPlayer.PlayerId);
                 var imitator = new Imitator(StartImitate.ImitatingPlayer);
                 imitator.trappedPlayers = trappedPlayers;
                 imitator.confessingPlayer = confessingPlayer;
+                imitator.watchedPlayers = seenPlayers;
+                imitator.jailedPlayer = jailedPlayer;
                 var newRole = Role.GetRole(StartImitate.ImitatingPlayer);
                 newRole.RemoveFromRoleHistory(newRole.RoleType);
                 newRole.Kills = killsList.Kills;

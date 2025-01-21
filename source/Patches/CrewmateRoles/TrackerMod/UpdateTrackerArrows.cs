@@ -41,13 +41,9 @@ namespace TownOfUsFusion.CrewmateRoles.TrackerMod
 
                 if (!CamouflageUnCamouflage.IsCamoed)
                 {
-                    if (RainbowUtils.IsGradient(player.GetDefaultOutfit().ColorId))
+                    if (RainbowUtils.IsRainbow(player.GetDefaultOutfit().ColorId))
                     {
-                        if (RainbowUtils.IsRainbow(player.GetDefaultOutfit().ColorId)) arrow.Value.image.color = RainbowUtils.Rainbow;
-                        if (RainbowUtils.IsGalaxy(player.GetDefaultOutfit().ColorId)) arrow.Value.image.color = RainbowUtils.Galaxy;
-                        if (RainbowUtils.IsFire(player.GetDefaultOutfit().ColorId)) arrow.Value.image.color = RainbowUtils.Fire;
-                        if (RainbowUtils.IsAcid(player.GetDefaultOutfit().ColorId)) arrow.Value.image.color = RainbowUtils.Acid;
-                        if (RainbowUtils.IsMonochrome(player.GetDefaultOutfit().ColorId)) arrow.Value.image.color = RainbowUtils.Monochrome;
+                        arrow.Value.image.color = RainbowUtils.Rainbow;
                     }
                     else if (CamoedLastTick)
                     {

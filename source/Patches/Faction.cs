@@ -6,6 +6,9 @@ namespace TownOfUsFusion
         Impostors,
         NeutralBenign,
         NeutralEvil,
-        NeutralKilling
+        NeutralChaos,
+        NeutralKilling,
+        NeutralNeophyte,
+        NeutralApocalypse
     }
 }

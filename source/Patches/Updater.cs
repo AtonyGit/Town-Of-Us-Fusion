@@ -156,7 +156,7 @@ namespace TownOfUsFusion
             string info = "";
             if (updateType == "TOU")
             {
-                info = "Updating Town Of Us Fusion\nPlease wait...";
+                info = "Updating Town Of Us\nPlease wait...";
                 InfoPopup.Show(info);
                 if (UpdateTOUTask == null)
                 {
@@ -213,13 +213,13 @@ namespace TownOfUsFusion
         }
         public static async Task<bool> checkForUpdate(string updateType = "TOU")
         {
-            //Checks the github api for Town Of Us Fusion tags. Compares current version (from VersionString in TownOfUsFusion.cs) to the latest tag version(on GitHub)
+            //Checks the github api for Town Of Us tags. Compares current version (from VersionString in TownOfUsFusion.cs) to the latest tag version(on GitHub)
             try
             {
                 string githubURI = "";
                 if (updateType == "TOU")
                 {
-                    githubURI = "https://api.github.com/repos/AtonyGit/Town-Of-Us-Fusion/releases/latest";
+                    githubURI = "https://api.github.com/repos/eDonnes124/Town-Of-Us-R/releases/latest";
                 }
                 else if (updateType == "Submerged")
                 {
@@ -299,7 +299,7 @@ namespace TownOfUsFusion
             if (updateType == "TOU")
             {
                 downloadDLL = UpdateTOUURI;
-                info = "Town Of Us Fusion\nupdated successfully.\nPlease RESTART the game.";
+                info = "Town Of Us\nupdated successfully.\nPlease RESTART the game.";
             }
             else if (updateType == "Submerged")
             {
