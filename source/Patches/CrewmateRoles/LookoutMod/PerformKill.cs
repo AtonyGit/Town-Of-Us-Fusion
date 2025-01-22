@@ -13,9 +13,24 @@ namespace TownOfUsFusion.CrewmateRoles.LookoutMod
         public static Sprite Sprite => TownOfUsFusion.Arrow;
         public static bool Prefix(KillButton __instance)
         {
-            if (__instance != DestroyableSingleton<HudManager>.Instance.KillButton) return true;
+            //if (__instance != DestroyableSingleton<HudManager>.Instance.KillButton) return true;
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Lookout)) return true;
             var role = Role.GetRole<Lookout>(PlayerControl.LocalPlayer);
+
+            if (__instance == role.PerceptButton)
+            {
+                if (role.PerceptUsesLeft == 0) return false;
+                if (role.PerceptTimer() != 0) return false;
+                if (!__instance.isActiveAndEnabled || __instance.isCoolingDown) return false;
+                var abilityUsed = Utils.AbilityUsed(PlayerControl.LocalPlayer);
+                if (!abilityUsed) return false;
+
+                role.TimeRemaining = CustomGameOptions.PerceptDuration;
+                role.Percept();
+                role.PerceptUsesLeft--;
+                return false;
+            }
+
             if (!PlayerControl.LocalPlayer.CanMove || role.ClosestPlayer == null) return false;
             var flag2 = role.WatchTimer() == 0f;
             if (!flag2) return false;

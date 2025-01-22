@@ -42,6 +42,7 @@ namespace TownOfUsFusion.ImpostorRoles.UndertakerMod
 
                     KillButtonTarget.SetTarget(__instance, null, role);
                     __instance.graphic.sprite = TownOfUsFusion.DropSprite;
+                    __instance.buttonLabelText.text = "Drop";
                     return false;
                 }
                 else

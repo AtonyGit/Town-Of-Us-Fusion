@@ -22,15 +22,20 @@ namespace TownOfUsFusion
     }
     public enum RoleOptions
     {
+        CrewAstral,
         CrewInvest,
         CrewKilling,
         CrewProtective,
-        CrewSupport,
+        CrewSovereign,
+        CrewUtility,
         CrewCommon,
         CrewRandom,
         NeutBenign,
         NeutEvil,
+        NeutChaos,
         NeutKilling,
+        NeutNeophyte,
+        NeutApocalypse,
         NeutCommon,
         NeutRandom,
         ImpConceal,
@@ -84,6 +89,9 @@ namespace TownOfUsFusion
         public static int EscapistOn => (int)Generate.EscapistOn.Get();
         public static int ImitatorOn => (int)Generate.ImitatorOn.Get();
         public static int BomberOn => (int)Generate.BomberOn.Get();
+        public static int PoisonerOn => (int)Generate.PoisonerOn.Get();
+            public static float PoisonDuration => Generate.PoisonDuration.Get();
+            public static bool PoisonerVent => Generate.PoisonerVent.Get();
         public static int DoomsayerOn => (int)Generate.DoomsayerOn.Get();
         public static int VampireOn => (int)Generate.VampireOn.Get();
         public static int ProsecutorOn => (int)Generate.ProsecutorOn.Get();
@@ -384,8 +392,11 @@ namespace TownOfUsFusion
         public static float TransformInvisDuration => Generate.TransformInvisDuration.Get();
         public static float FinalTransparency => Generate.FinalTransparency.Get();
         public static float WatchCooldown => (float)Generate.WatchCooldown.Get();
+        public static float PerceptCd => (float)Generate.PerceptCd.Get();
+        public static float PerceptDuration => (float)Generate.PerceptDuration.Get();
         public static bool LoResetOnNewRound => Generate.LoResetOnNewRound.Get();
         public static int MaxWatches => (int)Generate.MaxWatches.Get();
+        public static int MaxPercepts => (int)Generate.MaxPercepts.Get();
         public static float ScavengeDuration => (float)Generate.ScavengeDuration.Get();
         public static float ScavengeIncreaseDuration => (float)Generate.ScavengeIncreaseDuration.Get();
         public static float ScavengeCorrectKillCooldown => (float)Generate.ScavengeCorrectKillCooldown.Get();

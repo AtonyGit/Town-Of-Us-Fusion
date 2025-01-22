@@ -70,7 +70,9 @@ namespace TownOfUsFusion.Patches
             {
                 var lo = Role.GetRole<Lookout>(PlayerControl.LocalPlayer);
                 lo.LastWatched = DateTime.UtcNow;
+                lo.LastPercepted = DateTime.UtcNow;
                 lo.LastWatched = lo.LastWatched.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.WatchCooldown);
+                lo.LastPercepted = lo.LastWatched.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.PerceptCd);
             }
 
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Hunter))

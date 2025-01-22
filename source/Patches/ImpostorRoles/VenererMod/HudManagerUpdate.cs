@@ -29,6 +29,7 @@ namespace TownOfUsFusion.ImpostorRoles.VenererMod
             else if (role.Kills == 1) role.AbilityButton.graphic.sprite = CamoSprite;
             else if (role.Kills == 2) role.AbilityButton.graphic.sprite = CamoSprintSprite;
             else role.AbilityButton.graphic.sprite = CamoSprintFreezeSprite;
+            role.AbilityButton.buttonLabelText.text = "Use";
             role.AbilityButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);

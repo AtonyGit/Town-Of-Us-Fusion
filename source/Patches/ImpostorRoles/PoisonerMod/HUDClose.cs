@@ -15,6 +15,7 @@ namespace TownOfUsFusion.ImpostorRoles.PoisonerMod
             {
                 var role = Role.GetRole<Poisoner>(PlayerControl.LocalPlayer);
                 role.PoisonButton.graphic.sprite = TownOfUsFusion.PoisonSprite;
+                role.PoisonButton.buttonLabelText.text = "Poison";
                 role.LastPoisoned = DateTime.UtcNow;
             }
         }

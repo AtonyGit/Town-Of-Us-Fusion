@@ -52,6 +52,15 @@ namespace TownOfUsFusion
                     return false;
                 }
             }
+            else if (player._object.Is(RoleEnum.Lookout))
+            {
+                var role = Role.GetRole<Lookout>(player._object);
+                if (role.Percepting)
+                {
+                    __result = __instance.MaxLightRadius * GameOptionsManager.Instance.currentNormalGameOptions.ImpostorLightMod;
+                    return false;
+                }
+            }
 
             if (Patches.SubmergedCompatibility.isSubmerged())
             {

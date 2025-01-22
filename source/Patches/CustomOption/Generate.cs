@@ -31,7 +31,7 @@ namespace TownOfUsFusion.CustomOption
         public static CustomNumberOption MedicOn;
         public static CustomNumberOption WardenOn;
 
-        public static CustomHeaderOption CrewSupportRoles;
+        public static CustomHeaderOption CrewUtilityRoles;
         public static CustomNumberOption EngineerOn;
         public static CustomNumberOption ImitatorOn;
         public static CustomNumberOption MediumOn;
@@ -69,6 +69,7 @@ namespace TownOfUsFusion.CustomOption
 
         public static CustomHeaderOption ImpostorKillingRoles;
         public static CustomNumberOption BomberOn;
+        public static CustomNumberOption PoisonerOn;
         public static CustomNumberOption ScavengerOn;
         public static CustomNumberOption TraitorOn;
         public static CustomNumberOption WarlockOn;
@@ -412,6 +413,10 @@ namespace TownOfUsFusion.CustomOption
         public static CustomToggleOption BomberVent;
         public static CustomToggleOption AllImpsSeeBomb;
 
+        public static CustomHeaderOption Poisoner;
+        public static CustomNumberOption PoisonDuration;
+        public static CustomToggleOption PoisonerVent;
+
         public static CustomHeaderOption Doomsayer;
         public static CustomNumberOption ObserveCooldown;
         public static CustomToggleOption DoomsayerGuessNeutralBenign;
@@ -471,8 +476,11 @@ namespace TownOfUsFusion.CustomOption
 
         public static CustomHeaderOption Lookout;
         public static CustomNumberOption WatchCooldown;
+        public static CustomNumberOption PerceptCd;
+        public static CustomNumberOption PerceptDuration;
         public static CustomToggleOption LoResetOnNewRound;
         public static CustomNumberOption MaxWatches;
+        public static CustomNumberOption MaxPercepts;
 
         public static CustomHeaderOption Scavenger;
         public static CustomNumberOption ScavengeDuration;
@@ -568,7 +576,7 @@ namespace TownOfUsFusion.CustomOption
             WardenOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#9900FFFF>Warden</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
 
-            CrewSupportRoles = new CustomHeaderOption(num++, MultiMenu.crewmate, "Crewmate Support Roles");
+            CrewUtilityRoles = new CustomHeaderOption(num++, MultiMenu.crewmate, "Crewmate Support Roles");
             EngineerOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#FFA60AFF>Engineer</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             ImitatorOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#B3D94DFF>Imitator</color>", 0f, 0f, 100f, 10f,
@@ -633,6 +641,8 @@ namespace TownOfUsFusion.CustomOption
 
             ImpostorKillingRoles = new CustomHeaderOption(num++, MultiMenu.imposter, "Impostor Killing Roles");
             BomberOn = new CustomNumberOption(num++, MultiMenu.imposter, "<color=#FF0000FF>Bomber</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            PoisonerOn = new CustomNumberOption(num++, MultiMenu.imposter, "<color=#FF0000FF>Poisoner</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             ScavengerOn = new CustomNumberOption(num++, MultiMenu.imposter, "<color=#FF0000FF>Scavenger</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
@@ -919,8 +929,13 @@ namespace TownOfUsFusion.CustomOption
                 new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#33FF66FF>Lookout</color>");
             WatchCooldown =
                 new CustomNumberOption(num++, MultiMenu.crewmate, "Watch Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
+            PerceptCd =
+                new CustomNumberOption(num++, MultiMenu.crewmate, "Percept Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
+            PerceptDuration =
+                new CustomNumberOption(num++, MultiMenu.crewmate, "Percept Duration", 10f, 5f, 60f, 2.5f, CooldownFormat);
             LoResetOnNewRound = new CustomToggleOption(num++, MultiMenu.crewmate, "Lookout Watches Reset After Each Round", true);
             MaxWatches = new CustomNumberOption(num++, MultiMenu.crewmate, "Maximum Number Of Players That Can Be Watched", 5, 1, 15, 1);
+            MaxPercepts = new CustomNumberOption(num++, MultiMenu.crewmate, "Maximum Number Of Percept Uses", 5, 1, 20, 1);
 
             Mystic =
                 new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#4D99E6FF>Mystic</color>");
@@ -1317,6 +1332,13 @@ namespace TownOfUsFusion.CustomOption
                 new CustomToggleOption(num++, MultiMenu.imposter, "Bomber Can Vent", false);
             AllImpsSeeBomb =
                 new CustomToggleOption(num++, MultiMenu.imposter, "All Impostors See Bomb", false);
+
+            Poisoner =
+                new CustomHeaderOption(num++, MultiMenu.imposter, "<color=#FF0000FF>Poisoner</color>");
+            PoisonDuration =
+                new CustomNumberOption(num++, MultiMenu.imposter, "Poison Kill Delay", 5, 1, 15, 1f, CooldownFormat);
+            PoisonerVent =
+                new CustomToggleOption(num++, MultiMenu.imposter, "Poisoner Can Vent", false);
 
             Scavenger = new CustomHeaderOption(num++, MultiMenu.imposter, "<color=#FF0000FF>Scavenger</color>");
             ScavengeDuration =

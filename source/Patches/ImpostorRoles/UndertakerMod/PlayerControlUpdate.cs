@@ -26,6 +26,7 @@ namespace TownOfUsFusion.ImpostorRoles.UndertakerMod
             if (role.DragDropButton.graphic.sprite != TownOfUsFusion.DragSprite &&
                 role.DragDropButton.graphic.sprite != TownOfUsFusion.DropSprite)
                 role.DragDropButton.graphic.sprite = TownOfUsFusion.DragSprite;
+                role.DragDropButton.buttonLabelText.text = "Drag";
 
             if (role.DragDropButton.graphic.sprite == TownOfUsFusion.DropSprite && role.CurrentlyDragging == null)
                 role.DragDropButton.graphic.sprite = TownOfUsFusion.DragSprite;
