@@ -86,6 +86,7 @@ namespace TownOfUsFusion
         Traitor,
         Blackmailer,
         Escapist,
+        Poisoner,
         Bomber,
         Warlock,
         Venerer,

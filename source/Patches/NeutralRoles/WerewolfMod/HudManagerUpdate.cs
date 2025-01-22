@@ -31,6 +31,8 @@ namespace TownOfUsFusion.NeutralRoles.WerewolfMod
             }
 
             role.RampageButton.graphic.sprite = RampageSprite;
+            role.RampageButton.buttonLabelText.text = "Rampage";
+            role.RampageButton.buttonLabelText.SetOutlineColor(role.Color);
             role.RampageButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
 
             role.RampageButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)

@@ -34,6 +34,8 @@ namespace TownOfUsFusion.Modifiers.ButtonBarryMod
             }
 
             role.ButtonButton.graphic.sprite = Button;
+            role.ButtonButton.buttonLabelText.text = "Button";
+            role.ButtonButton.buttonLabelText.SetOutlineColor(role.Color);
 
             role.ButtonButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead

@@ -21,6 +21,7 @@ namespace TownOfUsFusion.Roles
         public static Sprite MimicSprite = TownOfUsFusion.MimicSprite;
         public static Sprite HackSprite = TownOfUsFusion.HackSprite;
         public static Sprite LockSprite = TownOfUsFusion.LockSprite;
+        public static Sprite KillSprite = TownOfUsFusion.GlitchKill;
 
         public Glitch(PlayerControl owner) : base(owner)
         {
@@ -337,7 +338,8 @@ namespace TownOfUsFusion.Roles
                     CustomGameOptions.GlitchKillCooldown -
                     (float)(DateTime.UtcNow - __gInstance.LastKill).TotalSeconds,
                     CustomGameOptions.GlitchKillCooldown);
-
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Glitch);
+                __instance.KillButton.graphic.sprite = KillSprite;
                 __instance.KillButton.SetTarget(null);
                 __gInstance.KillTarget = null;
 
@@ -399,6 +401,8 @@ namespace TownOfUsFusion.Roles
                 }
 
                 __gInstance.HackButton.graphic.sprite = HackSprite;
+                __gInstance.HackButton.buttonLabelText.text = "Hack";
+                __gInstance.HackButton.buttonLabelText.SetOutlineColor(Patches.Colors.Glitch);
 
                 __gInstance.HackButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !__gInstance.Player.Data.IsDead
@@ -474,6 +478,8 @@ namespace TownOfUsFusion.Roles
                 }
 
                 __gInstance.MimicButton.graphic.sprite = MimicSprite;
+                __gInstance.MimicButton.buttonLabelText.text = "Mimic";
+                __gInstance.MimicButton.buttonLabelText.SetOutlineColor(Patches.Colors.Glitch);
 
                 __gInstance.MimicButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !__gInstance.Player.Data.IsDead

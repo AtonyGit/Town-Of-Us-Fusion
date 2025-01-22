@@ -25,6 +25,7 @@ namespace TownOfUsFusion.ImpostorRoles.MinerMod
             }
 
             role.MineButton.graphic.sprite = MineSprite;
+            role.MineButton.buttonLabelText.text = "Mine";
             role.MineButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);

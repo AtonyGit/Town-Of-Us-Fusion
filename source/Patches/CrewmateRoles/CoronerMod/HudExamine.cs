@@ -28,6 +28,8 @@ namespace TownOfUsFusion.CrewmateRoles.CoronerMod
             }
 
             role.ExamineButton.graphic.sprite = ExamineSprite;
+            role.ExamineButton.buttonLabelText.text = "Examine";
+            role.ExamineButton.buttonLabelText.SetOutlineColor(role.Color);
             role.ExamineButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
 
             if (PlayerControl.LocalPlayer.Data.IsDead) role.ExamineButton.SetTarget(null);

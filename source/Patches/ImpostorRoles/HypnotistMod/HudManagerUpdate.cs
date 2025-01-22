@@ -48,6 +48,7 @@ namespace TownOfUsFusion.ImpostorRoles.HypnotistMod
             if (PlayerControl.LocalPlayer.Data.IsDead || role.HysteriaActive) role.HypnotiseButton.SetTarget(null);
 
             role.HypnotiseButton.graphic.sprite = Hypnotise;
+            role.HypnotiseButton.buttonLabelText.text = "Hypnotise";
             role.HypnotiseButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead && !role.HysteriaActive
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);

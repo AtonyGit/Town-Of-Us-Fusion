@@ -34,6 +34,7 @@ namespace TownOfUsFusion.ImpostorRoles.BomberMod
                     pos.z += 0.001f;
                     role.DetonatePoint = pos;
                     role.PlantButton.graphic.sprite = DetonateSprite;
+                    role.PlantButton.buttonLabelText.text = "Detonating";
                     role.TimeRemaining = CustomGameOptions.DetonateDelay;
                     role.PlantButton.SetCoolDown(role.TimeRemaining, CustomGameOptions.DetonateDelay);
                     if (PlayerControl.LocalPlayer.Is(ModifierEnum.Underdog))
