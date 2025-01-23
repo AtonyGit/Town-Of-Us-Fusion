@@ -54,23 +54,61 @@ namespace TownOfUsFusion.CrewmateRoles.MedicMod
                 {15, "darker"},// gray
                 {16, "darker"},// tan
                 {17, "lighter"},// coral
-                {18, "darker"},// watermelon
-                {19, "darker"},// chocolate
-                {20, "lighter"},// sky blue
-                {21, "lighter"},// beige
-                {22, "darker"},// magenta
-                {23, "lighter"},// turquoise
-                {24, "lighter"},// lilac
-                {25, "darker"},// olive
-                {26, "lighter"},// azure
-                {27, "darker"},// plum
-                {28, "darker"},// jungle
-                {29, "lighter"},// mint
-                {30, "lighter"},// chartreuse
-                {31, "darker"},// macau
-                {32, "darker"},// tawny
-                {33, "lighter"},// gold
-                {34, "lighter"},// rainbow
+                // TOU FUSION COLORS
+                {18, "lighter"},// snow white
+                {19, "lighter"},// turquoise
+                {20, "lighter"},// nacho
+                {21, "darker"},// galacta
+                {22, "darker"},// charcoal
+                {23, "lighter"},// violet
+                {24, "lighter"},// denim
+                {25, "lighter"},// air force
+                {26, "darker"},// wood
+                {27, "ligher"},// dandelion
+                {28, "lighter"},// amber
+                {29, "lighter"},// cotton candy
+                {20, "lighter"},// aqua
+                {31, "lighter"},// lemon
+                {32, "ligher"},// apple
+                {33, "darker"},// blood
+                {34, "darker"},// grass
+                {35, "lighter"},// mandarin
+                {36, "lighter"},// glass
+                {37, "darker"},// ash
+                {38, "darker"},// midnight
+                {39, "darker"},// steel
+                
+                {40, "darker"},// mahogany
+                {41, "lighter"},// salmon
+                {42, "lighter"},// pear
+                {43, "darker"},// wine
+                {44, "lighter"},// true red
+                {45, "lighter"},// silver
+                {46, "lighter"},// shimmer
+                {47, "darker"},// crimson
+                {48, "darker"},// crow
+                // TOU COLORS
+                {49, "darker"},// watermelon
+                {50, "darker"},// chocolate
+                {51, "lighter"},// sky blue
+                {52, "lighter"},// beige
+                {53, "darker"},// magenta
+                {54, "lighter"},// Sea Green
+                {55, "lighter"},// lilac
+                {56, "darker"},// olive
+                {57, "lighter"},// azure
+                {58, "darker"},// plum
+                {59, "darker"},// jungle
+                {60, "lighter"},// mint
+                {61, "lighter"},// chartreuse
+                {62, "darker"},// macau
+                {63, "darker"},// tawny
+                {64, "lighter"},// gold
+                {65, "lighter"},// rainbow
+                {66, "darker"},// galaxy
+                {67, "lighter"},// fire
+                {68, "lighter"},// acid
+                {69, "lighter"},// monochrome
             };
             var typeOfColor = colors[br.Killer.GetDefaultOutfit().ColorId];
             return

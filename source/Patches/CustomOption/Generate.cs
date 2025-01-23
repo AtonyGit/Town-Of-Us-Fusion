@@ -625,7 +625,7 @@ namespace TownOfUsFusion.CustomOption
             NeutralKillingRoles = new CustomHeaderOption(num++, MultiMenu.neutral, "Neutral Killing Roles");
             ArsonistOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#FF4D00FF>Arsonist</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
-            SerialKillerOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#FF003FFF>Serial Killer</color>", 0f, 0f, 100f, 10f,
+            SerialKillerOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#003FFFFF>Serial Killer</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             GlitchOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#00FF00FF>The Glitch</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
@@ -1236,7 +1236,7 @@ namespace TownOfUsFusion.CustomOption
             IgniteCdRemoved =
                 new CustomToggleOption(num++, MultiMenu.neutral, "Ignite Cooldown Removed When Arsonist Is Last Killer", false);
 
-            SerialKiller = new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#FF003FFF>Serial Killer</color>");
+            SerialKiller = new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#003FFFFF>Serial Killer</color>");
             SkKillCooldown =
                 new CustomNumberOption(num++, MultiMenu.neutral, "Base Kill Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
             SkVent =

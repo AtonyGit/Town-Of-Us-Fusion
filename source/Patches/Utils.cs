@@ -1015,7 +1015,7 @@ namespace TownOfUsFusion
                         }
                         else
                         {
-                            killer.SetKillTimer(CustomGameOptions.BloodlustCorrectKillCooldown);
+                            scav.Player.SetKillTimer(CustomGameOptions.BloodlustCorrectKillCooldown);
                         }
                         scav.Target = scav.GetClosestPlayer();
                         scav.BloodlustEnd = scav.BloodlustEnd.AddSeconds(CustomGameOptions.BloodlustIncreaseDuration);
@@ -1078,6 +1078,65 @@ namespace TownOfUsFusion
                     return;
                 }
             }
+        }
+        
+//Code from https://github.com/theOtherRolesAU/TheOtherRoles
+        public static string ColorString(Color c, string s)
+        {
+            return string.Format("<color=#{0:X2}{1:X2}{2:X2}{3:X2}>{4}</color>", ToByte(c.r), ToByte(c.g), ToByte(c.b), ToByte(c.a), s);
+        }
+        private static byte ToByte(float f)
+        {
+            f = Mathf.Clamp01(f);
+            return (byte)(f * 255);
+        }
+        public static string GradientColorText(string startColorHex, string endColorHex, string text)
+        {
+            if (startColorHex.Length != 6 || endColorHex.Length != 6)
+            {
+                PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("GradientColorText : Invalid Color Hex Code, Hex code should be 6 characters long (without #) (e.g., FFFFFF).");
+                return text;
+            }
+
+            Color startColor = HexToColor(startColorHex);
+            Color endColor = HexToColor(endColorHex);
+
+            int textLength = text.Length;
+            float stepR = (endColor.r - startColor.r) / (float)textLength;
+            float stepG = (endColor.g - startColor.g) / (float)textLength;
+            float stepB = (endColor.b - startColor.b) / (float)textLength;
+            float stepA = (endColor.a - startColor.a) / (float)textLength;
+
+            string gradientText = "";
+
+            for (int i = 0; i < textLength; i++)
+            {
+                float r = startColor.r + (stepR * i);
+                float g = startColor.g + (stepG * i);
+                float b = startColor.b + (stepB * i);
+                float a = startColor.a + (stepA * i);
+
+
+                string colorhex = ColorToHex(new Color(r, g, b, a));
+                gradientText += $"<color=#{colorhex}>{text[i]}</color>";
+
+            }
+
+            return gradientText;
+
+        }
+
+        private static Color HexToColor(string hex)
+        {
+            Color color = new();
+            ColorUtility.TryParseHtmlString("#" + hex, out color);
+            return color;
+        }
+
+        private static string ColorToHex(Color color)
+        {
+            Color32 color32 = (Color32)color;
+            return $"{color32.r:X2}{color32.g:X2}{color32.b:X2}{color32.a:X2}";
         }
 
         public static void BaitReport(PlayerControl killer, PlayerControl target)
