@@ -679,6 +679,9 @@ namespace TownOfUsFusion.CustomOption
                             pos.y += 0.05f;
                             pooledBubble.NameText.transform.localPosition = pos;
                             Chat.AlignAllBubbles();
+                            DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, "Welcome to Town Of Us Fusion!\nYou may run /help in your chat to see all of the available commands.", false);
+                            //DestroyableSingleton<HudManager>.Instance.Chat.NameText.color = jailor.Color;
+                            //DestroyableSingleton<HudManager>.Instance.Chat.NameText.text = "Jailor";
                             //Play("Chat");
                         SentOnce = true;
                     }
