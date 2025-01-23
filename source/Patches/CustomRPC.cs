@@ -30,6 +30,7 @@ namespace TownOfUsFusion
         PlaguebearerWin,
         PestilenceWin,
         WerewolfWin,
+        SkWin,
         SurvivorOnlyWin,
         VampireWin,
 

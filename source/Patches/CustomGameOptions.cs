@@ -104,7 +104,10 @@ namespace TownOfUsFusion
         public static int JailorOn => (int)Generate.JailorOn.Get();
         public static int SoulCollectorOn => (int)Generate.SoulCollectorOn.Get();
         public static int LookoutOn => (int)Generate.LookoutOn.Get();
-        public static int ScavengerOn => (int)Generate.ScavengerOn.Get();
+        public static int SerialKillerOn => (int)Generate.SerialKillerOn.Get();
+            public static float SkKillCooldown => Generate.SkKillCooldown.Get();
+            public static bool SkVent => Generate.SkVent.Get();
+            public static bool SkImpVision => Generate.SkImpVision.Get();
         public static int DeputyOn => (int)Generate.DeputyOn.Get();
         public static int JuggernautOn => (int)Generate.JuggernautOn.Get();
         public static int TorchOn => (int)Generate.TorchOn.Get();
@@ -397,10 +400,10 @@ namespace TownOfUsFusion
         public static bool LoResetOnNewRound => Generate.LoResetOnNewRound.Get();
         public static int MaxWatches => (int)Generate.MaxWatches.Get();
         public static int MaxPercepts => (int)Generate.MaxPercepts.Get();
-        public static float ScavengeDuration => (float)Generate.ScavengeDuration.Get();
-        public static float ScavengeIncreaseDuration => (float)Generate.ScavengeIncreaseDuration.Get();
-        public static float ScavengeCorrectKillCooldown => (float)Generate.ScavengeCorrectKillCooldown.Get();
-        public static float ScavengeIncorrectKillCooldown => (float)Generate.ScavengeIncorrectKillCooldown.Get();
+        public static float BloodlustDuration => (float)Generate.BloodlustDuration.Get();
+        public static float BloodlustIncreaseDuration => (float)Generate.BloodlustIncreaseDuration.Get();
+        public static float BloodlustCorrectKillCooldown => (float)Generate.BloodlustCorrectKillCooldown.Get();
+        public static float BloodlustIncorrectKillCooldown => (float)Generate.BloodlustIncorrectKillCooldown.Get();
         public static float ReducedSaboCd => Generate.ReducedSaboCooldown.Get();
     }
 }

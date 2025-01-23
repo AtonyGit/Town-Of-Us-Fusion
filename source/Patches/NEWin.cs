@@ -43,6 +43,8 @@ namespace TownOfUsFusion.Patches
                 if (pbRole != null) return;
                 var wwRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Werewolf && ((Werewolf)x).WerewolfWins);
                 if (wwRole != null) return;
+                var skRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.SerialKiller && ((SerialKiller)x).SkWins);
+                if (skRole != null) return;
                 __instance.BackgroundBar.material.SetColor("_Color", Palette.CrewmateBlue);
             }
         }

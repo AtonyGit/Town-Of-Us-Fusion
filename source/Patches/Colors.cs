@@ -43,15 +43,14 @@ namespace TownOfUsFusion.Patches
         public readonly static Color Arsonist = new Color(1f, 0.3f, 0f);
         public readonly static Color Phantom = new Color(0.4f, 0.16f, 0.38f, 1f);
         public readonly static Color Amnesiac = new Color(0.5f, 0.7f, 1f, 1f);
-        public readonly static Color Juggernaut = new Color(0.55f, 0f, 0.3f, 1f);
         public readonly static Color Survivor = new Color(1f, 0.9f, 0.3f, 1f);
         public readonly static Color GuardianAngel = new Color(0.7f, 1f, 1f, 1f);
-        public readonly static Color Plaguebearer = new Color(0.9f, 1f, 0.7f, 1f);
-        public readonly static Color Pestilence = new Color(0.3f, 0.3f, 0.3f, 1f);
         public readonly static Color Werewolf = new Color(0.66f, 0.4f, 0.16f, 1f);
         public readonly static Color Doomsayer = new Color(0f, 1f, 0.5f, 1f);
         public readonly static Color Vampire = new Color(0.15f, 0.15f, 0.15f, 1f);
-        public readonly static Color SoulCollector = new Color(0.6f, 1f, 0.8f, 1f);
+        public readonly static Color SerialKiller = new Color(0f, 0.247f, 1f, 1f);
+
+        public readonly static Color Apocalypse = new Color(0.55f, 0f, 0.3f, 1f);
 
         //Imposter Colors
         public readonly static Color Impostor = Palette.ImpostorRed;

@@ -91,7 +91,6 @@ namespace TownOfUsFusion
         Warlock,
         Venerer,
         Hypnotist,
-        Scavenger,
 
         Crewmate,
         Impostor,

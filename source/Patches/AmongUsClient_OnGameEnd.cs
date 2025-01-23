@@ -88,6 +88,11 @@ namespace TownOfUsFusion
                 var ww = (Werewolf)role;
                 losers.Add(ww.Player.GetDefaultOutfit().ColorId);
             }
+            foreach (var role in Role.GetRoles(RoleEnum.SerialKiller))
+            {
+                var sk = (SerialKiller)role;
+                losers.Add(sk.Player.GetDefaultOutfit().ColorId);
+            }
 
             var toRemoveWinners = EndGameResult.CachedWinners.ToArray().Where(o => losers.Contains(o.ColorId)).ToArray();
             for (int i = 0; i < toRemoveWinners.Count(); i++) EndGameResult.CachedWinners.Remove(toRemoveWinners[i]);
@@ -286,6 +291,17 @@ namespace TownOfUsFusion
                         var werewolfData = new CachedPlayerData(werewolf.Player.Data);
                         if (PlayerControl.LocalPlayer != werewolf.Player) werewolfData.IsYou = false;
                         EndGameResult.CachedWinners.Add(werewolfData);
+                    }
+                }
+                else if (type == RoleEnum.SerialKiller)
+                {
+                    var sk = (SerialKiller)role;
+                    if (sk.SkWins)
+                    {
+                        EndGameResult.CachedWinners = new List<CachedPlayerData>();
+                        var skData = new CachedPlayerData(sk.Player.Data);
+                        if (PlayerControl.LocalPlayer != sk.Player) skData.IsYou = false;
+                        EndGameResult.CachedWinners.Add(skData);
                     }
                 }
             }

@@ -247,6 +247,13 @@ namespace TownOfUsFusion.Patches
                 juggernaut.LastKill = juggernaut.LastKill.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.JuggKCd);
             }
 
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.SerialKiller))
+            {
+                var sk = Role.GetRole<SerialKiller>(PlayerControl.LocalPlayer);
+                sk.LastKill = DateTime.UtcNow;
+                sk.LastKill = sk.LastKill.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.SkKillCooldown);
+            }
+
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Plaguebearer))
             {
                 var plaguebearer = Role.GetRole<Plaguebearer>(PlayerControl.LocalPlayer);

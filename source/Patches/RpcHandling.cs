@@ -1319,6 +1319,10 @@ namespace TownOfUsFusion
                         var theWerewolfTheRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Werewolf);
                         ((Werewolf)theWerewolfTheRole)?.Wins();
                         break;
+                    case CustomRPC.SkWin:
+                        var theSkTheRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.SerialKiller);
+                        ((SerialKiller)theSkTheRole)?.Wins();
+                        break;
                     case CustomRPC.PlaguebearerWin:
                         var thePlaguebearerTheRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Plaguebearer);
                         ((Plaguebearer)thePlaguebearerTheRole)?.Wins();
@@ -1785,6 +1789,8 @@ namespace TownOfUsFusion
                 if (CustomGameOptions.GuardianAngelOn > 0)
                     NeutralBenignRoles.Add((typeof(GuardianAngel), CustomGameOptions.GuardianAngelOn, false || CustomGameOptions.UniqueRoles));
 
+                if (CustomGameOptions.SerialKillerOn > 0)
+                    NeutralKillingRoles.Add((typeof(SerialKiller), CustomGameOptions.SerialKillerOn, true));
                 if (CustomGameOptions.GlitchOn > 0)
                     NeutralKillingRoles.Add((typeof(Glitch), CustomGameOptions.GlitchOn, true));
 
@@ -1842,9 +1848,6 @@ namespace TownOfUsFusion
 
                 if (CustomGameOptions.HypnotistOn > 0)
                     ImpostorSupportRoles.Add((typeof(Hypnotist), CustomGameOptions.HypnotistOn, true));
-
-                if (CustomGameOptions.ScavengerOn > 0)
-                    ImpostorKillingRoles.Add((typeof(Scavenger), CustomGameOptions.ScavengerOn, false || CustomGameOptions.UniqueRoles));
                 #endregion
                 #region Crewmate Modifiers
                 if (Check(CustomGameOptions.TorchOn))

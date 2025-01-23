@@ -16,423 +16,423 @@ namespace TownOfUsFusion.Patches
             {
                 if (sourcePlayer == PlayerControl.LocalPlayer)
                 {
-                    if (chatText.ToLower().StartsWith("/crew") || chatText.ToLower().StartsWith("/ crew"))
+                    if (chatText.ToLower().Trim().StartsWith("/crew"))
                     {
                         AddRoleMessage(RoleEnum.Crewmate);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/imp") || chatText.ToLower().StartsWith("/ imp"))
+                    else if (chatText.ToLower().Trim().StartsWith("/imp"))
                     {
                         AddRoleMessage(RoleEnum.Impostor);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/alt") || chatText.ToLower().StartsWith("/ alt"))
+                    else if (chatText.ToLower().Trim().StartsWith("/alt"))
                     {
                         AddRoleMessage(RoleEnum.Altruist);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/engi") || chatText.ToLower().StartsWith("/ engi"))
+                    else if (chatText.ToLower().Trim().StartsWith("/engi"))
                     {
                         AddRoleMessage(RoleEnum.Engineer);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/invest") || chatText.ToLower().StartsWith("/ invest"))
+                    else if (chatText.ToLower().Trim().StartsWith("/invest"))
                     {
                         AddRoleMessage(RoleEnum.Investigator);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/mayor") || chatText.ToLower().StartsWith("/ mayor"))
+                    else if (chatText.ToLower().Trim().StartsWith("/mayor"))
                     {
                         AddRoleMessage(RoleEnum.Mayor);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/medic") || chatText.ToLower().StartsWith("/ medic"))
+                    else if (chatText.ToLower().Trim().StartsWith("/medic"))
                     {
                         AddRoleMessage(RoleEnum.Medic);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/sher") || chatText.ToLower().StartsWith("/ sher"))
+                    else if (chatText.ToLower().Trim().StartsWith("/sher"))
                     {
                         AddRoleMessage(RoleEnum.Sheriff);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/swap") || chatText.ToLower().StartsWith("/ swap"))
+                    else if (chatText.ToLower().Trim().StartsWith("/swap"))
                     {
                         AddRoleMessage(RoleEnum.Swapper);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/seer") || chatText.ToLower().StartsWith("/ seer"))
+                    else if (chatText.ToLower().Trim().StartsWith("/seer"))
                     {
                         AddRoleMessage(RoleEnum.Seer);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/sni") || chatText.ToLower().StartsWith("/ sni"))
+                    else if (chatText.ToLower().Trim().StartsWith("/sni"))
                     {
                         AddRoleMessage(RoleEnum.Snitch);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/spy") || chatText.ToLower().StartsWith("/ spy"))
+                    else if (chatText.ToLower().Trim().StartsWith("/spy"))
                     {
                         AddRoleMessage(RoleEnum.Spy);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/vig") || chatText.ToLower().StartsWith("/ vig"))
+                    else if (chatText.ToLower().Trim().StartsWith("/vig"))
                     {
                         AddRoleMessage(RoleEnum.Vigilante);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/hunt") || chatText.ToLower().StartsWith("/ hunt"))
+                    else if (chatText.ToLower().Trim().StartsWith("/hunt"))
                     {
                         AddRoleMessage(RoleEnum.Hunter);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/arso") || chatText.ToLower().StartsWith("/ arso"))
+                    else if (chatText.ToLower().Trim().StartsWith("/arso"))
                     {
                         AddRoleMessage(RoleEnum.Arsonist);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/exe") || chatText.ToLower().StartsWith("/ exe"))
+                    else if (chatText.ToLower().Trim().StartsWith("/exe"))
                     {
                         AddRoleMessage(RoleEnum.Executioner);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/glitch") || chatText.ToLower().StartsWith("/ glitch") ||
-                        chatText.ToLower().StartsWith("/theglitch") || chatText.ToLower().StartsWith("/ theglitch") ||
-                        chatText.ToLower().StartsWith("/the glitch") || chatText.ToLower().StartsWith("/ the glitch"))
+                    else if (chatText.ToLower().Trim().StartsWith("/glitch") ||
+                        chatText.ToLower().Trim().StartsWith("/theglitch") ||
+                        chatText.ToLower().Trim().StartsWith("/the glitch"))
                     {
                         AddRoleMessage(RoleEnum.Glitch);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/jest") || chatText.ToLower().StartsWith("/ jest"))
+                    else if (chatText.ToLower().Trim().StartsWith("/jest"))
                     {
                         AddRoleMessage(RoleEnum.Jester);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/phan") || chatText.ToLower().StartsWith("/ phan"))
+                    else if (chatText.ToLower().Trim().StartsWith("/phan"))
                     {
                         AddRoleMessage(RoleEnum.Phantom);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/gren") || chatText.ToLower().StartsWith("/ gren"))
+                    else if (chatText.ToLower().Trim().StartsWith("/gren"))
                     {
                         AddRoleMessage(RoleEnum.Grenadier);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/jan") || chatText.ToLower().StartsWith("/ jan"))
+                    else if (chatText.ToLower().Trim().StartsWith("/jan"))
                     {
                         AddRoleMessage(RoleEnum.Janitor);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/mini") || chatText.ToLower().StartsWith("/ mini"))
+                    else if (chatText.ToLower().Trim().StartsWith("/mini"))
                     {
                         AddModifierMessage(ModifierEnum.Mini);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/miner") || chatText.ToLower().StartsWith("/ miner"))
+                    else if (chatText.ToLower().Trim().StartsWith("/miner"))
                     {
                         AddRoleMessage(RoleEnum.Miner);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/morph") || chatText.ToLower().StartsWith("/ morph"))
+                    else if (chatText.ToLower().Trim().StartsWith("/morph"))
                     {
                         AddRoleMessage(RoleEnum.Morphling);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/swoop") || chatText.ToLower().StartsWith("/ swoop"))
+                    else if (chatText.ToLower().Trim().StartsWith("/swoop"))
                     {
                         AddRoleMessage(RoleEnum.Swooper);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/utaker") || chatText.ToLower().StartsWith("/ utaker") || 
-                        chatText.ToLower().StartsWith("/undertaker") || chatText.ToLower().StartsWith("/ undertaker"))
+                    else if (chatText.ToLower().Trim().StartsWith("/utaker") || 
+                        chatText.ToLower().Trim().StartsWith("/undertaker"))
                     {
                         AddRoleMessage(RoleEnum.Undertaker);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/haunt") || chatText.ToLower().StartsWith("/ haunt"))
+                    else if (chatText.ToLower().Trim().StartsWith("/haunt"))
                     {
                         AddRoleMessage(RoleEnum.Haunter);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/vet") || chatText.ToLower().StartsWith("/ vet"))
+                    else if (chatText.ToLower().Trim().StartsWith("/vet"))
                     {
                         AddRoleMessage(RoleEnum.Veteran);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/amne") || chatText.ToLower().StartsWith("/ amne"))
+                    else if (chatText.ToLower().Trim().StartsWith("/amne"))
                     {
                         AddRoleMessage(RoleEnum.Amnesiac);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/jugg") || chatText.ToLower().StartsWith("/ jugg"))
+                    else if (chatText.ToLower().Trim().StartsWith("/jugg"))
                     {
                         AddRoleMessage(RoleEnum.Juggernaut);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/track") || chatText.ToLower().StartsWith("/ track"))
+                    else if (chatText.ToLower().Trim().StartsWith("/track"))
                     {
                         AddRoleMessage(RoleEnum.Tracker);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/trans") || chatText.ToLower().StartsWith("/ trans"))
+                    else if (chatText.ToLower().Trim().StartsWith("/trans"))
                     {
                         AddRoleMessage(RoleEnum.Transporter);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/trait") || chatText.ToLower().StartsWith("/ trait"))
+                    else if (chatText.ToLower().Trim().StartsWith("/trait"))
                     {
                         AddRoleMessage(RoleEnum.Traitor);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/med") || chatText.ToLower().StartsWith("/ med"))
+                    else if (chatText.ToLower().Trim().StartsWith("/med"))
                     {
                         AddRoleMessage(RoleEnum.Medium);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/trap") || chatText.ToLower().StartsWith("/ trap"))
+                    else if (chatText.ToLower().Trim().StartsWith("/trap"))
                     {
                         AddRoleMessage(RoleEnum.Trapper);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/surv") || chatText.ToLower().StartsWith("/ surv"))
+                    else if (chatText.ToLower().Trim().StartsWith("/surv"))
                     {
                         AddRoleMessage(RoleEnum.Survivor);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/ga") || chatText.ToLower().StartsWith("/ ga") ||
-                        chatText.ToLower().StartsWith("/guardian") || chatText.ToLower().StartsWith("/ guardian"))
+                    else if (chatText.ToLower().Trim().StartsWith("/ga") ||
+                        chatText.ToLower().Trim().StartsWith("/guardian"))
                     {
                         AddRoleMessage(RoleEnum.GuardianAngel);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/myst") || chatText.ToLower().StartsWith("/ myst"))
+                    else if (chatText.ToLower().Trim().StartsWith("/myst"))
                     {
                         AddRoleMessage(RoleEnum.Mystic);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/bmer") || chatText.ToLower().StartsWith("/ bmer") ||
-                        chatText.ToLower().StartsWith("/black") || chatText.ToLower().StartsWith("/ black"))
+                    else if (chatText.ToLower().Trim().StartsWith("/bmer") ||
+                        chatText.ToLower().Trim().StartsWith("/black"))
                     {
                         AddRoleMessage(RoleEnum.Blackmailer);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/pb") || chatText.ToLower().StartsWith("/ pb") ||
-                        chatText.ToLower().StartsWith("/plague") || chatText.ToLower().StartsWith("/ plague"))
+                    else if (chatText.ToLower().Trim().StartsWith("/pb") ||
+                        chatText.ToLower().Trim().StartsWith("/plague"))
                     {
                         AddRoleMessage(RoleEnum.Plaguebearer);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/pest") || chatText.ToLower().StartsWith("/ pest"))
+                    else if (chatText.ToLower().Trim().StartsWith("/pest"))
                     {
                         AddRoleMessage(RoleEnum.Pestilence);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/ww") || chatText.ToLower().StartsWith("/ ww") ||
-                        chatText.ToLower().StartsWith("/were") || chatText.ToLower().StartsWith("/ were"))
+                    else if (chatText.ToLower().Trim().StartsWith("/ww") ||
+                        chatText.ToLower().Trim().StartsWith("/were"))
                     {
                         AddRoleMessage(RoleEnum.Werewolf);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/detec") || chatText.ToLower().StartsWith("/ detec"))
+                    else if (chatText.ToLower().Trim().StartsWith("/detec"))
                     {
                         AddRoleMessage(RoleEnum.Coroner);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/escap") || chatText.ToLower().StartsWith("/ escap"))
+                    else if (chatText.ToLower().Trim().StartsWith("/escap"))
                     {
                         AddRoleMessage(RoleEnum.Escapist);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/imitat") || chatText.ToLower().StartsWith("/ imitat"))
+                    else if (chatText.ToLower().Trim().StartsWith("/imitat"))
                     {
                         AddRoleMessage(RoleEnum.Imitator);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/bomb") || chatText.ToLower().StartsWith("/ bomb"))
+                    else if (chatText.ToLower().Trim().StartsWith("/bomb"))
                     {
                         AddRoleMessage(RoleEnum.Bomber);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/doom") || chatText.ToLower().StartsWith("/ doom"))
+                    else if (chatText.ToLower().Trim().StartsWith("/doom"))
                     {
                         AddRoleMessage(RoleEnum.Doomsayer);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/vamp") || chatText.ToLower().StartsWith("/ vamp"))
+                    else if (chatText.ToLower().Trim().StartsWith("/vamp"))
                     {
                         AddRoleMessage(RoleEnum.Vampire);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/pros") || chatText.ToLower().StartsWith("/ pros"))
+                    else if (chatText.ToLower().Trim().StartsWith("/pros"))
                     {
                         AddRoleMessage(RoleEnum.Prosecutor);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/war") || chatText.ToLower().StartsWith("/ war"))
+                    else if (chatText.ToLower().Trim().StartsWith("/war"))
                     {
                         AddRoleMessage(RoleEnum.Warlock);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/ora") || chatText.ToLower().StartsWith("/ ora"))
+                    else if (chatText.ToLower().Trim().StartsWith("/ora"))
                     {
                         AddRoleMessage(RoleEnum.Oracle);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/ven") || chatText.ToLower().StartsWith("/ ven"))
+                    else if (chatText.ToLower().Trim().StartsWith("/ven"))
                     {
                         AddRoleMessage(RoleEnum.Venerer);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/aur") || chatText.ToLower().StartsWith("/ aur"))
+                    else if (chatText.ToLower().Trim().StartsWith("/aur"))
                     {
                         AddRoleMessage(RoleEnum.Aurial);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/poli") || chatText.ToLower().StartsWith("/ poli"))
+                    else if (chatText.ToLower().Trim().StartsWith("/poli"))
                     {
                         AddRoleMessage(RoleEnum.Politician);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/ward") || chatText.ToLower().StartsWith("/ ward"))
+                    else if (chatText.ToLower().Trim().StartsWith("/ward"))
                     {
                         AddRoleMessage(RoleEnum.Warden);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/hypno") || chatText.ToLower().StartsWith("/ hypno"))
+                    else if (chatText.ToLower().Trim().StartsWith("/hypno"))
                     {
                         AddRoleMessage(RoleEnum.Hypnotist);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/jailor") || chatText.ToLower().StartsWith("/ jailor"))
+                    else if (chatText.ToLower().Trim().StartsWith("/jailor"))
                     {
                         AddRoleMessage(RoleEnum.Jailor);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/scav") || chatText.ToLower().StartsWith("/ scav"))
+                    else if (chatText.ToLower().Trim().StartsWith("/sk") || chatText.ToLower().Trim().StartsWith("/seri"))
                     {
-                        AddRoleMessage(RoleEnum.Scavenger);
+                        AddRoleMessage(RoleEnum.SerialKiller);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/sc") || chatText.ToLower().StartsWith("/ sc") ||
-                        chatText.ToLower().StartsWith("/soul") || chatText.ToLower().StartsWith("/ soul"))
+                    else if (chatText.ToLower().Trim().StartsWith("/sc") ||
+                        chatText.ToLower().Trim().StartsWith("/soul"))
                     {
                         AddRoleMessage(RoleEnum.SoulCollector);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/dep") || chatText.ToLower().StartsWith("/ dep"))
+                    else if (chatText.ToLower().Trim().StartsWith("/dep"))
                     {
                         AddRoleMessage(RoleEnum.Deputy);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/lover") || chatText.ToLower().StartsWith("/ lover"))
+                    else if (chatText.ToLower().Trim().StartsWith("/lover"))
                     {
                         AddModifierMessage(ModifierEnum.Lover);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/lo") || chatText.ToLower().StartsWith("/ lo"))
+                    else if (chatText.ToLower().Trim().StartsWith("/lo"))
                     {
                         AddRoleMessage(RoleEnum.Lookout);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/giant") || chatText.ToLower().StartsWith("/ giant"))
+                    else if (chatText.ToLower().Trim().StartsWith("/giant"))
                     {
                         AddModifierMessage(ModifierEnum.Giant);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/button") || chatText.ToLower().StartsWith("/ button"))
+                    else if (chatText.ToLower().Trim().StartsWith("/button"))
                     {
                         AddModifierMessage(ModifierEnum.ButtonBarry);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/after") || chatText.ToLower().StartsWith("/ after"))
+                    else if (chatText.ToLower().Trim().StartsWith("/after"))
                     {
                         AddModifierMessage(ModifierEnum.Aftermath);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/bait") || chatText.ToLower().StartsWith("/ bait"))
+                    else if (chatText.ToLower().Trim().StartsWith("/bait"))
                     {
                         AddModifierMessage(ModifierEnum.Bait);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/dis") || chatText.ToLower().StartsWith("/ dis"))
+                    else if (chatText.ToLower().Trim().StartsWith("/dis"))
                     {
                         AddModifierMessage(ModifierEnum.Diseased);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/flash") || chatText.ToLower().StartsWith("/ flash"))
+                    else if (chatText.ToLower().Trim().StartsWith("/flash"))
                     {
                         AddModifierMessage(ModifierEnum.Flash);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/tie") || chatText.ToLower().StartsWith("/ tie"))
+                    else if (chatText.ToLower().Trim().StartsWith("/tie"))
                     {
                         AddModifierMessage(ModifierEnum.Tiebreaker);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/torch") || chatText.ToLower().StartsWith("/ torch"))
+                    else if (chatText.ToLower().Trim().StartsWith("/torch"))
                     {
                         AddModifierMessage(ModifierEnum.Torch);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/sleuth") || chatText.ToLower().StartsWith("/ sleuth"))
+                    else if (chatText.ToLower().Trim().StartsWith("/sleuth"))
                     {
                         AddModifierMessage(ModifierEnum.Sleuth);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/radar") || chatText.ToLower().StartsWith("/ radar"))
+                    else if (chatText.ToLower().Trim().StartsWith("/radar"))
                     {
                         AddModifierMessage(ModifierEnum.Radar);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/dis") || chatText.ToLower().StartsWith("/ dis"))
+                    else if (chatText.ToLower().Trim().StartsWith("/dis"))
                     {
                         AddModifierMessage(ModifierEnum.Disperser);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/multi") || chatText.ToLower().StartsWith("/ multi"))
+                    else if (chatText.ToLower().Trim().StartsWith("/multi"))
                     {
                         AddModifierMessage(ModifierEnum.Multitasker);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/double") || chatText.ToLower().StartsWith("/ double"))
+                    else if (chatText.ToLower().Trim().StartsWith("/double"))
                     {
                         AddModifierMessage(ModifierEnum.DoubleShot);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/udog") || chatText.ToLower().StartsWith("/ udog") ||
-                        chatText.ToLower().StartsWith("/underdog") || chatText.ToLower().StartsWith("/ underdog"))
+                    else if (chatText.ToLower().Trim().StartsWith("/udog") ||
+                        chatText.ToLower().Trim().StartsWith("/underdog"))
                     {
                         AddModifierMessage(ModifierEnum.Underdog);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/frost") || chatText.ToLower().StartsWith("/ frost"))
+                    else if (chatText.ToLower().Trim().StartsWith("/frost"))
                     {
                         AddModifierMessage(ModifierEnum.Frosty);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/sense") || chatText.ToLower().StartsWith("/ sense") ||
-                        chatText.ToLower().StartsWith("/sixth") || chatText.ToLower().StartsWith("/ sixth"))
+                    else if ((chatText.ToLower().Trim().StartsWith("/sense")) ||
+                        chatText.ToLower().Trim().StartsWith("/sixth"))
                     {
                         AddModifierMessage(ModifierEnum.SixthSense);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/shy") || chatText.ToLower().StartsWith("/ shy"))
+                    else if (chatText.ToLower().Trim().StartsWith("/shy"))
                     {
                         AddModifierMessage(ModifierEnum.Shy);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/sab") || chatText.ToLower().StartsWith("/ sab"))
+                    else if (chatText.ToLower().Trim().StartsWith("/sab"))
                     {
                         AddModifierMessage(ModifierEnum.Saboteur);
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/ass") || chatText.ToLower().StartsWith("/ ass"))
+                    else if (chatText.ToLower().Trim().StartsWith("/ass"))
                     {
                         DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,
                             "The Assassin is an ability which is given to killers to guess other player's roles during mettings. If they guess correctly they kill the other player, if not, they die instead.");
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/r") || chatText.ToLower().StartsWith("/ r") || chatText.ToLower().StartsWith("/role") || chatText.ToLower().StartsWith("/ role"))
+                    else if (chatText.ToLower().Trim().StartsWith("/r") || chatText.ToLower().Trim().StartsWith("/role"))
                     {
                         var role = Role.GetRole(PlayerControl.LocalPlayer);
                         if (role != null) AddRoleMessage(role.RoleType);
@@ -440,7 +440,7 @@ namespace TownOfUsFusion.Patches
                         else DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, "Invalid Command.");
                         return false;
                     }
-                    else if (chatText.ToLower().StartsWith("/m") || chatText.ToLower().StartsWith("/ m") || chatText.ToLower().StartsWith("/modifier") || chatText.ToLower().StartsWith("/ modifier"))
+                    else if (chatText.ToLower().Trim().StartsWith("/m") || chatText.ToLower().Trim().StartsWith("/modifier"))
                     {
                         var modifier = Modifier.GetModifier(PlayerControl.LocalPlayer);
                         if (modifier != null) AddModifierMessage(modifier.ModifierType);
@@ -449,7 +449,7 @@ namespace TownOfUsFusion.Patches
                         return false;
                     }
                 }
-                if ((chatText.ToLower().StartsWith("/jail") || chatText.ToLower().StartsWith("/ jail")) && sourcePlayer.Is(RoleEnum.Jailor) && MeetingHud.Instance)
+                if ((chatText.ToLower().Trim().StartsWith("/jail")) && sourcePlayer.Is(RoleEnum.Jailor) && MeetingHud.Instance)
                 {
                     if (PlayerControl.LocalPlayer.Is(RoleEnum.Jailor) || PlayerControl.LocalPlayer.IsJailed())
                     {
@@ -463,7 +463,7 @@ namespace TownOfUsFusion.Patches
                     }
                     else return false;
                 }
-                if (chatText.ToLower().StartsWith("/"))
+                if (chatText.ToLower().Trim().StartsWith("/"))
                 {
                     if (sourcePlayer == PlayerControl.LocalPlayer) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, "Invalid Command.");
                     return false;
@@ -593,8 +593,8 @@ namespace TownOfUsFusion.Patches
                     "The Soul Collector is a neutral evil role with the goal to collect souls. In order to obtain them they must reap players, once those players die they can pick their soul up off the ground.");
                 if (role == RoleEnum.Lookout) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
                     PlayerControl.LocalPlayer, "The Lookout is a crewmate who can watch other players. They will see all players who interact with each player they watch.");
-                if (role == RoleEnum.Scavenger) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,
-                    "The Scavenger is an impostor who must hunt down prey. Once their kill cooldown is up they are given a target to kill and being their scavenge. If they kill that target they get a reduced kill cooldown and regenerate their scavenge duration. If they don't kill their target they are given an increased kill cooldown.");
+                if (role == RoleEnum.SerialKiller) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,
+                    "The Serial Killer is an neutral killer who must hunt down prey. Once their kill cooldown is up they are given a target to kill and begin their hunt. If they kill that target they get a reduced kill cooldown and regenerate their bloodlust duration. If they don't kill their target they are given an increased kill cooldown.");
                 if (role == RoleEnum.Deputy) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,
                     "The Deputy is a crewmate who can camp other players. If the player is killed they will receive an alert notifying them of their death. During the following meeting they may then shoot anyone. If they shoot the killer, they die unless fortified or invincible, if they are wrong nothing happens.");
             }

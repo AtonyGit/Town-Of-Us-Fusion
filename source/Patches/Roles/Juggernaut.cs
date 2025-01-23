@@ -9,7 +9,7 @@ namespace TownOfUsFusion.Roles
         public Juggernaut(PlayerControl owner) : base(owner)
         {
             Name = "Juggernaut";
-            Color = Patches.Colors.Juggernaut;
+            Color = Patches.Colors.Apocalypse;
             LastKill = DateTime.UtcNow;
             RoleType = RoleEnum.Juggernaut;
             AddToRoleHistory(RoleType);

@@ -479,6 +479,11 @@ namespace TownOfUsFusion
                             var ww = Role.GetRole<Werewolf>(player);
                             ww.LastKilled = DateTime.UtcNow;
                         }
+                        else if (player.Is(RoleEnum.SerialKiller))
+                        {
+                            var sk = Role.GetRole<SerialKiller>(player);
+                            sk.LastKill = DateTime.UtcNow;
+                        }
                         RpcMurderPlayer(player, target);
                         abilityUsed = true;
                         fullCooldownReset = true;
@@ -531,6 +536,11 @@ namespace TownOfUsFusion
                 {
                     var ww = Role.GetRole<Werewolf>(player);
                     ww.LastKilled = DateTime.UtcNow;
+                }
+                else if (player.Is(RoleEnum.SerialKiller))
+                {
+                    var sk = Role.GetRole<SerialKiller>(player);
+                    sk.LastKill = DateTime.UtcNow;
                 }
                 RpcMurderPlayer(player, target);
                 abilityUsed = true;
@@ -920,9 +930,9 @@ namespace TownOfUsFusion
 
                 Murder.KilledPlayers.Add(deadBody);
 
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Scavenger) && killer != PlayerControl.LocalPlayer)
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.SerialKiller) && killer != PlayerControl.LocalPlayer)
                 {
-                    var scav = Role.GetRole<Scavenger>(PlayerControl.LocalPlayer);
+                    var scav = Role.GetRole<SerialKiller>(PlayerControl.LocalPlayer);
                     if (scav.Target == target) scav.Target = scav.GetClosestPlayer();
                 }
 
@@ -993,45 +1003,46 @@ namespace TownOfUsFusion
                     return;
                 }
 
-                if (killer.Is(RoleEnum.Scavenger))
+                if (killer.Is(RoleEnum.SerialKiller))
                 {
-                    var scav = Role.GetRole<Scavenger>(killer);
+                    var scav = Role.GetRole<SerialKiller>(killer);
                     if (target == scav.Target)
                     {
                         if (target.Is(ModifierEnum.Diseased))
                         {
-                            killer.SetKillTimer(CustomGameOptions.ScavengeCorrectKillCooldown * CustomGameOptions.DiseasedMultiplier);
+                            scav.LastKill = DateTime.UtcNow.AddSeconds((CustomGameOptions.DiseasedMultiplier - 1f) * CustomGameOptions.BloodlustCorrectKillCooldown);
+                            scav.Player.SetKillTimer(CustomGameOptions.BloodlustCorrectKillCooldown * CustomGameOptions.DiseasedMultiplier);
                         }
                         else
                         {
-                            killer.SetKillTimer(CustomGameOptions.ScavengeCorrectKillCooldown);
+                            killer.SetKillTimer(CustomGameOptions.BloodlustCorrectKillCooldown);
                         }
                         scav.Target = scav.GetClosestPlayer();
-                        scav.ScavengeEnd = scav.ScavengeEnd.AddSeconds(CustomGameOptions.ScavengeIncreaseDuration);
+                        scav.BloodlustEnd = scav.BloodlustEnd.AddSeconds(CustomGameOptions.BloodlustIncreaseDuration);
                     }
                     else
                     {
                         if (target.Is(ModifierEnum.Diseased) && killer.Is(ModifierEnum.Underdog))
                         {
-                            var lowerKC = (GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown - CustomGameOptions.UnderdogKillBonus) * CustomGameOptions.DiseasedMultiplier * CustomGameOptions.ScavengeIncorrectKillCooldown;
-                            var normalKC = GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown * CustomGameOptions.DiseasedMultiplier * CustomGameOptions.ScavengeIncorrectKillCooldown;
-                            var upperKC = (GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown + CustomGameOptions.UnderdogKillBonus) * CustomGameOptions.DiseasedMultiplier * CustomGameOptions.ScavengeIncorrectKillCooldown;
+                            var lowerKC = (GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown - CustomGameOptions.UnderdogKillBonus) * CustomGameOptions.DiseasedMultiplier * CustomGameOptions.BloodlustIncorrectKillCooldown;
+                            var normalKC = GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown * CustomGameOptions.DiseasedMultiplier * CustomGameOptions.BloodlustIncorrectKillCooldown;
+                            var upperKC = (GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown + CustomGameOptions.UnderdogKillBonus) * CustomGameOptions.DiseasedMultiplier * CustomGameOptions.BloodlustIncorrectKillCooldown;
                             killer.SetKillTimer(PerformKill.LastImp() ? lowerKC : (PerformKill.IncreasedKC() ? normalKC : upperKC));
                         }
                         else if (target.Is(ModifierEnum.Diseased))
                         {
-                            killer.SetKillTimer(GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown * CustomGameOptions.DiseasedMultiplier * CustomGameOptions.ScavengeIncorrectKillCooldown);
+                            killer.SetKillTimer(GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown * CustomGameOptions.DiseasedMultiplier * CustomGameOptions.BloodlustIncorrectKillCooldown);
                         }
                         else if (killer.Is(ModifierEnum.Underdog))
                         {
-                            var lowerKC = (GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown - CustomGameOptions.UnderdogKillBonus) * CustomGameOptions.ScavengeIncorrectKillCooldown;
-                            var normalKC = GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown * CustomGameOptions.ScavengeIncorrectKillCooldown;
-                            var upperKC = (GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown + CustomGameOptions.UnderdogKillBonus) * CustomGameOptions.ScavengeIncorrectKillCooldown;
+                            var lowerKC = (GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown - CustomGameOptions.UnderdogKillBonus) * CustomGameOptions.BloodlustIncorrectKillCooldown;
+                            var normalKC = GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown * CustomGameOptions.BloodlustIncorrectKillCooldown;
+                            var upperKC = (GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown + CustomGameOptions.UnderdogKillBonus) * CustomGameOptions.BloodlustIncorrectKillCooldown;
                             killer.SetKillTimer(PerformKill.LastImp() ? lowerKC : (PerformKill.IncreasedKC() ? normalKC : upperKC));
                         }
-                        else killer.SetKillTimer(GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown * CustomGameOptions.ScavengeIncorrectKillCooldown);
-                        scav.StopScavenge();
-                        scav.ScavengeEnd = scav.ScavengeEnd.AddSeconds(-3000f);
+                        else killer.SetKillTimer(GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown * CustomGameOptions.BloodlustIncorrectKillCooldown);
+                        scav.StopBloodlust();
+                        scav.BloodlustEnd = scav.BloodlustEnd.AddSeconds(-3000f);
                     }
                     scav.RegenTask();
                     return;
@@ -1489,6 +1500,11 @@ namespace TownOfUsFusion
                 var werewolf = Role.GetRole<Werewolf>(PlayerControl.LocalPlayer);
                 werewolf.LastRampaged = DateTime.UtcNow;
                 werewolf.LastKilled = DateTime.UtcNow;
+            }
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.SerialKiller))
+            {
+                var sk = Role.GetRole<SerialKiller>(PlayerControl.LocalPlayer);
+                sk.LastKill = DateTime.UtcNow;
             }
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Plaguebearer))
             {

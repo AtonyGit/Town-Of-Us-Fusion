@@ -11,7 +11,7 @@ namespace TownOfUsFusion.ImpostorRoles.PoisonerMod
     public class HudManagerUpdate
     {
         public static Sprite PoisonSprite => TownOfUsFusion.PoisonSprite;
-        public static Sprite PoisonedSprite => TownOfUsFusion.PoisonSprite;
+        public static Sprite PoisonedSprite => TownOfUsFusion.PoisonedSprite;
 
         [HarmonyPriority(Priority.Last)]
         public static void Postfix(HudManager __instance)

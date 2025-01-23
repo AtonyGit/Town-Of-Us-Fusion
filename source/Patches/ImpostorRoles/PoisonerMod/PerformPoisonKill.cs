@@ -12,7 +12,7 @@ namespace TownOfUsFusion.ImpostorRoles.PoisonerMod
     public class PerformPoisonKill
     {
         public static Sprite PoisonSprite => TownOfUsFusion.PoisonSprite;
-        public static Sprite PoisonedSprite => TownOfUsFusion.PoisonSprite;
+        public static Sprite PoisonedSprite => TownOfUsFusion.PoisonedSprite;
 
         public static bool Prefix(KillButton __instance)
         {

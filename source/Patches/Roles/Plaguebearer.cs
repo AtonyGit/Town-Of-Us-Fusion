@@ -22,7 +22,7 @@ namespace TownOfUsFusion.Roles
             Name = "Plaguebearer";
             ImpostorText = () => "Infect Everyone To Become Pestilence";
             TaskText = () => "Infect everyone to become Pestilence\nFake Tasks:";
-            Color = Patches.Colors.Plaguebearer;
+            Color = Patches.Colors.Apocalypse;
             RoleType = RoleEnum.Plaguebearer;
             AddToRoleHistory(RoleType);
             Faction = Faction.NeutralKilling;
@@ -91,7 +91,7 @@ namespace TownOfUsFusion.Roles
             role.IncorrectAssassinKills = killsList.IncorrectAssassinKills;
             if (Player == PlayerControl.LocalPlayer)
             {
-                Coroutines.Start(Utils.FlashCoroutine(Patches.Colors.Pestilence));
+                Coroutines.Start(Utils.FlashCoroutine(Patches.Colors.Apocalypse));
                 role.RegenTask();
             }
         }

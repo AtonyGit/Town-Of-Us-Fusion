@@ -23,7 +23,7 @@ namespace TownOfUsFusion.Roles
             Name = "Soul Collector";
             ImpostorText = () => "Collect Souls";
             TaskText = () => "Collect souls to win the game";
-            Color = Patches.Colors.SoulCollector;
+            Color = Patches.Colors.Apocalypse;
             LastReaped = DateTime.UtcNow;
             RoleType = RoleEnum.SoulCollector;
             AddToRoleHistory(RoleType);

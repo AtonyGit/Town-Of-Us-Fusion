@@ -53,9 +53,9 @@ namespace TownOfUsFusion.Patches
                 var lover = Modifier.GetModifier<Lover>(player);
                 Modifier.ModifierDictionary.Remove(lover.OtherLover.Player.PlayerId);
             }
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Scavenger))
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.SerialKiller))
             {
-                var scav = Role.GetRole<Scavenger>(PlayerControl.LocalPlayer);
+                var scav = Role.GetRole<SerialKiller>(PlayerControl.LocalPlayer);
                 if (scav.Target == player) scav.Target = scav.GetClosestPlayer(player);
             }
             if (MeetingHud.Instance)

@@ -37,12 +37,14 @@ namespace TownOfUsFusion
         public static System.Version Version = System.Version.Parse(VersionString);
         public const string VersionTag = "<color=#ff33fc></color>";
         public const bool isDevBuild = true;
-        public const string DevBuildVersion = "5";
+        public const string DevBuildVersion = "6";
 
         public static AssetLoader bundledAssets;
 
         public static Sprite JesterVent;
         public static Sprite VampireVent;
+        public static Sprite SkKill;
+        public static Sprite SkVent;
         public static Sprite WerewolfVent;
         public static Sprite GlitchVent;
         public static Sprite GlitchKill;
@@ -125,6 +127,7 @@ namespace TownOfUsFusion
         public static Sprite InquisKill;
         public static Sprite SheriffKill;
         public static Sprite PoisonSprite;
+        public static Sprite PoisonedSprite;
         public static Sprite CampSprite;
         public static Sprite ShootSprite;
 
@@ -189,16 +192,16 @@ namespace TownOfUsFusion
                 ConfessSprite = CreateSprite("TownOfUsFusion.Resources.Confess.png");
                 FortifySprite = CreateSprite("TownOfUsFusion.Resources.Fortify.png");
             // Sovereign Roles
-                CampaignSprite = CreateSprite("TownOfUsFusion.Resources.Campaign.png");
+                CampaignSprite = CreateScaledSprite("TownOfUsFusion.Resources.Campaign.png");
                 RevealSprite = CreateSprite("TownOfUsFusion.Resources.Reveal.png");
                 SwapperSwitch = CreateSprite("TownOfUsFusion.Resources.SwapperSwitch.png");
                 SwapperSwitchDisabled = CreateSprite("TownOfUsFusion.Resources.SwapperSwitchDisabled.png");
             // Utility Roles
-                EngineerFix = CreateSprite("TownOfUsFusion.Resources.Engineer.png");
+                EngineerFix = CreateScaledSprite("TownOfUsFusion.Resources.Engineer.png");
                 EngineerVent = CreateVentSprite("TownOfUsFusion.Resources.VentEngineer.png");
-                ImitateSelectSprite = CreateSprite("TownOfUsFusion.Resources.ImitateSelect.png");
-                ImitateDeselectSprite = CreateSprite("TownOfUsFusion.Resources.ImitateDeselect.png");
-                TransportSprite = CreateSprite("TownOfUsFusion.Resources.Transport.png");
+                ImitateSelectSprite = CreateMeetingSprite("TownOfUsFusion.Resources.ImitateSelect.png");
+                ImitateDeselectSprite = CreateMeetingSprite("TownOfUsFusion.Resources.ImitateDeselect.png");
+                TransportSprite = CreateScaledSprite("TownOfUsFusion.Resources.Transport.png");
 
             // Benign Roles
                 RememberSprite = CreateSprite("TownOfUsFusion.Resources.Remember.png");
@@ -212,6 +215,8 @@ namespace TownOfUsFusion
             // Killing Roles
                 DouseSprite = CreateSprite("TownOfUsFusion.Resources.Douse.png");
                 IgniteSprite = CreateSprite("TownOfUsFusion.Resources.Ignite.png");
+                SkKill = CreateScaledSprite("TownOfUsFusion.Resources.SerialKill.png");
+                SkVent = CreateVentSprite("TownOfUsFusion.Resources.SerialVent.png");
                 HackSprite = CreateSprite("TownOfUsFusion.Resources.Hack.png");
                 MimicSprite = CreateSprite("TownOfUsFusion.Resources.Mimic.png");
                 GlitchKill = CreateScaledSprite("TownOfUsFusion.Resources.GlitchKill.png");
@@ -244,6 +249,7 @@ namespace TownOfUsFusion
                 PlantSprite = CreateScaledSprite("TownOfUsFusion.Resources.Plant.png");
                 DetonateSprite = CreateScaledSprite("TownOfUsFusion.Resources.Detonate.png");
                 PoisonSprite = CreateScaledSprite("TownOfUsFusion.Resources.Poison.png");
+                PoisonedSprite = CreateScaledSprite("TownOfUsFusion.Resources.Poisoned.png");
             // Support Roles
                 BlackmailSprite = CreateScaledSprite("TownOfUsFusion.Resources.Blackmail.png");
                 BlackmailLetterSprite = CreateSprite("TownOfUsFusion.Resources.BlackmailLetter.png");
@@ -251,9 +257,9 @@ namespace TownOfUsFusion
                 HypnotiseSprite = CreateScaledSprite("TownOfUsFusion.Resources.Hypnotise.png");
                 HysteriaSprite = CreateSprite("TownOfUsFusion.Resources.Hysteria.png");
                 JanitorClean = CreateScaledSprite("TownOfUsFusion.Resources.Janitor.png");
-                MineSprite = CreateSprite("TownOfUsFusion.Resources.Mine.png");
-                DragSprite = CreateSprite("TownOfUsFusion.Resources.Drag.png");
-                DropSprite = CreateSprite("TownOfUsFusion.Resources.Drop.png");
+                MineSprite = CreateScaledSprite("TownOfUsFusion.Resources.Mine.png");
+                DragSprite = CreateScaledSprite("TownOfUsFusion.Resources.Drag.png");
+                DropSprite = CreateScaledSprite("TownOfUsFusion.Resources.Drop.png");
 
                 ButtonSprite = CreateScaledSprite("TownOfUsFusion.Resources.Button.png");
                 DisperseSprite = CreateSprite("TownOfUsFusion.Resources.Disperse.png");
@@ -316,6 +322,21 @@ namespace TownOfUsFusion
         public static Sprite CreateSprite(string name)
         {
             var pixelsPerUnit = 100f;
+            var pivot = new Vector2(0.5f, 0.5f);
+
+            var assembly = Assembly.GetExecutingAssembly();
+            var tex = AmongUsExtensions.CreateEmptyTexture();
+            var imageStream = assembly.GetManifestResourceStream(name);
+            var img = imageStream.ReadFully();
+            LoadImage(tex, img, true);
+            tex.DontDestroy();
+            var sprite = Sprite.Create(tex, new Rect(0.0f, 0.0f, tex.width, tex.height), pivot, pixelsPerUnit);
+            sprite.DontDestroy();
+            return sprite;
+        }
+        public static Sprite CreateMeetingSprite(string name)
+        {
+            var pixelsPerUnit = 300f;
             var pivot = new Vector2(0.5f, 0.5f);
 
             var assembly = Assembly.GetExecutingAssembly();

@@ -47,6 +47,8 @@ namespace TownOfUsFusion
 
         private static Sprite Kill;
         private static Sprite SheriffKill => TownOfUsFusion.SheriffKill;
+        private static Sprite SkKill => TownOfUsFusion.SkKill;
+        private static Sprite SkVent => TownOfUsFusion.SkVent;
         private static Sprite WerewolfKill => TownOfUsFusion.WerewolfKill;
         private static Sprite GlitchKill => TownOfUsFusion.GlitchKill;
         private static Sprite WerewolfVent => TownOfUsFusion.WerewolfVent;
@@ -143,7 +145,7 @@ namespace TownOfUsFusion
             {
                 __instance.KillButton.graphic.sprite = Infect;
                 __instance.KillButton.buttonLabelText.text = "Infect";
-                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Plaguebearer);
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Apocalypse);
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Engineer))
@@ -213,7 +215,7 @@ namespace TownOfUsFusion
             {
                 __instance.KillButton.graphic.sprite = Collect;
                 __instance.KillButton.buttonLabelText.text = "Collect";
-                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.SoulCollector);
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Apocalypse);
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Lookout))
@@ -239,7 +241,7 @@ namespace TownOfUsFusion
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Pestilence))
             {
                 //__instance.KillButton.graphic.sprite = PestKill;
-                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Pestilence);
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Apocalypse);
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Werewolf))
@@ -248,10 +250,16 @@ namespace TownOfUsFusion
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Werewolf);
                 flag = true;
             }
+            else if (PlayerControl.LocalPlayer.Is(RoleEnum.SerialKiller))
+            {
+                __instance.KillButton.graphic.sprite = SkKill;
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.SerialKiller);
+                flag = true;
+            }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Juggernaut))
             {
                 //__instance.KillButton.graphic.sprite = JuggKill;
-                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Juggernaut);
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Apocalypse);
                 flag = true;
             }
             
@@ -271,13 +279,13 @@ namespace TownOfUsFusion
             {
                 __instance.ImpostorVentButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
                 //__instance.ImpostorVentButton.graphic.sprite = PestVent;
-                __instance.ImpostorVentButton.buttonLabelText.SetOutlineColor(Patches.Colors.Pestilence);
+                __instance.ImpostorVentButton.buttonLabelText.SetOutlineColor(Patches.Colors.Apocalypse);
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Juggernaut))
             {
                 __instance.ImpostorVentButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
                 //__instance.ImpostorVentButton.graphic.sprite = JuggVent;
-                __instance.ImpostorVentButton.buttonLabelText.SetOutlineColor(Patches.Colors.Juggernaut);
+                __instance.ImpostorVentButton.buttonLabelText.SetOutlineColor(Patches.Colors.Apocalypse);
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Vampire))
             {
@@ -296,6 +304,12 @@ namespace TownOfUsFusion
                 __instance.ImpostorVentButton.transform.localPosition = new Vector3(-1f, 1f, 0f);
                 __instance.ImpostorVentButton.graphic.sprite = WerewolfVent;
                 __instance.ImpostorVentButton.buttonLabelText.SetOutlineColor(Patches.Colors.Werewolf);
+            }
+            else if (PlayerControl.LocalPlayer.Is(RoleEnum.SerialKiller))
+            {
+                __instance.ImpostorVentButton.transform.localPosition = new Vector3(-1f, 1f, 0f);
+                __instance.ImpostorVentButton.graphic.sprite = SkVent;
+                __instance.ImpostorVentButton.buttonLabelText.SetOutlineColor(Patches.Colors.SerialKiller);
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Jester))
             {

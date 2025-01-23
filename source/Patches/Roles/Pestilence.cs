@@ -9,7 +9,7 @@ namespace TownOfUsFusion.Roles
         public Pestilence(PlayerControl owner) : base(owner)
         {
             Name = "Pestilence";
-            Color = Patches.Colors.Pestilence;
+            Color = Patches.Colors.Apocalypse;
             LastKill = DateTime.UtcNow;
             RoleType = RoleEnum.Pestilence;
             AddToRoleHistory(RoleType);

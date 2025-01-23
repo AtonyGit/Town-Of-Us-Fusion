@@ -816,9 +816,9 @@ namespace TownOfUsFusion.Roles
                     ((Mystic)role).BodyArrows.Values.DestroyAll();
                     ((Mystic)role).BodyArrows.Clear();
                 }
-                foreach (var role in AllRoles.Where(x => x.RoleType == RoleEnum.Scavenger))
+                foreach (var role in AllRoles.Where(x => x.RoleType == RoleEnum.SerialKiller))
                 {
-                    ((Scavenger)role).PreyArrow.Destroy();
+                    ((SerialKiller)role).PreyArrow.Destroy();
                 }
 
                 RoleDictionary.Clear();

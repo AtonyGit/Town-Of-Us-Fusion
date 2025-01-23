@@ -1,5 +1,6 @@
 using HarmonyLib;
 using System;
+using System.Linq;
 using TownOfUsFusion.Roles;
 using UnityEngine;
 using TownOfUsFusion.Modifiers.UnderdogMod;
@@ -7,7 +8,7 @@ using TownOfUsFusion.Patches;
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles.Modifiers;
 
-namespace TownOfUsFusion.ImpostorRoles.ScavengerMod
+namespace TownOfUsFusion.NeutralRoles.SerialKillerMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class HudManagerUpdate
@@ -18,45 +19,54 @@ namespace TownOfUsFusion.ImpostorRoles.ScavengerMod
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Scavenger)) return;
-            var role = Role.GetRole<Scavenger>(PlayerControl.LocalPlayer);
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.SerialKiller)) return;
+            var role = Role.GetRole<SerialKiller>(PlayerControl.LocalPlayer);
 
-            if (role.ScavengeCooldown == null)
+            __instance.KillButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+            __instance.KillButton.SetCoolDown(role.KillTimer(), CustomGameOptions.SkKillCooldown);
+
+            if (role.BloodlustCooldown == null)
             {
-                role.ScavengeCooldown = UnityEngine.Object.Instantiate(__instance.KillButton.cooldownTimerText, __instance.KillButton.transform);
-                role.ScavengeCooldown.gameObject.SetActive(false);
-                role.ScavengeCooldown.transform.localPosition = new Vector3(
-                    role.ScavengeCooldown.transform.localPosition.x + 0.26f,
-                    role.ScavengeCooldown.transform.localPosition.y + 0.29f,
-                    role.ScavengeCooldown.transform.localPosition.z);
-                role.ScavengeCooldown.transform.localScale *= 0.65f;
-                role.ScavengeCooldown.alignment = TMPro.TextAlignmentOptions.Right;
-                role.ScavengeCooldown.fontStyle = TMPro.FontStyles.Bold;
-                role.ScavengeCooldown.enableWordWrapping = false;
+                role.BloodlustCooldown = UnityEngine.Object.Instantiate(__instance.KillButton.cooldownTimerText, __instance.KillButton.transform);
+                role.BloodlustCooldown.gameObject.SetActive(false);
+                role.BloodlustCooldown.transform.localPosition = new Vector3(
+                    role.BloodlustCooldown.transform.localPosition.x + 0.26f,
+                    role.BloodlustCooldown.transform.localPosition.y + 0.29f,
+                    role.BloodlustCooldown.transform.localPosition.z);
+                role.BloodlustCooldown.transform.localScale *= 0.65f;
+                role.BloodlustCooldown.alignment = TMPro.TextAlignmentOptions.Right;
+                role.BloodlustCooldown.fontStyle = TMPro.FontStyles.Bold;
+                role.BloodlustCooldown.enableWordWrapping = false;
             }
-            if (role.ScavengeCooldown != null)
+            if (role.BloodlustCooldown != null)
             {
-                role.ScavengeCooldown.text = Convert.ToInt32(Math.Round(role.ScavengeTimer())).ToString();
+                role.BloodlustCooldown.text = Convert.ToInt32(Math.Round(role.BloodlustTimer())).ToString();
             }
-            role.ScavengeCooldown.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+            role.BloodlustCooldown.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started && role.Scavenging);
 
+                if ((CamouflageUnCamouflage.IsCamoed && CustomGameOptions.CamoCommsKillAnyone) || PlayerControl.LocalPlayer.IsHypnotised()) Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton);
+                else if (role.Player.IsLover()) Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton, float.NaN, PlayerControl.AllPlayerControls.ToArray().Where(x => !x.IsLover()).ToList());
+                else Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton);
+
             if (role.Scavenging && PlayerControl.LocalPlayer.moveable && __instance.KillButton.currentTarget != null)
             {
-                role.ScavengeCooldown.color = Palette.EnabledColor;
-                role.ScavengeCooldown.material.SetFloat("_Desat", 0f);
+                role.BloodlustCooldown.color = Palette.EnabledColor;
+                role.BloodlustCooldown.material.SetFloat("_Desat", 0f);
             }
             else
             {
-                role.ScavengeCooldown.color = Palette.DisabledClear;
-                role.ScavengeCooldown.material.SetFloat("_Desat", 1f);
+                role.BloodlustCooldown.color = Palette.DisabledClear;
+                role.BloodlustCooldown.material.SetFloat("_Desat", 1f);
             }
 
-            if ((role.ScavengeTimer() == 0f || MeetingHud.Instance || PlayerControl.LocalPlayer.Data.IsDead) && role.Scavenging)
+            if ((role.BloodlustTimer() == 0f || MeetingHud.Instance || PlayerControl.LocalPlayer.Data.IsDead) && role.Scavenging)
             {
-                role.StopScavenge();
-
+                role.StopBloodlust();
+/*
                 if (role.Player.Is(ModifierEnum.Underdog))
                 {
                     var lowerKC = GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown - CustomGameOptions.UnderdogKillBonus;
@@ -64,7 +74,7 @@ namespace TownOfUsFusion.ImpostorRoles.ScavengerMod
                     var upperKC = GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown + CustomGameOptions.UnderdogKillBonus;
                     role.Player.SetKillTimer(PerformKill.LastImp() ? lowerKC : (PerformKill.IncreasedKC() ? normalKC : upperKC));
                 }
-                else role.Player.SetKillTimer(GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown);
+                else */role.Player.SetKillTimer(GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown);
             }
 
             if (!role.GameStarted && PlayerControl.LocalPlayer.killTimer > 0f) role.GameStarted = true;
@@ -72,7 +82,7 @@ namespace TownOfUsFusion.ImpostorRoles.ScavengerMod
             if (PlayerControl.LocalPlayer.killTimer == 0f && !role.Scavenging && role.GameStarted && !PlayerControl.LocalPlayer.Data.IsDead)
             {
                 role.Scavenging = true;
-                role.ScavengeEnd = DateTime.UtcNow.AddSeconds(CustomGameOptions.ScavengeDuration);
+                role.BloodlustEnd = DateTime.UtcNow.AddSeconds(CustomGameOptions.BloodlustDuration);
                 role.Target = role.GetClosestPlayer();
                 role.RegenTask();
             }
@@ -86,7 +96,7 @@ namespace TownOfUsFusion.ImpostorRoles.ScavengerMod
                     gameObj.transform.parent = PlayerControl.LocalPlayer.gameObject.transform;
                     var renderer = gameObj.AddComponent<SpriteRenderer>();
                     renderer.sprite = Sprite;
-                    renderer.color = Colors.Impostor;
+                    renderer.color = Colors.SerialKiller;
                     arrow.image = renderer;
                     gameObj.layer = 5;
                     arrow.target = role.Target.transform.position;
