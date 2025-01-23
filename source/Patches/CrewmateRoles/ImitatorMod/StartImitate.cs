@@ -63,7 +63,6 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
             else if (imitatorRole == RoleEnum.Coroner) new Coroner(ImitatingPlayer);
             else if (imitatorRole == RoleEnum.Investigator) new Investigator(ImitatingPlayer);
             else if (imitatorRole == RoleEnum.Lookout) new Lookout(ImitatingPlayer);
-            else if (imitatorRole == RoleEnum.Mystic) new Mystic(ImitatingPlayer);
             else if (imitatorRole == RoleEnum.Oracle) new Oracle(ImitatingPlayer);
             else if (imitatorRole == RoleEnum.Seer) new Seer(ImitatingPlayer);
             else if (imitatorRole == RoleEnum.Snitch)

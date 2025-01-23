@@ -205,11 +205,6 @@ namespace TownOfUsFusion.Patches
                         AddRoleMessage(RoleEnum.GuardianAngel);
                         return false;
                     }
-                    else if (chatText.ToLower().Trim().StartsWith("/myst"))
-                    {
-                        AddRoleMessage(RoleEnum.Mystic);
-                        return false;
-                    }
                     else if (chatText.ToLower().Trim().StartsWith("/bmer") ||
                         chatText.ToLower().Trim().StartsWith("/black"))
                     {
@@ -542,15 +537,13 @@ namespace TownOfUsFusion.Patches
                 if (role == RoleEnum.Traitor) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
                     PlayerControl.LocalPlayer, "The Traitor is an impostor who was originally a Crewmate but switched sides.");
                 if (role == RoleEnum.Medium) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
-                    PlayerControl.LocalPlayer, "The Medium is a crewmate who can see dead players the round that they die.");
+                    PlayerControl.LocalPlayer, "The Medium is a crewmate who can see dead players the round that they die & gets an alert when a player dies.");
                 if (role == RoleEnum.Trapper) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,
                     "The Trapper is a crewmate who can place traps around the map. All players who stand in these traps will reveal their role to the Trapper as long as enough players trigger the trap.");
                 if (role == RoleEnum.Survivor) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
                     PlayerControl.LocalPlayer, "The Survivor is a neutral benign role that needs to live to win.");
                 if (role == RoleEnum.GuardianAngel) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
                     PlayerControl.LocalPlayer, "The Guardian Angel is a neutral benign role that needs their target to win to win themselves.");
-                if (role == RoleEnum.Mystic) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
-                    PlayerControl.LocalPlayer, "The Mystic is a crewmate who gets an alert when a player dies.");
                 if (role == RoleEnum.Blackmailer) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
                     PlayerControl.LocalPlayer, "The Blackmailer is an impostor who can silence other players.");
                 if (role == RoleEnum.Plaguebearer) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,

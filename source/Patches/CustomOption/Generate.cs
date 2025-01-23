@@ -13,7 +13,6 @@ namespace TownOfUsFusion.CustomOption
         public static CustomHeaderOption CrewInvestigativeRoles;
         public static CustomNumberOption DetectiveOn;
         public static CustomNumberOption InvestigatorOn;
-        public static CustomNumberOption MysticOn;
         public static CustomNumberOption OracleOn;
         public static CustomNumberOption SeerOn;
         public static CustomNumberOption SnitchOn;
@@ -364,6 +363,7 @@ namespace TownOfUsFusion.CustomOption
         public static CustomToggleOption ShowMediatePlayer;
         public static CustomToggleOption ShowMediumToDead;
         public static CustomStringOption DeadRevealed;
+        public static CustomNumberOption MediumArrowDuration;
 
         public static CustomHeaderOption Survivor;
         public static CustomNumberOption VestCd;
@@ -381,9 +381,6 @@ namespace TownOfUsFusion.CustomOption
         public static CustomToggleOption GATargetKnows;
         public static CustomToggleOption GAKnowsTargetRole;
         public static CustomNumberOption EvilTargetPercent;
-
-        public static CustomHeaderOption Mystic;
-        public static CustomNumberOption MysticArrowDuration;
 
         public static CustomHeaderOption Blackmailer;
         public static CustomNumberOption BlackmailCooldown;
@@ -547,8 +544,6 @@ namespace TownOfUsFusion.CustomOption
             LookoutOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#33FF66FF>Lookout</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             MediumOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#A680FFFF>Medium</color>", 0f, 0f, 100f, 10f,
-                PercentFormat);
-            MysticOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#4D99E6FF>Mystic</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             SnitchOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#D4AF37FF>Snitch</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
@@ -956,11 +951,6 @@ namespace TownOfUsFusion.CustomOption
             MaxWatches = new CustomNumberOption(num++, MultiMenu.crewmate, "Maximum Number Of Players That Can Be Watched", 5, 1, 15, 1);
             MaxPercepts = new CustomNumberOption(num++, MultiMenu.crewmate, "Maximum Number Of Percept Uses", 5, 1, 20, 1);
 
-            Mystic =
-                new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#4D99E6FF>Mystic</color>");
-            MysticArrowDuration =
-                new CustomNumberOption(num++, MultiMenu.crewmate, "Dead Body Arrow Duration", 0.1f, 0f, 1f, 0.05f, CooldownFormat);
-
             Oracle =
                 new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#BF00BFFF>Oracle</color>");
             ConfessCooldown =
@@ -1121,6 +1111,8 @@ namespace TownOfUsFusion.CustomOption
                 new CustomToggleOption(num++, MultiMenu.crewmate, "Reveal The Medium To The Mediate Target", true);
             DeadRevealed =
                 new CustomStringOption(num++, MultiMenu.crewmate, "Who Is Revealed With Mediate", new[] { "Oldest Dead", "Newest Dead", "All Dead" });
+            MediumArrowDuration =
+                new CustomNumberOption(num++, MultiMenu.crewmate, "Dead Body Arrow Duration", 0.1f, 0f, 1f, 0.05f, CooldownFormat);
 
             Politician =
                 new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#660099FF>Politician</color>");

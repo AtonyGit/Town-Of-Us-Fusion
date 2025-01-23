@@ -79,9 +79,9 @@ namespace TownOfUsFusion
         public static int TraitorOn => (int)Generate.TraitorOn.Get();
         public static int TransporterOn => (int)Generate.TransporterOn.Get();
         public static int MediumOn => (int)Generate.MediumOn.Get();
+            public static float MediumArrowDuration => Generate.MediumArrowDuration.Get();
         public static int SurvivorOn => (int)Generate.SurvivorOn.Get();
         public static int GuardianAngelOn => (int)Generate.GuardianAngelOn.Get();
-        public static int MysticOn => (int)Generate.MysticOn.Get();
         public static int BlackmailerOn => (int)Generate.BlackmailerOn.Get();
         public static int PlaguebearerOn => (int)Generate.PlaguebearerOn.Get();
         public static int WerewolfOn => (int)Generate.WerewolfOn.Get();
@@ -276,7 +276,6 @@ namespace TownOfUsFusion
         public static bool GATargetKnows => Generate.GATargetKnows.Get();
         public static bool GAKnowsTargetRole => Generate.GAKnowsTargetRole.Get();
         public static int EvilTargetPercent => (int)Generate.EvilTargetPercent.Get();
-        public static float MysticArrowDuration => Generate.MysticArrowDuration.Get();
         public static float BlackmailCd => Generate.BlackmailCooldown.Get();
         public static bool BlackmailInvisible => Generate.BlackmailInvisible.Get();
         public static int LatestNonVote => (int)Generate.LatestNonVote.Get();

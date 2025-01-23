@@ -4,12 +4,15 @@ using UnityEngine;
 using System.Linq;
 using System;
 using TownOfUsFusion.Extensions;
+using Object = UnityEngine.Object;
+using TownOfUsFusion.CrewmateRoles.MedicMod;
 
 namespace TownOfUsFusion.CrewmateRoles.MediumMod
 {
     [HarmonyPatch(typeof(HudManager))]
     public class HUDMediate
     {
+        public static Sprite Arrow => TownOfUsFusion.Arrow;
         [HarmonyPatch(nameof(HudManager.Update))]
         public static void Postfix(HudManager __instance)
         {
@@ -31,6 +34,47 @@ namespace TownOfUsFusion.CrewmateRoles.MediumMod
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
                 if (data.IsDead) return;
+                    
+                var isDead = data.IsDead;
+                var truePosition = PlayerControl.LocalPlayer.GetTruePosition();
+
+                if (!PlayerControl.LocalPlayer.Data.IsDead)
+                {
+                    var validBodies = Object.FindObjectsOfType<DeadBody>().Where(x =>
+                        Murder.KilledPlayers.Any(y => y.PlayerId == x.ParentId && y.KillTime.AddSeconds(CustomGameOptions.MediumArrowDuration) > System.DateTime.UtcNow));
+
+                    foreach (var bodyArrow in role.BodyArrows.Keys)
+                    {
+                        if (!validBodies.Any(x => x.ParentId == bodyArrow))
+                        {
+                            role.DestroyArrow(bodyArrow);
+                        }
+                    }
+
+                    foreach (var body in validBodies)
+                    {
+                        if (!role.BodyArrows.ContainsKey(body.ParentId))
+                        {
+                            var gameObj = new GameObject();
+                            var arrow = gameObj.AddComponent<ArrowBehaviour>();
+                            gameObj.transform.parent = PlayerControl.LocalPlayer.gameObject.transform;
+                            var renderer2 = gameObj.AddComponent<SpriteRenderer>();
+                            renderer2.sprite = Arrow;
+                            arrow.image = renderer2;
+                            gameObj.layer = 5;
+                            role.BodyArrows.Add(body.ParentId, arrow);
+                        }
+                        role.BodyArrows.GetValueSafe(body.ParentId).target = body.TruePosition;
+                    }
+                }
+                else
+                {
+                    if (role.BodyArrows.Count != 0)
+                    {
+                        role.BodyArrows.Values.DestroyAll();
+                        role.BodyArrows.Clear();
+                    }
+                }
 
                 foreach (var player in PlayerControl.AllPlayerControls)
                 {

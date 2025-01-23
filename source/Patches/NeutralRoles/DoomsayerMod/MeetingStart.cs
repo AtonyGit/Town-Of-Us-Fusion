@@ -26,7 +26,7 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
         public static string PlayerReportFeedback(PlayerControl player)
         {
             if (player.Is(RoleEnum.Aurial) || player.Is(RoleEnum.Imitator) || StartImitate.ImitatingPlayer == player
-                || player.Is(RoleEnum.Morphling) || player.Is(RoleEnum.Mystic)
+                || player.Is(RoleEnum.Morphling)
                  || player.Is(RoleEnum.Spy) || player.Is(RoleEnum.Glitch))
                 return $"You observe that {player.GetDefaultOutfit().PlayerName} has an altered perception of reality";
             else if (player.Is(RoleEnum.Blackmailer) || player.Is(RoleEnum.Coroner) || player.Is(RoleEnum.Doomsayer)
@@ -59,9 +59,9 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
         public static string RoleReportFeedback(PlayerControl player)
         {
             if (player.Is(RoleEnum.Aurial) || player.Is(RoleEnum.Imitator) || StartImitate.ImitatingPlayer == player
-                || player.Is(RoleEnum.Morphling) || player.Is(RoleEnum.Mystic)
+                || player.Is(RoleEnum.Morphling)
                  || player.Is(RoleEnum.Spy) || player.Is(RoleEnum.Glitch))
-                return "(Aurial, Imitator, Morphling, Mystic, Spy or The Glitch)";
+                return "(Aurial, Imitator, Morphling, Spy or The Glitch)";
             else if (player.Is(RoleEnum.Blackmailer) || player.Is(RoleEnum.Coroner) || player.Is(RoleEnum.Doomsayer)
                  || player.Is(RoleEnum.Oracle) || player.Is(RoleEnum.Snitch) || player.Is(RoleEnum.Trapper))
                 return "(Blackmailer, Coroner, Doomsayer, Oracle, Snitch or Trapper)";
@@ -70,7 +70,7 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
                 return "(Altruist, Amnesiac, Janitor, Medium, Soul Collector, Undertaker or Vampire)";
             else if (player.Is(RoleEnum.Hunter) || player.Is(RoleEnum.Investigator) || player.Is(RoleEnum.Lookout) || player.Is(RoleEnum.SerialKiller)
                  || player.Is(RoleEnum.Swooper) || player.Is(RoleEnum.Tracker) || player.Is(RoleEnum.Werewolf))
-                return "(Hunter, Investigator, Lookout, SerialKiller, Swooper, Tracker or Werewolf)";
+                return "(Hunter, Investigator, Lookout, Serial Killer, Swooper, Tracker or Werewolf)";
             else if (player.Is(RoleEnum.Arsonist) || player.Is(RoleEnum.Hypnotist) || player.Is(RoleEnum.Miner) || player.Is(RoleEnum.Pestilence)
                  || player.Is(RoleEnum.Plaguebearer) || player.Is(RoleEnum.Prosecutor) || player.Is(RoleEnum.Seer) || player.Is(RoleEnum.Transporter))
                 return "(Arsonist, Hypnotist, Miner, Plaguebearer, Prosecutor, Seer or Transporter)";

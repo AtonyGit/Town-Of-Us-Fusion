@@ -74,7 +74,6 @@ namespace TownOfUsFusion
 
         Seer,
         Altruist,
-        Mystic,
         Warden,
 
         Miner,

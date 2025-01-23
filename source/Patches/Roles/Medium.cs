@@ -2,6 +2,8 @@ using System;
 using UnityEngine;
 using Reactor.Utilities;
 using System.Collections.Generic;
+using System.Linq;
+using Object = UnityEngine.Object;
 
 namespace TownOfUsFusion.Roles
 {
@@ -13,6 +15,7 @@ namespace TownOfUsFusion.Roles
         
         public static Sprite Arrow => TownOfUsFusion.Arrow;
         
+        public Dictionary<byte, ArrowBehaviour> BodyArrows = new Dictionary<byte, ArrowBehaviour>();
         public Medium(PlayerControl player) : base(player)
         {
             Name = "Medium";
@@ -24,6 +27,15 @@ namespace TownOfUsFusion.Roles
             AddToRoleHistory(RoleType);
             Scale = 1.4f;
             MediatedPlayers = new Dictionary<byte, ArrowBehaviour>();
+        }
+        public void DestroyArrow(byte targetPlayerId)
+        {
+            var arrow = BodyArrows.FirstOrDefault(x => x.Key == targetPlayerId);
+            if (arrow.Value != null)
+                Object.Destroy(arrow.Value);
+            if (arrow.Value.gameObject != null)
+                Object.Destroy(arrow.Value.gameObject);
+            BodyArrows.Remove(arrow.Key);
         }
 
         internal override bool RoleCriteria()

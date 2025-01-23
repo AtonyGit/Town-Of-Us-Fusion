@@ -115,6 +115,8 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
                 var medRole = Role.GetRole<Medium>(newVamp);
                 medRole.MediatedPlayers.Values.DestroyAll();
                 medRole.MediatedPlayers.Clear();
+                medRole.BodyArrows.Values.DestroyAll();
+                medRole.BodyArrows.Clear();
             }
 
             if (PlayerControl.LocalPlayer == newVamp)
@@ -153,13 +155,6 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
                     var aurialRole = Role.GetRole<Aurial>(PlayerControl.LocalPlayer);
                     aurialRole.SenseArrows.Values.DestroyAll();
                     aurialRole.SenseArrows.Clear();
-                }
-
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Mystic))
-                {
-                    var mysticRole = Role.GetRole<Mystic>(PlayerControl.LocalPlayer);
-                    mysticRole.BodyArrows.Values.DestroyAll();
-                    mysticRole.BodyArrows.Clear();
                 }
 
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Transporter))

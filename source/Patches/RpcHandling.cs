@@ -1687,7 +1687,7 @@ namespace TownOfUsFusion
 
                 #region Crewmate Roles
                 if (CustomGameOptions.PoliticianOn > 0)
-                    CrewmateUtilityRoles.Add((typeof(Politician), CustomGameOptions.PoliticianOn, true));
+                    CrewmateSovereignRoles.Add((typeof(Politician), CustomGameOptions.PoliticianOn, true));
 
                 if (CustomGameOptions.SheriffOn > 0)
                     CrewmateKillingRoles.Add((typeof(Sheriff), CustomGameOptions.SheriffOn, false || CustomGameOptions.UniqueRoles));
@@ -1696,7 +1696,7 @@ namespace TownOfUsFusion
                     CrewmateUtilityRoles.Add((typeof(Engineer), CustomGameOptions.EngineerOn, false || CustomGameOptions.UniqueRoles));
 
                 if (CustomGameOptions.SwapperOn > 0)
-                    CrewmateUtilityRoles.Add((typeof(Swapper), CustomGameOptions.SwapperOn, true));
+                    CrewmateSovereignRoles.Add((typeof(Swapper), CustomGameOptions.SwapperOn, true));
 
                 if (CustomGameOptions.InvestigatorOn > 0)
                     CrewmateInvestigativeRoles.Add((typeof(Investigator), CustomGameOptions.InvestigatorOn, false || CustomGameOptions.UniqueRoles));
@@ -1711,7 +1711,7 @@ namespace TownOfUsFusion
                     CrewmateInvestigativeRoles.Add((typeof(Spy), CustomGameOptions.SpyOn, false || CustomGameOptions.UniqueRoles));
 
                 if (CustomGameOptions.SnitchOn > 0)
-                    CrewmateInvestigativeRoles.Add((typeof(Snitch), CustomGameOptions.SnitchOn, true));
+                    CrewmateAstralRoles.Add((typeof(Snitch), CustomGameOptions.SnitchOn, true));
 
                 if (CustomGameOptions.AltruistOn > 0)
                     CrewmateProtectiveRoles.Add((typeof(Altruist), CustomGameOptions.AltruistOn, true));
@@ -1732,10 +1732,7 @@ namespace TownOfUsFusion
                     CrewmateUtilityRoles.Add((typeof(Transporter), CustomGameOptions.TransporterOn, false || CustomGameOptions.UniqueRoles));
 
                 if (CustomGameOptions.MediumOn > 0)
-                    CrewmateUtilityRoles.Add((typeof(Medium), CustomGameOptions.MediumOn, false || CustomGameOptions.UniqueRoles));
-
-                if (CustomGameOptions.MysticOn > 0)
-                    CrewmateInvestigativeRoles.Add((typeof(Mystic), CustomGameOptions.MysticOn, false || CustomGameOptions.UniqueRoles));
+                    CrewmateAstralRoles.Add((typeof(Medium), CustomGameOptions.MediumOn, false || CustomGameOptions.UniqueRoles));
 
                 if (CustomGameOptions.TrapperOn > 0)
                     CrewmateInvestigativeRoles.Add((typeof(Trapper), CustomGameOptions.TrapperOn, false || CustomGameOptions.UniqueRoles));
@@ -1747,13 +1744,13 @@ namespace TownOfUsFusion
                     CrewmateUtilityRoles.Add((typeof(Imitator), CustomGameOptions.ImitatorOn, true));
 
                 if (CustomGameOptions.ProsecutorOn > 0)
-                    CrewmateUtilityRoles.Add((typeof(Prosecutor), CustomGameOptions.ProsecutorOn, true));
+                    CrewmateSovereignRoles.Add((typeof(Prosecutor), CustomGameOptions.ProsecutorOn, true));
 
                 if (CustomGameOptions.OracleOn > 0)
                     CrewmateInvestigativeRoles.Add((typeof(Oracle), CustomGameOptions.OracleOn, true));
 
                 if (CustomGameOptions.AurialOn > 0)
-                    CrewmateInvestigativeRoles.Add((typeof(Aurial), CustomGameOptions.AurialOn, false || CustomGameOptions.UniqueRoles));
+                    CrewmateAstralRoles.Add((typeof(Aurial), CustomGameOptions.AurialOn, false || CustomGameOptions.UniqueRoles));
 
                 if (CustomGameOptions.WardenOn > 0)
                     CrewmateProtectiveRoles.Add((typeof(Warden), CustomGameOptions.WardenOn, false || CustomGameOptions.UniqueRoles));
@@ -1762,7 +1759,7 @@ namespace TownOfUsFusion
                     CrewmateKillingRoles.Add((typeof(Jailor), CustomGameOptions.JailorOn, true));
 
                 if (CustomGameOptions.LookoutOn > 0)
-                    CrewmateInvestigativeRoles.Add((typeof(Lookout), CustomGameOptions.LookoutOn, false || CustomGameOptions.UniqueRoles));
+                    CrewmateAstralRoles.Add((typeof(Lookout), CustomGameOptions.LookoutOn, false || CustomGameOptions.UniqueRoles));
 
                 if (CustomGameOptions.DeputyOn > 0)
                     CrewmateKillingRoles.Add((typeof(Deputy), CustomGameOptions.DeputyOn, false || CustomGameOptions.UniqueRoles));
@@ -1795,13 +1792,13 @@ namespace TownOfUsFusion
                     NeutralKillingRoles.Add((typeof(Arsonist), CustomGameOptions.ArsonistOn, true));
 
                 if (CustomGameOptions.PlaguebearerOn > 0)
-                    NeutralKillingRoles.Add((typeof(Plaguebearer), CustomGameOptions.PlaguebearerOn, true));
+                    NeutralApocalypseRoles.Add((typeof(Plaguebearer), CustomGameOptions.PlaguebearerOn, true));
 
                 if (CustomGameOptions.WerewolfOn > 0)
                     NeutralKillingRoles.Add((typeof(Werewolf), CustomGameOptions.WerewolfOn, true));
 
                 if (CustomGameOptions.VampireOn > 0)
-                    NeutralKillingRoles.Add((typeof(Vampire), CustomGameOptions.VampireOn, true));
+                    NeutralNeophyteRoles.Add((typeof(Vampire), CustomGameOptions.VampireOn, true));
 
                 if (CustomGameOptions.SoulCollectorOn > 0)
                     NeutralApocalypseRoles.Add((typeof(SoulCollector), CustomGameOptions.SoulCollectorOn, true));

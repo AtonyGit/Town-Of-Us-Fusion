@@ -108,7 +108,6 @@ namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
                 case RoleEnum.Hunter:
                 case RoleEnum.Transporter:
                 case RoleEnum.Medium:
-                case RoleEnum.Mystic:
                 case RoleEnum.Trapper:
                 case RoleEnum.Coroner:
                 case RoleEnum.Imitator:
@@ -377,14 +376,6 @@ namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
                 scRole.CollectedSouls = false;
             }
 
-            else if (role == RoleEnum.Mystic)
-            {
-                var mysticRole = Role.GetRole<Mystic>(amnesiac);
-                mysticRole.BodyArrows.Values.DestroyAll();
-                mysticRole.BodyArrows.Clear();
-                DestroyableSingleton<HudManager>.Instance.KillButton.gameObject.SetActive(false);
-            }
-
             else if (role == RoleEnum.Transporter)
             {
                 var tpRole = Role.GetRole<Transporter>(amnesiac);
@@ -399,6 +390,8 @@ namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
                 var medRole = Role.GetRole<Medium>(amnesiac);
                 medRole.MediatedPlayers.Values.DestroyAll();
                 medRole.MediatedPlayers.Clear();
+                medRole.BodyArrows.Values.DestroyAll();
+                medRole.BodyArrows.Clear();
                 medRole.LastMediated = DateTime.UtcNow;
             }
 

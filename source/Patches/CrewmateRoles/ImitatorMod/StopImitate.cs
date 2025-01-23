@@ -57,13 +57,6 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
                         aurialRole.SenseArrows.Clear();
                     }
 
-                    if (PlayerControl.LocalPlayer.Is(RoleEnum.Mystic))
-                    {
-                        var mysticRole = Role.GetRole<Mystic>(PlayerControl.LocalPlayer);
-                        mysticRole.BodyArrows.Values.DestroyAll();
-                        mysticRole.BodyArrows.Clear();
-                    }
-
                     if (PlayerControl.LocalPlayer.Is(RoleEnum.Transporter))
                     {
                         var transporterRole = Role.GetRole<Transporter>(PlayerControl.LocalPlayer);
@@ -148,6 +141,8 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
                     var medRole = Role.GetRole<Medium>(StartImitate.ImitatingPlayer);
                     medRole.MediatedPlayers.Values.DestroyAll();
                     medRole.MediatedPlayers.Clear();
+                    medRole.BodyArrows.Values.DestroyAll();
+                    medRole.BodyArrows.Clear();
                 }
 
                 if (StartImitate.ImitatingPlayer.Is(RoleEnum.Snitch))

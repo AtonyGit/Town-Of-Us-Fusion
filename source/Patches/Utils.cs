@@ -817,9 +817,9 @@ namespace TownOfUsFusion
                 target.gameObject.layer = LayerMask.NameToLayer("Ghost");
                 target.Visible = false;
 
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Mystic) && !PlayerControl.LocalPlayer.Data.IsDead)
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.Medium) && !PlayerControl.LocalPlayer.Data.IsDead)
                 {
-                    Coroutines.Start(FlashCoroutine(Patches.Colors.Mystic));
+                    Coroutines.Start(FlashCoroutine(Patches.Colors.Medium));
                 }
 
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Coroner))

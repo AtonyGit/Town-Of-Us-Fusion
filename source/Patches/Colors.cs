@@ -22,7 +22,6 @@ namespace TownOfUsFusion.Patches
         public readonly static Color Tracker = new Color(0f, 0.6f, 0f, 1f);
         public readonly static Color Transporter = new Color(0f, 0.93f, 1f, 1f);
         public readonly static Color Medium = new Color(0.65f, 0.5f, 1f, 1f);
-        public readonly static Color Mystic = new Color(0.3f, 0.6f, 0.9f, 1f);
         public readonly static Color Trapper = new Color(0.65f, 0.82f, 0.7f, 1f);
         public readonly static Color Coroner = new Color(0.3f, 0.3f, 1f, 1f);
         public readonly static Color Imitator = new Color(0.7f, 0.85f, 0.3f, 1f);
