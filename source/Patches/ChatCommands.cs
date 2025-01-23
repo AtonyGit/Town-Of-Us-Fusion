@@ -590,7 +590,7 @@ namespace TownOfUsFusion.Patches
                 if (role == RoleEnum.Jailor) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,
                     "The Jailor is a crewmate who can jail other players. Jailed players cannot have meeting abilities used on them and cannot use meeting abilities themself. The Jailor and jailee may also privately talk to each other and the Jailor may also execute their jailee. If they execute a crewmate they lose the ability to jail players.");
                 if (role == RoleEnum.SoulCollector) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,
-                    "The Soul Collector is a neutral evil role with the goal to collect souls. In order to obtain them they must reap players, once those players die they can pick their soul up off the ground.");
+                    "The Soul Collector is a neutral Apocalypse role with the goal to collect souls. In order to obtain them they must reap players, once those players die they can pick their soul up off the ground.");
                 if (role == RoleEnum.Lookout) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
                     PlayerControl.LocalPlayer, "The Lookout is a crewmate who can watch other players. They will see all players who interact with each player they watch.");
                 if (role == RoleEnum.SerialKiller) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,

@@ -1780,9 +1780,6 @@ namespace TownOfUsFusion
                 if (CustomGameOptions.DoomsayerOn > 0)
                     NeutralEvilRoles.Add((typeof(Doomsayer), CustomGameOptions.DoomsayerOn, false || CustomGameOptions.UniqueRoles));
 
-                if (CustomGameOptions.SoulCollectorOn > 0)
-                    NeutralEvilRoles.Add((typeof(SoulCollector), CustomGameOptions.SoulCollectorOn, true));
-
                 if (CustomGameOptions.SurvivorOn > 0)
                     NeutralBenignRoles.Add((typeof(Survivor), CustomGameOptions.SurvivorOn, false || CustomGameOptions.UniqueRoles));
 
@@ -1806,8 +1803,11 @@ namespace TownOfUsFusion
                 if (CustomGameOptions.VampireOn > 0)
                     NeutralKillingRoles.Add((typeof(Vampire), CustomGameOptions.VampireOn, true));
 
+                if (CustomGameOptions.SoulCollectorOn > 0)
+                    NeutralApocalypseRoles.Add((typeof(SoulCollector), CustomGameOptions.SoulCollectorOn, true));
+
                 if (CustomGameOptions.JuggernautOn > 0)
-                    NeutralKillingRoles.Add((typeof(Juggernaut), CustomGameOptions.JuggernautOn, true));
+                    NeutralApocalypseRoles.Add((typeof(Juggernaut), CustomGameOptions.JuggernautOn, true));
                 #endregion
                 #region Impostor Roles
                 if (CustomGameOptions.UndertakerOn > 0)

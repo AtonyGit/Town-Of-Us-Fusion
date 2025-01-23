@@ -117,20 +117,10 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
                 medRole.MediatedPlayers.Clear();
             }
 
-            if (newVamp.Is(RoleEnum.SoulCollector))
-            {
-                var scRole = Role.GetRole<SoulCollector>(newVamp);
-                foreach (GameObject soul in scRole.Souls)
-                {
-                    UnityEngine.Object.Destroy(soul);
-                }
-            }
-
             if (PlayerControl.LocalPlayer == newVamp)
             {
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Coroner)) Role.GetRole<Coroner>(PlayerControl.LocalPlayer).ExamineButton.SetTarget(null);
                 else if (PlayerControl.LocalPlayer.Is(RoleEnum.Hunter)) Role.GetRole<Hunter>(PlayerControl.LocalPlayer).StalkButton.SetTarget(null);
-                else if (PlayerControl.LocalPlayer.Is(RoleEnum.SoulCollector)) Role.GetRole<SoulCollector>(PlayerControl.LocalPlayer).ReapButton.SetTarget(null);
                 else if (PlayerControl.LocalPlayer.Is(RoleEnum.Altruist)) CrewmateRoles.AltruistMod.KillButtonTarget.SetTarget(HudManager.Instance.KillButton, null, Role.GetRole<Altruist>(PlayerControl.LocalPlayer));
                 else if (PlayerControl.LocalPlayer.Is(RoleEnum.Amnesiac)) AmnesiacMod.KillButtonTarget.SetTarget(HudManager.Instance.KillButton, null, Role.GetRole<Amnesiac>(PlayerControl.LocalPlayer));
 
@@ -204,13 +194,6 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
                     {
                         UnityEngine.Object.Destroy(scene);
                     }
-                }
-
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.SoulCollector))
-                {
-                    var scRole = Role.GetRole<SoulCollector>(PlayerControl.LocalPlayer);
-                    scRole.ReapButton.gameObject.SetActive(false);
-                    UnityEngine.Object.Destroy(scRole.CollectedText);
                 }
 
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Hunter))

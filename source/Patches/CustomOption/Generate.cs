@@ -54,16 +54,20 @@ namespace TownOfUsFusion.CustomOption
         public static CustomNumberOption ExecutionerOn;
         public static CustomNumberOption JesterOn;
         public static CustomNumberOption PhantomOn;
-        public static CustomNumberOption SoulCollectorOn;
 
         public static CustomHeaderOption NeutralKillingRoles;
         public static CustomNumberOption ArsonistOn;
         public static CustomNumberOption SerialKillerOn;
+        public static CustomNumberOption GlitchOn;
+        public static CustomNumberOption WerewolfOn;
+        
+        public static CustomHeaderOption NeutralNeophyteRoles;
+        public static CustomNumberOption VampireOn;
+
+        public static CustomHeaderOption NeutralApocalypseRoles;
         public static CustomNumberOption JuggernautOn;
         public static CustomNumberOption PlaguebearerOn;
-        public static CustomNumberOption GlitchOn;
-        public static CustomNumberOption VampireOn;
-        public static CustomNumberOption WerewolfOn;
+        public static CustomNumberOption SoulCollectorOn;
 
         public static CustomHeaderOption ImpostorConcealingRoles;
         public static CustomNumberOption EscapistOn;
@@ -632,11 +636,11 @@ namespace TownOfUsFusion.CustomOption
             WerewolfOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#A86629FF>Werewolf</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
 
-            NeutralKillingRoles = new CustomHeaderOption(num++, MultiMenu.neutral, "Neutral Neophyte Roles");
+            NeutralNeophyteRoles = new CustomHeaderOption(num++, MultiMenu.neutral, "Neutral Neophyte Roles");
             VampireOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#262626FF>Vampire</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
 
-            NeutralKillingRoles = new CustomHeaderOption(num++, MultiMenu.neutral, "Neutral Apocalypse Roles");
+            NeutralApocalypseRoles = new CustomHeaderOption(num++, MultiMenu.neutral, "Neutral Apocalypse Roles");
             JuggernautOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#8C004DFF>Juggernaut</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             PlaguebearerOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#8C004DFF>Plaguebearer</color>", 0f, 0f, 100f, 10f,
@@ -1217,15 +1221,6 @@ namespace TownOfUsFusion.CustomOption
             PhantomSpook =
                 new CustomToggleOption(num++, MultiMenu.neutral, "Phantom Spooks Player On Victory", true);
 
-            SoulCollector =
-                new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#99FFCCFF>Soul Collector</color>");
-            ReapCooldown =
-                new CustomNumberOption(num++, MultiMenu.neutral, "Reap Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
-            PassiveSoulCollection =
-                new CustomToggleOption(num++, MultiMenu.neutral, "Passively Collect A Soul Each Round", true);
-            SoulsToWin =
-                 new CustomNumberOption(num++, MultiMenu.neutral, "Amount Of Souls Required To Win", 5, 1, 15, 1);
-
             Arsonist = new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#FF4D00FF>Arsonist</color>");
             DouseCooldown =
                 new CustomNumberOption(num++, MultiMenu.neutral, "Douse Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
@@ -1252,21 +1247,6 @@ namespace TownOfUsFusion.CustomOption
             BloodlustIncorrectKillCooldown =
                 new CustomNumberOption(num++, MultiMenu.neutral, "Kill Cooldown Multiplier On Incorrect Kill", 3f, 1.25f, 5f, 0.25f, MultiplierFormat);
 
-            Juggernaut =
-                new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#8C004DFF>Juggernaut</color>");
-            JuggKillCooldown = new CustomNumberOption(num++, MultiMenu.neutral, "Juggernaut Initial Kill Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
-            ReducedKCdPerKill = new CustomNumberOption(num++, MultiMenu.neutral, "Reduced Kill Cooldown Per Kill", 5f, 2.5f, 10f, 2.5f, CooldownFormat);
-            JuggVent =
-                new CustomToggleOption(num++, MultiMenu.neutral, "Juggernaut Can Vent", false);
-
-            Plaguebearer = new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#E6FFB3FF>Plaguebearer</color>");
-            InfectCooldown =
-                new CustomNumberOption(num++, MultiMenu.neutral, "Infect Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
-            PestKillCooldown =
-                new CustomNumberOption(num++, MultiMenu.neutral, "Pestilence Kill Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
-            PestVent =
-                new CustomToggleOption(num++, MultiMenu.neutral, "Pestilence Can Vent", false);
-
             TheGlitch =
                 new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#00FF00FF>The Glitch</color>");
             MimicCooldownOption = new CustomNumberOption(num++, MultiMenu.neutral, "Mimic Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
@@ -1279,6 +1259,16 @@ namespace TownOfUsFusion.CustomOption
                 new CustomStringOption(num++, MultiMenu.neutral, "Glitch Hack Distance", new[] { "Short", "Normal", "Long" });
             GlitchVent =
                 new CustomToggleOption(num++, MultiMenu.neutral, "Glitch Can Vent", false);
+
+            Werewolf = new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#A86629FF>Werewolf</color>");
+            RampageCooldown =
+                new CustomNumberOption(num++, MultiMenu.neutral, "Rampage Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
+            RampageDuration =
+                new CustomNumberOption(num++, MultiMenu.neutral, "Rampage Duration", 25f, 10f, 60f, 2.5f, CooldownFormat);
+            RampageKillCooldown =
+                new CustomNumberOption(num++, MultiMenu.neutral, "Rampage Kill Cooldown", 10f, 0.5f, 15f, 0.5f, CooldownFormat);
+            WerewolfVent =
+                new CustomToggleOption(num++, MultiMenu.neutral, "Werewolf Can Vent When Rampaged", false);
 
             Vampire = new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#262626FF>Vampire</color>");
             BiteCooldown =
@@ -1296,15 +1286,37 @@ namespace TownOfUsFusion.CustomOption
             CanBiteNeutralEvil =
                 new CustomToggleOption(num++, MultiMenu.neutral, "Can Convert Neutral Evil Roles", false);
 
-            Werewolf = new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#A86629FF>Werewolf</color>");
-            RampageCooldown =
-                new CustomNumberOption(num++, MultiMenu.neutral, "Rampage Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
-            RampageDuration =
-                new CustomNumberOption(num++, MultiMenu.neutral, "Rampage Duration", 25f, 10f, 60f, 2.5f, CooldownFormat);
-            RampageKillCooldown =
-                new CustomNumberOption(num++, MultiMenu.neutral, "Rampage Kill Cooldown", 10f, 0.5f, 15f, 0.5f, CooldownFormat);
-            WerewolfVent =
-                new CustomToggleOption(num++, MultiMenu.neutral, "Werewolf Can Vent When Rampaged", false);
+            Juggernaut =
+                new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#8C004DFF>Juggernaut</color>");
+            JuggKillCooldown = new CustomNumberOption(num++, MultiMenu.neutral, "Juggernaut Initial Kill Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
+            ReducedKCdPerKill = new CustomNumberOption(num++, MultiMenu.neutral, "Reduced Kill Cooldown Per Kill", 5f, 2.5f, 10f, 2.5f, CooldownFormat);
+            KillsNeeded = new CustomNumberOption(num++, MultiMenu.neutral, "Kills Needed Before Armaggeddon Transformation", 2, 2, 5, 1);
+            ArmKillCooldown = new CustomNumberOption(num++, MultiMenu.neutral, "Armaggeddon Kill Cooldown", 10f, 0f, 60f, 2.5f, CooldownFormat);
+            JuggVent =
+                new CustomToggleOption(num++, MultiMenu.neutral, "Juggernaut Can Vent", false);
+            ArmVent =
+                new CustomToggleOption(num++, MultiMenu.neutral, "Armaggeddon Can Vent", true);
+
+            Plaguebearer = new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#8C004DFF>Plaguebearer</color>");
+            InfectCooldown =
+                new CustomNumberOption(num++, MultiMenu.neutral, "Infect Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
+            PestKillCooldown =
+                new CustomNumberOption(num++, MultiMenu.neutral, "Pestilence Kill Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
+            PestKillDelay =
+                new CustomNumberOption(num++, MultiMenu.neutral, "Pestilence Kill Delay", 30f, 0f, 60f, 2.5f, CooldownFormat);
+            PestVent =
+                new CustomToggleOption(num++, MultiMenu.neutral, "Pestilence Can Vent", false);
+
+            SoulCollector =
+                new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#8C004DFF>Soul Collector</color>");
+            ReapCooldown =
+                new CustomNumberOption(num++, MultiMenu.neutral, "Reap Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
+            PassiveSoulCollection =
+                new CustomToggleOption(num++, MultiMenu.neutral, "Passively Collect A Soul Each Round", true);
+            SoulsToWin =
+                 new CustomNumberOption(num++, MultiMenu.neutral, "Amount Of Souls Required To Transform", 5, 1, 15, 1);
+            DeathRevealDelay =
+                new CustomNumberOption(num++, MultiMenu.neutral, "Time Before A Death Meeting Is Called", 30f, 0f, 60f, 2.5f, CooldownFormat);
 
             Escapist =
                 new CustomHeaderOption(num++, MultiMenu.imposter, "<color=#FF0000FF>Escapist</color>");
