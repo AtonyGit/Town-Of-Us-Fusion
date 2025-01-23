@@ -37,7 +37,7 @@ namespace TownOfUsFusion
         public static System.Version Version = System.Version.Parse(VersionString);
         public const string VersionTag = "<color=#ff33fc></color>";
         public const bool isDevBuild = true;
-        public const string DevBuildVersion = "6";
+        public const string DevBuildVersion = "1";
 
         public static AssetLoader bundledAssets;
 
