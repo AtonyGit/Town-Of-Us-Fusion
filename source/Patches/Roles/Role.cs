@@ -810,11 +810,8 @@ namespace TownOfUsFusion.Roles
                 {
                     ((Medium)role).MediatedPlayers.Values.DestroyAll();
                     ((Medium)role).MediatedPlayers.Clear();
-                }
-                foreach (var role in AllRoles.Where(x => x.RoleType == RoleEnum.Mystic))
-                {
-                    ((Mystic)role).BodyArrows.Values.DestroyAll();
-                    ((Mystic)role).BodyArrows.Clear();
+                    ((Medium)role).BodyArrows.Values.DestroyAll();
+                    ((Medium)role).BodyArrows.Clear();
                 }
                 foreach (var role in AllRoles.Where(x => x.RoleType == RoleEnum.SerialKiller))
                 {
