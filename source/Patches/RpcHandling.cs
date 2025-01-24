@@ -1166,12 +1166,12 @@ namespace TownOfUsFusion
                             case 0: //set fortify
                                 var warden = Utils.PlayerById(reader.ReadByte());
                                 var fortified = Utils.PlayerById(reader.ReadByte());
-                                var wardenRole = Role.GetRole<Warden>(warden);
-                                wardenRole.Fortified = fortified;
+                                var wardenRole = Role.GetRole<Oracle>(warden);
+                                wardenRole.BlessedPlayer = fortified;
                                 break;
                             case 1: //fortify alert
                                 var wardenPlayer = Utils.PlayerById(reader.ReadByte());
-                                if (PlayerControl.LocalPlayer == wardenPlayer) Coroutines.Start(Utils.FlashCoroutine(Colors.Warden));
+                                if (PlayerControl.LocalPlayer == wardenPlayer) Coroutines.Start(Utils.FlashCoroutine(Colors.Oracle));
                                 break;
                         }
                         break;

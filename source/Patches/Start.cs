@@ -48,8 +48,8 @@ namespace TownOfUsFusion.Patches
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Oracle))
             {
                 var oracle = Role.GetRole<Oracle>(PlayerControl.LocalPlayer);
-                oracle.LastConfessed = DateTime.UtcNow;
-                oracle.LastConfessed = oracle.LastConfessed.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.ConfessCd);
+                oracle.LastBlessed = DateTime.UtcNow;
+                oracle.LastBlessed = oracle.LastBlessed.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.BlessCd);
             }
 
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Sheriff))

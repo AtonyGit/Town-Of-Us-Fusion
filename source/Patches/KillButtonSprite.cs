@@ -39,7 +39,7 @@ namespace TownOfUsFusion
         private static Sprite Bite => TownOfUsFusion.BiteSprite;
         private static Sprite Confess => TownOfUsFusion.ConfessSprite;
         private static Sprite Campaign => TownOfUsFusion.CampaignSprite;
-        private static Sprite Fortify => TownOfUsFusion.FortifySprite;
+        private static Sprite Fortify => TownOfUsFusion.BlessSprite;
         private static Sprite Jail => TownOfUsFusion.JailSprite;
         private static Sprite Collect => TownOfUsFusion.CollectSprite;
         private static Sprite Watch => TownOfUsFusion.WatchSprite;

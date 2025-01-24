@@ -14,21 +14,21 @@ namespace TownOfUsFusion.CrewmateRoles.OracleMod
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Oracle)) return;
-            var confessButton = __instance.KillButton;
+            var blessButton = __instance.KillButton;
 
             var role = Role.GetRole<Oracle>(PlayerControl.LocalPlayer);
 
-            confessButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+            blessButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-            confessButton.SetCoolDown(role.ConfessTimer(), CustomGameOptions.ConfessCd);
+            blessButton.SetCoolDown(role.BlessTimer(), CustomGameOptions.BlessCd);
 
-            var notConfessing = PlayerControl.AllPlayerControls
+            var notBlessed = PlayerControl.AllPlayerControls
                 .ToArray()
                 .Where(x => x != role.BlessedPlayer)
                 .ToList();
 
-            Utils.SetTarget(ref role.ClosestPlayer, confessButton, float.NaN, notConfessing);
+            Utils.SetTarget(ref role.ClosestPlayer, blessButton, float.NaN, notBlessed);
         }
     }
 }

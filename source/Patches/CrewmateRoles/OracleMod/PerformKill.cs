@@ -16,7 +16,7 @@ namespace TownOfUsFusion.CrewmateRoles.OracleMod
             if (!flag) return true;
             var role = Role.GetRole<Oracle>(PlayerControl.LocalPlayer);
             if (!PlayerControl.LocalPlayer.CanMove || role.ClosestPlayer == null) return false;
-            var flag2 = role.ConfessTimer() == 0f;
+            var flag2 = role.BlessTimer() == 0f;
             if (!flag2) return false;
             if (!__instance.enabled) return false;
             var maxDistance = GameOptionsData.KillDistances[GameOptionsManager.Instance.currentNormalGameOptions.KillDistance];
@@ -28,44 +28,10 @@ namespace TownOfUsFusion.CrewmateRoles.OracleMod
             if (interact[4] == true)
             {
                 role.BlessedPlayer = role.ClosestPlayer;
-                bool showsCorrectFaction = true;
-                int faction = 1;
-                if (role.Accuracy == 0f) showsCorrectFaction = false;
-                else
-                {
-                    var num = UnityEngine.Random.RandomRangeInt(1, 101);
-                    showsCorrectFaction = num <= role.Accuracy;
-                }
-                if (showsCorrectFaction)
-                {
-                    if (role.BlessedPlayer.Is(Faction.Crewmates)) faction = 0;
-                    else if (role.BlessedPlayer.Is(Faction.Impostors)) faction = 2;
-                }
-                else
-                {
-                    var num = UnityEngine.Random.RandomRangeInt(0, 2);
-                    if (role.BlessedPlayer.Is(Faction.Impostors)) faction = num;
-                    else if (role.BlessedPlayer.Is(Faction.Crewmates)) faction = num + 1;
-                    else if (num == 1) faction = 2;
-                    else faction = 0;
-                }
-                if (faction == 0) role.RevealedFaction = Faction.Crewmates;
-                else if (faction == 1) role.RevealedFaction = Faction.NeutralEvil;
-                else role.RevealedFaction = Faction.Impostors;
-                Utils.Rpc(CustomRPC.Confess, PlayerControl.LocalPlayer.PlayerId, role.BlessedPlayer.PlayerId, faction);
-            }
-            if (interact[0] == true)
-            {
-                role.LastConfessed = DateTime.UtcNow;
+                role.LastBlessed = DateTime.UtcNow;
+                Utils.Rpc(CustomRPC.Fortify, (byte)0, PlayerControl.LocalPlayer.PlayerId, role.BlessedPlayer.PlayerId);
                 return false;
             }
-            else if (interact[1] == true)
-            {
-                role.LastConfessed = DateTime.UtcNow;
-                role.LastConfessed = role.LastConfessed.AddSeconds(CustomGameOptions.ProtectKCReset - CustomGameOptions.ConfessCd);
-                return false;
-            }
-            else if (interact[3] == true) return false;
             return false;
         }
     }

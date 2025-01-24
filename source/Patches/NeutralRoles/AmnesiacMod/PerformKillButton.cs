@@ -415,7 +415,7 @@ namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
             {
                 var oracleRole = Role.GetRole<Oracle>(amnesiac);
                 oracleRole.BlessedPlayer = null;
-                oracleRole.LastConfessed = DateTime.UtcNow;
+                oracleRole.LastBlessed = DateTime.UtcNow;
             }
 
             else if (role == RoleEnum.Arsonist)

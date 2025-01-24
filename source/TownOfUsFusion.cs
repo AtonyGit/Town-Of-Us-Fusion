@@ -113,7 +113,7 @@ namespace TownOfUsFusion
         public static Sprite StalkSprite;
         public static Sprite CrimeSceneSprite;
         public static Sprite CampaignSprite;
-        public static Sprite FortifySprite;
+        public static Sprite BlessSprite;
         public static Sprite HypnotiseSprite;
         public static Sprite HysteriaSprite;
         public static Sprite JailSprite;
@@ -191,7 +191,7 @@ namespace TownOfUsFusion
                 ReviveSprite = CreateSprite("TownOfUsFusion.Resources.Revive.png");
                 MedicSprite = CreateSprite("TownOfUsFusion.Resources.Medic.png");
                 ConfessSprite = CreateSprite("TownOfUsFusion.Resources.Confess.png");
-                FortifySprite = CreateSprite("TownOfUsFusion.Resources.Fortify.png");
+                BlessSprite = CreateSprite("TownOfUsFusion.Resources.Fortify.png");
             // Sovereign Roles
                 CampaignSprite = CreateScaledSprite("TownOfUsFusion.Resources.Campaign.png");
                 RevealSprite = CreateSprite("TownOfUsFusion.Resources.Reveal.png");

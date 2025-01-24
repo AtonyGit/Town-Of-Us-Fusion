@@ -218,14 +218,14 @@ namespace TownOfUsFusion.Roles
             if (!abilityUsed) return;
             if (TransportPlayer1.IsFortified())
             {
-                Coroutines.Start(Utils.FlashCoroutine(Colors.Warden));
-                Utils.Rpc(CustomRPC.Fortify, (byte)1, TransportPlayer1.GetWarden().Player.PlayerId);
+                Coroutines.Start(Utils.FlashCoroutine(Colors.Oracle));
+                Utils.Rpc(CustomRPC.Fortify, (byte)1, TransportPlayer1.GetOracle().Player.PlayerId);
                 return;
             }
             else if (TransportPlayer2.IsFortified())
             {
-                Coroutines.Start(Utils.FlashCoroutine(Colors.Warden));
-                Utils.Rpc(CustomRPC.Fortify, (byte)1, TransportPlayer2.GetWarden().Player.PlayerId);
+                Coroutines.Start(Utils.FlashCoroutine(Colors.Oracle));
+                Utils.Rpc(CustomRPC.Fortify, (byte)1, TransportPlayer2.GetOracle().Player.PlayerId);
                 return;
             }
             if (!UntransportablePlayers.ContainsKey(TransportPlayer1.PlayerId) && !UntransportablePlayers.ContainsKey(TransportPlayer2.PlayerId))

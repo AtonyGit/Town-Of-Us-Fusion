@@ -344,7 +344,7 @@ namespace TownOfUsFusion
             }) as Medic;
         }
 
-        public static Warden GetWarden(this PlayerControl player)
+        public static Warden GetOracle(this PlayerControl player)
         {
             return Role.GetRoles(RoleEnum.Warden).FirstOrDefault(role =>
             {
@@ -410,8 +410,8 @@ namespace TownOfUsFusion
             else if (target.IsFortified() && !toKill)
             {
                 zeroSecReset = true;
-                Coroutines.Start(FlashCoroutine(Colors.Warden));
-                Rpc(CustomRPC.Fortify, (byte)1, target.GetWarden().Player.PlayerId);
+                Coroutines.Start(FlashCoroutine(Colors.Oracle));
+                Rpc(CustomRPC.Fortify, (byte)1, target.GetOracle().Player.PlayerId);
             }
             else if (target.Is(RoleEnum.Pestilence))
             {
@@ -1405,7 +1405,7 @@ namespace TownOfUsFusion
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Oracle))
             {
                 var oracle = Role.GetRole<Oracle>(PlayerControl.LocalPlayer);
-                oracle.LastConfessed = DateTime.UtcNow;
+                oracle.LastBlessed = DateTime.UtcNow;
             }
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Sheriff))
             {

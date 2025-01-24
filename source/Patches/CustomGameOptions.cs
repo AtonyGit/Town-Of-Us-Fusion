@@ -350,7 +350,7 @@ namespace TownOfUsFusion
         public static bool ProsDiesOnIncorrectPros => Generate.ProsDiesOnIncorrectPros.Get();
         public static float ChargeUpDuration => Generate.ChargeUpDuration.Get();
         public static float ChargeUseDuration => Generate.ChargeUseDuration.Get();
-        public static float ConfessCd => Generate.ConfessCooldown.Get();
+        public static float BlessCd => Generate.ConfessCooldown.Get();
         public static float RevealAccuracy => Generate.RevealAccuracy.Get();
         public static bool NeutralBenignShowsEvil => Generate.NeutralBenignShowsEvil.Get();
         public static bool NeutralEvilShowsEvil => Generate.NeutralEvilShowsEvil.Get();

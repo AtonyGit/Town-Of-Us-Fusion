@@ -170,8 +170,8 @@ namespace TownOfUsFusion.CrewmateRoles.VigilanteMod
                 else
                 {
                     ShowHideButtonsVigi.HideSingle(role, targetId, toDie == role.Player);
-                    Coroutines.Start(Utils.FlashCoroutine(Colors.Warden));
-                    if (toDie.IsFortified()) Utils.Rpc(CustomRPC.Fortify, (byte)1, toDie.GetWarden().Player.PlayerId);
+                    Coroutines.Start(Utils.FlashCoroutine(Colors.Oracle));
+                    if (toDie.IsFortified()) Utils.Rpc(CustomRPC.Fortify, (byte)1, toDie.GetOracle().Player.PlayerId);
                 }
             }
 
