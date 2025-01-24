@@ -84,12 +84,6 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
                         confessingPlayer = oracleRole.BlessedPlayer;
                     }
 
-                    if (PlayerControl.LocalPlayer.Is(RoleEnum.Warden))
-                    {
-                        var wardenRole = Role.GetRole<Warden>(PlayerControl.LocalPlayer);
-                        wardenRole.ClosestPlayer = null;
-                    }
-
                     if (PlayerControl.LocalPlayer.Is(RoleEnum.Deputy))
                     {
                         var deputyRole = Role.GetRole<Deputy>(PlayerControl.LocalPlayer);

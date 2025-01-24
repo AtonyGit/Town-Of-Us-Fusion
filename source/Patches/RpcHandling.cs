@@ -1768,13 +1768,10 @@ namespace TownOfUsFusion
                     CrewmateSovereignRoles.Add((typeof(Prosecutor), CustomGameOptions.ProsecutorOn, true));
 
                 if (CustomGameOptions.OracleOn > 0)
-                    CrewmateInvestigativeRoles.Add((typeof(Oracle), CustomGameOptions.OracleOn, true));
+                    CrewmateProtectiveRoles.Add((typeof(Oracle), CustomGameOptions.OracleOn, true));
 
                 if (CustomGameOptions.AurialOn > 0)
                     CrewmateAstralRoles.Add((typeof(Aurial), CustomGameOptions.AurialOn, false || CustomGameOptions.UniqueRoles));
-
-                if (CustomGameOptions.WardenOn > 0)
-                    CrewmateProtectiveRoles.Add((typeof(Warden), CustomGameOptions.WardenOn, false || CustomGameOptions.UniqueRoles));
 
                 if (CustomGameOptions.JailorOn > 0)
                     CrewmateKillingRoles.Add((typeof(Jailor), CustomGameOptions.JailorOn, true));

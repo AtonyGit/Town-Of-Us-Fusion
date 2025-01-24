@@ -295,10 +295,10 @@ namespace TownOfUsFusion
 
         public static bool IsFortified(this PlayerControl player)
         {
-            return Role.GetRoles(RoleEnum.Warden).Any(role =>
+            return Role.GetRoles(RoleEnum.Oracle).Any(role =>
             {
-                var warden = (Warden)role;
-                var fortifiedPlayer = warden.Fortified;
+                var warden = (Oracle)role;
+                var fortifiedPlayer = warden.BlessedPlayer;
                 return fortifiedPlayer != null && player.PlayerId == fortifiedPlayer.PlayerId && !warden.Player.Data.IsDead && !warden.Player.Data.Disconnected;
             });
         }
@@ -344,13 +344,13 @@ namespace TownOfUsFusion
             }) as Medic;
         }
 
-        public static Warden GetOracle(this PlayerControl player)
+        public static Oracle GetOracle(this PlayerControl player)
         {
-            return Role.GetRoles(RoleEnum.Warden).FirstOrDefault(role =>
+            return Role.GetRoles(RoleEnum.Oracle).FirstOrDefault(role =>
             {
-                var fortifiedPlayer = ((Warden)role).Fortified;
+                var fortifiedPlayer = ((Oracle)role).BlessedPlayer;
                 return fortifiedPlayer != null && player.PlayerId == fortifiedPlayer.PlayerId;
-            }) as Warden;
+            }) as Oracle;
         }
 
         public static bool IsOnAlert(this PlayerControl player)
@@ -1406,6 +1406,7 @@ namespace TownOfUsFusion
             {
                 var oracle = Role.GetRole<Oracle>(PlayerControl.LocalPlayer);
                 oracle.LastBlessed = DateTime.UtcNow;
+                oracle.BlessedPlayer = null;
             }
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Sheriff))
             {
@@ -1497,11 +1498,6 @@ namespace TownOfUsFusion
             {
                 var politician = Role.GetRole<Politician>(PlayerControl.LocalPlayer);
                 politician.LastCampaigned = DateTime.UtcNow;
-            }
-            foreach (var role in Role.GetRoles(RoleEnum.Warden))
-            {
-                var warden = (Warden)role;
-                warden.Fortified = null;
             }
             foreach (var role in Role.GetRoles(RoleEnum.Deputy))
             {

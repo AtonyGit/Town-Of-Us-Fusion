@@ -63,7 +63,6 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
             else if (imitatorRole == RoleEnum.Coroner) new Coroner(ImitatingPlayer);
             else if (imitatorRole == RoleEnum.Investigator) new Investigator(ImitatingPlayer);
             else if (imitatorRole == RoleEnum.Lookout) new Lookout(ImitatingPlayer);
-            else if (imitatorRole == RoleEnum.Oracle) new Oracle(ImitatingPlayer);
             else if (imitatorRole == RoleEnum.Psychic) new Psychic(ImitatingPlayer);
             else if (imitatorRole == RoleEnum.Snitch)
             {
@@ -121,9 +120,9 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
                 medic.UsedAbility = true;
                 medic.StartingCooldown = medic.StartingCooldown.AddSeconds(-10f);
             }
-            else if (imitatorRole == RoleEnum.Warden)
+            else if (imitatorRole == RoleEnum.Oracle)
             {
-                var warden = new Warden(ImitatingPlayer);
+                var warden = new Oracle(ImitatingPlayer);
                 warden.StartingCooldown = warden.StartingCooldown.AddSeconds(-10f);
             }
             else if (imitatorRole == RoleEnum.Engineer) new Engineer(ImitatingPlayer);
