@@ -13,6 +13,7 @@ using TownOfUsFusion.Roles.Modifiers;
 using UnityEngine.UI;
 using TownOfUsFusion.ImpostorRoles.BlackmailerMod;
 using Reactor.Utilities.Extensions;
+using TownOfUsFusion.Roles.Alliances;
 
 namespace TownOfUsFusion.Patches
 {
@@ -28,7 +29,7 @@ namespace TownOfUsFusion.Patches
                 if (player == SetTraitor.WillBeTraitor)
                 {
                     var toChooseFrom = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) &&
-                        !x.Is(ModifierEnum.Lover) && !x.Data.IsDead && !x.Data.Disconnected && !x.Is(RoleEnum.Mayor) && !x.Is(RoleEnum.Politician) && !x.IsExeTarget()).ToList();
+                        !x.Is(AllianceEnum.Lover) && !x.Data.IsDead && !x.Data.Disconnected && !x.Is(RoleEnum.Mayor) && !x.Is(RoleEnum.Politician) && !x.IsExeTarget()).ToList();
                     if (toChooseFrom.Count == 0) return;
                     var rand = Random.RandomRangeInt(0, toChooseFrom.Count);
                     var pc = toChooseFrom[rand];
@@ -48,9 +49,9 @@ namespace TownOfUsFusion.Patches
                 var sc = Role.GetRole<SoulCollector>(player);
                 SoulExtensions.ClearSouls(sc.Souls);
             }
-            if (player.Is(ModifierEnum.Lover))
+            if (player.Is(AllianceEnum.Lover))
             {
-                var lover = Modifier.GetModifier<Lover>(player);
+                var lover = Alliance.GetAlliance<Lover>(player);
                 Modifier.ModifierDictionary.Remove(lover.OtherLover.Player.PlayerId);
             }
             if (PlayerControl.LocalPlayer.Is(RoleEnum.SerialKiller))

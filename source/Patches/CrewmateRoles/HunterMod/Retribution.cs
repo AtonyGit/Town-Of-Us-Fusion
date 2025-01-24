@@ -16,6 +16,7 @@ using TownOfUsFusion.ImpostorRoles.BlackmailerMod;
 using TownOfUsFusion.Modifiers.AssassinMod;
 using TownOfUsFusion.NeutralRoles.DoomsayerMod;
 using UnityEngine.UI;
+using TownOfUsFusion.Roles.Alliances;
 
 namespace TownOfUsFusion.CrewmateRoles.HunterMod
 {
@@ -118,7 +119,7 @@ namespace TownOfUsFusion.CrewmateRoles.HunterMod
             player.Die(DeathReason.Kill, false);
             if (checkLover && player.IsLover() && CustomGameOptions.BothLoversDie)
             {
-                var otherLover = Modifier.GetModifier<Lover>(player).OtherLover.Player;
+                var otherLover = Alliance.GetAlliance<Lover>(player).OtherLover.Player;
                 if (!otherLover.Is(RoleEnum.Pestilence)) MurderPlayer(otherLover, false);
             }
 

@@ -253,6 +253,11 @@ namespace TownOfUsFusion.Patches
                         AddRoleMessage(RoleEnum.Doomsayer);
                         return false;
                     }
+                    else if (chatText.ToLower().Trim().StartsWith("/cann"))
+                    {
+                        AddRoleMessage(RoleEnum.Cannibal);
+                        return false;
+                    }
                     else if (chatText.ToLower().Trim().StartsWith("/vamp"))
                     {
                         AddRoleMessage(RoleEnum.Vampire);
@@ -319,9 +324,9 @@ namespace TownOfUsFusion.Patches
                         AddRoleMessage(RoleEnum.Deputy);
                         return false;
                     }
-                    else if (chatText.ToLower().Trim().StartsWith("/lover"))
+                    else if (chatText.ToLower().Trim().StartsWith("/love"))
                     {
-                        AddModifierMessage(ModifierEnum.Lover);
+                        AddAllianceMessage(AllianceEnum.Lover);
                         return false;
                     }
                     else if (chatText.ToLower().Trim().StartsWith("/lo"))
@@ -562,6 +567,8 @@ namespace TownOfUsFusion.Patches
                     PlayerControl.LocalPlayer, "The Bomber is an impostor who can place bombs, these kill anyone in the area a short duration later.");
                 if (role == RoleEnum.Doomsayer) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
                     PlayerControl.LocalPlayer, "The Doomsayer is a neutral evil role with the goal to guess 3 other player's roles simultaneously.");
+                if (role == RoleEnum.Cannibal) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
+                    PlayerControl.LocalPlayer, "The Cannibal is a neutral chaos role with the goal to eat multiple corpses in order to win by themselves. However, some bodies may be staked by a Hunter, which will not count.");
                 if (role == RoleEnum.Vampire) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,
                     "The Vampire is a neutral killer with the goal to kill everyone. The first crewmate the original Vampire bites will turn into a Vampire, the rest will die.");
                 if (role == RoleEnum.Prosecutor) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
@@ -592,6 +599,11 @@ namespace TownOfUsFusion.Patches
                     "The Deputy is a crewmate who can camp other players. If the player is killed they will receive an alert notifying them of their death. During the following meeting they may then shoot anyone. If they shoot the killer, they die unless fortified or invincible, if they are wrong nothing happens.");
             }
 
+            public static void AddAllianceMessage(AllianceEnum alliance)
+            {
+                if (alliance == AllianceEnum.Lover) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,
+                    "The Lover is a global modifier that life links 2 players. They also gain an extra win condition of surviving until final 3 together.");
+            }
             public static void AddModifierMessage(ModifierEnum modifier)
             {
                 if (modifier == ModifierEnum.Giant) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
@@ -612,8 +624,6 @@ namespace TownOfUsFusion.Patches
                     PlayerControl.LocalPlayer, "The Tiebreaker is a global modifier that allows a player's vote to break ties in meetings.");
                 if (modifier == ModifierEnum.Torch) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
                     PlayerControl.LocalPlayer, "The Torch is a crewmate modifier that allows them to see when lights are off.");
-                if (modifier == ModifierEnum.Lover) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,
-                    "The Lover is a global modifier that life links 2 players. They also gain an extra win condition of surviving until final 3 together.");
                 if (modifier == ModifierEnum.Sleuth) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
                     PlayerControl.LocalPlayer, "The Sleuth is a global modifier that allows a player to see roles of dead bodies that they report.");
                 if (modifier == ModifierEnum.Radar) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(

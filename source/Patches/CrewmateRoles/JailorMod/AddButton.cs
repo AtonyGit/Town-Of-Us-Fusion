@@ -19,6 +19,7 @@ using TownOfUsFusion.CrewmateRoles.VigilanteMod;
 using TownOfUsFusion.Modifiers.AssassinMod;
 using TownOfUsFusion.NeutralRoles.DoomsayerMod;
 using TownOfUsFusion.CrewmateRoles.DeputyMod;
+using TownOfUsFusion.Roles.Alliances;
 
 namespace TownOfUsFusion.CrewmateRoles.JailorMod
 {
@@ -244,7 +245,7 @@ namespace TownOfUsFusion.CrewmateRoles.JailorMod
             player.Die(DeathReason.Kill, false);
             if (checkLover && player.IsLover() && CustomGameOptions.BothLoversDie)
             {
-                var otherLover = Modifier.GetModifier<Lover>(player).OtherLover.Player;
+                var otherLover = Alliance.GetAlliance<Lover>(player).OtherLover.Player;
                 if (!otherLover.Is(RoleEnum.Pestilence)) ExecuteKill(jailor, otherLover, false);
             }
 

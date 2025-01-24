@@ -1,6 +1,7 @@
 using System.Linq;
 using HarmonyLib;
 using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Alliances;
 using TownOfUsFusion.Roles.Modifiers;
 
 namespace TownOfUsFusion.Patches
@@ -26,7 +27,7 @@ namespace TownOfUsFusion.Patches
             {
                 __instance.WinText.text = "</color><color=#008DFFFF>Victory";
                 
-                var loveRole = Modifier.AllModifiers.FirstOrDefault(x => x.ModifierType == ModifierEnum.Lover && ((Lover)x).LoveCoupleWins);
+                var loveRole = Alliance.AllAlliances.FirstOrDefault(x => x.AllianceType == AllianceEnum.Lover && ((Lover)x).LoveCoupleWins);
                 if (loveRole != null) return;
                 var jackalRole = Role.AllRoles.FirstOrDefault(x => (x.RoleType == RoleEnum.Jackal || x.IsAlliance == AllianceEnum.Recruit) && Role.JackalWins);
                 if (jackalRole != null) return;

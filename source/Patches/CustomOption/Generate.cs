@@ -54,6 +54,11 @@ namespace TownOfUsFusion.CustomOption
         public static CustomNumberOption JesterOn;
         public static CustomNumberOption PhantomOn;
 
+        public static CustomHeaderOption NeutralChaosRoles;
+        public static CustomNumberOption InquisitorOn;
+        public static CustomNumberOption TyrantOn;
+        public static CustomNumberOption CannibalOn;
+
         public static CustomHeaderOption NeutralKillingRoles;
         public static CustomNumberOption ArsonistOn;
         public static CustomNumberOption SerialKillerOn;
@@ -242,7 +247,11 @@ namespace TownOfUsFusion.CustomOption
         public static CustomHeaderOption Juggernaut;
         public static CustomNumberOption JuggKillCooldown;
         public static CustomNumberOption ReducedKCdPerKill;
+        public static CustomNumberOption KillsNeeded;
         public static CustomToggleOption JuggVent;
+        public static CustomNumberOption ArmKillCooldown;
+        public static CustomToggleOption ArmVent;
+        public static CustomNumberOption DeathRevealDelay;
 
         public static CustomHeaderOption Morphling;
         public static CustomNumberOption MorphlingCooldown;
@@ -299,7 +308,10 @@ namespace TownOfUsFusion.CustomOption
         public static CustomToggleOption AssassinCrewmateGuess;
         public static CustomToggleOption AssassinGuessNeutralBenign;
         public static CustomToggleOption AssassinGuessNeutralEvil;
+        public static CustomToggleOption AssassinGuessNeutralChaos;
         public static CustomToggleOption AssassinGuessNeutralKilling;
+        public static CustomToggleOption AssassinGuessNeutralNeophyte;
+        public static CustomToggleOption AssassinGuessNeutralApocalypse;
         public static CustomToggleOption AssassinGuessImpostors;
         public static CustomToggleOption AssassinGuessModifiers;
         public static CustomToggleOption AssassinGuessLovers;
@@ -313,7 +325,10 @@ namespace TownOfUsFusion.CustomOption
         public static CustomToggleOption VigilanteMultiKill;
         public static CustomToggleOption VigilanteGuessNeutralBenign;
         public static CustomToggleOption VigilanteGuessNeutralEvil;
+        public static CustomToggleOption VigilanteGuessNeutralChaos;
         public static CustomToggleOption VigilanteGuessNeutralKilling;
+        public static CustomToggleOption VigilanteGuessNeutralNeophyte;
+        public static CustomToggleOption VigilanteGuessNeutralApocalypse;
         public static CustomToggleOption VigilanteGuessModifiers;
         public static CustomToggleOption VigilanteGuessLovers;
 
@@ -390,6 +405,7 @@ namespace TownOfUsFusion.CustomOption
         public static CustomHeaderOption Plaguebearer;
         public static CustomNumberOption InfectCooldown;
         public static CustomNumberOption PestKillCooldown;
+        public static CustomNumberOption PestKillDelay;
         public static CustomToggleOption PestVent;
 
         public static CustomHeaderOption Werewolf;
@@ -426,9 +442,27 @@ namespace TownOfUsFusion.CustomOption
         public static CustomNumberOption ObserveCooldown;
         public static CustomToggleOption DoomsayerGuessNeutralBenign;
         public static CustomToggleOption DoomsayerGuessNeutralEvil;
+        public static CustomToggleOption DoomsayerGuessNeutralChaos;
         public static CustomToggleOption DoomsayerGuessNeutralKilling;
+        public static CustomToggleOption DoomsayerGuessNeutralNeophyte;
+        public static CustomToggleOption DoomsayerGuessNeutralApocalypse;
         public static CustomToggleOption DoomsayerGuessImpostors;
         public static CustomToggleOption DoomsayerCantObserve;
+
+        public static CustomHeaderOption Cannibal;
+        public static CustomToggleOption CannibalArrows;
+        public static CustomNumberOption CannibalArrowDelay;
+        public static CustomNumberOption BodiesNeededToWin;
+
+        public static CustomHeaderOption Inquisitor;
+        public static CustomNumberOption InquireCooldown;
+        public static CustomToggleOption VanquishEnabled;
+        public static CustomNumberOption VanquishCooldown;
+        public static CustomToggleOption VanquishRoundOne;
+
+        public static CustomHeaderOption Tyrant;
+        public static CustomNumberOption TyrantVoteBank;
+        public static CustomToggleOption TyrantAnonymous;
 
         public static CustomHeaderOption Vampire;
         public static CustomNumberOption BiteCooldown;
@@ -619,6 +653,14 @@ namespace TownOfUsFusion.CustomOption
             JesterOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#FFBFCCFF>Jester</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             PhantomOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#662962FF>Phantom</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+
+            NeutralChaosRoles = new CustomHeaderOption(num++, MultiMenu.neutral, "Neutral Chaos Roles");
+            InquisitorOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#DA4291FF>Inquisitor</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            TyrantOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#EA535BFF>Tyrant</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            CannibalOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#8C4005FF>Cannibal</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
 
             NeutralKillingRoles = new CustomHeaderOption(num++, MultiMenu.neutral, "Neutral Killing Roles");
@@ -895,7 +937,10 @@ namespace TownOfUsFusion.CustomOption
             AssassinCrewmateGuess = new CustomToggleOption(num++, MultiMenu.imposter, "Assassin Can Guess \"Crewmate\"", false);
             AssassinGuessNeutralBenign = new CustomToggleOption(num++, MultiMenu.imposter, "Assassin Can Guess Neutral Benign Roles", false);
             AssassinGuessNeutralEvil = new CustomToggleOption(num++, MultiMenu.imposter, "Assassin Can Guess Neutral Evil Roles", false);
+            AssassinGuessNeutralChaos = new CustomToggleOption(num++, MultiMenu.imposter, "Assassin Can Guess Neutral Chaos Roles", false);
             AssassinGuessNeutralKilling = new CustomToggleOption(num++, MultiMenu.imposter, "Assassin Can Guess Neutral Killing Roles", false);
+            AssassinGuessNeutralNeophyte = new CustomToggleOption(num++, MultiMenu.imposter, "Assassin Can Guess Neutral Neophyte Roles", false);
+            AssassinGuessNeutralApocalypse = new CustomToggleOption(num++, MultiMenu.imposter, "Assassin Can Guess Neutral Apocalypse Roles", false);
             AssassinGuessImpostors = new CustomToggleOption(num++, MultiMenu.imposter, "Assassin Can Guess Impostor Roles", false);
             AssassinGuessModifiers = new CustomToggleOption(num++, MultiMenu.imposter, "Assassin Can Guess Crewmate Modifiers", false);
             AssassinGuessLovers = new CustomToggleOption(num++, MultiMenu.imposter, "Assassin Can Guess Lovers", false);
@@ -1064,7 +1109,10 @@ namespace TownOfUsFusion.CustomOption
             VigilanteMultiKill = new CustomToggleOption(num++, MultiMenu.crewmate, "Vigilante Can Kill More Than Once Per Meeting", false);
             VigilanteGuessNeutralBenign = new CustomToggleOption(num++, MultiMenu.crewmate, "Vigilante Can Guess Neutral Benign Roles", false);
             VigilanteGuessNeutralEvil = new CustomToggleOption(num++, MultiMenu.crewmate, "Vigilante Can Guess Neutral Evil Roles", false);
+            VigilanteGuessNeutralChaos = new CustomToggleOption(num++, MultiMenu.crewmate, "Vigilante Can Guess Neutral Chaos Roles", false);
             VigilanteGuessNeutralKilling = new CustomToggleOption(num++, MultiMenu.crewmate, "Vigilante Can Guess Neutral Killing Roles", false);
+            VigilanteGuessNeutralNeophyte = new CustomToggleOption(num++, MultiMenu.crewmate, "Vigilante Can Guess Neutral Neophyte Roles", false);
+            VigilanteGuessNeutralApocalypse = new CustomToggleOption(num++, MultiMenu.crewmate, "Vigilante Can Guess Neutral Apocalypse Roles", false);
             VigilanteGuessModifiers = new CustomToggleOption(num++, MultiMenu.crewmate, "Vigilante Can Guess Impostor Modifiers", false);
             VigilanteGuessLovers = new CustomToggleOption(num++, MultiMenu.crewmate, "Vigilante Can Guess Lovers", false);
 
@@ -1182,7 +1230,10 @@ namespace TownOfUsFusion.CustomOption
                 new CustomNumberOption(num++, MultiMenu.neutral, "Observe Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
             DoomsayerGuessNeutralBenign = new CustomToggleOption(num++, MultiMenu.neutral, "Doomsayer Can Guess Neutral Benign Roles", false);
             DoomsayerGuessNeutralEvil = new CustomToggleOption(num++, MultiMenu.neutral, "Doomsayer Can Guess Neutral Evil Roles", false);
+            DoomsayerGuessNeutralChaos = new CustomToggleOption(num++, MultiMenu.neutral, "Doomsayer Can Guess Neutral Chaos Roles", false);
             DoomsayerGuessNeutralKilling = new CustomToggleOption(num++, MultiMenu.neutral, "Doomsayer Can Guess Neutral Killing Roles", false);
+            DoomsayerGuessNeutralNeophyte = new CustomToggleOption(num++, MultiMenu.neutral, "Doomsayer Can Guess Neutral Neophyte Roles", false);
+            DoomsayerGuessNeutralApocalypse = new CustomToggleOption(num++, MultiMenu.neutral, "Doomsayer Can Guess Neutral Apocalypse Roles", false);
             DoomsayerGuessImpostors = new CustomToggleOption(num++, MultiMenu.neutral, "Doomsayer Can Guess Impostor Roles", false);
             DoomsayerCantObserve = new CustomToggleOption(num++, MultiMenu.neutral, "Doomsayer Can't Observe", false);
 
@@ -1212,6 +1263,30 @@ namespace TownOfUsFusion.CustomOption
                  new CustomNumberOption(num++, MultiMenu.neutral, "Tasks Remaining When Phantom Can Be Clicked", 5, 1, 15, 1);
             PhantomSpook =
                 new CustomToggleOption(num++, MultiMenu.neutral, "Phantom Spooks Player On Victory", true);
+
+            Cannibal = new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#8C4005FF>Cannibal</color>");
+            CannibalArrows =
+                new CustomToggleOption(num++, MultiMenu.neutral, "Cannibal Gets Arrows Pointing To Dead Bodies", false);
+            CannibalArrowDelay =
+                new CustomNumberOption(num++, MultiMenu.neutral, "Time After Death Arrow Appears", 5f, 0f, 15f, 1f, CooldownFormat);
+            BodiesNeededToWin =
+                new CustomNumberOption(num++, MultiMenu.neutral, "Bodies Needed To Win", 3, 1, 6, 1);
+                
+            Inquisitor = new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#DA4291FF>Inquisitor</color>");
+            InquireCooldown =
+                new CustomNumberOption(num++, MultiMenu.neutral, "Inquire Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
+            VanquishEnabled =
+                new CustomToggleOption(num++, MultiMenu.neutral, "Inquisitor Can Vanquish", true);
+            VanquishRoundOne =
+                new CustomToggleOption(num++, MultiMenu.neutral, "Inquisitor Can Vanquish Round One", false);
+            VanquishCooldown =
+                new CustomNumberOption(num++, MultiMenu.neutral, "Vanquish Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
+                
+            Tyrant = new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#EA535BFF>Tyrant</color>");
+            TyrantVoteBank =
+                new CustomNumberOption(num++, MultiMenu.neutral, "Initial Tyrant Vote Bank", 1, 1, 15, 1);
+            TyrantAnonymous =
+                new CustomToggleOption(num++, MultiMenu.neutral, "Tyrant Votes Show Anonymous", false);
 
             Arsonist = new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#FF4D00FF>Arsonist</color>");
             DouseCooldown =

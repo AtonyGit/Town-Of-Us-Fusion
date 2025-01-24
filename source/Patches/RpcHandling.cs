@@ -39,6 +39,8 @@ using TownOfUsFusion.ImpostorRoles.BomberMod;
 using TownOfUsFusion.CrewmateRoles.HunterMod;
 using Il2CppSystem.Linq;
 using TownOfUsFusion.CrewmateRoles.DeputyMod;
+using TownOfUsFusion.Roles.Alliances;
+using TownOfUsFusion.NeutralRoles.CannibalMod;
 
 namespace TownOfUsFusion
 {
@@ -767,7 +769,7 @@ namespace TownOfUsFusion
             }
 
             // Set the Traitor, if there is one enabled.
-            var toChooseFromCrew = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) && !x.Is(RoleEnum.Politician) && !x.Is(ModifierEnum.Lover)).ToList();
+            var toChooseFromCrew = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) && !x.Is(RoleEnum.Politician) && !x.Is(AllianceEnum.Lover)).ToList();
             if (TraitorOn && toChooseFromCrew.Count != 0)
             {
                 var rand = Random.RandomRangeInt(0, toChooseFromCrew.Count);
@@ -798,7 +800,7 @@ namespace TownOfUsFusion
                 Utils.Rpc(CustomRPC.SetHaunter, byte.MaxValue);
             }
 
-            var toChooseFromNeut = PlayerControl.AllPlayerControls.ToArray().Where(x => (x.Is(Faction.NeutralBenign) || x.Is(Faction.NeutralEvil) || x.Is(Faction.NeutralKilling)) && !x.Is(ModifierEnum.Lover)).ToList();
+            var toChooseFromNeut = PlayerControl.AllPlayerControls.ToArray().Where(x => (x.Is(Faction.NeutralBenign) || x.Is(Faction.NeutralEvil) || x.Is(Faction.NeutralKilling)) && !x.Is(AllianceEnum.Lover)).ToList();
             if (PhantomOn && toChooseFromNeut.Count != 0)
             {
                 var rand = Random.RandomRangeInt(0, toChooseFromNeut.Count);
@@ -813,7 +815,7 @@ namespace TownOfUsFusion
                 Utils.Rpc(CustomRPC.SetPhantom, byte.MaxValue);
             }
 
-            var exeTargets = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) && !x.Is(ModifierEnum.Lover) && !x.Is(RoleEnum.Politician) && !x.Is(RoleEnum.Prosecutor) && !x.Is(RoleEnum.Swapper) && !x.Is(RoleEnum.Vigilante) && !x.Is(RoleEnum.Jailor) && x != SetTraitor.WillBeTraitor).ToList();
+            var exeTargets = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) && !x.Is(AllianceEnum.Lover) && !x.Is(RoleEnum.Politician) && !x.Is(RoleEnum.Prosecutor) && !x.Is(RoleEnum.Swapper) && !x.Is(RoleEnum.Vigilante) && !x.Is(RoleEnum.Jailor) && x != SetTraitor.WillBeTraitor).ToList();
             foreach (var role in Role.GetRoles(RoleEnum.Executioner))
             {
                 var exe = (Executioner)role;
@@ -826,8 +828,8 @@ namespace TownOfUsFusion
                 }
             }
 
-            var goodGATargets = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) && !x.Is(ModifierEnum.Lover)).ToList();
-            var evilGATargets = PlayerControl.AllPlayerControls.ToArray().Where(x => (x.Is(Faction.Impostors) || x.Is(Faction.NeutralKilling)) && !x.Is(ModifierEnum.Lover)).ToList();
+            var goodGATargets = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) && !x.Is(AllianceEnum.Lover)).ToList();
+            var evilGATargets = PlayerControl.AllPlayerControls.ToArray().Where(x => (x.Is(Faction.Impostors) || x.Is(Faction.NeutralKilling)) && !x.Is(AllianceEnum.Lover)).ToList();
             foreach (var role in Role.GetRoles(RoleEnum.GuardianAngel))
             {
                 var ga = (GuardianAngel)role;
@@ -880,7 +882,7 @@ namespace TownOfUsFusion
 
                     case CustomRPC.LoveWin:
                         var winnerlover = Utils.PlayerById(reader.ReadByte());
-                        Modifier.GetModifier<Lover>(winnerlover).Win();
+                        Alliance.GetAlliance<Lover>(winnerlover).Win();
                         break;
 
                     case CustomRPC.NobodyWins:
@@ -918,11 +920,13 @@ namespace TownOfUsFusion
                         Role.NobodyWins = false;
                         Role.SurvOnlyWins = false;
                         Role.VampireWins = false;
+                        Role.JackalWins = false;
+                        Role.ApocWins = false;
                         ExileControllerPatch.lastExiled = null;
                         PatchKillTimer.GameStarted = false;
                         StartImitate.ImitatingPlayer = null;
                         ChatCommands.JailorMessage = false;
-                        KillButtonTarget.DontRevive = byte.MaxValue;
+                        CrewmateRoles.AltruistMod.KillButtonTarget.DontRevive = byte.MaxValue;
                         AddHauntPatch.AssassinatedPlayers.Clear();
                         HudUpdate.Zooming = false;
                         HudUpdate.ZoomStart();
@@ -939,6 +943,23 @@ namespace TownOfUsFusion
                                 Coroutines.Start(Coroutine.CleanCoroutine(body, janitorRole));
 
                         break;
+                    case CustomRPC.CannibalEat:
+                        readByte1 = reader.ReadByte();
+                        var cannibalPlayer = Utils.PlayerById(readByte1);
+                        var cannibalRole = Role.GetRole<Cannibal>(cannibalPlayer);
+                        readByte = reader.ReadByte();
+                        var deadCBodies = Object.FindObjectsOfType<DeadBody>();
+                        foreach (var body in deadCBodies)
+                            if (body.ParentId == readByte)
+                                Coroutines.Start(EatCoroutine.CannibalCoroutine(body, cannibalRole));
+                        if (TownOfUsFusion.isDevBuild) PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage("Cannibal needs " + cannibalRole.EatNeed + " more bodies to win!");
+
+                        break;
+                    case CustomRPC.CannibalWin:
+                        var cannibalWinner = Role.GetRole<Cannibal>(Utils.PlayerById(reader.ReadByte()));
+                        cannibalWinner.Wins();
+                        break;
+                        
                     case CustomRPC.EngineerFix:
                         if (ShipStatus.Instance.Systems.ContainsKey(SystemTypes.MushroomMixupSabotage))
                         {
@@ -1347,7 +1368,7 @@ namespace TownOfUsFusion
 
                                     if (!CustomGameOptions.NeutralEvilWinEndsGame)
                                     {
-                                        KillButtonTarget.DontRevive = sc.Player.PlayerId;
+                                        CrewmateRoles.AltruistMod.KillButtonTarget.DontRevive = sc.Player.PlayerId;
                                         sc.Player.Exiled();
                                     }
                                 }
@@ -1666,7 +1687,7 @@ namespace TownOfUsFusion
                 GlobalAlliances.Clear();
 
                 Murder.KilledPlayers.Clear();
-                KillButtonTarget.DontRevive = byte.MaxValue;
+                CrewmateRoles.AltruistMod.KillButtonTarget.DontRevive = byte.MaxValue;
                 HudUpdate.Zooming = false;
                 HudUpdate.ZoomStart();
 
@@ -1878,8 +1899,6 @@ namespace TownOfUsFusion
                 if (Check(CustomGameOptions.ButtonBarryOn))
                     ButtonModifiers.Add((typeof(ButtonBarry), CustomGameOptions.ButtonBarryOn));
 
-                if (Check(CustomGameOptions.LoversOn))
-                    GlobalModifiers.Add((typeof(Lover), CustomGameOptions.LoversOn));
 
                 if (Check(CustomGameOptions.SleuthOn))
                     GlobalModifiers.Add((typeof(Sleuth), CustomGameOptions.SleuthOn));
@@ -1911,6 +1930,20 @@ namespace TownOfUsFusion
                 #endregion
                 #region Assassin Ability
                 AssassinAbility.Add((typeof(Assassin), CustomRPC.SetAssassin, 100));
+                #endregion
+
+                #region Crewmate Alliances
+                /*if (Check(CustomGameOptions.EgotistOn))
+                    CrewmateAlliances.Add((typeof(Egotist), CustomGameOptions.EgotistOn));
+                if (Check(CustomGameOptions.CrewpocalypseOn))
+                    CrewmateAlliances.Add((typeof(Crewpocalypse), CustomGameOptions.CrewpocalypseOn));
+                if (Check(CustomGameOptions.CrewpostorOn))
+                    CrewmateAlliances.Add((typeof(Crewpostor), CustomGameOptions.CrewpostorOn));*/
+                #endregion
+
+                #region Global Modifiers
+                if (Check(CustomGameOptions.LoversOn))
+                    GlobalAlliances.Add((typeof(Lover), CustomGameOptions.LoversOn));
                 #endregion
 
                 GenEachRole(infected.ToList());

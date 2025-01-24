@@ -1,5 +1,6 @@
 using HarmonyLib;
 using TownOfUsFusion.Extensions;
+using TownOfUsFusion.Roles.Alliances;
 using TownOfUsFusion.Roles.Modifiers;
 
 namespace TownOfUsFusion
@@ -25,10 +26,17 @@ namespace TownOfUsFusion
                             playerInfo._object.Is(RoleEnum.Arsonist) || playerInfo._object.Is(RoleEnum.Juggernaut) ||
                             playerInfo._object.Is(RoleEnum.Plaguebearer) || playerInfo._object.Is(RoleEnum.Pestilence) ||
                             playerInfo._object.Is(RoleEnum.Werewolf) || playerInfo._object.Is(RoleEnum.Doomsayer) ||
+                            playerInfo._object.Is(RoleEnum.Tyrant) ||
+                            playerInfo._object.Is(RoleEnum.Cannibal) ||
+                            playerInfo._object.Is(RoleEnum.Inquisitor) ||
                             playerInfo._object.Is(RoleEnum.SerialKiller) ||
+                            playerInfo._object.Is(AllianceEnum.Crewpostor) || playerInfo._object.Is(AllianceEnum.Crewpocalypse) ||
+                            playerInfo._object.Is(AllianceEnum.Egotist) || playerInfo._object.Is(AllianceEnum.Recruit) ||
+                            playerInfo._object.Is(RoleEnum.Cannibal) ||
+                            playerInfo._object.Is(RoleEnum.Inquisitor) ||
                             playerInfo._object.Is(RoleEnum.Vampire) || playerInfo._object.Is(RoleEnum.SoulCollector) ||
                             playerInfo._object.Is(RoleEnum.Phantom) || playerInfo._object.Is(RoleEnum.Haunter) ||
-                            (playerInfo._object.Is(ModifierEnum.Lover) && !Modifier.GetModifier<Lover>(playerInfo._object).OtherLover.Player.Is(Faction.Crewmates))
+                            (playerInfo._object.Is(AllianceEnum.Lover) && !Alliance.GetAlliance<Lover>(playerInfo._object).OtherLover.Player.Is(Faction.Crewmates))
                         ))
                     {
                         for (var j = 0; j < playerInfo.Tasks.Count; j++)

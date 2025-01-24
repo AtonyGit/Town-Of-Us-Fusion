@@ -3,6 +3,7 @@ using HarmonyLib;
 using TMPro;
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Alliances;
 using TownOfUsFusion.Roles.Modifiers;
 using UnityEngine;
 
@@ -36,7 +37,7 @@ namespace TownOfUsFusion.Modifiers.LoversMod
                 if (Role.GetRoles(RoleEnum.Executioner).Any(x => ((Executioner)x).TargetVotedOut)) return;
                 if (Role.GetRoles(RoleEnum.Doomsayer).Any(x => ((Doomsayer)x).WonByGuessing)) return;
             }
-            if (!Modifier.AllModifiers.Where(x => x.ModifierType == ModifierEnum.Lover)
+            if (!Alliance.AllAlliances.Where(x => x.AllianceType == AllianceEnum.Lover)
                 .Any(x => ((Lover) x).LoveCoupleWins)) return;
 
             PoolablePlayer[] array = Object.FindObjectsOfType<PoolablePlayer>();

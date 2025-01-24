@@ -5,6 +5,7 @@ using Reactor.Utilities;
 using Reactor.Utilities.Extensions;
 using TMPro;
 using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Alliances;
 using TownOfUsFusion.Roles.Modifiers;
 using UnityEngine;
 using UnityEngine.UI;
@@ -166,10 +167,11 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
                 {
                     ShowHideButtonsDoom.HideTextDoom(role);
                     var playerModifier = Modifier.GetModifier(voteArea);
+                    var playerAlliance = Alliance.GetAlliance(voteArea);
                     DoomsayerKill.RpcMurderPlayer(playerRole.Player, PlayerControl.LocalPlayer);
                     if (playerRole.Player.IsLover() && CustomGameOptions.BothLoversDie)
                     {
-                        var lover = ((Lover)playerModifier).OtherLover.Player;
+                        var lover = ((Lover)playerAlliance).OtherLover.Player;
                         if (!lover.Is(RoleEnum.Pestilence)) ShowHideButtonsDoom.HideSingle(role, lover.PlayerId, false);
                     }
                 }

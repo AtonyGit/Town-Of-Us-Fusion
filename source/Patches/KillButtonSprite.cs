@@ -44,6 +44,7 @@ namespace TownOfUsFusion
         private static Sprite Collect => TownOfUsFusion.CollectSprite;
         private static Sprite Watch => TownOfUsFusion.WatchSprite;
         private static Sprite Camp => TownOfUsFusion.CampSprite;
+        private static Sprite Consume => TownOfUsFusion.ConsumeSprite;
 
         private static Sprite Kill;
         private static Sprite SheriffKill => TownOfUsFusion.SheriffKill;
@@ -174,6 +175,13 @@ namespace TownOfUsFusion
                 __instance.KillButton.graphic.sprite = Observe;
                 __instance.KillButton.buttonLabelText.text = "Observe";
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Doomsayer);
+                flag = true;
+            }
+            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Cannibal))
+            {
+                __instance.KillButton.graphic.sprite = Consume;
+                __instance.KillButton.buttonLabelText.text = "Consume";
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Cannibal);
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Vampire))

@@ -99,7 +99,6 @@ namespace TownOfUsFusion
 
     public enum ModifierEnum
     {
-        Lover,
         Torch,
         Diseased,
         Flash,

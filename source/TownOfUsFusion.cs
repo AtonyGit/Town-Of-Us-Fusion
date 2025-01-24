@@ -130,6 +130,7 @@ namespace TownOfUsFusion
         public static Sprite PoisonedSprite;
         public static Sprite CampSprite;
         public static Sprite ShootSprite;
+        public static Sprite ConsumeSprite;
 
         public static Sprite SettingsButtonSprite;
         public static Sprite CrewSettingsButtonSprite;
@@ -212,6 +213,7 @@ namespace TownOfUsFusion
                 JesterVent = CreateVentSprite("TownOfUsFusion.Resources.JesterVent.png");
             // Chaos Roles
                 InquisKill = CreateScaledSprite("TownOfUsFusion.Resources.InquisKill.png");
+                ConsumeSprite = CreateSprite("TownOfUsFusion.Resources.Consume.png");
             // Killing Roles
                 DouseSprite = CreateSprite("TownOfUsFusion.Resources.Douse.png");
                 IgniteSprite = CreateSprite("TownOfUsFusion.Resources.Ignite.png");

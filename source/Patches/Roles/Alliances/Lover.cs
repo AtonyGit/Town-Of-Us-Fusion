@@ -4,9 +4,9 @@ using TownOfUsFusion.Patches;
 using UnityEngine;
 using TownOfUsFusion.Extensions;
 
-namespace TownOfUsFusion.Roles.Modifiers
+namespace TownOfUsFusion.Roles.Alliances
 {
-    public class Lover : Modifier
+    public class Lover : Alliance
     {
         public Lover(PlayerControl player) : base(player)
         {
@@ -15,7 +15,7 @@ namespace TownOfUsFusion.Roles.Modifiers
             TaskText = () =>
                 "You are in Love with " + OtherLover.Player.GetDefaultOutfit().PlayerName;
             Color = Colors.Lovers;
-            ModifierType = ModifierEnum.Lover;
+            AllianceType = AllianceEnum.Lover;
         }
 
         public Lover OtherLover { get; set; }
@@ -32,14 +32,14 @@ namespace TownOfUsFusion.Roles.Modifiers
             return loverTeam;
         }
 
-        public static void Gen(List<PlayerControl> canHaveModifiers)
+        public static void Gen(List<PlayerControl> canHaveAlliances)
         {
             List<PlayerControl> crewmates = new List<PlayerControl>();
             List<PlayerControl> impostors = new List<PlayerControl>();
 
-            foreach(var player in canHaveModifiers)
+            foreach(var player in canHaveAlliances)
             {
-                if (player.Is(Faction.Impostors) || (player.Is(Faction.NeutralKilling) && CustomGameOptions.NeutralLovers))
+                if (player.Is(Faction.Impostors) || ((player.Is(Faction.NeutralKilling) || player.Is(Faction.NeutralNeophyte) || player.Is(Faction.NeutralApocalypse)) && CustomGameOptions.NeutralLovers))
                     impostors.Add(player);
                 else if (player.Is(Faction.Crewmates) || ((player.Is(Faction.NeutralBenign) || player.Is(Faction.NeutralEvil)) && CustomGameOptions.NeutralLovers))
                     crewmates.Add(player);
@@ -49,7 +49,7 @@ namespace TownOfUsFusion.Roles.Modifiers
 
             var num = Random.RandomRangeInt(0, crewmates.Count);
             var firstLover = crewmates[num];
-            canHaveModifiers.Remove(firstLover);
+            canHaveAlliances.Remove(firstLover);
 
             var lovingimp = Random.RandomRangeInt(0, 100);
 
@@ -68,7 +68,7 @@ namespace TownOfUsFusion.Roles.Modifiers
                 }
                 secondLover = crewmates[num3];
             }
-            canHaveModifiers.Remove(secondLover);
+            canHaveAlliances.Remove(secondLover);
 
             Utils.Rpc(CustomRPC.SetCouple, firstLover.PlayerId, secondLover.PlayerId);
             var lover1 = new Lover(firstLover);
@@ -78,7 +78,7 @@ namespace TownOfUsFusion.Roles.Modifiers
             lover2.OtherLover = lover1;
         }
 
-        internal override bool ModifierWin(LogicGameFlowNormal __instance)
+        internal override bool AllianceWin(LogicGameFlowNormal __instance)
         {
             if (FourPeopleLeft()) return false;
 

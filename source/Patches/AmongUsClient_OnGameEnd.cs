@@ -4,6 +4,7 @@ using System.Linq;
 using TownOfUsFusion.Roles;
 using TownOfUsFusion.Roles.Modifiers;
 using TownOfUsFusion.Extensions;
+using TownOfUsFusion.Roles.Alliances;
 
 namespace TownOfUsFusion
 {
@@ -32,6 +33,11 @@ namespace TownOfUsFusion
             {
                 var doom = (Doomsayer)role;
                 losers.Add(doom.Player.GetDefaultOutfit().ColorId);
+            }
+            foreach (var role in Role.GetRoles(RoleEnum.Cannibal))
+            {
+                var can = (Cannibal)role;
+                losers.Add(can.Player.GetDefaultOutfit().ColorId);
             }
             foreach (var role in Role.GetRoles(RoleEnum.Executioner))
             {
@@ -189,13 +195,13 @@ namespace TownOfUsFusion
                 }
             }
 
-            foreach (var modifier in Modifier.AllModifiers)
+            foreach (var alliance in Alliance.AllAlliances)
             {
-                var type = modifier.ModifierType;
+                var type = alliance.AllianceType;
 
-                if (type == ModifierEnum.Lover)
+                if (type == AllianceEnum.Lover)
                 {
-                    var lover = (Lover)modifier;
+                    var lover = (Lover)alliance;
                     if (lover.LoveCoupleWins)
                     {
                         var otherLover = lover.OtherLover;
@@ -227,7 +233,21 @@ namespace TownOfUsFusion
             {
                 var type = role.RoleType;
 
-                if (type == RoleEnum.Glitch)
+                
+                if (type == RoleEnum.Cannibal)
+                {
+                    var can = (Cannibal)role;
+                    if (can.EatWin)
+                    {
+                        EndGameResult.CachedWinners = new List<CachedPlayerData>();
+                        var canData = new CachedPlayerData(can.Player.Data);
+                        canData.IsDead = false;
+                        if (PlayerControl.LocalPlayer != can.Player) canData.IsYou = false;
+                        EndGameResult.CachedWinners.Add(canData);
+                        return;
+                    }
+                }
+                else if (type == RoleEnum.Glitch)
                 {
                     var glitch = (Glitch)role;
                     if (glitch.GlitchWins)

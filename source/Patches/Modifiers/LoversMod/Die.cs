@@ -2,6 +2,7 @@ using HarmonyLib;
 using TownOfUsFusion.CrewmateRoles.AltruistMod;
 using TownOfUsFusion.Roles.Modifiers;
 using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Alliances;
 
 namespace TownOfUsFusion.Modifiers.LoversMod
 {
@@ -14,7 +15,7 @@ namespace TownOfUsFusion.Modifiers.LoversMod
 
             var flag3 = __instance.IsLover() && CustomGameOptions.BothLoversDie;
             if (!flag3) return true;
-            var otherLover = Modifier.GetModifier<Lover>(__instance).OtherLover.Player;
+            var otherLover = Alliance.GetAlliance<Lover>(__instance).OtherLover.Player;
             if (otherLover.Data.IsDead) return true;
 
             if (reason == DeathReason.Exile)

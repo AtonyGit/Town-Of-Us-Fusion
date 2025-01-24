@@ -83,8 +83,8 @@ namespace TownOfUsFusion.Roles
         public PlayerControl GetClosestPlayer(PlayerControl toRemove = null)
         {
             var targets = PlayerControl.AllPlayerControls.ToArray().Where(x => !x.Data.IsDead && !x.Data.Disconnected && x != toRemove && x != ShowRoundOneShield.FirstRoundShielded).ToList();
-            if (Player.IsLover()) targets = PlayerControl.AllPlayerControls.ToArray().Where(x => !x.Data.IsDead && !x.Data.Disconnected && !x.Is(ModifierEnum.Lover) && x != toRemove && x != ShowRoundOneShield.FirstRoundShielded).ToList();
-            if (targets.Count == 0) targets = PlayerControl.AllPlayerControls.ToArray().Where(x => !x.Data.IsDead && !x.Data.Disconnected && x != PlayerControl.LocalPlayer && !x.Is(ModifierEnum.Lover) && x != toRemove).ToList();
+            if (Player.IsLover()) targets = PlayerControl.AllPlayerControls.ToArray().Where(x => !x.Data.IsDead && !x.Data.Disconnected && !x.Is(AllianceEnum.Lover) && x != toRemove && x != ShowRoundOneShield.FirstRoundShielded).ToList();
+            if (targets.Count == 0) targets = PlayerControl.AllPlayerControls.ToArray().Where(x => !x.Data.IsDead && !x.Data.Disconnected && x != PlayerControl.LocalPlayer && !x.Is(AllianceEnum.Lover) && x != toRemove).ToList();
             if (targets.Count == 0) targets = PlayerControl.AllPlayerControls.ToArray().Where(x => !x.Data.IsDead && !x.Data.Disconnected && x != toRemove).ToList();
 
             var num = double.MaxValue;

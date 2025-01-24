@@ -133,13 +133,13 @@ namespace TownOfUsFusion.Patches {
                     case RoleEnum.Phantom: playerRole += "<color=#" + Patches.Colors.Phantom.ToHtmlStringRGBA() + ">Phantom</color> > ";
                     break;
                     
-                    case RoleEnum.Cannibal: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Cannibal</color> > ";
+                    case RoleEnum.Cannibal: playerRole += "<color=#" + Patches.Colors.Cannibal.ToHtmlStringRGBA() + ">Cannibal</color> > ";
                     break;
-                    case RoleEnum.Inquisitor: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Inquisitor</color> > ";
+                    case RoleEnum.Inquisitor: playerRole += "<color=#" + Patches.Colors.Inquisitor.ToHtmlStringRGBA() + ">Inquisitor</color> > ";
                     break;
                     case RoleEnum.Puppet: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Puppet</color> > ";
                     break;
-                    case RoleEnum.Tyrant: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Tyrant</color> > ";
+                    case RoleEnum.Tyrant: playerRole += "<color=#" + Patches.Colors.Tyrant.ToHtmlStringRGBA() + ">Tyrant</color> > ";
                     break;
                     
                     case RoleEnum.Arsonist: playerRole += "<color=#" + Patches.Colors.Arsonist.ToHtmlStringRGBA() + ">Arsonist</color> > ";
@@ -218,7 +218,7 @@ namespace TownOfUsFusion.Patches {
                 else if (playerControl.Is(ModifierEnum.Flash)) playerRole += " (<color=#" + Patches.Colors.Flash.ToHtmlStringRGBA() + ">Flash</color>)";
                 else if (playerControl.Is(ModifierEnum.Tiebreaker)) playerRole += " (<color=#" + Patches.Colors.Tiebreaker.ToHtmlStringRGBA() + ">Tiebreaker</color>)";
                 else if (playerControl.Is(ModifierEnum.Torch)) playerRole += " (<color=#" + Patches.Colors.Torch.ToHtmlStringRGBA() + ">Torch</color>)";
-                else if (playerControl.Is(ModifierEnum.Lover)) playerRole += " (<color=#" + Patches.Colors.Lovers.ToHtmlStringRGBA() + ">Lover</color>)";
+                else if (playerControl.Is(AllianceEnum.Lover)) playerRole += " (<color=#" + Patches.Colors.Lovers.ToHtmlStringRGBA() + ">Lover</color>)";
                 else if (playerControl.Is(ModifierEnum.Sleuth)) playerRole += " (<color=#" + Patches.Colors.Sleuth.ToHtmlStringRGBA() + ">Sleuth</color>)";
                 else if (playerControl.Is(ModifierEnum.Radar)) playerRole += " (<color=#" + Patches.Colors.Radar.ToHtmlStringRGBA() + ">Radar</color>)";
                 else if (playerControl.Is(ModifierEnum.Disperser)) playerRole += " (<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Disperser</color>)";

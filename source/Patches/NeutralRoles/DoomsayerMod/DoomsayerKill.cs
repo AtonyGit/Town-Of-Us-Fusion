@@ -14,6 +14,7 @@ using TownOfUsFusion.Patches;
 using Reactor.Utilities.Extensions;
 using TownOfUsFusion.CrewmateRoles.ImitatorMod;
 using TownOfUsFusion.CrewmateRoles.DeputyMod;
+using TownOfUsFusion.Roles.Alliances;
 
 namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
 {
@@ -182,7 +183,7 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
             player.Die(DeathReason.Kill, false);
             if (checkLover && player.IsLover() && CustomGameOptions.BothLoversDie)
             {
-                var otherLover = Modifier.GetModifier<Lover>(player).OtherLover.Player;
+                var otherLover = Alliance.GetAlliance<Lover>(player).OtherLover.Player;
                 if (!otherLover.Is(RoleEnum.Pestilence)) MurderPlayer(otherLover, false, false);
             }
 

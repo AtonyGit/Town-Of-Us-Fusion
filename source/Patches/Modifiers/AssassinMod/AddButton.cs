@@ -6,6 +6,7 @@ using TMPro;
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Patches;
 using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Alliances;
 using TownOfUsFusion.Roles.Modifiers;
 using UnityEngine;
 using UnityEngine.UI;
@@ -169,6 +170,7 @@ namespace TownOfUsFusion.Modifiers.AssassinMod
 
                 var playerRole = Role.GetRole(voteArea);
                 var playerModifier = Modifier.GetModifier(voteArea);
+                var playerAlliance = Alliance.GetAlliance(voteArea);
 
                 var toDie = playerRole.Name == currentGuess ? playerRole.Player : role.Player;
                 if (playerModifier != null)
@@ -194,7 +196,7 @@ namespace TownOfUsFusion.Modifiers.AssassinMod
                             ShowHideButtons.HideSingle(role, targetId, toDie == role.Player);
                             if (toDie.IsLover() && CustomGameOptions.BothLoversDie)
                             {
-                                var lover = ((Lover)playerModifier).OtherLover.Player;
+                                var lover = ((Lover)playerAlliance).OtherLover.Player;
                                 if (!lover.Is(RoleEnum.Pestilence)) ShowHideButtons.HideSingle(role, lover.PlayerId, false);
                             }
                         }
@@ -206,7 +208,7 @@ namespace TownOfUsFusion.Modifiers.AssassinMod
                         ShowHideButtons.HideSingle(role, targetId, toDie == role.Player);
                         if (toDie.IsLover() && CustomGameOptions.BothLoversDie)
                         {
-                            var lover = ((Lover)playerModifier).OtherLover.Player;
+                            var lover = ((Lover)playerAlliance).OtherLover.Player;
                             if (!lover.Is(RoleEnum.Pestilence)) ShowHideButtons.HideSingle(role, lover.PlayerId, false);
                         }
                     }

@@ -27,6 +27,7 @@ using TownOfUsFusion.NeutralRoles.SoulCollectorMod;
 using static TownOfUsFusion.Roles.Glitch;
 using TownOfUsFusion.Patches.NeutralRoles;
 using Il2CppSystem.Linq;
+using TownOfUsFusion.Roles.Alliances;
 
 namespace TownOfUsFusion
 {
@@ -166,7 +167,7 @@ namespace TownOfUsFusion
 
         public static bool IsLover(this PlayerControl player)
         {
-            return player.Is(ModifierEnum.Lover);
+            return player.Is(AllianceEnum.Lover);
         }
 
         public static bool Is(this PlayerControl player, RoleEnum roleType)
@@ -177,6 +178,10 @@ namespace TownOfUsFusion
         public static bool Is(this PlayerControl player, ModifierEnum modifierType)
         {
             return Modifier.GetModifier(player)?.ModifierType == modifierType;
+        }
+        public static bool Is(this PlayerControl player, AllianceEnum allianceType)
+        {
+            return Alliance.GetAlliance(player)?.AllianceType == allianceType;
         }
 
         public static bool Is(this PlayerControl player, AbilityEnum abilityType)

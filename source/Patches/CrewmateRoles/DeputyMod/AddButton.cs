@@ -13,6 +13,7 @@ using TownOfUsFusion.Modifiers.AssassinMod;
 using TownOfUsFusion.NeutralRoles.DoomsayerMod;
 using TownOfUsFusion.Patches;
 using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Alliances;
 using TownOfUsFusion.Roles.Modifiers;
 using UnityEngine;
 using UnityEngine.UI;
@@ -33,7 +34,7 @@ namespace TownOfUsFusion.CrewmateRoles.DeputyMod
             if (PlayerControl.LocalPlayer == player) return true;
             if (PlayerControl.LocalPlayer.IsLover())
             {
-                var lover = Modifier.GetModifier<Lover>(PlayerControl.LocalPlayer);
+                var lover = Alliance.GetAlliance<Lover>(PlayerControl.LocalPlayer);
                 if (lover.OtherLover.Player == player) return true;
             }
             if (
@@ -225,7 +226,7 @@ namespace TownOfUsFusion.CrewmateRoles.DeputyMod
             player.Die(DeathReason.Kill, false);
             if (checkLover && player.IsLover() && CustomGameOptions.BothLoversDie)
             {
-                var otherLover = Modifier.GetModifier<Lover>(player).OtherLover.Player;
+                var otherLover = Alliance.GetAlliance<Lover>(player).OtherLover.Player;
                 if (!otherLover.Is(RoleEnum.Pestilence)) Shoot(deputy, otherLover, false);
             }
 

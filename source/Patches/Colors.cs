@@ -34,10 +34,14 @@ namespace TownOfUsFusion.Patches
         public readonly static Color Jailor = new Color(0.65f, 0.65f, 0.65f, 1f);
         public readonly static Color Lookout = new Color(0.2f, 1f, 0.4f, 1f);
         public readonly static Color Deputy = new Color(1f, 0.8f, 0f, 1f);
+        public readonly static Color Bodyguard = new(0.5f, 0.83f, 0.67f, 1f);
 
         // Neutral Colors
         public readonly static Color Jester = new Color(1f, 0.75f, 0.8f, 1f);
         public readonly static Color Executioner = new Color(0.55f, 0.25f, 0.02f, 1f);
+        public readonly static Color Inquisitor = new(0.85f, 0.26f, 0.57f, 1f);
+        public readonly static Color Tyrant = new(0.92f, 0.33f, 0.36f, 1f);
+        public readonly static Color Cannibal = new(0.55f, 0.27f, 0.07f, 1f);
         public readonly static Color Glitch = Color.green;
         public readonly static Color Arsonist = new Color(1f, 0.3f, 0f);
         public readonly static Color Phantom = new Color(0.4f, 0.16f, 0.38f, 1f);
@@ -55,6 +59,9 @@ namespace TownOfUsFusion.Patches
         public readonly static Color Impostor = Palette.ImpostorRed;
 
         //Modifiers
+        public readonly static Color Oblivious = new(0.6f, 0.6f, 0.6f, 1f);
+        public readonly static Color Drunk = new(0.46f, 0.5f, 0f, 1f);
+        public readonly static Color Eclipsed = new(0.85f, 0.56f, 0.44f, 1f);
         public readonly static Color Bait = new Color(0.2f, 0.7f, 0.7f, 1f);
         public readonly static Color Aftermath = new Color(0.65f, 1f, 0.65f, 1f);
         public readonly static Color Diseased = Color.grey;

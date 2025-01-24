@@ -21,6 +21,8 @@ namespace TownOfUsFusion
         SetTraitor,
         TraitorSpawn,
 
+        CannibalWin,
+        ApocWin,
         LoveWin,
         GlitchWin,
         JuggernautWin,
@@ -34,6 +36,7 @@ namespace TownOfUsFusion
         SurvivorOnlyWin,
         VampireWin,
 
+        CannibalEat,
         Poison,
         RemoteBite,
         JanitorClean,
