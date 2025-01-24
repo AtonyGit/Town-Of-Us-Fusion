@@ -768,24 +768,6 @@ namespace TownOfUsFusion.CustomOption
             UnderdogOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#FF0000FF>Underdog</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
 
-            CrewmateAlliances = new CustomHeaderOption(num++, MultiMenu.alliances, "Crewmate Alliances");
-            CrewpostorOn = new CustomNumberOption(num++, MultiMenu.alliances, "<color=#FF0000FF>Crewpostor</color>", 0f, 0f, 100f, 10f,
-                PercentFormat);
-            CrewpocalypseOn = new CustomNumberOption(num++, MultiMenu.alliances, "<color=#FFE8B3FF>Crewpocalypse</color>", 0f, 0f, 100f, 10f,
-                PercentFormat);
-            EgotistOn = new CustomNumberOption(num++, MultiMenu.alliances, "<color=#3A6041FF>Egotist</color>", 0f, 0f, 100f, 10f,
-                PercentFormat);
-            GlobalAlliances = new CustomHeaderOption(num++, MultiMenu.alliances, "Global Alliances");
-            LoversOn = new CustomNumberOption(num++, MultiMenu.alliances, "<color=#FF66CCFF>Lovers</color>", 0f, 0f, 100f, 10f,
-                PercentFormat);
-
-            Lovers =
-                new CustomHeaderOption(num++, MultiMenu.alliances, "<color=#FF66CCFF>Lovers</color>");
-            BothLoversDie = new CustomToggleOption(num++, MultiMenu.alliances, "Both Lovers Die");
-            LovingImpPercent = new CustomNumberOption(num++, MultiMenu.alliances, "Loving Killer Probability", 20f, 0f, 100f, 10f,
-                PercentFormat);
-            NeutralLovers = new CustomToggleOption(num++, MultiMenu.alliances, "Neutral Roles Can Be Lovers");
-            ImpLoverKillTeammate = new CustomToggleOption(num++, MultiMenu.alliances, "Impostor Lover Can Kill Teammate", false);
 
             RoleListSettings =
                 new CustomHeaderOption(num++, MultiMenu.main, "Role List Settings");
@@ -1541,6 +1523,25 @@ namespace TownOfUsFusion.CustomOption
             Underdog = new CustomHeaderOption(num++, MultiMenu.modifiers, "<color=#FF0000FF>Underdog</color>");
             UnderdogKillBonus = new CustomNumberOption(num++, MultiMenu.modifiers, "Kill Cooldown Bonus", 5f, 2.5f, 10f, 2.5f, CooldownFormat);
             UnderdogIncreasedKC = new CustomToggleOption(num++, MultiMenu.modifiers, "Increased Kill Cooldown When 2+ Imps", true);
+            
+            CrewmateAlliances = new CustomHeaderOption(num++, MultiMenu.modifiers, "Crewmate Alliances");
+            CrewpostorOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#FF0000FF>Crewpostor</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            CrewpocalypseOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#FFE8B3FF>Crewpocalypse</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            EgotistOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#3A6041FF>Egotist</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            GlobalAlliances = new CustomHeaderOption(num++, MultiMenu.modifiers, "Global Alliances");
+            LoversOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#FF66CCFF>Lovers</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+
+            Lovers =
+                new CustomHeaderOption(num++, MultiMenu.modifiers, "<color=#FF66CCFF>Lovers</color>");
+            BothLoversDie = new CustomToggleOption(num++, MultiMenu.modifiers, "Both Lovers Die");
+            LovingImpPercent = new CustomNumberOption(num++, MultiMenu.modifiers, "Loving Killer Probability", 20f, 0f, 100f, 10f,
+                PercentFormat);
+            NeutralLovers = new CustomToggleOption(num++, MultiMenu.modifiers, "Neutral Roles Can Be Lovers");
+            ImpLoverKillTeammate = new CustomToggleOption(num++, MultiMenu.modifiers, "Impostor Lover Can Kill Teammate", false);
         }
     }
 }

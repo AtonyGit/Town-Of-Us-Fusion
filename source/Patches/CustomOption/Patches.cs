@@ -160,14 +160,16 @@ namespace TownOfUsFusion.CustomOption
                 __instance.ChangeTab(1, false);
 
                 var settingsButton = GameObject.Find("GameSettingsButton");
-                settingsButton.transform.localPosition += new Vector3(0f, 2f, 0f);
-                settingsButton.transform.localScale *= 0.9f;
+                settingsButton.transform.localPosition += new Vector3(0f, 1.5f, 0f);
+                //settingsButton.transform.localPosition += new Vector3(0f, 2f, 0f);
+                settingsButton.transform.localScale *= 0.8f;
 
                 CreateSettings(__instance, 3, "ModSettings", "Mod Settings", settingsButton, MultiMenu.main);
                 CreateSettings(__instance, 4, "CrewSettings", "Crewmate Settings", settingsButton, MultiMenu.crewmate);
                 CreateSettings(__instance, 5, "NeutralSettings", "Neutral Settings", settingsButton, MultiMenu.neutral);
                 CreateSettings(__instance, 6, "ImpSettings", "Impostor Settings", settingsButton, MultiMenu.imposter);
-                CreateSettings(__instance, 7, "ModifierSettings", "Modifier Settings", settingsButton, MultiMenu.modifiers);
+                CreateSettings(__instance, 7, "ModifierSettings", "Modifiers + Alliances", settingsButton, MultiMenu.modifiers);
+                //CreateSettings(__instance, 8, "AllianceSettings", "Alliance Settings", settingsButton, MultiMenu.alliances);
                 CreateSettings(__instance, 8, "ImportSettings", "Import Settings", settingsButton, MultiMenu.external);
                 CreateSettings(__instance, 9, "ExportSettings", "Export Settings", settingsButton, MultiMenu.external);
             }
@@ -231,7 +233,7 @@ namespace TownOfUsFusion.CustomOption
                 if (button == null && menu != MultiMenu.external)
                 {
                     button = GameObject.Instantiate(settingsButton, panel.transform);
-                    button.transform.localPosition += new Vector3(0f, -0.55f * target + 1.1f, 0f);
+                    button.transform.localPosition += new Vector3(0f, -0.55f * target + 1f, 0f);
                     button.name = name;
                     __instance.StartCoroutine(Effects.Lerp(1f, new Action<float>(p => { button.transform.FindChild("FontPlacer").GetComponentInChildren<TextMeshPro>().text = text; })));
                     var passiveButton = button.GetComponent<PassiveButton>();
@@ -543,7 +545,7 @@ namespace TownOfUsFusion.CustomOption
                 CreateButton(__instance, 2, "CrewmateTab", "Crewmate Settings", MultiMenu.crewmate, overview);
                 CreateButton(__instance, 3, "NeutralTab", "Neutral Settings", MultiMenu.neutral, overview);
                 CreateButton(__instance, 4, "ImpostorTab", "Impostor Settings", MultiMenu.imposter, overview);
-                CreateButton(__instance, 5, "ModifierTab", "Modifier Settings", MultiMenu.modifiers, overview);
+                CreateButton(__instance, 5, "ModifierTab", "Modifiers + Alliances", MultiMenu.modifiers, overview);
             }
 
             public static void CreateButton(LobbyViewSettingsPane __instance, int target, string name, string text, MultiMenu menu, GameObject overview)
