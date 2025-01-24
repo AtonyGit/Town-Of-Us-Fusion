@@ -251,7 +251,8 @@ namespace TownOfUsFusion.Patches
             {
                 var sk = Role.GetRole<SerialKiller>(PlayerControl.LocalPlayer);
                 sk.LastKill = DateTime.UtcNow;
-                sk.Target = null;
+                sk.Target = sk.GetClosestPlayer();
+                sk.RegenTask();
                 sk.LastKill = sk.LastKill.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.SkKillCooldown);
             }
 

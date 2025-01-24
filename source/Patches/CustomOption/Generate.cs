@@ -104,13 +104,19 @@ namespace TownOfUsFusion.CustomOption
         public static CustomNumberOption ButtonBarryOn;
         public static CustomNumberOption FlashOn;
         public static CustomNumberOption GiantOn;
-        public static CustomNumberOption LoversOn;
         public static CustomNumberOption MiniOn;
         public static CustomNumberOption RadarOn;
         public static CustomNumberOption ShyOn;
         public static CustomNumberOption SixthSenseOn;
         public static CustomNumberOption SleuthOn;
         public static CustomNumberOption TiebreakerOn;
+
+        public static CustomHeaderOption CrewmateAlliances;
+        public static CustomNumberOption EgotistOn;
+        public static CustomNumberOption CrewpocalypseOn;
+        public static CustomNumberOption CrewpostorOn;
+        public static CustomHeaderOption GlobalAlliances;
+        public static CustomNumberOption LoversOn;
 
         public static CustomHeaderOption ImpostorModifiers;
         public static CustomNumberOption DisperserOn;
@@ -465,12 +471,14 @@ namespace TownOfUsFusion.CustomOption
 
         public static CustomHeaderOption Vampire;
         public static CustomNumberOption BiteCooldown;
+        public static CustomNumberOption BiteDuration;
         public static CustomToggleOption VampImpVision;
         public static CustomToggleOption VampVent;
         public static CustomToggleOption NewVampCanAssassin;
         public static CustomNumberOption MaxVampiresPerGame;
         public static CustomToggleOption CanBiteNeutralBenign;
         public static CustomToggleOption CanBiteNeutralEvil;
+        public static CustomToggleOption CanBiteNeutralChaos;
 
         public static CustomHeaderOption Prosecutor;
         public static CustomToggleOption ProsDiesOnIncorrectPros;
@@ -737,8 +745,6 @@ namespace TownOfUsFusion.CustomOption
                 PercentFormat);
             GiantOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#FFB34DFF>Giant</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
-            LoversOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#FF66CCFF>Lovers</color>", 0f, 0f, 100f, 10f,
-                PercentFormat);
             MiniOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#CCFFE6FF>Mini</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             RadarOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#FF0080FF>Radar</color>", 0f, 0f, 100f, 10f,
@@ -761,6 +767,25 @@ namespace TownOfUsFusion.CustomOption
                 PercentFormat);
             UnderdogOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#FF0000FF>Underdog</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
+
+            CrewmateAlliances = new CustomHeaderOption(num++, MultiMenu.alliances, "Crewmate Alliances");
+            CrewpostorOn = new CustomNumberOption(num++, MultiMenu.alliances, "<color=#FF0000FF>Crewpostor</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            CrewpocalypseOn = new CustomNumberOption(num++, MultiMenu.alliances, "<color=#FFE8B3FF>Crewpocalypse</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            EgotistOn = new CustomNumberOption(num++, MultiMenu.alliances, "<color=#3A6041FF>Egotist</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            GlobalAlliances = new CustomHeaderOption(num++, MultiMenu.alliances, "Global Alliances");
+            LoversOn = new CustomNumberOption(num++, MultiMenu.alliances, "<color=#FF66CCFF>Lovers</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+
+            Lovers =
+                new CustomHeaderOption(num++, MultiMenu.alliances, "<color=#FF66CCFF>Lovers</color>");
+            BothLoversDie = new CustomToggleOption(num++, MultiMenu.alliances, "Both Lovers Die");
+            LovingImpPercent = new CustomNumberOption(num++, MultiMenu.alliances, "Loving Killer Probability", 20f, 0f, 100f, 10f,
+                PercentFormat);
+            NeutralLovers = new CustomToggleOption(num++, MultiMenu.alliances, "Neutral Roles Can Be Lovers");
+            ImpLoverKillTeammate = new CustomToggleOption(num++, MultiMenu.alliances, "Impostor Lover Can Kill Teammate", false);
 
             RoleListSettings =
                 new CustomHeaderOption(num++, MultiMenu.main, "Role List Settings");
@@ -1339,6 +1364,8 @@ namespace TownOfUsFusion.CustomOption
             Vampire = new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#262626FF>Vampire</color>");
             BiteCooldown =
                 new CustomNumberOption(num++, MultiMenu.neutral, "Vampire Bite Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
+            BiteDuration =
+                new CustomNumberOption(num++, MultiMenu.neutral, "Vampire Bite Duration", 5f, 0f, 10f, 0.5f, CooldownFormat);
             VampImpVision =
                 new CustomToggleOption(num++, MultiMenu.neutral, "Vampires Have Impostor Vision", false);
             VampVent =
@@ -1351,7 +1378,9 @@ namespace TownOfUsFusion.CustomOption
                 new CustomToggleOption(num++, MultiMenu.neutral, "Can Convert Neutral Benign Roles", false);
             CanBiteNeutralEvil =
                 new CustomToggleOption(num++, MultiMenu.neutral, "Can Convert Neutral Evil Roles", false);
-
+            CanBiteNeutralChaos =
+                new CustomToggleOption(num++, MultiMenu.neutral, "Can Convert Neutral Chaos Roles", false);
+            
             Juggernaut =
                 new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#8C004DFF>Juggernaut</color>");
             JuggKillCooldown = new CustomNumberOption(num++, MultiMenu.neutral, "Juggernaut Initial Kill Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
@@ -1500,14 +1529,6 @@ namespace TownOfUsFusion.CustomOption
 
             Giant = new CustomHeaderOption(num++, MultiMenu.modifiers, "<color=#FFB34DFF>Giant</color>");
             GiantSlow = new CustomNumberOption(num++, MultiMenu.modifiers, "Giant Speed", 0.75f, 0.25f, 1f, 0.05f, MultiplierFormat);
-
-            Lovers =
-                new CustomHeaderOption(num++, MultiMenu.modifiers, "<color=#FF66CCFF>Lovers</color>");
-            BothLoversDie = new CustomToggleOption(num++, MultiMenu.modifiers, "Both Lovers Die");
-            LovingImpPercent = new CustomNumberOption(num++, MultiMenu.modifiers, "Loving Impostor Probability", 20f, 0f, 100f, 10f,
-                PercentFormat);
-            NeutralLovers = new CustomToggleOption(num++, MultiMenu.modifiers, "Neutral Roles Can Be Lovers");
-            ImpLoverKillTeammate = new CustomToggleOption(num++, MultiMenu.modifiers, "Impostor Lover Can Kill Teammate", false);
 
             Shy = new CustomHeaderOption(num++, MultiMenu.modifiers, "<color=#FFB3CCFF>Shy</color>");
             InvisDelay = new CustomNumberOption(num++, MultiMenu.modifiers, "Transparency Delay", 5f, 1f, 15f, 1f, CooldownFormat);

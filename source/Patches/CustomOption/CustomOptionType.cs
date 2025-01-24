@@ -15,6 +15,7 @@ namespace TownOfUsFusion.CustomOption
         neutral,
         imposter,
         modifiers,
+        alliances,
         external
     }
 }

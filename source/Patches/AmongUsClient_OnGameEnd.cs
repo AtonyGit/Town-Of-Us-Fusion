@@ -229,6 +229,39 @@ namespace TownOfUsFusion
                 }
             }
 
+            if (Role.ApocWins)
+            {
+                EndGameResult.CachedWinners = new List<CachedPlayerData>();
+                foreach (var role in Role.GetRoles(RoleEnum.Juggernaut))
+                {
+                    var apoc = (Juggernaut)role;
+                    var apocData = new CachedPlayerData(apoc.Player.Data);
+                    if (PlayerControl.LocalPlayer != apoc.Player) apocData.IsYou = false;
+                    EndGameResult.CachedWinners.Add(apocData);
+                }
+                foreach (var role in Role.GetRoles(RoleEnum.Plaguebearer))
+                {
+                    var apoc = (Plaguebearer)role;
+                    var apocData = new CachedPlayerData(apoc.Player.Data);
+                    if (PlayerControl.LocalPlayer != apoc.Player) apocData.IsYou = false;
+                    EndGameResult.CachedWinners.Add(apocData);
+                }
+                foreach (var role in Role.GetRoles(RoleEnum.Pestilence))
+                {
+                    var apoc = (Pestilence)role;
+                    var apocData = new CachedPlayerData(apoc.Player.Data);
+                    if (PlayerControl.LocalPlayer != apoc.Player) apocData.IsYou = false;
+                    EndGameResult.CachedWinners.Add(apocData);
+                }
+                foreach (var role in Role.GetRoles(RoleEnum.SoulCollector))
+                {
+                    var apoc = (SoulCollector)role;
+                    var apocData = new CachedPlayerData(apoc.Player.Data);
+                    if (PlayerControl.LocalPlayer != apoc.Player) apocData.IsYou = false;
+                    EndGameResult.CachedWinners.Add(apocData);
+                }
+            }
+
             foreach (var role in Role.AllRoles)
             {
                 var type = role.RoleType;
@@ -258,17 +291,6 @@ namespace TownOfUsFusion
                         EndGameResult.CachedWinners.Add(glitchData);
                     }
                 }
-                else if (type == RoleEnum.Juggernaut)
-                {
-                    var juggernaut = (Juggernaut)role;
-                    if (juggernaut.JuggernautWins)
-                    {
-                        EndGameResult.CachedWinners = new List<CachedPlayerData>();
-                        var juggData = new CachedPlayerData(juggernaut.Player.Data);
-                        if (PlayerControl.LocalPlayer != juggernaut.Player) juggData.IsYou = false;
-                        EndGameResult.CachedWinners.Add(juggData);
-                    }
-                }
                 else if (type == RoleEnum.Arsonist)
                 {
                     var arsonist = (Arsonist)role;
@@ -278,28 +300,6 @@ namespace TownOfUsFusion
                         var arsonistData = new CachedPlayerData(arsonist.Player.Data);
                         if (PlayerControl.LocalPlayer != arsonist.Player) arsonistData.IsYou = false;
                         EndGameResult.CachedWinners.Add(arsonistData);
-                    }
-                }
-                else if (type == RoleEnum.Plaguebearer)
-                {
-                    var plaguebearer = (Plaguebearer)role;
-                    if (plaguebearer.PlaguebearerWins)
-                    {
-                        EndGameResult.CachedWinners = new List<CachedPlayerData>();
-                        var pbData = new CachedPlayerData(plaguebearer.Player.Data);
-                        if (PlayerControl.LocalPlayer != plaguebearer.Player) pbData.IsYou = false;
-                        EndGameResult.CachedWinners.Add(pbData);
-                    }
-                }
-                else if (type == RoleEnum.Pestilence)
-                {
-                    var pestilence = (Pestilence)role;
-                    if (pestilence.PestilenceWins)
-                    {
-                        EndGameResult.CachedWinners = new List<CachedPlayerData>();
-                        var pestilenceData = new CachedPlayerData(pestilence.Player.Data);
-                        if (PlayerControl.LocalPlayer != pestilence.Player) pestilenceData.IsYou = false;
-                        EndGameResult.CachedWinners.Add(pestilenceData);
                     }
                 }
                 else if (type == RoleEnum.Werewolf)

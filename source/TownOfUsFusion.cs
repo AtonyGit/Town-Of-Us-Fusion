@@ -32,7 +32,7 @@ namespace TownOfUsFusion
     {
 
         public const string Id = "com.FusionStudios.TownOfUsFusion";
-        public const string VersionString = "0.4.0";
+        public const string VersionString = "0.4.1";
         public const string TouVersionString = "5.2.0";
         public static System.Version Version = System.Version.Parse(VersionString);
         public const string VersionTag = "<color=#ff33fc></color>";
@@ -101,6 +101,7 @@ namespace TownOfUsFusion
         public static Sprite ImitateDeselectSprite;
         public static Sprite ObserveSprite;
         public static Sprite BiteSprite;
+        public static Sprite BitSprite;
         public static Sprite RevealSprite;
         public static Sprite ConfessSprite;
         public static Sprite NoAbilitySprite;
@@ -228,6 +229,7 @@ namespace TownOfUsFusion
                 WerewolfVent = CreateVentSprite("TownOfUsFusion.Resources.WerewolfVent.png");
             // Neophyte Roles
                 BiteSprite = CreateSprite("TownOfUsFusion.Resources.Bite.png");
+                BitSprite = CreateSprite("TownOfUsFusion.Resources.Bit.png");
                 VampireVent = CreateVentSprite("TownOfUsFusion.Resources.VampireVent.png");
             // Apocalypse Roles
                 InfectSprite = CreateSprite("TownOfUsFusion.Resources.Infect.png");

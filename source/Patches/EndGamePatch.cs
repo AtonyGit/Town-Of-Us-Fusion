@@ -210,7 +210,6 @@ namespace TownOfUsFusion.Patches {
                     }
                 }
                 //playerRole = playerRole.Remove(playerRole.Length - 3);
-
                 if (playerControl.Is(ModifierEnum.Giant)) playerRole += " (<color=#" + Patches.Colors.Giant.ToHtmlStringRGBA() + ">Giant</color>)";
                 else if (playerControl.Is(ModifierEnum.ButtonBarry)) playerRole += " (<color=#" + Patches.Colors.ButtonBarry.ToHtmlStringRGBA() + ">Button Barry</color>)";
                 else if (playerControl.Is(ModifierEnum.Aftermath)) playerRole += " (<color=#" + Patches.Colors.Aftermath.ToHtmlStringRGBA() + ">Aftermath</color>)";
@@ -234,9 +233,15 @@ namespace TownOfUsFusion.Patches {
 
                     switch(Alliance.GetAlliance(playerControl)) {
 
-                    case Lover: playerRole += " (<color=#" + Patches.Colors.Lovers.ToHtmlStringRGBA() + ">Lover</color>)";
+                    case Lover: playerRole += " [<color=#" + Patches.Colors.Lovers.ToHtmlStringRGBA() + ">Lover</color>]";
                     break;
-                    default: playerRole += " (<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Unknown Alliance</color>)";
+                    case Crewpostor: playerRole += " [<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Crewpostor</color>]";
+                    break;
+                    case Crewpocalypse: playerRole += " [<color=#" + Patches.Colors.Apocalypse.ToHtmlStringRGBA() + ">Crewpocalypse</color>]";
+                    break;
+                    case null:
+                    break;
+                    default: playerRole += " [<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Unknown Alliance</color>]";
                     break;
                     }
                 var player = Role.GetRole(playerControl);

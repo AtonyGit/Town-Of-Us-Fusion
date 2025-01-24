@@ -129,6 +129,9 @@ namespace TownOfUsFusion
         public static int ButtonBarryOn => (int)Generate.ButtonBarryOn.Get();
         public static int BaitOn => (int)Generate.BaitOn.Get();
         public static int LoversOn => (int)Generate.LoversOn.Get();
+        public static int CrewpocalypseOn => (int)Generate.CrewpocalypseOn.Get();
+        public static int CrewpostorOn => (int)Generate.CrewpostorOn.Get();
+        public static int EgotistOn => (int)Generate.EgotistOn.Get();
         public static int SleuthOn => (int)Generate.SleuthOn.Get();
         public static int AftermathOn => (int)Generate.AftermathOn.Get();
         public static int RadarOn => (int)Generate.RadarOn.Get();
@@ -342,10 +345,12 @@ namespace TownOfUsFusion
         public static float BiteCd => Generate.BiteCooldown.Get();
         public static bool VampImpVision => Generate.VampImpVision.Get();
         public static bool VampVent => Generate.VampVent.Get();
+        public static float BiteDuration => Generate.BiteDuration.Get();
         public static bool NewVampCanAssassin => Generate.NewVampCanAssassin.Get();
         public static int MaxVampiresPerGame => (int)Generate.MaxVampiresPerGame.Get();
         public static bool CanBiteNeutralBenign => Generate.CanBiteNeutralBenign.Get();
         public static bool CanBiteNeutralEvil => Generate.CanBiteNeutralEvil.Get();
+        public static bool CanBiteNeutralChaos => Generate.CanBiteNeutralChaos.Get();
         public static bool ProsDiesOnIncorrectPros => Generate.ProsDiesOnIncorrectPros.Get();
         public static float ChargeUpDuration => Generate.ChargeUpDuration.Get();
         public static float ChargeUseDuration => Generate.ChargeUseDuration.Get();

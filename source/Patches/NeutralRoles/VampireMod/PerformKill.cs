@@ -9,6 +9,7 @@ using TownOfUsFusion.CrewmateRoles.ImitatorMod;
 using System.Linq;
 using TownOfUsFusion.Roles.Modifiers;
 using TownOfUsFusion.Patches.NeutralRoles;
+using Hazel;
 
 namespace TownOfUsFusion.NeutralRoles.VampireMod
 {
@@ -45,8 +46,21 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
                 var interact = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer);
                 if (interact[4] == true)
                 {
-                    Convert(role.ClosestPlayer);
-                    Utils.Rpc(CustomRPC.Bite, role.ClosestPlayer.PlayerId);
+                        role.BittenPlayer = role.ClosestPlayer;
+                        __instance.SetTarget(null);
+                        DestroyableSingleton<HudManager>.Instance.KillButton.SetTarget(null);
+
+                        role.TimeRemaining = CustomGameOptions.BiteDuration;
+                        __instance.SetCoolDown(role.TimeRemaining, CustomGameOptions.BiteDuration);
+                        var writer4 = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId,
+                            (byte)CustomRPC.RemoteBite,
+                        SendOption.Reliable, -1);
+                        Convert(role.ClosestPlayer);
+                        //Utils.Rpc(CustomRPC.Bite, role.ClosestPlayer.PlayerId);
+
+                        writer4.Write(PlayerControl.LocalPlayer.PlayerId);
+                        writer4.Write(role.BittenPlayer.PlayerId);
+                        AmongUsClient.Instance.FinishRpcImmediately(writer4);
                 }
                 if (interact[0] == true)
                 {
@@ -65,7 +79,21 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
             else
             {
                 var interact = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer, true);
-                if (interact[4] == true) return false;
+                if (interact[4] == true) 
+                {
+                    role.BittenPlayer = role.ClosestPlayer;
+                    __instance.SetTarget(null);
+                    DestroyableSingleton<HudManager>.Instance.KillButton.SetTarget(null);
+                    role.TimeRemaining = CustomGameOptions.BiteDuration;
+                    __instance.SetCoolDown(role.TimeRemaining, CustomGameOptions.BiteDuration);
+                    var writer2 = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId,
+                        (byte)CustomRPC.RemoteBite,
+                    SendOption.Reliable, -1);
+                    writer2.Write(PlayerControl.LocalPlayer.PlayerId);
+                    writer2.Write(role.BittenPlayer.PlayerId);
+                    AmongUsClient.Instance.FinishRpcImmediately(writer2);
+                    return false;
+                }
                 if (interact[0] == true)
                 {
                     role.LastBit = DateTime.UtcNow;

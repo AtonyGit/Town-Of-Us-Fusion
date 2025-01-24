@@ -39,6 +39,8 @@ namespace TownOfUsFusion.NeutralRoles.SerialKillerMod
                 role.BloodlustCooldown.alignment = TMPro.TextAlignmentOptions.Right;
                 role.BloodlustCooldown.fontStyle = TMPro.FontStyles.Bold;
                 role.BloodlustCooldown.enableWordWrapping = false;
+
+                    role.Target = role.GetClosestPlayer();
             }
             if (role.BloodlustCooldown != null)
             {
