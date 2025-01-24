@@ -115,7 +115,6 @@ namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
                 case RoleEnum.Oracle:
                 case RoleEnum.Aurial:
                 case RoleEnum.Politician:
-                case RoleEnum.Warden:
                 case RoleEnum.Jailor:
                 case RoleEnum.Lookout:
                 case RoleEnum.Deputy:
@@ -343,13 +342,6 @@ namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
                 aurialRole.SenseArrows.Values.DestroyAll();
                 aurialRole.SenseArrows.Clear();
                 DestroyableSingleton<HudManager>.Instance.KillButton.gameObject.SetActive(false);
-            }
-
-            else if (role == RoleEnum.Warden)
-            {
-                var wardenRole = Role.GetRole<Warden>(amnesiac);
-                wardenRole.Fortified = null;
-                wardenRole.StartingCooldown = wardenRole.StartingCooldown.AddSeconds(-10f);
             }
 
             else if (role == RoleEnum.Deputy)

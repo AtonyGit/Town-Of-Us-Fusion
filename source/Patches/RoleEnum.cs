@@ -73,7 +73,6 @@ namespace TownOfUsFusion
 
 
         Altruist,
-        Warden,
 
         Miner,
         Swooper,

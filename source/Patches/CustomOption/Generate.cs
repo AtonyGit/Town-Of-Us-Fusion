@@ -31,7 +31,6 @@ namespace TownOfUsFusion.CustomOption
         public static CustomHeaderOption CrewProtectiveRoles;
         public static CustomNumberOption AltruistOn;
         public static CustomNumberOption MedicOn;
-        public static CustomNumberOption WardenOn;
 
         public static CustomHeaderOption CrewSovereignRoles;
 
@@ -616,8 +615,6 @@ namespace TownOfUsFusion.CustomOption
             MedicOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#006600FF>Medic</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             OracleOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#BF00BFFF>Oracle</color>", 0f, 0f, 100f, 10f,
-                PercentFormat);
-            WardenOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#9900FFFF>Warden</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
 
             CrewSovereignRoles = new CustomHeaderOption(num++, MultiMenu.crewmate, "Crewmate Sovereign Roles");

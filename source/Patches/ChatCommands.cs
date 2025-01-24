@@ -293,11 +293,6 @@ namespace TownOfUsFusion.Patches
                         AddRoleMessage(RoleEnum.Politician);
                         return false;
                     }
-                    else if (chatText.ToLower().Trim().StartsWith("/ward"))
-                    {
-                        AddRoleMessage(RoleEnum.Warden);
-                        return false;
-                    }
                     else if (chatText.ToLower().Trim().StartsWith("/hypno"))
                     {
                         AddRoleMessage(RoleEnum.Hypnotist);
@@ -496,7 +491,7 @@ namespace TownOfUsFusion.Patches
                 if (role == RoleEnum.Swapper) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
                     PlayerControl.LocalPlayer, "The Swapper is a crewmate who can swap the votes of 2 players during meetings.");
                 if (role == RoleEnum.Psychic) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
-                    PlayerControl.LocalPlayer, "The Psychic is a crewmate who can reveal the alliance of other players.");
+                    PlayerControl.LocalPlayer, "The Psychic is a crewmate who can reveal the alliance of other players, and check if they are good or evil via a vision.");
                 if (role == RoleEnum.Snitch) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
                     PlayerControl.LocalPlayer, "The Snitch is a crewmate who can see who the Impostors are once they complete all their tasks.");
                 if (role == RoleEnum.Spy) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
@@ -576,15 +571,14 @@ namespace TownOfUsFusion.Patches
                 if (role == RoleEnum.Warlock) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
                     PlayerControl.LocalPlayer, "The Warlock is an impostor who can charge their kill button to kill multiple people at once.");
                 if (role == RoleEnum.Oracle) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,
-                    "The Oracle is a crewmate who can make a player confess. This makes it so each meeting the Oracle learns that at least 1 of 3 players is evil, this other player is protected from being voted out and if the Oracle were to die that their potential faction would be revealed.");
+                    /*"The Oracle is a crewmate who can make a player confess. This makes it so each meeting the Oracle learns that at least 1 of 3 players is evil, this other player is protected from being voted out and if the Oracle were to die that their potential faction would be revealed."*/
+                    "The Oracle is a crewmate who can bless other players. Blessed players cannot be interacted with, and cannot be voted out.");
                 if (role == RoleEnum.Venerer) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,
                     "The Venerer is an impostor who improves their ability with each kill. First kill is camouflage, second is speed and third is global slow.");
                 if (role == RoleEnum.Aurial) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
                     PlayerControl.LocalPlayer, "The Aurial is a crewmate who can sense ability uses nearby.");
                 if (role == RoleEnum.Politician) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,
                     "The Politician is a crewmate who can campaign in order to become the Mayor. During meetings they can attempt to reveal as the Mayor, if they have campaigned over half the crewmates they will be successful, if not they are unable to campaign the following round.");
-                if (role == RoleEnum.Warden) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
-                    PlayerControl.LocalPlayer, "The Warden is a crewmate who can fortify other players. Fortified players cannot be interacted with.");
                 if (role == RoleEnum.Hypnotist) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,
                     "The Hypnotist is an impostor who can hypnotise other players. During meetings they can then release mass hysteria which makes all hypnotised players see everyone else as either morphed as themself, camouflaged or invisible.");
                 if (role == RoleEnum.Jailor) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,

@@ -1242,8 +1242,8 @@ namespace TownOfUsFusion
                         }
                         break;
                     case CustomRPC.Confess:
-                        var oracle = Role.GetRole<Oracle>(Utils.PlayerById(reader.ReadByte()));
-                        oracle.BlessedPlayer = Utils.PlayerById(reader.ReadByte());
+                        var oracle = Role.GetRole<Psychic>(Utils.PlayerById(reader.ReadByte()));
+                        oracle.Confessor = Utils.PlayerById(reader.ReadByte());
                         var faction = reader.ReadInt32();
                         if (faction == 0) oracle.RevealedFaction = Faction.Crewmates;
                         else if (faction == 1) oracle.RevealedFaction = Faction.NeutralEvil;

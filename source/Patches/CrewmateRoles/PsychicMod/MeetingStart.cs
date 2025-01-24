@@ -13,6 +13,7 @@ namespace TownOfUsFusion.CrewmateRoles.PsychicMod
             if (PlayerControl.LocalPlayer.Data.IsDead) return;
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Psychic)) return;
             var psychicRole = Role.GetRole<Psychic>(PlayerControl.LocalPlayer);
+            psychicRole.IsSeerMode = !psychicRole.IsSeerMode;
             if (psychicRole.Confessor != null)
             {
                 var playerResults = PlayerReportFeedback(psychicRole.Confessor);
@@ -23,13 +24,14 @@ namespace TownOfUsFusion.CrewmateRoles.PsychicMod
 
         public static string PlayerReportFeedback(PlayerControl player)
         {
-            if (player.Data.IsDead || player.Data.Disconnected) return "Your confessor failed to survive so you received no confession";
+            if (player.Data.IsDead || player.Data.Disconnected) return "Your vision failed as your target perished";
             var allPlayers = PlayerControl.AllPlayerControls.ToArray().Where(x => !x.Data.IsDead && !x.Data.Disconnected && x != PlayerControl.LocalPlayer && x != player).ToList();
-            if (allPlayers.Count < 2) return "Too few people alive to receive a confessional";
+            if (allPlayers.Count < 2) return "Too few people alive to receive a vision";
             var evilPlayers = PlayerControl.AllPlayerControls.ToArray().Where(x => !x.Data.IsDead && !x.Data.Disconnected &&
             (x.Is(Faction.Impostors) || (x.Is(Faction.NeutralKilling) && CustomGameOptions.NeutralKillingShowsEvil) ||
             (x.Is(Faction.NeutralEvil) && CustomGameOptions.NeutralEvilShowsEvil) || (x.Is(Faction.NeutralBenign) && CustomGameOptions.NeutralBenignShowsEvil))).ToList();
-            if (evilPlayers.Count == 0) return $"{player.GetDefaultOutfit().PlayerName} confesses to knowing that there are no more evil players!"; 
+            //if (evilPlayers.Count == 0) return $"{player.GetDefaultOutfit().PlayerName} confesses to knowing that there are no more evil players!"; 
+            if (evilPlayers.Count == 0) return $"Your vision with {player.GetDefaultOutfit().PlayerName} reveals that there are no more evil players!";
             allPlayers.Shuffle();
             evilPlayers.Shuffle();
             var secondPlayer = allPlayers[0];
@@ -41,12 +43,12 @@ namespace TownOfUsFusion.CrewmateRoles.PsychicMod
             if (firstTwoEvil)
             {
                 var thirdPlayer = allPlayers[1];
-                return $"{player.GetDefaultOutfit().PlayerName} confesses to knowing that they, {secondPlayer.GetDefaultOutfit().PlayerName} and/or {thirdPlayer.GetDefaultOutfit().PlayerName} is evil!";
+                return $"Your vision revealed that {player.GetDefaultOutfit().PlayerName}, {secondPlayer.GetDefaultOutfit().PlayerName} and/or {thirdPlayer.GetDefaultOutfit().PlayerName} is evil!";
             }
             else
             {
                 var thirdPlayer = evilPlayers[0];
-                return $"{player.GetDefaultOutfit().PlayerName} confesses to knowing that they, {secondPlayer.GetDefaultOutfit().PlayerName} and/or {thirdPlayer.GetDefaultOutfit().PlayerName} is evil!";
+                return $"Your vision revealed that {player.GetDefaultOutfit().PlayerName}, {secondPlayer.GetDefaultOutfit().PlayerName} and/or {thirdPlayer.GetDefaultOutfit().PlayerName} is evil!";
             }
         }
     }

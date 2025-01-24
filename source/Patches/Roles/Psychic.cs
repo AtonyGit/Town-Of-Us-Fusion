@@ -16,7 +16,7 @@ namespace TownOfUsFusion.Roles
         {
             Name = "Psychic";
             ImpostorText = () => "Reveal The Alliance Of Other Players";
-            TaskText = () => "Reveal alliances of other players to find Evils";
+            TaskText = () => IsSeerMode ? "Reveal alliances of other players to find Evils" : "Witness a vision of a player to find Evils";
             Color = Patches.Colors.Psychic;
             LastInvestigated = DateTime.UtcNow;
             Accuracy = CustomGameOptions.RevealAccuracy;
