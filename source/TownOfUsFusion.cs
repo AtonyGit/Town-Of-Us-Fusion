@@ -213,7 +213,7 @@ namespace TownOfUsFusion
                 JesterVent = CreateVentSprite("TownOfUsFusion.Resources.JesterVent.png");
             // Chaos Roles
                 InquisKill = CreateScaledSprite("TownOfUsFusion.Resources.InquisKill.png");
-                ConsumeSprite = CreateSprite("TownOfUsFusion.Resources.Consume.png");
+                ConsumeSprite = CreateScaledSprite("TownOfUsFusion.Resources.Consume.png");
             // Killing Roles
                 DouseSprite = CreateSprite("TownOfUsFusion.Resources.Douse.png");
                 IgniteSprite = CreateSprite("TownOfUsFusion.Resources.Ignite.png");
