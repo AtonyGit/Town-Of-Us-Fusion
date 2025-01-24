@@ -659,12 +659,54 @@ namespace TownOfUsFusion.Roles
                     if (role != null && !role.Hidden)
                     {
                         if (role.Faction == Faction.NeutralKilling || role.Faction == Faction.NeutralEvil || role.Faction == Faction.NeutralBenign
-                        || role.Faction == Faction.NeutralChaos || role.Faction == Faction.NeutralNeophyte || role.Faction == Faction.NeutralApocalypse)
+                        || role.Faction == Faction.NeutralChaos || role.Faction == Faction.NeutralNeophyte)
                         {
                             __instance.__4__this.TeamTitle.text = "Neutral";
                             __instance.__4__this.TeamTitle.color = Color.white;
                             __instance.__4__this.BackgroundBar.material.color = Color.white;
                             PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Shapeshifter);
+                        }
+                        else if(role.Faction == Faction.NeutralApocalypse)
+                        {
+                            __instance.__4__this.TeamTitle.text = "Apocalypse";
+                            __instance.__4__this.TeamTitle.color = Patches.Colors.Apocalypse;
+                            __instance.__4__this.BackgroundBar.material.color = Patches.Colors.Apocalypse;
+                            PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Phantom);
+                        }
+                        else if(role.Faction == Faction.Crewmates)
+                        {
+                            switch(role)
+                            {
+                                case Aurial:
+                                case Lookout:
+                                case Medium:
+                                case Snitch:
+                                case Coroner:
+                                case Investigator:
+                                case Psychic:
+                                case Spy:
+                                case Tracker:
+                                case Trapper:
+                                PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Tracker);
+                                break;
+                                //case Bodyguard:
+                                case Medic:
+                                //case MirrorMaster:
+                                case Oracle:
+                                PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Scientist);
+                                break;
+                                //case Captain:
+                                case Politician:
+                                case Prosecutor:
+                                case Swapper:
+                                PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Noisemaker);
+                                break;
+                                case Engineer:
+                                case Imitator:
+                                case Transporter:
+                                PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Engineer);
+                                break;
+                            }
                         }
                         __instance.__4__this.RoleText.text = role.Name;
                         __instance.__4__this.RoleText.color = role.Color;

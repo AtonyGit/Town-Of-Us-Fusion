@@ -97,7 +97,7 @@ namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
                 case RoleEnum.Swapper:
                 case RoleEnum.Investigator:
                 case RoleEnum.Medic:
-                case RoleEnum.Seer:
+                case RoleEnum.Psychic:
                 case RoleEnum.Spy:
                 case RoleEnum.Snitch:
                 case RoleEnum.Altruist:
@@ -395,11 +395,11 @@ namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
                 medRole.LastMediated = DateTime.UtcNow;
             }
 
-            else if (role == RoleEnum.Seer)
+            else if (role == RoleEnum.Psychic)
             {
-                var seerRole = Role.GetRole<Seer>(amnesiac);
-                seerRole.Investigated.RemoveRange(0, seerRole.Investigated.Count);
-                seerRole.LastInvestigated = DateTime.UtcNow;
+                var psychicRole = Role.GetRole<Psychic>(amnesiac);
+                psychicRole.Investigated.RemoveRange(0, psychicRole.Investigated.Count);
+                psychicRole.LastInvestigated = DateTime.UtcNow;
             }
 
             else if (role == RoleEnum.Jailor)

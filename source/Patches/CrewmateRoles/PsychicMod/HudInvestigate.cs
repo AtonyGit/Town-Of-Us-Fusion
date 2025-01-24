@@ -2,7 +2,7 @@
 using HarmonyLib;
 using TownOfUsFusion.Roles;
 
-namespace TownOfUsFusion.CrewmateRoles.SeerMod
+namespace TownOfUsFusion.CrewmateRoles.PsychicMod
 {
     [HarmonyPatch(typeof(HudManager))]
     public class HudInvestigate
@@ -18,15 +18,15 @@ namespace TownOfUsFusion.CrewmateRoles.SeerMod
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Seer)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Psychic)) return;
             var investigateButton = __instance.KillButton;
 
-            var role = Role.GetRole<Seer>(PlayerControl.LocalPlayer);
+            var role = Role.GetRole<Psychic>(PlayerControl.LocalPlayer);
 
             investigateButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-            investigateButton.SetCoolDown(role.SeerTimer(), CustomGameOptions.SeerCd);
+            investigateButton.SetCoolDown(role.PsychicTimer(), CustomGameOptions.PsychicCd);
 
             var notInvestigated = PlayerControl.AllPlayerControls
                 .ToArray()

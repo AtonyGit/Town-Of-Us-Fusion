@@ -38,11 +38,11 @@ namespace TownOfUsFusion.Patches
                 medium.LastMediated = medium.LastMediated.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.MediateCooldown);
             }
 
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Seer))
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Psychic))
             {
-                var seer = Role.GetRole<Seer>(PlayerControl.LocalPlayer);
-                seer.LastInvestigated = DateTime.UtcNow;
-                seer.LastInvestigated = seer.LastInvestigated.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.SeerCd);
+                var psychic = Role.GetRole<Psychic>(PlayerControl.LocalPlayer);
+                psychic.LastInvestigated = DateTime.UtcNow;
+                psychic.LastInvestigated = psychic.LastInvestigated.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.PsychicCd);
             }
 
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Oracle))

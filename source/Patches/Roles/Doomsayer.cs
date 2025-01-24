@@ -41,7 +41,7 @@ namespace TownOfUsFusion.Roles
             if (CustomGameOptions.SwapperOn > 0) ColorMapping.Add("Swapper", Colors.Swapper);
             if (CustomGameOptions.InvestigatorOn > 0) ColorMapping.Add("Investigator", Colors.Investigator);
             if (CustomGameOptions.MedicOn > 0) ColorMapping.Add("Medic", Colors.Medic);
-            if (CustomGameOptions.SeerOn > 0) ColorMapping.Add("Seer", Colors.Seer);
+            if (CustomGameOptions.PsychicOn > 0) ColorMapping.Add("Psychic", Colors.Psychic);
             if (CustomGameOptions.SpyOn > 0) ColorMapping.Add("Spy", Colors.Spy);
             if (CustomGameOptions.SnitchOn > 0) ColorMapping.Add("Snitch", Colors.Snitch);
             if (CustomGameOptions.AltruistOn > 0) ColorMapping.Add("Altruist", Colors.Altruist);

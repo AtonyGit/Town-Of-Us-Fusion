@@ -119,7 +119,7 @@ namespace TownOfUsFusion
         public static void AdjustCooldowns(float change)
         {
             Generate.ExamineCooldown.Set((float)Generate.ExamineCooldown.Value + change, false);
-            Generate.SeerCooldown.Set((float)Generate.SeerCooldown.Value + change, false);
+            Generate.PsychicCooldown.Set((float)Generate.PsychicCooldown.Value + change, false);
             Generate.TrackCooldown.Set((float)Generate.TrackCooldown.Value + change, false);
             Generate.TrapCooldown.Set((float)Generate.TrapCooldown.Value + change, false);
             Generate.SheriffKillCd.Set((float)Generate.SheriffKillCd.Value + change, false);

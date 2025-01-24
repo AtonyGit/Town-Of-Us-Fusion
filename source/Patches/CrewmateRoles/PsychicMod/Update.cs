@@ -4,16 +4,16 @@ using TownOfUsFusion.Roles;
 using TownOfUsFusion.Roles.Modifiers;
 using UnityEngine;
 
-namespace TownOfUsFusion.CrewmateRoles.SeerMod
+namespace TownOfUsFusion.CrewmateRoles.PsychicMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class Update
     {
-        private static void UpdateMeeting(MeetingHud __instance, Seer seer)
+        private static void UpdateMeeting(MeetingHud __instance, Psychic psychic)
         {
             foreach (var player in PlayerControl.AllPlayerControls)
             {
-                if (!seer.Investigated.Contains(player.PlayerId)) continue;
+                if (!psychic.Investigated.Contains(player.PlayerId)) continue;
                 foreach (var state in __instance.playerStates)
                 {
                     if (player.PlayerId != state.TargetPlayerId) continue;
@@ -59,15 +59,15 @@ namespace TownOfUsFusion.CrewmateRoles.SeerMod
             if (PlayerControl.LocalPlayer.Data == null) return;
             if (PlayerControl.LocalPlayer.Data.IsDead) return;
 
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Seer)) return;
-            var seer = Role.GetRole<Seer>(PlayerControl.LocalPlayer);
-            if (MeetingHud.Instance != null) UpdateMeeting(MeetingHud.Instance, seer);
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Psychic)) return;
+            var psychic = Role.GetRole<Psychic>(PlayerControl.LocalPlayer);
+            if (MeetingHud.Instance != null) UpdateMeeting(MeetingHud.Instance, psychic);
 
             if (!PlayerControl.LocalPlayer.IsHypnotised())
             {
                 foreach (var player in PlayerControl.AllPlayerControls)
                 {
-                    if (!seer.Investigated.Contains(player.PlayerId)) continue;
+                    if (!psychic.Investigated.Contains(player.PlayerId)) continue;
                     var roleType = Utils.GetRole(player);
                     switch (roleType)
                     {

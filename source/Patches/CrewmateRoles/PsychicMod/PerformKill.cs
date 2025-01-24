@@ -4,7 +4,7 @@ using TownOfUsFusion.Roles;
 using UnityEngine;
 using AmongUs.GameOptions;
 
-namespace TownOfUsFusion.CrewmateRoles.SeerMod
+namespace TownOfUsFusion.CrewmateRoles.PsychicMod
 {
     [HarmonyPatch(typeof(KillButton), nameof(KillButton.DoClick))]
     public class PerformKill
@@ -12,11 +12,11 @@ namespace TownOfUsFusion.CrewmateRoles.SeerMod
         public static bool Prefix(KillButton __instance)
         {
             if (__instance != DestroyableSingleton<HudManager>.Instance.KillButton) return true;
-            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.Seer);
+            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.Psychic);
             if (!flag) return true;
-            var role = Role.GetRole<Seer>(PlayerControl.LocalPlayer);
+            var role = Role.GetRole<Psychic>(PlayerControl.LocalPlayer);
             if (!PlayerControl.LocalPlayer.CanMove || role.ClosestPlayer == null) return false;
-            var flag2 = role.SeerTimer() == 0f;
+            var flag2 = role.PsychicTimer() == 0f;
             if (!flag2) return false;
             if (!__instance.enabled) return false;
             var maxDistance = GameOptionsData.KillDistances[GameOptionsManager.Instance.currentNormalGameOptions.KillDistance];
@@ -37,7 +37,7 @@ namespace TownOfUsFusion.CrewmateRoles.SeerMod
             else if (interact[1] == true)
             {
                 role.LastInvestigated = DateTime.UtcNow;
-                role.LastInvestigated = role.LastInvestigated.AddSeconds(CustomGameOptions.ProtectKCReset - CustomGameOptions.SeerCd);
+                role.LastInvestigated = role.LastInvestigated.AddSeconds(CustomGameOptions.ProtectKCReset - CustomGameOptions.PsychicCd);
                 return false;
             }
             else if (interact[3] == true) return false;

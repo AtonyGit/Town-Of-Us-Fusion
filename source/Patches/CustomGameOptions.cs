@@ -57,7 +57,7 @@ namespace TownOfUsFusion
         public static int AmnesiacOn => (int)Generate.AmnesiacOn.Get();
         public static int InvestigatorOn => (int)Generate.InvestigatorOn.Get();
         public static int MedicOn => (int)Generate.MedicOn.Get();
-        public static int SeerOn => (int)Generate.SeerOn.Get();
+        public static int PsychicOn => (int)Generate.PsychicOn.Get();
         public static int GlitchOn => (int)Generate.GlitchOn.Get();
         public static int MorphlingOn => (int)Generate.MorphlingOn.Get();
         public static int ExecutionerOn => (int)Generate.ExecutionerOn.Get();
@@ -169,7 +169,7 @@ namespace TownOfUsFusion
         public static float MedicReportNameDuration => Generate.MedicReportNameDuration.Get();
         public static float MedicReportColorDuration => Generate.MedicReportColorDuration.Get();
         public static bool ShowReports => Generate.MedicReportSwitch.Get();
-        public static float SeerCd => Generate.SeerCooldown.Get();
+        public static float PsychicCd => Generate.PsychicCooldown.Get();
         public static bool CrewKillingRed => Generate.CrewKillingRed.Get();
         public static bool NeutBenignRed => Generate.NeutBenignRed.Get();
         public static bool NeutEvilRed => Generate.NeutEvilRed.Get();

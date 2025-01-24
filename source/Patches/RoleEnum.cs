@@ -72,7 +72,6 @@ namespace TownOfUsFusion
 
 
 
-        Seer,
         Altruist,
         Warden,
 

@@ -1725,8 +1725,8 @@ namespace TownOfUsFusion
                 if (CustomGameOptions.MedicOn > 0)
                     CrewmateProtectiveRoles.Add((typeof(Medic), CustomGameOptions.MedicOn, true));
 
-                if (CustomGameOptions.SeerOn > 0)
-                    CrewmateInvestigativeRoles.Add((typeof(Seer), CustomGameOptions.SeerOn, false || CustomGameOptions.UniqueRoles));
+                if (CustomGameOptions.PsychicOn > 0)
+                    CrewmateInvestigativeRoles.Add((typeof(Psychic), CustomGameOptions.PsychicOn, false || CustomGameOptions.UniqueRoles));
 
                 if (CustomGameOptions.SpyOn > 0)
                     CrewmateInvestigativeRoles.Add((typeof(Spy), CustomGameOptions.SpyOn, false || CustomGameOptions.UniqueRoles));

@@ -22,7 +22,7 @@ namespace TownOfUsFusion
         private static Sprite Fix => TownOfUsFusion.EngineerFix;
         private static Sprite EngiVent => TownOfUsFusion.EngineerVent;
         private static Sprite Medic => TownOfUsFusion.MedicSprite;
-        private static Sprite Seer => TownOfUsFusion.SeerSprite;
+        private static Sprite Psychic => TownOfUsFusion.PsychicSprite;
         private static Sprite Douse => TownOfUsFusion.DouseSprite;
         private static Sprite Revive => TownOfUsFusion.ReviveSprite;
         private static Sprite Alert => TownOfUsFusion.AlertSprite;
@@ -65,11 +65,11 @@ namespace TownOfUsFusion
             if (!Kill) Kill = __instance.KillButton.graphic.sprite;
 
             var flag = false;
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Seer))
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Psychic))
             {
-                __instance.KillButton.graphic.sprite = Seer;
+                __instance.KillButton.graphic.sprite = Psychic;
                 __instance.KillButton.buttonLabelText.text = "Reveal";
-                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Seer);
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Psychic);
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Medic))

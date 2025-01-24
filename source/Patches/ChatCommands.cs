@@ -61,9 +61,9 @@ namespace TownOfUsFusion.Patches
                         AddRoleMessage(RoleEnum.Swapper);
                         return false;
                     }
-                    else if (chatText.ToLower().Trim().StartsWith("/seer"))
+                    else if (chatText.ToLower().Trim().StartsWith("/psy"))
                     {
-                        AddRoleMessage(RoleEnum.Seer);
+                        AddRoleMessage(RoleEnum.Psychic);
                         return false;
                     }
                     else if (chatText.ToLower().Trim().StartsWith("/sni"))
@@ -495,8 +495,8 @@ namespace TownOfUsFusion.Patches
                     PlayerControl.LocalPlayer, "The Sheriff is a crewmate who can kill other players. If the other player is good, they will self-kill instead.");
                 if (role == RoleEnum.Swapper) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
                     PlayerControl.LocalPlayer, "The Swapper is a crewmate who can swap the votes of 2 players during meetings.");
-                if (role == RoleEnum.Seer) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
-                    PlayerControl.LocalPlayer, "The Seer is a crewmate who can reveal the alliance of other players.");
+                if (role == RoleEnum.Psychic) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
+                    PlayerControl.LocalPlayer, "The Psychic is a crewmate who can reveal the alliance of other players.");
                 if (role == RoleEnum.Snitch) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
                     PlayerControl.LocalPlayer, "The Snitch is a crewmate who can see who the Impostors are once they complete all their tasks.");
                 if (role == RoleEnum.Spy) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(

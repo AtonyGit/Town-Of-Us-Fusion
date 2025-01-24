@@ -58,7 +58,7 @@ namespace TownOfUsFusion
         public static Sprite Footprint;
         public static Sprite NormalKill;
         public static Sprite MedicSprite;
-        public static Sprite SeerSprite;
+        public static Sprite PsychicSprite;
         public static Sprite SampleSprite;
         public static Sprite MorphSprite;
         public static Sprite Arrow;
@@ -175,7 +175,7 @@ namespace TownOfUsFusion
             // Investigative Roles
                 AutopsySprite = CreateScaledSprite("TownOfUsFusion.Resources.Autopsy.png");
                 ExamineSprite = CreateScaledSprite("TownOfUsFusion.Resources.Examine.png");
-                SeerSprite = CreateScaledSprite("TownOfUsFusion.Resources.Seer.png");
+                PsychicSprite = CreateScaledSprite("TownOfUsFusion.Resources.Psychic.png");
                 TrackSprite = CreateScaledSprite("TownOfUsFusion.Resources.Track.png");
                 TrapSprite = CreateScaledSprite("TownOfUsFusion.Resources.Trap.png");
             // Killing Roles

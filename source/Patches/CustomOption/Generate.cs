@@ -14,7 +14,7 @@ namespace TownOfUsFusion.CustomOption
         public static CustomNumberOption DetectiveOn;
         public static CustomNumberOption InvestigatorOn;
         public static CustomNumberOption OracleOn;
-        public static CustomNumberOption SeerOn;
+        public static CustomNumberOption PsychicOn;
         public static CustomNumberOption SnitchOn;
         public static CustomNumberOption SpyOn;
         public static CustomNumberOption TrackerOn;
@@ -210,8 +210,8 @@ namespace TownOfUsFusion.CustomOption
         public static CustomNumberOption MedicReportNameDuration;
         public static CustomNumberOption MedicReportColorDuration;
 
-        public static CustomHeaderOption Seer;
-        public static CustomNumberOption SeerCooldown;
+        public static CustomHeaderOption Psychic;
+        public static CustomNumberOption PsychicCooldown;
         public static CustomToggleOption CrewKillingRed;
         public static CustomToggleOption NeutBenignRed;
         public static CustomToggleOption NeutEvilRed;
@@ -587,7 +587,7 @@ namespace TownOfUsFusion.CustomOption
                 PercentFormat);
             InvestigatorOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#00B3B3FF>Investigator</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
-            SeerOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#FFCC80FF>Seer</color>", 0f, 0f, 100f, 10f,
+            PsychicOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#9900FFFF>Psychic</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             SpyOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#CCA3CCFF>Spy</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
@@ -1009,10 +1009,10 @@ namespace TownOfUsFusion.CustomOption
             NeutralKillingShowsEvil =
                 new CustomToggleOption(num++, MultiMenu.crewmate, "Neutral Killing Roles Show Evil", true);
 
-            Seer =
-                new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#FFCC80FF>Seer</color>");
-            SeerCooldown =
-                new CustomNumberOption(num++, MultiMenu.crewmate, "Seer Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
+            Psychic =
+                new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#9900FFFF>Psychic</color>");
+            PsychicCooldown =
+                new CustomNumberOption(num++, MultiMenu.crewmate, "Psychic Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
             CrewKillingRed =
                 new CustomToggleOption(num++, MultiMenu.crewmate, "Crewmate Killing Roles Are Red", false);
             NeutBenignRed =
@@ -1023,6 +1023,8 @@ namespace TownOfUsFusion.CustomOption
                 new CustomToggleOption(num++, MultiMenu.crewmate, "Neutral Killing Roles Are Red", true);
             TraitorColourSwap =
                 new CustomToggleOption(num++, MultiMenu.crewmate, "Traitor Does Not Swap Colours", false);
+            RevealAccuracy = new CustomNumberOption(num++, MultiMenu.crewmate, "Reveal Accuracy", 80f, 0f, 100f, 10f,
+                PercentFormat);
 
             Snitch = new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#D4AF37FF>Snitch</color>");
             SnitchSeesNeutrals = new CustomToggleOption(num++, MultiMenu.crewmate, "Snitch Sees Neutral Roles", false);

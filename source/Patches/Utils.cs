@@ -1397,10 +1397,10 @@ namespace TownOfUsFusion
                 medium.MediatedPlayers.Values.DestroyAll();
                 medium.MediatedPlayers.Clear();
             }
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Seer))
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Psychic))
             {
-                var seer = Role.GetRole<Seer>(PlayerControl.LocalPlayer);
-                seer.LastInvestigated = DateTime.UtcNow;
+                var psychic = Role.GetRole<Psychic>(PlayerControl.LocalPlayer);
+                psychic.LastInvestigated = DateTime.UtcNow;
             }
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Oracle))
             {
