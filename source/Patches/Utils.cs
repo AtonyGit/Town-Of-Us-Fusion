@@ -1569,6 +1569,7 @@ namespace TownOfUsFusion
             {
                 var sk = Role.GetRole<SerialKiller>(PlayerControl.LocalPlayer);
                 sk.LastKill = DateTime.UtcNow;
+                sk.Target = null;
             }
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Plaguebearer))
             {

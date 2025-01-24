@@ -66,15 +66,8 @@ namespace TownOfUsFusion.NeutralRoles.SerialKillerMod
             if ((role.BloodlustTimer() == 0f || MeetingHud.Instance || PlayerControl.LocalPlayer.Data.IsDead) && role.Scavenging)
             {
                 role.StopBloodlust();
-/*
-                if (role.Player.Is(ModifierEnum.Underdog))
-                {
-                    var lowerKC = GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown - CustomGameOptions.UnderdogKillBonus;
-                    var normalKC = GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown;
-                    var upperKC = GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown + CustomGameOptions.UnderdogKillBonus;
-                    role.Player.SetKillTimer(PerformKill.LastImp() ? lowerKC : (PerformKill.IncreasedKC() ? normalKC : upperKC));
-                }
-                else */role.Player.SetKillTimer(GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown);
+                
+                __instance.KillButton.SetCoolDown(role.KillTimer(), CustomGameOptions.SkKillCooldown);
             }
 
             if (!role.GameStarted && PlayerControl.LocalPlayer.killTimer > 0f) role.GameStarted = true;

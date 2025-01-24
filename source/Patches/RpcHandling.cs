@@ -1792,6 +1792,9 @@ namespace TownOfUsFusion
                 if (CustomGameOptions.AmnesiacOn > 0)
                     NeutralBenignRoles.Add((typeof(Amnesiac), CustomGameOptions.AmnesiacOn, false || CustomGameOptions.UniqueRoles));
 
+                if (CustomGameOptions.CannibalOn > 0)
+                    NeutralChaosRoles.Add((typeof(Cannibal), CustomGameOptions.CannibalOn, true));
+
                 if (CustomGameOptions.ExecutionerOn > 0)
                     NeutralEvilRoles.Add((typeof(Executioner), CustomGameOptions.ExecutionerOn, false || CustomGameOptions.UniqueRoles));
 
@@ -1806,6 +1809,7 @@ namespace TownOfUsFusion
 
                 if (CustomGameOptions.SerialKillerOn > 0)
                     NeutralKillingRoles.Add((typeof(SerialKiller), CustomGameOptions.SerialKillerOn, true));
+                    
                 if (CustomGameOptions.GlitchOn > 0)
                     NeutralKillingRoles.Add((typeof(Glitch), CustomGameOptions.GlitchOn, true));
 

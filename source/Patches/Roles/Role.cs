@@ -802,13 +802,23 @@ namespace TownOfUsFusion.Roles
                 var player = __instance.__4__this;
                 var role = GetRole(player);
                 var modifier = Modifier.GetModifier(player);
+                var alliance = Alliance.GetAlliance(player);
+
+                if (alliance != null)
+                {
+                    var modTask = new GameObject(alliance.Name + "Task").AddComponent<ImportantTextTask>();
+                    modTask.transform.SetParent(player.transform, false);
+                    modTask.Text =
+                        $"<size=80%>{alliance.ColorString}Alliance: {alliance.Name}\n{alliance.TaskText()}</color></size>";
+                    player.myTasks.Insert(0, modTask);
+                }
 
                 if (modifier != null)
                 {
                     var modTask = new GameObject(modifier.Name + "Task").AddComponent<ImportantTextTask>();
                     modTask.transform.SetParent(player.transform, false);
                     modTask.Text =
-                        $"{modifier.ColorString}Modifier: {modifier.Name}\n{modifier.TaskText()}</color>";
+                        $"<size=80%>{modifier.ColorString}Modifier: {modifier.Name}\n{modifier.TaskText()}</color></size>";
                     player.myTasks.Insert(0, modTask);
                 }
 
