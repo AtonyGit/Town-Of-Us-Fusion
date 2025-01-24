@@ -1019,10 +1019,10 @@ namespace TownOfUsFusion.Roles
                             foreach (var oracle in GetRoles(RoleEnum.Oracle))
                             {
                                 var oracleRole = (Oracle)oracle;
-                                if (oracleRole.SavedConfessor)
+                                if (oracleRole.SavedBlessed)
                                 {
-                                    oracleRole.SavedConfessor = false;
-                                    __result = $"{oracleRole.Confessor.GetDefaultOutfit().PlayerName} was blessed by an Oracle!";
+                                    oracleRole.SavedBlessed = false;
+                                    __result = $"{oracleRole.BlessedPlayer.GetDefaultOutfit().PlayerName} was blessed by an Oracle!";
                                 }
                             }
                         }

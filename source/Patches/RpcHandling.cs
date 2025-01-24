@@ -1243,7 +1243,7 @@ namespace TownOfUsFusion
                         break;
                     case CustomRPC.Confess:
                         var oracle = Role.GetRole<Oracle>(Utils.PlayerById(reader.ReadByte()));
-                        oracle.Confessor = Utils.PlayerById(reader.ReadByte());
+                        oracle.BlessedPlayer = Utils.PlayerById(reader.ReadByte());
                         var faction = reader.ReadInt32();
                         if (faction == 0) oracle.RevealedFaction = Faction.Crewmates;
                         else if (faction == 1) oracle.RevealedFaction = Faction.NeutralEvil;
@@ -1251,7 +1251,7 @@ namespace TownOfUsFusion
                         break;
                     case CustomRPC.Bless:
                         var oracle2 = Role.GetRole<Oracle>(Utils.PlayerById(reader.ReadByte()));
-                        oracle2.SavedConfessor = true;
+                        oracle2.SavedBlessed = true;
                         break;
                     case CustomRPC.Retribution:
                         var hunter2 = Role.GetRole<Hunter>(Utils.PlayerById(reader.ReadByte()));

@@ -27,7 +27,7 @@ namespace TownOfUsFusion.CrewmateRoles.OracleMod
             var interact = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer);
             if (interact[4] == true)
             {
-                role.Confessor = role.ClosestPlayer;
+                role.BlessedPlayer = role.ClosestPlayer;
                 bool showsCorrectFaction = true;
                 int faction = 1;
                 if (role.Accuracy == 0f) showsCorrectFaction = false;
@@ -38,21 +38,21 @@ namespace TownOfUsFusion.CrewmateRoles.OracleMod
                 }
                 if (showsCorrectFaction)
                 {
-                    if (role.Confessor.Is(Faction.Crewmates)) faction = 0;
-                    else if (role.Confessor.Is(Faction.Impostors)) faction = 2;
+                    if (role.BlessedPlayer.Is(Faction.Crewmates)) faction = 0;
+                    else if (role.BlessedPlayer.Is(Faction.Impostors)) faction = 2;
                 }
                 else
                 {
                     var num = UnityEngine.Random.RandomRangeInt(0, 2);
-                    if (role.Confessor.Is(Faction.Impostors)) faction = num;
-                    else if (role.Confessor.Is(Faction.Crewmates)) faction = num + 1;
+                    if (role.BlessedPlayer.Is(Faction.Impostors)) faction = num;
+                    else if (role.BlessedPlayer.Is(Faction.Crewmates)) faction = num + 1;
                     else if (num == 1) faction = 2;
                     else faction = 0;
                 }
                 if (faction == 0) role.RevealedFaction = Faction.Crewmates;
                 else if (faction == 1) role.RevealedFaction = Faction.NeutralEvil;
                 else role.RevealedFaction = Faction.Impostors;
-                Utils.Rpc(CustomRPC.Confess, PlayerControl.LocalPlayer.PlayerId, role.Confessor.PlayerId, faction);
+                Utils.Rpc(CustomRPC.Confess, PlayerControl.LocalPlayer.PlayerId, role.BlessedPlayer.PlayerId, faction);
             }
             if (interact[0] == true)
             {

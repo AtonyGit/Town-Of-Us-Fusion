@@ -5,11 +5,12 @@ namespace TownOfUsFusion.Roles
     public class Oracle : Role
     {
         public PlayerControl ClosestPlayer;
-        public PlayerControl Confessor;
+        public PlayerControl Fortified;
+        public PlayerControl BlessedPlayer;
         public float Accuracy;
         public bool FirstMeetingDead;
         public Faction RevealedFaction;
-        public bool SavedConfessor;
+        public bool SavedBlessed;
         public DateTime LastConfessed { get; set; }
 
         public Oracle(PlayerControl player) : base(player)

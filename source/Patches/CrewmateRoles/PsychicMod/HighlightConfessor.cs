@@ -1,12 +1,12 @@
 using HarmonyLib;
 using TownOfUsFusion.Roles;
 
-namespace TownOfUsFusion.CrewmateRoles.OracleMod
+namespace TownOfUsFusion.CrewmateRoles.PsychicMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class HighlightConfessor
     {
-        public static void UpdateMeeting(Oracle role, MeetingHud __instance)
+        public static void UpdateMeeting(Psychic role, MeetingHud __instance)
         {
             foreach (var player in PlayerControl.AllPlayerControls)
             {
@@ -25,9 +25,9 @@ namespace TownOfUsFusion.CrewmateRoles.OracleMod
         public static void Postfix(HudManager __instance)
         {
             if (!MeetingHud.Instance || PlayerControl.LocalPlayer.Data.IsDead) return;
-            foreach (var oracle in Role.GetRoles(RoleEnum.Oracle))
+            foreach (var psychic in Role.GetRoles(RoleEnum.Psychic))
             {
-                var role = Role.GetRole<Oracle>(oracle.Player);
+                var role = Role.GetRole<Psychic>(psychic.Player);
                 if (!role.Player.Data.IsDead || role.Confessor == null) return;
                 UpdateMeeting(role, MeetingHud.Instance);
             }

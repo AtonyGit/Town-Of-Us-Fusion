@@ -8,6 +8,7 @@ namespace TownOfUsFusion.Roles
         public List<byte> Investigated = new List<byte>();
         public PlayerControl Confessor;
         public float Accuracy;
+        public bool IsSeerMode;
         public bool FirstMeetingDead;
         public Faction RevealedFaction;
 
@@ -21,6 +22,7 @@ namespace TownOfUsFusion.Roles
             Accuracy = CustomGameOptions.RevealAccuracy;
             FirstMeetingDead = true;
             FirstMeetingDead = false;
+            IsSeerMode = false;
             RoleType = RoleEnum.Psychic;
             AddToRoleHistory(RoleType);
         }

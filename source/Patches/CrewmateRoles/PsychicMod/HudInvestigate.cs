@@ -27,13 +27,22 @@ namespace TownOfUsFusion.CrewmateRoles.PsychicMod
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
             investigateButton.SetCoolDown(role.PsychicTimer(), CustomGameOptions.PsychicCd);
+            if (role.IsSeerMode) {
+                var notInvestigated = PlayerControl.AllPlayerControls
+                    .ToArray()
+                    .Where(x => !role.Investigated.Contains(x.PlayerId))
+                    .ToList();
 
-            var notInvestigated = PlayerControl.AllPlayerControls
-                .ToArray()
-                .Where(x => !role.Investigated.Contains(x.PlayerId))
-                .ToList();
+                Utils.SetTarget(ref role.ClosestPlayer, investigateButton, float.NaN, notInvestigated);
+            }
+            else {
+                var notConfessing = PlayerControl.AllPlayerControls
+                    .ToArray()
+                    .Where(x => x != role.Confessor)
+                    .ToList();
 
-            Utils.SetTarget(ref role.ClosestPlayer, investigateButton, float.NaN, notInvestigated);
+                Utils.SetTarget(ref role.ClosestPlayer, investigateButton, float.NaN, notConfessing);
+            }
         }
     }
 }

@@ -191,13 +191,6 @@ namespace TownOfUsFusion
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Vampire);
                 flag = true;
             }
-            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Oracle))
-            {
-                __instance.KillButton.graphic.sprite = Confess;
-                __instance.KillButton.buttonLabelText.text = "Confess";
-                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Oracle);
-                flag = true;
-            }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Politician))
             {
                 __instance.KillButton.graphic.sprite = Campaign;
@@ -205,11 +198,11 @@ namespace TownOfUsFusion
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Politician);
                 flag = true;
             }
-            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Warden))
+            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Oracle))
             {
                 __instance.KillButton.graphic.sprite = Fortify;
-                __instance.KillButton.buttonLabelText.text = "Fortify";
-                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Warden);
+                __instance.KillButton.buttonLabelText.text = "Bless";
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Oracle);
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Jailor))

@@ -25,7 +25,7 @@ namespace TownOfUsFusion.CrewmateRoles.OracleMod
 
             var notConfessing = PlayerControl.AllPlayerControls
                 .ToArray()
-                .Where(x => x != role.Confessor)
+                .Where(x => x != role.BlessedPlayer)
                 .ToList();
 
             Utils.SetTarget(ref role.ClosestPlayer, confessButton, float.NaN, notConfessing);
