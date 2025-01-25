@@ -66,11 +66,6 @@ namespace TownOfUsFusion.Patches
                         AddRoleMessage(RoleEnum.Psychic);
                         return false;
                     }
-                    else if (chatText.ToLower().Trim().StartsWith("/sni"))
-                    {
-                        AddRoleMessage(RoleEnum.Snitch);
-                        return false;
-                    }
                     else if (chatText.ToLower().Trim().StartsWith("/spy"))
                     {
                         AddRoleMessage(RoleEnum.Spy);
@@ -226,11 +221,6 @@ namespace TownOfUsFusion.Patches
                         chatText.ToLower().Trim().StartsWith("/were"))
                     {
                         AddRoleMessage(RoleEnum.Werewolf);
-                        return false;
-                    }
-                    else if (chatText.ToLower().Trim().StartsWith("/detec"))
-                    {
-                        AddRoleMessage(RoleEnum.Coroner);
                         return false;
                     }
                     else if (chatText.ToLower().Trim().StartsWith("/escap"))
@@ -480,8 +470,6 @@ namespace TownOfUsFusion.Patches
                     PlayerControl.LocalPlayer, "The Altruist is a crewmate with the ability to sacrifice themselves to revive another player.");
                 if (role == RoleEnum.Engineer) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
                     PlayerControl.LocalPlayer, "The Engineer is a crewmate with the ability to vent and fix sabotages.");
-                if (role == RoleEnum.Investigator) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
-                    PlayerControl.LocalPlayer, "The Investigator is a crewmate with the ability to see other player's footsteps for a limited time.");
                 if (role == RoleEnum.Mayor) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
                     PlayerControl.LocalPlayer, "The Mayor is a crewmate with 3 votes and their role is revealed to everyone.");
                 if (role == RoleEnum.Medic) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
@@ -492,10 +480,8 @@ namespace TownOfUsFusion.Patches
                     PlayerControl.LocalPlayer, "The Swapper is a crewmate who can swap the votes of 2 players during meetings.");
                 if (role == RoleEnum.Psychic) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
                     PlayerControl.LocalPlayer, "The Psychic is a crewmate who can reveal the alliance of other players, and check if they are good or evil via a vision.");
-                if (role == RoleEnum.Snitch) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
-                    PlayerControl.LocalPlayer, "The Snitch is a crewmate who can see who the Impostors are once they complete all their tasks.");
                 if (role == RoleEnum.Spy) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
-                    PlayerControl.LocalPlayer, "The Spy is a crewmate who can see the colours of players on the admin table.");
+                    PlayerControl.LocalPlayer, "The Spy is a crewmate who can see the colours of players on the admin table and can see who the Impostors are once they complete all their tasks.");
                 if (role == RoleEnum.Vigilante) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,
                     "The Vigilante is a crewmate who can guess other people's roles during meetings. If they guess correctly they kill the other player, if not, they die instead.");
                 if (role == RoleEnum.Hunter) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,
@@ -531,7 +517,7 @@ namespace TownOfUsFusion.Patches
                 if (role == RoleEnum.Juggernaut) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,
                     "The Juggernaut is a neutral killer with the goal to kill everyone. Every kill they make reduces their kill cooldown.");
                 if (role == RoleEnum.Tracker) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
-                    PlayerControl.LocalPlayer, "The Tracker is a crewmate who can track multiple other players.");
+                    PlayerControl.LocalPlayer, "The Tracker is a crewmate who can track multiple other players, as well as see their footprints.");
                 if (role == RoleEnum.Transporter) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
                     PlayerControl.LocalPlayer, "The Transporter is a crewmate who can swap the locations of 2 other players.");
                 if (role == RoleEnum.Traitor) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
@@ -552,8 +538,8 @@ namespace TownOfUsFusion.Patches
                     "The Pestilence is a neutral killer with the goal to kill everyone. In addition to being able to kill, they are invincible and anyone who interacts with them will die.");
                 if (role == RoleEnum.Werewolf) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,
                     "The Werewolf is a neutral killer with the goal to kill everyone. In order to kill, they must rampage which gives them a short kill cooldown to kill people in bursts.");
-                if (role == RoleEnum.Coroner) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,
-                    "The Coroner is a crewmate that can inspect crime scenes. Any player who has walked over this crime scene is suspicious. They can then examine players to see who has been at the crime scene.");
+                if (role == RoleEnum.Investigator) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,
+                    "The Investigator is a crewmate that can inspect crime scenes. Any player who has walked over this crime scene is suspicious. They can then examine players to see who has been at the crime scene.");
                 if (role == RoleEnum.Escapist) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
                     PlayerControl.LocalPlayer, "The Escapist is an impostor who can mark a location and recall to it later.");
                 if (role == RoleEnum.Imitator) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,

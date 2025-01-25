@@ -1,8 +1,8 @@
 using HarmonyLib;
 using TownOfUsFusion.Roles;
 using System.Linq;
-using TownOfUsFusion.CrewmateRoles.InvestigatorMod;
-using TownOfUsFusion.CrewmateRoles.SnitchMod;
+using TownOfUsFusion.CrewmateRoles.TrackerMod;
+using TownOfUsFusion.CrewmateRoles.SpyMod;
 using TownOfUsFusion.Extensions;
 using UnityEngine;
 using Reactor.Utilities;
@@ -44,20 +44,18 @@ namespace TownOfUsFusion.ImpostorRoles.TraitorMod
 
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Traitor))
             {
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Snitch))
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.Spy))
                 {
-                    var snitchRole = Role.GetRole<Snitch>(PlayerControl.LocalPlayer);
-                    snitchRole.ImpArrows.DestroyAll();
-                    snitchRole.SnitchArrows.Values.DestroyAll();
-                    snitchRole.SnitchArrows.Clear();
+                    var spyRole = Role.GetRole<Spy>(PlayerControl.LocalPlayer);
+                    spyRole.ImpArrows.DestroyAll();
+                    spyRole.SpyArrows.Values.DestroyAll();
+                    spyRole.SpyArrows.Clear();
                     CompleteTask.Postfix(PlayerControl.LocalPlayer);
                 }
 
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Investigator)) Footprint.DestroyAll(Role.GetRole<Investigator>(PlayerControl.LocalPlayer));
-
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Coroner))
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.Investigator))
                 {
-                    var detecRole = Role.GetRole<Coroner>(PlayerControl.LocalPlayer);
+                    var detecRole = Role.GetRole<Investigator>(PlayerControl.LocalPlayer);
                     detecRole.ExamineButton.gameObject.SetActive(false);
                     foreach (GameObject scene in detecRole.CrimeScenes)
                     {
@@ -85,6 +83,7 @@ namespace TownOfUsFusion.ImpostorRoles.TraitorMod
                     var trackerRole = Role.GetRole<Tracker>(PlayerControl.LocalPlayer);
                     trackerRole.TrackerArrows.Values.DestroyAll();
                     trackerRole.TrackerArrows.Clear();
+                    Footprint.DestroyAll(trackerRole);
                     Object.Destroy(trackerRole.UsesText);
                 }
 
@@ -171,10 +170,10 @@ namespace TownOfUsFusion.ImpostorRoles.TraitorMod
                 Coroutines.Start(Utils.FlashCoroutine(Color.red, 3f));
             }
 
-            foreach (var snitch in Role.GetRoles(RoleEnum.Snitch))
+            foreach (var spy in Role.GetRoles(RoleEnum.Spy))
             {
-                var snitchRole = (Snitch)snitch;
-                if (snitchRole.TasksDone && PlayerControl.LocalPlayer.Is(RoleEnum.Snitch) && CustomGameOptions.SnitchSeesTraitor)
+                var spyRole = (Spy)spy;
+                if (spyRole.TasksDone && PlayerControl.LocalPlayer.Is(RoleEnum.Spy) && CustomGameOptions.SpySeesTraitor)
                 {
                     var gameObj = new GameObject();
                     var arrow = gameObj.AddComponent<ArrowBehaviour>();
@@ -183,9 +182,9 @@ namespace TownOfUsFusion.ImpostorRoles.TraitorMod
                     renderer.sprite = Sprite;
                     arrow.image = renderer;
                     gameObj.layer = 5;
-                    snitchRole.SnitchArrows.Add(player.PlayerId, arrow);
+                    spyRole.SpyArrows.Add(player.PlayerId, arrow);
                 }
-                else if (snitchRole.Revealed && PlayerControl.LocalPlayer.Is(RoleEnum.Traitor) && CustomGameOptions.SnitchSeesTraitor)
+                else if (spyRole.Revealed && PlayerControl.LocalPlayer.Is(RoleEnum.Traitor) && CustomGameOptions.SpySeesTraitor)
                 {
                     var gameObj = new GameObject();
                     var arrow = gameObj.AddComponent<ArrowBehaviour>();
@@ -194,7 +193,7 @@ namespace TownOfUsFusion.ImpostorRoles.TraitorMod
                     renderer.sprite = Sprite;
                     arrow.image = renderer;
                     gameObj.layer = 5;
-                    snitchRole.ImpArrows.Add(arrow);
+                    spyRole.ImpArrows.Add(arrow);
                 }
             }
 

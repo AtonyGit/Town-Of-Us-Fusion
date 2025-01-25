@@ -24,11 +24,11 @@ namespace TownOfUsFusion.Patches
                 }
             }
 
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Coroner))
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Investigator))
             {
-                var detective = Role.GetRole<Coroner>(PlayerControl.LocalPlayer);
-                detective.LastExamined = DateTime.UtcNow;
-                detective.LastExamined = detective.LastExamined.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.ExamineCd);
+                var investigator = Role.GetRole<Investigator>(PlayerControl.LocalPlayer);
+                investigator.LastExamined = DateTime.UtcNow;
+                investigator.LastExamined = investigator.LastExamined.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.ExamineCd);
             }
 
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Medium))

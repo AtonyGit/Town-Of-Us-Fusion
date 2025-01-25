@@ -22,7 +22,7 @@ using TownOfUsFusion.CrewmateRoles.TrapperMod;
 using TownOfUsFusion.ImpostorRoles.BomberMod;
 using Reactor.Networking;
 using Reactor.Networking.Extensions;
-using TownOfUsFusion.CrewmateRoles.CoronerMod;
+using TownOfUsFusion.CrewmateRoles.InvestigatorMod;
 using TownOfUsFusion.NeutralRoles.SoulCollectorMod;
 using static TownOfUsFusion.Roles.Glitch;
 using TownOfUsFusion.Patches.NeutralRoles;
@@ -827,15 +827,15 @@ namespace TownOfUsFusion
                     Coroutines.Start(FlashCoroutine(Patches.Colors.Medium));
                 }
 
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Coroner))
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.Investigator))
                 {
-                    var detective = Role.GetRole<Coroner>(PlayerControl.LocalPlayer);
+                    var investigator = Role.GetRole<Investigator>(PlayerControl.LocalPlayer);
                     if (PlayerControl.LocalPlayer != target && !PlayerControl.LocalPlayer.Data.IsDead)
                     {
                         var bodyPos = target.transform.position;
                         bodyPos.y -= 0.3f;
                         bodyPos.x -= 0.11f;
-                        detective.CrimeScenes.Add(CrimeSceneExtensions.CreateCrimeScene(bodyPos, target));
+                        investigator.CrimeScenes.Add(CrimeSceneExtensions.CreateCrimeScene(bodyPos, target));
                     }
                 }
 
@@ -1474,16 +1474,16 @@ namespace TownOfUsFusion
                     trapper.UsesLeft = CustomGameOptions.MaxTraps;
                 }
             }
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Coroner))
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Investigator))
             {
-                var detective = Role.GetRole<Coroner>(PlayerControl.LocalPlayer);
-                detective.LastExamined = DateTime.UtcNow;
-                detective.ClosestPlayer = null;
-                detective.CurrentTarget = null;
+                var investigator = Role.GetRole<Investigator>(PlayerControl.LocalPlayer);
+                investigator.LastExamined = DateTime.UtcNow;
+                investigator.ClosestPlayer = null;
+                investigator.CurrentTarget = null;
                 if (PlayerControl.LocalPlayer.Data.IsDead)
                 {
-                    detective.InvestigatingScene = null;
-                    CrimeSceneExtensions.ClearCrimeScenes(detective.CrimeScenes);
+                    investigator.InvestigatingScene = null;
+                    CrimeSceneExtensions.ClearCrimeScenes(investigator.CrimeScenes);
                 }
             }
             foreach (var role in Role.GetRoles(RoleEnum.Imitator))

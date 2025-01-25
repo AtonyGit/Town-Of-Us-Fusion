@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Object = UnityEngine.Object;
 using TMPro;
+using TownOfUsFusion.CrewmateRoles.TrackerMod;
 
 namespace TownOfUsFusion.Roles
 {
@@ -10,12 +11,14 @@ namespace TownOfUsFusion.Roles
     {
         public Dictionary<byte, ArrowBehaviour> TrackerArrows = new Dictionary<byte, ArrowBehaviour>();
         public PlayerControl ClosestPlayer;
+        public readonly List<Footprint> AllPrints = new List<Footprint>();
         public DateTime LastTracked { get; set; }
 
         public int UsesLeft;
         public TextMeshPro UsesText;
 
         public bool ButtonUsable => UsesLeft != 0;
+        public bool SeeOnlyTrackedPrints = false;
 
         public Tracker(PlayerControl player) : base(player)
         {
@@ -27,6 +30,7 @@ namespace TownOfUsFusion.Roles
             RoleType = RoleEnum.Tracker;
             AddToRoleHistory(RoleType);
 
+            SeeOnlyTrackedPrints = CustomGameOptions.SeeOnlyTrackedPrints;
             UsesLeft = CustomGameOptions.MaxTracks;
         }
 

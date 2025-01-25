@@ -16,7 +16,7 @@ using Il2CppInterop.Runtime.Injection;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using UnityEngine;
 using TownOfUsFusion.Patches.ScreenEffects;
-using TownOfUsFusion.CrewmateRoles.CoronerMod;
+using TownOfUsFusion.CrewmateRoles.InvestigatorMod;
 using TownOfUsFusion.NeutralRoles.SoulCollectorMod;
 using System.IO;
 using Reactor.Utilities;
@@ -37,7 +37,7 @@ namespace TownOfUsFusion
         public static System.Version Version = System.Version.Parse(VersionString);
         public const string VersionTag = "<color=#ff33fc></color>";
         public const bool isDevBuild = true;
-        public const string DevBuildVersion = "1";
+        public const string DevBuildVersion = "2";
 
         public static AssetLoader bundledAssets;
 
@@ -169,11 +169,10 @@ namespace TownOfUsFusion
             Generate.GenerateAll();
 
             bundledAssets = new();
-            // Astral Roles
+            // Investigative Roles
                 PerceptSprite = CreateScaledSprite("TownOfUsFusion.Resources.Percept.png");
                 WatchSprite = CreateScaledSprite("TownOfUsFusion.Resources.Watch.png");
                 MediateSprite = CreateScaledSprite("TownOfUsFusion.Resources.Mediate.png");
-            // Investigative Roles
                 AutopsySprite = CreateScaledSprite("TownOfUsFusion.Resources.Autopsy.png");
                 ExamineSprite = CreateScaledSprite("TownOfUsFusion.Resources.Examine.png");
                 PsychicSprite = CreateScaledSprite("TownOfUsFusion.Resources.Psychic.png");

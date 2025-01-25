@@ -3,7 +3,7 @@ using HarmonyLib;
 using TownOfUsFusion.Roles;
 using UnityEngine;
 
-namespace TownOfUsFusion.CrewmateRoles.CoronerMod
+namespace TownOfUsFusion.CrewmateRoles.InvestigatorMod
 {
     [HarmonyPatch(typeof(HudManager))]
     public class HudExamine
@@ -16,9 +16,9 @@ namespace TownOfUsFusion.CrewmateRoles.CoronerMod
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Coroner)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Investigator)) return;
 
-            var role = Role.GetRole<Coroner>(PlayerControl.LocalPlayer);
+            var role = Role.GetRole<Investigator>(PlayerControl.LocalPlayer);
 
             if (role.ExamineButton == null)
             {

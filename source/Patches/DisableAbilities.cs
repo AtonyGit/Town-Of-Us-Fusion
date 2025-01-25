@@ -159,7 +159,7 @@ namespace TownOfUsFusion
                         role.ExtraButtons[0].graphic.material.SetFloat("_Desat", 1f);
                     }
 
-                    if (PlayerControl.LocalPlayer.Is(RoleEnum.Coroner)) Role.GetRole<Coroner>(PlayerControl.LocalPlayer).ExamineButton.SetTarget(null);
+                    if (PlayerControl.LocalPlayer.Is(RoleEnum.Investigator)) Role.GetRole<Investigator>(PlayerControl.LocalPlayer).ExamineButton.SetTarget(null);
                     else if (PlayerControl.LocalPlayer.Is(RoleEnum.Hunter) && disableExtra)
                     {
                         var hunter = Role.GetRole<Hunter>(PlayerControl.LocalPlayer);

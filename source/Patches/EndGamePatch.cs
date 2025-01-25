@@ -51,165 +51,164 @@ namespace TownOfUsFusion.Patches {
                 {
                     switch(role.Value) {
 
-                    case RoleEnum.Aurial: playerRole += "<color=#" + Patches.Colors.Aurial.ToHtmlStringRGBA() + ">Aurial</color>";
+                    case RoleEnum.Aurial: playerRole += "<color=#" + Patches.Colors.Aurial.ToHtmlStringRGBA() + ">Aurial</color> > ";
                     break;
-                    case RoleEnum.Haunter: playerRole += "<color=#" + Patches.Colors.Haunter.ToHtmlStringRGBA() + ">Haunter</color>";
+                    case RoleEnum.Haunter: playerRole += "<color=#" + Patches.Colors.Haunter.ToHtmlStringRGBA() + ">Haunter</color> > ";
                     break;
-                    case RoleEnum.Lookout: playerRole += "<color=#" + Patches.Colors.Lookout.ToHtmlStringRGBA() + ">Lookout</color>";
+                    case RoleEnum.Lookout: playerRole += "<color=#" + Patches.Colors.Lookout.ToHtmlStringRGBA() + ">Lookout</color> > ";
                     break;
-                    case RoleEnum.Medium: playerRole += "<color=#" + Patches.Colors.Medium.ToHtmlStringRGBA() + ">Medium</color>";
-                    break;
-                    case RoleEnum.Snitch: playerRole += "<color=#" + Patches.Colors.Snitch.ToHtmlStringRGBA() + ">Snitch</color>";
+                    case RoleEnum.Medium: playerRole += "<color=#" + Patches.Colors.Medium.ToHtmlStringRGBA() + ">Medium</color> > ";
                     break;
 
-                    case RoleEnum.Coroner: playerRole += "<color=#" + Patches.Colors.Coroner.ToHtmlStringRGBA() + ">Coroner</color>";
+                    case RoleEnum.Investigator: playerRole += "<color=#" + Patches.Colors.Investigator.ToHtmlStringRGBA() + ">Investigator</color> > ";
                     break;
-                    case RoleEnum.Investigator: playerRole += "<color=#" + Patches.Colors.Investigator.ToHtmlStringRGBA() + ">Investigator</color>";
+                    case RoleEnum.Psychic: playerRole += "<color=#" + Patches.Colors.Psychic.ToHtmlStringRGBA() + ">Psychic</color> > ";
                     break;
-                    case RoleEnum.Psychic: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Psychic</color>";
+                    case RoleEnum.Spy: playerRole += "<color=#" + Patches.Colors.Spy.ToHtmlStringRGBA() + ">Spy</color> > ";
                     break;
-                    case RoleEnum.Spy: playerRole += "<color=#" + Patches.Colors.Spy.ToHtmlStringRGBA() + ">Spy</color>";
+                    case RoleEnum.Tracker: playerRole += "<color=#" + Patches.Colors.Tracker.ToHtmlStringRGBA() + ">Tracker</color> > ";
                     break;
-                    case RoleEnum.Tracker: playerRole += "<color=#" + Patches.Colors.Tracker.ToHtmlStringRGBA() + ">Tracker</color>";
-                    break;
-                    case RoleEnum.Trapper: playerRole += "<color=#" + Patches.Colors.Trapper.ToHtmlStringRGBA() + ">Trapper</color>";
+                    case RoleEnum.Trapper: playerRole += "<color=#" + Patches.Colors.Trapper.ToHtmlStringRGBA() + ">Trapper</color> > ";
                     break;
 
-                    case RoleEnum.Deputy: playerRole += "<color=#" + Patches.Colors.Deputy.ToHtmlStringRGBA() + ">Deputy</color>";
+                    case RoleEnum.Deputy: playerRole += "<color=#" + Patches.Colors.Deputy.ToHtmlStringRGBA() + ">Deputy</color> > ";
                     break;
-                    case RoleEnum.Hunter: playerRole += "<color=#" + Patches.Colors.Hunter.ToHtmlStringRGBA() + ">Hunter</color>";
+                    case RoleEnum.Hunter: playerRole += "<color=#" + Patches.Colors.Hunter.ToHtmlStringRGBA() + ">Hunter</color> > ";
                     break;
-                    case RoleEnum.Jailor: playerRole += "<color=#" + Patches.Colors.Jailor.ToHtmlStringRGBA() + ">Jailor</color>";
+                    case RoleEnum.Jailor: playerRole += "<color=#" + Patches.Colors.Jailor.ToHtmlStringRGBA() + ">Jailor</color> > ";
                     break;
-                    case RoleEnum.Sheriff: playerRole += "<color=#" + Patches.Colors.Sheriff.ToHtmlStringRGBA() + ">Sheriff</color>";
+                    case RoleEnum.Sheriff: playerRole += "<color=#" + Patches.Colors.Sheriff.ToHtmlStringRGBA() + ">Sheriff</color> > ";
                     break;
-                    case RoleEnum.Veteran: playerRole += "<color=#" + Patches.Colors.Veteran.ToHtmlStringRGBA() + ">Veteran</color>";
+                    case RoleEnum.Veteran: playerRole += "<color=#" + Patches.Colors.Veteran.ToHtmlStringRGBA() + ">Veteran</color> > ";
                     break;
-                    case RoleEnum.Vigilante: playerRole += "<color=#" + Patches.Colors.Vigilante.ToHtmlStringRGBA() + ">Vigilante</color>";
-                    break;
-
-                    case RoleEnum.Bodyguard: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Bodyguard</color>";
-                    break;
-                    case RoleEnum.Medic: playerRole += "<color=#" + Patches.Colors.Medic.ToHtmlStringRGBA() + ">Medic</color>";
-                    break;
-                    case RoleEnum.MirrorMaster: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">MirrorMaster</color>";
-                    break;
-                    case RoleEnum.Oracle: playerRole += "<color=#" + Patches.Colors.Oracle.ToHtmlStringRGBA() + ">Oracle</color>";
+                    case RoleEnum.Vigilante: playerRole += "<color=#" + Patches.Colors.Vigilante.ToHtmlStringRGBA() + ">Vigilante</color> > ";
                     break;
 
-                    case RoleEnum.Captain: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Captain</color>";
+                    case RoleEnum.Bodyguard: playerRole += "<color=#" + Patches.Colors.Bodyguard.ToHtmlStringRGBA() + ">Bodyguard</color> > ";
                     break;
-                    case RoleEnum.Politician: playerRole += "<color=#" + Patches.Colors.Politician.ToHtmlStringRGBA() + ">Politician</color>";
+                    case RoleEnum.Medic: playerRole += "<color=#" + Patches.Colors.Medic.ToHtmlStringRGBA() + ">Medic</color> > ";
                     break;
-                    case RoleEnum.Mayor: playerRole += "<color=#" + Patches.Colors.Mayor.ToHtmlStringRGBA() + ">Mayor</color>";
+                    case RoleEnum.MirrorMaster: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">MirrorMaster</color> > ";
                     break;
-                    case RoleEnum.Prosecutor: playerRole += "<color=#" + Patches.Colors.Prosecutor.ToHtmlStringRGBA() + ">Prosecutor</color>";
-                    break;
-                    case RoleEnum.Swapper: playerRole += "<color=#" + Patches.Colors.Swapper.ToHtmlStringRGBA() + ">Swapper</color>";
+                    case RoleEnum.Oracle: playerRole += "<color=#" + Patches.Colors.Oracle.ToHtmlStringRGBA() + ">Oracle</color> > ";
                     break;
 
-                    case RoleEnum.Engineer: playerRole += "<color=#" + Patches.Colors.Engineer.ToHtmlStringRGBA() + ">Engineer</color>";
+                    case RoleEnum.Captain: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Captain</color> > ";
                     break;
-                    case RoleEnum.Imitator: playerRole += "<color=#" + Patches.Colors.Imitator.ToHtmlStringRGBA() + ">Imitator</color>";
+                    case RoleEnum.Politician: playerRole += "<color=#" + Patches.Colors.Politician.ToHtmlStringRGBA() + ">Politician</color> > ";
                     break;
-                    case RoleEnum.Transporter: playerRole += "<color=#" + Patches.Colors.Transporter.ToHtmlStringRGBA() + ">Transporter</color>";
+                    case RoleEnum.Mayor: playerRole += "<color=#" + Patches.Colors.Mayor.ToHtmlStringRGBA() + ">Mayor</color> > ";
+                    break;
+                    case RoleEnum.Prosecutor: playerRole += "<color=#" + Patches.Colors.Prosecutor.ToHtmlStringRGBA() + ">Prosecutor</color> > ";
+                    break;
+                    case RoleEnum.Swapper: playerRole += "<color=#" + Patches.Colors.Swapper.ToHtmlStringRGBA() + ">Swapper</color> > ";
+                    break;
+
+                    case RoleEnum.Engineer: playerRole += "<color=#" + Patches.Colors.Engineer.ToHtmlStringRGBA() + ">Engineer</color> > ";
+                    break;
+                    case RoleEnum.Imitator: playerRole += "<color=#" + Patches.Colors.Imitator.ToHtmlStringRGBA() + ">Imitator</color> > ";
+                    break;
+                    case RoleEnum.Transporter: playerRole += "<color=#" + Patches.Colors.Transporter.ToHtmlStringRGBA() + ">Transporter</color> > ";
                     break;
 
 
-                    case RoleEnum.Amnesiac: playerRole += "<color=#" + Patches.Colors.Amnesiac.ToHtmlStringRGBA() + ">Amnesiac</color>";
+                    case RoleEnum.Amnesiac: playerRole += "<color=#" + Patches.Colors.Amnesiac.ToHtmlStringRGBA() + ">Amnesiac</color> > ";
                     break;
-                    case RoleEnum.GuardianAngel: playerRole += "<color=#" + Patches.Colors.GuardianAngel.ToHtmlStringRGBA() + ">Guardian Angel</color>";
+                    case RoleEnum.GuardianAngel: playerRole += "<color=#" + Patches.Colors.GuardianAngel.ToHtmlStringRGBA() + ">Guardian Angel</color> > ";
                     break;
-                    case RoleEnum.Lawyer: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Lawyer</color>";
+                    case RoleEnum.Lawyer: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Lawyer</color> > ";
                     break;
-                    case RoleEnum.Survivor: playerRole += "<color=#" + Patches.Colors.Survivor.ToHtmlStringRGBA() + ">Survivor</color>";
+                    case RoleEnum.Survivor: playerRole += "<color=#" + Patches.Colors.Survivor.ToHtmlStringRGBA() + ">Survivor</color> > ";
                     break;
                     
-                    case RoleEnum.Doomsayer: playerRole += "<color=#" + Patches.Colors.Doomsayer.ToHtmlStringRGBA() + ">Doomsayer</color>";
+                    case RoleEnum.Doomsayer: playerRole += "<color=#" + Patches.Colors.Doomsayer.ToHtmlStringRGBA() + ">Doomsayer</color> > ";
                     break;
-                    case RoleEnum.Executioner: playerRole += "<color=#" + Patches.Colors.Executioner.ToHtmlStringRGBA() + ">Executioner</color>";
+                    case RoleEnum.Executioner: playerRole += "<color=#" + Patches.Colors.Executioner.ToHtmlStringRGBA() + ">Executioner</color> > ";
                     break;
-                    case RoleEnum.Jester: playerRole += "<color=#" + Patches.Colors.Jester.ToHtmlStringRGBA() + ">Jester</color>";
+                    case RoleEnum.Jester: playerRole += "<color=#" + Patches.Colors.Jester.ToHtmlStringRGBA() + ">Jester</color> > ";
                     break;
-                    case RoleEnum.Phantom: playerRole += "<color=#" + Patches.Colors.Phantom.ToHtmlStringRGBA() + ">Phantom</color>";
-                    break;
-                    
-                    case RoleEnum.Cannibal: playerRole += "<color=#" + Patches.Colors.Cannibal.ToHtmlStringRGBA() + ">Cannibal</color>";
-                    break;
-                    case RoleEnum.Inquisitor: playerRole += "<color=#" + Patches.Colors.Inquisitor.ToHtmlStringRGBA() + ">Inquisitor</color>";
-                    break;
-                    case RoleEnum.Puppet: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Puppet</color>";
-                    break;
-                    case RoleEnum.Tyrant: playerRole += "<color=#" + Patches.Colors.Tyrant.ToHtmlStringRGBA() + ">Tyrant</color>";
+                    case RoleEnum.Phantom: playerRole += "<color=#" + Patches.Colors.Phantom.ToHtmlStringRGBA() + ">Phantom</color> > ";
                     break;
                     
-                    case RoleEnum.Arsonist: playerRole += "<color=#" + Patches.Colors.Arsonist.ToHtmlStringRGBA() + ">Arsonist</color>";
+                    case RoleEnum.Cannibal: playerRole += "<color=#" + Patches.Colors.Cannibal.ToHtmlStringRGBA() + ">Cannibal</color> > ";
                     break;
-                    case RoleEnum.SerialKiller: playerRole += "<color=#" + Patches.Colors.SerialKiller.ToHtmlStringRGBA() + ">Serial Killer</color>";
+                    case RoleEnum.Inquisitor: playerRole += "<color=#" + Patches.Colors.Inquisitor.ToHtmlStringRGBA() + ">Inquisitor</color> > ";
                     break;
-                    case RoleEnum.Glitch: playerRole += "<color=#" + Patches.Colors.Glitch.ToHtmlStringRGBA() + ">Glitch</color>";
+                    case RoleEnum.Puppet: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Puppet</color> > ";
                     break;
-                    case RoleEnum.Werewolf: playerRole += "<color=#" + Patches.Colors.Werewolf.ToHtmlStringRGBA() + ">Werewolf</color>";
-                    break;
-                    
-                    case RoleEnum.Jackal: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Jackal</color>";
-                    break;
-                    case RoleEnum.Necromancer: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Necromancer</color>";
-                    break;
-                    case RoleEnum.Vampire: playerRole += "<color=#" + Patches.Colors.Vampire.ToHtmlStringRGBA() + ">Vampire</color>";
+                    case RoleEnum.Tyrant: playerRole += "<color=#" + Patches.Colors.Tyrant.ToHtmlStringRGBA() + ">Tyrant</color> > ";
                     break;
                     
-                    case RoleEnum.Juggernaut: playerRole += "<color=#" + Patches.Colors.Apocalypse.ToHtmlStringRGBA() + ">Juggernaut</color>";
+                    case RoleEnum.Arsonist: playerRole += "<color=#" + Patches.Colors.Arsonist.ToHtmlStringRGBA() + ">Arsonist</color> > ";
                     break;
-                    case RoleEnum.Plaguebearer: playerRole += "<color=#" + Patches.Colors.Apocalypse.ToHtmlStringRGBA() + ">Plaguebearer</color>";
+                    case RoleEnum.SerialKiller: playerRole += "<color=#" + Patches.Colors.SerialKiller.ToHtmlStringRGBA() + ">Serial Killer</color> > ";
                     break;
-                    case RoleEnum.Pestilence: playerRole += "<color=#" + Patches.Colors.Apocalypse.ToHtmlStringRGBA() + ">Pestilence</color>";
+                    case RoleEnum.Glitch: playerRole += "<color=#" + Patches.Colors.Glitch.ToHtmlStringRGBA() + ">Glitch</color> > ";
                     break;
-                    case RoleEnum.SoulCollector: playerRole += "<color=#" + Patches.Colors.Apocalypse.ToHtmlStringRGBA() + ">Soul Collector</color>";
+                    case RoleEnum.Werewolf: playerRole += "<color=#" + Patches.Colors.Werewolf.ToHtmlStringRGBA() + ">Werewolf</color> > ";
+                    break;
+                    
+                    case RoleEnum.Jackal: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Jackal</color> > ";
+                    break;
+                    case RoleEnum.Necromancer: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Necromancer</color> > ";
+                    break;
+                    case RoleEnum.Vampire: playerRole += "<color=#" + Patches.Colors.Vampire.ToHtmlStringRGBA() + ">Vampire</color> > ";
+                    break;
+                    
+                    case RoleEnum.Juggernaut: playerRole += "<color=#" + Patches.Colors.Apocalypse.ToHtmlStringRGBA() + ">Juggernaut</color> > ";
+                    break;
+                    case RoleEnum.Plaguebearer: playerRole += "<color=#" + Patches.Colors.Apocalypse.ToHtmlStringRGBA() + ">Plaguebearer</color> > ";
+                    break;
+                    case RoleEnum.Pestilence: playerRole += "<color=#" + Patches.Colors.Apocalypse.ToHtmlStringRGBA() + ">Pestilence</color> > ";
+                    break;
+                    case RoleEnum.SoulCollector: playerRole += "<color=#" + Patches.Colors.Apocalypse.ToHtmlStringRGBA() + ">Soul Collector</color> > ";
                     break;
                     
 
-                    case RoleEnum.Escapist: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Escapist</color>";
+                    case RoleEnum.Escapist: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Escapist</color> > ";
                     break;
-                    case RoleEnum.Morphling: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Morphling</color>";
+                    case RoleEnum.Morphling: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Morphling</color> > ";
                     break;
-                    case RoleEnum.Swooper: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Swooper</color>";
+                    case RoleEnum.Swooper: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Swooper</color> > ";
                     break;
-                    case RoleEnum.Grenadier: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Grenadier</color>";
+                    case RoleEnum.Grenadier: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Grenadier</color> > ";
                     break;
-                    case RoleEnum.Venerer: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Venerer</color>";
-                    break;
-                    
-                    case RoleEnum.Bomber: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Bomber</color>";
-                    break;
-                    case RoleEnum.Poisoner: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Poisoner</color>";
-                    break;
-                    case RoleEnum.Traitor: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Traitor</color>";
-                    break;
-                    case RoleEnum.Warlock: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Warlock</color>";
+                    case RoleEnum.Venerer: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Venerer</color> > ";
                     break;
                     
-                    case RoleEnum.Blackmailer: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Blackmailer</color>";
+                    case RoleEnum.Bomber: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Bomber</color> > ";
                     break;
-                    case RoleEnum.Hypnotist: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Hypnotist</color>";
+                    case RoleEnum.Poisoner: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Poisoner</color> > ";
                     break;
-                    case RoleEnum.Janitor: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Janitor</color>";
+                    case RoleEnum.Traitor: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Traitor</color> > ";
                     break;
-                    case RoleEnum.Miner: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Miner</color>";
+                    case RoleEnum.Warlock: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Warlock</color> > ";
                     break;
-                    case RoleEnum.Undertaker: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Undertaker</color>";
+                    
+                    case RoleEnum.Blackmailer: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Blackmailer</color> > ";
+                    break;
+                    case RoleEnum.Hypnotist: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Hypnotist</color> > ";
+                    break;
+                    case RoleEnum.Janitor: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Janitor</color> > ";
+                    break;
+                    case RoleEnum.Miner: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Miner</color> > ";
+                    break;
+                    case RoleEnum.Undertaker: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Undertaker</color> > ";
                     break;
 
 
-                    case RoleEnum.Crewmate: playerRole += "<color=#" + Patches.Colors.Crewmate.ToHtmlStringRGBA() + ">Crewmate</color>";
+                    case RoleEnum.Crewmate: playerRole += "<color=#" + Patches.Colors.Crewmate.ToHtmlStringRGBA() + ">Crewmate</color> > ";
                     break;
-                    case RoleEnum.Impostor: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Impostor</color>";
+                    case RoleEnum.Impostor: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Impostor</color> > ";
                     break;
-                    default: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Unknown Role</color>";
+                    default: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Unknown Role</color> > ";
                     break;
                     }
                 }
-                //playerRole = playerRole.Remove(playerRole.Length - 3);
+                // This makes it so if there's no more roles that the player was, it doesn't show the " > " at the end.
+                //github copilot is a godsend
+                playerRole = playerRole.Remove(playerRole.Length - 3);
+
                 if (playerControl.Is(ModifierEnum.Giant)) playerRole += " (<color=#" + Patches.Colors.Giant.ToHtmlStringRGBA() + ">Giant</color>)";
                 else if (playerControl.Is(ModifierEnum.ButtonBarry)) playerRole += " (<color=#" + Patches.Colors.ButtonBarry.ToHtmlStringRGBA() + ">Button Barry</color>)";
                 else if (playerControl.Is(ModifierEnum.Aftermath)) playerRole += " (<color=#" + Patches.Colors.Aftermath.ToHtmlStringRGBA() + ">Aftermath</color>)";

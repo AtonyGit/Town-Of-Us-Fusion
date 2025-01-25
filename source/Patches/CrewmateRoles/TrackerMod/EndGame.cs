@@ -1,7 +1,7 @@
 using HarmonyLib;
 using TownOfUsFusion.Roles;
 
-namespace TownOfUsFusion.CrewmateRoles.InvestigatorMod
+namespace TownOfUsFusion.CrewmateRoles.TrackerMod
 {
     public class EndGame
     {
@@ -12,7 +12,7 @@ namespace TownOfUsFusion.CrewmateRoles.InvestigatorMod
         {
             public static void Prefix()
             {
-                foreach (var role in Role.GetRoles(RoleEnum.Investigator)) ((Investigator)role).AllPrints.Clear();
+                foreach (var role in Role.GetRoles(RoleEnum.Tracker)) ((Tracker)role).AllPrints.Clear();
             }
         }
     }

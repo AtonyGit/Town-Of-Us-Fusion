@@ -3,7 +3,7 @@ using System.Linq;
 using HarmonyLib;
 using TownOfUsFusion.CrewmateRoles.MedicMod;
 
-namespace TownOfUsFusion.CrewmateRoles.CoronerMod
+namespace TownOfUsFusion.CrewmateRoles.InvestigatorMod
 {
     [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CmdReportDeadBody))]
     internal class BodyReportPatch
@@ -20,14 +20,14 @@ namespace TownOfUsFusion.CrewmateRoles.CoronerMod
             if (killer == null)
                 return;
 
-            var isDetectiveAlive = __instance.Is(RoleEnum.Coroner);
-            var areReportsEnabled = CustomGameOptions.DetectiveReportOn;
+            var isInvestigatorAlive = __instance.Is(RoleEnum.Investigator);
+            var areReportsEnabled = CustomGameOptions.InvestigatorReportOn;
 
-            if (!isDetectiveAlive || !areReportsEnabled)
+            if (!isInvestigatorAlive || !areReportsEnabled)
                 return;
 
-            var isUserDetective = PlayerControl.LocalPlayer.Is(RoleEnum.Coroner);
-            if (!isUserDetective)
+            var isUserInvestigator = PlayerControl.LocalPlayer.Is(RoleEnum.Investigator);
+            if (!isUserInvestigator)
                 return;
             var br = new BodyReport
             {

@@ -60,18 +60,17 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
             Role.RoleDictionary.Remove(ImitatingPlayer.PlayerId);
             if (imitatorRole == RoleEnum.Crewmate) new Crewmate(ImitatingPlayer);
             else if (imitatorRole == RoleEnum.Aurial) new Aurial(ImitatingPlayer);
-            else if (imitatorRole == RoleEnum.Coroner) new Coroner(ImitatingPlayer);
             else if (imitatorRole == RoleEnum.Investigator) new Investigator(ImitatingPlayer);
             else if (imitatorRole == RoleEnum.Lookout) new Lookout(ImitatingPlayer);
             else if (imitatorRole == RoleEnum.Oracle) new Oracle(ImitatingPlayer);
             else if (imitatorRole == RoleEnum.Psychic) new Psychic(ImitatingPlayer);
-            else if (imitatorRole == RoleEnum.Snitch)
+            else if (imitatorRole == RoleEnum.Spy)
             {
-                var snitch = new Snitch(ImitatingPlayer);
+                var spy = new Spy(ImitatingPlayer);
                 var taskinfos = ImitatingPlayer.Data.Tasks.ToArray();
                 var tasksLeft = taskinfos.Count(x => !x.Complete);
-                if (tasksLeft <= CustomGameOptions.SnitchTasksRemaining && ((PlayerControl.LocalPlayer.Data.IsImpostor() && (!PlayerControl.LocalPlayer.Is(RoleEnum.Traitor) || CustomGameOptions.SnitchSeesTraitor))
-                            || (PlayerControl.LocalPlayer.Is(Faction.NeutralKilling) && CustomGameOptions.SnitchSeesNeutrals)))
+                if (tasksLeft <= CustomGameOptions.SpyTasksRemaining && ((PlayerControl.LocalPlayer.Data.IsImpostor() && (!PlayerControl.LocalPlayer.Is(RoleEnum.Traitor) || CustomGameOptions.SpySeesTraitor))
+                            || (PlayerControl.LocalPlayer.Is(Faction.NeutralKilling) && CustomGameOptions.SpySeesNeutrals)))
                 {
                     var gameObj = new GameObject();
                     var arrow = gameObj.AddComponent<ArrowBehaviour>();
@@ -80,14 +79,14 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
                     renderer.sprite = Sprite;
                     arrow.image = renderer;
                     gameObj.layer = 5;
-                    snitch.ImpArrows.Add(arrow);
+                    spy.ImpArrows.Add(arrow);
                 }
                 else if (tasksLeft == 0 && PlayerControl.LocalPlayer == ImitatingPlayer)
                 {
                     var impostors = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Data.IsImpostor());
                     foreach (var imp in impostors)
                     {
-                        if (!imp.Is(RoleEnum.Traitor) || CustomGameOptions.SnitchSeesTraitor)
+                        if (!imp.Is(RoleEnum.Traitor) || CustomGameOptions.SpySeesTraitor)
                         {
                             var gameObj = new GameObject();
                             var arrow = gameObj.AddComponent<ArrowBehaviour>();
@@ -96,12 +95,11 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
                             renderer.sprite = Sprite;
                             arrow.image = renderer;
                             gameObj.layer = 5;
-                            snitch.SnitchArrows.Add(imp.PlayerId, arrow);
+                            spy.SpyArrows.Add(imp.PlayerId, arrow);
                         }
                     }
                 }
             }
-            else if (imitatorRole == RoleEnum.Spy) new Spy(ImitatingPlayer);
             else if (imitatorRole == RoleEnum.Tracker) new Tracker(ImitatingPlayer);
             else if (imitatorRole == RoleEnum.Trapper) new Trapper(ImitatingPlayer);
             else if (imitatorRole == RoleEnum.Deputy)

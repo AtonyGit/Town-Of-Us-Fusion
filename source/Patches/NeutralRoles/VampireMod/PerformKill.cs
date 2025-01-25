@@ -3,7 +3,7 @@ using HarmonyLib;
 using TownOfUsFusion.Roles;
 using UnityEngine;
 using AmongUs.GameOptions;
-using TownOfUsFusion.CrewmateRoles.InvestigatorMod;
+using TownOfUsFusion.CrewmateRoles.TrackerMod;
 using TownOfUsFusion.CrewmateRoles.TrapperMod;
 using TownOfUsFusion.CrewmateRoles.ImitatorMod;
 using System.Linq;
@@ -121,13 +121,13 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
             var oldRole = Role.GetRole(newVamp);
             var killsList = (oldRole.CorrectKills, oldRole.IncorrectKills, oldRole.CorrectAssassinKills, oldRole.IncorrectAssassinKills);
 
-            if (newVamp.Is(RoleEnum.Snitch))
+            if (newVamp.Is(RoleEnum.Spy))
             {
-                var snitch = Role.GetRole<Snitch>(newVamp);
-                snitch.SnitchArrows.Values.DestroyAll();
-                snitch.SnitchArrows.Clear();
-                snitch.ImpArrows.DestroyAll();
-                snitch.ImpArrows.Clear();
+                var spy = Role.GetRole<Spy>(newVamp);
+                spy.SpyArrows.Values.DestroyAll();
+                spy.SpyArrows.Clear();
+                spy.ImpArrows.DestroyAll();
+                spy.ImpArrows.Clear();
             }
 
             if (newVamp == StartImitate.ImitatingPlayer) StartImitate.ImitatingPlayer = null;
@@ -149,12 +149,10 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
 
             if (PlayerControl.LocalPlayer == newVamp)
             {
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Coroner)) Role.GetRole<Coroner>(PlayerControl.LocalPlayer).ExamineButton.SetTarget(null);
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.Investigator)) Role.GetRole<Investigator>(PlayerControl.LocalPlayer).ExamineButton.SetTarget(null);
                 else if (PlayerControl.LocalPlayer.Is(RoleEnum.Hunter)) Role.GetRole<Hunter>(PlayerControl.LocalPlayer).StalkButton.SetTarget(null);
                 else if (PlayerControl.LocalPlayer.Is(RoleEnum.Altruist)) CrewmateRoles.AltruistMod.KillButtonTarget.SetTarget(HudManager.Instance.KillButton, null, Role.GetRole<Altruist>(PlayerControl.LocalPlayer));
                 else if (PlayerControl.LocalPlayer.Is(RoleEnum.Amnesiac)) AmnesiacMod.KillButtonTarget.SetTarget(HudManager.Instance.KillButton, null, Role.GetRole<Amnesiac>(PlayerControl.LocalPlayer));
-
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Investigator)) Footprint.DestroyAll(Role.GetRole<Investigator>(PlayerControl.LocalPlayer));
 
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Sheriff)) HudManager.Instance.KillButton.buttonLabelText.gameObject.SetActive(false);
 
@@ -170,6 +168,7 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
                     trackerRole.TrackerArrows.Values.DestroyAll();
                     trackerRole.TrackerArrows.Clear();
                     UnityEngine.Object.Destroy(trackerRole.UsesText);
+                    Footprint.DestroyAll(trackerRole);
                 }
 
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Lookout))
@@ -209,9 +208,9 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
                     trapperRole.traps.ClearTraps();
                 }
 
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Coroner))
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.Investigator))
                 {
-                    var detecRole = Role.GetRole<Coroner>(PlayerControl.LocalPlayer);
+                    var detecRole = Role.GetRole<Investigator>(PlayerControl.LocalPlayer);
                     detecRole.ExamineButton.gameObject.SetActive(false);
                     foreach (GameObject scene in detecRole.CrimeScenes)
                     {

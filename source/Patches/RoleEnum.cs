@@ -6,12 +6,11 @@ namespace TownOfUsFusion
         Haunter,
         Lookout,
         Medium,
-        Snitch,
+        Spy,
 
         Coroner,
         Investigator,
         Psychic,
-        Spy,
         Tracker,
         Trapper,
 

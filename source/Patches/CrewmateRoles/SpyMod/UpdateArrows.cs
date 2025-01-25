@@ -2,7 +2,7 @@ using System.Linq;
 using HarmonyLib;
 using TownOfUsFusion.Roles;
 
-namespace TownOfUsFusion.CrewmateRoles.SnitchMod
+namespace TownOfUsFusion.CrewmateRoles.SpyMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class UpdateArrows
@@ -13,25 +13,25 @@ namespace TownOfUsFusion.CrewmateRoles.SnitchMod
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
 
-            foreach (var role in Role.AllRoles.Where(x => x.RoleType == RoleEnum.Snitch))
+            foreach (var role in Role.AllRoles.Where(x => x.RoleType == RoleEnum.Spy))
             {
-                var snitch = (Snitch)role;
-                if (PlayerControl.LocalPlayer.Data.IsDead || snitch.Player.Data.IsDead)
+                var spy = (Spy)role;
+                if (PlayerControl.LocalPlayer.Data.IsDead || spy.Player.Data.IsDead)
                 {
-                    snitch.SnitchArrows.Values.DestroyAll();
-                    snitch.SnitchArrows.Clear();
-                    snitch.ImpArrows.DestroyAll();
-                    snitch.ImpArrows.Clear();
+                    spy.SpyArrows.Values.DestroyAll();
+                    spy.SpyArrows.Clear();
+                    spy.ImpArrows.DestroyAll();
+                    spy.ImpArrows.Clear();
                 }
 
-                foreach (var arrow in snitch.ImpArrows) arrow.target = snitch.Player.transform.position;
+                foreach (var arrow in spy.ImpArrows) arrow.target = spy.Player.transform.position;
 
-                foreach (var arrow in snitch.SnitchArrows)
+                foreach (var arrow in spy.SpyArrows)
                 {
                     var player = Utils.PlayerById(arrow.Key);
                     if (player == null || player.Data == null || player.Data.IsDead || player.Data.Disconnected)
                     {
-                        snitch.DestroyArrow(arrow.Key);
+                        spy.DestroyArrow(arrow.Key);
                         continue;
                     }
                     arrow.Value.target = player.transform.position;

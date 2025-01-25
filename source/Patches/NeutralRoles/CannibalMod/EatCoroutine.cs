@@ -2,7 +2,7 @@ using System.Collections;
 using TownOfUsFusion.Roles;
 using UnityEngine;
 using System.Linq;
-using TownOfUsFusion.CrewmateRoles.CoronerMod;
+using TownOfUsFusion.CrewmateRoles.InvestigatorMod;
 
 namespace TownOfUsFusion.NeutralRoles.CannibalMod
 {
@@ -37,15 +37,15 @@ namespace TownOfUsFusion.NeutralRoles.CannibalMod
 
             if(scene != null)
             {
-                foreach (var detRole in Role.GetRoles(RoleEnum.Coroner))
+                foreach (var detRole in Role.GetRoles(RoleEnum.Investigator))
                 {
-                    var detective = (Coroner)detRole;
-                    if (detective.CrimeScenes.Contains(scene.gameObject))
-                        detective.CrimeScenes.Remove(scene.gameObject);
-                    if (detective.InvestigatingScene == scene)
+                    var investigator = (Investigator)detRole;
+                    if (investigator.CrimeScenes.Contains(scene.gameObject))
+                        investigator.CrimeScenes.Remove(scene.gameObject);
+                    if (investigator.InvestigatingScene == scene)
                     {
-                        detective.InvestigatingScene = null;
-                        detective.InvestigatedPlayers.Clear();
+                        investigator.InvestigatingScene = null;
+                        investigator.InvestigatedPlayers.Clear();
                     }
                 }
                 Object.Destroy(scene.gameObject);

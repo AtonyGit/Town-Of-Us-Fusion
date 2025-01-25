@@ -3,7 +3,7 @@ using UnityEngine;
 using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Patches;
 
-namespace TownOfUsFusion.CrewmateRoles.InvestigatorMod
+namespace TownOfUsFusion.CrewmateRoles.TrackerMod
 {
     public class Footprint
     {
@@ -15,10 +15,10 @@ namespace TownOfUsFusion.CrewmateRoles.InvestigatorMod
 
         public Color Color;
         public Vector3 Position;
-        public Investigator Role;
+        public Tracker Role;
         public bool IsRainbow = false;
 
-        public Footprint(PlayerControl player, Investigator role)
+        public Footprint(PlayerControl player, Tracker role)
         {
             Role = role;
             Position = player.transform.position;
@@ -63,7 +63,7 @@ namespace TownOfUsFusion.CrewmateRoles.InvestigatorMod
         public static bool Grey =>
             CustomGameOptions.AnonymousFootPrint || CamouflageUnCamouflage.IsCamoed;
 
-        public static void DestroyAll(Investigator role)
+        public static void DestroyAll(Tracker role)
         {
             while (role.AllPrints.Count != 0) role.AllPrints[0].Destroy();
         }

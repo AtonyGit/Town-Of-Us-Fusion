@@ -46,7 +46,6 @@ namespace TownOfUsFusion
 {
     public static class RpcHandling
     {
-        private static readonly List<(Type, int, bool)> CrewmateAstralRoles = new();
         private static readonly List<(Type, int, bool)> CrewmateInvestigativeRoles = new();
         private static readonly List<(Type, int, bool)> CrewmateKillingRoles = new();
         private static readonly List<(Type, int, bool)> CrewmateSovereignRoles = new();
@@ -142,7 +141,7 @@ namespace TownOfUsFusion
 
             // sort out bad lists
             var players = impostors.Count + crewmates.Count;
-            List<RoleOptions> crewBuckets = [RoleOptions.CrewAstral, RoleOptions.CrewInvest, RoleOptions.CrewKilling, RoleOptions.CrewProtective, RoleOptions.CrewSovereign, RoleOptions.CrewUtility, RoleOptions.CrewCommon, RoleOptions.CrewRandom];
+            List<RoleOptions> crewBuckets = [RoleOptions.CrewInvest, RoleOptions.CrewKilling, RoleOptions.CrewProtective, RoleOptions.CrewSovereign, RoleOptions.CrewUtility, RoleOptions.CrewCommon, RoleOptions.CrewRandom];
             List<RoleOptions> impBuckets = [RoleOptions.ImpConceal, RoleOptions.ImpKilling, RoleOptions.ImpSupport, RoleOptions.ImpCommon, RoleOptions.ImpRandom];
             List<RoleOptions> buckets = [CustomGameOptions.Slot1, CustomGameOptions.Slot2, CustomGameOptions.Slot3, CustomGameOptions.Slot4];
             var crewCount = 0;
@@ -333,25 +332,6 @@ namespace TownOfUsFusion
             }
 
             // crew buckets
-            while (buckets.Contains(RoleOptions.CrewAstral))
-            {
-                if (CrewmateAstralRoles.Count == 0)
-                {
-                    while (buckets.Contains(RoleOptions.CrewAstral))
-                    {
-                        buckets.Remove(buckets.FindLast(x => x == RoleOptions.CrewAstral));
-                        buckets.Add(RoleOptions.CrewCommon);
-                    }
-                    break;
-                }
-                var addedRole = SelectRole(CrewmateAstralRoles);
-                crewRoles.Add(addedRole);
-                CrewmateAstralRoles.Remove(addedRole);
-                addedRole.Item2 -= 5;
-                if (addedRole.Item2 > 0 && !addedRole.Item3) CrewmateAstralRoles.Add(addedRole);
-                buckets.Remove(RoleOptions.CrewAstral);
-            }
-            var commonCrewRoles = CrewmateAstralRoles;
             while (buckets.Contains(RoleOptions.CrewInvest))
             {
                 if (CrewmateInvestigativeRoles.Count == 0)
@@ -370,7 +350,7 @@ namespace TownOfUsFusion
                 if (addedRole.Item2 > 0 && !addedRole.Item3) CrewmateInvestigativeRoles.Add(addedRole);
                 buckets.Remove(RoleOptions.CrewInvest);
             }
-            commonCrewRoles.AddRange(CrewmateInvestigativeRoles);
+            var commonCrewRoles = CrewmateInvestigativeRoles;
             while (buckets.Contains(RoleOptions.CrewProtective))
             {
                 if (CrewmateProtectiveRoles.Count == 0)
@@ -1662,7 +1642,6 @@ namespace TownOfUsFusion
                 StartImitate.ImitatingPlayer = null;
                 ChatCommands.JailorMessage = false;
                 AddHauntPatch.AssassinatedPlayers.Clear();
-                CrewmateAstralRoles.Clear();
                 CrewmateInvestigativeRoles.Clear();
                 CrewmateKillingRoles.Clear();
                 CrewmateProtectiveRoles.Clear();
@@ -1719,9 +1698,6 @@ namespace TownOfUsFusion
                 if (CustomGameOptions.SwapperOn > 0)
                     CrewmateSovereignRoles.Add((typeof(Swapper), CustomGameOptions.SwapperOn, true));
 
-                if (CustomGameOptions.InvestigatorOn > 0)
-                    CrewmateInvestigativeRoles.Add((typeof(Investigator), CustomGameOptions.InvestigatorOn, false || CustomGameOptions.UniqueRoles));
-
                 if (CustomGameOptions.MedicOn > 0)
                     CrewmateProtectiveRoles.Add((typeof(Medic), CustomGameOptions.MedicOn, true));
 
@@ -1729,10 +1705,7 @@ namespace TownOfUsFusion
                     CrewmateInvestigativeRoles.Add((typeof(Psychic), CustomGameOptions.PsychicOn, false || CustomGameOptions.UniqueRoles));
 
                 if (CustomGameOptions.SpyOn > 0)
-                    CrewmateInvestigativeRoles.Add((typeof(Spy), CustomGameOptions.SpyOn, false || CustomGameOptions.UniqueRoles));
-
-                if (CustomGameOptions.SnitchOn > 0)
-                    CrewmateAstralRoles.Add((typeof(Snitch), CustomGameOptions.SnitchOn, true));
+                    CrewmateInvestigativeRoles.Add((typeof(Spy), CustomGameOptions.SpyOn, true));
 
                 if (CustomGameOptions.AltruistOn > 0)
                     CrewmateProtectiveRoles.Add((typeof(Altruist), CustomGameOptions.AltruistOn, true));
@@ -1753,13 +1726,13 @@ namespace TownOfUsFusion
                     CrewmateUtilityRoles.Add((typeof(Transporter), CustomGameOptions.TransporterOn, false || CustomGameOptions.UniqueRoles));
 
                 if (CustomGameOptions.MediumOn > 0)
-                    CrewmateAstralRoles.Add((typeof(Medium), CustomGameOptions.MediumOn, false || CustomGameOptions.UniqueRoles));
+                    CrewmateInvestigativeRoles.Add((typeof(Medium), CustomGameOptions.MediumOn, false || CustomGameOptions.UniqueRoles));
 
                 if (CustomGameOptions.TrapperOn > 0)
                     CrewmateInvestigativeRoles.Add((typeof(Trapper), CustomGameOptions.TrapperOn, false || CustomGameOptions.UniqueRoles));
 
-                if (CustomGameOptions.DetectiveOn > 0)
-                    CrewmateInvestigativeRoles.Add((typeof(Coroner), CustomGameOptions.DetectiveOn, false || CustomGameOptions.UniqueRoles));
+                if (CustomGameOptions.InvestigatorOn > 0)
+                    CrewmateInvestigativeRoles.Add((typeof(Investigator), CustomGameOptions.InvestigatorOn, false || CustomGameOptions.UniqueRoles));
 
                 if (CustomGameOptions.ImitatorOn > 0)
                     CrewmateUtilityRoles.Add((typeof(Imitator), CustomGameOptions.ImitatorOn, true));
@@ -1771,13 +1744,13 @@ namespace TownOfUsFusion
                     CrewmateProtectiveRoles.Add((typeof(Oracle), CustomGameOptions.OracleOn, true));
 
                 if (CustomGameOptions.AurialOn > 0)
-                    CrewmateAstralRoles.Add((typeof(Aurial), CustomGameOptions.AurialOn, false || CustomGameOptions.UniqueRoles));
+                    CrewmateInvestigativeRoles.Add((typeof(Aurial), CustomGameOptions.AurialOn, false || CustomGameOptions.UniqueRoles));
 
                 if (CustomGameOptions.JailorOn > 0)
                     CrewmateKillingRoles.Add((typeof(Jailor), CustomGameOptions.JailorOn, true));
 
                 if (CustomGameOptions.LookoutOn > 0)
-                    CrewmateAstralRoles.Add((typeof(Lookout), CustomGameOptions.LookoutOn, false || CustomGameOptions.UniqueRoles));
+                    CrewmateInvestigativeRoles.Add((typeof(Lookout), CustomGameOptions.LookoutOn, false || CustomGameOptions.UniqueRoles));
 
                 if (CustomGameOptions.DeputyOn > 0)
                     CrewmateKillingRoles.Add((typeof(Deputy), CustomGameOptions.DeputyOn, false || CustomGameOptions.UniqueRoles));

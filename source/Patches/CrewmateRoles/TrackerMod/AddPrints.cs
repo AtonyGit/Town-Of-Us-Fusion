@@ -3,7 +3,7 @@ using HarmonyLib;
 using TownOfUsFusion.Roles;
 using UnityEngine;
 
-namespace TownOfUsFusion.CrewmateRoles.InvestigatorMod
+namespace TownOfUsFusion.CrewmateRoles.TrackerMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public static class AddPrints
@@ -22,14 +22,14 @@ namespace TownOfUsFusion.CrewmateRoles.InvestigatorMod
 
         public static void Postfix(HudManager __instance)
         {
-            if ((GameManager.Instance && !GameManager.Instance.GameHasStarted) || !PlayerControl.LocalPlayer.Is(RoleEnum.Investigator)) return;
+            if ((GameManager.Instance && !GameManager.Instance.GameHasStarted) || !PlayerControl.LocalPlayer.Is(RoleEnum.Tracker)) return;
             if (MeetingHud.Instance) return;
             // New Footprint
-            var investigator = Role.GetRole<Investigator>(PlayerControl.LocalPlayer);
+            var tracker = Role.GetRole<Tracker>(PlayerControl.LocalPlayer);
 
             if (PlayerControl.LocalPlayer.Data.IsDead)
             {
-                Footprint.DestroyAll(investigator);
+                Footprint.DestroyAll(tracker);
                 return;
             }
 
@@ -41,8 +41,9 @@ namespace TownOfUsFusion.CrewmateRoles.InvestigatorMod
                 {
                     if (player == null || player.Data.IsDead ||
                         player.PlayerId == PlayerControl.LocalPlayer.PlayerId) continue;
+                    if (CustomGameOptions.SeeOnlyTrackedPrints && !tracker.IsTracking(player)) continue;
                     if ((player.Is(RoleEnum.Swooper) && Role.GetRole<Swooper>(player).IsSwooped) || PlayerControl.LocalPlayer.IsHypnotised()) continue;
-                    var canPlace = !investigator.AllPrints.Any(print =>
+                    var canPlace = !tracker.AllPrints.Any(print =>
                         Vector3.Distance(print.Position, Position(player)) < 0.5f &&
                         print.Color.a > 0.5 &&
                         print.Player.PlayerId == player.PlayerId);
@@ -52,14 +53,14 @@ namespace TownOfUsFusion.CrewmateRoles.InvestigatorMod
                             Vector2.Distance(vent.gameObject.transform.position, Position(player)) < 1f))
                             canPlace = false;
 
-                    if (canPlace) new Footprint(player, investigator);
+                    if (canPlace) new Footprint(player, tracker);
                 }
 
-                for (var i = 0; i < investigator.AllPrints.Count; i++)
+                for (var i = 0; i < tracker.AllPrints.Count; i++)
                 {
                     try
                     {
-                        var footprint = investigator.AllPrints[i];
+                        var footprint = tracker.AllPrints[i];
                         if (footprint.Update()) i--;
                     } catch
                     {

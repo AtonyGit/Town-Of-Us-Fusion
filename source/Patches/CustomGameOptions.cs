@@ -22,7 +22,6 @@ namespace TownOfUsFusion
     }
     public enum RoleOptions
     {
-        CrewAstral,
         CrewInvest,
         CrewKilling,
         CrewProtective,
@@ -55,14 +54,12 @@ namespace TownOfUsFusion
         public static int EngineerOn => (int)Generate.EngineerOn.Get();
         public static int SwapperOn => (int)Generate.SwapperOn.Get();
         public static int AmnesiacOn => (int)Generate.AmnesiacOn.Get();
-        public static int InvestigatorOn => (int)Generate.InvestigatorOn.Get();
         public static int MedicOn => (int)Generate.MedicOn.Get();
         public static int PsychicOn => (int)Generate.PsychicOn.Get();
         public static int GlitchOn => (int)Generate.GlitchOn.Get();
         public static int MorphlingOn => (int)Generate.MorphlingOn.Get();
         public static int ExecutionerOn => (int)Generate.ExecutionerOn.Get();
         public static int SpyOn => (int)Generate.SpyOn.Get();
-        public static int SnitchOn => (int)Generate.SnitchOn.Get();
         public static int MinerOn => (int)Generate.MinerOn.Get();
         public static int SwooperOn => (int)Generate.SwooperOn.Get();
         public static int ArsonistOn => (int)Generate.ArsonistOn.Get();
@@ -85,7 +82,7 @@ namespace TownOfUsFusion
         public static int BlackmailerOn => (int)Generate.BlackmailerOn.Get();
         public static int PlaguebearerOn => (int)Generate.PlaguebearerOn.Get();
         public static int WerewolfOn => (int)Generate.WerewolfOn.Get();
-        public static int DetectiveOn => (int)Generate.DetectiveOn.Get();
+        public static int InvestigatorOn => (int)Generate.InvestigatorOn.Get();
         public static int EscapistOn => (int)Generate.EscapistOn.Get();
         public static int ImitatorOn => (int)Generate.ImitatorOn.Get();
         public static int BomberOn => (int)Generate.BomberOn.Get();
@@ -194,10 +191,10 @@ namespace TownOfUsFusion
         public static OnTargetDead OnTargetDead => (OnTargetDead)Generate.OnTargetDead.Get();
         public static bool ExecutionerButton => Generate.ExecutionerButton.Get();
         public static bool ExecutionerTorment => Generate.ExecutionerTorment.Get();
-        public static bool SnitchSeesNeutrals => Generate.SnitchSeesNeutrals.Get();
-        public static int SnitchTasksRemaining => (int)Generate.SnitchTasksRemaining.Get();
-        public static bool SnitchSeesImpInMeeting => Generate.SnitchSeesImpInMeeting.Get();
-        public static bool SnitchSeesTraitor => Generate.SnitchSeesTraitor.Get();
+        public static bool SpySeesNeutrals => Generate.SpySeesNeutrals.Get();
+        public static int SpyTasksRemaining => (int)Generate.SpyTasksRemaining.Get();
+        public static bool SpySeesImpInMeeting => Generate.SpySeesImpInMeeting.Get();
+        public static bool SpySeesTraitor => Generate.SpySeesTraitor.Get();
         public static float MineCd => Generate.MineCooldown.Get();
         public static float SwoopCd => Generate.SwoopCooldown.Get();
         public static float SwoopDuration => Generate.SwoopDuration.Get();
@@ -271,6 +268,7 @@ namespace TownOfUsFusion
         public static float UpdateInterval => Generate.UpdateInterval.Get();
         public static float TrackCd => Generate.TrackCooldown.Get();
         public static bool ResetOnNewRound => Generate.ResetOnNewRound.Get();
+        public static bool SeeOnlyTrackedPrints => Generate.SeeOnlyTrackedPrints.Get();
         public static int MaxTracks => (int)Generate.MaxTracks.Get();
         public static int LatestSpawn => (int)Generate.LatestSpawn.Get();
         public static bool NeutralKillingStopsTraitor => Generate.NeutralKillingStopsTraitor.Get();
@@ -323,9 +321,9 @@ namespace TownOfUsFusion
         public static float TrapSize => Generate.TrapSize.Get();
         public static int MinAmountOfPlayersInTrap => (int) Generate.MinAmountOfPlayersInTrap.Get();
         public static float ExamineCd => Generate.ExamineCooldown.Get();
-        public static bool DetectiveReportOn => Generate.DetectiveReportOn.Get();
-        public static float DetectiveRoleDuration => Generate.DetectiveRoleDuration.Get();
-        public static float DetectiveFactionDuration => Generate.DetectiveFactionDuration.Get();
+        public static bool InvestigatorReportOn => Generate.InvestigatorReportOn.Get();
+        public static float InvestigatorRoleDuration => Generate.InvestigatorRoleDuration.Get();
+        public static float InvestigatorFactionDuration => Generate.InvestigatorFactionDuration.Get();
         public static float EscapeCd => Generate.EscapeCooldown.Get();
         public static bool EscapistVent => Generate.EscapistVent.Get();
         public static bool ImitatorCanBecomeMayor => Generate.ImitatorCanBecomeMayor.Get();

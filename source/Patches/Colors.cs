@@ -13,7 +13,6 @@ namespace TownOfUsFusion.Patches
         public readonly static Color Investigator = new Color(0f, 0.7f, 0.7f, 1f);
         public readonly static Color Medic = new Color(0f, 0.4f, 0f, 1f);
         public readonly static Color Spy = new Color(0.8f, 0.64f, 0.8f, 1f);
-        public readonly static Color Snitch = new Color(0.83f, 0.69f, 0.22f, 1f);
         public readonly static Color Altruist = new Color(0.4f, 0f, 0f, 1f);
         public readonly static Color Vigilante = new Color(1f, 1f, 0.6f, 1f);
         public readonly static Color Veteran = new Color(0.6f, 0.5f, 0.25f, 1f);
@@ -22,7 +21,6 @@ namespace TownOfUsFusion.Patches
         public readonly static Color Transporter = new Color(0f, 0.93f, 1f, 1f);
         public readonly static Color Medium = new Color(0.65f, 0.5f, 1f, 1f);
         public readonly static Color Trapper = new Color(0.65f, 0.82f, 0.7f, 1f);
-        public readonly static Color Coroner = new Color(0.3f, 0.3f, 1f, 1f);
         public readonly static Color Imitator = new Color(0.7f, 0.85f, 0.3f, 1f);
         public readonly static Color Prosecutor = new Color(0.7f, 0.5f, 0f, 1f);
         public readonly static Color Oracle = new Color(0.75f, 0f, 0.75f, 1f);

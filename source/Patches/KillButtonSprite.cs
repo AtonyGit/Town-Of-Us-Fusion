@@ -163,11 +163,11 @@ namespace TownOfUsFusion
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Trapper);
                 flag = true;
             }
-            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Coroner))
+            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Investigator))
             {
                 __instance.KillButton.graphic.sprite = Autopsy;
                 __instance.KillButton.buttonLabelText.text = "Autopsy";
-                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Coroner);
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Investigator);
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Doomsayer))
