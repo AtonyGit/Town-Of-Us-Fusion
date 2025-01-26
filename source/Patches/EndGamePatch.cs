@@ -55,16 +55,15 @@ namespace TownOfUsFusion.Patches {
                     break;
                     case RoleEnum.Haunter: playerRole += "<color=#" + Patches.Colors.Haunter.ToHtmlStringRGBA() + ">Haunter</color> > ";
                     break;
+                    case RoleEnum.Investigator: playerRole += "<color=#" + Patches.Colors.Investigator.ToHtmlStringRGBA() + ">Investigator</color> > ";
+                    break;
                     case RoleEnum.Lookout: playerRole += "<color=#" + Patches.Colors.Lookout.ToHtmlStringRGBA() + ">Lookout</color> > ";
                     break;
                     case RoleEnum.Medium: playerRole += "<color=#" + Patches.Colors.Medium.ToHtmlStringRGBA() + ">Medium</color> > ";
                     break;
-
-                    case RoleEnum.Investigator: playerRole += "<color=#" + Patches.Colors.Investigator.ToHtmlStringRGBA() + ">Investigator</color> > ";
+                    case RoleEnum.Spy: playerRole += "<color=#" + Patches.Colors.Spy.ToHtmlStringRGBA() + ">Spy</color> > ";
                     break;
                     case RoleEnum.Psychic: playerRole += "<color=#" + Patches.Colors.Psychic.ToHtmlStringRGBA() + ">Psychic</color> > ";
-                    break;
-                    case RoleEnum.Spy: playerRole += "<color=#" + Patches.Colors.Spy.ToHtmlStringRGBA() + ">Spy</color> > ";
                     break;
                     case RoleEnum.Tracker: playerRole += "<color=#" + Patches.Colors.Tracker.ToHtmlStringRGBA() + ">Tracker</color> > ";
                     break;
@@ -84,6 +83,8 @@ namespace TownOfUsFusion.Patches {
                     case RoleEnum.Vigilante: playerRole += "<color=#" + Patches.Colors.Vigilante.ToHtmlStringRGBA() + ">Vigilante</color> > ";
                     break;
 
+                    case RoleEnum.Altruist: playerRole += "<color=#" + Patches.Colors.Altruist.ToHtmlStringRGBA() + ">Altruist</color> > ";
+                    break;
                     case RoleEnum.Bodyguard: playerRole += "<color=#" + Patches.Colors.Bodyguard.ToHtmlStringRGBA() + ">Bodyguard</color> > ";
                     break;
                     case RoleEnum.Medic: playerRole += "<color=#" + Patches.Colors.Medic.ToHtmlStringRGBA() + ">Medic</color> > ";

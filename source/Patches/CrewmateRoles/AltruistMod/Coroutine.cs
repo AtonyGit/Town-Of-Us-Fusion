@@ -129,7 +129,7 @@ namespace TownOfUsFusion.CrewmateRoles.AltruistMod
                 {
                 }
 
-            if ((PlayerControl.LocalPlayer.Data.IsImpostor() || PlayerControl.LocalPlayer.Is(Faction.NeutralKilling)) && !revived.Contains(PlayerControl.LocalPlayer))
+            if ((PlayerControl.LocalPlayer.Data.IsImpostor() || PlayerControl.LocalPlayer.Is(Faction.NeutralKilling) || PlayerControl.LocalPlayer.Is(Faction.NeutralNeophyte) || PlayerControl.LocalPlayer.Is(Faction.NeutralApocalypse)) && !revived.Contains(PlayerControl.LocalPlayer))
             {
                 var gameObj = new GameObject();
                 var Arrow = gameObj.AddComponent<ArrowBehaviour>();
