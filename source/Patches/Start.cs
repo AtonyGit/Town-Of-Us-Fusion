@@ -245,6 +245,13 @@ namespace TownOfUsFusion.Patches
                 glitch.LastMimic = glitch.LastMimic.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.MimicCooldown);
             }
 
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Bodyguard))
+            {
+                var ga = Role.GetRole<Bodyguard>(PlayerControl.LocalPlayer);
+                ga.LastProtected = DateTime.UtcNow;
+                ga.LastProtected = ga.LastProtected.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.GuardCd);
+            }
+
             if (PlayerControl.LocalPlayer.Is(RoleEnum.GuardianAngel))
             {
                 var ga = Role.GetRole<GuardianAngel>(PlayerControl.LocalPlayer);

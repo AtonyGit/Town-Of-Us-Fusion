@@ -26,6 +26,7 @@ namespace TownOfUsFusion.CustomOption
 
         public static CustomHeaderOption CrewProtectiveRoles;
         public static CustomNumberOption AltruistOn;
+        public static CustomNumberOption BodyguardOn;
         public static CustomNumberOption MedicOn;
         public static CustomNumberOption OracleOn;
 
@@ -200,6 +201,12 @@ namespace TownOfUsFusion.CustomOption
         public static CustomHeaderOption Engineer;
         public static CustomNumberOption MaxFixes;
 
+
+        public static CustomHeaderOption Bodyguard;
+        public static CustomNumberOption GuardCd;
+        public static CustomNumberOption GuardDuration;
+        public static CustomStringOption ShowGuarding;
+        public static CustomNumberOption MaxGuards;
 
         public static CustomHeaderOption Medic;
         public static CustomStringOption ShowShielded;
@@ -626,6 +633,8 @@ namespace TownOfUsFusion.CustomOption
 
             CrewProtectiveRoles = new CustomHeaderOption(num++, MultiMenu.crewmate, "Crewmate Protective Roles");
                 AltruistOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#660000FF>Altruist</color>", 0f, 0f, 100f, 10f,
+                    PercentFormat);
+                BodyguardOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#80D3ABFF>Bodyguard</color>", 0f, 0f, 100f, 10f,
                     PercentFormat);
                 MedicOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#006600FF>Medic</color>", 0f, 0f, 100f, 10f,
                     PercentFormat);
@@ -1131,6 +1140,17 @@ namespace TownOfUsFusion.CustomOption
                     new CustomNumberOption(num++, MultiMenu.crewmate, "Maximum Number Of Revives Before Suicide", 3, 1, 5, 1);
                 AltruistTargetBody =
                     new CustomToggleOption(num++, MultiMenu.crewmate, "Target's Body Disappears On Beginning Of Revive", false);
+            Bodyguard =
+                new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#80D3ABFF>Bodyguard</color>");
+                GuardCd =
+                    new CustomNumberOption(num++, MultiMenu.neutral, "Guard Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
+                GuardDuration =
+                    new CustomNumberOption(num++, MultiMenu.neutral, "Guard Duration", 10f, 5f, 15f, 1f, CooldownFormat);
+                MaxGuards =
+                    new CustomNumberOption(num++, MultiMenu.neutral, "Maximum Number Of Guards", 5, 1, 15, 1);
+                ShowGuarding =
+                    new CustomStringOption(num++, MultiMenu.neutral, "Show Guarded Player",
+                        new[] { "Self", "Bodyguard", "Self+BG", "Everyone" });
             Medic =
                 new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#006600FF>Medic</color>");
                 ShowShielded =

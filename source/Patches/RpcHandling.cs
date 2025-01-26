@@ -1325,6 +1325,12 @@ namespace TownOfUsFusion
                         ga2Role.TimeRemaining = CustomGameOptions.ProtectDuration;
                         ga2Role.Protect();
                         break;
+                    case CustomRPC.BGProtect:
+                        var bg = Utils.PlayerById(reader.ReadByte());
+                        var bgRole = Role.GetRole<Bodyguard>(bg);
+                        bgRole.TimeRemaining = CustomGameOptions.ProtectDuration;
+                        bgRole.Protect();
+                        break;
                     case CustomRPC.Transport:
                         Coroutines.Start(Transporter.TransportPlayers(reader.ReadByte(), reader.ReadByte(), reader.ReadBoolean()));
                         break;
@@ -1738,6 +1744,9 @@ namespace TownOfUsFusion
 
                 if (CustomGameOptions.SwapperOn > 0)
                     CrewmateSovereignRoles.Add((typeof(Swapper), CustomGameOptions.SwapperOn, true));
+
+                if (CustomGameOptions.BodyguardOn > 0)
+                    CrewmateProtectiveRoles.Add((typeof(Bodyguard), CustomGameOptions.BodyguardOn, true));
 
                 if (CustomGameOptions.MedicOn > 0)
                     CrewmateProtectiveRoles.Add((typeof(Medic), CustomGameOptions.MedicOn, true));

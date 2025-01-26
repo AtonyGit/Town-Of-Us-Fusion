@@ -365,6 +365,23 @@ namespace TownOfUsFusion
             });
         }
 
+        public static bool IsGuarded(this PlayerControl player)
+        {
+            return Role.GetRoles(RoleEnum.Bodyguard).Any(role =>
+            {
+                var bgTarget = ((Bodyguard)role).guardedPlayer;
+                var bg = (Bodyguard)role;
+                return bgTarget != null && bg.Protecting && player.PlayerId == bgTarget.PlayerId;
+            });
+        }
+        public static Bodyguard GetBodyguard(this PlayerControl player)
+        {
+            return Role.GetRoles(RoleEnum.Bodyguard).FirstOrDefault(role =>
+            {
+                var guardedPlayer = ((Bodyguard)role).guardedPlayer;
+                return guardedPlayer != null && player.PlayerId == guardedPlayer.PlayerId;
+            }) as Bodyguard;
+        }
         public static Medic GetMedic(this PlayerControl player)
         {
             return Role.GetRoles(RoleEnum.Medic).FirstOrDefault(role =>
@@ -535,6 +552,83 @@ namespace TownOfUsFusion
                 if (CustomGameOptions.ShieldBreaks) fullCooldownReset = true;
                 else zeroSecReset = true;
                 StopKill.BreakShield(target.GetMedic().Player.PlayerId, target.PlayerId, CustomGameOptions.ShieldBreaks);
+            }
+            else if (target.IsGuarded() && toKill)
+            {
+                var bgPlayer = target.GetBodyguard().Player;
+                
+                    if (player.Is(RoleEnum.Pestilence)) zeroSecReset = true;
+                    else if (player.IsShielded())
+                    {
+                        var medic = player.GetMedic().Player.PlayerId;
+                        Rpc(CustomRPC.AttemptSound, medic, player.PlayerId);
+
+                        if (CustomGameOptions.ShieldBreaks) fullCooldownReset = true;
+                        else zeroSecReset = true;
+
+                        StopKill.BreakShield(medic, player.PlayerId, CustomGameOptions.ShieldBreaks);
+                    }
+                    else if (player.IsProtected()) gaReset = true;
+                    else RpcMurderPlayer(bgPlayer, player);
+                    if (toKill)
+                    {
+                        if (bgPlayer.IsShielded())
+                        {
+                            var medic = bgPlayer.GetMedic().Player.PlayerId;
+                            Rpc(CustomRPC.AttemptSound, medic, bgPlayer.PlayerId);
+
+                            if (CustomGameOptions.ShieldBreaks) fullCooldownReset = true;
+                            else zeroSecReset = true;
+
+                            StopKill.BreakShield(medic, bgPlayer.PlayerId, CustomGameOptions.ShieldBreaks);
+                        }
+                        else if (bgPlayer.IsProtected()) gaReset = true;
+                        else
+                        {
+                            if (player.Is(RoleEnum.Glitch))
+                            {
+                                var glitch = Role.GetRole<Glitch>(player);
+                                glitch.LastKill = DateTime.UtcNow;
+                            }
+                            else if (player.Is(RoleEnum.Juggernaut))
+                            {
+                                var jugg = Role.GetRole<Juggernaut>(player);
+                                jugg.JuggKills += 1;
+                                jugg.LastKill = DateTime.UtcNow;
+                            }
+                            else if (player.Is(RoleEnum.Pestilence))
+                            {
+                                var pest = Role.GetRole<Pestilence>(player);
+                                pest.LastKill = DateTime.UtcNow;
+                            }
+                            else if (player.Is(RoleEnum.Vampire))
+                            {
+                                var vamp = Role.GetRole<Vampire>(player);
+                                vamp.LastBit = DateTime.UtcNow;
+                            }
+                            else if (player.Is(RoleEnum.Werewolf))
+                            {
+                                var ww = Role.GetRole<Werewolf>(player);
+                                ww.LastKilled = DateTime.UtcNow;
+                            }
+                            else if (player.Is(RoleEnum.SerialKiller))
+                            {
+                                var sk = Role.GetRole<SerialKiller>(player);
+                                sk.LastKill = DateTime.UtcNow;
+                            }
+                            RpcMurderPlayer(player, bgPlayer);
+                            abilityUsed = true;
+                            fullCooldownReset = true;
+                            gaReset = false;
+                            zeroSecReset = false;
+                        }
+                    }
+                /*
+                Rpc(CustomRPC.AttemptSound, target.GetBodyguard().Player.PlayerId, target.PlayerId);
+                System.Console.WriteLine(CustomGameOptions.ShieldBreaks + "- shield break");
+                if (CustomGameOptions.ShieldBreaks) fullCooldownReset = true;
+                else zeroSecReset = true;
+                StopKill.BreakShield(target.GetBodyguard().Player.PlayerId, target.PlayerId, CustomGameOptions.ShieldBreaks);*/
             }
             else if (target.IsVesting() && toKill)
             {

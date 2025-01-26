@@ -5,6 +5,7 @@ using TownOfUsFusion.NeutralRoles.LawyerMod;
 using TownOfUsFusion.CrewmateRoles.HaunterMod;
 using TownOfUsFusion.CrewmateRoles.MediumMod;
 using TownOfUsFusion.NeutralRoles.GuardianAngelMod;
+using TownOfUsFusion.CrewmateRoles.BodyguardMod;
 
 namespace TownOfUsFusion
 {
@@ -298,6 +299,13 @@ namespace TownOfUsFusion
         public static float VestDuration => Generate.VestDuration.Get();
         public static float VestKCReset => Generate.VestKCReset.Get();
         public static int MaxVests => (int)Generate.MaxVests.Get();
+
+        public static int BodyguardOn => (int)Generate.BodyguardOn.Get();
+            public static float GuardCd => Generate.GuardCd.Get();
+            public static float GuardDuration => Generate.GuardDuration.Get();
+            public static GuardOptions ShowGuarding => (GuardOptions)Generate.ShowGuarding.Get();
+            public static int MaxGuards => (int)Generate.MaxGuards.Get();
+        
         public static float ProtectCd => Generate.ProtectCd.Get();
         public static float ProtectDuration => Generate.ProtectDuration.Get();
         public static float ProtectKCReset => Generate.ProtectKCReset.Get();

@@ -65,6 +65,7 @@ namespace TownOfUsFusion
         Mediate,
         Vest,
         GAProtect,
+        BGProtect,
         Blackmail,
         Infect,
         TurnPestilence,
