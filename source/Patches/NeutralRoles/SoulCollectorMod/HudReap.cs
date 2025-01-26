@@ -29,7 +29,7 @@ namespace TownOfUsFusion.NeutralRoles.SoulCollectorMod
                 {
                     var player = Utils.PlayerById(playerId);
                     var playerData = player?.Data;
-                    if (playerData == null || playerData.Disconnected || playerData.IsDead || PlayerControl.LocalPlayer.Data.IsDead)
+                    if (playerData == null || playerData.Disconnected || playerData.IsDead || PlayerControl.LocalPlayer.Data.IsDead || player.Is(Faction.NeutralApocalypse))
                         continue;
 
                     var colour = Color.green;
@@ -83,7 +83,7 @@ namespace TownOfUsFusion.NeutralRoles.SoulCollectorMod
             role.ReapButton.SetCoolDown(role.ReapTimer(), CustomGameOptions.ReapCd);
 
             var notReaped = PlayerControl.AllPlayerControls.ToArray().Where(
-                player => !role.ReapedPlayers.Contains(player.PlayerId)
+                player => !role.ReapedPlayers.Contains(player.PlayerId) && !player.Is(Faction.NeutralApocalypse)
             ).ToList();
 
             Utils.SetTarget(ref role.ClosestPlayer, role.ReapButton, float.NaN, notReaped);

@@ -104,6 +104,20 @@ namespace TownOfUsFusion.Roles
 
             return result;
         }
+        public PlayerControl GetRandomPlayer(PlayerControl toRemove = null)
+        {
+            var targets = PlayerControl.AllPlayerControls.ToArray().Where(x => !x.Data.IsDead && !x.Data.Disconnected && x != toRemove && x != ShowRoundOneShield.FirstRoundShielded).ToList();
+            if (Player.IsLover()) targets = PlayerControl.AllPlayerControls.ToArray().Where(x => !x.Data.IsDead && !x.Data.Disconnected && !x.Is(AllianceEnum.Lover) && x != toRemove && x != ShowRoundOneShield.FirstRoundShielded).ToList();
+            if (targets.Count == 0) targets = PlayerControl.AllPlayerControls.ToArray().Where(x => !x.Data.IsDead && !x.Data.Disconnected && x != PlayerControl.LocalPlayer && !x.Is(AllianceEnum.Lover) && x != toRemove).ToList();
+            if (targets.Count == 0) targets = PlayerControl.AllPlayerControls.ToArray().Where(x => !x.Data.IsDead && !x.Data.Disconnected && x != toRemove).ToList();
+
+            PlayerControl result = null;
+
+            var num = UnityEngine.Random.RandomRangeInt(0, targets.Count);
+            result = targets[num];
+
+            return result;
+        }
 
         public void StopBloodlust()
         {

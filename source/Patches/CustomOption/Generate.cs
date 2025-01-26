@@ -42,6 +42,7 @@ namespace TownOfUsFusion.CustomOption
         public static CustomHeaderOption NeutralBenignRoles;
         public static CustomNumberOption AmnesiacOn;
         public static CustomNumberOption GuardianAngelOn;
+        public static CustomNumberOption LawyerOn;
         public static CustomNumberOption SurvivorOn;
 
         public static CustomHeaderOption NeutralEvilRoles;
@@ -99,8 +100,10 @@ namespace TownOfUsFusion.CustomOption
 
         public static CustomHeaderOption GlobalModifiers;
         public static CustomNumberOption ButtonBarryOn;
+        public static CustomNumberOption DrunkOn;
         public static CustomNumberOption FlashOn;
         public static CustomNumberOption GiantOn;
+        public static CustomNumberOption ObliviousOn;
         public static CustomNumberOption MiniOn;
         public static CustomNumberOption RadarOn;
         public static CustomNumberOption ShyOn;
@@ -268,6 +271,8 @@ namespace TownOfUsFusion.CustomOption
         public static CustomToggleOption SpySeesTraitor;
 
         public static CustomHeaderOption Altruist;
+        public static CustomNumberOption AltruistMaxRevives;
+        public static CustomNumberOption ReviveCooldown;
         public static CustomNumberOption ReviveDuration;
         public static CustomToggleOption AltruistTargetBody;
 
@@ -300,6 +305,7 @@ namespace TownOfUsFusion.CustomOption
         public static CustomNumberOption AssassinKills;
         public static CustomToggleOption AssassinMultiKill;
         public static CustomToggleOption AssassinCrewmateGuess;
+        public static CustomToggleOption AssassinGuessCrewInvestigative;
         public static CustomToggleOption AssassinGuessNeutralBenign;
         public static CustomToggleOption AssassinGuessNeutralEvil;
         public static CustomToggleOption AssassinGuessNeutralChaos;
@@ -386,6 +392,13 @@ namespace TownOfUsFusion.CustomOption
         public static CustomNumberOption VestKCReset;
         public static CustomNumberOption MaxVests;
 
+        public static CustomHeaderOption Lawyer;
+        public static CustomToggleOption LawyerDies;
+        public static CustomNumberOption DefendantImpPercent;
+        public static CustomToggleOption NeutralDefendant;
+        public static CustomToggleOption LawyerCanTalkDefendant;
+        public static CustomStringOption OnDefendantDead;
+
         public static CustomHeaderOption GuardianAngel;
         public static CustomNumberOption ProtectCd;
         public static CustomNumberOption ProtectDuration;
@@ -440,6 +453,7 @@ namespace TownOfUsFusion.CustomOption
 
         public static CustomHeaderOption Doomsayer;
         public static CustomNumberOption ObserveCooldown;
+        public static CustomToggleOption DoomsayerGuessCrewInvestigative;
         public static CustomToggleOption DoomsayerGuessNeutralBenign;
         public static CustomToggleOption DoomsayerGuessNeutralEvil;
         public static CustomToggleOption DoomsayerGuessNeutralChaos;
@@ -545,6 +559,9 @@ namespace TownOfUsFusion.CustomOption
         public static CustomNumberOption BaitMinDelay;
         public static CustomNumberOption BaitMaxDelay;
 
+        public static CustomHeaderOption Oblivious;
+        public static CustomToggleOption ObliviousCanReport;
+
         public static CustomHeaderOption Lovers;
         public static CustomToggleOption BothLoversDie;
         public static CustomNumberOption LovingImpPercent;
@@ -637,6 +654,8 @@ namespace TownOfUsFusion.CustomOption
                     PercentFormat);
                 GuardianAngelOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#B3FFFFFF>Guardian Angel</color>", 0f, 0f, 100f, 10f,
                     PercentFormat);
+                LawyerOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#D2B48CFF>Lawyer</color>", 0f, 0f, 100f, 10f,
+                    PercentFormat);
                 SurvivorOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#FFE64DFF>Survivor</color>", 0f, 0f, 100f, 10f,
                     PercentFormat);
 
@@ -651,11 +670,11 @@ namespace TownOfUsFusion.CustomOption
                     PercentFormat);
 
             NeutralChaosRoles = new CustomHeaderOption(num++, MultiMenu.neutral, "Neutral Chaos Roles");
+                CannibalOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#8C4005FF>Cannibal</color>", 0f, 0f, 100f, 10f,
+                    PercentFormat);
                 InquisitorOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#DA4291FF>Inquisitor</color>", 0f, 0f, 100f, 10f,
                     PercentFormat);
                 TyrantOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#EA535BFF>Tyrant</color>", 0f, 0f, 100f, 10f,
-                    PercentFormat);
-                CannibalOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#8C4005FF>Cannibal</color>", 0f, 0f, 100f, 10f,
                     PercentFormat);
 
             NeutralKillingRoles = new CustomHeaderOption(num++, MultiMenu.neutral, "Neutral Killing Roles");
@@ -731,11 +750,15 @@ namespace TownOfUsFusion.CustomOption
             GlobalModifiers = new CustomHeaderOption(num++, MultiMenu.modifiers, "Global Modifiers");
                 ButtonBarryOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#E600FFFF>Button Barry</color>", 0f, 0f, 100f, 10f,
                     PercentFormat);
+                DrunkOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#758000FF>Drunk</color>", 0f, 0f, 100f, 10f,
+                    PercentFormat);
                 FlashOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#FF8080FF>Flash</color>", 0f, 0f, 100f, 10f,
                     PercentFormat);
                 GiantOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#FFB34DFF>Giant</color>", 0f, 0f, 100f, 10f,
                     PercentFormat);
                 MiniOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#CCFFE6FF>Mini</color>", 0f, 0f, 100f, 10f,
+                    PercentFormat);
+                ObliviousOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#AAAAAAFF>Oblivious</color>", 0f, 0f, 100f, 10f,
                     PercentFormat);
                 RadarOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#FF0080FF>Radar</color>", 0f, 0f, 100f, 10f,
                     PercentFormat);
@@ -928,6 +951,7 @@ namespace TownOfUsFusion.CustomOption
                 TraitorCanAssassin = new CustomToggleOption(num++, MultiMenu.imposter, "Traitor Gets Ability", false);
                 AssassinKills = new CustomNumberOption(num++, MultiMenu.imposter, "Number Of Assassin Kills", 1, 1, 15, 1);
                 AssassinMultiKill = new CustomToggleOption(num++, MultiMenu.imposter, "Assassin Can Kill More Than Once Per Meeting", false);
+                AssassinGuessCrewInvestigative = new CustomToggleOption(num++, MultiMenu.imposter, "Assassin Can Guess Crewmate Investigative Roles", false);
                 AssassinCrewmateGuess = new CustomToggleOption(num++, MultiMenu.imposter, "Assassin Can Guess \"Crewmate\"", false);
                 AssassinGuessNeutralBenign = new CustomToggleOption(num++, MultiMenu.imposter, "Assassin Can Guess Neutral Benign Roles", false);
                 AssassinGuessNeutralEvil = new CustomToggleOption(num++, MultiMenu.imposter, "Assassin Can Guess Neutral Evil Roles", false);
@@ -1099,8 +1123,12 @@ namespace TownOfUsFusion.CustomOption
 
 
             Altruist = new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#660000FF>Altruist</color>");
+                ReviveCooldown =
+                    new CustomNumberOption(num++, MultiMenu.crewmate, "Altruist Revive Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
                 ReviveDuration =
                     new CustomNumberOption(num++, MultiMenu.crewmate, "Altruist Revive Duration", 10f, 1f, 15f, 1f, CooldownFormat);
+                AltruistMaxRevives =
+                    new CustomNumberOption(num++, MultiMenu.crewmate, "Maximum Number Of Revives Before Suicide", 3, 1, 5, 1);
                 AltruistTargetBody =
                     new CustomToggleOption(num++, MultiMenu.crewmate, "Target's Body Disappears On Beginning Of Revive", false);
             Medic =
@@ -1191,6 +1219,15 @@ namespace TownOfUsFusion.CustomOption
                     new CustomToggleOption(num++, MultiMenu.neutral, "GA Knows Targets Role", false);
                 EvilTargetPercent = new CustomNumberOption(num++, MultiMenu.neutral, "Odds Of Target Being Evil", 20f, 0f, 100f, 10f,
                     PercentFormat);
+            Lawyer =
+                new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#D2B48CFF>Lawyer</color>");
+                LawyerDies = new CustomToggleOption(num++, MultiMenu.neutral, "Lawyer Dies With Defendant");
+                DefendantImpPercent = new CustomNumberOption(num++, MultiMenu.neutral, "Killer Defendant Probability", 20f, 0f, 100f, 10f,
+                    PercentFormat);
+                NeutralDefendant = new CustomToggleOption(num++, MultiMenu.neutral, "Neutral Evil Roles Can Be Defendants", false);
+                LawyerCanTalkDefendant = new CustomToggleOption(num++, MultiMenu.neutral, "Lawyer And Defendant Can Talk", false);
+                OnDefendantDead = new CustomStringOption(num++, MultiMenu.neutral, "Lawyer Becomes On Defendant Dead",
+                    new[] { "Crew", "Amnesiac", "Survivor", "Jester" });
             Survivor =
                 new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#FFE64DFF>Survivor</color>");
                 VestCd =
@@ -1205,6 +1242,7 @@ namespace TownOfUsFusion.CustomOption
             Doomsayer = new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#00FF80FF>Doomsayer</color>");
                 ObserveCooldown =
                     new CustomNumberOption(num++, MultiMenu.neutral, "Observe Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
+                DoomsayerGuessCrewInvestigative = new CustomToggleOption(num++, MultiMenu.neutral, "Doomsayer Can Guess Crewmate Investigative Roles", false);
                 DoomsayerGuessNeutralBenign = new CustomToggleOption(num++, MultiMenu.neutral, "Doomsayer Can Guess Neutral Benign Roles", false);
                 DoomsayerGuessNeutralEvil = new CustomToggleOption(num++, MultiMenu.neutral, "Doomsayer Can Guess Neutral Evil Roles", false);
                 DoomsayerGuessNeutralChaos = new CustomToggleOption(num++, MultiMenu.neutral, "Doomsayer Can Guess Neutral Chaos Roles", false);
@@ -1469,6 +1507,8 @@ namespace TownOfUsFusion.CustomOption
                 FlashSpeed = new CustomNumberOption(num++, MultiMenu.modifiers, "Flash Speed", 1.25f, 1.05f, 2.5f, 0.05f, MultiplierFormat);
             Giant = new CustomHeaderOption(num++, MultiMenu.modifiers, "<color=#FFB34DFF>Giant</color>");
                 GiantSlow = new CustomNumberOption(num++, MultiMenu.modifiers, "Giant Speed", 0.75f, 0.25f, 1f, 0.05f, MultiplierFormat);
+            Oblivious = new CustomHeaderOption(num++, MultiMenu.modifiers, "<color=#AAAAAAFF>Oblivious</color>");
+                ObliviousCanReport = new CustomToggleOption(num++, MultiMenu.modifiers, "Oblivious Can Report", true);
             Shy = new CustomHeaderOption(num++, MultiMenu.modifiers, "<color=#FFB3CCFF>Shy</color>");
                 InvisDelay = new CustomNumberOption(num++, MultiMenu.modifiers, "Transparency Delay", 5f, 1f, 15f, 1f, CooldownFormat);
                 TransformInvisDuration = new CustomNumberOption(num++, MultiMenu.modifiers, "Turn Transparent Duration", 5f, 1f, 15f, 1f, CooldownFormat);

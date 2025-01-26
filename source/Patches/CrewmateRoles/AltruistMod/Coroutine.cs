@@ -35,7 +35,8 @@ namespace TownOfUsFusion.CrewmateRoles.AltruistMod
             var position = target.TruePosition;
             var altruist = role.Player;
 
-            if (AmongUsClient.Instance.AmHost) Utils.RpcMurderPlayer(role.Player, role.Player);
+            role.RevivesLeft -= 1;
+            if (AmongUsClient.Instance.AmHost && role.RevivesLeft == 0) Utils.RpcMurderPlayer(role.Player, role.Player);
 
             if (CustomGameOptions.AltruistTargetBody)
                 if (target != null)

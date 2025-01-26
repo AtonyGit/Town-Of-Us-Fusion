@@ -11,6 +11,7 @@ namespace TownOfUsFusion
         SetAssassin,
         SetTarget,
         SetGATarget,
+        SetDefendant,
 
         SetPhantom,
         CatchPhantom,
@@ -95,6 +96,7 @@ namespace TownOfUsFusion
         SetHacked,
 
         ExecutionerToJester,
+        LawyerToJester,
         GAToSurv,
 
         Start,

@@ -21,9 +21,12 @@ namespace TownOfUsFusion.NeutralRoles.PestilenceMod
 
             __instance.KillButton.SetCoolDown(role.KillTimer(), CustomGameOptions.PestKillCd);
 
+            var notApocTeam = PlayerControl.AllPlayerControls.ToArray()
+                .Where(x => !x.Is(Faction.NeutralApocalypse)).ToList();
+
             if ((CamouflageUnCamouflage.IsCamoed && CustomGameOptions.CamoCommsKillAnyone) || PlayerControl.LocalPlayer.IsHypnotised()) Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton);
             else if (role.Player.IsLover()) Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton, float.NaN, PlayerControl.AllPlayerControls.ToArray().Where(x => !x.IsLover()).ToList());
-            else Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton);
+            else Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton, float.NaN, notApocTeam);
         }
     }
 }

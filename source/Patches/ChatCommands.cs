@@ -16,6 +16,36 @@ namespace TownOfUsFusion.Patches
             {
                 if (sourcePlayer == PlayerControl.LocalPlayer)
                 {
+                    if (chatText.ToLower().Trim().StartsWith("/help"))
+                    {
+                        AddCustomMessage("help");
+                        return false;
+                    }
+                    if (chatText.ToLower().Trim().StartsWith("/crewroles") || chatText.ToLower().Trim().StartsWith("/crewmateroles"))
+                    {
+                        AddCustomMessage("crewroles");
+                        return false;
+                    }
+                    if (chatText.ToLower().Trim().StartsWith("/neutralroles") || chatText.ToLower().Trim().StartsWith("/neutroles"))
+                    {
+                        AddCustomMessage("neutralroles");
+                        return false;
+                    }
+                    if (chatText.ToLower().Trim().StartsWith("/impostorroles") || chatText.ToLower().Trim().StartsWith("/improles") || chatText.ToLower().Trim().StartsWith("/imposterroles"))
+                    {
+                        AddCustomMessage("improles");
+                        return false;
+                    }
+                    if (chatText.ToLower().Trim().StartsWith("/modifiers") || chatText.ToLower().Trim().StartsWith("/modifier"))
+                    {
+                        AddCustomMessage("modifiers");
+                        return false;
+                    }
+                    if (chatText.ToLower().Trim().StartsWith("/alliances") || chatText.ToLower().Trim().StartsWith("/alliance"))
+                    {
+                        AddCustomMessage("alliances");
+                        return false;
+                    }
                     if (chatText.ToLower().Trim().StartsWith("/crew"))
                     {
                         AddRoleMessage(RoleEnum.Crewmate);
@@ -462,6 +492,15 @@ namespace TownOfUsFusion.Patches
                 return true;
             }
 
+            public static void AddCustomMessage(string type)
+            {
+                if (type == "help") DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, "By using /role, you may see what your role does in-game (or you may type a role). This applies to modifiers and alliances as well, but you may see all the commands by running the following: \n/crewroles | /neutroles | /improles | /modifiers | /alliances");
+                else if (type == "crewroles") DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, "--------------- CREW INVESTIGATIVE ---------------\nAurial, Haunter, Investigator, Lookout, Medium, Spy, Psychic, Tracker, Trapper\n--------------------- CREW KILLING ---------------------\nDeputy, Hunter, Jailor, Sheriff, Veteran, Vigilante\n----------------- CREW PROTECTIVE -----------------\nAltruist, Bodyguard, Medic, Mirror Master, Oracle\n----------------- CREW SOVEREIGN ------------------\nCaptain, Politician, Prosecutor, Swapper\n--------------------- CREW UTILITY ---------------------\nEngineer, Imitator, Transporter");
+                else if (type == "neutralroles") DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, "------------------- NEUTRAL BENIGN ------------------\nAmnesiac, Guardian Angel, Lawyer, Survivor\n--------------------- NEUTRAL EVIL ---------------------\nDoomsayer, Executioner, Jester, Phantom\n------------------- NEUTRAL CHAOS -------------------\nCannibal, Inquisitor, Tyrant\n------------------- NEUTRAL KILLING ------------------\nArsonist, Serial Killer, The Glitch, Werewolf\n---------------- NEUTRAL NEOPHYTE ----------------\nJackal, Necromancer, Vampire\n-------------- NEUTRAL APOCALYPSE --------------\nJuggernaut, Armaggeddon, Plaguebearer, Pestilence, Soul Collector, Death");
+                else if (type == "improles") DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, "------------- IMPOSTOR CONCEALING -------------\nEscapist, Grenadier, Morphling, Swooper, Venerer\n----------------- IMPOSTOR KILLING ------------------\nBomber, Poisoner, Traitor, Warlock\n---------------- IMPOSTOR SUPPORT ----------------\nBlackmailer, Hypnotist, Janitor, Miner, Undertaker");
+                else if (type == "modifiers") DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, "-------------- CREWMATE MODIFIERS --------------\nAftermath, Bait, Diseased, Frosty, Multitasker, Torch\n----------------- GLOBAL MODIFIERS -----------------\nButton Barry, Drunk, Oblivious, Flash, Giant, Mini, Radar, Shy, Sixth Sense, Sleuth, Tiebreaker\n--------------- IMPOSTOR MODIFIERS ---------------\nDisperser, Double Shot, Saboteur, Underdog");
+                else if (type == "alliances") DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, "-------------- CREWMATE ALLIANCES --------------\nCrewpostor, Crewpocalypse, Egotist\n----------------- GLOBAL ALLIANCES -----------------\nLover, Recruit");
+            }
             public static void AddRoleMessage(RoleEnum role)
             {
                 if (role == RoleEnum.Crewmate) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, "The Crewmate is a vanilla Crewmate.");

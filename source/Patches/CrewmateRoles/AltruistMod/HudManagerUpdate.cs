@@ -23,6 +23,23 @@ namespace TownOfUsFusion.CrewmateRoles.AltruistMod
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
 
+            if (role.UsesText == null && role.RevivesLeft > 0)
+            {
+                role.UsesText = Object.Instantiate(killButton.cooldownTimerText, killButton.transform);
+                role.UsesText.gameObject.SetActive(false);
+                role.UsesText.transform.localPosition = new Vector3(
+                    role.UsesText.transform.localPosition.x + 0.26f,
+                    role.UsesText.transform.localPosition.y + 0.29f,
+                    role.UsesText.transform.localPosition.z);
+                role.UsesText.transform.localScale = role.UsesText.transform.localScale * 0.65f;
+                role.UsesText.alignment = TMPro.TextAlignmentOptions.Right;
+                role.UsesText.fontStyle = TMPro.FontStyles.Bold;
+            }
+            if (role.UsesText != null)
+            {
+                role.UsesText.text = role.RevivesLeft + "";
+            }
+
             var data = PlayerControl.LocalPlayer.Data;
             var isDead = data.IsDead;
             var truePosition = PlayerControl.LocalPlayer.GetTruePosition();
@@ -47,6 +64,28 @@ namespace TownOfUsFusion.CrewmateRoles.AltruistMod
                 if (!(distance < closestDistance)) continue;
                 closestBody = component;
                 closestDistance = distance;
+            }
+
+            if (role.Reviving)
+            {
+                killButton.SetCoolDown(role.TimeRemaining, CustomGameOptions.ReviveDuration);
+                killButton.graphic.color = Palette.EnabledColor;
+                killButton.graphic.material.SetFloat("_Desat", 0f);
+            }
+            else
+            {
+                killButton.SetCoolDown(role.ReviveTimer(), CustomGameOptions.ReviveCooldown);
+
+                if (role.ReviveTimer() > 0f || !PlayerControl.LocalPlayer.moveable)
+                {
+                    killButton.graphic.color = Palette.DisabledClear;
+                    killButton.graphic.material.SetFloat("_Desat", 1f);
+                }
+                else
+                {
+                    killButton.graphic.color = Palette.EnabledColor;
+                    killButton.graphic.material.SetFloat("_Desat", 0f);
+                }
             }
 
             KillButtonTarget.SetTarget(killButton, closestBody, role);

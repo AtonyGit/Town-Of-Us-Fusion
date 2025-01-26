@@ -1,6 +1,7 @@
 using TownOfUsFusion.CrewmateRoles.MedicMod;
 using TownOfUsFusion.CustomOption;
 using TownOfUsFusion.NeutralRoles.ExecutionerMod;
+using TownOfUsFusion.NeutralRoles.LawyerMod;
 using TownOfUsFusion.CrewmateRoles.HaunterMod;
 using TownOfUsFusion.CrewmateRoles.MediumMod;
 using TownOfUsFusion.NeutralRoles.GuardianAngelMod;
@@ -64,6 +65,8 @@ namespace TownOfUsFusion
         public static int SwooperOn => (int)Generate.SwooperOn.Get();
         public static int ArsonistOn => (int)Generate.ArsonistOn.Get();
         public static int AltruistOn => (int)Generate.AltruistOn.Get();
+            public static int AltruistMaxRevives => (int)Generate.AltruistMaxRevives.Get();
+            public static float ReviveCooldown => (float)Generate.ReviveCooldown.Get();
         public static int UndertakerOn => (int)Generate.UndertakerOn.Get();
         public static int PhantomOn => (int)Generate.PhantomOn.Get();
         public static int HunterOn => (int)Generate.HunterOn.Get();
@@ -123,6 +126,9 @@ namespace TownOfUsFusion
         public static int FlashOn => (int)Generate.FlashOn.Get();
         public static int TiebreakerOn => (int)Generate.TiebreakerOn.Get();
         public static int GiantOn => (int)Generate.GiantOn.Get();
+        public static int DrunkOn => (int)Generate.DrunkOn.Get();
+        public static int ObliviousOn => (int)Generate.ObliviousOn.Get();
+            public static bool ObliviousCanReport => Generate.ObliviousCanReport.Get();
         public static int ButtonBarryOn => (int)Generate.ButtonBarryOn.Get();
         public static int BaitOn => (int)Generate.BaitOn.Get();
         public static int LoversOn => (int)Generate.LoversOn.Get();
@@ -191,6 +197,12 @@ namespace TownOfUsFusion
         public static OnTargetDead OnTargetDead => (OnTargetDead)Generate.OnTargetDead.Get();
         public static bool ExecutionerButton => Generate.ExecutionerButton.Get();
         public static bool ExecutionerTorment => Generate.ExecutionerTorment.Get();
+        public static int LawyerOn => (int)Generate.LawyerOn.Get();
+            public static OnDefendantDead OnDefendantDead => (OnDefendantDead)Generate.OnDefendantDead.Get();
+            public static bool LawyerDies => Generate.LawyerDies.Get();
+            public static int DefendantImpPercent => (int)Generate.DefendantImpPercent.Get();
+            public static bool NeutralDefendant => Generate.NeutralDefendant.Get();
+            public static bool LawyerCanTalkDefendant => Generate.LawyerCanTalkDefendant.Get();
         public static bool SpySeesNeutrals => Generate.SpySeesNeutrals.Get();
         public static int SpyTasksRemaining => (int)Generate.SpyTasksRemaining.Get();
         public static bool SpySeesImpInMeeting => Generate.SpySeesImpInMeeting.Get();
@@ -219,6 +231,7 @@ namespace TownOfUsFusion
         public static float UndertakerDragSpeed => Generate.UndertakerDragSpeed.Get();
         public static bool UndertakerVent => Generate.UndertakerVent.Get();
         public static bool UndertakerVentWithBody => Generate.UndertakerVentWithBody.Get();
+        public static bool AssassinGuessCrewInvestigative => Generate.AssassinGuessCrewInvestigative.Get();
         public static bool AssassinGuessNeutralBenign => Generate.AssassinGuessNeutralBenign.Get();
         public static bool AssassinGuessNeutralEvil => Generate.AssassinGuessNeutralEvil.Get();
         public static bool AssassinGuessNeutralChaos => Generate.AssassinGuessNeutralChaos.Get();
@@ -333,6 +346,7 @@ namespace TownOfUsFusion
         public static bool BomberVent => Generate.BomberVent.Get();
         public static bool AllImpsSeeBomb => Generate.AllImpsSeeBomb.Get();
         public static float ObserveCooldown => Generate.ObserveCooldown.Get();
+        public static bool DoomsayerGuessCrewInvestigative => Generate.DoomsayerGuessCrewInvestigative.Get();
         public static bool DoomsayerGuessNeutralBenign => Generate.DoomsayerGuessNeutralBenign.Get();
         public static bool DoomsayerGuessNeutralEvil => Generate.DoomsayerGuessNeutralEvil.Get();
         public static bool DoomsayerGuessNeutralChaos => Generate.DoomsayerGuessNeutralChaos.Get();

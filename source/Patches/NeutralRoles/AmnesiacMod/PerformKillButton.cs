@@ -124,6 +124,7 @@ namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
 
                 case RoleEnum.Jester:
                 case RoleEnum.Executioner:
+                case RoleEnum.Lawyer:
                 case RoleEnum.Arsonist:
                 case RoleEnum.Amnesiac:
                 case RoleEnum.Glitch:

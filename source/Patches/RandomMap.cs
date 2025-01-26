@@ -153,6 +153,7 @@ namespace TownOfUsFusion
             Generate.JailCooldown.Set((float)Generate.JailCooldown.Value + change, false);
             Generate.ReapCooldown.Set((float)Generate.ReapCooldown.Value + change, false);
             Generate.WatchCooldown.Set((float)Generate.WatchCooldown.Value + change, false);
+            Generate.ReviveCooldown.Set((float)Generate.ReviveCooldown.Value + change, false);
             Generate.PerceptCd.Set((float)Generate.PerceptCd.Value + change, false);
             Generate.BloodlustDuration.Set((float)Generate.BloodlustDuration.Value + change, false);
             GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown += change;

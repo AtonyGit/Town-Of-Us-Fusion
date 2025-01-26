@@ -26,7 +26,7 @@ namespace TownOfUsFusion.NeutralRoles.PlaguebearerMod
                 {
                     var player = Utils.PlayerById(playerId);
                     var data = player?.Data;
-                    if (data == null || data.Disconnected || data.IsDead || PlayerControl.LocalPlayer.Data.IsDead || playerId == PlayerControl.LocalPlayer.PlayerId)
+                    if (data == null || data.Disconnected || data.IsDead || PlayerControl.LocalPlayer.Data.IsDead || playerId == PlayerControl.LocalPlayer.PlayerId || player.Is(Faction.NeutralApocalypse))
                         continue;
 
                     player.myRend().material.SetColor("_VisorColor", role.Color);
@@ -43,7 +43,7 @@ namespace TownOfUsFusion.NeutralRoles.PlaguebearerMod
             infectButton.SetCoolDown(role.InfectTimer(), CustomGameOptions.InfectCd);
 
             var notInfected = PlayerControl.AllPlayerControls.ToArray().Where(
-                player => !role.InfectedPlayers.Contains(player.PlayerId)
+                player => !role.InfectedPlayers.Contains(player.PlayerId) && !player.Is(Faction.NeutralApocalypse)
             ).ToList();
 
             Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton, float.NaN, notInfected);
@@ -51,7 +51,7 @@ namespace TownOfUsFusion.NeutralRoles.PlaguebearerMod
             if (role.CanTransform && (PlayerControl.AllPlayerControls.ToArray().Where(x => !x.Data.IsDead && !x.Data.Disconnected).ToList().Count > 1) && !isDead)
             {
                 var transform = false;
-                var alives = PlayerControl.AllPlayerControls.ToArray().Where(x => !x.Data.IsDead && !x.Data.Disconnected && x != PlayerControl.LocalPlayer).ToList();
+                var alives = PlayerControl.AllPlayerControls.ToArray().Where(x => !x.Data.IsDead && !x.Data.Disconnected && x != PlayerControl.LocalPlayer && !x.Is(Faction.NeutralApocalypse)).ToList();
                 if (alives.Count <= 1)
                 {
                     foreach (var player in alives)

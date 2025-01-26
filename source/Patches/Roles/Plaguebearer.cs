@@ -83,7 +83,26 @@ namespace TownOfUsFusion.Roles
         protected override void IntroPrefix(IntroCutscene._ShowTeam_d__38 __instance)
         {
             var apocTeam = new Il2CppSystem.Collections.Generic.List<PlayerControl>();
-            //apocTeam.Add(PlayerControl.LocalPlayer);
+            foreach (var role in GetRoles(RoleEnum.Plaguebearer))
+            {
+                var apocRole = (Plaguebearer)role;
+                apocTeam.Add(apocRole.Player);
+            }
+            foreach (var role in GetRoles(RoleEnum.Juggernaut))
+            {
+                var apocRole = (Juggernaut)role;
+                apocTeam.Add(apocRole.Player);
+            }
+            /*foreach (var role in GetRoles(RoleEnum.Baker))
+            {
+                var apocRole = (Baker)role;
+                apocTeam.Add(apocRole.Player);
+            }*/
+            foreach (var role in GetRoles(RoleEnum.SoulCollector))
+            {
+                var apocRole = (SoulCollector)role;
+                apocTeam.Add(apocRole.Player);
+            }
             __instance.teamToShow = apocTeam;
         }
 

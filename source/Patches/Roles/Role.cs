@@ -412,6 +412,15 @@ namespace TownOfUsFusion.Roles
                     PlayerName += "<color=#8C4005FF> X</color>";
                 }
             }
+            
+            foreach (var role in GetRoles(RoleEnum.Lawyer))
+            {
+                var lwyr = (Lawyer)role;
+                if (Player == lwyr.target && PlayerControl.LocalPlayer.Data.IsDead && !lwyr.Player.Data.IsDead)
+                {
+                    PlayerName += "<color=#D2B48CFF> @</color>";
+                }
+            }
 /*
             var modifier = Modifier.GetModifier(Player);
             if (modifier != null && modifier.GetColoredSymbol() != null)
@@ -610,11 +619,15 @@ namespace TownOfUsFusion.Roles
                         || role.Faction == Faction.NeutralChaos || role.Faction == Faction.NeutralNeophyte)
                         {
                             __instance.__4__this.TeamTitle.text = "Neutral";
+                            __instance.__4__this.TeamTitle.color = Color.white;
+                            __instance.__4__this.BackgroundBar.material.color = Color.white;
                             PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Shapeshifter);
                         }
                         else if(role.Faction == Faction.NeutralApocalypse)
                         {
                             __instance.__4__this.TeamTitle.text = "Apocalypse";
+                            __instance.__4__this.TeamTitle.color = Patches.Colors.Apocalypse;
+                            __instance.__4__this.BackgroundBar.material.color = Patches.Colors.Apocalypse;
                             PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Phantom);
                         }
                         else if(role.Faction == Faction.Crewmates)
@@ -631,6 +644,7 @@ namespace TownOfUsFusion.Roles
                                 case Trapper:
                                 PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Tracker);
                                 break;
+                                case Altruist:
                                 //case Bodyguard:
                                 case Medic:
                                 //case MirrorMaster:
@@ -723,6 +737,7 @@ namespace TownOfUsFusion.Roles
                                 case Trapper:
                                 PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Tracker);
                                 break;
+                                case Altruist:
                                 //case Bodyguard:
                                 case Medic:
                                 //case MirrorMaster:
@@ -753,14 +768,7 @@ namespace TownOfUsFusion.Roles
                     if (ModifierText != null)
                     {
                         var modifier = Modifier.GetModifier(PlayerControl.LocalPlayer);
-                        if (modifier.GetType() == typeof(Lover))
-                        {
-                            ModifierText.text = $"<size=3>{modifier.TaskText()}</size>";
-                        }
-                        else
-                        {
-                            ModifierText.text = "<size=4>Modifier: " + modifier.Name + "</size>";
-                        }
+                        ModifierText.text = "<size=4>Modifier: " + modifier.Name + "</size>";
                         ModifierText.color = modifier.Color;
 
                         ModifierText.transform.position =
@@ -808,10 +816,16 @@ namespace TownOfUsFusion.Roles
                         if (role.Faction == Faction.NeutralKilling || role.Faction == Faction.NeutralEvil || role.Faction == Faction.NeutralBenign
                         || role.Faction == Faction.NeutralChaos || role.Faction == Faction.NeutralNeophyte)
                         {
+                            __instance.__4__this.TeamTitle.text = "Neutral";
+                            __instance.__4__this.TeamTitle.color = Color.white;
+                            __instance.__4__this.BackgroundBar.material.color = Color.white;
                             PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Shapeshifter);
                         }
                         else if(role.Faction == Faction.NeutralApocalypse)
                         {
+                            __instance.__4__this.TeamTitle.text = "Apocalypse";
+                            __instance.__4__this.TeamTitle.color = Patches.Colors.Apocalypse;
+                            __instance.__4__this.BackgroundBar.material.color = Patches.Colors.Apocalypse;
                             PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Phantom);
                         }
                         else if(role.Faction == Faction.Crewmates)
@@ -828,6 +842,7 @@ namespace TownOfUsFusion.Roles
                                 case Trapper:
                                 PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Tracker);
                                 break;
+                                case Altruist:
                                 //case Bodyguard:
                                 case Medic:
                                 //case MirrorMaster:
@@ -936,7 +951,7 @@ namespace TownOfUsFusion.Roles
                 if (role.RoleType == RoleEnum.Amnesiac && role.Player != PlayerControl.LocalPlayer) return;
                 var task = new GameObject(role.Name + "Task").AddComponent<ImportantTextTask>();
                 task.transform.SetParent(player.transform, false);
-                task.Text = $"{role.ColorString}Role: {role.Name}\n{role.TaskText()}</color>";
+                task.Text = $"<size=80%>{role.ColorString}Role: {role.Name}\n{role.TaskText()}</color></size>";
                 player.myTasks.Insert(0, task);
             }
         }

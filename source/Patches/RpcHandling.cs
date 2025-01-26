@@ -41,6 +41,7 @@ using Il2CppSystem.Linq;
 using TownOfUsFusion.CrewmateRoles.DeputyMod;
 using TownOfUsFusion.Roles.Alliances;
 using TownOfUsFusion.NeutralRoles.CannibalMod;
+using TownOfUsFusion.NeutralRoles.LawyerMod;
 
 namespace TownOfUsFusion
 {
@@ -808,6 +809,37 @@ namespace TownOfUsFusion
                 }
             }
 
+            var isValidCrewDefendant = (PlayerControl x) =>
+            {
+                return (x.Is(Faction.Crewmates)
+                    || ((x.Is(Faction.NeutralEvil) || x.Is(Faction.NeutralBenign)) && CustomGameOptions.NeutralDefendant))
+                && !x.Is(AllianceEnum.Lover) && !x.Is(RoleEnum.Lawyer) && !x.HasLegalCounsel()
+                && !x.Is(RoleEnum.Mayor) && !x.Is(RoleEnum.Swapper)
+                && x != SetTraitor.WillBeTraitor;
+            };
+            var isValidEvilDefendant = (PlayerControl x) =>
+            {
+                return (x.Is(Faction.Impostors) || x.Is(Faction.NeutralKilling)
+                    || ((x.Is(Faction.NeutralEvil) || x.Is(Faction.NeutralBenign)) && CustomGameOptions.NeutralDefendant))
+                && !x.Is(AllianceEnum.Lover) && !x.Is(RoleEnum.Lawyer) && !x.HasLegalCounsel()
+                && !x.Is(RoleEnum.Mayor) && !x.Is(RoleEnum.Swapper)
+                && x != SetTraitor.WillBeTraitor;
+            };
+
+            foreach (var role in Role.GetRoles(RoleEnum.Lawyer))
+            {
+                var lwyr = (Lawyer)role;
+                var impdef = Random.RandomRangeInt(0, 100);
+                bool canBeImp = CustomGameOptions.DefendantImpPercent > impdef;
+                var lwyrTargets = PlayerControl.AllPlayerControls.ToArray().Where(x => canBeImp ? isValidEvilDefendant(x) : isValidCrewDefendant(x)).ToList();
+                lwyrTargets.Shuffle();
+                if (lwyrTargets.Count > 0)
+                {
+                    lwyr.target = lwyrTargets.FirstOrDefault();
+                    Utils.Rpc(CustomRPC.SetDefendant, role.Player.PlayerId, lwyr.target.PlayerId);
+                }
+            }
+            
             var goodGATargets = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) && !x.Is(AllianceEnum.Lover)).ToList();
             var evilGATargets = PlayerControl.AllPlayerControls.ToArray().Where(x => (x.Is(Faction.Impostors) || x.Is(Faction.NeutralKilling)) && !x.Is(AllianceEnum.Lover)).ToList();
             foreach (var role in Role.GetRoles(RoleEnum.GuardianAngel))
@@ -1121,7 +1153,7 @@ namespace TownOfUsFusion
                         var vamp = Utils.PlayerById(reader.ReadByte());
                         var bitten = Utils.PlayerById(reader.ReadByte());
                         var vampRole = Role.GetRole<Vampire>(vamp);
-                        //vampRole.BittenPlayer = bitten;
+                        vampRole.BittenPlayer = bitten;
                         break;
                     case CustomRPC.SetTarget:
                         var exe = Utils.PlayerById(reader.ReadByte());
@@ -1134,6 +1166,12 @@ namespace TownOfUsFusion
                         var gaTarget = Utils.PlayerById(reader.ReadByte());
                         var gaRole = Role.GetRole<GuardianAngel>(ga);
                         gaRole.target = gaTarget;
+                        break;
+                    case CustomRPC.SetDefendant:
+                        var lwyr = Utils.PlayerById(reader.ReadByte());
+                        var lwyrTarget = Utils.PlayerById(reader.ReadByte());
+                        var lwyrRole = Role.GetRole<Lawyer>(lwyr);
+                        lwyrRole.target = lwyrTarget;
                         break;
                     case CustomRPC.Blackmail:
                         var blackmailer = Role.GetRole<Blackmailer>(Utils.PlayerById(reader.ReadByte()));
@@ -1240,6 +1278,9 @@ namespace TownOfUsFusion
                         break;
                     case CustomRPC.ExecutionerToJester:
                         TargetColor.ExeToJes(Utils.PlayerById(reader.ReadByte()));
+                        break;
+                    case CustomRPC.LawyerToJester:
+                        LawyerTargetColor.LwyrToJes(Utils.PlayerById(reader.ReadByte()));
                         break;
                     case CustomRPC.GAToSurv:
                         GATargetColor.GAToSurv(Utils.PlayerById(reader.ReadByte()));
@@ -1771,6 +1812,9 @@ namespace TownOfUsFusion
                 if (CustomGameOptions.DoomsayerOn > 0)
                     NeutralEvilRoles.Add((typeof(Doomsayer), CustomGameOptions.DoomsayerOn, false || CustomGameOptions.UniqueRoles));
 
+                if (CustomGameOptions.LawyerOn > 0)
+                        NeutralBenignRoles.Add((typeof(Lawyer), CustomGameOptions.LawyerOn, false));
+
                 if (CustomGameOptions.SurvivorOn > 0)
                     NeutralBenignRoles.Add((typeof(Survivor), CustomGameOptions.SurvivorOn, false || CustomGameOptions.UniqueRoles));
 
@@ -1869,6 +1913,12 @@ namespace TownOfUsFusion
 
                 if (Check(CustomGameOptions.GiantOn))
                     GlobalModifiers.Add((typeof(Giant), CustomGameOptions.GiantOn));
+
+                if (Check(CustomGameOptions.DrunkOn))
+                    GlobalModifiers.Add((typeof(Drunk), CustomGameOptions.DrunkOn));
+
+                if (Check(CustomGameOptions.ObliviousOn))
+                    GlobalModifiers.Add((typeof(Oblivious), CustomGameOptions.ObliviousOn));
 
                 if (Check(CustomGameOptions.ButtonBarryOn))
                     ButtonModifiers.Add((typeof(ButtonBarry), CustomGameOptions.ButtonBarryOn));

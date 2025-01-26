@@ -98,6 +98,8 @@ namespace TownOfUsFusion
     {
         Torch,
         Diseased,
+        Drunk,
+        Oblivious,
         Flash,
         Tiebreaker,
         Giant,

@@ -36,6 +36,7 @@ namespace TownOfUsFusion.Patches
         // Neutral Colors
         public readonly static Color Jester = new Color(1f, 0.75f, 0.8f, 1f);
         public readonly static Color Executioner = new Color(0.55f, 0.25f, 0.02f, 1f);
+        public readonly static Color Lawyer = new Color(0.93f, 0.7f, 0.55f, 1f);
         public readonly static Color Inquisitor = new(0.85f, 0.26f, 0.57f, 1f);
         public readonly static Color Tyrant = new(0.92f, 0.33f, 0.36f, 1f);
         public readonly static Color Cannibal = new(0.55f, 0.27f, 0.07f, 1f);

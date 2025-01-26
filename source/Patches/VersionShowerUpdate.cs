@@ -19,7 +19,7 @@ namespace TownOfUsFusion
 
                 var aspect = text.gameObject.AddComponent<AspectPosition>();
                 aspect.Alignment = AspectPosition.EdgeAlignments.Top;
-                aspect.DistanceFromEdge = new Vector3(-0.2f, 2.5f, 8f);
+                aspect.DistanceFromEdge = new Vector3(-0.2f, 3.5f, 8f);
 
                 aspect.StartCoroutine(Effects.Lerp(0.1f, new System.Action<float>((p) =>
                 {

@@ -23,8 +23,9 @@ namespace TownOfUsFusion.Modifiers.LoversMod
                 if (__instance != HudManager.Instance.Chat) return true;
                 var localPlayer = PlayerControl.LocalPlayer;
                 if (localPlayer == null) return true;
-                Boolean shouldSeeMessage = localPlayer.Data.IsDead || localPlayer.IsLover() ||
-                    sourcePlayer.PlayerId == PlayerControl.LocalPlayer.PlayerId;
+                bool shouldSeeMessage = localPlayer.Data.IsDead || localPlayer.IsOtherLover(sourcePlayer)
+                    || localPlayer.IsLegalCounsel(sourcePlayer)
+                    ||  sourcePlayer.PlayerId == PlayerControl.LocalPlayer.PlayerId;
                 if (DateTime.UtcNow - MeetingStartTime < TimeSpan.FromSeconds(1))
                 {
                     return shouldSeeMessage;
@@ -38,7 +39,7 @@ namespace TownOfUsFusion.Modifiers.LoversMod
         {
             public static void Postfix(HudManager __instance)
             {
-                if (PlayerControl.LocalPlayer.IsLover() & !__instance.Chat.isActiveAndEnabled)
+                if ((PlayerControl.LocalPlayer.HasLegalCounsel() || PlayerControl.LocalPlayer.IsLover()) & !__instance.Chat.isActiveAndEnabled)
                     __instance.Chat.SetVisible(true);
             }
         }

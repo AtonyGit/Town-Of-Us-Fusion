@@ -26,12 +26,19 @@ namespace TownOfUsFusion.CrewmateRoles.AltruistMod
                 return false;
             if (role.CurrentTarget == null)
                 return false;
+                
+                if (role.ReviveTimer() != 0) return false;
+                if (!__instance.isActiveAndEnabled || __instance.isCoolingDown) return false;
+                var abilityUsed = Utils.AbilityUsed(PlayerControl.LocalPlayer);
+                if (!abilityUsed) return false;
+
+                role.TimeRemaining = CustomGameOptions.ReviveDuration;
+                role.Altruisting();
+
             if (Vector2.Distance(role.CurrentTarget.TruePosition,
                 PlayerControl.LocalPlayer.GetTruePosition()) > maxDistance) return false;
             var playerId = role.CurrentTarget.ParentId;
             var player = Utils.PlayerById(playerId);
-            var abilityUsed = Utils.AbilityUsed(PlayerControl.LocalPlayer);
-            if (!abilityUsed) return false;
             if (player.IsInfected() || role.Player.IsInfected())
             {
                 foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(player, role.Player);

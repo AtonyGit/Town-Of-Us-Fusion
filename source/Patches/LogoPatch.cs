@@ -17,7 +17,7 @@ namespace TownOfUsFusion
 
 
             var position = touLogo.AddComponent<AspectPosition>();
-            position.DistanceFromEdge = new Vector3(-0.2f, 1.5f, 8f);
+            position.DistanceFromEdge = new Vector3(-0.2f, 2.5f, 8f);
             position.Alignment = AspectPosition.EdgeAlignments.Top;
 
             position.StartCoroutine(Effects.Lerp(0.1f, new System.Action<float>((p) =>

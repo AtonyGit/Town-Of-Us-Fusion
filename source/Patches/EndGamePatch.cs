@@ -116,7 +116,7 @@ namespace TownOfUsFusion.Patches {
                     break;
                     case RoleEnum.GuardianAngel: playerRole += "<color=#" + Patches.Colors.GuardianAngel.ToHtmlStringRGBA() + ">Guardian Angel</color> > ";
                     break;
-                    case RoleEnum.Lawyer: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Lawyer</color> > ";
+                    case RoleEnum.Lawyer: playerRole += "<color=#" + Patches.Colors.Lawyer.ToHtmlStringRGBA() + ">Lawyer</color> > ";
                     break;
                     case RoleEnum.Survivor: playerRole += "<color=#" + Patches.Colors.Survivor.ToHtmlStringRGBA() + ">Survivor</color> > ";
                     break;

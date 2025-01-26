@@ -14,6 +14,7 @@ namespace TownOfUsFusion.CrewmateRoles.PsychicMod
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Psychic)) return;
             var psychicRole = Role.GetRole<Psychic>(PlayerControl.LocalPlayer);
             psychicRole.IsSeerMode = !psychicRole.IsSeerMode;
+            psychicRole.RegenTask();
             if (psychicRole.Confessor != null)
             {
                 var playerResults = PlayerReportFeedback(psychicRole.Confessor);

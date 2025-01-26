@@ -3,6 +3,7 @@ using HarmonyLib;
 using Hazel;
 using TownOfUsFusion.NeutralRoles.ExecutionerMod;
 using TownOfUsFusion.NeutralRoles.GuardianAngelMod;
+using TownOfUsFusion.NeutralRoles.LawyerMod;
 using TownOfUsFusion.Roles;
 using TownOfUsFusion.Roles.Modifiers;
 using UnityEngine;
@@ -64,6 +65,13 @@ namespace TownOfUsFusion.Patches
                 var tracker = Role.GetRole<Tracker>(PlayerControl.LocalPlayer);
                 tracker.LastTracked = DateTime.UtcNow;
                 tracker.LastTracked = tracker.LastTracked.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.TrackCd);
+            }
+
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Altruist))
+            {
+                var alt = Role.GetRole<Altruist>(PlayerControl.LocalPlayer);
+                alt.LastRevived = DateTime.UtcNow;
+                alt.LastRevived = alt.LastRevived.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.ReviveCooldown);
             }
 
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Lookout))
@@ -213,6 +221,19 @@ namespace TownOfUsFusion.Patches
                 }
             }
 
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Lawyer))
+            {
+                var lwyr = Role.GetRole<Lawyer>(PlayerControl.LocalPlayer);
+                if (lwyr.target == null)
+                {
+                    var writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId,
+                        (byte)CustomRPC.LawyerToJester, SendOption.Reliable, -1);
+                    writer.Write(lwyr.Player.PlayerId);
+                    AmongUsClient.Instance.FinishRpcImmediately(writer);
+                    LawyerTargetColor.LwyrToJes(lwyr.Player);
+                }
+            }
+
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Glitch))
             {
                 var glitch = Role.GetRole< Glitch> (PlayerControl.LocalPlayer);
@@ -251,7 +272,7 @@ namespace TownOfUsFusion.Patches
             {
                 var sk = Role.GetRole<SerialKiller>(PlayerControl.LocalPlayer);
                 sk.LastKill = DateTime.UtcNow;
-                sk.Target = sk.GetClosestPlayer();
+                sk.Target = sk.GetRandomPlayer();
                 sk.RegenTask();
                 sk.LastKill = sk.LastKill.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.SkKillCooldown);
             }
