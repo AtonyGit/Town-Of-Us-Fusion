@@ -32,12 +32,12 @@ namespace TownOfUsFusion
     {
 
         public const string Id = "com.FusionStudios.TownOfUsFusion";
-        public const string VersionString = "0.4.1";
+        public const string VersionString = "0.4.2";
         public const string TouVersionString = "5.2.0";
         public static System.Version Version = System.Version.Parse(VersionString);
         public const string VersionTag = "<color=#ff33fc></color>";
         public const bool isDevBuild = true;
-        public const string DevBuildVersion = "2";
+        public const string DevBuildVersion = "1";
 
         public static readonly string DataPath = Path.GetDirectoryName(Application.dataPath);
         public static readonly string Assets = Path.Combine(DataPath, "FusionAssets");
