@@ -48,12 +48,12 @@ public static class CustomVisorManager
 
     private static string GetPath(CustomVisor cv, string id)
     {
-        var path = Path.Combine("TownOfUsFusion.Resources.Visors", $"{id}.png");
+        var path = Path.Combine(TownOfUsFusion.Visors, $"{id}.png");
 
         if (cv.StreamOnly)
-            path = Path.Combine("TownOfUsFusion.Resources.Visors", "Stream", $"{id}.png");
+            path = Path.Combine(TownOfUsFusion.Visors, "Stream", $"{id}.png");
         else if (cv.TestOnly)
-            path = Path.Combine("TownOfUsFusion.Resources.Visors", "Test", $"{id}.png");
+            path = Path.Combine(TownOfUsFusion.Visors, "Test", $"{id}.png");
 
         return path;
     }

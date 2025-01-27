@@ -39,6 +39,14 @@ namespace TownOfUsFusion
         public const bool isDevBuild = true;
         public const string DevBuildVersion = "2";
 
+        public static readonly string DataPath = Path.GetDirectoryName(Application.dataPath);
+        public static readonly string Assets = Path.Combine(DataPath, "FusionAssets");
+        public static readonly string Hats = Path.Combine(Assets, "CustomHats");
+        public static readonly string Visors = Path.Combine(Assets, "CustomVisors");
+        public static readonly string Nameplates = Path.Combine(Assets, "CustomNameplates");
+        public static readonly string Sounds = Path.Combine(Assets, "CustomSounds");
+        public static readonly string Other = Path.Combine(Assets, "Other");
+        public static readonly string ModsFolder = Path.Combine(DataPath, "BepInEx", "plugins");
         public static AssetLoader bundledAssets;
 
         public static Sprite JesterVent;

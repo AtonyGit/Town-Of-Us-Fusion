@@ -54,12 +54,12 @@ public static class CustomHatManager
 
     private static string GetPath(CustomHat ch, string id)
     {
-        var path = Path.Combine("TownOfUsFusion.Resources.Hats", $"{id}.png");
+        var path = Path.Combine(TownOfUsFusion.Hats, $"{id}.png");
 
         if (ch.StreamOnly)
-            path = Path.Combine("TownOfUsFusion.Resources.Hats", "Stream", $"{id}.png");
+            path = Path.Combine(TownOfUsFusion.Hats, "Stream", $"{id}.png");
         else if (ch.TestOnly)
-            path = Path.Combine("TownOfUsFusion.Resources.Hats", "Test", $"{id}.png");
+            path = Path.Combine(TownOfUsFusion.Hats, "Test", $"{id}.png");
 
         return path;
     }

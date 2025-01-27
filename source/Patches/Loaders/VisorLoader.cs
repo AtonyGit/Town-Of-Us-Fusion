@@ -3,18 +3,27 @@ using Cpp2IL.Core.Extensions;
 using UnityEngine;
 using TownOfUsFusion.Patches;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace TownOfUsFusion.Loaders;
 
 public class VisorLoader : AssetLoader<CustomVisor>
 {
-    public override string DirectoryInfo => "TownOfUsFusion.Resources.Visors";
+    public override string DirectoryInfo => TownOfUsFusion.Visors;
     public override bool Downloading => true;
     public override string Manifest => "Visors";
     public override string FileExtension => "png";
 
     public static VisorLoader Instance { get; set; }
 
+    public override IEnumerator BeginDownload(object response)
+    {
+        var mainResponse = (List<CustomVisor>)response;
+        UnregisteredVisors.AddRange(mainResponse);
+        Debug.Log($"Found {UnregisteredVisors.Count} visors");
+        yield return CoDownloadAssets(response as IEnumerable<string>);
+        mainResponse.Clear();
+    }
 
     public override IEnumerator AfterLoading(object response)
     {

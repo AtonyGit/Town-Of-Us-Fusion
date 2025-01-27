@@ -11,14 +11,21 @@ namespace TownOfUsFusion.Loaders;
 
 public class NameplateLoader : AssetLoader<CustomNameplate>
 {
-    public override string DirectoryInfo => "TownOfUsFusion.Resources.Nameplates";
+    public override string DirectoryInfo => TownOfUsFusion.Nameplates;
     public override bool Downloading => true;
     public override string Manifest => "Nameplates";
     public override string FileExtension => "png";
 
     public static NameplateLoader Instance { get; set; }
 
-
+    public override IEnumerator BeginDownload(object response)
+    {
+        var mainResponse = (List<CustomNameplate>)response;
+        UnregisteredNameplates.AddRange(mainResponse);
+        Debug.Log($"Found {UnregisteredNameplates.Count} nameplates");
+        yield return CoDownloadAssets(response as IEnumerable<string>);
+        mainResponse.Clear();
+    }
     public override IEnumerator AfterLoading(object response)
     {
         // if (TownOfUsFusion.IsStream)

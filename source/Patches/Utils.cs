@@ -28,6 +28,7 @@ using static TownOfUsFusion.Roles.Glitch;
 using TownOfUsFusion.Patches.NeutralRoles;
 using Il2CppSystem.Linq;
 using TownOfUsFusion.Roles.Alliances;
+using System.IO;
 
 namespace TownOfUsFusion
 {
@@ -58,6 +59,32 @@ namespace TownOfUsFusion
             return path;
         }
         
+    public static void SaveText(string fileName, string textToSave, string diskLocation) => SaveText(fileName, textToSave, true, diskLocation);
+
+    public static void SaveText(string fileName, string textToSave, bool overrideText = true, string diskLocation = null)
+    {
+        try
+        {
+            File.WriteAllText(Path.Combine(diskLocation ?? Application.persistentDataPath, fileName), (overrideText ? "" : ReadDiskText(fileName, diskLocation)) + textToSave);
+        }
+        catch
+        {
+            Debug.LogError($"Unable to save text to {fileName}{(diskLocation != null ? $" in {diskLocation}" : "")}");
+        }
+    }
+
+    public static string ReadDiskText(string fileName, string diskLocation = null)
+    {
+        try
+        {
+            return File.ReadAllText(Path.Combine(diskLocation ?? Application.persistentDataPath, fileName));
+        }
+        catch
+        {
+            Debug.LogError($"Error reading {fileName}{(diskLocation != null ? $" from {diskLocation}" : "")}");
+            return "";
+        }
+    }
         public static void AddAsset(string name, UnityEngine.Object obj)
         {
             if (!UnityLoadedObjects.TryGetValue(name, out var value))

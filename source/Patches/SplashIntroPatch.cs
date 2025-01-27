@@ -51,10 +51,10 @@ public static class UpdateSplashPatch
 
         rend.color = UColor.white;
         TMP = UObject.Instantiate(__instance.errorPopup.InfoText, loading.transform);
-        TMP.transform.localPosition = new(0f, -1.5f, -10f);
+        TMP.transform.localPosition = new(0f, -2.1f, -10f);
         TMP.fontStyle = FontStyles.Bold;
         TMP.color = UColor.clear;
-        TMP.transform.localScale /= 2f;
+        TMP.transform.localScale /= 0.9f;
         Utils.AddAsset("Placeholder", TMP.font);
 
         SetText("Loading...");

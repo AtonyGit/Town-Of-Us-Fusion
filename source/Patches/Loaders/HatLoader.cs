@@ -12,13 +12,23 @@ namespace TownOfUsFusion.Loaders;
 
 public class HatLoader : AssetLoader<CustomHat>
 {
-    public override string DirectoryInfo => "TownOfUsFusion.Resources.Hats";
+    public override string DirectoryInfo => TownOfUsFusion.Hats;
     public override bool Downloading => true;
     public override string Manifest => "Hats";
     public override string FileExtension => "png";
 
     public static HatLoader Instance { get; set; }
 
+    public override IEnumerator BeginDownload(object response)
+    {
+        var mainResponse = (List<CustomHat>)response;
+        UnregisteredHats.AddRange(mainResponse);
+        Debug.Log($"Found {UnregisteredHats.Count} hats");
+        //var toDownload = GenerateDownloadList(UnregisteredHats);
+        //Message($"Downloading {toDownload.Count} hat files");
+        yield return CoDownloadAssets(response as IEnumerable<string>);
+        mainResponse.Clear();
+    }
     public override IEnumerator AfterLoading(object response)
     {
         UnregisteredHats.ForEach(ch => ch.Behind = ch.BackID != null || ch.BackFlipID != null);

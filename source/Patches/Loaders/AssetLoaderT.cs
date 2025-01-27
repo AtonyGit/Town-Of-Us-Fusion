@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.Json;
 using Reactor.Utilities.Extensions;
 using TownOfUsFusion.Patches;
+using UnityEngine;
 
 namespace TownOfUsFusion.Loaders;
 
@@ -22,14 +23,17 @@ public abstract class AssetLoader<T> : AssetLoader where T : Asset
         UpdateSplashPatch.SetText($"Fetching {Manifest}");
         yield return Utils.EndFrame();
 
-        var assembly = Assembly.GetExecutingAssembly();
-        var jsonText = assembly.GetManifestResourceStream($"{DirectoryInfo}.{Manifest}.json");
-
-        var response = JsonSerializer.Deserialize<List<T>>(Encoding.UTF8.GetString(jsonText.ReadFully()), new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true,
-                ReadCommentHandling = JsonCommentHandling.Skip
-            });
+        var jsonText = Utils.ReadDiskText($"{Manifest}.json", DirectoryInfo);
+        var jsonLocation = Path.Combine(DirectoryInfo, $"{Manifest}.json");
+        var response = JsonSerializer.Deserialize<List<T>>(jsonText);
+        Debug.Log($"LOADING JSON FROM: {jsonLocation}");
+        Debug.Log($"RAWJSON: {jsonText}");
+        
+        if (Downloading)
+        {
+            UpdateSplashPatch.SetText($"Downloading {Manifest}");
+            yield return BeginDownload(response);
+        }
 
         UpdateSplashPatch.SetText($"Preloading {Manifest}");
         yield return AfterLoading(response);
