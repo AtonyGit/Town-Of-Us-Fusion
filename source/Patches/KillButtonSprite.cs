@@ -142,6 +142,13 @@ namespace TownOfUsFusion
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.GuardianAngel);
                 flag = true;
             }
+            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Bodyguard))
+            {
+                __instance.KillButton.graphic.sprite = Protect;
+                __instance.KillButton.buttonLabelText.text = "Guard";
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Bodyguard);
+                flag = true;
+            }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Plaguebearer))
             {
                 __instance.KillButton.graphic.sprite = Infect;

@@ -5,7 +5,9 @@ using System.Reflection;
 using System.Text;
 using System.Text.Json;
 using Reactor.Utilities.Extensions;
+using TownOfUsFusion.Cosmetics;
 using TownOfUsFusion.Patches;
+using UnityEngine;
 
 namespace TownOfUsFusion.Loaders;
 
@@ -25,11 +27,13 @@ public abstract class AssetLoader<T> : AssetLoader where T : Asset
         var assembly = Assembly.GetExecutingAssembly();
         var jsonText = assembly.GetManifestResourceStream($"{DirectoryInfo}.{Manifest}.json");
 
-        var response = JsonSerializer.Deserialize<List<T>>(Encoding.UTF8.GetString(jsonText.ReadFully()), new JsonSerializerOptions
+        var response = JsonSerializer.Deserialize<List<CosmeticMetadataElement>>(Encoding.UTF8.GetString(jsonText.ReadFully()), new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true,
                 ReadCommentHandling = JsonCommentHandling.Skip
             });
+        Debug.Log($"LOADING JSON FROM: {DirectoryInfo}.{Manifest}.json");
+        Debug.Log($"{Encoding.UTF8.GetString(jsonText.ReadFully())}");
 
         UpdateSplashPatch.SetText($"Preloading {Manifest}");
         yield return AfterLoading(response);

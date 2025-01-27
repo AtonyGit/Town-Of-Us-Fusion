@@ -14,11 +14,11 @@ public static class CustomNameplateManager
     public static NamePlateData CreateNameplateBehaviour(CustomNameplate cn)
     {
         var path = Path.Combine("TownOfUsFusion.Resources.Nameplates", $"{cn.ID}.png");
-
+/*
         if (cn.StreamOnly)
             path = Path.Combine("TownOfUsFusion.Resources.Nameplates", "Stream", $"{cn.ID}.png");
         else if (cn.TestOnly)
-            path = Path.Combine("TownOfUsFusion.Resources.Nameplates", "Test", $"{cn.ID}.png");
+            path = Path.Combine("TownOfUsFusion.Resources.Nameplates", "Test", $"{cn.ID}.png");*/
 
         var nameplate = ScriptableObject.CreateInstance<NamePlateData>().DontDestroy();
 

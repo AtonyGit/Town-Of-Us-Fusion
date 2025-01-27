@@ -14,6 +14,7 @@ public class NameplateLoader : AssetLoader<CustomNameplate>
     public override string DirectoryInfo => "TownOfUsFusion.Resources.Nameplates";
     public override bool Downloading => true;
     public override string Manifest => "Nameplates";
+    //public override string Manifest => "metadata";
     public override string FileExtension => "png";
 
     public static NameplateLoader Instance { get; set; }

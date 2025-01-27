@@ -29,6 +29,7 @@ public static class CustomCosmeticsManager
     public static Texture2D LoadTexture(byte[] data, string name)
     {
         var texture = EmptyTexture();
+        Debug.Log("LOADING TEXTURE2D FROM: " + name);
 
         if (texture.LoadImage(data))
         {
