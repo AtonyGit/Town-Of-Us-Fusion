@@ -25,7 +25,7 @@ public static class CustomNameplateManager
         var viewData = ScriptableObject.CreateInstance<NamePlateViewData>().DontDestroy();
         viewData.Image = CustomCosmeticsManager.CreateCosmeticSprite(path, CosmeticTypeEnum.Nameplate);
 
-        Debug.Log($"LOADING NAMEPLATE: {cn.Name}");
+        //Debug.Log($"LOADING NAMEPLATE: {cn.Name}");
         nameplate.PreviewCrewmateColor = false;
         nameplate.name = cn.Name;
         nameplate.displayOrder = 99;

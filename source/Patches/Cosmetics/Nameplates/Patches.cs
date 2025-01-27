@@ -62,7 +62,7 @@ public static class NameplatesTabOnEnablePatch
         for (var i = 0; i < nameplates.Count; i++)
         {
             var nameplate = nameplates[i];
-            Debug.Log($"Loading nameplate: {nameplate.name}");
+            //Debug.Log($"Loading nameplate: {nameplate.name}");
             var xpos = __instance.XRange.Lerp(i % __instance.NumPerRow / (__instance.NumPerRow - 1f));
             var ypos = offset - (i / __instance.NumPerRow * __instance.YOffset);
             var colorChip = Object.Instantiate(__instance.ColorTabPrefab, __instance.scroller.Inner);

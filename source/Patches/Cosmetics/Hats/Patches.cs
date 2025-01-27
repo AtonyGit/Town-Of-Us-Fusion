@@ -375,7 +375,7 @@ public static class HatsTabOnEnablePatch
         for (var i = 0; i < hats.Count; i++)
         {
             var hat = hats[i];
-            Debug.Log($"Loading hat: {hat.name}");
+            //Debug.Log($"Loading hat: {hat.name}");
             var xpos = __instance.XRange.Lerp(i % __instance.NumPerRow / (__instance.NumPerRow - 1f));
             var ypos = offset - (i / __instance.NumPerRow * (isDefaultPackage ? 1f : 1.5f) * __instance.YOffset);
             var colorChip = Object.Instantiate(__instance.ColorTabPrefab, __instance.scroller.Inner);

@@ -27,7 +27,7 @@ public abstract class AssetLoader<T> : AssetLoader where T : Asset
         var jsonLocation = Path.Combine(DirectoryInfo, $"{Manifest}.json");
         var response = JsonSerializer.Deserialize<List<T>>(jsonText);
         Debug.Log($"LOADING JSON FROM: {jsonLocation}");
-        Debug.Log($"RAWJSON: {jsonText}");
+        //Debug.Log($"RAWJSON: {jsonText}");
         
         if (Downloading)
         {

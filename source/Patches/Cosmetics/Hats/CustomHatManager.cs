@@ -27,7 +27,7 @@ public static class CustomHatManager
         viewData.LeftFloorImage = ch.FloorFlipID != null ? CustomCosmeticsManager.CreateCosmeticSprite(GetPath(ch, ch.FloorFlipID), CosmeticTypeEnum.Hat) : viewData.FloorImage;
         viewData.MatchPlayerColor = ch.Adaptive;
 
-        Debug.Log($"LOADING HAT: {ch.Name}");
+        //Debug.Log($"LOADING HAT: {ch.Name}");
         hat.name = ch.Name;
         hat.displayOrder = 99;
         hat.ProductId = "customHat_" + ch.Name.Replace(' ', '_');

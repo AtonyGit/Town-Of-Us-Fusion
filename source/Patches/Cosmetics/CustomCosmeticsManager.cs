@@ -15,29 +15,11 @@ public static class CustomCosmeticsManager
         sprite.hideFlags |= HideFlags.DontSaveInEditor;
         return sprite.DontDestroy();
     }
-/*
-    public static Sprite CreateSprite(string name, float size = -1f, SpriteMeshType meshType = SpriteMeshType.Tight)
-    {
-            var pixelsPerUnit = 200f;
-            var pivot = new Vector2(0.5f, 0.5f);
-
-            var assembly = Assembly.GetExecutingAssembly();
-            var tex = AmongUsExtensions.CreateEmptyTexture();
-            var imageStream = assembly.GetManifestResourceStream(name);
-            Debug.Log("creating sprite from " + name);
-            var img = imageStream.ReadFully();
-            TownOfUsFusion.LoadImage(tex, img, true);
-            tex.DontDestroy();
-            pixelsPerUnit = tex.height;
-            var sprite = Sprite.Create(tex, new Rect(0.0f, 0.0f, tex.width, tex.height), pivot, size > 0f ? size : pixelsPerUnit, 0, meshType);
-            sprite.DontDestroy();
-            return sprite.DontDestroy();
-    }*/
     private static Texture2D EmptyTexture() => new(2, 2, TextureFormat.ARGB32, true);
     public static Texture2D LoadTexture(byte[] data, string name)
     {
         var texture = EmptyTexture();
-        Debug.Log("LOADING TEXTURE2D FROM: " + name);
+        //Debug.Log("LOADING TEXTURE2D FROM: " + name);
 
         if (texture.LoadImage(data))
         {
