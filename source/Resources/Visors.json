@@ -1,0 +1,322 @@
+[
+  {
+    "id": "visor0000",
+    "name": "aphex",
+    "artist": "Pigoletto"
+  },
+  {
+    "id": "visor0001",
+    "name": "aplatypuss",
+    "artist": "Pigoletto"
+  },
+  {
+    "id": "visor0002",
+    "name": "axilla",
+    "artist": "TheLastShaymin"
+  },
+  {
+    "id": "visor0003",
+    "name": "platty halloween",
+    "artist": "Pigoletto"
+  },
+  {
+    "id": "visor0004",
+    "name": "cheesy halloween",
+    "artist": "Pigoletto"
+  },
+  {
+    "id": "visor0005",
+    "name": "chilled halloween",
+    "artist": "Pigoletto"
+  },
+  {
+    "id": "visor0006",
+    "name": "zeroyalviking halloween",
+    "artist": "Pigoletto"
+  },
+  {
+    "id": "visor0007",
+    "name": "witch",
+    "artist": "Pigoletto"
+  },
+  {
+    "id": "visor0008",
+    "name": "goldfish",
+    "artist": "Pigoletto"
+  },
+  {
+    "id": "visor0009",
+    "name": "ctulhu",
+    "artist": "Pigoletto"
+  },
+  {
+    "id": "visor0010",
+    "name": "spider",
+    "artist": "Pigoletto"
+  },
+  {
+    "id": "visor0011",
+    "name": "crocodile",
+    "artist": "Pigoletto"
+  },
+  {
+    "id": "visor0012",
+    "name": "Blush-stache",
+    "artist": "Sugawara"
+  },
+  {
+    "id": "visor0013",
+    "name": "Overgrown",
+    "artist": "Sugawara"
+  },
+  {
+    "id": "visor0014",
+    "name": "Press X",
+    "artist": "Sugawara"
+  },
+  {
+    "id": "visor0015",
+    "name": "sans",
+    "artist": "LayZ"
+  },
+  {
+    "id": "visor0016",
+    "name": "Gleam",
+    "artist": "LayZ"
+  },
+  {
+    "id": "visor0017",
+    "name": "Marionette",
+    "artist": "Sugawara",
+    "nobounce": false
+  },
+  {
+    "id": "visor0018",
+    "name": "Random Ronnie",
+    "artist": "Sugawara"
+  },
+  {
+    "id": "visor0019",
+    "name": "Amcam",
+    "artist": "Ophidian"
+  },
+  {
+    "id": "visor0020",
+    "name": "DrunkyPoo",
+    "artist": "Ophidian"
+  },
+  {
+    "id": "visor0021",
+    "name": "Sheriff",
+    "artist": "Ophidian"
+  },
+  {
+    "id": "visor0022",
+    "name": "Koji",
+    "artist": "Ophidian"
+  },
+  {
+    "id": "visor0023",
+    "name": "Monkeh",
+    "artist": "Pigoletto"
+  },
+  {
+    "id": "visor0024",
+    "name": "Sugarcat",
+    "artist": "Pigoletto"
+  },
+  {
+    "id": "visor0025",
+    "name": "Demogorgan",
+    "artist": "Sweetrolled"
+  },
+  {
+    "id": "visor0026",
+    "name": "Huntress",
+    "artist": "Sweetrolled"
+  },
+  {
+    "id": "visor0027",
+    "name": "jose",
+    "artist": "Ressnie"
+  },
+  {
+    "id": "visor0028",
+    "name": "junkyard",
+    "artist": "Pigoletto"
+  },
+  {
+    "id": "visor0029",
+    "name": "Clickbait",
+    "artist": "Kara"
+  },
+  {
+    "id": "visor0030",
+    "name": "TROLLED",
+    "artist": "Kara"
+  },
+  {
+    "id": "visor0031",
+    "name": "You",
+    "artist": "Kara"
+  },
+  {
+    "id": "visor0032",
+    "name": "Static",
+    "artist": "Gun"
+  },
+  {
+    "id": "visor0033",
+    "name": "Heart",
+    "artist": "Gun"
+  },
+  {
+    "id": "visor0034",
+    "name": "Hi Moon",
+    "artist": "Gun"
+  },
+  {
+    "id": "visor0035",
+    "name": "zylus",
+    "artist": "TheLastShaymin"
+  },
+  {
+    "id": "visor0036",
+    "name": "Big Shot",
+    "artist": "LayZ"
+  },
+  {
+    "id": "visor0037",
+    "name": "Disconnected",
+    "artist": "Sugawara"
+  },
+  {
+    "id": "visor0038",
+    "name": "Milky Joe",
+    "artist": "Ophidian"
+  },
+  {
+    "id": "visor0039",
+    "name": "Dell",
+    "artist": "Ophidian"
+  },
+  {
+    "id": "visor0040",
+    "name": "Wildcat",
+    "artist": "Sarinjin"
+  },
+  {
+    "id": "visor0041",
+    "name": "Quonk Gun",
+    "artist": "Ophidian"
+  },
+  {
+    "id": "visor0042",
+    "name": "Stoned",
+    "artist": "Kara"
+  },
+  {
+    "id": "visor0043",
+    "name": "GUB",
+    "artist": "Kara"
+  },
+  {
+    "id": "visor0044",
+    "name": "Computer-mate",
+    "artist": "Kara"
+  },
+  {
+    "id": "visor0045",
+    "name": "uncle",
+    "artist": "Kara"
+  },
+  {
+    "id": "visor0046",
+    "name": "my reaction to that information",
+    "artist": "Kara"
+  },
+  {
+    "id": "visor0047",
+    "name": "wrench_f",
+    "artist": "TheLastShaymin"
+  },
+  {
+    "id": "visor0048",
+    "name": "A Knoife!",
+    "artist": "Sugawara"
+  },
+  {
+    "id": "visor0049",
+    "name": "Inmouth",
+    "artist": "Rum"
+  },
+  {
+    "id": "visor0050",
+    "name": "Teeth",
+    "artist": "Rum"
+  },
+  {
+    "id": "visor0051",
+    "name": "Tongue",
+    "artist": "Rum"
+  },
+  {
+    "id": "visor0052",
+    "name": "Boar",
+    "artist": "Pigoletto"
+  },
+  {
+    "id": "visor0053",
+    "name": "Loweye",
+    "artist": "Ophidian"
+  },
+  {
+    "id": "visor0054",
+    "name": "toast"
+  },
+  {
+    "id": "visor0055",
+    "name": "peter"
+  },
+  {
+    "id": "visor0056",
+    "name": "miyoung"
+  },
+  {
+    "id": "visor0057",
+    "name": "lily"
+  },
+  {
+    "id": "visor0058",
+    "name": "dream"
+  },
+  {
+    "id": "visor0059",
+    "name": "skull",
+    "artist": "acron"
+  },
+  {
+    "id": "visor0060",
+    "name": "penguinface_front"
+  },
+  {
+    "id": "visor0061",
+    "name": "buffyhelmet"
+  },
+  {
+    "id": "visor0062",
+    "name": "buffyarms"
+  },
+  {
+    "id": "visor0063",
+    "name": "bestcrewmate"
+  },
+  {
+    "id": "visor0064",
+    "name": "ash"
+  },
+  {
+    "id": "visor0065",
+    "name": "Toast"
+  }
+]
