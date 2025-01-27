@@ -12,6 +12,7 @@ public class VisorLoader : AssetLoader<CustomVisor>
     public override string DirectoryInfo => TownOfUsFusion.Visors;
     public override bool Downloading => true;
     public override string Manifest => "Visors";
+    //public override string Manifest => "metadata";
     public override string FileExtension => "png";
 
     public static VisorLoader Instance { get; set; }

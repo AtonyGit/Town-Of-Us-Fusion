@@ -15,6 +15,7 @@ public class HatLoader : AssetLoader<CustomHat>
     public override string DirectoryInfo => TownOfUsFusion.Hats;
     public override bool Downloading => true;
     public override string Manifest => "Hats";
+    //public override string Manifest => "metadata";
     public override string FileExtension => "png";
 
     public static HatLoader Instance { get; set; }
