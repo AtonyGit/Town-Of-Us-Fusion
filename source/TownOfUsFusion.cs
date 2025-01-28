@@ -163,6 +163,7 @@ namespace TownOfUsFusion
         private Harmony _harmony;
 
         public static ConfigEntry<bool> DeadSeeGhosts { get; set; }
+        public static ConfigEntry<bool> ColoredMap { get; set; }
 
         public static string RuntimeLocation;
         
@@ -323,6 +324,7 @@ namespace TownOfUsFusion
             // RegisterInIl2CppAttribute.Register();
 
             DeadSeeGhosts = Config.Bind("Settings", "Dead See Other Ghosts", true, "Whether you see other dead player's ghosts while your dead");
+            ColoredMap = Config.Bind("Settings", "Colored Map", true, "Whether your map is colored based off role color or not");
 
             _harmony.PatchAll();
             SubmergedCompatibility.Initialize();

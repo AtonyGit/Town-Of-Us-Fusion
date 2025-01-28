@@ -18,6 +18,12 @@ namespace TownOfUsFusion.CustomOption
                 Title = "Other Ghosts Visible When Dead",
                 OnClick = () => { return TownOfUsFusion.DeadSeeGhosts.Value = !TownOfUsFusion.DeadSeeGhosts.Value; },
                 DefaultValue = TownOfUsFusion.DeadSeeGhosts.Value
+            },
+            new()
+            {
+                Title = "Role Colored Map",
+                OnClick = () => { return TownOfUsFusion.ColoredMap.Value = !TownOfUsFusion.ColoredMap.Value; },
+                DefaultValue = TownOfUsFusion.ColoredMap.Value
             }
         };
 

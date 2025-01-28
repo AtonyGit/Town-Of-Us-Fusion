@@ -1,6 +1,7 @@
 using TownOfUsFusion.Roles;
 using HarmonyLib;
 using UnityEngine;
+using TownOfUsFusion.Extensions;
 
 namespace TownOfUsFusion.Patches
 {
@@ -39,6 +40,26 @@ namespace TownOfUsFusion.Patches
                 player.cosmetics.gameObject.SetActive(show);
                 player.gameObject.transform.GetChild(3).gameObject.SetActive(show);
             }
+        }
+    }
+    
+    [HarmonyPatch(typeof(MapBehaviour), nameof(MapBehaviour.FixedUpdate))]
+    public static class MapBehaviourPatch
+    {
+        public static void Postfix(MapBehaviour __instance)
+        {
+            if (AmongUsClient.Instance.GameState != InnerNet.InnerNetClient.GameStates.Started) return;
+            if (!PlayerControl.LocalPlayer.Data.IsDead) return;
+
+            foreach (var player in PlayerControl.AllPlayerControls)
+            {
+                if (player == PlayerControl.LocalPlayer) continue;
+
+                if (TownOfUsFusion.ColoredMap.Value) __instance.ColorControl.SetColor(Role.GetRole(PlayerControl.LocalPlayer).Color);
+                else if (PlayerControl.LocalPlayer.Data.IsImpostor()) __instance.ColorControl.SetColor(Palette.ImpostorRed);
+                else __instance.ColorControl.SetColor(Palette.Blue);
+            }
+
         }
     }
 }

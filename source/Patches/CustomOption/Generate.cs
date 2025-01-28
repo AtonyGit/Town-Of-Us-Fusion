@@ -153,6 +153,7 @@ namespace TownOfUsFusion.CustomOption
         public static CustomToggleOption FirstDeathShield;
         public static CustomToggleOption NeutralEvilWinEndsGame;
         public static CustomToggleOption CrewKillersContinue;
+        public static CustomToggleOption ShowRecentBodies;
 
         public static CustomHeaderOption BetterPolusSettings;
         public static CustomToggleOption VentImprovements;
@@ -945,6 +946,7 @@ namespace TownOfUsFusion.CustomOption
                 FirstDeathShield = new CustomToggleOption(num++, MultiMenu.main, "First Death Shield Next Game", false);
                 NeutralEvilWinEndsGame = new CustomToggleOption(num++, MultiMenu.main, "Neutral Evil Win Ends Game", true);
                 CrewKillersContinue = new CustomToggleOption(num++, MultiMenu.main, "Crew Killers Continue Game", false);
+                ShowRecentBodies = new(num++, MultiMenu.main, "Indicate Recent Deaths In Meetings", true);
 
             TaskTrackingSettings =
                 new CustomHeaderOption(num++, MultiMenu.main, "Task Tracking Settings");
