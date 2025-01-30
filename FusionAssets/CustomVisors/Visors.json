@@ -1,477 +1,573 @@
 [
   {
     "id": "ares",
+    "infront": true,
     "name": "Areseem's Shades",
     "artist": "Forward Pals"
   },
   {
     "id": "crafter",
+    "infront": true,
     "name": "Crafter's Visor",
     "artist": "Forward Pals"
   },
   {
     "id": "kraz-mask1",
+    "infront": true,
     "name": "Kraz Mask",
     "artist": "Forward Pals"
   },
   {
     "id": "kraz-mask0",
+    "infront": true,
     "name": "Kraz Mask (No Eyes)",
     "artist": "Forward Pals"
   },
   {
     "id": "gz",
     "flipid": "gz-flipped",
+    "infront": true,
     "name": "Gamerzone Visor",
     "artist": "Forward Pals"
   },
   {
     "id": "marle0",
+    "infront": true,
     "name": "Masked Marle (Neutral)",
     "artist": "Forward Pals"
   },
   {
     "id": "marle1",
+    "infront": true,
     "name": "Masked Marle (Disbelief)",
     "artist": "Forward Pals"
   },
   {
     "id": "marle2",
+    "infront": true,
     "name": "Masked Marle (Poker)",
     "artist": "Forward Pals"
   },
   {
     "id": "mez",
+    "infront": true,
     "name": "Mez's Mask",
     "artist": "Backwarders"
   },
 
   {
     "id": "xaviar",
+    "infront": true,
     "name": "Xaviar's Visor",
     "artist": "TinkR Crew"
   },
 
   {
     "id": "laff-mask",
+    "infront": true,
     "name": "LaffenGas",
     "artist": "Socks Crew"
   },
   {
     "id": "l4ff-mask",
+    "infront": true,
     "name": "L4FF",
     "artist": "Socks Crew"
   },
   {
     "id": "medz",
+    "infront": true,
     "name": "Handpainted Visor",
     "artist": "Socks Crew"
   },
   
   {
     "id": "burple",
+    "infront": true,
     "name": "Burple Smile",
     "artist": "Expressions"
   },
   {
     "id": "face0",
+    "infront": true,
     "name": "smiling fella",
     "artist": "Expressions"
   },
   {
     "id": "face1",
+    "infront": true,
     "name": "goofy fella",
     "artist": "Expressions"
   },
   {
     "id": "face2",
+    "infront": true,
     "name": "happy fella",
     "artist": "Expressions"
   },
   {
     "id": "eyeglare-red",
+    "infront": true,
     "name": "Eyeglare (Red)",
     "artist": "Misc"
   },
   {
     "id": "eyeglare-yellow",
+    "infront": true,
     "name": "Eyeglare (Yellow)",
     "artist": "Misc"
   },
   {
     "id": "fallguy",
+    "infront": true,
     "name": "Fall Bean",
     "artist": "Misc"
   },
   {
     "id": "comedy0",
+    "infront": true,
     "name": "Comedy",
     "artist": "Misc"
   },
   {
     "id": "comedy1",
+    "infront": true,
     "name": "Comedy (Possessed)",
     "artist": "Misc"
   },
   {
     "id": "tragedy0",
+    "infront": true,
     "name": "Tragedy",
     "artist": "Misc"
   },
   {
     "id": "tragedy1",
+    "infront": true,
     "name": "Tragedy (Possessed)",
     "artist": "Misc"
   },
   {
     "id": "2017",
+    "infront": true,
     "name": "Reject Modernity",
     "artist": "Misc"
   },
   {
     "id": "black0",
+    "infront": true,
     "name": "Black Impostor (Glaring)",
     "artist": "Misc"
   },
   {
     "id": "black1",
+    "infront": true,
     "name": "Black Impostor",
     "artist": "Misc"
   },
   {
     "id": "gd0",
+    "infront": true,
     "name": "Normal Face",
     "artist": "Misc"
   },
   {
     "id": "gd1",
+    "infront": true,
     "name": "Abnormal Face",
     "artist": "Misc"
   },
 
   {
     "id": "visor0000",
+    "infront": true,
     "name": "aphex",
     "artist": "TOU - Pigoletto"
   },
   {
     "id": "visor0000",
+    "infront": true,
     "name": "aphex",
     "artist": "TOU - Pigoletto"
   },
   {
     "id": "visor0001",
+    "infront": true,
     "name": "aplatypuss",
     "artist": "TOU - Pigoletto"
   },
   {
     "id": "visor0002",
+    "infront": true,
     "name": "axilla",
     "artist": "TOU - TheLastShaymin"
   },
   {
     "id": "visor0003",
+    "infront": true,
     "name": "platty halloween",
     "artist": "TOU - Pigoletto"
   },
   {
     "id": "visor0004",
+    "infront": true,
     "name": "cheesy halloween",
     "artist": "TOU - Pigoletto"
   },
   {
     "id": "visor0005",
+    "infront": true,
     "name": "chilled halloween",
     "artist": "TOU - Pigoletto"
   },
   {
     "id": "visor0006",
+    "infront": true,
     "name": "zeroyalviking halloween",
     "artist": "TOU - Pigoletto"
   },
   {
     "id": "visor0007",
+    "infront": true,
     "name": "witch",
     "artist": "TOU - Pigoletto"
   },
   {
     "id": "visor0008",
+    "infront": true,
     "name": "goldfish",
     "artist": "TOU - Pigoletto"
   },
   {
     "id": "visor0009",
+    "infront": true,
     "name": "ctulhu",
     "artist": "TOU - Pigoletto"
   },
   {
     "id": "visor0010",
+    "infront": true,
     "name": "spider",
     "artist": "TOU - Pigoletto"
   },
   {
     "id": "visor0011",
+    "infront": true,
     "name": "crocodile",
     "artist": "TOU - Pigoletto"
   },
   {
     "id": "visor0012",
+    "infront": true,
     "name": "Blush-stache",
     "artist": "TOU - Sugawara"
   },
   {
     "id": "visor0013",
+    "infront": true,
     "name": "Overgrown",
     "artist": "TOU - Sugawara"
   },
   {
     "id": "visor0014",
+    "infront": true,
     "name": "Press X",
     "artist": "TOU - Sugawara"
   },
   {
     "id": "visor0015",
+    "infront": true,
     "name": "sans",
     "artist": "TOU - LayZ"
   },
   {
     "id": "visor0016",
+    "infront": true,
     "name": "Gleam",
     "artist": "TOU - LayZ"
   },
   {
     "id": "visor0017",
+    "infront": true,
     "name": "Marionette",
     "artist": "TOU - Sugawara",
     "nobounce": false
   },
   {
     "id": "visor0018",
+    "infront": true,
     "name": "Random Ronnie",
     "artist": "TOU - Sugawara"
   },
   {
     "id": "visor0019",
+    "infront": true,
     "name": "Amcam",
     "artist": "TOU - Ophidian"
   },
   {
     "id": "visor0020",
+    "infront": true,
     "name": "DrunkyPoo",
     "artist": "TOU - Ophidian"
   },
   {
     "id": "visor0021",
+    "infront": true,
     "name": "Sheriff",
     "artist": "TOU - Ophidian"
   },
   {
     "id": "visor0022",
+    "infront": true,
     "name": "Koji",
     "artist": "TOU - Ophidian"
   },
   {
     "id": "visor0023",
+    "infront": true,
     "name": "Monkeh",
     "artist": "TOU - Pigoletto"
   },
   {
     "id": "visor0024",
+    "infront": true,
     "name": "Sugarcat",
     "artist": "TOU - Pigoletto"
   },
   {
     "id": "visor0025",
+    "infront": true,
     "name": "Demogorgan",
     "artist": "TOU - Sweetrolled"
   },
   {
     "id": "visor0026",
+    "infront": true,
     "name": "Huntress",
     "artist": "TOU - Sweetrolled"
   },
   {
     "id": "visor0027",
+    "infront": true,
     "name": "jose",
     "artist": "TOU - Ressnie"
   },
   {
     "id": "visor0028",
+    "infront": true,
     "name": "junkyard",
     "artist": "TOU - Pigoletto"
   },
   {
     "id": "visor0029",
+    "infront": true,
     "name": "Clickbait",
     "artist": "TOU - Kara"
   },
   {
     "id": "visor0030",
+    "infront": true,
     "name": "TROLLED",
     "artist": "TOU - Kara"
   },
   {
     "id": "visor0031",
+    "infront": true,
     "name": "You",
     "artist": "TOU - Kara"
   },
   {
     "id": "visor0032",
+    "infront": true,
     "name": "Static",
     "artist": "TOU - Gun"
   },
   {
     "id": "visor0033",
+    "infront": true,
     "name": "Heart",
     "artist": "TOU - Gun"
   },
   {
     "id": "visor0034",
+    "infront": true,
     "name": "Hi Moon",
     "artist": "TOU - Gun"
   },
   {
     "id": "visor0035",
+    "infront": true,
     "name": "zylus",
     "artist": "TOU - TheLastShaymin"
   },
   {
     "id": "visor0036",
+    "infront": true,
     "name": "Big Shot",
     "artist": "TOU - LayZ"
   },
   {
     "id": "visor0037",
+    "infront": true,
     "name": "Disconnected",
     "artist": "TOU - Sugawara"
   },
   {
     "id": "visor0038",
+    "infront": true,
     "name": "Milky Joe",
     "artist": "TOU - Ophidian"
   },
   {
     "id": "visor0039",
+    "infront": true,
     "name": "Dell",
     "artist": "TOU - Ophidian"
   },
   {
     "id": "visor0040",
+    "infront": true,
     "name": "Wildcat",
     "artist": "TOU - Sarinjin"
   },
   {
     "id": "visor0041",
+    "infront": true,
     "name": "Quonk Gun",
     "artist": "TOU - Ophidian"
   },
   {
     "id": "visor0042",
+    "infront": true,
     "name": "Stoned",
     "artist": "TOU - Kara"
   },
   {
     "id": "visor0043",
+    "infront": true,
     "name": "GUB",
     "artist": "TOU - Kara"
   },
   {
     "id": "visor0044",
+    "infront": true,
     "name": "Computer-mate",
     "artist": "TOU - Kara"
   },
   {
     "id": "visor0045",
+    "infront": true,
     "name": "uncle",
     "artist": "TOU - Kara"
   },
   {
     "id": "visor0046",
+    "infront": true,
     "name": "my reaction to that information",
     "artist": "TOU - Kara"
   },
   {
     "id": "visor0047",
+    "infront": true,
     "name": "wrench_f",
     "artist": "TOU - TheLastShaymin"
   },
   {
     "id": "visor0048",
+    "infront": true,
     "name": "A Knoife!",
     "artist": "TOU - Sugawara"
   },
   {
     "id": "visor0049",
+    "infront": true,
     "name": "Inmouth",
     "artist": "TOU - Rum"
   },
   {
     "id": "visor0050",
+    "infront": true,
     "name": "Teeth",
     "artist": "TOU - Rum"
   },
   {
     "id": "visor0051",
+    "infront": true,
     "name": "Tongue",
     "artist": "TOU - Rum"
   },
   {
     "id": "visor0052",
+    "infront": true,
     "name": "Boar",
     "artist": "TOU - Pigoletto"
   },
   {
     "id": "visor0053",
+    "infront": true,
     "name": "Loweye",
     "artist": "TOU - Ophidian"
   },
   {
     "id": "visor0054",
+    "infront": true,
     "name": "toast"
   },
   {
     "id": "visor0055",
+    "infront": true,
     "name": "peter"
   },
   {
     "id": "visor0056",
+    "infront": true,
     "name": "miyoung"
   },
   {
     "id": "visor0057",
+    "infront": true,
     "name": "lily"
   },
   {
     "id": "visor0058",
+    "infront": true,
     "name": "dream"
   },
   {
     "id": "visor0059",
+    "infront": true,
     "name": "skull",
     "artist": "acron"
   },
   {
     "id": "visor0060",
+    "infront": true,
     "name": "penguinface_front"
   },
   {
     "id": "visor0061",
+    "infront": true,
     "name": "buffyhelmet"
   },
   {
     "id": "visor0062",
+    "infront": true,
     "name": "buffyarms"
   },
   {
     "id": "visor0063",
+    "infront": true,
     "name": "bestcrewmate"
   },
   {
     "id": "visor0064",
+    "infront": true,
     "name": "ash"
   },
   {
     "id": "visor0065",
+    "infront": true,
     "name": "Toast"
   }
 ]

@@ -143,23 +143,23 @@
       "artist": "Forward Pals"
     },
     {
-      "id": "gz-adapt-suit0",
-      "backid": "gz-adapt-suitlow",
-      "name": "Full Colored Duck Onesie",
-      "artist": "Forward Pals",
-      "adaptive": true
-    },
-    {
-      "id": "gz-adapt-suit1",
-      "backid": "gz-adapt-suitlow",
-      "name": "Colored Duck Onesie",
-      "artist": "Forward Pals",
-      "adaptive": true
-    },
-    {
       "id": "gz-hat",
       "backid": "gz-hatlow",
       "name": "Duck Hoodie",
+      "artist": "Forward Pals"
+    },
+    {
+      "adaptive": true,
+      "id": "gz-adapt-suit0",
+      "backid": "gz-adapt-suitlow",
+      "name": "Full Colored Duck Onesie",
+      "artist": "Forward Pals"
+    },
+    {
+      "adaptive": true,
+      "id": "gz-adapt-suit1",
+      "backid": "gz-adapt-suitlow",
+      "name": "Colored Duck Onesie",
       "artist": "Forward Pals"
     },
 
@@ -247,11 +247,6 @@
     {
       "id": "fusion-mez2",
       "name": "Hairless Mez",
-      "artist": "Backwarders"
-    },
-    {
-      "id": "fusion-mez3",
-      "name": "Coatless Mez",
       "artist": "Backwarders"
     },
     {
@@ -365,17 +360,17 @@
     },
 
     {
-      "id": "fusion-dicrup0",
+      "id": "dicrup-full0",
       "name": "Dicruption T3",
       "artist": "TinkR Crew"
     },
     {
-      "id": "fusion-dicrup1",
+      "id": "dicrup-full1",
       "name": "Dicruption T2",
       "artist": "TinkR Crew"
     },
     {
-      "id": "fusion-dicrup2",
+      "id": "dicrup-hat",
       "name": "Dicruption T1",
       "artist": "TinkR Crew"
     },
@@ -526,17 +521,17 @@
     },
 
     {
-      "id": "fusion-blaza0",
+      "id": "blaza-full",
       "name": "Blaza",
       "artist": "Socks Crew"
     },
     {
-      "id": "fusion-blaza1",
+      "id": "blaza-hat",
       "name": "Blaza Hoodie",
       "artist": "Socks Crew"
     },
     {
-      "id": "fusion-blaza2",
+      "id": "blaza-suit",
       "name": "Blaza Coat",
       "artist": "Socks Crew"
     },
@@ -650,7 +645,7 @@
 
 
     {
-      "id": "fusion-creeperhat",
+      "id": "creeperhat",
       "name": "Creeper Hat",
       "artist": "Misc"
     },
@@ -807,11 +802,6 @@
     {
       "id": "hats0343",
       "name": "Blaziken hat",
-      "artist": "tou - ophidian"
-    },
-    {
-      "id": "hats0359",
-      "name": "HecksBunBun hat",
       "artist": "tou - ophidian"
     },
     {
@@ -1117,11 +1107,6 @@
     {
       "id": "hats0489",
       "name": "The True King hat",
-      "artist": "tou - suganope"
-    },
-    {
-      "id": "hats0490",
-      "name": "Titans hat",
       "artist": "tou - suganope"
     },
     {
