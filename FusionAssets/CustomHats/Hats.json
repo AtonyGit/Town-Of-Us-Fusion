@@ -1,704 +1,614 @@
 [
     {
-      "id": "fusion-atony0",
-      "name": "Fiery Passion",
-      "artist": "1: fusion studios"
+      "id": "atony-full0",
+      "name": "Atony's Fiery Passion",
+      "artist": "Forward Pals"
     },
     {
-      "id": "fusion-atony1",
-      "name": "Neutral Passion",
-      "artist": "1: fusion studios"
+      "id": "atony-full1",
+      "name": "Atony's Neutral Passion",
+      "artist": "Forward Pals"
     },
     {
-      "id": "fusion-atony2",
-      "name": "Burning Beanie",
-      "artist": "1: fusion studios"
+      "id": "atony-hat0",
+      "name": "Atony's Burning Beanie",
+      "artist": "Forward Pals"
     },
     {
-      "id": "fusion-atony3",
-      "name": "Ourple Beanie",
-      "artist": "1: fusion studios"
+      "id": "atony-hat1",
+      "name": "Atony's Ourple Beanie",
+      "artist": "Forward Pals"
     },
     {
-      "id": "fusion-atony4",
-      "name": "Coat Fluff",
-      "artist": "1: fusion studios"
+      "id": "atony-fluff",
+      "name": "Atony's Coat Fluff",
+      "artist": "Forward Pals"
     },
+
     {
-      "id": "fusion-bb0",
+      "id": "bb-suit-mold",
+      "backid": "bb-hat-mic",
+      "flipid": "bb-suit-mic",
+      "backflipid": "bb-hat",
       "name": "Berry Shake (Moldy)",
-      "artist": "1: fusion studios"
+      "artist": "Forward Pals"
     },
     {
-      "id": "fusion-bb1",
+      "id": "bb-suit",
+      "backid": "bb-hat-mic",
+      "flipid": "bb-suit-mic",
+      "backflipid": "bb-hat",
       "name": "Berry Shake",
-      "artist": "1: fusion studios"
-    },
-    {
-      "id": "fusion-bb2",
-      "name": "Berry Vine (Moldy)",
-      "artist": "1: fusion studios"
-    },
-    {
-      "id": "fusion-bb3",
-      "name": "Berry Vine",
-      "artist": "1: fusion studios"
-    },
-    {
-      "id": "fusion-bb4",
-      "name": "Bloo Suit",
-      "artist": "1: fusion studios"
-    },
-    {
-      "id": "fusion-bread0",
-      "name": "Fancy Host",
-      "artist": "1: fusion studios"
-    },
-    {
-      "id": "fusion-bread1",
-      "name": "Magic Top",
-      "artist": "1: fusion studios"
-    },
-    {
-      "id": "fusion-bread2",
-      "name": "Funky Fashion",
-      "artist": "1: fusion studios"
-    },
-    {
-      "id": "fusion-burple0",
-      "name": "Bean behind the hugs",
-      "artist": "1: fusion studios"
-    },
-    {
-      "id": "fusion-burple1",
-      "name": "Bean behind the hugs?",
-      "artist": "1: fusion studios"
-    },
-    {
-      "id": "fusion-burple2",
-      "name": "Unemployed Bean",
-      "artist": "1: fusion studios"
-    },
-    {
-      "id": "fusion-char0",
-      "name": "Necronomicon Witch",
-      "artist": "1: fusion studios"
-    },
-    {
-      "id": "fusion-char1",
-      "name": "Spellcast Wizard",
-      "artist": "1: fusion studios"
-    },
-    {
-      "id": "fusion-char2",
-      "name": "Necronomicon Apprentice (Glaring)",
-      "artist": "1: fusion studios"
-    },
-    {
-      "id": "fusion-char3",
-      "name": "Necronomicon Apprentice",
-      "artist": "1: fusion studios"
-    },
-    {
-      "id": "fusion-char4",
-      "name": "Evil Wizard",
-      "artist": "1: fusion studios"
-    },
-    {
-      "id": "fusion-char5",
-      "name": "Good Wizard",
-      "artist": "1: fusion studios"
-    },
-    {
-      "id": "fusion-char6",
-      "name": "Necronomicon Thief",
-      "artist": "1: fusion studios"
-    },
-    {
-      "id": "fusion-chaos0",
-      "name": "Chaotic Outfit (Berserk)",
-      "artist": "1: fusion studios"
-    },
-    {
-      "id": "fusion-chaos1",
-      "name": "Chaotic Outfit",
-      "artist": "1: fusion studios"
-    },
-    {
-      "id": "fusion-chaos2",
-      "name": "Goofy Spooky Chaos",
-      "artist": "1: fusion studios"
-    },
-    {
-      "id": "fusion-chaos3",
-      "name": "Splitscreen Visor",
-      "artist": "1: fusion studios"
+      "artist": "Forward Pals"
     },
     {
       "id": "transparent",
-      "name": "Dav Placeholder",
-      "artist": "1: fusion studios"
+      "backid": "bb-hat-mic",
+      "flipid": "bb-mic",
+      "backflipid": "bb-hat",
+      "name": "Ripe Berry",
+      "artist": "Forward Pals"
     },
     {
-      "id": "fusion-gz0",
+      "id": "bb-suit",
+      "name": "Bloo Suit",
+      "artist": "Forward Pals"
+    },
+
+    {
+      "id": "bread-suit",
+      "backid": "bread-hat",
+      "name": "Fancy Host",
+      "artist": "Forward Pals"
+    },
+    {
+      "id": "transparent",
+      "backid": "bread-hat",
+      "name": "Magic Top",
+      "artist": "Forward Pals"
+    },
+    {
+      "id": "bread-suit",
+      "name": "Funky Fashion",
+      "artist": "Forward Pals"
+    },
+
+    {
+      "id": "burple-full",
+      "name": "Burple Guy",
+      "artist": "Forward Pals"
+    },
+    {
+      "id": "burple-hat",
+      "name": "A Burple Guy",
+      "artist": "Forward Pals"
+    },
+
+    {
+      "id": "char-full",
+      "backid": "char-sword",
+      "name": "Necro Witch",
+      "artist": "Forward Pals"
+    },
+    {
+      "id": "char-full",
+      "name": "Spellcast Wizard",
+      "artist": "Forward Pals"
+    },
+    {
+      "id": "char-hat",
+      "backid": "char-sword",
+      "name": "Necro Apprentice",
+      "artist": "Forward Pals"
+    },
+    {
+      "id": "char-hat",
+      "name": "Wizard Apprentice",
+      "artist": "Forward Pals"
+    },
+    
+    {
+      "id": "crafter-outfit",
+      "backid": "crafter-axe",
+      "name": "Chaotic Outfit (Berserk)",
+      "artist": "Forward Pals"
+    },
+    {
+      "id": "crafter-outfit",
+      "name": "Chaotic Outfit",
+      "artist": "Forward Pals"
+    },
+    {
+      "id": "crafter-suit",
+      "name": "Chaotic Hoodie",
+      "artist": "Forward Pals"
+    },
+
+    {
+      "id": "gz-suit-alt",
+      "backid": "gz-suitlow",
+      "name": "Full Duck Onesie",
+      "artist": "Forward Pals"
+    },
+    {
+      "id": "gz-hat-alt",
+      "backid": "gz-hatlow",
+      "name": "Full Duck Hoodie",
+      "artist": "Forward Pals"
+    },
+    {
+      "id": "gz-suit",
+      "backid": "gz-suitlow",
       "name": "Duck Onesie",
-      "artist": "1: fusion studios"
+      "artist": "Forward Pals"
     },
     {
-      "id": "fusion-gz1",
+      "id": "gz-adapt-suit0",
+      "backid": "gz-adapt-suitlow",
+      "name": "Full Colored Duck Onesie",
+      "artist": "Forward Pals",
+      "adaptive": true
+    },
+    {
+      "id": "gz-adapt-suit1",
+      "backid": "gz-adapt-suitlow",
+      "name": "Colored Duck Onesie",
+      "artist": "Forward Pals",
+      "adaptive": true
+    },
+    {
+      "id": "gz-hat",
+      "backid": "gz-hatlow",
       "name": "Duck Hoodie",
-      "artist": "1: fusion studios"
+      "artist": "Forward Pals"
     },
+
     {
-      "id": "fusion-kraz0",
-      "name": "Armed British Hunter",
-      "artist": "1: fusion studios"
-    },
-    {
-      "id": "fusion-kraz1",
-      "name": "Armed British Hunter (No Eyes)",
-      "artist": "1: fusion studios"
-    },
-    {
-      "id": "fusion-kraz2",
-      "name": "British Hunter",
-      "artist": "1: fusion studios"
-    },
-    {
-      "id": "fusion-kraz3",
-      "name": "British Hunter (No Eyes)",
-      "artist": "1: fusion studios"
-    },
-    {
-      "id": "fusion-marle0",
-      "name": "Masked Marle (Neutral)",
-      "artist": "1: fusion studios"
-    },
-    {
-      "id": "fusion-marle1",
-      "name": "Masked Marle (Disbelief)",
-      "artist": "1: fusion studios"
-    },
-    {
-      "id": "fusion-marle2",
-      "name": "Masked Marle (Poker)",
-      "artist": "1: fusion studios"
+      "id": "kraz-belt",
+      "name": "Kraz's Hunter Belt",
+      "artist": "Forward Pals"
     },
     {
       "id": "fusion-nitro0",
       "name": "Nitrofueled",
-      "artist": "1: fusion studios"
+      "artist": "Forward Pals"
     },
     {
       "id": "fusion-nitro1",
       "name": "Unprepped Suit",
-      "artist": "1: fusion studios"
+      "artist": "Forward Pals"
     },
     {
       "id": "fusion-nitro2",
       "name": "Phoenix-Bot",
-      "artist": "1: fusion studios"
+      "artist": "Forward Pals"
     },
     {
       "id": "fusion-nitro3",
       "name": "Phoenix-Bot (No-Rec)",
-      "artist": "1: fusion studios"
+      "artist": "Forward Pals"
     },
     {
       "id": "fusion-nitro4",
       "name": "BowCam",
-      "artist": "1: fusion studios"
+      "artist": "Forward Pals"
     },
     {
-      "id": "fusion-victor0",
-      "name": "Thunder Leader (Sinister)",
-      "artist": "1: fusion studios"
-    },
-    {
-      "id": "fusion-victor1",
+      "id": "victor-bandana",
+      "backid": "victor-hat",
       "name": "Thunder Leader",
-      "artist": "1: fusion studios"
+      "artist": "Forward Pals"
     },
     {
-      "id": "fusion-victor2",
-      "name": "Flash Hat (Sinister)",
-      "artist": "1: fusion studios"
-    },
-    {
-      "id": "fusion-victor3",
+      "id": "transparent",
+      "backid": "victor-hat",
       "name": "Flash Hat",
-      "artist": "1: fusion studios"
+      "artist": "Forward Pals"
     },
     {
-      "id": "fusion-victor4",
+      "id": "victor-bandana",
       "name": "Striking Bandana",
-      "artist": "1: fusion studios"
+      "artist": "Forward Pals"
     },
     {
-      "id": "fusion-victor5",
-      "name": "VictorTron 2000 (Sinister)",
-      "artist": "1: fusion studios"
-    },
-    {
-      "id": "fusion-victor6",
+      "id": "victron-suit",
+      "backid": "victron-hat",
       "name": "VictorTron 2000",
-      "artist": "1: fusion studios"
+      "artist": "Forward Pals"
     },
     {
-      "id": "fusion-victor7",
-      "name": "VictorTron 1000 (Sinister)",
-      "artist": "1: fusion studios"
+      "id": "transparent",
+      "backid": "victron-hat",
+      "name": "VictorTron 1000-H",
+      "artist": "Forward Pals"
     },
     {
-      "id": "fusion-victor8",
-      "name": "VictorTron 1000",
-      "artist": "1: fusion studios"
+      "id": "victron-suit",
+      "name": "VictorTron 1000-S",
+      "artist": "Forward Pals"
     },
 
     {
       "id": "fusion-cube0",
       "name": "Cube6",
-      "artist": "2: stampverse"
+      "artist": "Backwarders"
     },
     {
       "id": "fusion-cube1",
       "name": "Cube6 Hair",
-      "artist": "2: stampverse"
+      "artist": "Backwarders"
     },
-    {
-      "id": "fusion-mez0",
-      "name": "Mez with Coat",
-      "artist": "2: stampverse"
-    },
+
     {
       "id": "fusion-mez1",
-      "name": "Unmasked Mez with Coat",
-      "artist": "2: stampverse"
+      "name": "Mez Coat",
+      "artist": "Backwarders"
     },
     {
       "id": "fusion-mez2",
       "name": "Hairless Mez",
-      "artist": "2: stampverse"
+      "artist": "Backwarders"
     },
     {
       "id": "fusion-mez3",
       "name": "Coatless Mez",
-      "artist": "2: stampverse"
+      "artist": "Backwarders"
     },
     {
-      "id": "fusion-mez3",
+      "id": "fusion-mez4",
       "name": "Mez Hair",
-      "artist": "2: stampverse"
+      "artist": "Backwarders"
     },
     {
       "id": "fusion-milk0",
       "name": "Milk",
-      "artist": "2: stampverse"
+      "artist": "Backwarders"
     },
     {
       "id": "fusion-milk1",
       "name": "Milk Hair",
-      "artist": "2: stampverse"
+      "artist": "Backwarders"
     },
 
     {
-      "id": "fusion-ares0",
+      "id": "ares-full",
       "name": "Areseem Drip (With Pack)",
-      "artist": "3: tinkr crew"
+      "artist": "TinkR Crew"
     },
     {
-      "id": "fusion-ares1",
+      "id": "ares-outfit",
       "name": "Areseem Drip",
-      "artist": "3: tinkr crew"
+      "artist": "TinkR Crew"
     },
     {
-      "id": "fusion-ares2",
-      "name": "Areseem Coatless (With Pack)",
-      "artist": "3: tinkr crew"
-    },
-    {
-      "id": "fusion-ares3",
-      "name": "Areseem Coatless",
-      "artist": "3: tinkr crew"
-    },
-    {
-      "id": "fusion-ares4",
-      "name": "Sharpeye Glasses (With Pack)",
-      "artist": "3: tinkr crew"
-    },
-    {
-      "id": "fusion-ares5",
-      "name": "Sharpeye Glasses",
-      "artist": "3: tinkr crew"
-    },
-    {
-      "id": "fusion-ares6",
+      "id": "ares-tank",
       "name": "Black-Red Flame Pompadour (With Pack)",
-      "artist": "3: tinkr crew"
+      "artist": "TinkR Crew"
     },
     {
-      "id": "fusion-ares7",
+      "id": "ares-hair",
       "name": "Black-Red Flame Pompadour",
-      "artist": "3: tinkr crew"
+      "artist": "TinkR Crew"
     },
+
     {
-      "id": "fusion-xaviar0",
+      "id": "xaviar-full",
       "name": "Xaviar's Drip",
-      "artist": "3: tinkr crew"
+      "artist": "TinkR Crew"
     },
     {
-      "id": "fusion-xaviar1",
-      "name": "Xaviar's Drip (Shadeless)",
-      "artist": "3: tinkr crew"
-    },
-    {
-      "id": "fusion-xaviar2",
-      "name": "Xaviar's Shave",
-      "artist": "3: tinkr crew"
-    },
-    {
-      "id": "fusion-xaviar3",
-      "name": "Xaviar's Drip (No Pack)",
-      "artist": "3: tinkr crew"
-    },
-    {
-      "id": "fusion-xaviar4",
+      "id": "xaviar-hair",
       "name": "Xaviar's Hair",
-      "artist": "3: tinkr crew"
+      "artist": "TinkR Crew"
     },
-    {
-      "id": "fusion-xaviar5",
-      "name": "Xaviar's Shades",
-      "artist": "3: tinkr crew"
-    },
+
     {
       "id": "fusion-oakgear0",
       "name": "A3 Oakgear (On)",
-      "artist": "3: tinkr crew"
+      "artist": "TinkR Crew"
     },
     {
       "id": "fusion-oakgear1",
       "name": "A3 Oakgear (Off)",
-      "artist": "3: tinkr crew"
+      "artist": "TinkR Crew"
     },
     {
       "id": "fusion-oakgear2",
       "name": "A2 Oakgear (On)",
-      "artist": "3: tinkr crew"
+      "artist": "TinkR Crew"
     },
     {
       "id": "fusion-oakgear3",
       "name": "A2 Oakgear (Off)",
-      "artist": "3: tinkr crew"
+      "artist": "TinkR Crew"
     },
     {
       "id": "fusion-oakgear4",
       "name": "A1 Oakgear (On)",
-      "artist": "3: tinkr crew"
+      "artist": "TinkR Crew"
     },
     {
       "id": "fusion-oakgear5",
       "name": "A1 Oakgear (Off)",
-      "artist": "3: tinkr crew"
+      "artist": "TinkR Crew"
     },
+
     {
       "id": "fusion-roseq0",
       "name": "M2 Rosequartz (Normal)",
-      "artist": "3: tinkr crew"
+      "artist": "TinkR Crew"
     },
     {
       "id": "fusion-roseq1",
       "name": "M2 Rosequartz (Bliss)",
-      "artist": "3: tinkr crew"
+      "artist": "TinkR Crew"
     },
     {
       "id": "fusion-roseq2",
       "name": "M2 Rosequartz (Off)",
-      "artist": "3: tinkr crew"
+      "artist": "TinkR Crew"
     },
     {
       "id": "fusion-roseq3",
       "name": "M1 Rosequartz (Normal)",
-      "artist": "3: tinkr crew"
+      "artist": "TinkR Crew"
     },
     {
       "id": "fusion-roseq4",
       "name": "M1 Rosequartz (Bliss)",
-      "artist": "3: tinkr crew"
+      "artist": "TinkR Crew"
     },
     {
       "id": "fusion-roseq5",
       "name": "M1 Rosequartz (Off)",
-      "artist": "3: tinkr crew"
+      "artist": "TinkR Crew"
     },
+
     {
       "id": "fusion-dicrup0",
       "name": "Dicruption T3",
-      "artist": "3: tinkr crew"
+      "artist": "TinkR Crew"
     },
     {
       "id": "fusion-dicrup1",
       "name": "Dicruption T2",
-      "artist": "3: tinkr crew"
+      "artist": "TinkR Crew"
     },
     {
       "id": "fusion-dicrup2",
       "name": "Dicruption T1",
-      "artist": "3: tinkr crew"
+      "artist": "TinkR Crew"
     },
+
     {
       "id": "fusion-geartron0",
       "name": "Geartron Y2 (On)",
-      "artist": "3: tinkr crew"
+      "artist": "TinkR Crew"
     },
     {
       "id": "fusion-geartron1",
       "name": "Geartron Y2 (Off)",
-      "artist": "3: tinkr crew"
+      "artist": "TinkR Crew"
     },
     {
       "id": "fusion-geartron2",
       "name": "Geartron Y1 (On)",
-      "artist": "3: tinkr crew"
+      "artist": "TinkR Crew"
     },
     {
       "id": "fusion-geartron3",
       "name": "Geartron Y1 (Off)",
-      "artist": "3: tinkr crew"
+      "artist": "TinkR Crew"
     },
     {
       "id": "fusion-deathrain0",
       "name": "Deathranium S2 (On)",
-      "artist": "3: tinkr crew"
+      "artist": "TinkR Crew"
     },
     {
       "id": "fusion-deathrain1",
       "name": "Deathranium S2 (Off)",
-      "artist": "3: tinkr crew"
+      "artist": "TinkR Crew"
     },
     {
       "id": "fusion-deathrain2",
       "name": "Deathranium S1 (On)",
-      "artist": "3: tinkr crew"
+      "artist": "TinkR Crew"
     },
     {
       "id": "fusion-deathrain3",
       "name": "Deathranium S1 (Off)",
-      "artist": "3: tinkr crew"
+      "artist": "TinkR Crew"
     },
 
-
     {
-      "id": "fusion-creechie-0",
+      "id": "c-jesus",
       "name": "Biblically Accurate",
-      "artist": "4: creechie's hivemind"
+      "artist": "Creechie's Hivemind"
     },
     {
       "id": "transparent",
       "name": "Honey Nugget",
-      "artist": "4: creechie's hivemind"
+      "artist": "Creechie's Hivemind"
     },
     {
       "id": "transparent",
       "name": "Miss Alibi",
-      "artist": "4: creechie's hivemind"
+      "artist": "Creechie's Hivemind"
     },
     {
       "id": "transparent",
       "name": "Product Placement",
-      "artist": "4: creechie's hivemind"
+      "artist": "Creechie's Hivemind"
     },
     {
-      "id": "fusion-creechie-5-0",
+      "id": "c-gene-full",
       "name": "Blue Nye",
-      "artist": "4: creechie's hivemind"
+      "artist": "Creechie's Hivemind"
     },
     {
-      "id": "fusion-creechie-5-1",
+      "id": "c-gene-hat",
       "name": "Blue Jar",
-      "artist": "4: creechie's hivemind"
+      "artist": "Creechie's Hivemind"
     },
     {
-      "id": "fusion-creechie-5-2",
+      "id": "c-gene-suit",
       "name": "Old Coat",
-      "artist": "4: creechie's hivemind"
+      "artist": "Creechie's Hivemind"
     },
 
 
     {
       "id": "fusion-socks0",
       "name": "Socksfor1 Outfit (Helm + Pack)",
-      "artist": "5: socks crew"
+      "artist": "Socks Crew"
     },
     {
       "id": "fusion-socks1",
       "name": "Socksfor1 Outfit (Pack)",
-      "artist": "5: socks crew"
+      "artist": "Socks Crew"
     },
     {
       "id": "fusion-socks2",
       "name": "Socksfor1 Fit (Helm)",
-      "artist": "5: socks crew"
+      "artist": "Socks Crew"
     },
     {
       "id": "fusion-socks3",
       "name": "Socksfor1 Fit",
-      "artist": "5: socks crew"
+      "artist": "Socks Crew"
     },
     {
       "id": "fusion-socks5",
       "name": "Socksfor1 Visor (Helm)",
-      "artist": "5: socks crew"
+      "artist": "Socks Crew"
     },
     {
       "id": "fusion-socks4",
       "name": "Socksfor1 Visor",
-      "artist": "5: socks crew"
+      "artist": "Socks Crew"
     },
     {
       "id": "fusion-socks6",
       "name": "Socksfor1 Lining",
-      "artist": "5: socks crew"
+      "artist": "Socks Crew"
     },
+
     {
       "id": "fusion-fmg0",
       "name": "FatMemeGod (Coat)",
-      "artist": "5: socks crew"
+      "artist": "Socks Crew"
     },
     {
       "id": "fusion-fmg1",
       "name": "BaldMemeGod (Coat)",
-      "artist": "5: socks crew"
+      "artist": "Socks Crew"
     },
     {
       "id": "fusion-fmg2",
       "name": "FatMemeGod",
-      "artist": "5: socks crew"
+      "artist": "Socks Crew"
     },
     {
       "id": "fusion-fmg3",
       "name": "BaldMemeGod",
-      "artist": "5: socks crew"
+      "artist": "Socks Crew"
     },
     {
       "id": "fusion-fmg4",
       "name": "Pro Mirror",
-      "artist": "5: socks crew"
+      "artist": "Socks Crew"
     },
     {
       "id": "fusion-fmg5",
       "name": "Standard Mirror",
-      "artist": "5: socks crew"
+      "artist": "Socks Crew"
     },
+
     {
       "id": "fusion-blaza0",
       "name": "Blaza",
-      "artist": "5: socks crew"
+      "artist": "Socks Crew"
     },
     {
       "id": "fusion-blaza1",
       "name": "Blaza Hoodie",
-      "artist": "5: socks crew"
+      "artist": "Socks Crew"
     },
     {
       "id": "fusion-blaza2",
       "name": "Blaza Coat",
-      "artist": "5: socks crew"
+      "artist": "Socks Crew"
     },
+
     {
-      "id": "fusion-laff0",
-      "name": "LaffenGas",
-      "artist": "5: socks crew"
-    },
-    {
-      "id": "fusion-laff1",
-      "name": "L4FF",
-      "artist": "5: socks crew"
-    },
-    {
-      "id": "fusion-joocie",
+      "id": "joocie",
       "name": "Joocie",
-      "artist": "5: socks crew"
+      "artist": "Socks Crew"
     },
     {
-      "id": "fusion-teebs0",
-      "name": "Teebs",
-      "artist": "5: socks crew"
+      "id": "teebs-hat",
+      "name": "Teebs Cap",
+      "artist": "Socks Crew"
     },
-    {
-      "id": "fusion-teebs1",
-      "name": "Visor Buttons",
-      "artist": "5: socks crew"
-    },
-    {
-      "id": "fusion-teebs2",
-      "name": "Purple Cap",
-      "artist": "5: socks crew"
-    },
+
     {
       "id": "fusion-nadwe0",
       "name": "Fancy Nadwe",
-      "artist": "5: socks crew"
+      "artist": "Socks Crew"
     },
     {
       "id": "fusion-nadwe1",
       "name": "Nadwe",
-      "artist": "5: socks crew"
+      "artist": "Socks Crew"
     },
     {
       "id": "fusion-nadwe2",
       "name": "Pink Tophats",
-      "artist": "5: socks crew"
+      "artist": "Socks Crew"
     },
     {
       "id": "fusion-nadwe3",
       "name": "V-Suit",
-      "artist": "5: socks crew"
+      "artist": "Socks Crew"
     },
     {
       "id": "fusion-nadwe4",
       "name": "Pink Bowtie",
-      "artist": "5: socks crew"
+      "artist": "Socks Crew"
     },
+
     {
       "id": "fusion-tbh0",
       "name": "TbhHonest",
-      "artist": "5: socks crew"
+      "artist": "Socks Crew"
     },
     {
       "id": "fusion-tbh1",
       "name": "Pocketless TbhHonest",
-      "artist": "5: socks crew"
+      "artist": "Socks Crew"
     },
     {
       "id": "fusion-tbh2",
       "name": "Mr Krabs",
-      "artist": "5: socks crew"
+      "artist": "Socks Crew"
     },
+
     {
-      "id": "fusion-woolf",
+      "id": "woolf",
       "name": "Woolfster",
-      "artist": "5: socks crew"
+      "artist": "Socks Crew"
     },
+
     {
       "id": "fusion-medz0",
       "name": "Medz (Beeg Head)",
-      "artist": "5: socks crew"
-    },
-    {
-      "id": "fusion-medz1",
-      "name": "Medz",
-      "artist": "5: socks crew"
+      "artist": "Socks Crew"
     },
     {
       "id": "fusion-medz2",
       "name": "50 Cent Glasses",
-      "artist": "5: socks crew"
-    },
-    {
-      "id": "fusion-medz3",
-      "name": "Handpainted Visor",
-      "artist": "5: socks crew"
+      "artist": "Socks Crew"
     },
 
 
@@ -742,202 +652,122 @@
     {
       "id": "fusion-creeperhat",
       "name": "Creeper Hat",
-      "artist": "7: miscellaneous cosmetics"
-    },
-    {
-      "id": "fusion-fallguy",
-      "name": "Fall Bean",
-      "artist": "7: miscellaneous cosmetics"
+      "artist": "Misc"
     },
     {
       "id": "fusion-fnfBf",
       "name": "Boyfriend.xml",
-      "artist": "7: miscellaneous cosmetics"
+      "artist": "Misc"
     },
     {
       "id": "fusion-fnfGf",
       "name": "Girlfriend",
-      "artist": "7: miscellaneous cosmetics"
+      "artist": "Misc"
     },
     {
       "id": "fusion-fnfPico",
       "name": "Pico",
-      "artist": "7: miscellaneous cosmetics"
+      "artist": "Misc"
     },
     {
       "id": "fusion-fnfRed",
       "name": "sussy baka",
-      "artist": "7: miscellaneous cosmetics"
+      "artist": "Misc"
     },
     {
-      "id": "fusion-v4black0",
-      "name": "Black Impostor",
-      "artist": "7: miscellaneous cosmetics"
-    },
-    {
-      "id": "fusion-v4black1",
-      "name": "Black Crewmate",
-      "artist": "7: miscellaneous cosmetics"
-    },
-    {
-      "id": "fusion-v4black2",
+      "id": "black-hat",
       "name": "Scrapped Cone",
-      "artist": "7: miscellaneous cosmetics"
+      "artist": "Misc"
     },
     {
-      "id": "fusion-v4black3",
+      "id": "black-hat-alt",
       "name": "Glaring Cone",
-      "artist": "7: miscellaneous cosmetics"
-    },
-    {
-      "id": "fusion-v4black4",
-      "name": "Mutated Visor (Glaring)",
-      "artist": "7: miscellaneous cosmetics"
-    },
-    {
-      "id": "fusion-v4black5",
-      "name": "Mutated Visor",
-      "artist": "7: miscellaneous cosmetics"
-    },
-    {
-      "id": "fusion-v4black6",
-      "name": "Impostor Glare",
-      "artist": "7: miscellaneous cosmetics"
-    },
-    {
-      "id": "fusion-lethal0",
-      "name": "Comedy",
-      "artist": "7: miscellaneous cosmetics"
-    },
-    {
-      "id": "fusion-lethal1",
-      "name": "Comedy (Possessed)",
-      "artist": "7: miscellaneous cosmetics"
-    },
-    {
-      "id": "fusion-lethal2",
-      "name": "Tragedy",
-      "artist": "7: miscellaneous cosmetics"
-    },
-    {
-      "id": "fusion-lethal3",
-      "name": "Tragedy (Possessed)",
-      "artist": "7: miscellaneous cosmetics"
+      "artist": "Misc"
     },
     {
       "id": "fusion-lethal4",
       "name": "Coilhead",
-      "artist": "7: miscellaneous cosmetics"
+      "artist": "Misc"
     },
     {
       "id": "transparent",
       "name": "Death by Suffocation",
-      "artist": "7: miscellaneous cosmetics"
+      "artist": "Misc"
     },
     {
       "id": "fusion-perry0",
       "name": "Agent Perry",
-      "artist": "7: miscellaneous cosmetics"
+      "artist": "Misc"
     },
     {
       "id": "fusion-perry1",
       "name": "Perry the Platypus",
-      "artist": "7: miscellaneous cosmetics"
-    },
-    {
-      "id": "fusion-perry2",
-      "name": "Perry!",
-      "artist": "7: miscellaneous cosmetics"
-    },
-    {
-      "id": "fusion-perry3",
-      "name": "Perry",
-      "artist": "7: miscellaneous cosmetics"
-    },
-    {
-      "id": "fusion-perry4",
-      "name": "Platy Beak",
-      "artist": "7: miscellaneous cosmetics"
+      "artist": "Misc"
     },
     {
       "id": "fusion-perry5",
       "name": "Platy Fedora",
-      "artist": "7: miscellaneous cosmetics"
+      "artist": "Misc"
     },
     {
       "id": "fusion-perry6",
       "name": "Dr. Heinz Doofenshmirtz Hair",
-      "artist": "7: miscellaneous cosmetics"
-    },
-    {
-      "id": "fusion-gd0",
-      "name": "Normal Face",
-      "artist": "7: miscellaneous cosmetics"
-    },
-    {
-      "id": "fusion-gd1",
-      "name": "Abnormal Face",
-      "artist": "7: miscellaneous cosmetics"
+      "artist": "Misc"
     },
     {
       "id": "transparent",
       "name": "Catloaf",
-      "artist": "7: miscellaneous cosmetics"
+      "artist": "Misc"
     },
     {
       "id": "transparent",
       "name": "Mario Cap",
-      "artist": "7: miscellaneous cosmetics"
+      "artist": "Misc"
     },
     {
       "id": "transparent",
       "name": "Luigi Cap",
-      "artist": "7: miscellaneous cosmetics"
+      "artist": "Misc"
     },
     {
       "id": "transparent",
       "name": "Wario Cap",
-      "artist": "7: miscellaneous cosmetics"
+      "artist": "Misc"
     },
     {
       "id": "transparent",
       "name": "Waluigi Hat",
-      "artist": "7: miscellaneous cosmetics"
+      "artist": "Misc"
     },
     {
-      "id": "fusion-kirb0",
+      "id": "kirb0",
       "name": "Kirby",
-      "artist": "7: miscellaneous cosmetics"
+      "artist": "Misc"
     },
     {
-      "id": "fusion-kirb4",
+      "id": "kirb4",
       "name": "Kirby (Grey)",
-      "artist": "7: miscellaneous cosmetics"
-    },
-    {
-      "id": "fusion-oldvisor",
-      "name": "Reject Modernity",
-      "artist": "7: miscellaneous cosmetics"
+      "artist": "Misc"
     },
     {
       "id": "fusion-dumzilla",
       "name": "why are you the way that you are",
-      "artist": "7: miscellaneous cosmetics"
+      "artist": "Misc"
     },
     {
       "id": "fusion-fallout0",
       "name": "Vault Boy",
-      "artist": "7: miscellaneous cosmetics"
+      "artist": "Misc"
     },
     {
       "id": "fusion-fallout1",
       "name": "Vault Boy (No Suit)",
-      "artist": "7: miscellaneous cosmetics"
+      "artist": "Misc"
     },
     {
       "id": "fusion-fallout2",
       "name": "Power Armor",
-      "artist": "7: miscellaneous cosmetics"
+      "artist": "Misc"
     },
     {
       "id": "hats0287",

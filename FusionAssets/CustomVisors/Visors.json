@@ -1,5 +1,155 @@
 [
   {
+    "id": "ares",
+    "name": "Areseem's Shades",
+    "artist": "Forward Pals"
+  },
+  {
+    "id": "crafter",
+    "name": "Crafter's Visor",
+    "artist": "Forward Pals"
+  },
+  {
+    "id": "kraz-mask1",
+    "name": "Kraz Mask",
+    "artist": "Forward Pals"
+  },
+  {
+    "id": "kraz-mask0",
+    "name": "Kraz Mask (No Eyes)",
+    "artist": "Forward Pals"
+  },
+  {
+    "id": "gz",
+    "flipid": "gz-flipped",
+    "name": "Gamerzone Visor",
+    "artist": "Forward Pals"
+  },
+  {
+    "id": "marle0",
+    "name": "Masked Marle (Neutral)",
+    "artist": "Forward Pals"
+  },
+  {
+    "id": "marle1",
+    "name": "Masked Marle (Disbelief)",
+    "artist": "Forward Pals"
+  },
+  {
+    "id": "marle2",
+    "name": "Masked Marle (Poker)",
+    "artist": "Forward Pals"
+  },
+  {
+    "id": "mez",
+    "name": "Mez's Mask",
+    "artist": "Backwarders"
+  },
+
+  {
+    "id": "xaviar",
+    "name": "Xaviar's Visor",
+    "artist": "TinkR Crew"
+  },
+
+  {
+    "id": "laff-mask",
+    "name": "LaffenGas",
+    "artist": "Socks Crew"
+  },
+  {
+    "id": "l4ff-mask",
+    "name": "L4FF",
+    "artist": "Socks Crew"
+  },
+  {
+    "id": "medz",
+    "name": "Handpainted Visor",
+    "artist": "Socks Crew"
+  },
+  
+  {
+    "id": "burple",
+    "name": "Burple Smile",
+    "artist": "Expressions"
+  },
+  {
+    "id": "face0",
+    "name": "smiling fella",
+    "artist": "Expressions"
+  },
+  {
+    "id": "face1",
+    "name": "goofy fella",
+    "artist": "Expressions"
+  },
+  {
+    "id": "face2",
+    "name": "happy fella",
+    "artist": "Expressions"
+  },
+  {
+    "id": "eyeglare-red",
+    "name": "Eyeglare (Red)",
+    "artist": "Misc"
+  },
+  {
+    "id": "eyeglare-yellow",
+    "name": "Eyeglare (Yellow)",
+    "artist": "Misc"
+  },
+  {
+    "id": "fallguy",
+    "name": "Fall Bean",
+    "artist": "Misc"
+  },
+  {
+    "id": "comedy0",
+    "name": "Comedy",
+    "artist": "Misc"
+  },
+  {
+    "id": "comedy1",
+    "name": "Comedy (Possessed)",
+    "artist": "Misc"
+  },
+  {
+    "id": "tragedy0",
+    "name": "Tragedy",
+    "artist": "Misc"
+  },
+  {
+    "id": "tragedy1",
+    "name": "Tragedy (Possessed)",
+    "artist": "Misc"
+  },
+  {
+    "id": "2017",
+    "name": "Reject Modernity",
+    "artist": "Misc"
+  },
+  {
+    "id": "black0",
+    "name": "Black Impostor (Glaring)",
+    "artist": "Misc"
+  },
+  {
+    "id": "black1",
+    "name": "Black Impostor",
+    "artist": "Misc"
+  },
+  {
+    "id": "gd0",
+    "name": "Normal Face",
+    "artist": "Misc"
+  },
+  {
+    "id": "gd1",
+    "name": "Abnormal Face",
+    "artist": "Misc"
+  },
+
+  {
     "id": "visor0000",
     "name": "aphex",
     "artist": "TOU - Pigoletto"
