@@ -48,13 +48,13 @@ namespace TownOfUsFusion.CrewmateRoles.BodyguardMod
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
 
             if (role.guardedPlayer == null) {
-                protectButton.SetCoolDown(0f, role.TargetTimer());
+                protectButton.SetCoolDown(role.TargetTimer(), CustomGameOptions.GuardCd);
                 Utils.SetTarget(ref role.ClosestPlayer, protectButton);
             }
             else {
-                if (role.Protecting) protectButton.SetCoolDown(role.TimeRemaining, CustomGameOptions.ProtectDuration);
-                else if (role.ButtonUsable) protectButton.SetCoolDown(role.ProtectTimer(), CustomGameOptions.ProtectCd);
-                else protectButton.SetCoolDown(0f, CustomGameOptions.ProtectCd);
+                if (role.Protecting) protectButton.SetCoolDown(role.TimeRemaining, CustomGameOptions.GuardDuration);
+                else if (role.ButtonUsable) protectButton.SetCoolDown(role.ProtectTimer(), CustomGameOptions.GuardCd);
+                else protectButton.SetCoolDown(0f, CustomGameOptions.GuardCd);
 
                 var renderer = protectButton.graphic;
                 if (role.Protecting || (!protectButton.isCoolingDown && role.ButtonUsable && PlayerControl.LocalPlayer.moveable))
