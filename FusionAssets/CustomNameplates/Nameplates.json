@@ -5,8 +5,13 @@
     "artist": "Atony"
   },
   {
-    "id": "nameplate_submerged",
-    "name": "Submerged With Pufferfish",
+    "id": "nameplate_submerged0",
+    "name": "Submerged",
+    "artist": "Atony"
+  },
+  {
+    "id": "nameplate_submerged1",
+    "name": "Submerged Alt",
     "artist": "Atony"
   }
 ]

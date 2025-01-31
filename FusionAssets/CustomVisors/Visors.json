@@ -28,38 +28,38 @@
     "flipid": "gz_flipped",
     "infront": true,
     "name": "Gamerzone Visor",
-    "artist": "Forward Pals"
+    "artist": "TOUF: Backwarders"
   },
   {
     "id": "marle0",
     "infront": true,
     "name": "Masked Marle (Neutral)",
-    "artist": "Forward Pals"
+    "artist": "TOUF: Backwarders"
   },
   {
     "id": "marle1",
     "infront": true,
     "name": "Masked Marle (Disbelief)",
-    "artist": "Forward Pals"
+    "artist": "TOUF: Backwarders"
   },
   {
     "id": "marle2",
     "infront": true,
     "name": "Masked Marle (Poker)",
-    "artist": "Forward Pals"
+    "artist": "TOUF: Backwarders"
   },
   {
     "id": "mez",
     "infront": true,
     "name": "Mez Mask",
-    "artist": "Backwarders"
+    "artist": "TOUF: Backwarders"
   },
 
   {
     "id": "xaviar",
     "infront": true,
     "name": "Xaviar Visor",
-    "artist": "TinkR Crew"
+    "artist": "TOUF: TinkR Crew"
   },
 
   {
@@ -109,73 +109,73 @@
     "id": "eyeglare_red",
     "infront": true,
     "name": "Eyeglare (Red)",
-    "artist": "Misc"
+    "artist": "TOUF: Misc"
   },
   {
     "id": "eyeglare_yellow",
     "infront": true,
     "name": "Eyeglare (Yellow)",
-    "artist": "Misc"
+    "artist": "TOUF: Misc"
   },
   {
     "id": "fallguy",
     "infront": true,
     "name": "Fall Bean",
-    "artist": "Misc"
+    "artist": "TOUF: Misc"
   },
   {
     "id": "comedy0",
     "infront": true,
     "name": "Comedy",
-    "artist": "Misc"
+    "artist": "TOUF: Misc"
   },
   {
     "id": "comedy1",
     "infront": true,
     "name": "Comedy (Possessed)",
-    "artist": "Misc"
+    "artist": "TOUF: Misc"
   },
   {
     "id": "tragedy0",
     "infront": true,
     "name": "Tragedy",
-    "artist": "Misc"
+    "artist": "TOUF: Misc"
   },
   {
     "id": "tragedy1",
     "infront": true,
     "name": "Tragedy (Possessed)",
-    "artist": "Misc"
+    "artist": "TOUF: Misc"
   },
   {
     "id": "2017",
     "infront": true,
     "name": "Reject Modernity",
-    "artist": "Misc"
+    "artist": "TOUF: Misc"
   },
   {
     "id": "black0",
     "infront": true,
     "name": "Black Impostor (Glaring)",
-    "artist": "Misc"
+    "artist": "TOUF: Misc"
   },
   {
     "id": "black1",
     "infront": true,
     "name": "Black Impostor",
-    "artist": "Misc"
+    "artist": "TOUF: Misc"
   },
   {
     "id": "gd0",
     "infront": true,
     "name": "Normal Face",
-    "artist": "Misc"
+    "artist": "TOUF: Misc"
   },
   {
     "id": "gd1",
     "infront": true,
     "name": "Abnormal Face",
-    "artist": "Misc"
+    "artist": "TOUF: Misc"
   },
 
   {

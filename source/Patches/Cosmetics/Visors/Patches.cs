@@ -240,6 +240,87 @@ public static class SetFlipXPrefix
     }
 }
 
+[HarmonyPatch(typeof(VisorLayer), nameof(VisorLayer.PopulateFromViewData))]
+public static class PopulateFromVisorViewDataPatch
+{
+    public static bool Prefix(VisorLayer __instance)
+    {
+        VisorViewData asset = null;
+
+        try
+        {
+            asset = __instance.viewAsset.GetAsset();
+            return true;
+        } catch {}
+
+        if (!__instance.visorData || !CustomVisorViewDatas.TryGetValue(__instance.visorData?.ProductId, out asset) || !asset)
+            return true;
+
+        __instance.UpdateMaterial();
+
+        return false;
+    }
+}
+/*
+[HarmonyPatch(typeof(VisorLayer), nameof(VisorLayer.LateUpdate))]
+public static class VisorLayerLateUpdatePatch
+{
+    public static bool Prefix(VisorLayer __instance)
+    {
+        if (!__instance.Parent || !__instance.Hat)
+            return false;
+
+        HatViewData hatViewData;
+
+        try
+        {
+            hatViewData = __instance.viewAsset.GetAsset();
+            return true;
+        }
+        catch
+        {
+            try
+            {
+                CustomHatViewDatas.TryGetValue(__instance.Hat.ProductId, out hatViewData);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        if (!hatViewData)
+            return false;
+
+        if (__instance.FrontLayer.sprite != hatViewData.ClimbImage && __instance.FrontLayer.sprite != hatViewData.FloorImage)
+        {
+            if ((__instance.Hat.InFront || hatViewData.BackImage) && hatViewData.LeftMainImage)
+                __instance.FrontLayer.sprite = __instance.Parent.flipX ? hatViewData.LeftMainImage : hatViewData.MainImage;
+
+            if (hatViewData.BackImage && hatViewData.LeftBackImage)
+            {
+                __instance.BackLayer.sprite = __instance.Parent.flipX ? hatViewData.LeftBackImage : hatViewData.BackImage;
+                return false;
+            }
+
+            if (!hatViewData.BackImage && !__instance.Hat.InFront && hatViewData.LeftMainImage)
+            {
+                __instance.BackLayer.sprite = __instance.Parent.flipX ? hatViewData.LeftMainImage : hatViewData.MainImage;
+                return false;
+            }
+        }
+        else if (__instance.FrontLayer.sprite == hatViewData.ClimbImage || __instance.FrontLayer.sprite == hatViewData.LeftClimbImage)
+        {
+            __instance.SpriteSyncNode ??= __instance.GetComponent<SpriteAnimNodeSync>();
+
+            if (__instance.SpriteSyncNode)
+                __instance.SpriteSyncNode.NodeId = 0;
+        }
+
+        return false;
+    }
+}
+*/
 [HarmonyPatch(typeof(VisorLayer), nameof(VisorLayer.SetVisor), typeof(VisorData), typeof(int))]
 public static class SetVisorPrefix
 {
