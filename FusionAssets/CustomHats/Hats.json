@@ -30,6 +30,7 @@
       "backid": "bb-hat-mic",
       "flipid": "bb-suit-mic",
       "backflipid": "bb-hat",
+      "climbid": "bb-climb",
       "name": "Berry Shake (Moldy)",
       "artist": "Forward Pals"
     },
@@ -38,6 +39,7 @@
       "backid": "bb-hat-mic",
       "flipid": "bb-suit-mic",
       "backflipid": "bb-hat",
+      "climbid": "bb-climb",
       "name": "Berry Shake",
       "artist": "Forward Pals"
     },
@@ -46,6 +48,7 @@
       "backid": "bb-hat-mic",
       "flipid": "bb-mic",
       "backflipid": "bb-hat",
+      "climbid": "bb-climb",
       "name": "Ripe Berry",
       "artist": "Forward Pals"
     },
@@ -75,7 +78,7 @@
 
     {
       "id": "burple-full",
-      "name": "Burple Guy",
+      "name": "THE Burple Guy",
       "artist": "Forward Pals"
     },
     {
@@ -143,23 +146,23 @@
       "artist": "Forward Pals"
     },
     {
-      "id": "gz-hat",
-      "backid": "gz-hatlow",
-      "name": "Duck Hoodie",
-      "artist": "Forward Pals"
-    },
-    {
-      "adaptive": true,
       "id": "gz-adapt-suit0",
+      "adaptive": true,
       "backid": "gz-adapt-suitlow",
       "name": "Full Colored Duck Onesie",
       "artist": "Forward Pals"
     },
     {
-      "adaptive": true,
       "id": "gz-adapt-suit1",
+      "adaptive": true,
       "backid": "gz-adapt-suitlow",
       "name": "Colored Duck Onesie",
+      "artist": "Forward Pals"
+    },
+    {
+      "id": "gz-hat",
+      "backid": "gz-hatlow",
+      "name": "Duck Hoodie",
       "artist": "Forward Pals"
     },
 
@@ -254,6 +257,7 @@
       "name": "Mez Hair",
       "artist": "Backwarders"
     },
+
     {
       "id": "fusion-milk0",
       "name": "Milk",
@@ -610,37 +614,37 @@
     {
       "id": "fusion-frans0",
       "name": "Francisco",
-      "artist": "6: salem outbreak"
+      "artist": "Salem Outbreak"
     },
     {
       "id": "fusion-frans1",
       "name": "Francisco (No Stache)",
-      "artist": "6: salem outbreak"
+      "artist": "Salem Outbreak"
     },
     {
       "id": "fusion-frans2",
       "name": "Francisco (No Hat)",
-      "artist": "6: salem outbreak"
+      "artist": "Salem Outbreak"
     },
     {
       "id": "fusion-frans3",
       "name": "Francisco (No Suit)",
-      "artist": "6: salem outbreak"
+      "artist": "Salem Outbreak"
     },
     {
       "id": "fusion-frans4",
       "name": "Conquistador Hat",
-      "artist": "6: salem outbreak"
+      "artist": "Salem Outbreak"
     },
     {
       "id": "fusion-gerald0",
       "name": "Gerald",
-      "artist": "6: salem outbreak"
+      "artist": "Salem Outbreak"
     },
     {
       "id": "fusion-gerald1",
       "name": "Gerald (No Scythe)",
-      "artist": "6: salem outbreak"
+      "artist": "Salem Outbreak"
     },
 
 
