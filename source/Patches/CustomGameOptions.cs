@@ -410,7 +410,14 @@ namespace TownOfUsFusion
         public static int LargeMapDecreasedShortTasks => (int)Generate.LargeMapDecreasedShortTasks.Get();
         public static int LargeMapDecreasedLongTasks => (int)Generate.LargeMapDecreasedLongTasks.Get();
         public static DisableSkipButtonMeetings SkipButtonDisable => (DisableSkipButtonMeetings)Generate.SkipButtonDisable.Get();
-        public static bool UniqueRoles => Generate.UniqueRoles.Get();
+        public static bool UniqueCrewInvestRoles => Generate.UniqueCrewInvestRoles.Get();
+        public static bool UniqueCrewKillingRoles => Generate.UniqueCrewKillingRoles.Get();
+        public static bool UniqueCrewProtectRoles => Generate.UniqueCrewProtectRoles.Get();
+        public static bool UniqueCrewUtilRoles => Generate.UniqueCrewUtilRoles.Get();
+        public static bool UniqueNeutBenignRoles => Generate.UniqueCrewInvestRoles.Get();
+        public static bool UniqueNeutEvilRoles => Generate.UniqueCrewKillingRoles.Get();
+        public static bool UniqueNeutKillingRoles => Generate.UniqueCrewProtectRoles.Get();
+        public static bool UniqueImpRoles => Generate.UniqueImpRoles.Get();
         public static RoleOptions Slot1 => (RoleOptions)Generate.Slot1.Get();
         public static RoleOptions Slot2 => (RoleOptions)Generate.Slot2.Get();
         public static RoleOptions Slot3 => (RoleOptions)Generate.Slot3.Get();

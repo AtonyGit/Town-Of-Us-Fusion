@@ -373,7 +373,8 @@ namespace TownOfUsFusion
             var img = imageStream.ReadFully();
             LoadImage(tex, img, true);
             tex.DontDestroy();
-            pixelsPerUnit = tex.height;
+            // this allows the icons to be any size and still look good
+            pixelsPerUnit = tex.width;
             var sprite = Sprite.Create(tex, new Rect(0.0f, 0.0f, tex.width, tex.height), pivot, pixelsPerUnit);
             sprite.DontDestroy();
             return sprite;

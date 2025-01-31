@@ -28,6 +28,7 @@ namespace TownOfUsFusion.CrewmateRoles.AltruistMod
                 return false;
                 
                 if (role.ReviveTimer() != 0) return false;
+                if (role.Reviving) return false;
                 if (!__instance.isActiveAndEnabled || __instance.isCoolingDown) return false;
                 var abilityUsed = Utils.AbilityUsed(PlayerControl.LocalPlayer);
                 if (!abilityUsed) return false;

@@ -51,7 +51,7 @@ namespace TownOfUsFusion.CrewmateRoles.PoliticianMod
                     mayorRole.RegenTask();
                     Utils.Rpc(CustomRPC.Elect, role.Player.PlayerId);
                 }
-                else role.CanCampaign = false;
+                //else role.CanCampaign = false;
             }
 
             return Listener;

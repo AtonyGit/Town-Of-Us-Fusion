@@ -23,7 +23,7 @@ namespace TownOfUsFusion.CrewmateRoles.AltruistMod
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
 
-            if (role.UsesText == null && role.RevivesLeft > 0)
+            if (role.UsesText == null)
             {
                 role.UsesText = Object.Instantiate(killButton.cooldownTimerText, killButton.transform);
                 role.UsesText.gameObject.SetActive(false);

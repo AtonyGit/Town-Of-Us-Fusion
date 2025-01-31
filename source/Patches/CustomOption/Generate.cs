@@ -1,10 +1,36 @@
 using System;
+using System.Collections.Generic;
 
 namespace TownOfUsFusion.CustomOption
 {
     public class Generate
     {
 
+        private static readonly List<string> roleBuckets = new List<string>
+            {
+            "<color=#66FFFFFF>Crew</color> Investigative",
+            "<color=#66FFFFFF>Crew</color> Killing",
+            "<color=#66FFFFFF>Crew</color> Protective",
+            "<color=#66FFFFFF>Crew</color> Sovereign",
+            "<color=#66FFFFFF>Crew</color> Utility",
+            "Common <color=#66FFFFFF>Crew</color>",
+            "Random <color=#66FFFFFF>Crew</color>",
+            "<color=#999999FF>Neutral</color> Benign",
+            "<color=#999999FF>Neutral</color> Evil",
+            "<color=#999999FF>Neutral</color> Chaos",
+            "<color=#999999FF>Neutral</color> Killing",
+            "<color=#999999FF>Neutral</color> Neophyte",
+            "<color=#999999FF>Neutral</color> Apocalypse",
+            "Common <color=#999999FF>Neutral</color>",
+            "Random <color=#999999FF>Neutral</color>",
+            "<color=#FF0000FF>Imp</color> Concealing",
+            "<color=#FF0000FF>Imp</color> Killing",
+            "<color=#FF0000FF>Imp</color> Support",
+            "Common <color=#FF0000FF>Imp</color>",
+            "Random <color=#FF0000FF>Imp</color>",
+            "Non-<color=#FF0000FF>Imp</color>",
+            "Any"
+            };
         public static CustomHeaderOption CrewInvestigativeRoles;
         public static CustomNumberOption AurialOn;
         public static CustomNumberOption HaunterOn;
@@ -162,7 +188,14 @@ namespace TownOfUsFusion.CustomOption
         public static CustomToggleOption WifiChartCourseSwap;
 
         public static CustomHeaderOption RoleListSettings;
-        public static CustomToggleOption UniqueRoles;
+        public static CustomToggleOption UniqueCrewInvestRoles;
+        public static CustomToggleOption UniqueCrewKillingRoles;
+        public static CustomToggleOption UniqueCrewProtectRoles;
+        public static CustomToggleOption UniqueCrewUtilRoles;
+        public static CustomToggleOption UniqueNeutBenignRoles;
+        public static CustomToggleOption UniqueNeutEvilRoles;
+        public static CustomToggleOption UniqueNeutKillingRoles;
+        public static CustomToggleOption UniqueImpRoles;
         public static CustomStringOption Slot1;
         public static CustomStringOption Slot2;
         public static CustomStringOption Slot3;
@@ -794,112 +827,32 @@ namespace TownOfUsFusion.CustomOption
 
             RoleListSettings =
                 new CustomHeaderOption(num++, MultiMenu.main, "Role List Settings");
-            UniqueRoles = new CustomToggleOption(num++, MultiMenu.main, "All Roles Are Unique", true);
-            Slot1 = new CustomStringOption(num++, MultiMenu.main, "Slot 1", new[] { "<color=#66FFFFFF>Crew</color> Investigative",
-                "<color=#66FFFFFF>Crew</color> Killing", "<color=#66FFFFFF>Crew</color> Protective", "<color=#66FFFFFF>Crew</color> Support",
-                "Common <color=#66FFFFFF>Crew</color>", "Random <color=#66FFFFFF>Crew</color>", "<color=#999999FF>Neutral</color> Benign",
-                "<color=#999999FF>Neutral</color> Evil", "<color=#999999FF>Neutral</color> Killing", "Common <color=#999999FF>Neutral</color>",
-                "Random <color=#999999FF>Neutral</color>", "<color=#FF0000FF>Imp</color> Concealing", "<color=#FF0000FF>Imp</color> Killing",
-                "<color=#FF0000FF>Imp</color> Support", "Common <color=#FF0000FF>Imp</color>", "Random <color=#FF0000FF>Imp</color>",
-                "Non-<color=#FF0000FF>Imp</color>", "Any" }, 16);
-            Slot2 = new CustomStringOption(num++, MultiMenu.main, "Slot 2", new[] { "<color=#66FFFFFF>Crew</color> Investigative",
-                "<color=#66FFFFFF>Crew</color> Killing", "<color=#66FFFFFF>Crew</color> Protective", "<color=#66FFFFFF>Crew</color> Support",
-                "Common <color=#66FFFFFF>Crew</color>", "Random <color=#66FFFFFF>Crew</color>", "<color=#999999FF>Neutral</color> Benign",
-                "<color=#999999FF>Neutral</color> Evil", "<color=#999999FF>Neutral</color> Killing", "Common <color=#999999FF>Neutral</color>",
-                "Random <color=#999999FF>Neutral</color>", "<color=#FF0000FF>Imp</color> Concealing", "<color=#FF0000FF>Imp</color> Killing",
-                "<color=#FF0000FF>Imp</color> Support", "Common <color=#FF0000FF>Imp</color>", "Random <color=#FF0000FF>Imp</color>",
-                "Non-<color=#FF0000FF>Imp</color>", "Any" }, 16);
-            Slot3 = new CustomStringOption(num++, MultiMenu.main, "Slot 3", new[] { "<color=#66FFFFFF>Crew</color> Investigative",
-                "<color=#66FFFFFF>Crew</color> Killing", "<color=#66FFFFFF>Crew</color> Protective", "<color=#66FFFFFF>Crew</color> Support",
-                "Common <color=#66FFFFFF>Crew</color>", "Random <color=#66FFFFFF>Crew</color>", "<color=#999999FF>Neutral</color> Benign",
-                "<color=#999999FF>Neutral</color> Evil", "<color=#999999FF>Neutral</color> Killing", "Common <color=#999999FF>Neutral</color>",
-                "Random <color=#999999FF>Neutral</color>", "<color=#FF0000FF>Imp</color> Concealing", "<color=#FF0000FF>Imp</color> Killing",
-                "<color=#FF0000FF>Imp</color> Support", "Common <color=#FF0000FF>Imp</color>", "Random <color=#FF0000FF>Imp</color>",
-                "Non-<color=#FF0000FF>Imp</color>", "Any" }, 16);
-            Slot4 = new CustomStringOption(num++, MultiMenu.main, "Slot 4", new[] { "<color=#66FFFFFF>Crew</color> Investigative",
-                "<color=#66FFFFFF>Crew</color> Killing", "<color=#66FFFFFF>Crew</color> Protective", "<color=#66FFFFFF>Crew</color> Support",
-                "Common <color=#66FFFFFF>Crew</color>", "Random <color=#66FFFFFF>Crew</color>", "<color=#999999FF>Neutral</color> Benign",
-                "<color=#999999FF>Neutral</color> Evil", "<color=#999999FF>Neutral</color> Killing", "Common <color=#999999FF>Neutral</color>",
-                "Random <color=#999999FF>Neutral</color>", "<color=#FF0000FF>Imp</color> Concealing", "<color=#FF0000FF>Imp</color> Killing",
-                "<color=#FF0000FF>Imp</color> Support", "Common <color=#FF0000FF>Imp</color>", "Random <color=#FF0000FF>Imp</color>",
-                "Non-<color=#FF0000FF>Imp</color>", "Any" }, 15);
-            Slot5 = new CustomStringOption(num++, MultiMenu.main, "Slot 5", new[] { "<color=#66FFFFFF>Crew</color> Investigative",
-                "<color=#66FFFFFF>Crew</color> Killing", "<color=#66FFFFFF>Crew</color> Protective", "<color=#66FFFFFF>Crew</color> Support",
-                "Common <color=#66FFFFFF>Crew</color>", "Random <color=#66FFFFFF>Crew</color>", "<color=#999999FF>Neutral</color> Benign",
-                "<color=#999999FF>Neutral</color> Evil", "<color=#999999FF>Neutral</color> Killing", "Common <color=#999999FF>Neutral</color>",
-                "Random <color=#999999FF>Neutral</color>", "<color=#FF0000FF>Imp</color> Concealing", "<color=#FF0000FF>Imp</color> Killing",
-                "<color=#FF0000FF>Imp</color> Support", "Common <color=#FF0000FF>Imp</color>", "Random <color=#FF0000FF>Imp</color>",
-                "Non-<color=#FF0000FF>Imp</color>", "Any" }, 16);
-            Slot6 = new CustomStringOption(num++, MultiMenu.main, "Slot 6", new[] { "<color=#66FFFFFF>Crew</color> Investigative",
-                "<color=#66FFFFFF>Crew</color> Killing", "<color=#66FFFFFF>Crew</color> Protective", "<color=#66FFFFFF>Crew</color> Support",
-                "Common <color=#66FFFFFF>Crew</color>", "Random <color=#66FFFFFF>Crew</color>", "<color=#999999FF>Neutral</color> Benign",
-                "<color=#999999FF>Neutral</color> Evil", "<color=#999999FF>Neutral</color> Killing", "Common <color=#999999FF>Neutral</color>",
-                "Random <color=#999999FF>Neutral</color>", "<color=#FF0000FF>Imp</color> Concealing", "<color=#FF0000FF>Imp</color> Killing",
-                "<color=#FF0000FF>Imp</color> Support", "Common <color=#FF0000FF>Imp</color>", "Random <color=#FF0000FF>Imp</color>",
-                "Non-<color=#FF0000FF>Imp</color>", "Any" }, 16);
-            Slot7 = new CustomStringOption(num++, MultiMenu.main, "Slot 7", new[] { "<color=#66FFFFFF>Crew</color> Investigative",
-                "<color=#66FFFFFF>Crew</color> Killing", "<color=#66FFFFFF>Crew</color> Protective", "<color=#66FFFFFF>Crew</color> Support",
-                "Common <color=#66FFFFFF>Crew</color>", "Random <color=#66FFFFFF>Crew</color>", "<color=#999999FF>Neutral</color> Benign",
-                "<color=#999999FF>Neutral</color> Evil", "<color=#999999FF>Neutral</color> Killing", "Common <color=#999999FF>Neutral</color>",
-                "Random <color=#999999FF>Neutral</color>", "<color=#FF0000FF>Imp</color> Concealing", "<color=#FF0000FF>Imp</color> Killing",
-                "<color=#FF0000FF>Imp</color> Support", "Common <color=#FF0000FF>Imp</color>", "Random <color=#FF0000FF>Imp</color>",
-                "Non-<color=#FF0000FF>Imp</color>", "Any" }, 16);
-            Slot8 = new CustomStringOption(num++, MultiMenu.main, "Slot 8", new[] { "<color=#66FFFFFF>Crew</color> Investigative",
-                "<color=#66FFFFFF>Crew</color> Killing", "<color=#66FFFFFF>Crew</color> Protective", "<color=#66FFFFFF>Crew</color> Support",
-                "Common <color=#66FFFFFF>Crew</color>", "Random <color=#66FFFFFF>Crew</color>", "<color=#999999FF>Neutral</color> Benign",
-                "<color=#999999FF>Neutral</color> Evil", "<color=#999999FF>Neutral</color> Killing", "Common <color=#999999FF>Neutral</color>",
-                "Random <color=#999999FF>Neutral</color>", "<color=#FF0000FF>Imp</color> Concealing", "<color=#FF0000FF>Imp</color> Killing",
-                "<color=#FF0000FF>Imp</color> Support", "Common <color=#FF0000FF>Imp</color>", "Random <color=#FF0000FF>Imp</color>",
-                "Non-<color=#FF0000FF>Imp</color>", "Any" }, 16);
-            Slot9 = new CustomStringOption(num++, MultiMenu.main, "Slot 9", new[] { "<color=#66FFFFFF>Crew</color> Investigative",
-                "<color=#66FFFFFF>Crew</color> Killing", "<color=#66FFFFFF>Crew</color> Protective", "<color=#66FFFFFF>Crew</color> Support",
-                "Common <color=#66FFFFFF>Crew</color>", "Random <color=#66FFFFFF>Crew</color>", "<color=#999999FF>Neutral</color> Benign",
-                "<color=#999999FF>Neutral</color> Evil", "<color=#999999FF>Neutral</color> Killing", "Common <color=#999999FF>Neutral</color>",
-                "Random <color=#999999FF>Neutral</color>", "<color=#FF0000FF>Imp</color> Concealing", "<color=#FF0000FF>Imp</color> Killing",
-                "<color=#FF0000FF>Imp</color> Support", "Common <color=#FF0000FF>Imp</color>", "Random <color=#FF0000FF>Imp</color>",
-                "Non-<color=#FF0000FF>Imp</color>", "Any" }, 15);
-            Slot10 = new CustomStringOption(num++, MultiMenu.main, "Slot 10", new[] { "<color=#66FFFFFF>Crew</color> Investigative",
-                "<color=#66FFFFFF>Crew</color> Killing", "<color=#66FFFFFF>Crew</color> Protective", "<color=#66FFFFFF>Crew</color> Support",
-                "Common <color=#66FFFFFF>Crew</color>", "Random <color=#66FFFFFF>Crew</color>", "<color=#999999FF>Neutral</color> Benign",
-                "<color=#999999FF>Neutral</color> Evil", "<color=#999999FF>Neutral</color> Killing", "Common <color=#999999FF>Neutral</color>",
-                "Random <color=#999999FF>Neutral</color>", "<color=#FF0000FF>Imp</color> Concealing", "<color=#FF0000FF>Imp</color> Killing",
-                "<color=#FF0000FF>Imp</color> Support", "Common <color=#FF0000FF>Imp</color>", "Random <color=#FF0000FF>Imp</color>",
-                "Non-<color=#FF0000FF>Imp</color>", "Any" }, 16);
-            Slot11 = new CustomStringOption(num++, MultiMenu.main, "Slot 11", new[] { "<color=#66FFFFFF>Crew</color> Investigative",
-                "<color=#66FFFFFF>Crew</color> Killing", "<color=#66FFFFFF>Crew</color> Protective", "<color=#66FFFFFF>Crew</color> Support",
-                "Common <color=#66FFFFFF>Crew</color>", "Random <color=#66FFFFFF>Crew</color>", "<color=#999999FF>Neutral</color> Benign",
-                "<color=#999999FF>Neutral</color> Evil", "<color=#999999FF>Neutral</color> Killing", "Common <color=#999999FF>Neutral</color>",
-                "Random <color=#999999FF>Neutral</color>", "<color=#FF0000FF>Imp</color> Concealing", "<color=#FF0000FF>Imp</color> Killing",
-                "<color=#FF0000FF>Imp</color> Support", "Common <color=#FF0000FF>Imp</color>", "Random <color=#FF0000FF>Imp</color>",
-                "Non-<color=#FF0000FF>Imp</color>", "Any" }, 16);
-            Slot12 = new CustomStringOption(num++, MultiMenu.main, "Slot 12", new[] { "<color=#66FFFFFF>Crew</color> Investigative",
-                "<color=#66FFFFFF>Crew</color> Killing", "<color=#66FFFFFF>Crew</color> Protective", "<color=#66FFFFFF>Crew</color> Support",
-                "Common <color=#66FFFFFF>Crew</color>", "Random <color=#66FFFFFF>Crew</color>", "<color=#999999FF>Neutral</color> Benign",
-                "<color=#999999FF>Neutral</color> Evil", "<color=#999999FF>Neutral</color> Killing", "Common <color=#999999FF>Neutral</color>",
-                "Random <color=#999999FF>Neutral</color>", "<color=#FF0000FF>Imp</color> Concealing", "<color=#FF0000FF>Imp</color> Killing",
-                "<color=#FF0000FF>Imp</color> Support", "Common <color=#FF0000FF>Imp</color>", "Random <color=#FF0000FF>Imp</color>",
-                "Non-<color=#FF0000FF>Imp</color>", "Any" }, 16);
-            Slot13 = new CustomStringOption(num++, MultiMenu.main, "Slot 13", new[] { "<color=#66FFFFFF>Crew</color> Investigative",
-                "<color=#66FFFFFF>Crew</color> Killing", "<color=#66FFFFFF>Crew</color> Protective", "<color=#66FFFFFF>Crew</color> Support",
-                "Common <color=#66FFFFFF>Crew</color>", "Random <color=#66FFFFFF>Crew</color>", "<color=#999999FF>Neutral</color> Benign",
-                "<color=#999999FF>Neutral</color> Evil", "<color=#999999FF>Neutral</color> Killing", "Common <color=#999999FF>Neutral</color>",
-                "Random <color=#999999FF>Neutral</color>", "<color=#FF0000FF>Imp</color> Concealing", "<color=#FF0000FF>Imp</color> Killing",
-                "<color=#FF0000FF>Imp</color> Support", "Common <color=#FF0000FF>Imp</color>", "Random <color=#FF0000FF>Imp</color>",
-                "Non-<color=#FF0000FF>Imp</color>", "Any" }, 16);
-            Slot14 = new CustomStringOption(num++, MultiMenu.main, "Slot 14", new[] { "<color=#66FFFFFF>Crew</color> Investigative",
-                "<color=#66FFFFFF>Crew</color> Killing", "<color=#66FFFFFF>Crew</color> Protective", "<color=#66FFFFFF>Crew</color> Support",
-                "Common <color=#66FFFFFF>Crew</color>", "Random <color=#66FFFFFF>Crew</color>", "<color=#999999FF>Neutral</color> Benign",
-                "<color=#999999FF>Neutral</color> Evil", "<color=#999999FF>Neutral</color> Killing", "Common <color=#999999FF>Neutral</color>",
-                "Random <color=#999999FF>Neutral</color>", "<color=#FF0000FF>Imp</color> Concealing", "<color=#FF0000FF>Imp</color> Killing",
-                "<color=#FF0000FF>Imp</color> Support", "Common <color=#FF0000FF>Imp</color>", "Random <color=#FF0000FF>Imp</color>",
-                "Non-<color=#FF0000FF>Imp</color>", "Any" }, 15);
-            Slot15 = new CustomStringOption(num++, MultiMenu.main, "Slot 15", new[] { "<color=#66FFFFFF>Crew</color> Investigative",
-                "<color=#66FFFFFF>Crew</color> Killing", "<color=#66FFFFFF>Crew</color> Protective", "<color=#66FFFFFF>Crew</color> Support",
-                "Common <color=#66FFFFFF>Crew</color>", "Random <color=#66FFFFFF>Crew</color>", "<color=#999999FF>Neutral</color> Benign",
-                "<color=#999999FF>Neutral</color> Evil", "<color=#999999FF>Neutral</color> Killing", "Common <color=#999999FF>Neutral</color>",
-                "Random <color=#999999FF>Neutral</color>", "<color=#FF0000FF>Imp</color> Concealing", "<color=#FF0000FF>Imp</color> Killing",
-                "<color=#FF0000FF>Imp</color> Support", "Common <color=#FF0000FF>Imp</color>", "Random <color=#FF0000FF>Imp</color>",
-                "Non-<color=#FF0000FF>Imp</color>", "Any" }, 16);
+
+            UniqueCrewInvestRoles = new CustomToggleOption(num++, MultiMenu.main, "Unique Crew Investigatives", true);
+            UniqueCrewKillingRoles = new CustomToggleOption(num++, MultiMenu.main, "Unique Crew Killers", true);
+            UniqueCrewProtectRoles = new CustomToggleOption(num++, MultiMenu.main, "Unique Crew Protectives", true);
+            UniqueCrewUtilRoles = new CustomToggleOption(num++, MultiMenu.main, "Unique Crew Utility", true);
+            UniqueNeutBenignRoles = new CustomToggleOption(num++, MultiMenu.main, "Unique Neutral Benigns", true);
+            UniqueNeutEvilRoles = new CustomToggleOption(num++, MultiMenu.main, "Unique Neutral Evils", true);
+            UniqueNeutKillingRoles = new CustomToggleOption(num++, MultiMenu.main, "Unique Neutral Killers ", true);
+            UniqueImpRoles = new CustomToggleOption(num++, MultiMenu.main, "Unique Impostors", true);
+
+
+            Slot1 = new CustomStringOption(num++, MultiMenu.main, "Slot 1", roleBuckets.ToArray(), 21);
+            Slot2 = new CustomStringOption(num++, MultiMenu.main, "Slot 2", roleBuckets.ToArray(), 21);
+            Slot3 = new CustomStringOption(num++, MultiMenu.main, "Slot 3", roleBuckets.ToArray(), 21);
+            Slot4 = new CustomStringOption(num++, MultiMenu.main, "Slot 4", roleBuckets.ToArray(), 20);
+            Slot5 = new CustomStringOption(num++, MultiMenu.main, "Slot 5", roleBuckets.ToArray(), 21);
+            Slot6 = new CustomStringOption(num++, MultiMenu.main, "Slot 6", roleBuckets.ToArray(), 21);
+            Slot7 = new CustomStringOption(num++, MultiMenu.main, "Slot 7", roleBuckets.ToArray(), 21);
+            Slot8 = new CustomStringOption(num++, MultiMenu.main, "Slot 8", roleBuckets.ToArray(), 21);
+            Slot9 = new CustomStringOption(num++, MultiMenu.main, "Slot 9", roleBuckets.ToArray(), 20);
+            Slot10 = new CustomStringOption(num++, MultiMenu.main, "Slot 10", roleBuckets.ToArray(), 21);
+            Slot11 = new CustomStringOption(num++, MultiMenu.main, "Slot 11", roleBuckets.ToArray(), 21);
+            Slot12 = new CustomStringOption(num++, MultiMenu.main, "Slot 12", roleBuckets.ToArray(), 21);
+            Slot13 = new CustomStringOption(num++, MultiMenu.main, "Slot 13", roleBuckets.ToArray(), 21);
+            Slot14 = new CustomStringOption(num++, MultiMenu.main, "Slot 14", roleBuckets.ToArray(), 20);
+            Slot15 = new CustomStringOption(num++, MultiMenu.main, "Slot 15", roleBuckets.ToArray(), 21);
 
             MapSettings = new CustomHeaderOption(num++, MultiMenu.main, "Map Settings");
                 RandomMapEnabled = new CustomToggleOption(num++, MultiMenu.main, "Choose Random Map", false);
@@ -934,11 +887,11 @@ namespace TownOfUsFusion.CustomOption
 
             CustomGameSettings =
                 new CustomHeaderOption(num++, MultiMenu.main, "Custom Game Settings");
-                ColourblindComms = new CustomToggleOption(num++, MultiMenu.main, "Camouflaged Comms", false);
-                CamoCommsKillAnyone = new CustomToggleOption(num++, MultiMenu.main, "Kill Anyone During Camouflaged Comms", false);
-                ImpostorSeeRoles = new CustomToggleOption(num++, MultiMenu.main, "Impostors Can See The Roles Of Their Team", false);
+                ColourblindComms = new CustomToggleOption(num++, MultiMenu.main, "Camouflaged Comms", true);
+                CamoCommsKillAnyone = new CustomToggleOption(num++, MultiMenu.main, "Kill Anyone During Camouflaged Comms", true);
+                ImpostorSeeRoles = new CustomToggleOption(num++, MultiMenu.main, "Impostors Can See The Roles Of Their Team", true);
                 DeadSeeRoles =
-                    new CustomToggleOption(num++, MultiMenu.main, "Dead Can See Everyone's Roles/Votes", false);
+                    new CustomToggleOption(num++, MultiMenu.main, "Dead Can See Everyone's Roles/Votes", true);
                 InitialCooldowns =
                     new CustomNumberOption(num++, MultiMenu.main, "Game Start Cooldowns", 10f, 10f, 30f, 2.5f, CooldownFormat);
                 ParallelMedScans = new CustomToggleOption(num++, MultiMenu.main, "Parallel Medbay Scans", false);
@@ -951,7 +904,7 @@ namespace TownOfUsFusion.CustomOption
             TaskTrackingSettings =
                 new CustomHeaderOption(num++, MultiMenu.main, "Task Tracking Settings");
                 SeeTasksDuringRound = new CustomToggleOption(num++, MultiMenu.main, "See Tasks During Round", false);
-                SeeTasksDuringMeeting = new CustomToggleOption(num++, MultiMenu.main, "See Tasks During Meetings", false);
+                SeeTasksDuringMeeting = new CustomToggleOption(num++, MultiMenu.main, "See Tasks During Meetings", true);
                 SeeTasksWhenDead = new CustomToggleOption(num++, MultiMenu.main, "See Tasks When Dead", true);
 
             Assassin = new CustomHeaderOption(num++, MultiMenu.imposter, "<color=#FF0000FF>Assassin Ability</color>");
