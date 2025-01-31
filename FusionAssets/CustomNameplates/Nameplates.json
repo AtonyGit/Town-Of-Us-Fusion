@@ -1,7 +1,12 @@
 [
   {
-    "id": "fusionplate-galaxy",
+    "id": "nameplate_galaxy",
     "name": "Ominous Void",
+    "artist": "Atony"
+  },
+  {
+    "id": "nameplate_submerged",
+    "name": "Submerged With Pufferfish",
     "artist": "Atony"
   }
 ]

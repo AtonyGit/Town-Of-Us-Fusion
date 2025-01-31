@@ -12,20 +12,20 @@
     "artist": "Forward Pals"
   },
   {
-    "id": "kraz-mask1",
+    "id": "kraz_mask1",
     "infront": true,
     "name": "Kraz Mask",
     "artist": "Forward Pals"
   },
   {
-    "id": "kraz-mask0",
+    "id": "kraz_mask0",
     "infront": true,
     "name": "Kraz Mask (No Eyes)",
     "artist": "Forward Pals"
   },
   {
     "id": "gz",
-    "flipid": "gz-flipped",
+    "flipid": "gz_flipped",
     "infront": true,
     "name": "Gamerzone Visor",
     "artist": "Forward Pals"
@@ -63,13 +63,13 @@
   },
 
   {
-    "id": "laff-mask",
+    "id": "laff_mask",
     "infront": true,
     "name": "LaffenGas",
     "artist": "Socks Crew"
   },
   {
-    "id": "l4ff-mask",
+    "id": "l4ff_mask",
     "infront": true,
     "name": "L4FF",
     "artist": "Socks Crew"
@@ -106,13 +106,13 @@
     "artist": "Expressions"
   },
   {
-    "id": "eyeglare-red",
+    "id": "eyeglare_red",
     "infront": true,
     "name": "Eyeglare (Red)",
     "artist": "Misc"
   },
   {
-    "id": "eyeglare-yellow",
+    "id": "eyeglare_yellow",
     "infront": true,
     "name": "Eyeglare (Yellow)",
     "artist": "Misc"
