@@ -2,13 +2,13 @@
   {
     "id": "ares",
     "infront": true,
-    "name": "Areseem's Shades",
+    "name": "Areseem Shades",
     "artist": "Forward Pals"
   },
   {
     "id": "crafter",
     "infront": true,
-    "name": "Crafter's Visor",
+    "name": "Crafter Visor",
     "artist": "Forward Pals"
   },
   {
@@ -51,14 +51,14 @@
   {
     "id": "mez",
     "infront": true,
-    "name": "Mez's Mask",
+    "name": "Mez Mask",
     "artist": "Backwarders"
   },
 
   {
     "id": "xaviar",
     "infront": true,
-    "name": "Xaviar's Visor",
+    "name": "Xaviar Visor",
     "artist": "TinkR Crew"
   },
 
