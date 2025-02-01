@@ -15,7 +15,7 @@ namespace TownOfUsFusion.Roles
             AddToRoleHistory(RoleType);
             ImpostorText = () => "";
             TaskText = () => "Kill everyone with your unstoppable abilities!\nFake Tasks:";
-            Faction = Faction.NeutralKilling;
+            Faction = Faction.NeutralApocalypse;
         }
 
         public PlayerControl ClosestPlayer;

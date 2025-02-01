@@ -4,10 +4,13 @@ namespace TownOfUsFusion
     {
         Alive,
         Ejected,
+        Prosecuted,
         Guessed,
         Killed,
         Executed,
         Burned,
+        Shot,
+        Retribution,
         Unleashed,
         Poisoned,
         Bitten,

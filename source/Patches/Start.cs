@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using HarmonyLib;
 using Hazel;
 using TownOfUsFusion.NeutralRoles.ExecutionerMod;
@@ -15,10 +16,12 @@ namespace TownOfUsFusion.Patches
     public static class Start
     {
         public static Sprite Sprite => TownOfUsFusion.Arrow;
+        public static List<PlayerControl> StartingPlayersList = new List<PlayerControl>();
         public static void Postfix(IntroCutscene._CoBegin_d__35 __instance)
         {
             foreach (var player in PlayerControl.AllPlayerControls)
             {
+                StartingPlayersList.Add(player);
                 if (player.Is(ModifierEnum.Mini) && player.transform.localPosition.y > 4 && GameOptionsManager.Instance.currentNormalGameOptions.MapId == 1)
                 {
                     player.transform.localPosition = new Vector3(player.transform.localPosition.x, 4f, player.transform.localPosition.z);

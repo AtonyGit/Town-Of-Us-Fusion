@@ -15,7 +15,7 @@ namespace TownOfUsFusion.Roles
             AddToRoleHistory(RoleType);
             ImpostorText = () => "Your Power Grows With Every Kill";
             TaskText = () => "With each kill your kill cooldown decreases\nFake Tasks:";
-            Faction = Faction.NeutralKilling;
+            Faction = Faction.NeutralApocalypse;
         }
 
         public PlayerControl ClosestPlayer;

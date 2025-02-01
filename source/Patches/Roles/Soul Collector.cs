@@ -29,7 +29,7 @@ namespace TownOfUsFusion.Roles
             LastReaped = DateTime.UtcNow;
             RoleType = RoleEnum.SoulCollector;
             AddToRoleHistory(RoleType);
-            Faction = Faction.NeutralEvil;
+            Faction = Faction.NeutralApocalypse;
         }
 
         public KillButton ReapButton

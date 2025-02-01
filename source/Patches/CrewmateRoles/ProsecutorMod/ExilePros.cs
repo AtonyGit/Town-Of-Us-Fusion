@@ -31,6 +31,11 @@ namespace TownOfUsFusion.CrewmateRoles.ProsecutorMod
                         pros.Player.Exiled();
                         pros.DeathReason = DeathReasonEnum.Suicide;
                     }
+
+                    var role2 = Role.GetRole(exiled);
+                    role2.DeathReason = DeathReasonEnum.Prosecuted;
+                    role2.KilledBy = " By " + Utils.ColorString(Colors.Prosecutor, pros.PlayerName);
+
                     pros.ProsecuteThisMeeting = false;
                     pros.HasProsecuted = true;
                 }

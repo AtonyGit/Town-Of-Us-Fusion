@@ -125,7 +125,7 @@ namespace TownOfUsFusion.CrewmateRoles.HunterMod
 
             var role2 = Role.GetRole(player);
             var killerPlayer = Role.GetRole<Hunter>(player);
-            role2.DeathReason = DeathReasonEnum.TakenDown;
+            role2.DeathReason = DeathReasonEnum.Retribution;
             role2.KilledBy = " By " + Utils.ColorString(Colors.Hunter, killerPlayer.PlayerName);
 
 

@@ -647,7 +647,7 @@ namespace TownOfUsFusion.Roles
                                 PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Tracker);
                                 break;
                                 case Altruist:
-                                //case Bodyguard:
+                                case Bodyguard:
                                 case Medic:
                                 //case MirrorMaster:
                                 case Oracle:
@@ -740,7 +740,7 @@ namespace TownOfUsFusion.Roles
                                 PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Tracker);
                                 break;
                                 case Altruist:
-                                //case Bodyguard:
+                                case Bodyguard:
                                 case Medic:
                                 //case MirrorMaster:
                                 case Oracle:
@@ -845,7 +845,7 @@ namespace TownOfUsFusion.Roles
                                 PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Tracker);
                                 break;
                                 case Altruist:
-                                //case Bodyguard:
+                                case Bodyguard:
                                 case Medic:
                                 //case MirrorMaster:
                                 case Oracle:

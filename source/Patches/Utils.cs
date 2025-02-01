@@ -1653,6 +1653,10 @@ public static string DeathReason(this PlayerControl player)
                 die = "Alive";
             else if (role.DeathReason == DeathReasonEnum.Suicide)
                 die = "Suicide";
+            else if (role.DeathReason == DeathReasonEnum.Retribution)
+                die = "Punished";
+            else if (role.DeathReason == DeathReasonEnum.Shot)
+                die = "Shot";
             else if (role.DeathReason == DeathReasonEnum.Disconnected)
                 die = "Left";
 
