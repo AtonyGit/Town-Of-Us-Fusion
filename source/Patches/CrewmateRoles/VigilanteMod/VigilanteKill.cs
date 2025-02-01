@@ -184,6 +184,11 @@ namespace TownOfUsFusion.CrewmateRoles.VigilanteMod
                 var otherLover = Alliance.GetAlliance<Lover>(player).OtherLover.Player;
                 if (!otherLover.Is(RoleEnum.Pestilence)) MurderPlayer(otherLover, false);
             }
+            var role2 = Role.GetRole(player);
+            var killerPlayer = Role.GetRole<Vigilante>(player);
+            role2.DeathReason = DeathReasonEnum.Guessed;
+            role2.KilledBy = " By " + Utils.ColorString(Colors.Vigilante, killerPlayer.PlayerName);
+
 
             var deadPlayer = new DeadPlayer
             {

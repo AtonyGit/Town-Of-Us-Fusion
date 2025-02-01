@@ -39,6 +39,9 @@ namespace TownOfUsFusion.Patches
                     Utils.Rpc(CustomRPC.SetTraitor, pc.PlayerId);
                 }
             }
+            
+            var playerRole = Role.GetRole(player);
+            if (player.Data.Disconnected) playerRole.DeathReason = DeathReasonEnum.Disconnected;
             if (player.Is(RoleEnum.Hypnotist))
             {
                 var hypno = Role.GetRole<Hypnotist>(player);

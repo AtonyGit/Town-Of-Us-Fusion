@@ -123,6 +123,12 @@ namespace TownOfUsFusion.CrewmateRoles.HunterMod
                 if (!otherLover.Is(RoleEnum.Pestilence)) MurderPlayer(otherLover, false);
             }
 
+            var role2 = Role.GetRole(player);
+            var killerPlayer = Role.GetRole<Hunter>(player);
+            role2.DeathReason = DeathReasonEnum.TakenDown;
+            role2.KilledBy = " By " + Utils.ColorString(Colors.Hunter, killerPlayer.PlayerName);
+
+
             var deadPlayer = new DeadPlayer
             {
                 PlayerId = player.PlayerId,

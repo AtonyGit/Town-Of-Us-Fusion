@@ -229,6 +229,12 @@ namespace TownOfUsFusion.CrewmateRoles.DeputyMod
                 var otherLover = Alliance.GetAlliance<Lover>(player).OtherLover.Player;
                 if (!otherLover.Is(RoleEnum.Pestilence)) Shoot(deputy, otherLover, false);
             }
+            
+            var role2 = Role.GetRole(player);
+            var killerPlayer = Role.GetRole<Deputy>(player);
+            role2.DeathReason = DeathReasonEnum.Shot;
+            role2.KilledBy = " By " + Utils.ColorString(Colors.Deputy, killerPlayer.PlayerName);
+
 
             var deadPlayer = new DeadPlayer
             {

@@ -941,6 +941,8 @@ namespace TownOfUsFusion
         public static void MurderPlayer(PlayerControl killer, PlayerControl target, bool jumpToBody)
         {
             var data = target.Data;
+            var targetRole = Role.GetRole(target);
+            var killerRole = Role.GetRole(killer);
             if (data != null && !data.IsDead)
             {
                 if (ShowRoundOneShield.DiedFirst == "") ShowRoundOneShield.DiedFirst = target.GetDefaultOutfit().PlayerName;
@@ -1157,6 +1159,22 @@ namespace TownOfUsFusion
                 else killer.MyPhysics.StartCoroutine(killer.KillAnimations.Random().CoPerformKill(target, target));
 
                 if (PlayerControl.LocalPlayer == target) killer.CurrentOutfitType = (PlayerOutfitType)currentOutfitType;
+
+                if (killer != target)
+                    {
+                        if(killer.Is(RoleEnum.Jackal) || killer.Is(AllianceEnum.Recruit)) targetRole.KilledBy = " By " + GradientColorText("B7B9BA", "5E576B", killerRole.PlayerName);
+                        else targetRole.KilledBy = " By " + ColorString(killerRole.Color, killerRole.PlayerName);
+                        targetRole.DeathReason = DeathReasonEnum.Killed;
+                    }
+                else if (killer.Is(RoleEnum.Jailor)) targetRole.DeathReason = DeathReasonEnum.Executed;
+                else if (killer.Is(RoleEnum.Arsonist)) targetRole.DeathReason = DeathReasonEnum.Burned;
+                else if (killer.Is(RoleEnum.Bodyguard)) targetRole.DeathReason = DeathReasonEnum.Traded;
+                else if (killer.Is(RoleEnum.Vampire)) targetRole.DeathReason = DeathReasonEnum.Bitten;
+                else if (killer.Is(RoleEnum.Werewolf)) targetRole.DeathReason = DeathReasonEnum.Mauled;
+                else if (killer.Is(RoleEnum.SerialKiller)) targetRole.DeathReason = DeathReasonEnum.Rampaged;
+                else if (killer.Is(RoleEnum.MirrorMaster)) targetRole.DeathReason = DeathReasonEnum.Unleashed;
+                //else if (killer == target && killer.Is(RoleEnum.Inquisitor)) targetRole.DeathReason = DeathReasonEnum.Disconnected;
+                else targetRole.DeathReason = DeathReasonEnum.Suicide;
 
                 if (target.Is(ModifierEnum.Frosty))
                 {
@@ -1597,7 +1615,55 @@ namespace TownOfUsFusion
                 }
             }
         }
+public static string DeathReason(this PlayerControl player)
+        {
+            if (player == null)
+                return "";
 
+            var role = Role.GetRole(player);
+
+            if (role == null)
+                return " Null";
+
+            var die = "";
+            var killedBy = "";
+            var result = "";
+
+            if (role.DeathReason == DeathReasonEnum.Killed)
+                die = "Killed";
+            else if (role.DeathReason == DeathReasonEnum.Ejected)
+                die = "Ejected";
+            else if (role.DeathReason == DeathReasonEnum.Executed)
+                die = "Executed";
+            else if (role.DeathReason == DeathReasonEnum.Burned)
+                die = "Burned";
+            else if (role.DeathReason == DeathReasonEnum.Traded)
+                die = "Traded";
+            else if (role.DeathReason == DeathReasonEnum.Mauled)
+                die = "Mauled";
+            else if (role.DeathReason == DeathReasonEnum.Bitten)
+                die = "Bit";
+            else if (role.DeathReason == DeathReasonEnum.Rampaged)
+                die = "Rampaged";
+            else if (role.DeathReason == DeathReasonEnum.Unleashed)
+                die = "Unleashed";
+            else if (role.DeathReason == DeathReasonEnum.Guessed)
+                die = "Guessed";
+            else if (role.DeathReason == DeathReasonEnum.Alive)
+                die = "Alive";
+            else if (role.DeathReason == DeathReasonEnum.Suicide)
+                die = "Suicide";
+            else if (role.DeathReason == DeathReasonEnum.Disconnected)
+                die = "Left";
+
+            if (role.DeathReason != DeathReasonEnum.Alive && role.DeathReason != DeathReasonEnum.Ejected
+            && role.DeathReason != DeathReasonEnum.Suicide && role.DeathReason != DeathReasonEnum.Disconnected)
+                killedBy = role.KilledBy;
+
+            result = die + killedBy;
+
+            return result;
+        }
         //Submerged utils
         public static object TryCast(this Il2CppObjectBase self, Type type)
         {

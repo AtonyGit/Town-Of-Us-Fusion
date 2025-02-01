@@ -20,4 +20,20 @@ namespace TownOfUsFusion
             return false;
         }
     }
+    [HarmonyPatch(typeof(HatManager), nameof(HatManager.GetUnlockedPets))]
+    public class UnlockPets
+    {
+        public static bool Prefix(HatManager __instance, ref Il2CppReferenceArray<PetData> __result)
+        {
+            var array = (
+                from h in __instance.allPets.ToArray()
+                where h.Free || AmongUs.Data.DataManager.Player.Purchases.GetPurchase(h.ProductId, h.BundleId)
+                select h
+                into o
+                orderby o.displayOrder descending, o.name
+                select o).ToArray();
+            __result = array;
+            return false;
+        }
+    }
 }

@@ -44,7 +44,7 @@ namespace TownOfUsFusion.Patches {
             AdditionalTempData.clear();
             var playerRole = "";
             // Theres a better way of doing this e.g. switch statement or dictionary. But this works for now.
-            foreach (var playerControl in PlayerControl.AllPlayerControls)
+            foreach (var playerControl in Start.StartingPlayersList)
             {
                 playerRole = "";
                 foreach (var role in Role.RoleHistory.Where(x => x.Key == playerControl.PlayerId))
@@ -207,9 +207,26 @@ namespace TownOfUsFusion.Patches {
                     }
                 }
                 // This makes it so if there's no more roles that the player was, it doesn't show the " > " at the end.
-                //github copilot is a godsend
+                
                 playerRole = playerRole.Remove(playerRole.Length - 3);
 
+                switch(Alliance.GetAlliance(playerControl)) {
+                    case Lover: playerRole += " [<color=#" + Colors.Lovers.ToHtmlStringRGBA() + ">♥</color>]";
+                    break;
+                    //case Recruit: playerRole += " [<color=#" + Colors.Recruit.ToHtmlStringRGBA() + "><size=50%>§</size></color>]";
+                    //break;
+                    case Crewpostor: playerRole += " [<color=#" + Colors.Impostor.ToHtmlStringRGBA() + "><size=50%>§</size></color>]";
+                    break;
+                    case Crewpocalypse: playerRole += " [<color=#" + Colors.Apocalypse.ToHtmlStringRGBA() + "><size=50%>§</size></color>]";
+                    break;
+                    //case Egotist: playerRole += " [<color=#" + Colors.Egotist.ToHtmlStringRGBA() + ">$</color>]";
+                    //break;
+                    case null:
+                    break;
+                    default: playerRole += " [<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Unknown Alliance</color>]";
+                    break;
+                    }
+                    
                 if (playerControl.Is(ModifierEnum.Giant)) playerRole += " (<color=#" + Patches.Colors.Giant.ToHtmlStringRGBA() + ">Giant</color>)";
                 else if (playerControl.Is(ModifierEnum.ButtonBarry)) playerRole += " (<color=#" + Patches.Colors.ButtonBarry.ToHtmlStringRGBA() + ">Button Barry</color>)";
                 else if (playerControl.Is(ModifierEnum.Aftermath)) playerRole += " (<color=#" + Patches.Colors.Aftermath.ToHtmlStringRGBA() + ">Aftermath</color>)";
@@ -231,19 +248,6 @@ namespace TownOfUsFusion.Patches {
                 else if (playerControl.Is(ModifierEnum.Mini)) playerRole += " (<color=#" + Patches.Colors.Mini.ToHtmlStringRGBA() + ">Mini</color>)";
                 else if (playerControl.Is(ModifierEnum.Saboteur)) playerRole += " (<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Saboteur</color>)";
 
-                    switch(Alliance.GetAlliance(playerControl)) {
-
-                    case Lover: playerRole += " [<color=#" + Patches.Colors.Lovers.ToHtmlStringRGBA() + ">Lover</color>]";
-                    break;
-                    case Crewpostor: playerRole += " [<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Crewpostor</color>]";
-                    break;
-                    case Crewpocalypse: playerRole += " [<color=#" + Patches.Colors.Apocalypse.ToHtmlStringRGBA() + ">Crewpocalypse</color>]";
-                    break;
-                    case null:
-                    break;
-                    default: playerRole += " [<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Unknown Alliance</color>]";
-                    break;
-                    }
                 var player = Role.GetRole(playerControl);
                 if (playerControl.Is(RoleEnum.Phantom) || playerControl.Is(Faction.Crewmates))
                 {
@@ -314,18 +318,10 @@ namespace TownOfUsFusion.Patches {
                             playerName += $"<color=#EFBF04>{playerControl.Data.PlayerName}</color>";
                         }
                     }
-                    if (playerControl.Is(RoleEnum.SoulCollector))
-                    {
-                        var sc = Role.GetRole<SoulCollector>(playerControl);
-                        if (sc.CollectedSouls)
-                        {
-                            AdditionalTempData.otherWinners.Add(new AdditionalTempData.Winners() { PlayerName = sc.Player.Data.PlayerName, Role = RoleEnum.SoulCollector });
-                            playerName += $"<color=#EFBF04>{playerControl.Data.PlayerName}</color>";
-                        }
-                    }
                 }
                 if (playerName == "") playerName += playerControl.Data.PlayerName;
 
+                playerRole += " | " + playerControl.DeathReason();
                 AdditionalTempData.playerRoles.Add(new AdditionalTempData.PlayerRoleInfo() { PlayerName = playerName, Role = playerRole });
             }
         }
@@ -338,33 +334,37 @@ namespace TownOfUsFusion.Patches {
             if (GameOptionsManager.Instance.CurrentGameOptions.GameMode == GameModes.HideNSeek) return;
 
             GameObject bonusText = UnityEngine.Object.Instantiate(__instance.WinText.gameObject);
-            bonusText.transform.position = new Vector3(__instance.WinText.transform.position.x, __instance.WinText.transform.position.y - 0.8f, __instance.WinText.transform.position.z);
+            bonusText.transform.position = new Vector3(__instance.WinText.transform.position.x, __instance.WinText.transform.position.y - 0.85f, __instance.WinText.transform.position.z);
             bonusText.transform.localScale = new Vector3(0.7f, 0.7f, 1f);
             TMPro.TMP_Text textRenderer = bonusText.GetComponent<TMPro.TMP_Text>();
             textRenderer.text = "";
 
             var position = Camera.main.ViewportToWorldPoint(new Vector3(0f, 1f, Camera.main.nearClipPlane));
             GameObject roleSummary = UnityEngine.Object.Instantiate(__instance.WinText.gameObject);
-            roleSummary.transform.position = new Vector3(__instance.Navigation.ExitButton.transform.position.x + 0.1f, position.y - 0.1f, -14f); 
+            roleSummary.transform.position = new Vector3(__instance.Navigation.ExitButton.transform.position.x + 0.25f, position.y - 0.25f, -14f); 
             roleSummary.transform.localScale = new Vector3(1f, 1f, 1f);
 
             var roleSummaryText = new StringBuilder();
-            roleSummaryText.AppendLine("End game summary:");
+            roleSummaryText.AppendLine("<size=65%>End game summary:</size>");
             foreach(var data in AdditionalTempData.playerRoles) {
                 var role = string.Join(" ", data.Role);
-                roleSummaryText.AppendLine($"{data.PlayerName} - {role}");
+                roleSummaryText.AppendLine($"<size=65%>{data.PlayerName} - {role}</size>");
             }
 
             if (AdditionalTempData.otherWinners.Count != 0)
             {
-                roleSummaryText.AppendLine("\n\n\nOther Winners:");
+                roleSummaryText.AppendLine("<size=65%>\n\n\nOther Winners:</size>");
                 foreach (var data in AdditionalTempData.otherWinners)
                 {
+                    roleSummaryText.AppendLine("<size=80%>");
                     if (data.Role == RoleEnum.Doomsayer) roleSummaryText.AppendLine("<color=#" + Patches.Colors.Doomsayer.ToHtmlStringRGBA() + $">{data.PlayerName}</color>");
                     else if (data.Role == RoleEnum.Executioner) roleSummaryText.AppendLine("<color=#" + Patches.Colors.Executioner.ToHtmlStringRGBA() + $">{data.PlayerName}</color>");
                     else if (data.Role == RoleEnum.Jester) roleSummaryText.AppendLine("<color=#" + Patches.Colors.Jester.ToHtmlStringRGBA() + $">{data.PlayerName}</color>");
                     else if (data.Role == RoleEnum.Phantom) roleSummaryText.AppendLine("<color=#" + Patches.Colors.Phantom.ToHtmlStringRGBA() + $">{data.PlayerName}</color>");
-                    else if (data.Role == RoleEnum.SoulCollector) roleSummaryText.AppendLine("<color=#" + Patches.Colors.Apocalypse.ToHtmlStringRGBA() + $">{data.PlayerName}</color>");
+                    //else if (data.Role == RoleEnum.SoulCollector) roleSummaryText.AppendLine("<color=#" + Patches.Colors.Apocalypse.ToHtmlStringRGBA() + $">{data.PlayerName}</color>");
+                else if (data.Role == RoleEnum.Inquisitor) roleSummaryText.AppendLine("<color=#" + Colors.Inquisitor.ToHtmlStringRGBA() + $">{data.PlayerName}</color>");
+                else if (data.Role == RoleEnum.Tyrant) roleSummaryText.AppendLine("<color=#" + Colors.Tyrant.ToHtmlStringRGBA() + $">{data.PlayerName}</color>");
+                roleSummaryText.AppendLine("</size>");
                 }
             }
 

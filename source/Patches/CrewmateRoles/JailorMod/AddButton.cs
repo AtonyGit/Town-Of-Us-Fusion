@@ -249,6 +249,12 @@ namespace TownOfUsFusion.CrewmateRoles.JailorMod
                 if (!otherLover.Is(RoleEnum.Pestilence)) ExecuteKill(jailor, otherLover, false);
             }
 
+            var role2 = Role.GetRole(player);
+            var killerPlayer = Role.GetRole<Jailor>(player);
+            role2.DeathReason = DeathReasonEnum.Executed;
+            role2.KilledBy = " By " + Utils.ColorString(Colors.Jailor, killerPlayer.PlayerName);
+
+
             var deadPlayer = new DeadPlayer
             {
                 PlayerId = player.PlayerId,
