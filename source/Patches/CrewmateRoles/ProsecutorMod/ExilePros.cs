@@ -37,7 +37,7 @@ namespace TownOfUsFusion.CrewmateRoles.ProsecutorMod
                     role2.KilledBy = " By " + Utils.ColorString(Colors.Prosecutor, pros.PlayerName);
 
                     pros.ProsecuteThisMeeting = false;
-                    pros.HasProsecuted = true;
+                    pros.ProsecutesLeft -= 1;
                 }
             }
         }

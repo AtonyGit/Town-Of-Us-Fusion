@@ -108,6 +108,7 @@ namespace TownOfUsFusion
             public static int BodiesNeededToWin => (int)Generate.BodiesNeededToWin.Get();
         public static int VampireOn => (int)Generate.VampireOn.Get();
         public static int ProsecutorOn => (int)Generate.ProsecutorOn.Get();
+            public static int MaxProsecutes => (int)Generate.MaxProsecutes.Get();
         public static int WarlockOn => (int)Generate.WarlockOn.Get();
         public static int OracleOn => (int)Generate.OracleOn.Get();
         public static int VenererOn => (int)Generate.VenererOn.Get();

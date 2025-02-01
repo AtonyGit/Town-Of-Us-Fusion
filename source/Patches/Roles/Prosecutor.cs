@@ -9,18 +9,20 @@ namespace TownOfUsFusion.Roles
         {
             Name = "Prosecutor";
             ImpostorText = () => "Exile One Person Of Your Choosing";
-            TaskText = () => "Choose to exile anyone you want";
+            //TaskText = () => "Choose to exile anyone you want";
+            TaskText = () => $"Choose to exile {(ProsecutesLeft == 1 ? "one last time!" : $"{ProsecutesLeft} people in total!")}";
             Color = Patches.Colors.Prosecutor;
             RoleType = RoleEnum.Prosecutor;
             AddToRoleHistory(RoleType);
             StartProsecute = false;
             Prosecuted = false;
-            HasProsecuted = false;
             ProsecuteThisMeeting = false;
+            ProsecutesLeft = CustomGameOptions.MaxProsecutes;
         }
+        public int ProsecutesLeft;
         public bool ProsecuteThisMeeting { get; set; }
         public bool Prosecuted { get; set; }
-        public bool HasProsecuted { get; set; }
+        public bool HasProsecuted => ProsecutesLeft != 0;
         public bool StartProsecute { get; set; }
         public PlayerVoteArea Prosecute { get; set; }
 

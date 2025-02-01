@@ -532,6 +532,7 @@ namespace TownOfUsFusion.CustomOption
 
         public static CustomHeaderOption Prosecutor;
         public static CustomToggleOption ProsDiesOnIncorrectPros;
+        public static CustomNumberOption MaxProsecutes;
 
         public static CustomHeaderOption Warlock;
         public static CustomNumberOption ChargeUpDuration;
@@ -1096,15 +1097,15 @@ namespace TownOfUsFusion.CustomOption
                 AltruistTargetBody =
                     new CustomToggleOption(num++, MultiMenu.crewmate, "Target's Body Disappears On Beginning Of Revive", false);
             Bodyguard =
-                new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#80D3ABFF>Bodyguard</color>");
+                new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#80D3ABFF>Bodyguard</color>");
                 GuardCd =
-                    new CustomNumberOption(num++, MultiMenu.neutral, "Guard Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
+                    new CustomNumberOption(num++, MultiMenu.crewmate, "Guard Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
                 GuardDuration =
-                    new CustomNumberOption(num++, MultiMenu.neutral, "Guard Duration", 10f, 5f, 15f, 1f, CooldownFormat);
+                    new CustomNumberOption(num++, MultiMenu.crewmate, "Guard Duration", 10f, 5f, 15f, 1f, CooldownFormat);
                 MaxGuards =
-                    new CustomNumberOption(num++, MultiMenu.neutral, "Maximum Number Of Guards", 5, 1, 15, 1);
+                    new CustomNumberOption(num++, MultiMenu.crewmate, "Maximum Number Of Guards", 5, 1, 15, 1);
                 ShowGuarding =
-                    new CustomStringOption(num++, MultiMenu.neutral, "Show Guarded Player",
+                    new CustomStringOption(num++, MultiMenu.crewmate, "Show Guarded Player",
                         new[] { "Self", "Bodyguard", "Self+BG", "Everyone" });
             Medic =
                 new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#006600FF>Medic</color>");
@@ -1144,6 +1145,8 @@ namespace TownOfUsFusion.CustomOption
                 new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#B38000FF>Prosecutor</color>");
                 ProsDiesOnIncorrectPros =
                     new CustomToggleOption(num++, MultiMenu.crewmate, "Prosecutor Dies When They Exile A Crewmate", false);
+            MaxProsecutes =
+                    new CustomNumberOption(num++, MultiMenu.crewmate, "Maximum Number Of Prosecutes", 2, 1, 3, 1);
             Swapper =
                 new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#66E666FF>Swapper</color>");
                 SwapperButton =
