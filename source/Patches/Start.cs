@@ -287,6 +287,12 @@ namespace TownOfUsFusion.Patches
                 sk.LastKill = sk.LastKill.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.SkKillCooldown);
             }
 
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Prosecutor))
+            {
+                var pros = Role.GetRole<Prosecutor>(PlayerControl.LocalPlayer);
+                pros.RegenTask();
+            }
+
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Plaguebearer))
             {
                 var plaguebearer = Role.GetRole<Plaguebearer>(PlayerControl.LocalPlayer);

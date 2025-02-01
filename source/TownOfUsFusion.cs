@@ -37,7 +37,7 @@ namespace TownOfUsFusion
         public static System.Version Version = System.Version.Parse(VersionString);
         public const string VersionTag = "<color=#ff33fc></color>";
         public const bool isDevBuild = true;
-        public const string DevBuildVersion = "2";
+        public const string DevBuildVersion = "3";
 
         public static readonly string DataPath = Path.GetDirectoryName(Application.dataPath);
         public static readonly string Assets = Path.Combine(DataPath, "FusionAssets");

@@ -23,6 +23,7 @@ namespace TownOfUsFusion.Patches
         public readonly static Color Trapper = new Color(0.65f, 0.82f, 0.7f, 1f);
         public readonly static Color Imitator = new Color(0.7f, 0.85f, 0.3f, 1f);
         public readonly static Color Prosecutor = new Color(0.7f, 0.5f, 0f, 1f);
+        public readonly static Color Captain = new Color(0.76f, 0.89f, 0.93f, 1f);
         public readonly static Color Oracle = new Color(0.75f, 0f, 0.75f, 1f);
         public readonly static Color Aurial = new Color(0.7f, 0.3f, 0.6f, 1f);
         public readonly static Color Hunter = new Color(0.16f, 0.67f, 0.53f, 1f);

@@ -395,6 +395,11 @@ namespace TownOfUsFusion
                 var pros = Role.GetRole<Prosecutor>(player);
                 if (!pros.HasProsecuted) return true;
             }
+            else if (player.Is(RoleEnum.Captain))
+            {
+                var cap = Role.GetRole<Captain>(player);
+                if (!cap.HasTribunaled) return true;
+            }
             else if (player.Is(RoleEnum.Veteran))
             {
                 var vet = Role.GetRole<Veteran>(player);
@@ -1686,17 +1691,19 @@ public static string DeathReason(this PlayerControl player)
             {
                 var medium = Role.GetRole<Medium>(PlayerControl.LocalPlayer);
                 medium.LastMediated = DateTime.UtcNow;
-            }
-            foreach (var role in Role.GetRoles(RoleEnum.Medium))
-            {
-                var medium = (Medium)role;
                 medium.MediatedPlayers.Values.DestroyAll();
                 medium.MediatedPlayers.Clear();
+            }
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Prosecutor))
+            {
+                var pros = Role.GetRole<Prosecutor>(PlayerControl.LocalPlayer);
+                pros.RegenTask();
             }
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Psychic))
             {
                 var psychic = Role.GetRole<Psychic>(PlayerControl.LocalPlayer);
                 psychic.LastInvestigated = DateTime.UtcNow;
+                psychic.Confessor = null;
             }
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Oracle))
             {

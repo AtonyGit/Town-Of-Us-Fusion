@@ -1797,7 +1797,7 @@ namespace TownOfUsFusion
                     CrewmateInvestigativeRoles.Add((typeof(Aurial), CustomGameOptions.AurialOn, false || CustomGameOptions.UniqueCrewInvestRoles));
 
                 if (CustomGameOptions.JailorOn > 0)
-                    CrewmateKillingRoles.Add((typeof(Jailor), CustomGameOptions.JailorOn, true));
+                    CrewmateSovereignRoles.Add((typeof(Jailor), CustomGameOptions.JailorOn, true));
 
                 if (CustomGameOptions.LookoutOn > 0)
                     CrewmateInvestigativeRoles.Add((typeof(Lookout), CustomGameOptions.LookoutOn, false || CustomGameOptions.UniqueCrewInvestRoles));

@@ -732,7 +732,7 @@ namespace TownOfUsFusion.Patches
                         "The Soul Collector is a neutral apocalypse role with the goal to collect souls. In order to obtain them they must reap players, once those players die they can pick their soul up off the ground.");
                     break;
                     case RoleEnum.Lookout: DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
-                        PlayerControl.LocalPlayer, "The Lookout is a crewmate who can watch other players. They will see all players who interact with each player they watch.");
+                        PlayerControl.LocalPlayer, "The Lookout is a crewmate who can watch other players. They will see all players who interact with each player they watch, as well as expand their eyesight with their Eagle Eye ability.");
                     break;
                     case RoleEnum.SerialKiller: DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,
                         "The Serial Killer is an neutral killer who must hunt down prey. Once their kill cooldown is up they are given a target to kill and begin their hunt. If they kill that target they get a reduced kill cooldown and regenerate their bloodlust duration. If they don't kill their target they are given an increased kill cooldown.");

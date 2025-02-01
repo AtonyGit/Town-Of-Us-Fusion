@@ -45,7 +45,6 @@ namespace TownOfUsFusion.CustomOption
         public static CustomHeaderOption CrewKillingRoles;
         public static CustomNumberOption DeputyOn;
         public static CustomNumberOption HunterOn;
-        public static CustomNumberOption JailorOn;
         public static CustomNumberOption SheriffOn;
         public static CustomNumberOption VeteranOn;
         public static CustomNumberOption VigilanteOn;
@@ -57,6 +56,8 @@ namespace TownOfUsFusion.CustomOption
         public static CustomNumberOption OracleOn;
 
         public static CustomHeaderOption CrewSovereignRoles;
+        public static CustomNumberOption CaptainOn;
+        public static CustomNumberOption JailorOn;
         public static CustomNumberOption PoliticianOn;
         public static CustomNumberOption ProsecutorOn;
         public static CustomNumberOption SwapperOn;
@@ -530,6 +531,9 @@ namespace TownOfUsFusion.CustomOption
         public static CustomToggleOption CanBiteNeutralEvil;
         public static CustomToggleOption CanBiteNeutralChaos;
 
+        public static CustomHeaderOption Captain;
+        public static CustomNumberOption MaxTribunals;
+
         public static CustomHeaderOption Prosecutor;
         public static CustomToggleOption ProsDiesOnIncorrectPros;
         public static CustomNumberOption MaxProsecutes;
@@ -657,8 +661,6 @@ namespace TownOfUsFusion.CustomOption
                     PercentFormat);
                 HunterOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#29AB87FF>Hunter</color>", 0f, 0f, 100f, 10f,
                     PercentFormat);
-                JailorOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#A6A6A6FF>Jailor</color>", 0f, 0f, 100f, 10f,
-                    PercentFormat);
                 SheriffOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#FFFF00FF>Sheriff</color>", 0f, 0f, 100f, 10f,
                     PercentFormat);
                 VeteranOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#998040FF>Veteran</color>", 0f, 0f, 100f, 10f,
@@ -677,6 +679,10 @@ namespace TownOfUsFusion.CustomOption
                     PercentFormat);
 
             CrewSovereignRoles = new CustomHeaderOption(num++, MultiMenu.crewmate, "Crewmate Sovereign Roles");
+                CaptainOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#C3E2EDFF>Captain</color>", 0f, 0f, 100f, 10f,
+                    PercentFormat);
+                JailorOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#A6A6A6FF>Jailor</color>", 0f, 0f, 100f, 10f,
+                    PercentFormat);
                 PoliticianOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#660099FF>Politician</color>", 0f, 0f, 100f, 10f,
                     PercentFormat);
                 ProsecutorOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#B38000FF>Prosecutor</color>", 0f, 0f, 100f, 10f,
@@ -960,12 +966,12 @@ namespace TownOfUsFusion.CustomOption
                 WatchCooldown =
                     new CustomNumberOption(num++, MultiMenu.crewmate, "Watch Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
                 PerceptCd =
-                    new CustomNumberOption(num++, MultiMenu.crewmate, "Percept Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
+                    new CustomNumberOption(num++, MultiMenu.crewmate, "Eagle Eye Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
                 PerceptDuration =
-                    new CustomNumberOption(num++, MultiMenu.crewmate, "Percept Duration", 10f, 5f, 60f, 2.5f, CooldownFormat);
+                    new CustomNumberOption(num++, MultiMenu.crewmate, "Eagle Eye Duration", 10f, 5f, 60f, 2.5f, CooldownFormat);
                 LoResetOnNewRound = new CustomToggleOption(num++, MultiMenu.crewmate, "Lookout Watches Reset After Each Round", true);
                 MaxWatches = new CustomNumberOption(num++, MultiMenu.crewmate, "Maximum Number Of Players That Can Be Watched", 5, 1, 15, 1);
-                MaxPercepts = new CustomNumberOption(num++, MultiMenu.crewmate, "Maximum Number Of Percept Uses", 5, 1, 20, 1);
+                MaxPercepts = new CustomNumberOption(num++, MultiMenu.crewmate, "Maximum Number Of Eagle Eye Uses", 5, 1, 20, 1);
             Medium =
                 new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#A680FFFF>Medium</color>");
                 MediateCooldown =
@@ -1048,12 +1054,6 @@ namespace TownOfUsFusion.CustomOption
                     new CustomToggleOption(num++, MultiMenu.crewmate, "Hunter Kills Last Voter If Voted Out", false);
                 HunterBodyReport =
                     new CustomToggleOption(num++, MultiMenu.crewmate, "Hunter Can Report Who They've Killed");
-            Jailor =
-                new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#A6A6A6FF>Jailor</color>");
-                JailCooldown =
-                    new CustomNumberOption(num++, MultiMenu.crewmate, "Jail Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
-                MaxExecutes =
-                    new CustomNumberOption(num++, MultiMenu.crewmate, "Maximum Number Of Executes", 3, 1, 5, 1);
             Sheriff =
                 new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#FFFF00FF>Sheriff</color>");
                 SheriffKillOther =
@@ -1137,14 +1137,24 @@ namespace TownOfUsFusion.CustomOption
                     new CustomToggleOption(num++, MultiMenu.crewmate, "Neutral Killing Roles Show Evil", true);
 
 
+            Captain =
+                new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#C3E2EDFF>Captain</color>");
+            MaxTribunals =
+                    new CustomNumberOption(num++, MultiMenu.crewmate, "Maximum Number Of Tribunals", 2, 1, 3, 1);
+            Jailor =
+                new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#A6A6A6FF>Jailor</color>");
+                JailCooldown =
+                    new CustomNumberOption(num++, MultiMenu.crewmate, "Jail Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
+                MaxExecutes =
+                    new CustomNumberOption(num++, MultiMenu.crewmate, "Maximum Number Of Executes", 3, 1, 5, 1);
             Politician =
                 new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#660099FF>Politician</color>");
                 CampaignCooldown =
                     new CustomNumberOption(num++, MultiMenu.crewmate, "Campaign Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
             Prosecutor =
                 new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#B38000FF>Prosecutor</color>");
-                ProsDiesOnIncorrectPros =
-                    new CustomToggleOption(num++, MultiMenu.crewmate, "Prosecutor Dies When They Exile A Crewmate", false);
+            ProsDiesOnIncorrectPros =
+                new CustomToggleOption(num++, MultiMenu.crewmate, "Prosecutor Dies When They Exile A Crewmate", false);
             MaxProsecutes =
                     new CustomNumberOption(num++, MultiMenu.crewmate, "Maximum Number Of Prosecutes", 2, 1, 3, 1);
             Swapper =

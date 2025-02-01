@@ -46,7 +46,7 @@ namespace TownOfUsFusion.CrewmateRoles.LookoutMod
             }
 
             role.PerceptButton.graphic.sprite = TownOfUsFusion.PerceptSprite;
-            role.PerceptButton.buttonLabelText.text = "Percept";
+            role.PerceptButton.buttonLabelText.text = "Eagle Eye";
             role.PerceptButton.buttonLabelText.SetOutlineColor(role.Color);
             role.PerceptButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
 
