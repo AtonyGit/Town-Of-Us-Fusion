@@ -1134,7 +1134,8 @@ namespace TownOfUsFusion.Roles
             {
                 foreach (var player in __instance.playerStates)
                 {
-                    player.ColorBlindName.transform.localPosition = new Vector3(-0.93f, -0.2f, -0.1f);
+                    //player.ColorBlindName.transform.localPosition = new Vector3(-0.93f, -0.2f, -0.1f);
+                //__instance.Background.sprite = Ship.CosmeticsCache.GetNameplate("nameplate_NoPlate").Image;
 
                     var role = GetRole(player);
                     if (role != null)
