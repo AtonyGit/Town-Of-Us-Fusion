@@ -62,9 +62,13 @@ namespace TownOfUsFusion.Modifiers.DisperserMod
             {
                 renderer.color = Palette.EnabledColor;
                 renderer.material.SetFloat("_Desat", 0f);
+                role.DisperseButton.buttonLabelText.color = Palette.EnabledColor;
+                role.DisperseButton.buttonLabelText.material.SetFloat("_Desat", 0f);
                 return;
             }
 
+            role.DisperseButton.buttonLabelText.color = Palette.DisabledClear;
+            role.DisperseButton.buttonLabelText.material.SetFloat("_Desat", 1f);
             renderer.color = Palette.DisabledClear;
             renderer.material.SetFloat("_Desat", 1f);
         }

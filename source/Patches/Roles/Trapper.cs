@@ -13,7 +13,6 @@ namespace TownOfUsFusion.Roles
         public List<Trap> traps = new List<Trap>();
         public DateTime LastTrapped { get; set; }
         public int UsesLeft;
-        public TextMeshPro UsesText;
 
         public List<RoleEnum> trappedPlayers;
 

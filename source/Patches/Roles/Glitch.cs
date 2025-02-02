@@ -501,12 +501,16 @@ namespace TownOfUsFusion.Roles
                 {
                     __gInstance.MimicButton.graphic.material.SetFloat("_Desat", 0f);
                     __gInstance.MimicButton.graphic.color = Palette.EnabledColor;
+                    __gInstance.MimicButton.buttonLabelText.color = Palette.EnabledColor;
+                    __gInstance.MimicButton.buttonLabelText.material.SetFloat("_Desat", 0f);
                 }
                 else if (!__gInstance.MimicButton.isCoolingDown && __gInstance.Player.moveable)
                 {
                     __gInstance.MimicButton.isCoolingDown = false;
                     __gInstance.MimicButton.graphic.material.SetFloat("_Desat", 0f);
                     __gInstance.MimicButton.graphic.color = Palette.EnabledColor;
+                    __gInstance.MimicButton.buttonLabelText.color = Palette.EnabledColor;
+                    __gInstance.MimicButton.buttonLabelText.material.SetFloat("_Desat", 0f);
                     if (Rewired.ReInput.players.GetPlayer(0).GetButtonDown("ToU bb/disperse/mimic")) __gInstance.MimicButton.DoClick();
                 }
                 else
@@ -514,6 +518,8 @@ namespace TownOfUsFusion.Roles
                     __gInstance.MimicButton.isCoolingDown = true;
                     __gInstance.MimicButton.graphic.material.SetFloat("_Desat", 1f);
                     __gInstance.MimicButton.graphic.color = Palette.DisabledClear;
+                    __gInstance.MimicButton.buttonLabelText.color = Palette.DisabledClear;
+                    __gInstance.MimicButton.buttonLabelText.material.SetFloat("_Desat", 1f);
                 }
 
                 if (!__gInstance.IsUsingMimic)

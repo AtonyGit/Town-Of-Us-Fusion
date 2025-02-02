@@ -31,11 +31,15 @@ namespace TownOfUsFusion.CrewmateRoles.AltruistMod
                 component.material.SetColor("_OutlineColor", Color.red);
                 __instance.graphic.color = Palette.EnabledColor;
                 __instance.graphic.material.SetFloat("_Desat", 0f);
+                __instance.buttonLabelText.color = Palette.EnabledColor;
+                __instance.buttonLabelText.material.SetFloat("_Desat", 0f);
                 return;
             }
 
             __instance.graphic.color = Palette.DisabledClear;
             __instance.graphic.material.SetFloat("_Desat", 1f);
+            __instance.buttonLabelText.color = Palette.DisabledClear;
+            __instance.buttonLabelText.material.SetFloat("_Desat", 1f);
         }
     }
 }

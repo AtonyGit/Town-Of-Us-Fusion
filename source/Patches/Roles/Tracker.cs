@@ -15,7 +15,6 @@ namespace TownOfUsFusion.Roles
         public DateTime LastTracked { get; set; }
 
         public int UsesLeft;
-        public TextMeshPro UsesText;
 
         public bool ButtonUsable => UsesLeft != 0;
         public bool SeeOnlyTrackedPrints = false;

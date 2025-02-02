@@ -39,12 +39,16 @@ namespace TownOfUsFusion.ImpostorRoles.MinerMod
             {
                 role.MineButton.graphic.color = Palette.EnabledColor;
                 role.MineButton.graphic.material.SetFloat("_Desat", 0f);
+                role.MineButton.buttonLabelText.color = Palette.EnabledColor;
+                role.MineButton.buttonLabelText.material.SetFloat("_Desat", 0f);
                 role.CanPlace = true;
             }
             else
             {
                 role.MineButton.graphic.color = Palette.DisabledClear;
                 role.MineButton.graphic.material.SetFloat("_Desat", 1f);
+                role.MineButton.buttonLabelText.color = Palette.DisabledClear;
+                role.MineButton.buttonLabelText.material.SetFloat("_Desat", 1f);
                 role.CanPlace = false;
             }
         }

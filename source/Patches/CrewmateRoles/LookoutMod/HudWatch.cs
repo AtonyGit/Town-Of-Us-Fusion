@@ -21,22 +21,7 @@ namespace TownOfUsFusion.CrewmateRoles.LookoutMod
 
             var role = Role.GetRole<Lookout>(PlayerControl.LocalPlayer);
 
-            if (role.UsesText == null && role.UsesLeft > 0)
-            {
-                role.UsesText = Object.Instantiate(watchButton.cooldownTimerText, watchButton.transform);
-                role.UsesText.gameObject.SetActive(false);
-                role.UsesText.transform.localPosition = new Vector3(
-                    role.UsesText.transform.localPosition.x + 0.26f,
-                    role.UsesText.transform.localPosition.y + 0.29f,
-                    role.UsesText.transform.localPosition.z);
-                role.UsesText.transform.localScale = role.UsesText.transform.localScale * 0.65f;
-                role.UsesText.alignment = TMPro.TextAlignmentOptions.Right;
-                role.UsesText.fontStyle = TMPro.FontStyles.Bold;
-            }
-            if (role.UsesText != null)
-            {
-                role.UsesText.text = role.UsesLeft + "";
-            }
+                watchButton.usesRemainingText.text = role.UsesLeft.ToString();
 
             if (role.PerceptButton == null)
             {
@@ -54,33 +39,14 @@ namespace TownOfUsFusion.CrewmateRoles.LookoutMod
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
 
-            if (role.PerceptUsesText == null && role.PerceptUsesLeft > 0)
-            {
-                role.PerceptUsesText = Object.Instantiate(role.PerceptButton.cooldownTimerText, role.PerceptButton.transform);
-                role.PerceptUsesText.gameObject.SetActive(false);
-                role.PerceptUsesText.transform.localPosition = new Vector3(
-                    role.PerceptUsesText.transform.localPosition.x + 0.26f,
-                    role.PerceptUsesText.transform.localPosition.y + 0.29f,
-                    role.PerceptUsesText.transform.localPosition.z);
-                role.PerceptUsesText.transform.localScale = role.PerceptUsesText.transform.localScale * 0.65f;
-                role.PerceptUsesText.alignment = TMPro.TextAlignmentOptions.Right;
-                role.PerceptUsesText.fontStyle = TMPro.FontStyles.Bold;
-            }
-            if (role.PerceptUsesText != null)
-            {
-                role.PerceptUsesText.text = role.PerceptUsesLeft + "";
-            }
-            role.PerceptUsesText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-
+                role.PerceptButton.usesRemainingSprite.gameObject.SetActive(true);
+                role.PerceptButton.usesRemainingText.gameObject.SetActive(true);
+                role.PerceptButton.usesRemainingText.text = role.PerceptUsesLeft.ToString();
+                
             watchButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-            role.UsesText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-                    
+
             if (role.Percepting)
             {
                 role.PerceptButton.SetCoolDown(role.TimeRemaining, CustomGameOptions.PerceptDuration);
@@ -95,11 +61,23 @@ namespace TownOfUsFusion.CrewmateRoles.LookoutMod
                 {
                     role.PerceptButton.graphic.color = Palette.DisabledClear;
                     role.PerceptButton.graphic.material.SetFloat("_Desat", 1f);
+                    role.PerceptButton.buttonLabelText.color = Palette.EnabledColor;
+                    role.PerceptButton.buttonLabelText.material.SetFloat("_Desat", 0f);
+                    role.PerceptButton.usesRemainingSprite.color = Palette.EnabledColor;
+                    role.PerceptButton.usesRemainingSprite.material.SetFloat("_Desat", 0f);
+                    role.PerceptButton.usesRemainingText.color = Palette.EnabledColor;
+                    role.PerceptButton.usesRemainingText.material.SetFloat("_Desat", 0f);
                 }
                 else
                 {
                     role.PerceptButton.graphic.color = Palette.EnabledColor;
                     role.PerceptButton.graphic.material.SetFloat("_Desat", 0f);
+                    role.PerceptButton.buttonLabelText.color = Palette.DisabledClear;
+                    role.PerceptButton.buttonLabelText.material.SetFloat("_Desat", 1f);
+                    role.PerceptButton.usesRemainingSprite.color = Palette.DisabledClear;
+                    role.PerceptButton.usesRemainingSprite.material.SetFloat("_Desat", 1f);
+                    role.PerceptButton.usesRemainingText.color = Palette.DisabledClear;
+                    role.PerceptButton.usesRemainingText.material.SetFloat("_Desat", 1f);
                 }
             }
 
@@ -118,15 +96,23 @@ namespace TownOfUsFusion.CrewmateRoles.LookoutMod
                 {
                     renderer.color = Palette.EnabledColor;
                     renderer.material.SetFloat("_Desat", 0f);
-                    role.UsesText.color = Palette.EnabledColor;
-                    role.UsesText.material.SetFloat("_Desat", 0f);
+                    watchButton.buttonLabelText.color = Palette.EnabledColor;
+                    watchButton.buttonLabelText.material.SetFloat("_Desat", 0f);
+                    watchButton.usesRemainingSprite.color = Palette.EnabledColor;
+                    watchButton.usesRemainingSprite.material.SetFloat("_Desat", 0f);
+                    watchButton.usesRemainingText.color = Palette.EnabledColor;
+                    watchButton.usesRemainingText.material.SetFloat("_Desat", 0f);
                 }
                 else
                 {
                     renderer.color = Palette.DisabledClear;
                     renderer.material.SetFloat("_Desat", 1f);
-                    role.UsesText.color = Palette.DisabledClear;
-                    role.UsesText.material.SetFloat("_Desat", 1f);
+                    watchButton.buttonLabelText.color = Palette.DisabledClear;
+                    watchButton.buttonLabelText.material.SetFloat("_Desat", 1f);
+                    watchButton.usesRemainingSprite.color = Palette.DisabledClear;
+                    watchButton.usesRemainingSprite.material.SetFloat("_Desat", 1f);
+                    watchButton.usesRemainingText.color = Palette.DisabledClear;
+                    watchButton.usesRemainingText.material.SetFloat("_Desat", 1f);
                 }
             }
         }

@@ -11,7 +11,6 @@ namespace TownOfUsFusion.Roles
         public bool Enabled;
 
         public int RevivesLeft;
-        public TextMeshPro UsesText;
         public float TimeRemaining;
         
         public Altruist(PlayerControl player) : base(player)

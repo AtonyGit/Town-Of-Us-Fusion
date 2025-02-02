@@ -47,32 +47,17 @@ namespace TownOfUsFusion.CrewmateRoles.HunterMod
             role.StalkButton.buttonLabelText.SetOutlineColor(role.Color);
             role.StalkButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
 
-            if (role.UsesText == null && role.UsesLeft > 0)
-            {
-                role.UsesText = Object.Instantiate(role.StalkButton.cooldownTimerText, role.StalkButton.transform);
-                role.UsesText.gameObject.SetActive(false);
-                role.UsesText.transform.localPosition = new Vector3(
-                    role.UsesText.transform.localPosition.x + 0.26f,
-                    role.UsesText.transform.localPosition.y + 0.29f,
-                    role.UsesText.transform.localPosition.z);
-                role.UsesText.transform.localScale = role.UsesText.transform.localScale * 0.65f;
-                role.UsesText.alignment = TMPro.TextAlignmentOptions.Right;
-                role.UsesText.fontStyle = TMPro.FontStyles.Bold;
-            }
-            if (role.UsesText != null)
-            {
-                role.UsesText.text = role.UsesLeft + "";
-            }
+
+                role.StalkButton.usesRemainingSprite.gameObject.SetActive(true);
+                role.StalkButton.usesRemainingText.gameObject.SetActive(true);
+                role.StalkButton.usesRemainingText.text = role.UsesLeft.ToString();
 
             if (PlayerControl.LocalPlayer.Data.IsDead) role.StalkButton.SetTarget(null);
 
             role.StalkButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-            role.UsesText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-
+            
             if (role.Stalking) role.StalkButton.SetCoolDown(role.StalkDuration, CustomGameOptions.HunterStalkDuration);
             else if (role.StalkUsable) role.StalkButton.SetCoolDown(role.StalkTimer(), CustomGameOptions.HunterStalkCd);
             else role.StalkButton.SetCoolDown(0f, CustomGameOptions.HunterStalkCd);
@@ -90,15 +75,23 @@ namespace TownOfUsFusion.CrewmateRoles.HunterMod
             {
                 renderer.color = Palette.EnabledColor;
                 renderer.material.SetFloat("_Desat", 0f);
-                role.UsesText.color = Palette.EnabledColor;
-                role.UsesText.material.SetFloat("_Desat", 0f);
+                role.StalkButton.buttonLabelText.color = Palette.EnabledColor;
+                role.StalkButton.buttonLabelText.material.SetFloat("_Desat", 0f);
+                role.StalkButton.usesRemainingSprite.color = Palette.EnabledColor;
+                role.StalkButton.usesRemainingSprite.material.SetFloat("_Desat", 0f);
+                role.StalkButton.usesRemainingText.color = Palette.EnabledColor;
+                role.StalkButton.usesRemainingText.material.SetFloat("_Desat", 0f);
             }
             else
             {
                 renderer.color = Palette.DisabledClear;
                 renderer.material.SetFloat("_Desat", 1f);
-                role.UsesText.color = Palette.DisabledClear;
-                role.UsesText.material.SetFloat("_Desat", 1f);
+                role.StalkButton.buttonLabelText.color = Palette.DisabledClear;
+                role.StalkButton.buttonLabelText.material.SetFloat("_Desat", 1f);
+                role.StalkButton.usesRemainingSprite.color = Palette.DisabledClear;
+                role.StalkButton.usesRemainingSprite.material.SetFloat("_Desat", 1f);
+                role.StalkButton.usesRemainingText.color = Palette.DisabledClear;
+                role.StalkButton.usesRemainingText.material.SetFloat("_Desat", 1f);
             }
 
             __instance.KillButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)

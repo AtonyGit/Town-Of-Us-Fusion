@@ -34,7 +34,6 @@ namespace TownOfUsFusion.Roles
         public float StalkDuration { get; set; }
         public DateTime LastKilled { get; set; }
         public int UsesLeft { get; set; }
-        public TextMeshPro UsesText { get; set; }
         public KillButton StalkButton
         {
             get => _stalkButton;

@@ -39,18 +39,24 @@ namespace TownOfUsFusion.ImpostorRoles.VenererMod
                 role.AbilityButton.SetCoolDown(role.TimeRemaining, CustomGameOptions.AbilityDuration);
                 role.AbilityButton.graphic.color = Palette.EnabledColor;
                 role.AbilityButton.graphic.material.SetFloat("_Desat", 0f);
+                role.AbilityButton.buttonLabelText.color = Palette.EnabledColor;
+                role.AbilityButton.buttonLabelText.material.SetFloat("_Desat", 0f);
             }
             else if (role.Kills > 0 && PlayerControl.LocalPlayer.moveable && role.AbilityTimer() == 0f)
             {
                 role.AbilityButton.SetCoolDown(role.AbilityTimer(), CustomGameOptions.AbilityCd);
                 role.AbilityButton.graphic.color = Palette.EnabledColor;
                 role.AbilityButton.graphic.material.SetFloat("_Desat", 0f);
+                role.AbilityButton.buttonLabelText.color = Palette.EnabledColor;
+                role.AbilityButton.buttonLabelText.material.SetFloat("_Desat", 0f);
             }
             else
             {
                 role.AbilityButton.SetCoolDown(role.AbilityTimer(), CustomGameOptions.AbilityCd);
                 role.AbilityButton.graphic.color = Palette.DisabledClear;
                 role.AbilityButton.graphic.material.SetFloat("_Desat", 1f);
+                role.AbilityButton.buttonLabelText.color = Palette.DisabledClear;
+                role.AbilityButton.buttonLabelText.material.SetFloat("_Desat", 1f);
             }
 
         }

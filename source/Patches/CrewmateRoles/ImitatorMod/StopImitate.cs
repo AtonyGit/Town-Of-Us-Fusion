@@ -31,7 +31,7 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
                     if (PlayerControl.LocalPlayer.Is(RoleEnum.Engineer))
                     {
                         var engineerRole = Role.GetRole<Engineer>(PlayerControl.LocalPlayer);
-                        Object.Destroy(engineerRole.UsesText);
+                        //Object.Destroy(engineerRole.UsesText);
                     }
 
                     if (PlayerControl.LocalPlayer.Is(RoleEnum.Tracker))
@@ -40,13 +40,13 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
                         trackerRole.TrackerArrows.Values.DestroyAll();
                         trackerRole.TrackerArrows.Clear();
                         Footprint.DestroyAll(trackerRole);
-                        Object.Destroy(trackerRole.UsesText);
+                        //Object.Destroy(trackerRole.UsesText);
                     }
 
                     if (PlayerControl.LocalPlayer.Is(RoleEnum.Lookout))
                     {
                         var loRole = Role.GetRole<Lookout>(PlayerControl.LocalPlayer);
-                        Object.Destroy(loRole.UsesText);
+                        //Object.Destroy(loRole.UsesText);
                         seenPlayers = loRole.Watching;
                     }
 
@@ -60,19 +60,19 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
                     if (PlayerControl.LocalPlayer.Is(RoleEnum.Transporter))
                     {
                         var transporterRole = Role.GetRole<Transporter>(PlayerControl.LocalPlayer);
-                        Object.Destroy(transporterRole.UsesText);
+                        //Object.Destroy(transporterRole.UsesText);
                     }
 
                     if (PlayerControl.LocalPlayer.Is(RoleEnum.Veteran))
                     {
                         var veteranRole = Role.GetRole<Veteran>(PlayerControl.LocalPlayer);
-                        Object.Destroy(veteranRole.UsesText);
+                        //Object.Destroy(veteranRole.UsesText);
                     }
 
                     if (PlayerControl.LocalPlayer.Is(RoleEnum.Trapper))
                     {
                         var trapperRole = Role.GetRole<Trapper>(PlayerControl.LocalPlayer);
-                        Object.Destroy(trapperRole.UsesText);
+                        //Object.Destroy(trapperRole.UsesText);
                         trapperRole.traps.ClearTraps();
                         trappedPlayers = trapperRole.trappedPlayers;
                     }
@@ -104,7 +104,7 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
                     if (PlayerControl.LocalPlayer.Is(RoleEnum.Hunter))
                     {
                         var hunterRole = Role.GetRole<Hunter>(PlayerControl.LocalPlayer);
-                        Object.Destroy(hunterRole.UsesText);
+                        //Object.Destroy(hunterRole.UsesText);
                         hunterRole.ClosestPlayer = null;
                         hunterRole.ClosestStalkPlayer = null;
                         hunterRole.StalkButton.SetTarget(null);

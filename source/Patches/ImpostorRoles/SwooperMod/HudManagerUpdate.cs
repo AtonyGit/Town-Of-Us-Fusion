@@ -36,6 +36,8 @@ namespace TownOfUsFusion.ImpostorRoles.SwooperMod
                 role.SwoopButton.SetCoolDown(role.TimeRemaining, CustomGameOptions.SwoopDuration);
                 role.SwoopButton.graphic.color = Palette.EnabledColor;
                 role.SwoopButton.graphic.material.SetFloat("_Desat", 0f);
+                role.SwoopButton.buttonLabelText.color = Palette.EnabledColor;
+                role.SwoopButton.buttonLabelText.material.SetFloat("_Desat", 0f);
             }
             else if (PlayerControl.LocalPlayer.moveable && role.SwoopTimer() == 0f)
             {
@@ -44,6 +46,8 @@ namespace TownOfUsFusion.ImpostorRoles.SwooperMod
                 role.SwoopButton.graphic.material.SetFloat("_Desat", 0f);
                 role.SwoopButton.graphic.sprite = SwoopSprite;
                 role.SwoopButton.buttonLabelText.text = "Swoop";
+                role.SwoopButton.buttonLabelText.color = Palette.EnabledColor;
+                role.SwoopButton.buttonLabelText.material.SetFloat("_Desat", 0f);
             }
             else
             {
@@ -52,6 +56,8 @@ namespace TownOfUsFusion.ImpostorRoles.SwooperMod
                 role.SwoopButton.SetCoolDown(role.SwoopTimer(), CustomGameOptions.SwoopCd);
                 role.SwoopButton.graphic.color = Palette.DisabledClear;
                 role.SwoopButton.graphic.material.SetFloat("_Desat", 1f);
+                role.SwoopButton.buttonLabelText.color = Palette.DisabledClear;
+                role.SwoopButton.buttonLabelText.material.SetFloat("_Desat", 1f);
             }
         }
     }

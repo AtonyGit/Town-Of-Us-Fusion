@@ -104,11 +104,15 @@ namespace TownOfUsFusion.CrewmateRoles.MediumMod
                 {
                     renderer.color = Palette.EnabledColor;
                     renderer.material.SetFloat("_Desat", 0f);
+                    mediateButton.buttonLabelText.color = Palette.EnabledColor;
+                    mediateButton.buttonLabelText.material.SetFloat("_Desat", 0f);
                     return;
                 }
 
                 renderer.color = Palette.DisabledClear;
                 renderer.material.SetFloat("_Desat", 1f);
+                mediateButton.buttonLabelText.color = Palette.DisabledClear;
+                mediateButton.buttonLabelText.material.SetFloat("_Desat", 1f);
             }
             else if (CustomGameOptions.ShowMediumToDead && Role.AllRoles.Any(x => x.RoleType == RoleEnum.Medium && ((Medium) x).MediatedPlayers.Keys.Contains(PlayerControl.LocalPlayer.PlayerId)))
             {

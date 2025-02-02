@@ -19,27 +19,9 @@ namespace TownOfUsFusion.CrewmateRoles.TransporterMod
 
             var role = Role.GetRole<Transporter>(PlayerControl.LocalPlayer);
 
-            if (role.UsesText == null && role.UsesLeft > 0)
-            {
-                role.UsesText = Object.Instantiate(transportButton.cooldownTimerText, transportButton.transform);
-                role.UsesText.gameObject.SetActive(false);
-                role.UsesText.transform.localPosition = new Vector3(
-                    role.UsesText.transform.localPosition.x + 0.26f,
-                    role.UsesText.transform.localPosition.y + 0.29f,
-                    role.UsesText.transform.localPosition.z);
-                role.UsesText.transform.localScale = role.UsesText.transform.localScale * 0.65f;
-                role.UsesText.alignment = TMPro.TextAlignmentOptions.Right;
-                role.UsesText.fontStyle = TMPro.FontStyles.Bold;
-            }
-            if (role.UsesText != null)
-            {
-                role.UsesText.text = role.UsesLeft + "";
-            }
+                __instance.KillButton.usesRemainingText.text = role.UsesLeft.ToString();
 
             transportButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-            role.UsesText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
             if (data.IsDead) return;
@@ -52,15 +34,23 @@ namespace TownOfUsFusion.CrewmateRoles.TransporterMod
             {
                 renderer.color = Palette.EnabledColor;
                 renderer.material.SetFloat("_Desat", 0f);
-                role.UsesText.color = Palette.EnabledColor;
-                role.UsesText.material.SetFloat("_Desat", 0f);
+                transportButton.buttonLabelText.color = Palette.EnabledColor;
+                transportButton.buttonLabelText.material.SetFloat("_Desat", 0f);
+                transportButton.usesRemainingSprite.color = Palette.EnabledColor;
+                transportButton.usesRemainingSprite.material.SetFloat("_Desat", 0f);
+                transportButton.usesRemainingText.color = Palette.EnabledColor;
+                transportButton.usesRemainingText.material.SetFloat("_Desat", 0f);
                 return;
             }
 
             renderer.color = Palette.DisabledClear;
             renderer.material.SetFloat("_Desat", 1f);
-            role.UsesText.color = Palette.DisabledClear;
-            role.UsesText.material.SetFloat("_Desat", 1f);
+            transportButton.buttonLabelText.color = Palette.DisabledClear;
+            transportButton.buttonLabelText.material.SetFloat("_Desat", 1f);
+            transportButton.usesRemainingSprite.color = Palette.DisabledClear;
+            transportButton.usesRemainingSprite.material.SetFloat("_Desat", 1f);
+            transportButton.usesRemainingText.color = Palette.DisabledClear;
+            transportButton.usesRemainingText.material.SetFloat("_Desat", 1f);
         }
     }
 }

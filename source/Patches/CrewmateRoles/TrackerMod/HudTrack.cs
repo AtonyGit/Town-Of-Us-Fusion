@@ -26,26 +26,9 @@ namespace TownOfUsFusion.CrewmateRoles.TrackerMod
 
             var role = Role.GetRole<Tracker>(PlayerControl.LocalPlayer);
 
-            if (role.UsesText == null && role.UsesLeft > 0)
-            {
-                role.UsesText = Object.Instantiate(trackButton.cooldownTimerText, trackButton.transform);
-                role.UsesText.gameObject.SetActive(false);
-                role.UsesText.transform.localPosition = new Vector3(
-                    role.UsesText.transform.localPosition.x + 0.26f,
-                    role.UsesText.transform.localPosition.y + 0.29f,
-                    role.UsesText.transform.localPosition.z);
-                role.UsesText.transform.localScale = role.UsesText.transform.localScale * 0.65f;
-                role.UsesText.alignment = TMPro.TextAlignmentOptions.Right;
-                role.UsesText.fontStyle = TMPro.FontStyles.Bold;
-            }
-            if (role.UsesText != null)
-            {
-                role.UsesText.text = role.UsesLeft + "";
-            }
+                __instance.KillButton.usesRemainingText.text = role.UsesLeft.ToString();
+
             trackButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-            role.UsesText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
             if (role.ButtonUsable) trackButton.SetCoolDown(role.TrackerTimer(), CustomGameOptions.TrackCd);
@@ -64,15 +47,23 @@ namespace TownOfUsFusion.CrewmateRoles.TrackerMod
             {
                 renderer.color = Palette.EnabledColor;
                 renderer.material.SetFloat("_Desat", 0f);
-                role.UsesText.color = Palette.EnabledColor;
-                role.UsesText.material.SetFloat("_Desat", 0f);
+                trackButton.buttonLabelText.color = Palette.EnabledColor;
+                trackButton.buttonLabelText.material.SetFloat("_Desat", 0f);
+                trackButton.usesRemainingSprite.color = Palette.EnabledColor;
+                trackButton.usesRemainingSprite.material.SetFloat("_Desat", 0f);
+                trackButton.usesRemainingText.color = Palette.EnabledColor;
+                trackButton.usesRemainingText.material.SetFloat("_Desat", 0f);
             }
             else
             {
                 renderer.color = Palette.DisabledClear;
                 renderer.material.SetFloat("_Desat", 1f);
-                role.UsesText.color = Palette.DisabledClear;
-                role.UsesText.material.SetFloat("_Desat", 1f);
+                trackButton.buttonLabelText.color = Palette.DisabledClear;
+                trackButton.buttonLabelText.material.SetFloat("_Desat", 1f);
+                trackButton.usesRemainingSprite.color = Palette.DisabledClear;
+                trackButton.usesRemainingSprite.material.SetFloat("_Desat", 1f);
+                trackButton.usesRemainingText.color = Palette.DisabledClear;
+                trackButton.usesRemainingText.material.SetFloat("_Desat", 1f);
             }
         }
     }

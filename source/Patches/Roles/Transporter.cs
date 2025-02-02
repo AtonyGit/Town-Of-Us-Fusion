@@ -21,7 +21,6 @@ namespace TownOfUsFusion.Roles
         public PlayerControl TransportPlayer2 { get; set; }
 
         public int UsesLeft;
-        public TextMeshPro UsesText;
 
         public bool ButtonUsable => UsesLeft != 0 && !SwappingMenus;
         public bool SwappingMenus = false;

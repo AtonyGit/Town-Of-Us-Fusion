@@ -90,6 +90,8 @@ namespace TownOfUsFusion
             {
                 __instance.KillButton.graphic.sprite = Revive;
                 __instance.KillButton.buttonLabelText.text = "Altruist";
+                __instance.KillButton.usesRemainingSprite.gameObject.SetActive(true);
+                __instance.KillButton.usesRemainingText.gameObject.SetActive(true);
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Altruist);
                 flag = true;
             }
@@ -97,6 +99,8 @@ namespace TownOfUsFusion
             {
                 __instance.KillButton.graphic.sprite = Alert;
                 __instance.KillButton.buttonLabelText.text = "Alert";
+                __instance.KillButton.usesRemainingSprite.gameObject.SetActive(true);
+                __instance.KillButton.usesRemainingText.gameObject.SetActive(true);
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Veteran);
                 flag = true;
             }
@@ -111,6 +115,8 @@ namespace TownOfUsFusion
             {
                 __instance.KillButton.graphic.sprite = Track;
                 __instance.KillButton.buttonLabelText.text = "Track";
+                __instance.KillButton.usesRemainingSprite.gameObject.SetActive(true);
+                __instance.KillButton.usesRemainingText.gameObject.SetActive(true);
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Tracker);
                 flag = true;
             }
@@ -118,6 +124,8 @@ namespace TownOfUsFusion
             {
                 __instance.KillButton.graphic.sprite = Transport;
                 __instance.KillButton.buttonLabelText.text = "Transport";
+                __instance.KillButton.usesRemainingSprite.gameObject.SetActive(true);
+                __instance.KillButton.usesRemainingText.gameObject.SetActive(true);
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Transporter);
                 flag = true;
             }
@@ -132,6 +140,8 @@ namespace TownOfUsFusion
             {
                 __instance.KillButton.graphic.sprite = Vest;
                 __instance.KillButton.buttonLabelText.text = "Vest";
+                __instance.KillButton.usesRemainingSprite.gameObject.SetActive(true);
+                __instance.KillButton.usesRemainingText.gameObject.SetActive(true);
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Survivor);
                 flag = true;
             }
@@ -139,6 +149,8 @@ namespace TownOfUsFusion
             {
                 __instance.KillButton.graphic.sprite = Protect;
                 __instance.KillButton.buttonLabelText.text = "Protect";
+                __instance.KillButton.usesRemainingSprite.gameObject.SetActive(true);
+                __instance.KillButton.usesRemainingText.gameObject.SetActive(true);
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.GuardianAngel);
                 flag = true;
             }
@@ -146,6 +158,8 @@ namespace TownOfUsFusion
             {
                 __instance.KillButton.graphic.sprite = Protect;
                 __instance.KillButton.buttonLabelText.text = "Guard";
+                __instance.KillButton.usesRemainingSprite.gameObject.SetActive(true);
+                __instance.KillButton.usesRemainingText.gameObject.SetActive(true);
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Bodyguard);
                 flag = true;
             }
@@ -160,6 +174,8 @@ namespace TownOfUsFusion
             {
                 __instance.KillButton.graphic.sprite = Fix;
                 __instance.KillButton.buttonLabelText.text = "Fix";
+                __instance.KillButton.usesRemainingSprite.gameObject.SetActive(true);
+                __instance.KillButton.usesRemainingText.gameObject.SetActive(true);
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Engineer);
                 flag = true;
             }
@@ -167,6 +183,8 @@ namespace TownOfUsFusion
             {
                 __instance.KillButton.graphic.sprite = Trap;
                 __instance.KillButton.buttonLabelText.text = "Trap";
+                __instance.KillButton.usesRemainingSprite.gameObject.SetActive(true);
+                __instance.KillButton.usesRemainingText.gameObject.SetActive(true);
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Trapper);
                 flag = true;
             }
@@ -188,6 +206,8 @@ namespace TownOfUsFusion
             {
                 __instance.KillButton.graphic.sprite = Consume;
                 __instance.KillButton.buttonLabelText.text = "Consume";
+                __instance.KillButton.usesRemainingSprite.gameObject.SetActive(true);
+                __instance.KillButton.usesRemainingText.gameObject.SetActive(true);
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Cannibal);
                 flag = true;
             }
@@ -230,6 +250,8 @@ namespace TownOfUsFusion
             {
                 __instance.KillButton.graphic.sprite = Watch;
                 __instance.KillButton.buttonLabelText.text = "Watch";
+                __instance.KillButton.usesRemainingSprite.gameObject.SetActive(true);
+                __instance.KillButton.usesRemainingText.gameObject.SetActive(true);
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Lookout);
                 flag = true;
             }
@@ -243,6 +265,8 @@ namespace TownOfUsFusion
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Sheriff))
             {
                 __instance.KillButton.graphic.sprite = SheriffKill;
+                __instance.KillButton.usesRemainingSprite.gameObject.SetActive(true);
+                __instance.KillButton.usesRemainingText.gameObject.SetActive(true);
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Sheriff);
                 flag = true;
             }

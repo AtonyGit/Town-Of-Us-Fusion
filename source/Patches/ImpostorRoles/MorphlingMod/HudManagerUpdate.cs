@@ -48,18 +48,24 @@ namespace TownOfUsFusion.ImpostorRoles.MorphlingMod
                     role.MorphButton.SetCoolDown(role.TimeRemaining, CustomGameOptions.MorphlingDuration) ;
                     role.MorphButton.graphic.color = Palette.EnabledColor;
                     role.MorphButton.graphic.material.SetFloat("_Desat", 0f);
+                    role.MorphButton.buttonLabelText.color = Palette.EnabledColor;
+                    role.MorphButton.buttonLabelText.material.SetFloat("_Desat", 0f);
                 }
                 else if (PlayerControl.LocalPlayer.moveable && role.MorphTimer() == 0f)
                 {
                     role.MorphButton.SetCoolDown(role.MorphTimer(), CustomGameOptions.MorphlingCd);
                     role.MorphButton.graphic.color = Palette.EnabledColor;
                     role.MorphButton.graphic.material.SetFloat("_Desat", 0f);
+                    role.MorphButton.buttonLabelText.color = Palette.EnabledColor;
+                    role.MorphButton.buttonLabelText.material.SetFloat("_Desat", 0f);
                 }
                 else
                 {
                     role.MorphButton.SetCoolDown(role.MorphTimer(), CustomGameOptions.MorphlingCd);
                     role.MorphButton.graphic.color = Palette.DisabledClear;
                     role.MorphButton.graphic.material.SetFloat("_Desat", 1f);
+                    role.MorphButton.buttonLabelText.color = Palette.DisabledClear;
+                    role.MorphButton.buttonLabelText.material.SetFloat("_Desat", 1f);
                 }
             }
         }

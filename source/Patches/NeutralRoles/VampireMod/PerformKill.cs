@@ -159,7 +159,7 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Engineer))
                 {
                     var engineerRole = Role.GetRole<Engineer>(PlayerControl.LocalPlayer);
-                    UnityEngine.Object.Destroy(engineerRole.UsesText);
+                    //UnityEngine.Object.Destroy(engineerRole.UsesText);
                 }
 
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Tracker))
@@ -167,14 +167,14 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
                     var trackerRole = Role.GetRole<Tracker>(PlayerControl.LocalPlayer);
                     trackerRole.TrackerArrows.Values.DestroyAll();
                     trackerRole.TrackerArrows.Clear();
-                    UnityEngine.Object.Destroy(trackerRole.UsesText);
+                    //UnityEngine.Object.Destroy(trackerRole.UsesText);
                     Footprint.DestroyAll(trackerRole);
                 }
 
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Lookout))
                 {
                     var loRole = Role.GetRole<Lookout>(PlayerControl.LocalPlayer);
-                    UnityEngine.Object.Destroy(loRole.UsesText);
+                    //UnityEngine.Object.Destroy(loRole.UsesText);
                 }
 
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Aurial))
@@ -187,7 +187,7 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Transporter))
                 {
                     var transporterRole = Role.GetRole<Transporter>(PlayerControl.LocalPlayer);
-                    UnityEngine.Object.Destroy(transporterRole.UsesText);
+                    //UnityEngine.Object.Destroy(transporterRole.UsesText);
                     try
                     {
                         PlayerMenu.singleton.Menu.Close();
@@ -198,13 +198,13 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Veteran))
                 {
                     var veteranRole = Role.GetRole<Veteran>(PlayerControl.LocalPlayer);
-                    UnityEngine.Object.Destroy(veteranRole.UsesText);
+                    //UnityEngine.Object.Destroy(veteranRole.UsesText);
                 }
 
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Trapper))
                 {
                     var trapperRole = Role.GetRole<Trapper>(PlayerControl.LocalPlayer);
-                    UnityEngine.Object.Destroy(trapperRole.UsesText);
+                    //UnityEngine.Object.Destroy(trapperRole.UsesText);
                     trapperRole.traps.ClearTraps();
                 }
 
@@ -221,7 +221,7 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Hunter))
                 {
                     var hunterRole = Role.GetRole<Hunter>(PlayerControl.LocalPlayer);
-                    UnityEngine.Object.Destroy(hunterRole.UsesText);
+                    //UnityEngine.Object.Destroy(hunterRole.UsesText);
                     hunterRole.StalkButton.SetTarget(null);
                     hunterRole.StalkButton.gameObject.SetActive(false);
                     HudManager.Instance.KillButton.buttonLabelText.gameObject.SetActive(false);
@@ -230,13 +230,13 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Survivor))
                 {
                     var survRole = Role.GetRole<Survivor>(PlayerControl.LocalPlayer);
-                    UnityEngine.Object.Destroy(survRole.UsesText);
+                    //UnityEngine.Object.Destroy(survRole.UsesText);
                 }
 
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.GuardianAngel))
                 {
                     var gaRole = Role.GetRole<GuardianAngel>(PlayerControl.LocalPlayer);
-                    UnityEngine.Object.Destroy(gaRole.UsesText);
+                    //UnityEngine.Object.Destroy(gaRole.UsesText);
                 }
             }
 

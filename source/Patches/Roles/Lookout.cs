@@ -23,12 +23,10 @@ namespace TownOfUsFusion.Roles
             return (num - (float) timeSpan.TotalMilliseconds) / 1000f;
         }
         public int PerceptUsesLeft;
-        public TextMeshPro PerceptUsesText;
         public bool PerceptButtonUsable => PerceptUsesLeft != 0;
         public float TimeRemaining;
 
         public int UsesLeft;
-        public TextMeshPro UsesText;
 
         public bool ButtonUsable => UsesLeft != 0;
         public Dictionary<byte, List<RoleEnum>> Watching { get; set; } = new();

@@ -61,11 +61,15 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
                     {
                         biteButton.graphic.color = Palette.EnabledColor;
                         biteButton.graphic.material.SetFloat("_Desat", 0f);
+                        biteButton.buttonLabelText.color = Palette.EnabledColor;
+                        biteButton.buttonLabelText.material.SetFloat("_Desat", 0f);
                     }
                     else
                     {
                         biteButton.graphic.color = Palette.DisabledClear;
                         biteButton.graphic.material.SetFloat("_Desat", 1f);
+                        biteButton.buttonLabelText.color = Palette.DisabledClear;
+                        biteButton.buttonLabelText.material.SetFloat("_Desat", 1f);
                     }
                     biteButton.SetCoolDown(role.BiteTimer(), CustomGameOptions.BiteCd);
                     role.BittenPlayer = PlayerControl.LocalPlayer; //Only do this to stop repeatedly trying to re-kill Bitten player. null didn't work for some reason

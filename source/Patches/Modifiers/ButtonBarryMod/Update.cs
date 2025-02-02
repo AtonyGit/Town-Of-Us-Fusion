@@ -63,11 +63,15 @@ namespace TownOfUsFusion.Modifiers.ButtonBarryMod
             {
                 renderer.color = Palette.EnabledColor;
                 renderer.material.SetFloat("_Desat", 0f);
+                role.ButtonButton.buttonLabelText.color = Palette.EnabledColor;
+                role.ButtonButton.buttonLabelText.material.SetFloat("_Desat", 0f);
                 return;
             }
 
             renderer.color = Palette.DisabledClear;
             renderer.material.SetFloat("_Desat", 1f);
+            role.ButtonButton.buttonLabelText.color = Palette.DisabledClear;
+            role.ButtonButton.buttonLabelText.material.SetFloat("_Desat", 1f);
         }
     }
 }

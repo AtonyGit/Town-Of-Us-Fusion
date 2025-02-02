@@ -79,11 +79,15 @@ namespace TownOfUsFusion.ImpostorRoles.UndertakerMod
                 {
                     role.DragDropButton.graphic.color = Palette.EnabledColor;
                     role.DragDropButton.graphic.material.SetFloat("_Desat", 0f);
+                    role.DragDropButton.buttonLabelText.color = Palette.EnabledColor;
+                    role.DragDropButton.buttonLabelText.material.SetFloat("_Desat", 0f);
                 }
                 else
                 {
                     role.DragDropButton.graphic.color = Palette.DisabledClear;
                     role.DragDropButton.graphic.material.SetFloat("_Desat", 1f);
+                    role.DragDropButton.buttonLabelText.color = Palette.DisabledClear;
+                    role.DragDropButton.buttonLabelText.material.SetFloat("_Desat", 1f);
                 }
             }
         }

@@ -36,6 +36,8 @@ namespace TownOfUsFusion.ImpostorRoles.BomberMod
                 role.PlantButton.buttonLabelText.text = "Detonating";
                 role.PlantButton.graphic.color = Palette.EnabledColor;
                 role.PlantButton.graphic.material.SetFloat("_Desat", 0f);
+                role.PlantButton.buttonLabelText.color = Palette.EnabledColor;
+                role.PlantButton.buttonLabelText.material.SetFloat("_Desat", 0f);
                 role.DetonateTimer();
                 role.PlantButton.SetCoolDown(role.TimeRemaining, CustomGameOptions.DetonateDelay);
             }
@@ -48,11 +50,15 @@ namespace TownOfUsFusion.ImpostorRoles.BomberMod
                 {
                     role.PlantButton.graphic.color = Palette.DisabledClear;
                     role.PlantButton.graphic.material.SetFloat("_Desat", 1f);
+                    role.PlantButton.buttonLabelText.color = Palette.DisabledClear;
+                    role.PlantButton.buttonLabelText.material.SetFloat("_Desat", 1f);
                 }
                 else
                 {
                     role.PlantButton.graphic.color = Palette.EnabledColor;
                     role.PlantButton.graphic.material.SetFloat("_Desat", 0f);
+                    role.PlantButton.buttonLabelText.color = Palette.EnabledColor;
+                    role.PlantButton.buttonLabelText.material.SetFloat("_Desat", 0f);
                 }
                 role.PlantButton.SetCoolDown(PlayerControl.LocalPlayer.killTimer,
                     GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown);

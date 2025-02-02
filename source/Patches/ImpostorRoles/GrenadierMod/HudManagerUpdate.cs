@@ -54,6 +54,8 @@ namespace TownOfUsFusion.ImpostorRoles.GrenadierMod
                 role.FlashButton.SetCoolDown(role.TimeRemaining, CustomGameOptions.GrenadeDuration);
                 role.FlashButton.graphic.color = Palette.EnabledColor;
                 role.FlashButton.graphic.material.SetFloat("_Desat", 0f);
+                role.FlashButton.buttonLabelText.color = Palette.EnabledColor;
+                role.FlashButton.buttonLabelText.material.SetFloat("_Desat", 0f);
                 return;
             }
 
@@ -66,11 +68,15 @@ namespace TownOfUsFusion.ImpostorRoles.GrenadierMod
             {
                 role.FlashButton.graphic.color = Palette.DisabledClear;
                 role.FlashButton.graphic.material.SetFloat("_Desat", 1f);
+                role.FlashButton.buttonLabelText.color = Palette.DisabledClear;
+                role.FlashButton.buttonLabelText.material.SetFloat("_Desat", 1f);
                 return;
             }
 
             role.FlashButton.graphic.color = Palette.EnabledColor;
             role.FlashButton.graphic.material.SetFloat("_Desat", 0f);
+            role.FlashButton.buttonLabelText.color = Palette.EnabledColor;
+            role.FlashButton.buttonLabelText.material.SetFloat("_Desat", 0f);
         }
     }
 }

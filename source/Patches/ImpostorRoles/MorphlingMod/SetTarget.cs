@@ -19,6 +19,8 @@ namespace TownOfUsFusion.ImpostorRoles.MorphlingMod
                 {
                     __instance.graphic.color = Palette.DisabledClear;
                     __instance.graphic.material.SetFloat("_Desat", 1f);
+                    __instance.buttonLabelText.color = Palette.DisabledClear;
+                    __instance.buttonLabelText.material.SetFloat("_Desat", 1f);
                 }
         }
     }

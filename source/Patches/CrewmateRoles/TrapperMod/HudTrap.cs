@@ -23,27 +23,9 @@ namespace TownOfUsFusion.CrewmateRoles.TrapperMod
 
             var role = Role.GetRole<Trapper>(PlayerControl.LocalPlayer);
 
-            if (role.UsesText == null && role.UsesLeft > 0)
-            {
-                role.UsesText = Object.Instantiate(trapButton.cooldownTimerText, trapButton.transform);
-                role.UsesText.gameObject.SetActive(false);
-                role.UsesText.transform.localPosition = new Vector3(
-                    role.UsesText.transform.localPosition.x + 0.26f,
-                    role.UsesText.transform.localPosition.y + 0.29f,
-                    role.UsesText.transform.localPosition.z);
-                role.UsesText.transform.localScale = role.UsesText.transform.localScale * 0.65f;
-                role.UsesText.alignment = TMPro.TextAlignmentOptions.Right;
-                role.UsesText.fontStyle = TMPro.FontStyles.Bold;
-            }
-            if (role.UsesText != null)
-            {
-                role.UsesText.text = role.UsesLeft + "";
-            }
+                __instance.KillButton.usesRemainingText.text = role.UsesLeft.ToString();
 
             trapButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-            role.UsesText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
             if (role.ButtonUsable) trapButton.SetCoolDown(role.TrapTimer(), CustomGameOptions.TrapCooldown);
@@ -54,15 +36,23 @@ namespace TownOfUsFusion.CrewmateRoles.TrapperMod
             {
                 renderer.color = Palette.EnabledColor;
                 renderer.material.SetFloat("_Desat", 0f);
-                role.UsesText.color = Palette.EnabledColor;
-                role.UsesText.material.SetFloat("_Desat", 0f);
+                trapButton.buttonLabelText.color = Palette.EnabledColor;
+                trapButton.buttonLabelText.material.SetFloat("_Desat", 0f);
+                trapButton.usesRemainingSprite.color = Palette.EnabledColor;
+                trapButton.usesRemainingSprite.material.SetFloat("_Desat", 0f);
+                trapButton.usesRemainingText.color = Palette.EnabledColor;
+                trapButton.usesRemainingText.material.SetFloat("_Desat", 0f);
                 return;
             }
 
             renderer.color = Palette.DisabledClear;
             renderer.material.SetFloat("_Desat", 1f);
-            role.UsesText.color = Palette.DisabledClear;
-            role.UsesText.material.SetFloat("_Desat", 1f);
+            trapButton.buttonLabelText.color = Palette.DisabledClear;
+            trapButton.buttonLabelText.material.SetFloat("_Desat", 1f);
+            trapButton.usesRemainingSprite.color = Palette.DisabledClear;
+            trapButton.usesRemainingSprite.material.SetFloat("_Desat", 1f);
+            trapButton.usesRemainingText.color = Palette.DisabledClear;
+            trapButton.usesRemainingText.material.SetFloat("_Desat", 1f);
         }
     }
 }

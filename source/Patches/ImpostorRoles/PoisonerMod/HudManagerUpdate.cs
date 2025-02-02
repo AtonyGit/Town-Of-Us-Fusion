@@ -70,11 +70,15 @@ namespace TownOfUsFusion.ImpostorRoles.PoisonerMod
                     {
                         role.PoisonButton.graphic.color = Palette.EnabledColor;
                         role.PoisonButton.graphic.material.SetFloat("_Desat", 0f);
+                        role.PoisonButton.buttonLabelText.color = Palette.EnabledColor;
+                        role.PoisonButton.buttonLabelText.material.SetFloat("_Desat", 0f);
                     }
                     else
                     {
                         role.PoisonButton.graphic.color = Palette.DisabledClear;
                         role.PoisonButton.graphic.material.SetFloat("_Desat", 1f);
+                        role.PoisonButton.buttonLabelText.color = Palette.DisabledClear;
+                        role.PoisonButton.buttonLabelText.material.SetFloat("_Desat", 1f);
                     }
                     role.PoisonButton.SetCoolDown(PlayerControl.LocalPlayer.killTimer,
                     GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown);

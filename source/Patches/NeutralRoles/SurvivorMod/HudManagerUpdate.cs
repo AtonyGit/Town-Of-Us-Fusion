@@ -22,27 +22,9 @@ namespace TownOfUsFusion.NeutralRoles.SurvivorMod
 
             var role = Role.GetRole<Survivor>(PlayerControl.LocalPlayer);
 
-            if (role.UsesText == null && role.UsesLeft > 0)
-            {
-                role.UsesText = Object.Instantiate(vestButton.cooldownTimerText, vestButton.transform);
-                role.UsesText.gameObject.SetActive(false);
-                role.UsesText.transform.localPosition = new Vector3(
-                    role.UsesText.transform.localPosition.x + 0.26f,
-                    role.UsesText.transform.localPosition.y + 0.29f,
-                    role.UsesText.transform.localPosition.z);
-                role.UsesText.transform.localScale = role.UsesText.transform.localScale * 0.65f;
-                role.UsesText.alignment = TMPro.TextAlignmentOptions.Right;
-                role.UsesText.fontStyle = TMPro.FontStyles.Bold;
-            }
-            if (role.UsesText != null)
-            {
-                role.UsesText.text = role.UsesLeft + "";
-            }
+                __instance.KillButton.usesRemainingText.text = role.UsesLeft.ToString();
 
             vestButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-            role.UsesText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
             if (role.Vesting) vestButton.SetCoolDown(role.TimeRemaining, CustomGameOptions.VestDuration);
@@ -54,15 +36,23 @@ namespace TownOfUsFusion.NeutralRoles.SurvivorMod
             {
                 renderer.color = Palette.EnabledColor;
                 renderer.material.SetFloat("_Desat", 0f);
-                role.UsesText.color = Palette.EnabledColor;
-                role.UsesText.material.SetFloat("_Desat", 0f);
+                vestButton.buttonLabelText.color = Palette.EnabledColor;
+                vestButton.buttonLabelText.material.SetFloat("_Desat", 0f);
+                vestButton.usesRemainingSprite.color = Palette.EnabledColor;
+                vestButton.usesRemainingSprite.material.SetFloat("_Desat", 0f);
+                vestButton.usesRemainingText.color = Palette.EnabledColor;
+                vestButton.usesRemainingText.material.SetFloat("_Desat", 0f);
             }
             else
             {
                 renderer.color = Palette.DisabledClear;
                 renderer.material.SetFloat("_Desat", 1f);
-                role.UsesText.color = Palette.DisabledClear;
-                role.UsesText.material.SetFloat("_Desat", 1f);
+                vestButton.buttonLabelText.color = Palette.DisabledClear;
+                vestButton.buttonLabelText.material.SetFloat("_Desat", 1f);
+                vestButton.usesRemainingSprite.color = Palette.DisabledClear;
+                vestButton.usesRemainingSprite.material.SetFloat("_Desat", 1f);
+                vestButton.usesRemainingText.color = Palette.DisabledClear;
+                vestButton.usesRemainingText.material.SetFloat("_Desat", 1f);
             }
         }
     }

@@ -53,11 +53,15 @@ namespace TownOfUsFusion.CrewmateRoles.InvestigatorMod
                 {
                     renderer.color = Palette.EnabledColor;
                     renderer.material.SetFloat("_Desat", 0f);
+                    role.ExamineButton.buttonLabelText.color = Palette.EnabledColor;
+                    role.ExamineButton.buttonLabelText.material.SetFloat("_Desat", 0f);
                 }
                 else
                 {
                     renderer.color = Palette.DisabledClear;
                     renderer.material.SetFloat("_Desat", 1f);
+                    role.ExamineButton.buttonLabelText.color = Palette.DisabledClear;
+                    role.ExamineButton.buttonLabelText.material.SetFloat("_Desat", 1f);
                 }
             }
 

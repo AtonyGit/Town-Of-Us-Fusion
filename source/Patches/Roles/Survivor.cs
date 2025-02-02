@@ -11,7 +11,6 @@ namespace TownOfUsFusion.Roles
         public float TimeRemaining;
 
         public int UsesLeft;
-        public TextMeshPro UsesText;
 
         public bool ButtonUsable => UsesLeft != 0;
         public bool SpawnedAs = true;
