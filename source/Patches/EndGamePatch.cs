@@ -44,7 +44,7 @@ namespace TownOfUsFusion.Patches {
             AdditionalTempData.clear();
             var playerRole = "";
             // Theres a better way of doing this e.g. switch statement or dictionary. But this works for now.
-            foreach (var playerControl in Start.StartingPlayersList)
+            foreach (var playerControl in PlayerControl.AllPlayerControls)
             {
                 playerRole = "";
                 foreach (var role in Role.RoleHistory.Where(x => x.Key == playerControl.PlayerId))

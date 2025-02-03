@@ -35,6 +35,7 @@ namespace TownOfUsFusion.CrewmateRoles.LookoutMod
                 role.PerceptDummyButton.buttonLabelText.enabled = false;
                 role.PerceptDummyButton.cooldownTimerText.enabled = false;
                 role.PerceptDummyButton.gameObject.SetActive(false);
+                role.PerceptDummyButton.canInteract = false;
             }
             role.PerceptDummyButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
@@ -55,23 +56,22 @@ namespace TownOfUsFusion.CrewmateRoles.LookoutMod
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
 
-                /*watchButton.usesRemainingSprite.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+            if (role.WatchDummyButton == null)
+            {
+                role.WatchDummyButton = Object.Instantiate(__instance.AbilityButton, __instance.AbilityButton.transform.parent);
+                role.WatchDummyButton.graphic.enabled = false;
+                role.WatchDummyButton.buttonLabelText.enabled = false;
+                role.WatchDummyButton.cooldownTimerText.enabled = false;
+                role.WatchDummyButton.gameObject.SetActive(false);
+                role.WatchDummyButton.canInteract = false;
+            }
+            role.WatchDummyButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-                watchButton.usesRemainingText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);*/
-                //watchButton.SetUsesRemaining(role.UsesLeft);
-                //watchButton.usesRemainingText.text = role.UsesLeft.ToString();
+                role.WatchDummyButton.transform.localPosition = watchButton.transform.localPosition;
 
-                /*role.PerceptButton.usesRemainingSprite.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-                role.PerceptButton.usesRemainingText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);*/
-                role.PerceptDummyButton.SetUsesRemaining(role.PerceptUsesLeft);
-                role.PerceptDummyButton.usesRemainingText.text = role.PerceptUsesLeft.ToString();
+                role.WatchDummyButton.SetUsesRemaining(role.UsesLeft);
+                role.WatchDummyButton.usesRemainingText.text = role.UsesLeft.ToString();
 
             if (role.Percepting)
             {
