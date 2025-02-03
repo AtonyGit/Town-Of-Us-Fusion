@@ -62,6 +62,7 @@ namespace TownOfUsFusion
         public static int MorphlingOn => (int)Generate.MorphlingOn.Get();
         public static int ExecutionerOn => (int)Generate.ExecutionerOn.Get();
         public static int SpyOn => (int)Generate.SpyOn.Get();
+            public static float AdminCooldown => Generate.AdminCooldown.Get();
         public static int MinerOn => (int)Generate.MinerOn.Get();
         public static int SwooperOn => (int)Generate.SwooperOn.Get();
         public static int ArsonistOn => (int)Generate.ArsonistOn.Get();

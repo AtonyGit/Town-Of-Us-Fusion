@@ -9,11 +9,13 @@ namespace TownOfUsFusion
 {
     [HarmonyPatch(typeof(KillButton), nameof(KillButton.Start))]
     public static class KillButtonAwake
-    {/*
+    {
         public static void Prefix(KillButton __instance)
         {
-            __instance.transform.Find("Text_TMP").gameObject.SetActive(false);
-        }*/
+            //__instance.transform.Find("Text_TMP").gameObject.SetActive(false);
+            __instance.transform.Find("Text_TMP").gameObject.SetActive(true);
+            __instance.transform.Find("Renderer").gameObject.SetActive(true);
+        }
     }
 
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
@@ -270,6 +272,8 @@ namespace TownOfUsFusion
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Apocalypse);
                 flag = true;
             }
+            __instance.KillButton.usesRemainingSprite.gameObject.SetActive(true);
+            __instance.KillButton.usesRemainingText.gameObject.SetActive(true);
             
             if (!PlayerControl.LocalPlayer.Is(Faction.Impostors) &&
                 GameOptionsManager.Instance.CurrentGameOptions.GameMode != GameModes.HideNSeek)

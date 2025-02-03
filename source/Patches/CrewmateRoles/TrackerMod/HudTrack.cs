@@ -26,11 +26,15 @@ namespace TownOfUsFusion.CrewmateRoles.TrackerMod
 
             var role = Role.GetRole<Tracker>(PlayerControl.LocalPlayer);
 
-                __instance.KillButton.usesRemainingText.text = role.UsesLeft.ToString();
 
             trackButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+
+            trackButton.usesRemainingSprite.gameObject.SetActive(true);
+            trackButton.usesRemainingText.gameObject.SetActive(true);
+            trackButton.usesRemainingText.text = role.UsesLeft.ToString();
+
             if (role.ButtonUsable) trackButton.SetCoolDown(role.TrackerTimer(), CustomGameOptions.TrackCd);
             else trackButton.SetCoolDown(0f, CustomGameOptions.TrackCd);
             if (role.UsesLeft == 0) return;

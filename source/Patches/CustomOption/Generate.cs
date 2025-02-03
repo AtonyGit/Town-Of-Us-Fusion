@@ -306,6 +306,7 @@ namespace TownOfUsFusion.CustomOption
         public static CustomToggleOption PhantomSpook;
 
         public static CustomHeaderOption Spy;
+        public static CustomNumberOption AdminCooldown;
         public static CustomStringOption WhoSeesDead;
         public static CustomToggleOption SpySeesNeutrals;
         public static CustomNumberOption SpyTasksRemaining;
@@ -1002,6 +1003,8 @@ namespace TownOfUsFusion.CustomOption
                     PercentFormat);
             Spy =
                 new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#CCA3CCFF>Spy</color>");
+                AdminCooldown =
+                    new CustomNumberOption(num++, MultiMenu.crewmate, "Portable Admin Cooldown", 10f, 1f, 15f, 1f, CooldownFormat);
                 WhoSeesDead = new CustomStringOption(num++, MultiMenu.crewmate, "Who Sees Dead Bodies On Admin",
                     new[] { "Nobody", "Spy", "Everyone But Spy", "Everyone" });
                 SpySeesNeutrals = new CustomToggleOption(num++, MultiMenu.crewmate, "Spy Sees Neutral Roles", false);

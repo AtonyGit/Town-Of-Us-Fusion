@@ -11,6 +11,17 @@ namespace TownOfUsFusion.Roles
 
         public Dictionary<byte, ArrowBehaviour> SpyArrows = new Dictionary<byte, ArrowBehaviour>();
 
+        public System.DateTime LastAdmin { get; set; }
+        public float AdminTimer()
+        {
+            var utcNow = System.DateTime.UtcNow;
+            var timeSpan = utcNow - LastAdmin;
+            var num = CustomGameOptions.AdminCooldown * 1000f;
+            var flag2 = num - (float) timeSpan.TotalMilliseconds < 0f;
+            if (flag2) return 0;
+            return (num - (float) timeSpan.TotalMilliseconds) / 1000f;
+        }
+
         public Spy(PlayerControl player) : base(player)
         {
             Name = "Spy";

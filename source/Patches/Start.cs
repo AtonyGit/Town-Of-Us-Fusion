@@ -42,6 +42,13 @@ namespace TownOfUsFusion.Patches
                 medium.LastMediated = medium.LastMediated.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.MediateCooldown);
             }
 
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Spy))
+            {
+                var medium = Role.GetRole<Spy>(PlayerControl.LocalPlayer);
+                medium.LastAdmin = DateTime.UtcNow;
+                medium.LastAdmin = medium.LastAdmin.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.AdminCooldown);
+            }
+
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Psychic))
             {
                 var psychic = Role.GetRole<Psychic>(PlayerControl.LocalPlayer);
