@@ -1276,6 +1276,13 @@ namespace TownOfUsFusion
                         var hunterLastVoted = Utils.PlayerById(reader.ReadByte());
                         Retribution.MurderPlayer(hunter2, hunterLastVoted);
                         break;
+                        case CustomRPC.SendChat:
+                        string report = reader.ReadString();
+                        if (!PlayerControl.LocalPlayer.Data.IsDead) 
+                        {
+                            HudManager.Instance.Chat.AddChat(PlayerControl.LocalPlayer, report);
+                        }
+                        break;
                     case CustomRPC.ExecutionerToJester:
                         TargetColor.ExeToJes(Utils.PlayerById(reader.ReadByte()));
                         break;

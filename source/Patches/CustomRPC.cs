@@ -110,6 +110,7 @@ namespace TownOfUsFusion
         CheckMurder,
 
         SubmergedFixOxygen,
+        SendChat,
 
         ContentAddition
     }

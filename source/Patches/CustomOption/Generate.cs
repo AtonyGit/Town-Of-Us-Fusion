@@ -177,6 +177,7 @@ namespace TownOfUsFusion.CustomOption
         public static CustomNumberOption InitialCooldowns;
         public static CustomToggleOption ParallelMedScans;
         public static CustomStringOption SkipButtonDisable;
+        public static CustomToggleOption LocationReports;
         public static CustomToggleOption FirstDeathShield;
         public static CustomToggleOption NeutralEvilWinEndsGame;
         public static CustomToggleOption CrewKillersContinue;
@@ -908,6 +909,7 @@ namespace TownOfUsFusion.CustomOption
                 NeutralEvilWinEndsGame = new CustomToggleOption(num++, MultiMenu.main, "Neutral Evil Win Ends Game", true);
                 CrewKillersContinue = new CustomToggleOption(num++, MultiMenu.main, "Crew Killers Continue Game", false);
                 ShowRecentBodies = new(num++, MultiMenu.main, "Indicate Recent Deaths In Meetings", true);
+                LocationReports = new CustomToggleOption(num++, MultiMenu.main, "State Locations Of Body Reports In Chat", true);
 
             TaskTrackingSettings =
                 new CustomHeaderOption(num++, MultiMenu.main, "Task Tracking Settings");

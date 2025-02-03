@@ -414,6 +414,7 @@ namespace TownOfUsFusion
         public static int LargeMapDecreasedShortTasks => (int)Generate.LargeMapDecreasedShortTasks.Get();
         public static int LargeMapDecreasedLongTasks => (int)Generate.LargeMapDecreasedLongTasks.Get();
         public static DisableSkipButtonMeetings SkipButtonDisable => (DisableSkipButtonMeetings)Generate.SkipButtonDisable.Get();
+        public static bool LocationReports => Generate.LocationReports.Get();
         public static bool UniqueCrewInvestRoles => Generate.UniqueCrewInvestRoles.Get();
         public static bool UniqueCrewKillingRoles => Generate.UniqueCrewKillingRoles.Get();
         public static bool UniqueCrewProtectRoles => Generate.UniqueCrewProtectRoles.Get();
