@@ -51,6 +51,8 @@ namespace TownOfUsFusion.CrewmateRoles.LookoutMod
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
 
+                role.PerceptDummyButton.SetUsesRemaining(role.PerceptUsesLeft);
+                role.PerceptDummyButton.usesRemainingText.text = role.PerceptUsesLeft.ToString();
                 
             watchButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
