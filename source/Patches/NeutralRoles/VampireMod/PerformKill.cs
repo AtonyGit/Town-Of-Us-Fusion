@@ -44,7 +44,7 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
                 aliveVamps.Count == 1 && vamps.Count < CustomGameOptions.MaxVampiresPerGame)
             {
                 var interact = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer);
-                if (interact[4] == true)
+                if (interact[6] == true)
                 {
                         role.BittenPlayer = role.ClosestPlayer;
                         __instance.SetTarget(null);
@@ -67,6 +67,11 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
                     role.LastBit = DateTime.UtcNow;
                     return false;
                 }
+                else if (interact[4] == true)
+                {
+                    role.LastBit = DateTime.UtcNow;
+                    return false;
+                }
                 else if (interact[1] == true)
                 {
                     role.LastBit = DateTime.UtcNow;
@@ -79,7 +84,7 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
             else
             {
                 var interact = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer, true);
-                if (interact[4] == true) 
+                if (interact[6] == true) 
                 {
                     role.BittenPlayer = role.ClosestPlayer;
                     __instance.SetTarget(null);
@@ -95,6 +100,11 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
                     return false;
                 }
                 if (interact[0] == true)
+                {
+                    role.LastBit = DateTime.UtcNow;
+                    return false;
+                }
+                else if (interact[4] == true)
                 {
                     role.LastBit = DateTime.UtcNow;
                     return false;

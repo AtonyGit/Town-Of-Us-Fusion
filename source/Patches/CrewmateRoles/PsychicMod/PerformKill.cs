@@ -26,7 +26,7 @@ namespace TownOfUsFusion.CrewmateRoles.PsychicMod
 
             var interact = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer);
             if (role.IsSeerMode) {
-                if (interact[4] == true)
+                if (interact[6] == true)
                 {
                     role.Investigated.Add(role.ClosestPlayer.PlayerId);
                 }
@@ -45,7 +45,7 @@ namespace TownOfUsFusion.CrewmateRoles.PsychicMod
                 return false;
             }
             else {
-                if (interact[4] == true)
+                if (interact[6] == true)
                 {
                     role.Confessor = role.ClosestPlayer;
                     bool showsCorrectFaction = true;

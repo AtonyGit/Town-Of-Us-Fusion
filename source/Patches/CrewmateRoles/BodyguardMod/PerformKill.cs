@@ -32,7 +32,7 @@ namespace TownOfUsFusion.CrewmateRoles.BodyguardMod
                 if (role.ClosestPlayer == null) return false;
 
                 var interact = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer);
-                if (interact[4] == true)
+                if (interact[6] == true)
                 {
                     role.guardedPlayer = role.ClosestPlayer;
                     role.LastProtected = DateTime.UtcNow;

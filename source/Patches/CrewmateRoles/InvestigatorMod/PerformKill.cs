@@ -29,7 +29,7 @@ namespace TownOfUsFusion.CrewmateRoles.InvestigatorMod
                 if (Vector2.Distance(role.ClosestPlayer.GetTruePosition(),
                     PlayerControl.LocalPlayer.GetTruePosition()) > maxDistance) return false;
                 var interact = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer);
-                if (interact[4] == true)
+                if (interact[6] == true)
                 {
                     if (role.InvestigatedPlayers.Contains(role.ClosestPlayer.PlayerId))
                     {

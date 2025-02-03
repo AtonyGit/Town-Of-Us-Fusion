@@ -23,7 +23,7 @@ namespace TownOfUsFusion.CrewmateRoles.PoliticianMod
                         GameOptionsData.KillDistances[GameOptionsManager.Instance.currentNormalGameOptions.KillDistance];
             if (!flag3) return false;
             var interact = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer);
-            if (interact[4] == true)
+            if (interact[6] == true)
             {
                 role.CampaignedPlayers.Add(role.ClosestPlayer.PlayerId);
             }

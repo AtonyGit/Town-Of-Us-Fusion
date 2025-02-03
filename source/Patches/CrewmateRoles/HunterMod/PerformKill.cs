@@ -22,7 +22,7 @@ namespace TownOfUsFusion.CrewmateRoles.HunterMod
                 if (!role.StalkUsable) return false;
                 if (role.StalkTimer() != 0) return false;
                 var stalkInteract = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestStalkPlayer, false);
-                if (stalkInteract[4] == true)
+                if (stalkInteract[6] == true)
                 {
                     role.StalkDuration = CustomGameOptions.HunterStalkDuration;
                     role.StalkedPlayer = role.ClosestStalkPlayer;
@@ -51,6 +51,10 @@ namespace TownOfUsFusion.CrewmateRoles.HunterMod
             if (!flag3) return false;
             var interact = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer, true);
             if (interact[0] == true)
+            {
+                role.LastKilled = DateTime.UtcNow;
+            }
+            else if (interact[4] == true)
             {
                 role.LastKilled = DateTime.UtcNow;
             }

@@ -28,7 +28,7 @@ namespace TownOfUsFusion.CrewmateRoles.TrackerMod
             if (!role.ButtonUsable) return false;
 
             var interact = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer);
-            if (interact[4] == true)
+            if (interact[6] == true)
             {
                 var gameObj = new GameObject();
                 var arrow = gameObj.AddComponent<ArrowBehaviour>();

@@ -564,9 +564,11 @@ namespace TownOfUsFusion
             bool gaReset = false;
             bool survReset = false;
             bool zeroSecReset = false;
+            bool bgReset = false;
+            bool mirrorReset = false;
             bool abilityUsed = false;
             var checkHack = AbilityUsed(player, target);
-            if (!checkHack) return new List<bool> { false, false, false, true, false };
+            if (!checkHack) return new List<bool> { false, false, false, true, false, false, false };
             if (target.IsInfected() || player.IsInfected())
             {
                 foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(target, player);
@@ -677,6 +679,7 @@ namespace TownOfUsFusion
             else if (target.IsGuarded() && toKill)
             {
                 var bgPlayer = target.GetBodyguard().Player;
+                bgReset = true;
                 
                     if (player.Is(RoleEnum.Pestilence)) zeroSecReset = true;
                     else if (player.IsShielded())
@@ -803,11 +806,13 @@ namespace TownOfUsFusion
             }
 
             var reset = new List<bool>();
-            reset.Add(fullCooldownReset);
-            reset.Add(gaReset);
-            reset.Add(survReset);
-            reset.Add(zeroSecReset);
-            reset.Add(abilityUsed);
+            reset.Add(fullCooldownReset); // 0
+            reset.Add(gaReset); // 1
+            reset.Add(survReset); // 2
+            reset.Add(zeroSecReset); // 3
+            reset.Add(bgReset); // 4
+            reset.Add(mirrorReset); // 5
+            reset.Add(abilityUsed); // 6
             return reset;
         }
 

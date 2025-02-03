@@ -25,7 +25,7 @@ namespace TownOfUsFusion.CrewmateRoles.OracleMod
             if (role.ClosestPlayer == null) return false;
 
             var interact = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer);
-            if (interact[4] == true)
+            if (interact[6] == true)
             {
                 role.BlessedPlayer = role.ClosestPlayer;
                 role.LastBlessed = DateTime.UtcNow;

@@ -25,7 +25,7 @@ namespace TownOfUsFusion.CrewmateRoles.JailorMod
             if (role.ClosestPlayer == null) return false;
 
             var interact = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer);
-            if (interact[4] == true)
+            if (interact[6] == true)
             {
                 role.Jailed = role.ClosestPlayer;
                 Utils.Rpc(CustomRPC.Jail, PlayerControl.LocalPlayer.PlayerId, (byte)0, role.Jailed.PlayerId);

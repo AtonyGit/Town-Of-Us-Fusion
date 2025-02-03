@@ -19,7 +19,7 @@ namespace TownOfUsFusion.CrewmateRoles.DeputyMod
             if (role.StartTimer() > 0 || role.CampedThisRound) return false;
 
             var interact = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer);
-            if (interact[4] == true)
+            if (interact[6] == true)
             {
                 role.Camping = role.ClosestPlayer;
                 role.CampedThisRound = true;

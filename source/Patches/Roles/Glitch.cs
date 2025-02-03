@@ -359,11 +359,16 @@ namespace TownOfUsFusion.Roles
                 if (__gInstance.KillTarget != null)
                 {
                     var interact = Utils.Interact(__gInstance.Player, __gInstance.KillTarget, true);
-                    if (interact[4])
+                    if (interact[6])
                     {
                         return;
                     }
                     else if (interact[0])
+                    {
+                        __gInstance.LastKill = DateTime.UtcNow;
+                        return;
+                    }
+                    else if (interact[4])
                     {
                         __gInstance.LastKill = DateTime.UtcNow;
                         return;
@@ -442,7 +447,7 @@ namespace TownOfUsFusion.Roles
                 {
                     if (__gInstance.Player.inVent) return;
                     var interact = Utils.Interact(__gInstance.Player, __gInstance.HackTarget);
-                    if (interact[4])
+                    if (interact[6])
                     {
                         __gInstance.RpcSetHacked(__gInstance.HackTarget);
                     }

@@ -34,7 +34,7 @@ namespace TownOfUsFusion
                 return false;
             }
             var interact = Utils.Interact(PlayerControl.LocalPlayer, target, true);
-            if (interact[4] == true) return false;
+            if (interact[6] == true) return false;
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Warlock))
             {
                 var warlock = Role.GetRole<Warlock>(PlayerControl.LocalPlayer);
@@ -69,6 +69,11 @@ namespace TownOfUsFusion
                 return false;
             }
             else if (interact[3] == true)
+            {
+                PlayerControl.LocalPlayer.SetKillTimer(0.01f);
+                return false;
+            }
+            else if (interact[4] == true)
             {
                 PlayerControl.LocalPlayer.SetKillTimer(0.01f);
                 return false;

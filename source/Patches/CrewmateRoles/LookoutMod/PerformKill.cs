@@ -43,7 +43,7 @@ namespace TownOfUsFusion.CrewmateRoles.LookoutMod
             if (!role.ButtonUsable) return false;
 
             var interact = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer);
-            if (interact[4] == true)
+            if (interact[6] == true)
             {
                 role.Watching.Add(role.ClosestPlayer.PlayerId, new List<RoleEnum>());
                 role.UsesLeft--;

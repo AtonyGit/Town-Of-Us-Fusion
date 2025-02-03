@@ -22,7 +22,7 @@ namespace TownOfUsFusion.ImpostorRoles.HypnotistMod
                 if (role.HypnotiseTimer() != 0) return false;
 
                 var interact = Utils.Interact(PlayerControl.LocalPlayer, target);
-                if (interact[4] == true)
+                if (interact[6] == true)
                 {
                     role.HypnotisedPlayers.Add(target.PlayerId);
                     Utils.Rpc(CustomRPC.Hypnotise, PlayerControl.LocalPlayer.PlayerId, (byte)0, target.PlayerId);

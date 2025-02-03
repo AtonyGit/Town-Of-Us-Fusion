@@ -40,8 +40,13 @@ namespace TownOfUsFusion.NeutralRoles.WerewolfMod
             if (!flag3) return false;
 
             var interact = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer, true);
-            if (interact[4] == true) return false;
+            if (interact[6] == true) return false;
             else if (interact[0] == true)
+            {
+                role.LastKilled = DateTime.UtcNow;
+                return false;
+            }
+            else if (interact[4] == true)
             {
                 role.LastKilled = DateTime.UtcNow;
                 return false;

@@ -31,7 +31,7 @@ namespace TownOfUsFusion.NeutralRoles.SoulCollectorMod
                 if (Vector2.Distance(role.ClosestPlayer.GetTruePosition(),
                     PlayerControl.LocalPlayer.GetTruePosition()) > maxDistance) return false;
                 var interact = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer);
-                if (interact[4] == true)
+                if (interact[6] == true)
                 {
                     role.ReapedPlayers.Add(role.ClosestPlayer.PlayerId);
                     Utils.Rpc(CustomRPC.Collect, role.Player.PlayerId, (byte)0, role.ClosestPlayer.PlayerId);
