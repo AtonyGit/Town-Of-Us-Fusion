@@ -22,11 +22,13 @@ namespace TownOfUsFusion.NeutralRoles.SurvivorMod
 
             var role = Role.GetRole<Survivor>(PlayerControl.LocalPlayer);
 
-                __instance.KillButton.usesRemainingText.text = role.UsesLeft.ToString();
-
             vestButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+            vestButton.usesRemainingSprite.gameObject.SetActive(true);
+            vestButton.usesRemainingText.gameObject.SetActive(true);
+            vestButton.usesRemainingText.text = role.UsesLeft.ToString();
+
             if (role.Vesting) vestButton.SetCoolDown(role.TimeRemaining, CustomGameOptions.VestDuration);
             else if (role.ButtonUsable) vestButton.SetCoolDown(role.VestTimer(), CustomGameOptions.VestCd);
             else vestButton.SetCoolDown(0f, CustomGameOptions.VestCd);

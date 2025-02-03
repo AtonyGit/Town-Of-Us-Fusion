@@ -47,17 +47,16 @@ namespace TownOfUsFusion.CrewmateRoles.HunterMod
             role.StalkButton.buttonLabelText.SetOutlineColor(role.Color);
             role.StalkButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
 
-
-                role.StalkButton.usesRemainingSprite.gameObject.SetActive(true);
-                role.StalkButton.usesRemainingText.gameObject.SetActive(true);
-                role.StalkButton.usesRemainingText.text = role.UsesLeft.ToString();
-
             if (PlayerControl.LocalPlayer.Data.IsDead) role.StalkButton.SetTarget(null);
 
             role.StalkButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
             
+                role.StalkButton.usesRemainingSprite.gameObject.SetActive(true);
+                role.StalkButton.usesRemainingText.gameObject.SetActive(true);
+                role.StalkButton.usesRemainingText.text = role.UsesLeft.ToString();
+
             if (role.Stalking) role.StalkButton.SetCoolDown(role.StalkDuration, CustomGameOptions.HunterStalkDuration);
             else if (role.StalkUsable) role.StalkButton.SetCoolDown(role.StalkTimer(), CustomGameOptions.HunterStalkCd);
             else role.StalkButton.SetCoolDown(0f, CustomGameOptions.HunterStalkCd);

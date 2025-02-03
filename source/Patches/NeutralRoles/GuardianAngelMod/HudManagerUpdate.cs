@@ -23,11 +23,14 @@ namespace TownOfUsFusion.NeutralRoles.GuardianAngelMod
 
             var role = Role.GetRole<GuardianAngel>(PlayerControl.LocalPlayer);
 
-                __instance.KillButton.usesRemainingText.text = role.UsesLeft.ToString();
-
             protectButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+
+            protectButton.usesRemainingSprite.gameObject.SetActive(true);
+            protectButton.usesRemainingText.gameObject.SetActive(true);
+            protectButton.usesRemainingText.text = role.UsesLeft.ToString();
+            
             if (role.Protecting) protectButton.SetCoolDown(role.TimeRemaining, CustomGameOptions.ProtectDuration);
             else if (role.ButtonUsable) protectButton.SetCoolDown(role.ProtectTimer(), CustomGameOptions.ProtectCd);
             else protectButton.SetCoolDown(0f, CustomGameOptions.ProtectCd);

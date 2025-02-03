@@ -22,8 +22,10 @@ namespace TownOfUsFusion.CrewmateRoles.AltruistMod
             killButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-
-                killButton.usesRemainingText.text = role.RevivesLeft.ToString();
+                    
+            killButton.usesRemainingSprite.gameObject.SetActive(true);
+            killButton.usesRemainingText.gameObject.SetActive(true);
+            killButton.usesRemainingText.text = role.RevivesLeft.ToString();
 
             var data = PlayerControl.LocalPlayer.Data;
             var isDead = data.IsDead;

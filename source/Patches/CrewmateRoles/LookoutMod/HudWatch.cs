@@ -21,7 +21,6 @@ namespace TownOfUsFusion.CrewmateRoles.LookoutMod
 
             var role = Role.GetRole<Lookout>(PlayerControl.LocalPlayer);
 
-                watchButton.usesRemainingText.text = role.UsesLeft.ToString();
 
             if (role.PerceptButton == null)
             {
@@ -39,13 +38,18 @@ namespace TownOfUsFusion.CrewmateRoles.LookoutMod
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
 
-                role.PerceptButton.usesRemainingSprite.gameObject.SetActive(true);
-                role.PerceptButton.usesRemainingText.gameObject.SetActive(true);
-                role.PerceptButton.usesRemainingText.text = role.PerceptUsesLeft.ToString();
                 
             watchButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+
+                watchButton.usesRemainingSprite.gameObject.SetActive(true);
+                watchButton.usesRemainingText.gameObject.SetActive(true);
+                watchButton.usesRemainingText.text = role.UsesLeft.ToString();
+                
+                role.PerceptButton.usesRemainingSprite.gameObject.SetActive(true);
+                role.PerceptButton.usesRemainingText.gameObject.SetActive(true);
+                role.PerceptButton.usesRemainingText.text = role.PerceptUsesLeft.ToString();
 
             if (role.Percepting)
             {

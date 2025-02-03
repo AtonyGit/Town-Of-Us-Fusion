@@ -23,11 +23,13 @@ namespace TownOfUsFusion.CrewmateRoles.VeteranMod
 
             var role = Role.GetRole<Veteran>(PlayerControl.LocalPlayer);
 
-                __instance.KillButton.usesRemainingText.text = role.UsesLeft.ToString();
-
             alertButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+            alertButton.usesRemainingSprite.gameObject.SetActive(true);
+            alertButton.usesRemainingText.gameObject.SetActive(true);
+            alertButton.usesRemainingText.text = role.UsesLeft.ToString();
+
             if (role.OnAlert) alertButton.SetCoolDown(role.TimeRemaining, CustomGameOptions.AlertDuration);
             else if (role.ButtonUsable) alertButton.SetCoolDown(role.AlertTimer(), CustomGameOptions.AlertCd);
             else alertButton.SetCoolDown(0f, CustomGameOptions.AlertCd);

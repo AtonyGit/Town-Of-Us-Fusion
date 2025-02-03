@@ -23,13 +23,15 @@ namespace TownOfUsFusion.CrewmateRoles.TrapperMod
 
             var role = Role.GetRole<Trapper>(PlayerControl.LocalPlayer);
 
-                __instance.KillButton.usesRemainingText.text = role.UsesLeft.ToString();
-
             trapButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
             if (role.ButtonUsable) trapButton.SetCoolDown(role.TrapTimer(), CustomGameOptions.TrapCooldown);
             else trapButton.SetCoolDown(0f, CustomGameOptions.TrapCooldown);
+
+            trapButton.usesRemainingSprite.gameObject.SetActive(true);
+            trapButton.usesRemainingText.gameObject.SetActive(true);
+            trapButton.usesRemainingText.text = role.UsesLeft.ToString();
 
             var renderer = trapButton.graphic;
             if (!trapButton.isCoolingDown && role.ButtonUsable && PlayerControl.LocalPlayer.moveable)

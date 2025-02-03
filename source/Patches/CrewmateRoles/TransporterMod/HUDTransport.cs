@@ -19,11 +19,15 @@ namespace TownOfUsFusion.CrewmateRoles.TransporterMod
 
             var role = Role.GetRole<Transporter>(PlayerControl.LocalPlayer);
 
-                __instance.KillButton.usesRemainingText.text = role.UsesLeft.ToString();
 
             transportButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+
+            transportButton.usesRemainingSprite.gameObject.SetActive(true);
+            transportButton.usesRemainingText.gameObject.SetActive(true);
+            transportButton.usesRemainingText.text = role.UsesLeft.ToString();
+
             if (data.IsDead) return;
 
             if (role.ButtonUsable) transportButton.SetCoolDown(role.TransportTimer(), CustomGameOptions.TransportCooldown);

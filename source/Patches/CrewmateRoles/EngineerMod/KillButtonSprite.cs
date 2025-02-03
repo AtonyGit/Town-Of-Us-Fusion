@@ -17,12 +17,20 @@ namespace TownOfUsFusion.CrewmateRoles.EngineerMod
 
             var role = Role.GetRole<Engineer>(PlayerControl.LocalPlayer);
 
-                __instance.KillButton.usesRemainingText.text = role.UsesLeft.ToString();
 
             __instance.KillButton.SetCoolDown(0f, 10f);
             __instance.KillButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+            __instance.KillButton.usesRemainingSprite.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+            __instance.KillButton.usesRemainingText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+                
+                __instance.KillButton.usesRemainingText.text = role.UsesLeft.ToString();
+
             if (PlayerControl.LocalPlayer.Data.IsDead) return;
             if (!ShipStatus.Instance) return;
             var system = ShipStatus.Instance.Systems[SystemTypes.Sabotage].Cast<SabotageSystemType>();
