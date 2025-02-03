@@ -158,7 +158,7 @@ namespace TownOfUsFusion
             string info = "";
             if (updateType == "TOU")
             {
-                info = "Updating Town Of Us\nPlease wait...";
+                info = "Updating Town Of Us Fusion\nPlease wait...";
                 InfoPopup.Show(info);
                 if (UpdateTOUTask == null)
                 {
@@ -221,7 +221,7 @@ namespace TownOfUsFusion
                 string githubURI = "";
                 if (updateType == "TOU")
                 {
-                    githubURI = "https://api.github.com/repos/eDonnes124/Town-Of-Us-R/releases/latest";
+                    githubURI = "https://api.github.com/repos/AtonyGit/Town-Of-Us-Fusion/releases/latest";
                 }
                 else if (updateType == "Submerged")
                 {
