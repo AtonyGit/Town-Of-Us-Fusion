@@ -31,8 +31,12 @@ namespace TownOfUsFusion.CrewmateRoles.TrackerMod
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
 
-            trackButton.usesRemainingSprite.gameObject.SetActive(true);
-            trackButton.usesRemainingText.gameObject.SetActive(true);
+            trackButton.usesRemainingSprite.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+            trackButton.usesRemainingText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
             trackButton.usesRemainingText.text = role.UsesLeft.ToString();
 
             if (role.ButtonUsable) trackButton.SetCoolDown(role.TrackerTimer(), CustomGameOptions.TrackCd);
@@ -53,10 +57,6 @@ namespace TownOfUsFusion.CrewmateRoles.TrackerMod
                 renderer.material.SetFloat("_Desat", 0f);
                 trackButton.buttonLabelText.color = Palette.EnabledColor;
                 trackButton.buttonLabelText.material.SetFloat("_Desat", 0f);
-                trackButton.usesRemainingSprite.color = Palette.EnabledColor;
-                trackButton.usesRemainingSprite.material.SetFloat("_Desat", 0f);
-                trackButton.usesRemainingText.color = Palette.EnabledColor;
-                trackButton.usesRemainingText.material.SetFloat("_Desat", 0f);
             }
             else
             {
@@ -64,10 +64,6 @@ namespace TownOfUsFusion.CrewmateRoles.TrackerMod
                 renderer.material.SetFloat("_Desat", 1f);
                 trackButton.buttonLabelText.color = Palette.DisabledClear;
                 trackButton.buttonLabelText.material.SetFloat("_Desat", 1f);
-                trackButton.usesRemainingSprite.color = Palette.DisabledClear;
-                trackButton.usesRemainingSprite.material.SetFloat("_Desat", 1f);
-                trackButton.usesRemainingText.color = Palette.DisabledClear;
-                trackButton.usesRemainingText.material.SetFloat("_Desat", 1f);
             }
         }
     }

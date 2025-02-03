@@ -28,7 +28,7 @@ namespace TownOfUsFusion.CrewmateRoles.EngineerMod
             __instance.KillButton.usesRemainingText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                 && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                 && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-                
+
                 __instance.KillButton.usesRemainingText.text = role.UsesLeft.ToString();
 
             if (PlayerControl.LocalPlayer.Data.IsDead) return;
@@ -43,10 +43,6 @@ namespace TownOfUsFusion.CrewmateRoles.EngineerMod
                 renderer.material.SetFloat("_Desat", 0f);
                 __instance.KillButton.buttonLabelText.color = Palette.EnabledColor;
                 __instance.KillButton.buttonLabelText.material.SetFloat("_Desat", 0f);
-                __instance.KillButton.usesRemainingSprite.color = Palette.EnabledColor;
-                __instance.KillButton.usesRemainingSprite.material.SetFloat("_Desat", 0f);
-                __instance.KillButton.usesRemainingText.color = Palette.EnabledColor;
-                __instance.KillButton.usesRemainingText.material.SetFloat("_Desat", 0f);
                 return;
             }
 
@@ -54,10 +50,6 @@ namespace TownOfUsFusion.CrewmateRoles.EngineerMod
             renderer.material.SetFloat("_Desat", 1f);
             __instance.KillButton.buttonLabelText.color = Palette.DisabledClear;
             __instance.KillButton.buttonLabelText.material.SetFloat("_Desat", 1f);
-            __instance.KillButton.usesRemainingSprite.color = Palette.DisabledClear;
-            __instance.KillButton.usesRemainingSprite.material.SetFloat("_Desat", 1f);
-            __instance.KillButton.usesRemainingText.color = Palette.DisabledClear;
-            __instance.KillButton.usesRemainingText.material.SetFloat("_Desat", 1f);
         }
     }
 }

@@ -53,8 +53,12 @@ namespace TownOfUsFusion.CrewmateRoles.HunterMod
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
             
-                role.StalkButton.usesRemainingSprite.gameObject.SetActive(true);
-                role.StalkButton.usesRemainingText.gameObject.SetActive(true);
+                role.StalkButton.usesRemainingSprite.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+                role.StalkButton.usesRemainingText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
                 role.StalkButton.usesRemainingText.text = role.UsesLeft.ToString();
 
             if (role.Stalking) role.StalkButton.SetCoolDown(role.StalkDuration, CustomGameOptions.HunterStalkDuration);
@@ -76,10 +80,6 @@ namespace TownOfUsFusion.CrewmateRoles.HunterMod
                 renderer.material.SetFloat("_Desat", 0f);
                 role.StalkButton.buttonLabelText.color = Palette.EnabledColor;
                 role.StalkButton.buttonLabelText.material.SetFloat("_Desat", 0f);
-                role.StalkButton.usesRemainingSprite.color = Palette.EnabledColor;
-                role.StalkButton.usesRemainingSprite.material.SetFloat("_Desat", 0f);
-                role.StalkButton.usesRemainingText.color = Palette.EnabledColor;
-                role.StalkButton.usesRemainingText.material.SetFloat("_Desat", 0f);
             }
             else
             {
@@ -87,10 +87,6 @@ namespace TownOfUsFusion.CrewmateRoles.HunterMod
                 renderer.material.SetFloat("_Desat", 1f);
                 role.StalkButton.buttonLabelText.color = Palette.DisabledClear;
                 role.StalkButton.buttonLabelText.material.SetFloat("_Desat", 1f);
-                role.StalkButton.usesRemainingSprite.color = Palette.DisabledClear;
-                role.StalkButton.usesRemainingSprite.material.SetFloat("_Desat", 1f);
-                role.StalkButton.usesRemainingText.color = Palette.DisabledClear;
-                role.StalkButton.usesRemainingText.material.SetFloat("_Desat", 1f);
             }
 
             __instance.KillButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)

@@ -51,10 +51,6 @@ namespace TownOfUsFusion.CrewmateRoles.BodyguardMod
                     renderer.material.SetFloat("_Desat", 0f);
                     protectButton.buttonLabelText.color = Palette.EnabledColor;
                     protectButton.buttonLabelText.material.SetFloat("_Desat", 0f);
-                    protectButton.usesRemainingSprite.color = Palette.EnabledColor;
-                    protectButton.usesRemainingSprite.material.SetFloat("_Desat", 0f);
-                    protectButton.usesRemainingText.color = Palette.EnabledColor;
-                    protectButton.usesRemainingText.material.SetFloat("_Desat", 0f);
                 }
                 else
                 {
@@ -62,10 +58,6 @@ namespace TownOfUsFusion.CrewmateRoles.BodyguardMod
                     renderer.material.SetFloat("_Desat", 1f);
                     protectButton.buttonLabelText.color = Palette.DisabledClear;
                     protectButton.buttonLabelText.material.SetFloat("_Desat", 1f);
-                    protectButton.usesRemainingSprite.color = Palette.DisabledClear;
-                    protectButton.usesRemainingSprite.material.SetFloat("_Desat", 1f);
-                    protectButton.usesRemainingText.color = Palette.DisabledClear;
-                    protectButton.usesRemainingText.material.SetFloat("_Desat", 1f);
                 }
             }
         }

@@ -13,8 +13,6 @@ namespace TownOfUsFusion
         public static void Prefix(KillButton __instance)
         {
             //__instance.transform.Find("Text_TMP").gameObject.SetActive(false);
-            __instance.transform.Find("Text_TMP").gameObject.SetActive(true);
-            __instance.transform.Find("Renderer").gameObject.SetActive(true);
         }
     }
 
@@ -272,8 +270,6 @@ namespace TownOfUsFusion
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Apocalypse);
                 flag = true;
             }
-            __instance.KillButton.usesRemainingSprite.gameObject.SetActive(true);
-            __instance.KillButton.usesRemainingText.gameObject.SetActive(true);
             
             if (!PlayerControl.LocalPlayer.Is(Faction.Impostors) &&
                 GameOptionsManager.Instance.CurrentGameOptions.GameMode != GameModes.HideNSeek)

@@ -17,7 +17,7 @@ namespace TownOfUsFusion.Roles
             ChargePercent = 0;
         }
 
-        public TextMeshPro ChargeText;
+        //public TextMeshPro ChargeText;
         public int ChargePercent;
         public bool Charging;
         public bool UsingCharge;

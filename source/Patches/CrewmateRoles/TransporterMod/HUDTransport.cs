@@ -24,8 +24,12 @@ namespace TownOfUsFusion.CrewmateRoles.TransporterMod
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
 
-            transportButton.usesRemainingSprite.gameObject.SetActive(true);
-            transportButton.usesRemainingText.gameObject.SetActive(true);
+            transportButton.usesRemainingSprite.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+            transportButton.usesRemainingText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
             transportButton.usesRemainingText.text = role.UsesLeft.ToString();
 
             if (data.IsDead) return;
@@ -40,10 +44,6 @@ namespace TownOfUsFusion.CrewmateRoles.TransporterMod
                 renderer.material.SetFloat("_Desat", 0f);
                 transportButton.buttonLabelText.color = Palette.EnabledColor;
                 transportButton.buttonLabelText.material.SetFloat("_Desat", 0f);
-                transportButton.usesRemainingSprite.color = Palette.EnabledColor;
-                transportButton.usesRemainingSprite.material.SetFloat("_Desat", 0f);
-                transportButton.usesRemainingText.color = Palette.EnabledColor;
-                transportButton.usesRemainingText.material.SetFloat("_Desat", 0f);
                 return;
             }
 
@@ -51,10 +51,6 @@ namespace TownOfUsFusion.CrewmateRoles.TransporterMod
             renderer.material.SetFloat("_Desat", 1f);
             transportButton.buttonLabelText.color = Palette.DisabledClear;
             transportButton.buttonLabelText.material.SetFloat("_Desat", 1f);
-            transportButton.usesRemainingSprite.color = Palette.DisabledClear;
-            transportButton.usesRemainingSprite.material.SetFloat("_Desat", 1f);
-            transportButton.usesRemainingText.color = Palette.DisabledClear;
-            transportButton.usesRemainingText.material.SetFloat("_Desat", 1f);
         }
     }
 }

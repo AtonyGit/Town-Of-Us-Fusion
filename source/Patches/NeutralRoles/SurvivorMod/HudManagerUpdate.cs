@@ -25,8 +25,12 @@ namespace TownOfUsFusion.NeutralRoles.SurvivorMod
             vestButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-            vestButton.usesRemainingSprite.gameObject.SetActive(true);
-            vestButton.usesRemainingText.gameObject.SetActive(true);
+            vestButton.usesRemainingSprite.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+            vestButton.usesRemainingText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
             vestButton.usesRemainingText.text = role.UsesLeft.ToString();
 
             if (role.Vesting) vestButton.SetCoolDown(role.TimeRemaining, CustomGameOptions.VestDuration);
@@ -40,10 +44,6 @@ namespace TownOfUsFusion.NeutralRoles.SurvivorMod
                 renderer.material.SetFloat("_Desat", 0f);
                 vestButton.buttonLabelText.color = Palette.EnabledColor;
                 vestButton.buttonLabelText.material.SetFloat("_Desat", 0f);
-                vestButton.usesRemainingSprite.color = Palette.EnabledColor;
-                vestButton.usesRemainingSprite.material.SetFloat("_Desat", 0f);
-                vestButton.usesRemainingText.color = Palette.EnabledColor;
-                vestButton.usesRemainingText.material.SetFloat("_Desat", 0f);
             }
             else
             {
@@ -51,10 +51,6 @@ namespace TownOfUsFusion.NeutralRoles.SurvivorMod
                 renderer.material.SetFloat("_Desat", 1f);
                 vestButton.buttonLabelText.color = Palette.DisabledClear;
                 vestButton.buttonLabelText.material.SetFloat("_Desat", 1f);
-                vestButton.usesRemainingSprite.color = Palette.DisabledClear;
-                vestButton.usesRemainingSprite.material.SetFloat("_Desat", 1f);
-                vestButton.usesRemainingText.color = Palette.DisabledClear;
-                vestButton.usesRemainingText.material.SetFloat("_Desat", 1f);
             }
         }
     }

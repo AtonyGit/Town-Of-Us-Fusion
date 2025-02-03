@@ -43,12 +43,20 @@ namespace TownOfUsFusion.CrewmateRoles.LookoutMod
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
 
-                watchButton.usesRemainingSprite.gameObject.SetActive(true);
-                watchButton.usesRemainingText.gameObject.SetActive(true);
+                watchButton.usesRemainingSprite.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+                watchButton.usesRemainingText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
                 watchButton.usesRemainingText.text = role.UsesLeft.ToString();
-                
-                role.PerceptButton.usesRemainingSprite.gameObject.SetActive(true);
-                role.PerceptButton.usesRemainingText.gameObject.SetActive(true);
+
+                role.PerceptButton.usesRemainingSprite.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+                role.PerceptButton.usesRemainingText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
                 role.PerceptButton.usesRemainingText.text = role.PerceptUsesLeft.ToString();
 
             if (role.Percepting)
@@ -67,10 +75,6 @@ namespace TownOfUsFusion.CrewmateRoles.LookoutMod
                     role.PerceptButton.graphic.material.SetFloat("_Desat", 1f);
                     role.PerceptButton.buttonLabelText.color = Palette.EnabledColor;
                     role.PerceptButton.buttonLabelText.material.SetFloat("_Desat", 0f);
-                    role.PerceptButton.usesRemainingSprite.color = Palette.EnabledColor;
-                    role.PerceptButton.usesRemainingSprite.material.SetFloat("_Desat", 0f);
-                    role.PerceptButton.usesRemainingText.color = Palette.EnabledColor;
-                    role.PerceptButton.usesRemainingText.material.SetFloat("_Desat", 0f);
                 }
                 else
                 {
@@ -78,10 +82,6 @@ namespace TownOfUsFusion.CrewmateRoles.LookoutMod
                     role.PerceptButton.graphic.material.SetFloat("_Desat", 0f);
                     role.PerceptButton.buttonLabelText.color = Palette.DisabledClear;
                     role.PerceptButton.buttonLabelText.material.SetFloat("_Desat", 1f);
-                    role.PerceptButton.usesRemainingSprite.color = Palette.DisabledClear;
-                    role.PerceptButton.usesRemainingSprite.material.SetFloat("_Desat", 1f);
-                    role.PerceptButton.usesRemainingText.color = Palette.DisabledClear;
-                    role.PerceptButton.usesRemainingText.material.SetFloat("_Desat", 1f);
                 }
             }
 
@@ -102,10 +102,6 @@ namespace TownOfUsFusion.CrewmateRoles.LookoutMod
                     renderer.material.SetFloat("_Desat", 0f);
                     watchButton.buttonLabelText.color = Palette.EnabledColor;
                     watchButton.buttonLabelText.material.SetFloat("_Desat", 0f);
-                    watchButton.usesRemainingSprite.color = Palette.EnabledColor;
-                    watchButton.usesRemainingSprite.material.SetFloat("_Desat", 0f);
-                    watchButton.usesRemainingText.color = Palette.EnabledColor;
-                    watchButton.usesRemainingText.material.SetFloat("_Desat", 0f);
                 }
                 else
                 {
@@ -113,10 +109,6 @@ namespace TownOfUsFusion.CrewmateRoles.LookoutMod
                     renderer.material.SetFloat("_Desat", 1f);
                     watchButton.buttonLabelText.color = Palette.DisabledClear;
                     watchButton.buttonLabelText.material.SetFloat("_Desat", 1f);
-                    watchButton.usesRemainingSprite.color = Palette.DisabledClear;
-                    watchButton.usesRemainingSprite.material.SetFloat("_Desat", 1f);
-                    watchButton.usesRemainingText.color = Palette.DisabledClear;
-                    watchButton.usesRemainingText.material.SetFloat("_Desat", 1f);
                 }
             }
         }

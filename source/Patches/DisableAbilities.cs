@@ -92,13 +92,8 @@ namespace TownOfUsFusion
                         HudManager.Instance.KillButton.enabled = false;
                         HudManager.Instance.KillButton.graphic.color = Palette.DisabledClear;
                         HudManager.Instance.KillButton.graphic.material.SetFloat("_Desat", 1f);
-
                         HudManager.Instance.KillButton.buttonLabelText.color = Palette.DisabledClear;
                         HudManager.Instance.KillButton.buttonLabelText.material.SetFloat("_Desat", 1f);
-                        HudManager.Instance.KillButton.usesRemainingSprite.color = Palette.DisabledClear;
-                        HudManager.Instance.KillButton.usesRemainingSprite.material.SetFloat("_Desat", 1f);
-                        HudManager.Instance.KillButton.usesRemainingText.color = Palette.DisabledClear;
-                        HudManager.Instance.KillButton.usesRemainingText.material.SetFloat("_Desat", 1f);
                     }
                     if (PlayerControl.LocalPlayer.Is(RoleEnum.Altruist)) CrewmateRoles.AltruistMod.KillButtonTarget.SetTarget(HudManager.Instance.KillButton, null, Role.GetRole<Altruist>(PlayerControl.LocalPlayer));
                     else if (PlayerControl.LocalPlayer.Is(RoleEnum.Amnesiac)) NeutralRoles.AmnesiacMod.KillButtonTarget.SetTarget(HudManager.Instance.KillButton, null, Role.GetRole<Amnesiac>(PlayerControl.LocalPlayer));
@@ -118,10 +113,6 @@ namespace TownOfUsFusion
                         role.ExtraButtons[0].graphic.material.SetFloat("_Desat", 1f);
                         role.ExtraButtons[0].buttonLabelText.color = Palette.DisabledClear;
                         role.ExtraButtons[0].buttonLabelText.material.SetFloat("_Desat", 1f);
-                        role.ExtraButtons[0].usesRemainingSprite.color = Palette.DisabledClear;
-                        role.ExtraButtons[0].usesRemainingSprite.material.SetFloat("_Desat", 1f);
-                        role.ExtraButtons[0].usesRemainingText.color = Palette.DisabledClear;
-                        role.ExtraButtons[0].usesRemainingText.material.SetFloat("_Desat", 1f);
                     }
 
                     if (PlayerControl.LocalPlayer.Is(RoleEnum.Investigator)) Role.GetRole<Investigator>(PlayerControl.LocalPlayer).ExamineButton.SetTarget(null);

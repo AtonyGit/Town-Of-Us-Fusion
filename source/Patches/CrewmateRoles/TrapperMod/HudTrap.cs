@@ -29,8 +29,12 @@ namespace TownOfUsFusion.CrewmateRoles.TrapperMod
             if (role.ButtonUsable) trapButton.SetCoolDown(role.TrapTimer(), CustomGameOptions.TrapCooldown);
             else trapButton.SetCoolDown(0f, CustomGameOptions.TrapCooldown);
 
-            trapButton.usesRemainingSprite.gameObject.SetActive(true);
-            trapButton.usesRemainingText.gameObject.SetActive(true);
+            trapButton.usesRemainingSprite.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+            trapButton.usesRemainingText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
             trapButton.usesRemainingText.text = role.UsesLeft.ToString();
 
             var renderer = trapButton.graphic;
@@ -40,10 +44,6 @@ namespace TownOfUsFusion.CrewmateRoles.TrapperMod
                 renderer.material.SetFloat("_Desat", 0f);
                 trapButton.buttonLabelText.color = Palette.EnabledColor;
                 trapButton.buttonLabelText.material.SetFloat("_Desat", 0f);
-                trapButton.usesRemainingSprite.color = Palette.EnabledColor;
-                trapButton.usesRemainingSprite.material.SetFloat("_Desat", 0f);
-                trapButton.usesRemainingText.color = Palette.EnabledColor;
-                trapButton.usesRemainingText.material.SetFloat("_Desat", 0f);
                 return;
             }
 
@@ -51,10 +51,6 @@ namespace TownOfUsFusion.CrewmateRoles.TrapperMod
             renderer.material.SetFloat("_Desat", 1f);
             trapButton.buttonLabelText.color = Palette.DisabledClear;
             trapButton.buttonLabelText.material.SetFloat("_Desat", 1f);
-            trapButton.usesRemainingSprite.color = Palette.DisabledClear;
-            trapButton.usesRemainingSprite.material.SetFloat("_Desat", 1f);
-            trapButton.usesRemainingText.color = Palette.DisabledClear;
-            trapButton.usesRemainingText.material.SetFloat("_Desat", 1f);
         }
     }
 }

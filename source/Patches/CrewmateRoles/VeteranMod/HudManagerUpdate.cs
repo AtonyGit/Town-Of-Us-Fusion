@@ -26,8 +26,12 @@ namespace TownOfUsFusion.CrewmateRoles.VeteranMod
             alertButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-            alertButton.usesRemainingSprite.gameObject.SetActive(true);
-            alertButton.usesRemainingText.gameObject.SetActive(true);
+            alertButton.usesRemainingSprite.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+            alertButton.usesRemainingText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
             alertButton.usesRemainingText.text = role.UsesLeft.ToString();
 
             if (role.OnAlert) alertButton.SetCoolDown(role.TimeRemaining, CustomGameOptions.AlertDuration);
@@ -41,10 +45,6 @@ namespace TownOfUsFusion.CrewmateRoles.VeteranMod
                 renderer.material.SetFloat("_Desat", 0f);
                 alertButton.buttonLabelText.color = Palette.EnabledColor;
                 alertButton.buttonLabelText.material.SetFloat("_Desat", 0f);
-                alertButton.usesRemainingSprite.color = Palette.EnabledColor;
-                alertButton.usesRemainingSprite.material.SetFloat("_Desat", 0f);
-                alertButton.usesRemainingText.color = Palette.EnabledColor;
-                alertButton.usesRemainingText.material.SetFloat("_Desat", 0f);
             }
             else
             {
@@ -52,10 +52,6 @@ namespace TownOfUsFusion.CrewmateRoles.VeteranMod
                 renderer.material.SetFloat("_Desat", 1f);
                 alertButton.buttonLabelText.color = Palette.DisabledClear;
                 alertButton.buttonLabelText.material.SetFloat("_Desat", 1f);
-                alertButton.usesRemainingSprite.color = Palette.DisabledClear;
-                alertButton.usesRemainingSprite.material.SetFloat("_Desat", 1f);
-                alertButton.usesRemainingText.color = Palette.DisabledClear;
-                alertButton.usesRemainingText.material.SetFloat("_Desat", 1f);
             }
         }
     }

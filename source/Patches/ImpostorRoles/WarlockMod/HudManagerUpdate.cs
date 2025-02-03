@@ -15,7 +15,7 @@ namespace TownOfUsFusion.ImpostorRoles.WarlockMod
             if (PlayerControl.LocalPlayer.Data == null) return;
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Warlock)) return;
             var role = Role.GetRole<Warlock>(PlayerControl.LocalPlayer);
-
+/*
             if (role.ChargeText == null)
             {
                 role.ChargeText = UnityEngine.Object.Instantiate(__instance.KillButton.cooldownTimerText, __instance.KillButton.transform);
@@ -37,13 +37,23 @@ namespace TownOfUsFusion.ImpostorRoles.WarlockMod
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started
                     && (role.Charging || role.UsingCharge));
+*/
+            __instance.KillButton.usesRemainingSprite.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started
+                    && (role.Charging || role.UsingCharge));
+            __instance.KillButton.usesRemainingText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started
+                    && (role.Charging || role.UsingCharge));
+            __instance.KillButton.usesRemainingText.text = role.ChargePercent.ToString() + "%";
             if (role.UsingCharge)
             {
                 if (role.Charging)
                 {
                     role.StartUseTime = DateTime.UtcNow;
                     role.Charging = false;
-                }
+                }/*
                 if (PlayerControl.LocalPlayer.moveable && __instance.KillButton.currentTarget != null)
                 {
                     role.ChargeText.color = Palette.EnabledColor;
@@ -53,7 +63,7 @@ namespace TownOfUsFusion.ImpostorRoles.WarlockMod
                 {
                     role.ChargeText.color = Palette.DisabledClear;
                     role.ChargeText.material.SetFloat("_Desat", 1f);
-                }
+                }*/
             }
             else if (PlayerControl.LocalPlayer.killTimer == 0f)
             {
@@ -61,7 +71,7 @@ namespace TownOfUsFusion.ImpostorRoles.WarlockMod
                 {
                     role.StartChargeTime = DateTime.UtcNow;
                     role.Charging = true;
-                }
+                }/*
                 if (PlayerControl.LocalPlayer.moveable && __instance.KillButton.currentTarget != null)
                 {
                     role.ChargeText.color = Palette.EnabledColor;
@@ -71,15 +81,15 @@ namespace TownOfUsFusion.ImpostorRoles.WarlockMod
                 {
                     role.ChargeText.color = Palette.DisabledClear;
                     role.ChargeText.material.SetFloat("_Desat", 1f);
-                }
+                }*/
             }
             else
             {
                 role.ChargePercent = 0;
                 role.Charging = false;
                 role.UsingCharge = false;
-                role.ChargeText.color = Palette.DisabledClear;
-                role.ChargeText.material.SetFloat("_Desat", 1f);
+                /*role.ChargeText.color = Palette.DisabledClear;
+                role.ChargeText.material.SetFloat("_Desat", 1f);*/
             }
             return;
         }
