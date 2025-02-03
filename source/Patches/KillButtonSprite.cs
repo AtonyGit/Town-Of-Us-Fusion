@@ -37,7 +37,8 @@ namespace TownOfUsFusion
         private static Sprite Autopsy => TownOfUsFusion.AutopsySprite;
         private static Sprite Observe => TownOfUsFusion.ObserveSprite;
         private static Sprite Bite => TownOfUsFusion.BiteSprite;
-        private static Sprite Confess => TownOfUsFusion.ConfessSprite;
+        private static Sprite Guard => TownOfUsFusion.GuardSprite;
+        private static Sprite Unleash => TownOfUsFusion.MirrorUnleashSprite;
         private static Sprite Campaign => TownOfUsFusion.CampaignSprite;
         private static Sprite Fortify => TownOfUsFusion.BlessSprite;
         private static Sprite Jail => TownOfUsFusion.JailSprite;
@@ -142,13 +143,6 @@ namespace TownOfUsFusion
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.GuardianAngel);
                 flag = true;
             }
-            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Bodyguard))
-            {
-                __instance.KillButton.graphic.sprite = Protect;
-                __instance.KillButton.buttonLabelText.text = "Guard";
-                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Bodyguard);
-                flag = true;
-            }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Plaguebearer))
             {
                 __instance.KillButton.graphic.sprite = Infect;
@@ -238,6 +232,20 @@ namespace TownOfUsFusion
                 __instance.KillButton.graphic.sprite = Camp;
                 __instance.KillButton.buttonLabelText.text = "Camp";
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Deputy);
+                flag = true;
+            }
+            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Bodyguard))
+            {
+                __instance.KillButton.graphic.sprite = Guard;
+                __instance.KillButton.buttonLabelText.text = "Guard";
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Bodyguard);
+                flag = true;
+            }
+            else if (PlayerControl.LocalPlayer.Is(RoleEnum.MirrorMaster))
+            {
+                __instance.KillButton.graphic.sprite = Unleash;
+                __instance.KillButton.buttonLabelText.text = "Unleash";
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.MirrorMaster);
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Sheriff))

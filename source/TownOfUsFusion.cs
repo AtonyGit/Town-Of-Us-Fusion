@@ -93,6 +93,9 @@ namespace TownOfUsFusion
         public static Sprite MediateSprite;
         public static Sprite VestSprite;
         public static Sprite ProtectSprite;
+        public static Sprite GuardSprite;
+        public static Sprite MirrorAbsorbSprite;
+        public static Sprite MirrorUnleashSprite;
         public static Sprite BlackmailSprite;
         public static Sprite BlackmailLetterSprite;
         public static Sprite BlackmailOverlaySprite;
@@ -111,7 +114,6 @@ namespace TownOfUsFusion
         public static Sprite BiteSprite;
         public static Sprite BitSprite;
         public static Sprite RevealSprite;
-        public static Sprite ConfessSprite;
         public static Sprite NoAbilitySprite;
         public static Sprite CamouflageSprite;
         public static Sprite CamoSprintSprite;
@@ -199,7 +201,9 @@ namespace TownOfUsFusion
             // Protective Roles
                 ReviveSprite = CreateSprite("TownOfUsFusion.Resources.Revive.png");
                 MedicSprite = CreateSprite("TownOfUsFusion.Resources.Medic.png");
-                ConfessSprite = CreateSprite("TownOfUsFusion.Resources.Confess.png");
+                GuardSprite = CreateSprite("TownOfUsFusion.Resources.Guard.png");
+                MirrorAbsorbSprite = CreateScaledSprite("TownOfUsFusion.Resources.MirrorAbsorb.png");
+                MirrorUnleashSprite = CreateScaledSprite("TownOfUsFusion.Resources.MirrorUnleash.png");
                 BlessSprite = CreateSprite("TownOfUsFusion.Resources.Fortify.png");
             // Sovereign Roles
                 CampaignSprite = CreateScaledSprite("TownOfUsFusion.Resources.Campaign.png");

@@ -1,4 +1,4 @@
-﻿using HarmonyLib;
+﻿/*using HarmonyLib;
 using TownOfUsFusion.Roles;
 using UnityEngine;
 
@@ -43,3 +43,4 @@ namespace TownOfUsFusion.CrewmateRoles.SpyMod
         }
     }
 }
+*/

@@ -1077,6 +1077,14 @@ namespace TownOfUsFusion
                         readByte = reader.ReadByte();
                         StopKill.BreakShield(medicId, readByte, CustomGameOptions.ShieldBreaks);
                         break;
+                    case CustomRPC.Guard:
+                        readByte1 = reader.ReadByte();
+                        readByte2 = reader.ReadByte();
+
+                        var bg2 = Utils.PlayerById(readByte1);
+                        var guarded = Utils.PlayerById(readByte2);
+                        Role.GetRole<Bodyguard>(bg2).guardedPlayer = guarded;
+                        break;
                     case CustomRPC.BypassKill:
                         var killer = Utils.PlayerById(reader.ReadByte());
                         var target = Utils.PlayerById(reader.ReadByte());

@@ -3,7 +3,7 @@ using Hazel;
 
 namespace TownOfUsFusion
 {
-    public class Reportmessage
+    public class ReportMessage
     {
         public static string location;
         

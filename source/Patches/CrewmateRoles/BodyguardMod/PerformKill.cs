@@ -36,7 +36,7 @@ namespace TownOfUsFusion.CrewmateRoles.BodyguardMod
                 {
                     role.guardedPlayer = role.ClosestPlayer;
                     role.LastProtected = DateTime.UtcNow;
-                    //Utils.Rpc(CustomRPC.Protect, PlayerControl.LocalPlayer.PlayerId, role.ClosestPlayer.PlayerId);
+                    Utils.Rpc(CustomRPC.Guard, PlayerControl.LocalPlayer.PlayerId, role.ClosestPlayer.PlayerId);
                     return false;
                 }
                 return false;
