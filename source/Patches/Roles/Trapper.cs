@@ -30,6 +30,15 @@ namespace TownOfUsFusion.Roles
 
             UsesLeft = CustomGameOptions.MaxTraps;
         }
+        private AbilityButton _dummyButton;
+        public AbilityButton DummyButton
+        {
+            get => _dummyButton;
+            set
+            {
+                _dummyButton = value;
+            }
+        }
 
         public float TrapTimer()
         {

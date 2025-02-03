@@ -62,5 +62,15 @@ namespace TownOfUsFusion.Roles
             __instance.teamToShow = survTeam;
         }
 
+        private AbilityButton _dummyButton;
+        public AbilityButton DummyButton
+        {
+            get => _dummyButton;
+            set
+            {
+                _dummyButton = value;
+            }
+        }
+
     }
 }

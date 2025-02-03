@@ -24,6 +24,15 @@ namespace TownOfUsFusion.Roles
         public float ChargeUseDuration;
         public DateTime StartChargeTime;
         public DateTime StartUseTime;
+        private AbilityButton _dummyButton;
+        public AbilityButton DummyButton
+        {
+            get => _dummyButton;
+            set
+            {
+                _dummyButton = value;
+            }
+        }
 
         public int ChargeUpTimer()
         {

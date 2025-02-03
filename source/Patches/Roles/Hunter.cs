@@ -90,6 +90,15 @@ namespace TownOfUsFusion.Roles
             LastStalked = DateTime.UtcNow;
             StalkedPlayer = null;
         }
+        private AbilityButton _dummyButton;
+        public AbilityButton DummyButton
+        {
+            get => _dummyButton;
+            set
+            {
+                _dummyButton = value;
+            }
+        }
 
         public void RpcCatchPlayer(PlayerControl stalked)
         {

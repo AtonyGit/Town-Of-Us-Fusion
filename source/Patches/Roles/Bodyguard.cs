@@ -58,6 +58,15 @@ namespace TownOfUsFusion.Roles
         }
 
 
+        private AbilityButton _dummyButton;
+        public AbilityButton DummyButton
+        {
+            get => _dummyButton;
+            set
+            {
+                _dummyButton = value;
+            }
+        }
         public void UnProtect()
         {
             var ga = GetRole<Bodyguard>(Player);

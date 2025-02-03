@@ -33,8 +33,20 @@ namespace TownOfUsFusion.NeutralRoles.GuardianAngelMod
             protectButton.usesRemainingText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);*/
-            protectButton.SetUsesRemaining(role.UsesLeft);
-            protectButton.usesRemainingText.text = role.UsesLeft.ToString();
+            if (role.DummyButton == null)
+            {
+                role.DummyButton = Object.Instantiate(__instance.AbilityButton, __instance.AbilityButton.transform.parent);
+                role.DummyButton.graphic.enabled = false;
+                role.DummyButton.buttonLabelText.enabled = false;
+                role.DummyButton.cooldownTimerText.enabled = false;
+                role.DummyButton.gameObject.SetActive(false);
+            }
+            role.DummyButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+            role.DummyButton.transform.localPosition = protectButton.transform.localPosition;
+            role.DummyButton.SetUsesRemaining(role.UsesLeft);
+            role.DummyButton.usesRemainingText.text = role.UsesLeft.ToString();
 
             if (role.Protecting) protectButton.SetCoolDown(role.TimeRemaining, CustomGameOptions.ProtectDuration);
             else if (role.ButtonUsable) protectButton.SetCoolDown(role.ProtectTimer(), CustomGameOptions.ProtectCd);

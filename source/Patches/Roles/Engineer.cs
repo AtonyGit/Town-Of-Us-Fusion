@@ -17,6 +17,15 @@ namespace TownOfUsFusion.Roles
 
         public int UsesLeft;
 
+        private AbilityButton _dummyButton;
+        public AbilityButton DummyButton
+        {
+            get => _dummyButton;
+            set
+            {
+                _dummyButton = value;
+            }
+        }
         public bool ButtonUsable => UsesLeft != 0;
     }
 }

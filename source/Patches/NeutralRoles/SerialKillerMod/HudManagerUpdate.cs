@@ -33,8 +33,20 @@ namespace TownOfUsFusion.NeutralRoles.SerialKillerMod
             __instance.KillButton.usesRemainingText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                 && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                 && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started && role.Scavenging);*/
-            __instance.KillButton.SetUsesRemaining(Convert.ToInt32(Math.Round(role.BloodlustTimer())));
-            __instance.KillButton.usesRemainingText.text = Convert.ToInt32(Math.Round(role.BloodlustTimer())).ToString();
+            if (role.DummyButton == null)
+            {
+                role.DummyButton = UnityEngine.Object.Instantiate(__instance.AbilityButton, __instance.AbilityButton.transform.parent);
+                role.DummyButton.graphic.enabled = false;
+                role.DummyButton.buttonLabelText.enabled = false;
+                role.DummyButton.cooldownTimerText.enabled = false;
+                role.DummyButton.gameObject.SetActive(false);
+            }
+            role.DummyButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+            role.DummyButton.transform.localPosition = __instance.KillButton.transform.localPosition;
+            role.DummyButton.SetUsesRemaining(Convert.ToInt32(Math.Round(role.BloodlustTimer())));
+            role.DummyButton.usesRemainingText.text = Convert.ToInt32(Math.Round(role.BloodlustTimer())).ToString();
 /*
             if (role.BloodlustCooldown == null)
             {

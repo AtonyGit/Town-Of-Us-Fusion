@@ -29,8 +29,20 @@ namespace TownOfUsFusion.CrewmateRoles.AltruistMod
             killButton.usesRemainingText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);*/
-            killButton.SetUsesRemaining(role.RevivesLeft);
-            killButton.usesRemainingText.text = role.RevivesLeft.ToString();
+            if (role.DummyButton == null)
+            {
+                role.DummyButton = Object.Instantiate(__instance.AbilityButton, __instance.AbilityButton.transform.parent);
+                role.DummyButton.graphic.enabled = false;
+                role.DummyButton.buttonLabelText.enabled = false;
+                role.DummyButton.cooldownTimerText.enabled = false;
+                role.DummyButton.gameObject.SetActive(false);
+            }
+            role.DummyButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+            role.DummyButton.transform.localPosition = killButton.transform.localPosition;
+            role.DummyButton.SetUsesRemaining(role.RevivesLeft);
+            role.DummyButton.usesRemainingText.text = role.RevivesLeft.ToString();
 
             var data = PlayerControl.LocalPlayer.Data;
             var isDead = data.IsDead;

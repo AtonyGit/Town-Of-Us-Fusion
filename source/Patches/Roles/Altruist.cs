@@ -43,6 +43,15 @@ namespace TownOfUsFusion.Roles
                 TimeRemaining = 0f;
             }
         }
+        private AbilityButton _dummyButton;
+        public AbilityButton DummyButton
+        {
+            get => _dummyButton;
+            set
+            {
+                _dummyButton = value;
+            }
+        }
 
         public void Unaltruisting()
         {

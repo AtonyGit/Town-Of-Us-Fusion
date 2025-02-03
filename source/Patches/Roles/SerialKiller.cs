@@ -79,6 +79,15 @@ namespace TownOfUsFusion.Roles
             if (flag) return 0;
             return ((float)timeSpan.TotalMilliseconds) / 1000f;
         }
+        private AbilityButton _dummyButton;
+        public AbilityButton DummyButton
+        {
+            get => _dummyButton;
+            set
+            {
+                _dummyButton = value;
+            }
+        }
 
         public PlayerControl GetClosestPlayer(PlayerControl toRemove = null)
         {

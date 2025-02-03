@@ -46,8 +46,20 @@ namespace TownOfUsFusion.ImpostorRoles.WarlockMod
                 && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                 && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started
                     && (role.Charging || role.UsingCharge));*/
-            __instance.KillButton.SetUsesRemaining(role.ChargePercent);
-            __instance.KillButton.usesRemainingText.text = role.ChargePercent.ToString() + "%";
+            if (role.DummyButton == null)
+            {
+                role.DummyButton = UnityEngine.Object.Instantiate(__instance.AbilityButton, __instance.AbilityButton.transform.parent);
+                role.DummyButton.graphic.enabled = false;
+                role.DummyButton.buttonLabelText.enabled = false;
+                role.DummyButton.cooldownTimerText.enabled = false;
+                role.DummyButton.gameObject.SetActive(false);
+            }
+            role.DummyButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+            role.DummyButton.transform.localPosition = __instance.KillButton.transform.localPosition;
+            role.DummyButton.SetUsesRemaining(role.ChargePercent);
+            role.DummyButton.usesRemainingText.text = role.ChargePercent.ToString() + "%";
             if (role.UsingCharge)
             {
                 if (role.Charging)

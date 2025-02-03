@@ -15,6 +15,15 @@ namespace TownOfUsFusion.Roles
         public DateTime LastTracked { get; set; }
 
         public int UsesLeft;
+        private AbilityButton _dummyButton;
+        public AbilityButton DummyButton
+        {
+            get => _dummyButton;
+            set
+            {
+                _dummyButton = value;
+            }
+        }
 
         public bool ButtonUsable => UsesLeft != 0;
         public bool SeeOnlyTrackedPrints = false;

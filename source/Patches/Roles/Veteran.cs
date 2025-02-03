@@ -28,6 +28,15 @@ namespace TownOfUsFusion.Roles
 
             UsesLeft = CustomGameOptions.MaxAlerts;
         }
+        private AbilityButton _dummyButton;
+        public AbilityButton DummyButton
+        {
+            get => _dummyButton;
+            set
+            {
+                _dummyButton = value;
+            }
+        }
 
         public bool OnAlert => TimeRemaining > 0f;
 

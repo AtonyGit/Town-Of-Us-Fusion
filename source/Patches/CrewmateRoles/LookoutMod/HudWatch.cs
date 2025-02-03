@@ -28,6 +28,18 @@ namespace TownOfUsFusion.CrewmateRoles.LookoutMod
                 role.PerceptButton.graphic.enabled = true;
                 role.PerceptButton.gameObject.SetActive(false);
             }
+            if (role.PerceptDummyButton == null)
+            {
+                role.PerceptDummyButton = Object.Instantiate(__instance.AbilityButton, __instance.AbilityButton.transform.parent);
+                role.PerceptDummyButton.graphic.enabled = false;
+                role.PerceptDummyButton.buttonLabelText.enabled = false;
+                role.PerceptDummyButton.cooldownTimerText.enabled = false;
+                role.PerceptDummyButton.gameObject.SetActive(false);
+            }
+            role.PerceptDummyButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+                role.PerceptDummyButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
 
             role.PerceptButton.graphic.sprite = TownOfUsFusion.PerceptSprite;
             role.PerceptButton.buttonLabelText.text = "Eagle Eye";
@@ -49,8 +61,8 @@ namespace TownOfUsFusion.CrewmateRoles.LookoutMod
                 watchButton.usesRemainingText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);*/
-                watchButton.SetUsesRemaining(role.UsesLeft);
-                watchButton.usesRemainingText.text = role.UsesLeft.ToString();
+                //watchButton.SetUsesRemaining(role.UsesLeft);
+                //watchButton.usesRemainingText.text = role.UsesLeft.ToString();
 
                 /*role.PerceptButton.usesRemainingSprite.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
@@ -58,8 +70,8 @@ namespace TownOfUsFusion.CrewmateRoles.LookoutMod
                 role.PerceptButton.usesRemainingText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);*/
-                role.PerceptButton.SetUsesRemaining(role.PerceptUsesLeft);
-                role.PerceptButton.usesRemainingText.text = role.PerceptUsesLeft.ToString();
+                role.PerceptDummyButton.SetUsesRemaining(role.PerceptUsesLeft);
+                role.PerceptDummyButton.usesRemainingText.text = role.PerceptUsesLeft.ToString();
 
             if (role.Percepting)
             {

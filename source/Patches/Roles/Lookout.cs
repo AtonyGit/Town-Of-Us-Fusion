@@ -81,5 +81,24 @@ namespace TownOfUsFusion.Roles
                 ExtraButtons.Add(value);
             }
         }
+
+        private AbilityButton _watchDummyButton;
+        public AbilityButton WatchDummyButton
+        {
+            get => _watchDummyButton;
+            set
+            {
+                _watchDummyButton = value;
+            }
+        }
+        private AbilityButton _perceptDummyButton;
+        public AbilityButton PerceptDummyButton
+        {
+            get => _perceptDummyButton;
+            set
+            {
+                _perceptDummyButton = value;
+            }
+        }
     }
 }
