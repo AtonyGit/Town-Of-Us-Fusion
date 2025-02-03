@@ -27,12 +27,13 @@ namespace TownOfUsFusion.NeutralRoles.SerialKillerMod
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
             __instance.KillButton.SetCoolDown(role.KillTimer(), CustomGameOptions.SkKillCooldown);
 
-            __instance.KillButton.usesRemainingSprite.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+            /*__instance.KillButton.usesRemainingSprite.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                 && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                 && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started && role.Scavenging);
             __instance.KillButton.usesRemainingText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                 && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started && role.Scavenging);
+                && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started && role.Scavenging);*/
+            __instance.KillButton.SetUsesRemaining(Convert.ToInt32(Math.Round(role.BloodlustTimer())));
             __instance.KillButton.usesRemainingText.text = Convert.ToInt32(Math.Round(role.BloodlustTimer())).ToString();
 /*
             if (role.BloodlustCooldown == null)

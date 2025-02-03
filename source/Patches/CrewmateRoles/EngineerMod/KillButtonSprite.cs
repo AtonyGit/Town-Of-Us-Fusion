@@ -22,12 +22,13 @@ namespace TownOfUsFusion.CrewmateRoles.EngineerMod
             __instance.KillButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-            __instance.KillButton.usesRemainingSprite.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+            /*__instance.KillButton.usesRemainingSprite.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                 && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                 && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
             __instance.KillButton.usesRemainingText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                 && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+                && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);*/
+                __instance.KillButton.SetUsesRemaining(role.UsesLeft);
 
                 __instance.KillButton.usesRemainingText.text = role.UsesLeft.ToString();
 

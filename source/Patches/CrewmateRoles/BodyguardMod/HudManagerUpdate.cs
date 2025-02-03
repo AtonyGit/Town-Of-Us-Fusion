@@ -27,12 +27,13 @@ namespace TownOfUsFusion.CrewmateRoles.BodyguardMod
             protectButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-            __instance.KillButton.usesRemainingSprite.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+            /*__instance.KillButton.usesRemainingSprite.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                 && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                 && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
             __instance.KillButton.usesRemainingText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                 && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+                && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);*/
+            __instance.KillButton.SetUsesRemaining(role.UsesLeft);
             protectButton.usesRemainingText.text = role.UsesLeft.ToString();
             
             if (role.guardedPlayer == null) {

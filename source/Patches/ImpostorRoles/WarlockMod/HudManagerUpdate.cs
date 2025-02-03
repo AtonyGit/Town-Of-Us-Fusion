@@ -38,14 +38,15 @@ namespace TownOfUsFusion.ImpostorRoles.WarlockMod
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started
                     && (role.Charging || role.UsingCharge));
 */
-            __instance.KillButton.usesRemainingSprite.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+            /*__instance.KillButton.usesRemainingSprite.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                 && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                 && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started
                     && (role.Charging || role.UsingCharge));
             __instance.KillButton.usesRemainingText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                 && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                 && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started
-                    && (role.Charging || role.UsingCharge));
+                    && (role.Charging || role.UsingCharge));*/
+            __instance.KillButton.SetUsesRemaining(role.ChargePercent);
             __instance.KillButton.usesRemainingText.text = role.ChargePercent.ToString() + "%";
             if (role.UsingCharge)
             {
