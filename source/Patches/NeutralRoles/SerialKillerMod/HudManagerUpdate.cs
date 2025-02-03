@@ -43,7 +43,7 @@ namespace TownOfUsFusion.NeutralRoles.SerialKillerMod
             }
             role.DummyButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started && role.Scavenging);
             role.DummyButton.transform.localPosition = __instance.KillButton.transform.localPosition;
             role.DummyButton.SetUsesRemaining(Convert.ToInt32(Math.Round(role.BloodlustTimer())));
             role.DummyButton.usesRemainingText.text = Convert.ToInt32(Math.Round(role.BloodlustTimer())).ToString();
@@ -72,7 +72,7 @@ namespace TownOfUsFusion.NeutralRoles.SerialKillerMod
                 if ((CamouflageUnCamouflage.IsCamoed && CustomGameOptions.CamoCommsKillAnyone) || PlayerControl.LocalPlayer.IsHypnotised()) Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton);
                 else if (role.Player.IsLover()) Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton, float.NaN, PlayerControl.AllPlayerControls.ToArray().Where(x => !x.IsLover()).ToList());
                 else Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton);
-
+/*
             if (role.Scavenging && PlayerControl.LocalPlayer.moveable && __instance.KillButton.currentTarget != null)
             {
                 role.BloodlustCooldown.color = Palette.EnabledColor;
@@ -82,7 +82,7 @@ namespace TownOfUsFusion.NeutralRoles.SerialKillerMod
             {
                 role.BloodlustCooldown.color = Palette.DisabledClear;
                 role.BloodlustCooldown.material.SetFloat("_Desat", 1f);
-            }
+            }*/
 
             if ((role.BloodlustTimer() == 0f || MeetingHud.Instance || PlayerControl.LocalPlayer.Data.IsDead) && role.Scavenging)
             {

@@ -56,7 +56,8 @@ namespace TownOfUsFusion.ImpostorRoles.WarlockMod
             }
             role.DummyButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started
+                    && (role.Charging || role.UsingCharge));
             role.DummyButton.transform.localPosition = __instance.KillButton.transform.localPosition;
             role.DummyButton.SetUsesRemaining(role.ChargePercent);
             role.DummyButton.usesRemainingText.text = role.ChargePercent.ToString() + "%";

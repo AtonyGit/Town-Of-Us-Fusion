@@ -49,7 +49,7 @@ namespace TownOfUsFusion.NeutralRoles.SoulCollectorMod
             role.ReapButton.buttonLabelText.text = "Reap";
             role.ReapButton.buttonLabelText.SetOutlineColor(role.Color);
             role.ReapButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
-
+/*
             if (role.CollectedText == null)
             {
                 role.CollectedText = Object.Instantiate(__instance.KillButton.cooldownTimerText, __instance.KillButton.transform);
@@ -66,7 +66,7 @@ namespace TownOfUsFusion.NeutralRoles.SoulCollectorMod
             if (role.CollectedText != null)
             {
                 role.CollectedText.text = role.SoulsCollected + "/" + CustomGameOptions.SoulsToWin + "";
-            }
+            }*/
 
             if (PlayerControl.LocalPlayer.Data.IsDead) role.ReapButton.SetTarget(null);
 
@@ -76,9 +76,20 @@ namespace TownOfUsFusion.NeutralRoles.SoulCollectorMod
             role.ReapButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-            role.CollectedText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+            if (role.DummyButton == null)
+            {
+                role.DummyButton = Object.Instantiate(__instance.AbilityButton, __instance.AbilityButton.transform.parent);
+                role.DummyButton.graphic.enabled = false;
+                role.DummyButton.buttonLabelText.enabled = false;
+                role.DummyButton.cooldownTimerText.enabled = false;
+                role.DummyButton.gameObject.SetActive(false);
+            }
+            role.DummyButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+            role.DummyButton.transform.localPosition = role.ReapButton.transform.localPosition;
+            role.DummyButton.SetUsesRemaining(role.SoulsCollected);
+            role.DummyButton.usesRemainingText.text = role.SoulsCollected + "/" + CustomGameOptions.SoulsToWin + "";
 
             role.ReapButton.SetCoolDown(role.ReapTimer(), CustomGameOptions.ReapCd);
 

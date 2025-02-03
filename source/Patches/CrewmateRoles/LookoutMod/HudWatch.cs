@@ -87,15 +87,15 @@ namespace TownOfUsFusion.CrewmateRoles.LookoutMod
                 {
                     role.PerceptButton.graphic.color = Palette.DisabledClear;
                     role.PerceptButton.graphic.material.SetFloat("_Desat", 1f);
-                    role.PerceptButton.buttonLabelText.color = Palette.EnabledColor;
-                    role.PerceptButton.buttonLabelText.material.SetFloat("_Desat", 0f);
+                    role.PerceptButton.buttonLabelText.color = Palette.DisabledClear;
+                    role.PerceptButton.buttonLabelText.material.SetFloat("_Desat", 1f);
                 }
                 else
                 {
                     role.PerceptButton.graphic.color = Palette.EnabledColor;
                     role.PerceptButton.graphic.material.SetFloat("_Desat", 0f);
-                    role.PerceptButton.buttonLabelText.color = Palette.DisabledClear;
-                    role.PerceptButton.buttonLabelText.material.SetFloat("_Desat", 1f);
+                    role.PerceptButton.buttonLabelText.color = Palette.EnabledColor;
+                    role.PerceptButton.buttonLabelText.material.SetFloat("_Desat", 0f);
                 }
             }
 

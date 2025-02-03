@@ -25,7 +25,7 @@ namespace TownOfUsFusion.Roles
         }
         public PlayerControl ClosestPlayer;
 
-        public TextMeshPro BloodlustCooldown;
+        //public TextMeshPro BloodlustCooldown;
         public DateTime BloodlustEnd;
         public PlayerControl Target = null;
         public bool Scavenging = false;
