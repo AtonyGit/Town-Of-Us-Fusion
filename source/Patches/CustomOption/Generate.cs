@@ -858,21 +858,21 @@ namespace TownOfUsFusion.CustomOption
             UniqueImpRoles = new CustomToggleOption(num++, MultiMenu.main, "Unique Impostors", true);
 
 
-            Slot1 = new CustomStringOption(num++, MultiMenu.main, "Slot 1", roleBuckets.ToArray(), 21);
-            Slot2 = new CustomStringOption(num++, MultiMenu.main, "Slot 2", roleBuckets.ToArray(), 21);
-            Slot3 = new CustomStringOption(num++, MultiMenu.main, "Slot 3", roleBuckets.ToArray(), 21);
-            Slot4 = new CustomStringOption(num++, MultiMenu.main, "Slot 4", roleBuckets.ToArray(), 20);
-            Slot5 = new CustomStringOption(num++, MultiMenu.main, "Slot 5", roleBuckets.ToArray(), 21);
-            Slot6 = new CustomStringOption(num++, MultiMenu.main, "Slot 6", roleBuckets.ToArray(), 21);
-            Slot7 = new CustomStringOption(num++, MultiMenu.main, "Slot 7", roleBuckets.ToArray(), 21);
-            Slot8 = new CustomStringOption(num++, MultiMenu.main, "Slot 8", roleBuckets.ToArray(), 21);
-            Slot9 = new CustomStringOption(num++, MultiMenu.main, "Slot 9", roleBuckets.ToArray(), 20);
-            Slot10 = new CustomStringOption(num++, MultiMenu.main, "Slot 10", roleBuckets.ToArray(), 21);
-            Slot11 = new CustomStringOption(num++, MultiMenu.main, "Slot 11", roleBuckets.ToArray(), 21);
-            Slot12 = new CustomStringOption(num++, MultiMenu.main, "Slot 12", roleBuckets.ToArray(), 21);
-            Slot13 = new CustomStringOption(num++, MultiMenu.main, "Slot 13", roleBuckets.ToArray(), 21);
-            Slot14 = new CustomStringOption(num++, MultiMenu.main, "Slot 14", roleBuckets.ToArray(), 20);
-            Slot15 = new CustomStringOption(num++, MultiMenu.main, "Slot 15", roleBuckets.ToArray(), 21);
+            Slot1 = new CustomStringOption(num++, MultiMenu.main, "Slot 1", roleBuckets.ToArray(), 20);
+            Slot2 = new CustomStringOption(num++, MultiMenu.main, "Slot 2", roleBuckets.ToArray(), 20);
+            Slot3 = new CustomStringOption(num++, MultiMenu.main, "Slot 3", roleBuckets.ToArray(), 20);
+            Slot4 = new CustomStringOption(num++, MultiMenu.main, "Slot 4", roleBuckets.ToArray(), 19);
+            Slot5 = new CustomStringOption(num++, MultiMenu.main, "Slot 5", roleBuckets.ToArray(), 20);
+            Slot6 = new CustomStringOption(num++, MultiMenu.main, "Slot 6", roleBuckets.ToArray(), 20);
+            Slot7 = new CustomStringOption(num++, MultiMenu.main, "Slot 7", roleBuckets.ToArray(), 20);
+            Slot8 = new CustomStringOption(num++, MultiMenu.main, "Slot 8", roleBuckets.ToArray(), 20);
+            Slot9 = new CustomStringOption(num++, MultiMenu.main, "Slot 9", roleBuckets.ToArray(), 19);
+            Slot10 = new CustomStringOption(num++, MultiMenu.main, "Slot 10", roleBuckets.ToArray(), 20);
+            Slot11 = new CustomStringOption(num++, MultiMenu.main, "Slot 11", roleBuckets.ToArray(), 20);
+            Slot12 = new CustomStringOption(num++, MultiMenu.main, "Slot 12", roleBuckets.ToArray(), 20);
+            Slot13 = new CustomStringOption(num++, MultiMenu.main, "Slot 13", roleBuckets.ToArray(), 20);
+            Slot14 = new CustomStringOption(num++, MultiMenu.main, "Slot 14", roleBuckets.ToArray(), 19);
+            Slot15 = new CustomStringOption(num++, MultiMenu.main, "Slot 15", roleBuckets.ToArray(), 20);
 
             MapSettings = new CustomHeaderOption(num++, MultiMenu.main, "Map Settings");
                 RandomMapEnabled = new CustomToggleOption(num++, MultiMenu.main, "Choose Random Map", false);
