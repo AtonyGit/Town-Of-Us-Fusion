@@ -29,6 +29,7 @@ using TownOfUsFusion.Patches.NeutralRoles;
 using Il2CppSystem.Linq;
 using TownOfUsFusion.Roles.Alliances;
 using System.IO;
+using TownOfUsFusion.CrewmateRoles.MirrorMasterMod;
 
 namespace TownOfUsFusion
 {
@@ -520,6 +521,22 @@ namespace TownOfUsFusion
                 return fortifiedPlayer != null && player.PlayerId == fortifiedPlayer.PlayerId;
             }) as Oracle;
         }
+        public static bool IsMirrorShielded(this PlayerControl player)
+        {
+            return Role.GetRoles(RoleEnum.MirrorMaster).Any(role =>
+            {
+                var shieldedPlayer = ((MirrorMaster)role).ShieldedPlayer;
+                return shieldedPlayer != null && player.PlayerId == shieldedPlayer.PlayerId;
+            });
+        }
+        public static MirrorMaster GetMirrorMaster(this PlayerControl player)
+        {
+            return Role.GetRoles(RoleEnum.MirrorMaster).FirstOrDefault(role =>
+            {
+                var shieldedPlayer = ((MirrorMaster)role).ShieldedPlayer;
+                return shieldedPlayer != null && player.PlayerId == shieldedPlayer.PlayerId;
+            }) as MirrorMaster;
+        }
 
         public static bool IsOnAlert(this PlayerControl player)
         {
@@ -666,6 +683,14 @@ namespace TownOfUsFusion
                         zeroSecReset = false;
                     }
                 }
+            }
+            else if (target.IsMirrorShielded() && toKill)
+            {
+                var merc = target.GetMirrorMaster().Player.PlayerId;
+                Utils.Rpc(CustomRPC.MirrorShield, merc, target.PlayerId);
+                StopAbility.BreakShield(merc, target.PlayerId);
+                fullCooldownReset = true;
+                mirrorReset = true;
             }
             else if (target.IsShielded() && toKill)
             {
@@ -1823,6 +1848,16 @@ public static string DeathReason(this PlayerControl player)
             {
                 var jailor = (Jailor)role;
                 jailor.Jailed = null;
+            }
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.MirrorMaster))
+            {
+                var merc = Role.GetRole<MirrorMaster>(PlayerControl.LocalPlayer);
+                //merc.LastProtected = DateTime.UtcNow;
+            }
+            foreach (var role in Role.GetRoles(RoleEnum.MirrorMaster))
+            {
+                var merc = (MirrorMaster)role;
+                merc.ShieldedPlayer = null;
             }
             #endregion
             #region NeutralRoles

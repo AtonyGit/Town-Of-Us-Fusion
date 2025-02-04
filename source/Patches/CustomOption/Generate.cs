@@ -53,6 +53,7 @@ namespace TownOfUsFusion.CustomOption
         public static CustomNumberOption AltruistOn;
         public static CustomNumberOption BodyguardOn;
         public static CustomNumberOption MedicOn;
+        public static CustomNumberOption MirrorMasterOn;
         public static CustomNumberOption OracleOn;
 
         public static CustomHeaderOption CrewSovereignRoles;
@@ -251,6 +252,14 @@ namespace TownOfUsFusion.CustomOption
         public static CustomToggleOption MedicReportSwitch;
         public static CustomNumberOption MedicReportNameDuration;
         public static CustomNumberOption MedicReportColorDuration;
+
+        public static CustomHeaderOption MirrorMaster;
+        public static CustomNumberOption MaxMirrors;
+        public static CustomStringOption ShowMirrorShielded;
+        public static CustomStringOption WhoGetsMirrorNotification;
+        public static CustomNumberOption MirrorAbsorbCd;
+        public static CustomNumberOption MirrorUnleashCd;
+        public static CustomToggleOption MirrorBreaks;
 
         public static CustomHeaderOption Psychic;
         public static CustomNumberOption PsychicCooldown;
@@ -676,6 +685,8 @@ namespace TownOfUsFusion.CustomOption
                 BodyguardOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#80D3ABFF>Bodyguard</color>", 0f, 0f, 100f, 10f,
                     PercentFormat);
                 MedicOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#006600FF>Medic</color>", 0f, 0f, 100f, 10f,
+                    PercentFormat);
+                MirrorMasterOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#90A2C4FF>Mirror Master</color>", 0f, 0f, 100f, 10f,
                     PercentFormat);
                 OracleOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#BF00BFFF>Oracle</color>", 0f, 0f, 100f, 10f,
                     PercentFormat);
@@ -1128,6 +1139,21 @@ namespace TownOfUsFusion.CustomOption
                 MedicReportColorDuration =
                     new CustomNumberOption(num++, MultiMenu.crewmate, "Time Where Medic Will Have Color Type", 15f, 0f, 60f, 2.5f,
                         CooldownFormat);
+            MirrorMaster =
+                new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#90A2C4FF>Mirror Master</color>");
+                MaxMirrors =
+                    new CustomNumberOption(num++, MultiMenu.crewmate, "Maximum Mirror Uses", 5, 1, 20, 1);
+                ShowMirrorShielded =
+                    new CustomStringOption(num++, MultiMenu.crewmate, "Show Mirrored Player",
+                        new[] { "Mirror Master", "Self", "Self+MM", "Everyone" });
+                WhoGetsMirrorNotification =
+                    new CustomStringOption(num++, MultiMenu.crewmate, "Who Gets Absorb Indicator",
+                        new[] { "Mirror Master", "Shielded", "MM+Shielded", "Everyone", "Nobody" });
+                MirrorAbsorbCd =
+                    new CustomNumberOption(num++, MultiMenu.crewmate, "Absorb Cooldown", 25f, 0f, 60f, 2.5f, CooldownFormat);
+                MirrorUnleashCd =
+                    new CustomNumberOption(num++, MultiMenu.crewmate, "Unleash Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
+                MirrorBreaks = new CustomToggleOption(num++, MultiMenu.crewmate, "Mirror Shatters On Murder Attempt", true);
             Oracle =
                 new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#BF00BFFF>Oracle</color>");
                 ConfessCooldown =

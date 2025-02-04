@@ -310,6 +310,15 @@ namespace TownOfUsFusion
             public static float GuardDuration => Generate.GuardDuration.Get();
             public static GuardOptions ShowGuarding => (GuardOptions)Generate.ShowGuarding.Get();
             public static int MaxGuards => (int)Generate.MaxGuards.Get();
+
+        public static int MirrorMasterOn => (int)Generate.MirrorMasterOn.Get();
+            public static int MaxMirrors => (int)Generate.MaxMirrors.Get();
+            public static CrewmateRoles.MirrorMasterMod.ShieldOptions ShowMirrorShielded => (CrewmateRoles.MirrorMasterMod.ShieldOptions)Generate.ShowMirrorShielded.Get();
+            public static CrewmateRoles.MirrorMasterMod.NotificationOptions NotificationMirrorShield =>
+                (CrewmateRoles.MirrorMasterMod.NotificationOptions)Generate.WhoGetsMirrorNotification.Get();
+            public static float MirrorAbsorbCd => Generate.MirrorAbsorbCd.Get();
+            public static float MirrorUnleashCd => Generate.MirrorUnleashCd.Get();
+            public static bool MirrorBreaks => Generate.MirrorBreaks.Get();
         
         public static float ProtectCd => Generate.ProtectCd.Get();
         public static float ProtectDuration => Generate.ProtectDuration.Get();

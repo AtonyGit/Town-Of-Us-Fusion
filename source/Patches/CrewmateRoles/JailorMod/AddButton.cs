@@ -20,6 +20,7 @@ using TownOfUsFusion.Modifiers.AssassinMod;
 using TownOfUsFusion.NeutralRoles.DoomsayerMod;
 using TownOfUsFusion.CrewmateRoles.DeputyMod;
 using TownOfUsFusion.Roles.Alliances;
+using Hazel;
 
 namespace TownOfUsFusion.CrewmateRoles.JailorMod
 {
@@ -379,7 +380,33 @@ namespace TownOfUsFusion.CrewmateRoles.JailorMod
                 }
             }
 
-            if (AmongUsClient.Instance.AmHost) meetingHud.CheckForEndVoting();
+            if (AmongUsClient.Instance.AmHost) 
+            {
+                    foreach (var role in Role.GetRoles(RoleEnum.Tyrant))
+                    {
+                        if (role is Tyrant tyrant)
+                        {
+                            if (role.Player == player)
+                            {
+                                tyrant.ExtraVotes.Clear();
+                            }
+                            else
+                            {
+                                var votesRegained = tyrant.ExtraVotes.RemoveAll(x => x == player.PlayerId);
+
+                                if (tyrant.Player == PlayerControl.LocalPlayer)
+                                    tyrant.VoteBank += votesRegained;
+
+                                var writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId,
+                                    (byte) CustomRPC.AddTyrantVoteBank, SendOption.Reliable, -1);
+                                writer.Write(tyrant.Player.PlayerId);
+                                writer.Write(votesRegained);
+                                AmongUsClient.Instance.FinishRpcImmediately(writer);
+                            }
+                        }
+                    }
+                meetingHud.CheckForEndVoting();
+            }
 
             AddHauntPatch.AssassinatedPlayers.Add(player);
         }

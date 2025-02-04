@@ -67,6 +67,11 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
                     role.LastBit = DateTime.UtcNow;
                     return false;
                 }
+                else if (interact[5] == true)
+                {
+                    role.LastBit = DateTime.UtcNow;
+                    return false;
+                }
                 else if (interact[4] == true)
                 {
                     role.LastBit = DateTime.UtcNow;
@@ -100,6 +105,11 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
                     return false;
                 }
                 if (interact[0] == true)
+                {
+                    role.LastBit = DateTime.UtcNow;
+                    return false;
+                }
+                else if (interact[5] == true)
                 {
                     role.LastBit = DateTime.UtcNow;
                     return false;

@@ -14,6 +14,8 @@ namespace TownOfUsFusion
         public static void Postfix()
         {
             List<int> losers = new List<int>();
+            bool canWinWithNeutrals = false;
+            
             foreach (var role in Role.GetRoles(RoleEnum.Amnesiac))
             {
                 var amne = (Amnesiac)role;
@@ -38,6 +40,11 @@ namespace TownOfUsFusion
             {
                 var can = (Cannibal)role;
                 losers.Add(can.Player.GetDefaultOutfit().ColorId);
+            }
+            foreach (var role in Role.GetRoles(RoleEnum.Tyrant))
+            {
+                var ty = (Tyrant)role;
+                losers.Add(ty.Player.GetDefaultOutfit().ColorId);
             }
             foreach (var role in Role.GetRoles(RoleEnum.Executioner))
             {
@@ -141,11 +148,27 @@ namespace TownOfUsFusion
                         var jester = (Jester)role;
                         if (jester.VotedOut)
                         {
+                            canWinWithNeutrals = true;
                             EndGameResult.CachedWinners = new List<CachedPlayerData>();
                             var jestData = new CachedPlayerData(jester.Player.Data);
                             jestData.IsDead = false;
                             if (PlayerControl.LocalPlayer != jester.Player) jestData.IsYou = false;
                             EndGameResult.CachedWinners.Add(jestData);
+
+                            foreach (var role2 in Role.GetRoles(RoleEnum.Tyrant))
+                            {
+                                var tyran = (Tyrant)role2;
+                                if (!tyran.Player.Data.IsDead && !tyran.Player.Data.Disconnected)
+                                {
+                                    var isImp = EndGameResult.CachedWinners.Count != 0 && EndGameResult.CachedWinners[0].IsImpostor;
+
+                                    if (!isImp && canWinWithNeutrals) {
+                                    var tyranWinData = new CachedPlayerData(tyran.Player.Data);
+                                    if (PlayerControl.LocalPlayer != tyran.Player) tyranWinData.IsYou = false;
+                                    EndGameResult.CachedWinners.Add(tyranWinData);
+                                    }
+                                }
+                            }
                             return;
                         }
                     }
@@ -154,10 +177,26 @@ namespace TownOfUsFusion
                         var executioner = (Executioner)role;
                         if (executioner.TargetVotedOut)
                         {
+                            canWinWithNeutrals = true;
                             EndGameResult.CachedWinners = new List<CachedPlayerData>();
                             var exeData = new CachedPlayerData(executioner.Player.Data);
                             if (PlayerControl.LocalPlayer != executioner.Player) exeData.IsYou = false;
                             EndGameResult.CachedWinners.Add(exeData);
+
+                            foreach (var role2 in Role.GetRoles(RoleEnum.Tyrant))
+                            {
+                                var tyran = (Tyrant)role2;
+                                if (!tyran.Player.Data.IsDead && !tyran.Player.Data.Disconnected)
+                                {
+                                    var isImp = EndGameResult.CachedWinners.Count != 0 && EndGameResult.CachedWinners[0].IsImpostor;
+
+                                    if (!isImp && canWinWithNeutrals) {
+                                    var tyranWinData = new CachedPlayerData(tyran.Player.Data);
+                                    if (PlayerControl.LocalPlayer != tyran.Player) tyranWinData.IsYou = false;
+                                    EndGameResult.CachedWinners.Add(tyranWinData);
+                                    }
+                                }
+                            }
                             return;
                         }
                     }
@@ -166,22 +205,26 @@ namespace TownOfUsFusion
                         var doom = (Doomsayer)role;
                         if (doom.WonByGuessing)
                         {
+                            canWinWithNeutrals = true;
                             EndGameResult.CachedWinners = new List<CachedPlayerData>();
                             var doomData = new CachedPlayerData(doom.Player.Data);
                             if (PlayerControl.LocalPlayer != doom.Player) doomData.IsYou = false;
                             EndGameResult.CachedWinners.Add(doomData);
-                            return;
-                        }
-                    }
-                    else if (type == RoleEnum.SoulCollector)
-                    {
-                        var sc = (SoulCollector)role;
-                        if (sc.CollectedSouls)
-                        {
-                            EndGameResult.CachedWinners = new List<CachedPlayerData>();
-                            var scData = new CachedPlayerData(sc.Player.Data);
-                            if (PlayerControl.LocalPlayer != sc.Player) scData.IsYou = false;
-                            EndGameResult.CachedWinners.Add(scData);
+
+                            foreach (var role2 in Role.GetRoles(RoleEnum.Tyrant))
+                            {
+                                var tyran = (Tyrant)role2;
+                                if (!tyran.Player.Data.IsDead && !tyran.Player.Data.Disconnected)
+                                {
+                                    var isImp = EndGameResult.CachedWinners.Count != 0 && EndGameResult.CachedWinners[0].IsImpostor;
+
+                                    if (!isImp && canWinWithNeutrals) {
+                                    var tyranWinData = new CachedPlayerData(tyran.Player.Data);
+                                    if (PlayerControl.LocalPlayer != tyran.Player) tyranWinData.IsYou = false;
+                                    EndGameResult.CachedWinners.Add(tyranWinData);
+                                    }
+                                }
+                            }
                             return;
                         }
                     }
@@ -225,6 +268,7 @@ namespace TownOfUsFusion
             if (Role.VampireWins)
             {
                 EndGameResult.CachedWinners = new List<CachedPlayerData>();
+                canWinWithNeutrals = true;
                 foreach (var role in Role.GetRoles(RoleEnum.Vampire))
                 {
                     var vamp = (Vampire)role;
@@ -237,6 +281,7 @@ namespace TownOfUsFusion
             if (Role.ApocWins)
             {
                 EndGameResult.CachedWinners = new List<CachedPlayerData>();
+                canWinWithNeutrals = true;
                 foreach (var role in Role.GetRoles(RoleEnum.Juggernaut))
                 {
                     var apoc = (Juggernaut)role;
@@ -277,11 +322,27 @@ namespace TownOfUsFusion
                     var can = (Cannibal)role;
                     if (can.EatWin)
                     {
+                        canWinWithNeutrals = true;
                         EndGameResult.CachedWinners = new List<CachedPlayerData>();
                         var canData = new CachedPlayerData(can.Player.Data);
                         canData.IsDead = false;
                         if (PlayerControl.LocalPlayer != can.Player) canData.IsYou = false;
                         EndGameResult.CachedWinners.Add(canData);
+
+                        foreach (var role2 in Role.GetRoles(RoleEnum.Tyrant))
+                        {
+                            var tyran = (Tyrant)role2;
+                            if (!tyran.Player.Data.IsDead && !tyran.Player.Data.Disconnected)
+                            {
+                                var isImp = EndGameResult.CachedWinners.Count != 0 && EndGameResult.CachedWinners[0].IsImpostor;
+
+                                if (!isImp && canWinWithNeutrals) {
+                                var tyranWinData = new CachedPlayerData(tyran.Player.Data);
+                                if (PlayerControl.LocalPlayer != tyran.Player) tyranWinData.IsYou = false;
+                                EndGameResult.CachedWinners.Add(tyranWinData);
+                                }
+                            }
+                        }
                         return;
                     }
                 }
@@ -290,6 +351,7 @@ namespace TownOfUsFusion
                     var glitch = (Glitch)role;
                     if (glitch.GlitchWins)
                     {
+                        canWinWithNeutrals = true;
                         EndGameResult.CachedWinners = new List<CachedPlayerData>();
                         var glitchData = new CachedPlayerData(glitch.Player.Data);
                         if (PlayerControl.LocalPlayer != glitch.Player) glitchData.IsYou = false;
@@ -301,6 +363,7 @@ namespace TownOfUsFusion
                     var arsonist = (Arsonist)role;
                     if (arsonist.ArsonistWins)
                     {
+                        canWinWithNeutrals = true;
                         EndGameResult.CachedWinners = new List<CachedPlayerData>();
                         var arsonistData = new CachedPlayerData(arsonist.Player.Data);
                         if (PlayerControl.LocalPlayer != arsonist.Player) arsonistData.IsYou = false;
@@ -312,6 +375,7 @@ namespace TownOfUsFusion
                     var werewolf = (Werewolf)role;
                     if (werewolf.WerewolfWins)
                     {
+                        canWinWithNeutrals = true;
                         EndGameResult.CachedWinners = new List<CachedPlayerData>();
                         var werewolfData = new CachedPlayerData(werewolf.Player.Data);
                         if (PlayerControl.LocalPlayer != werewolf.Player) werewolfData.IsYou = false;
@@ -323,6 +387,7 @@ namespace TownOfUsFusion
                     var sk = (SerialKiller)role;
                     if (sk.SkWins)
                     {
+                        canWinWithNeutrals = true;
                         EndGameResult.CachedWinners = new List<CachedPlayerData>();
                         var skData = new CachedPlayerData(sk.Player.Data);
                         if (PlayerControl.LocalPlayer != sk.Player) skData.IsYou = false;
@@ -331,6 +396,22 @@ namespace TownOfUsFusion
                 }
             }
 
+
+            foreach (var role in Role.GetRoles(RoleEnum.Tyrant))
+            {
+                var tyran = (Tyrant)role;
+                if (!tyran.Player.Data.IsDead && !tyran.Player.Data.Disconnected)
+                {
+                    var isImp = EndGameResult.CachedWinners.Count != 0 && EndGameResult.CachedWinners[0].IsImpostor;
+
+                    if (!isImp && canWinWithNeutrals) {
+                    var tyranWinData = new CachedPlayerData(tyran.Player.Data);
+                    if (PlayerControl.LocalPlayer != tyran.Player) tyranWinData.IsYou = false;
+                    EndGameResult.CachedWinners.Add(tyranWinData);
+                    }
+                }
+            }
+                        
             foreach (var role in Role.GetRoles(RoleEnum.Lawyer))
             {
                 var lwyr = (Lawyer)role;

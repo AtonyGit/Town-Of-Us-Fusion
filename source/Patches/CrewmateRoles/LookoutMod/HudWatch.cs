@@ -35,8 +35,8 @@ namespace TownOfUsFusion.CrewmateRoles.LookoutMod
                 role.PerceptDummyButton.buttonLabelText.enabled = false;
                 role.PerceptDummyButton.cooldownTimerText.enabled = false;
                 role.PerceptDummyButton.gameObject.SetActive(false);
-                role.PerceptDummyButton.canInteract = false;
             }
+                role.PerceptDummyButton.canInteract = false;
             role.PerceptDummyButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
@@ -65,8 +65,8 @@ namespace TownOfUsFusion.CrewmateRoles.LookoutMod
                 role.WatchDummyButton.buttonLabelText.enabled = false;
                 role.WatchDummyButton.cooldownTimerText.enabled = false;
                 role.WatchDummyButton.gameObject.SetActive(false);
-                role.WatchDummyButton.canInteract = false;
             }
+                role.WatchDummyButton.canInteract = false;
             role.WatchDummyButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);

@@ -31,6 +31,11 @@ namespace TownOfUsFusion.NeutralRoles.JuggernautMod
                 role.LastKill = DateTime.UtcNow;
                 return false;
             }
+            else if (interact[5] == true)
+            {
+                role.LastKill = DateTime.UtcNow;
+                return false;
+            }
             else if (interact[4] == true)
             {
                 role.LastKill = DateTime.UtcNow;

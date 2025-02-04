@@ -29,27 +29,35 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
                 || player.Is(RoleEnum.Morphling)
                  || player.Is(RoleEnum.Glitch))
                 return $"You observe that {player.GetDefaultOutfit().PlayerName} has an altered perception of reality";
+
             else if (player.Is(RoleEnum.Blackmailer) || player.Is(RoleEnum.Investigator) || player.Is(RoleEnum.Doomsayer)
-                 || player.Is(RoleEnum.Spy) || player.Is(RoleEnum.Trapper))
+                 || player.Is(RoleEnum.Spy) || player.Is(RoleEnum.Trapper) || player.Is(RoleEnum.Inquisitor))
                 return $"You observe that {player.GetDefaultOutfit().PlayerName} has an insight for private information";
-            else if (player.Is(RoleEnum.Altruist) || player.Is(RoleEnum.Amnesiac) || player.Is(RoleEnum.Janitor)
+
+            else if (player.Is(RoleEnum.Altruist) || player.Is(RoleEnum.Amnesiac) || player.Is(RoleEnum.Janitor) || player.Is(RoleEnum.Cannibal)
                  || player.Is(RoleEnum.Medium) || player.Is(RoleEnum.SoulCollector) || player.Is(RoleEnum.Undertaker) || player.Is(RoleEnum.Vampire))
                 return $"You observe that {player.GetDefaultOutfit().PlayerName} has an unusual obsession with dead bodies";
+
             else if (player.Is(RoleEnum.Hunter) || player.Is(RoleEnum.Lookout) || player.Is(RoleEnum.SerialKiller)
                  || player.Is(RoleEnum.Swooper) || player.Is(RoleEnum.Tracker) || player.Is(RoleEnum.Werewolf))
                 return $"You observe that {player.GetDefaultOutfit().PlayerName} is well trained in hunting down prey";
+
             else if (player.Is(RoleEnum.Arsonist) || player.Is(RoleEnum.Hypnotist) || player.Is(RoleEnum.Miner) || player.Is(RoleEnum.Pestilence)
                  || player.Is(RoleEnum.Plaguebearer) || player.Is(RoleEnum.Prosecutor) || player.Is(RoleEnum.Psychic) || player.Is(RoleEnum.Transporter))
                 return $"You observe that {player.GetDefaultOutfit().PlayerName} spreads fear amonst the group";
+
             else if (player.Is(RoleEnum.Engineer) || player.Is(RoleEnum.Escapist) || player.Is(RoleEnum.Grenadier) || player.Is(RoleEnum.GuardianAngel)
                  || player.Is(RoleEnum.Medic) || player.Is(RoleEnum.Lawyer) || player.Is(RoleEnum.Survivor) || player.Is(RoleEnum.Oracle))
                 return $"You observe that {player.GetDefaultOutfit().PlayerName} hides to guard themself or others";
-            else if (player.Is(RoleEnum.Executioner) || player.Is(RoleEnum.Jester) || player.Is(RoleEnum.Mayor) || player.Is(RoleEnum.Politician)
-                 || player.Is(RoleEnum.Swapper) || player.Is(RoleEnum.Traitor) || player.Is(RoleEnum.Venerer) || player.Is(RoleEnum.Veteran))
+
+            else if (player.Is(RoleEnum.Executioner) || player.Is(RoleEnum.Jester) || player.Is(RoleEnum.Mayor) || player.Is(RoleEnum.Politician) || player.Is(RoleEnum.MirrorMaster)
+                 || player.Is(RoleEnum.Swapper) || player.Is(RoleEnum.Traitor) || player.Is(RoleEnum.Venerer) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Tyrant))
                 return $"You observe that {player.GetDefaultOutfit().PlayerName} has a trick up their sleeve";
+
             else if (player.Is(RoleEnum.Bomber) || player.Is(RoleEnum.Deputy) || player.Is(RoleEnum.Jailor) || player.Is(RoleEnum.Juggernaut)
-                 || player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.Warlock))
+                 || player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.Warlock) || player.Is(RoleEnum.Bodyguard))
                 return $"You observe that {player.GetDefaultOutfit().PlayerName} is capable of performing relentless attacks";
+                
             else if (player.Is(RoleEnum.Crewmate) || player.Is(RoleEnum.Impostor))
                 return $"You observe that {player.GetDefaultOutfit().PlayerName} appears to be roleless";
             else
@@ -62,27 +70,35 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
                 || player.Is(RoleEnum.Morphling)
                   || player.Is(RoleEnum.Glitch))
                 return "(Aurial, Imitator, Morphling, or The Glitch)";
+
             else if (player.Is(RoleEnum.Blackmailer) || player.Is(RoleEnum.Investigator) || player.Is(RoleEnum.Doomsayer)
-                 || player.Is(RoleEnum.Spy) || player.Is(RoleEnum.Trapper))
-                return "(Blackmailer, Investigator, Doomsayer, Spy or Trapper)";
+                 || player.Is(RoleEnum.Spy) || player.Is(RoleEnum.Trapper) || player.Is(RoleEnum.Inquisitor))
+                return "(Blackmailer, Inquisitor, Investigator, Doomsayer, Spy or Trapper)";
+
             else if (player.Is(RoleEnum.Altruist) || player.Is(RoleEnum.Amnesiac) || player.Is(RoleEnum.Janitor)
                  || player.Is(RoleEnum.Medium) || player.Is(RoleEnum.SoulCollector) || player.Is(RoleEnum.Undertaker) || player.Is(RoleEnum.Vampire))
                 return "(Altruist, Amnesiac, Janitor, Medium, Soul Collector, Undertaker or Vampire)";
-            else if (player.Is(RoleEnum.Hunter) || player.Is(RoleEnum.Lookout) || player.Is(RoleEnum.SerialKiller)
+
+            else if (player.Is(RoleEnum.Hunter) || player.Is(RoleEnum.Lookout) || player.Is(RoleEnum.SerialKiller) || player.Is(RoleEnum.Cannibal)
                  || player.Is(RoleEnum.Swooper) || player.Is(RoleEnum.Tracker) || player.Is(RoleEnum.Werewolf))
-                return "(Hunter, Lookout, Serial Killer, Swooper, Tracker or Werewolf)";
+                return "(Cannibal, Hunter, Lookout, Serial Killer, Swooper, Tracker or Werewolf)";
+
             else if (player.Is(RoleEnum.Arsonist) || player.Is(RoleEnum.Hypnotist) || player.Is(RoleEnum.Miner) || player.Is(RoleEnum.Pestilence)
                  || player.Is(RoleEnum.Plaguebearer) || player.Is(RoleEnum.Prosecutor) || player.Is(RoleEnum.Psychic) || player.Is(RoleEnum.Transporter))
                 return "(Arsonist, Hypnotist, Miner, Plaguebearer, Prosecutor, Psychic or Transporter)";
+
             else if (player.Is(RoleEnum.Engineer) || player.Is(RoleEnum.Escapist) || player.Is(RoleEnum.Grenadier) || player.Is(RoleEnum.GuardianAngel)
                  || player.Is(RoleEnum.Medic) || player.Is(RoleEnum.Lawyer) || player.Is(RoleEnum.Survivor) || player.Is(RoleEnum.Oracle))
-                return "(Engineer, Escapist, Grenadier, Guardian Angel, Medic, Lawyer Survivor or Oracle)";
-            else if (player.Is(RoleEnum.Executioner) || player.Is(RoleEnum.Jester) || player.Is(RoleEnum.Mayor) || player.Is(RoleEnum.Politician)
-                 || player.Is(RoleEnum.Swapper) || player.Is(RoleEnum.Traitor) || player.Is(RoleEnum.Venerer) || player.Is(RoleEnum.Veteran))
-                return "(Executioner, Jester, Politician, Swapper, Traitor, Venerer or Veteran)";
+                return "(Engineer, Escapist, Grenadier, Guardian Angel, Medic, Lawyer, Survivor or Oracle)";
+
+            else if (player.Is(RoleEnum.Executioner) || player.Is(RoleEnum.Jester) || player.Is(RoleEnum.Mayor) || player.Is(RoleEnum.Politician) || player.Is(RoleEnum.MirrorMaster)
+                 || player.Is(RoleEnum.Swapper) || player.Is(RoleEnum.Traitor) || player.Is(RoleEnum.Venerer) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Tyrant))
+                return "(Executioner, Jester, Mirror Master, Politician, Swapper, Traitor, Tyrant, Venerer or Veteran)";
+
             else if (player.Is(RoleEnum.Bomber) || player.Is(RoleEnum.Deputy) || player.Is(RoleEnum.Jailor) || player.Is(RoleEnum.Juggernaut)
-                 || player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.Warlock))
-                return "(Bomber, Deputy, Jailor, Juggernaut, Sheriff, Vigilante or Warlock)";
+                 || player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.Warlock) || player.Is(RoleEnum.Bodyguard))
+                return "(Bodyguard, Bomber, Deputy, Jailor, Juggernaut, Sheriff, Vigilante or Warlock)";
+
             else if (player.Is(RoleEnum.Crewmate) || player.Is(RoleEnum.Impostor))
                 return "(Crewmate or Impostor)";
             else return "Error";

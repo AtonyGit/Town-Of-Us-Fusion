@@ -368,6 +368,11 @@ namespace TownOfUsFusion.Roles
                         __gInstance.LastKill = DateTime.UtcNow;
                         return;
                     }
+                    else if (interact[5])
+                    {
+                        __gInstance.LastKill = DateTime.UtcNow;
+                        return;
+                    }
                     else if (interact[4])
                     {
                         __gInstance.LastKill = DateTime.UtcNow;

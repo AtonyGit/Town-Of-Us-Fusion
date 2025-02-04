@@ -40,8 +40,8 @@ namespace TownOfUsFusion.NeutralRoles.SerialKillerMod
                 role.DummyButton.buttonLabelText.enabled = false;
                 role.DummyButton.cooldownTimerText.enabled = false;
                 role.DummyButton.gameObject.SetActive(false);
-                role.DummyButton.canInteract = false;
             }
+                role.DummyButton.canInteract = false;
             role.DummyButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started && role.Scavenging);

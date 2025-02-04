@@ -31,6 +31,8 @@ namespace TownOfUsFusion.Roles.Modifiers
 
             // Adds all the roles that have a non-zero chance of being in the game.
             if (CustomGameOptions.PoliticianOn > 0) ColorMapping.Add("Politician", Colors.Politician);
+            if (CustomGameOptions.CaptainOn > 0) ColorMapping.Add("Captain", Colors.Captain);
+            if (CustomGameOptions.MirrorMasterOn > 0) ColorMapping.Add("Mirror Master", Colors.MirrorMaster);
             if (CustomGameOptions.SheriffOn > 0) ColorMapping.Add("Sheriff", Colors.Sheriff);
             if (CustomGameOptions.EngineerOn > 0) ColorMapping.Add("Engineer", Colors.Engineer);
             if (CustomGameOptions.SwapperOn > 0) ColorMapping.Add("Swapper", Colors.Swapper);
@@ -75,6 +77,8 @@ namespace TownOfUsFusion.Roles.Modifiers
             if (CustomGameOptions.AssassinGuessNeutralChaos)
             {
                 if (CustomGameOptions.CannibalOn > 0) ColorMapping.Add("Cannibal", Colors.Cannibal);
+                if (CustomGameOptions.TyrantOn > 0) ColorMapping.Add("Tyrant", Colors.Tyrant);
+                if (CustomGameOptions.InquisitorOn > 0) ColorMapping.Add("Inquisitor", Colors.Inquisitor);
             }
             if (CustomGameOptions.AssassinGuessNeutralKilling)
             {

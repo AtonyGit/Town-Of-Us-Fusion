@@ -42,6 +42,7 @@ using TownOfUsFusion.CrewmateRoles.DeputyMod;
 using TownOfUsFusion.Roles.Alliances;
 using TownOfUsFusion.NeutralRoles.CannibalMod;
 using TownOfUsFusion.NeutralRoles.LawyerMod;
+using TownOfUsFusion.CrewmateRoles.MirrorMasterMod;
 
 namespace TownOfUsFusion
 {
@@ -1077,6 +1078,20 @@ namespace TownOfUsFusion
                         readByte = reader.ReadByte();
                         StopKill.BreakShield(medicId, readByte, CustomGameOptions.ShieldBreaks);
                         break;
+
+                    case CustomRPC.MirrorProtect:
+                        readByte1 = reader.ReadByte();
+                        readByte2 = reader.ReadByte();
+                        var merc = Utils.PlayerById(readByte1);
+                        var mercShield = Utils.PlayerById(readByte2);
+                        Role.GetRole<MirrorMaster>(merc).ShieldedPlayer = mercShield;
+                        break;
+                    case CustomRPC.MirrorShield:
+                        var mercId = reader.ReadByte();
+                        readByte = reader.ReadByte();
+                        StopAbility.BreakShield(mercId, readByte);
+                        break;
+
                     case CustomRPC.Guard:
                         readByte1 = reader.ReadByte();
                         readByte2 = reader.ReadByte();
@@ -1299,6 +1314,9 @@ namespace TownOfUsFusion
                         break;
                     case CustomRPC.GAToSurv:
                         GATargetColor.GAToSurv(Utils.PlayerById(reader.ReadByte()));
+                        break;
+                    case CustomRPC.AddTyrantVoteBank:
+                        Role.GetRole<Tyrant>(Utils.PlayerById(reader.ReadByte())).VoteBank += reader.ReadInt32();
                         break;
                     case CustomRPC.Mine:
                         var ventId = reader.ReadInt32();
@@ -1763,6 +1781,9 @@ namespace TownOfUsFusion
                 if (CustomGameOptions.BodyguardOn > 0)
                     CrewmateProtectiveRoles.Add((typeof(Bodyguard), CustomGameOptions.BodyguardOn, false || CustomGameOptions.UniqueCrewProtectRoles));
 
+                if (CustomGameOptions.MirrorMasterOn > 0)
+                    CrewmateProtectiveRoles.Add((typeof(MirrorMaster), CustomGameOptions.MirrorMasterOn, false || CustomGameOptions.UniqueCrewProtectRoles));
+
                 if (CustomGameOptions.MedicOn > 0)
                     CrewmateProtectiveRoles.Add((typeof(Medic), CustomGameOptions.MedicOn, false || CustomGameOptions.UniqueCrewProtectRoles));
 
@@ -1826,6 +1847,12 @@ namespace TownOfUsFusion
 
                 if (CustomGameOptions.AmnesiacOn > 0)
                     NeutralBenignRoles.Add((typeof(Amnesiac), CustomGameOptions.AmnesiacOn, false || CustomGameOptions.UniqueNeutBenignRoles));
+
+                if (CustomGameOptions.TyrantOn > 0)
+                    NeutralChaosRoles.Add((typeof(Tyrant), CustomGameOptions.TyrantOn, true));
+
+                if (CustomGameOptions.InquisitorOn > 0)
+                    NeutralChaosRoles.Add((typeof(Inquisitor), CustomGameOptions.InquisitorOn, true));
 
                 if (CustomGameOptions.CannibalOn > 0)
                     NeutralChaosRoles.Add((typeof(Cannibal), CustomGameOptions.CannibalOn, true));

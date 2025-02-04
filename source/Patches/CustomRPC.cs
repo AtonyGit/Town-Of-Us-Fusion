@@ -66,6 +66,8 @@ namespace TownOfUsFusion
         Vest,
         GAProtect,
         BGProtect,
+        MirrorProtect,
+        MirrorShield,
         Guard,
         Blackmail,
         Infect,
@@ -113,6 +115,7 @@ namespace TownOfUsFusion
         SubmergedFixOxygen,
         SendChat,
 
-        ContentAddition
+        ContentAddition,
+        AddTyrantVoteBank
     }
 }

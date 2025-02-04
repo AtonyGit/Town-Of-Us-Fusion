@@ -54,6 +54,10 @@ namespace TownOfUsFusion.CrewmateRoles.HunterMod
             {
                 role.LastKilled = DateTime.UtcNow;
             }
+            else if (interact[5] == true)
+            {
+                role.LastKilled = DateTime.UtcNow;
+            }
             else if (interact[4] == true)
             {
                 role.LastKilled = DateTime.UtcNow;

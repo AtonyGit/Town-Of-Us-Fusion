@@ -8,12 +8,24 @@ using TownOfUsFusion.Roles.Modifiers;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using UnityEngine;
 using Object = UnityEngine.Object;
+using InnerNet;
+using System.Linq;
+using Hazel;
 
 namespace TownOfUsFusion.CrewmateRoles.MayorMod
 {
     [HarmonyPatch(typeof(MeetingHud))]
     public class RegisterExtraVotes
     {
+        [HarmonyPatch(nameof(MeetingHud.Update))]
+        public static void Postfix(MeetingHud __instance)
+        {
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Tyrant)) return;
+            if (PlayerControl.LocalPlayer.Data.IsDead) return;
+            if (__instance.TimerText.text.Contains("Can Vote")) return;
+            var role = Role.GetRole<Tyrant>(PlayerControl.LocalPlayer);
+            __instance.TimerText.text = "Can Vote: " + role.VoteBank + " time(s) | " + __instance.TimerText.text;
+        }
         public static Dictionary<byte, int> CalculateAllVotes(MeetingHud __instance)
         {
             var dictionary = new Dictionary<byte, int>();
@@ -67,6 +79,11 @@ namespace TownOfUsFusion.CrewmateRoles.MayorMod
                     dictionary[playerVoteArea.VotedFor] = num + 1;
                 else
                     dictionary[playerVoteArea.VotedFor] = 1;
+
+                foreach (var role in Role.GetRoles(RoleEnum.Tyrant))
+                foreach (var number in ((Tyrant)role).ExtraVotes)
+                    if (dictionary.TryGetValue(number, out var num2))
+                        dictionary[number] = num2 + 1;
             }
 
             dictionary.MaxPair(out var tie);
@@ -91,6 +108,110 @@ namespace TownOfUsFusion.CrewmateRoles.MayorMod
                 }
 
             return dictionary;
+        }
+
+        [HarmonyPatch(nameof(MeetingHud.Start))]
+        public static void Prefix()
+        {
+            foreach (var role in Role.GetRoles(RoleEnum.Tyrant))
+            {
+                var mayor = (Tyrant)role;
+                mayor.ExtraVotes.Clear();
+                if (mayor.VoteBank < 0)
+                    mayor.VoteBank = 0;
+
+                mayor.VoteBank++;
+                mayor.SelfVote = false;
+                mayor.VotedOnce = false;
+            }
+        }
+        [HarmonyPrefix]
+        [HarmonyPatch(
+            nameof(MeetingHud.HandleDisconnect),
+            typeof(PlayerControl), typeof(DisconnectReasons)
+        )]
+        public static void Prefix(
+            MeetingHud __instance, [HarmonyArgument(0)] PlayerControl player)
+        {
+            if (AmongUsClient.Instance.AmHost && MeetingHud.Instance)
+            {
+                foreach (var role in Role.GetRoles(RoleEnum.Tyrant))
+                {
+                    if (role is Tyrant mayor)
+                    {
+                        if (mayor.VotedOnce)
+                        {
+                            var votesRegained = mayor.ExtraVotes.RemoveAll(x => x == player.PlayerId);
+
+                            if (mayor.Player == PlayerControl.LocalPlayer)
+                                mayor.VoteBank += votesRegained;
+
+                            var writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId,
+                                (byte)CustomRPC.AddTyrantVoteBank, SendOption.Reliable, -1);
+                            writer.Write(mayor.Player.PlayerId);
+                            writer.Write(mayor.VoteBank);
+                            AmongUsClient.Instance.FinishRpcImmediately(writer);
+                        }
+                    }
+                }
+            }
+        }
+        
+        [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.Confirm))]
+        public static class Confirm
+        {
+            public static bool Prefix(MeetingHud __instance)
+            {
+                if (!PlayerControl.LocalPlayer.Is(RoleEnum.Tyrant)) return true;
+                if (__instance.state != MeetingHud.VoteStates.Voted) return true;
+                __instance.state = MeetingHud.VoteStates.NotVoted;
+                return true;
+            }
+
+            [HarmonyPriority(Priority.First)]
+            public static void Postfix(MeetingHud __instance)
+            {
+                if (!PlayerControl.LocalPlayer.Is(RoleEnum.Tyrant)) return;
+                var role = Role.GetRole<Tyrant>(PlayerControl.LocalPlayer);
+                if (role.CanVote) __instance.SkipVoteButton.gameObject.SetActive(true);
+            }
+        }
+
+        [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.CastVote))]
+        public static class CastVote
+        {
+            public static bool Prefix(MeetingHud __instance, [HarmonyArgument(0)] byte srcPlayerId,
+                [HarmonyArgument(1)] byte suspectPlayerId)
+            {
+                var player = PlayerControl.AllPlayerControls.ToArray().FirstOrDefault(x => x.PlayerId == srcPlayerId);
+                if (!player.Is(RoleEnum.Tyrant)) return true;
+
+                var playerVoteArea = __instance.playerStates.ToArray().First(pv => pv.TargetPlayerId == srcPlayerId);
+
+                if (playerVoteArea.AmDead)
+                    return false;
+
+                if (PlayerControl.LocalPlayer.PlayerId == srcPlayerId || AmongUsClient.Instance.NetworkMode != NetworkModes.LocalGame)
+                {
+                    SoundManager.Instance.PlaySound(__instance.VoteLockinSound, false, 1f);
+                }
+
+                var role = Role.GetRole<Tyrant>(player);
+                if (playerVoteArea.DidVote)
+                {
+                    role.ExtraVotes.Add(suspectPlayerId);
+                }
+                else
+                {
+                    playerVoteArea.SetVote(suspectPlayerId);
+                    playerVoteArea.Flag.enabled = true;
+                    PlayerControl.LocalPlayer.RpcSendChatNote(srcPlayerId, ChatNoteTypes.DidVote);
+                }
+                __instance.Cast<InnerNetObject>().SetDirtyBit(1U);
+                __instance.CheckForEndVoting();
+
+                return false;
+            }
         }
 
         [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.VotingComplete))]
@@ -224,6 +345,49 @@ namespace TownOfUsFusion.CrewmateRoles.MayorMod
                                     }
                                 }
                             }
+                        }
+                    
+                        foreach (var role in Role.GetRoles(RoleEnum.Tyrant))
+                        {
+                            var mayor = (Tyrant)role;
+                            var playerInfo2 = GameData.Instance.GetPlayerById(role.Player.PlayerId);
+
+                            var anonVotesOption = GameOptionsManager.Instance.currentNormalGameOptions.AnonymousVotes;
+                            GameOptionsManager.Instance.currentNormalGameOptions.AnonymousVotes = true;
+
+                            foreach (var extraVote in mayor.ExtraVotes)
+                            {
+                                if (extraVote == PlayerVoteArea.HasNotVoted ||
+                                    extraVote == PlayerVoteArea.MissedVote ||
+                                    extraVote == PlayerVoteArea.DeadVote)
+                                {
+                                    continue;
+                                }
+                                if (extraVote == PlayerVoteArea.SkippedVote)
+                                {
+
+                                    __instance.BloopAVoteIcon(playerInfo2, amountOfSkippedVoters, __instance.SkippedVoting.transform);
+                                    amountOfSkippedVoters++;
+                                }
+                                else if (voteState.VotedForId == playerVoteArea.TargetPlayerId)
+                                {
+                                    __instance.BloopAVoteIcon(playerInfo2, allNums[i], playerVoteArea.transform);
+                                    allNums[i]++;
+                                }
+                                
+                                else
+                                {
+                                    for (var i2 = 0; i2 < __instance.playerStates.Length; i2++)
+                                    {
+                                        var area = __instance.playerStates[i2];
+                                        if (extraVote != area.TargetPlayerId) continue;
+                                        __instance.BloopAVoteIcon(playerInfo2, allNums[i2], area.transform);
+                                        allNums[i2]++;
+                                    }
+                                }
+                            }
+
+                            GameOptionsManager.Instance.currentNormalGameOptions.AnonymousVotes = anonVotesOption;
                         }
                     }
                 }

@@ -78,6 +78,18 @@ namespace TownOfUsFusion
                 PlayerControl.LocalPlayer.SetKillTimer(0.01f);
                 return false;
             }
+            else if (interact[5] == true)
+            {
+                if (PlayerControl.LocalPlayer.Is(ModifierEnum.Underdog))
+                {
+                    var lowerKC = GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown - CustomGameOptions.UnderdogKillBonus;
+                    var normalKC = GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown;
+                    var upperKC = GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown + CustomGameOptions.UnderdogKillBonus;
+                    PlayerControl.LocalPlayer.SetKillTimer(PerformKill.LastImp() ? lowerKC : (PerformKill.IncreasedKC() ? normalKC : upperKC));
+                }
+                else PlayerControl.LocalPlayer.SetKillTimer(GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown);
+                return false;
+            }
             return false;
         }
     }

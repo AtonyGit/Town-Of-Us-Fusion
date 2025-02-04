@@ -46,6 +46,11 @@ namespace TownOfUsFusion.NeutralRoles.WerewolfMod
                 role.LastKilled = DateTime.UtcNow;
                 return false;
             }
+            else if (interact[5] == true)
+            {
+                role.LastKilled = DateTime.UtcNow;
+                return false;
+            }
             else if (interact[4] == true)
             {
                 role.LastKilled = DateTime.UtcNow;
