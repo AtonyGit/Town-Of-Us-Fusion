@@ -32,6 +32,7 @@ namespace TownOfUsFusion.CrewmateRoles.LookoutMod
             {
                 role.PerceptDummyButton = Object.Instantiate(__instance.AbilityButton, __instance.AbilityButton.transform.parent);
                 role.PerceptDummyButton.graphic.enabled = false;
+                role.PerceptDummyButton.glyph.enabled = false;
                 role.PerceptDummyButton.buttonLabelText.enabled = false;
                 role.PerceptDummyButton.cooldownTimerText.enabled = false;
                 role.PerceptDummyButton.gameObject.SetActive(false);
@@ -62,6 +63,7 @@ namespace TownOfUsFusion.CrewmateRoles.LookoutMod
             {
                 role.WatchDummyButton = Object.Instantiate(__instance.AbilityButton, __instance.AbilityButton.transform.parent);
                 role.WatchDummyButton.graphic.enabled = false;
+                role.WatchDummyButton.glyph.enabled = false;
                 role.WatchDummyButton.buttonLabelText.enabled = false;
                 role.WatchDummyButton.cooldownTimerText.enabled = false;
                 role.WatchDummyButton.gameObject.SetActive(false);

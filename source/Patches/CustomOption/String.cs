@@ -41,8 +41,6 @@ namespace TownOfUsFusion.CustomOption
             var str = Setting.Cast<StringOption>();
             str.Value = str.oldValue = Get();
             str.ValueText.text = ToString();
-            str.TitleText.outlineColor = new UnityEngine.Color(0f, 0f, 0f, 1f);
-            str.TitleText.outlineWidth = 2;
         }
     }
 }

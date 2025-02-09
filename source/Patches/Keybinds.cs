@@ -16,14 +16,14 @@ namespace TownOfUsFusion
         private static void Prefix(InputManager_Base __instance)
         {
             //change the text shown on the screen for the kill keybind
-            __instance.userData.GetAction("ActionSecondary").descriptiveName = "Kill / Crew & neutral benign abilities / infect & douse";
-            __instance.userData.RegisterBind("ToU imp/nk", "Impostor abilities / ignite");
-            __instance.userData.RegisterBind("ToU bb/disperse/mimic", "Button barry / disperse / glitch mimic");
-            __instance.userData.RegisterBind("ToU hack", "Glitch's hack");
-            __instance.userData.RegisterBind("ToU cycle +", "Cycle forward mimic / transport / guess menu");
-            __instance.userData.RegisterBind("ToU cycle -", "Cycle backward mimic / transport / guess menu");
-            __instance.userData.RegisterBind("ToU cycle players", "Cycle players as guesser in meetings");
-            __instance.userData.RegisterBind("ToU confirm", "Confirm mimic / transport / guess");
+            __instance.userData.GetAction("ActionSecondary").descriptiveName = "Kill / Secondary Abilities";
+            __instance.userData.GetAction("ActionQuaternary").descriptiveName = "Primary Ability";
+            __instance.userData.RegisterBind("TOU bb/disperse/mimic", "Button Modifier / Mimic Ability");
+            __instance.userData.RegisterBind("TOU Hack", "Glitch's Hack Ability");
+            __instance.userData.RegisterBind("TOU Cycle +", "Cycle Forwards (Guesser)");
+            __instance.userData.RegisterBind("TOU Cycle -", "Cycle Backwards (Guesser)");
+            __instance.userData.RegisterBind("TOU Cycle players", "Cycle Selected Player (Guesser)");
+            __instance.userData.RegisterBind("TOU Confirm", "Confirm (Guesser)");
         }
 
         private static int RegisterBind(this UserData self, string name, string description, int elementIdentifierId = -1, int category = 0, InputActionType type = InputActionType.Button)
@@ -88,29 +88,29 @@ namespace TownOfUsFusion
                 {
                     if (Role.GetRole<Vigilante>(role.Player).RemainingKills == 0) return;
                 }
-                if (role.Player.Is(AbilityEnum.Assassin))
+                else if (role.Player.Is(AbilityEnum.Assassin))
                 {
                     if (Ability.GetAbility<Assassin>(role.Player).RemainingKills == 0) return;
                 }
                 var players = __instance.playerStates.Where(x => (guesser as IGuesser).Buttons[x.TargetPlayerId] != (null, null, null, null)
                                                                   && x.TargetPlayerId != role.Player.PlayerId).ToList();
 
-                if (ReInput.players.GetPlayer(0).GetButtonDown("ToU cycle players"))
+                if (ReInput.players.GetPlayer(0).GetButtonDown("TOU Cycle Players"))
                 {
                     HighlightedPlayer = players[PlayerIndex];
                     PlayerIndex = PlayerIndex == players.Count - 1 ? 0 : PlayerIndex + 1;
                 }
 
                 if (!HighlightedPlayer) return;
-                if (ReInput.players.GetPlayer(0).GetButtonDown("ToU cycle +"))
+                if (ReInput.players.GetPlayer(0).GetButtonDown("TOU Cycle +"))
                 {
                     (guesser as IGuesser).Buttons[HighlightedPlayer.TargetPlayerId].Item2.GetComponent<PassiveButton>().OnClick.Invoke();
                 }
-                else if (ReInput.players.GetPlayer(0).GetButtonDown("ToU cycle -"))
+                else if (ReInput.players.GetPlayer(0).GetButtonDown("TOU Cycle -"))
                 {
                     (guesser as IGuesser).Buttons[HighlightedPlayer.TargetPlayerId].Item1.GetComponent<PassiveButton>().OnClick.Invoke();
                 }
-                else if (ReInput.players.GetPlayer(0).GetButtonDown("ToU confirm"))
+                else if (ReInput.players.GetPlayer(0).GetButtonDown("TOU Confirm"))
                 {
                     (guesser as IGuesser).Buttons[HighlightedPlayer.TargetPlayerId].Item3.GetComponent<PassiveButton>().OnClick.Invoke();
                 }

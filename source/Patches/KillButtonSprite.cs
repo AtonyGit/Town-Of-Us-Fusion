@@ -68,6 +68,8 @@ namespace TownOfUsFusion
             if (!Kill) Kill = __instance.KillButton.graphic.sprite;
 
             var flag = false;
+            var buttonKills = false;
+            var otherButtonKills = false;
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Psychic))
             {
                 __instance.KillButton.graphic.sprite = Psychic;
@@ -88,6 +90,7 @@ namespace TownOfUsFusion
                 __instance.KillButton.buttonLabelText.text = "Douse";
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Arsonist);
                 flag = true;
+                otherButtonKills = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Altruist))
             {
@@ -179,6 +182,7 @@ namespace TownOfUsFusion
                 __instance.KillButton.buttonLabelText.text = "Autopsy";
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Investigator);
                 flag = true;
+                otherButtonKills = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Doomsayer))
             {
@@ -200,6 +204,7 @@ namespace TownOfUsFusion
                 __instance.KillButton.buttonLabelText.text = "Bite";
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Vampire);
                 flag = true;
+                buttonKills = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Politician))
             {
@@ -235,6 +240,7 @@ namespace TownOfUsFusion
                 __instance.KillButton.buttonLabelText.text = "Watch";
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Lookout);
                 flag = true;
+                buttonKills = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Deputy))
             {
@@ -256,42 +262,49 @@ namespace TownOfUsFusion
                 __instance.KillButton.buttonLabelText.text = "Unleash";
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.MirrorMaster);
                 flag = true;
+                buttonKills = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Sheriff))
             {
                 __instance.KillButton.graphic.sprite = SheriffKill;
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Sheriff);
                 flag = true;
+                buttonKills = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Pestilence))
             {
                 //__instance.KillButton.graphic.sprite = PestKill;
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Apocalypse);
                 flag = true;
+                buttonKills = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Werewolf))
             {
                 __instance.KillButton.graphic.sprite = WerewolfKill;
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Werewolf);
                 flag = true;
+                buttonKills = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.SerialKiller))
             {
                 __instance.KillButton.graphic.sprite = SkKill;
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.SerialKiller);
                 flag = true;
+                buttonKills = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Juggernaut))
             {
                 //__instance.KillButton.graphic.sprite = JuggKill;
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Apocalypse);
                 flag = true;
+                buttonKills = true;
             }
             
             if (!PlayerControl.LocalPlayer.Is(Faction.Impostors) &&
                 GameOptionsManager.Instance.CurrentGameOptions.GameMode != GameModes.HideNSeek)
             {
                 __instance.KillButton.transform.localPosition = new Vector3(0f, 1f, 0f);
+                buttonKills = true;
             }
             
             if(PlayerControl.LocalPlayer.Is(RoleEnum.Glitch))
@@ -299,6 +312,7 @@ namespace TownOfUsFusion
                 __instance.ImpostorVentButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
                 __instance.ImpostorVentButton.graphic.sprite = GlitchVent;
                 __instance.ImpostorVentButton.buttonLabelText.SetOutlineColor(Patches.Colors.Glitch);
+                buttonKills = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Pestilence))
             {
@@ -342,24 +356,26 @@ namespace TownOfUsFusion
                 __instance.ImpostorVentButton.buttonLabelText.SetOutlineColor(Patches.Colors.Jester);
             }
 
-            bool KillKey = Rewired.ReInput.players.GetPlayer(0).GetButtonDown("Kill");
+            bool KillKey = Rewired.ReInput.players.GetPlayer(0).GetButtonDown("ActionSecondary");
+            if (!buttonKills) KillKey = Rewired.ReInput.players.GetPlayer(0).GetButtonDown("ActionQuaternary");
             var controller = ConsoleJoystick.player.GetButtonDown(8);
             if ((KillKey || controller) && __instance.KillButton != null && flag && !PlayerControl.LocalPlayer.Data.IsDead)
                 __instance.KillButton.DoClick();
 
             var role = Role.GetRole(PlayerControl.LocalPlayer);
-            bool AbilityKey = Rewired.ReInput.players.GetPlayer(0).GetButtonDown("ToU imp/nk");
+            bool AbilityKey = Rewired.ReInput.players.GetPlayer(0).GetButtonDown("ActionSecondary");
+            if (!otherButtonKills) AbilityKey = Rewired.ReInput.players.GetPlayer(0).GetButtonDown("ActionQuaternary");
             if (role?.ExtraButtons != null && AbilityKey && !PlayerControl.LocalPlayer.Data.IsDead)
                 role?.ExtraButtons[0]?.DoClick();
 
             if (Modifier.GetModifier<ButtonBarry>(PlayerControl.LocalPlayer)?.ButtonUsed == false &&
-                Rewired.ReInput.players.GetPlayer(0).GetButtonDown("ToU bb/disperse/mimic") &&
+                Rewired.ReInput.players.GetPlayer(0).GetButtonDown("TOU bb/disperse/mimic") &&
                 !PlayerControl.LocalPlayer.Data.IsDead)
             {
                 Modifier.GetModifier<ButtonBarry>(PlayerControl.LocalPlayer).ButtonButton.DoClick();
             }
             else if (Modifier.GetModifier<Disperser>(PlayerControl.LocalPlayer)?.ButtonUsed == false &&
-                     Rewired.ReInput.players.GetPlayer(0).GetButtonDown("ToU bb/disperse/mimic") &&
+                     Rewired.ReInput.players.GetPlayer(0).GetButtonDown("TOU bb/disperse/mimic") &&
                      !PlayerControl.LocalPlayer.Data.IsDead)
             {
                 Modifier.GetModifier<Disperser>(PlayerControl.LocalPlayer).DisperseButton.DoClick();

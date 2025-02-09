@@ -44,6 +44,7 @@ namespace TownOfUsFusion.CrewmateRoles.MirrorMasterMod
             {
                 role.DummyAbsorbButton = Object.Instantiate(__instance.AbilityButton, __instance.AbilityButton.transform.parent);
                 role.DummyAbsorbButton.graphic.enabled = false;
+                role.DummyAbsorbButton.glyph.enabled = false;
                 role.DummyAbsorbButton.buttonLabelText.enabled = false;
                 role.DummyAbsorbButton.cooldownTimerText.enabled = false;
                 role.DummyAbsorbButton.gameObject.SetActive(false);
@@ -61,6 +62,7 @@ namespace TownOfUsFusion.CrewmateRoles.MirrorMasterMod
             {
                 role.DummyUnleashButton = Object.Instantiate(__instance.AbilityButton, __instance.AbilityButton.transform.parent);
                 role.DummyUnleashButton.graphic.enabled = false;
+                role.DummyUnleashButton.glyph.enabled = false;
                 role.DummyUnleashButton.buttonLabelText.enabled = false;
                 role.DummyUnleashButton.cooldownTimerText.enabled = false;
                 role.DummyUnleashButton.gameObject.SetActive(false);

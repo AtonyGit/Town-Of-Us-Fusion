@@ -37,6 +37,7 @@ namespace TownOfUsFusion.NeutralRoles.GuardianAngelMod
             {
                 role.DummyButton = Object.Instantiate(__instance.AbilityButton, __instance.AbilityButton.transform.parent);
                 role.DummyButton.graphic.enabled = false;
+                role.DummyButton.glyph.enabled = false;
                 role.DummyButton.buttonLabelText.enabled = false;
                 role.DummyButton.cooldownTimerText.enabled = false;
                 role.DummyButton.gameObject.SetActive(false);

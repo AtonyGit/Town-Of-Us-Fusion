@@ -26,8 +26,6 @@ namespace TownOfUsFusion.CustomOption
             base.OptionCreated();
             var tgl = Setting.Cast<ToggleOption>();
             tgl.CheckMark.enabled = Get();
-            tgl.TitleText.outlineColor = new UnityEngine.Color(0f, 0f, 0f, 1f);
-            tgl.TitleText.outlineWidth = 2;
         }
     }
 }

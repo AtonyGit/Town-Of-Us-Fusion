@@ -440,7 +440,7 @@ namespace TownOfUsFusion.Roles
                 if (__gInstance.HackTarget != null)
                 {
                     __gInstance.HackTarget.myRend().material.SetColor("_OutlineColor", __gInstance.Color);
-                    if (Rewired.ReInput.players.GetPlayer(0).GetButtonDown("ToU hack")) __gInstance.HackButton.DoClick();
+                    if (Rewired.ReInput.players.GetPlayer(0).GetButtonDown("TOU Hack")) __gInstance.HackButton.DoClick();
                 }
             }
 
@@ -521,7 +521,7 @@ namespace TownOfUsFusion.Roles
                     __gInstance.MimicButton.graphic.color = Palette.EnabledColor;
                     __gInstance.MimicButton.buttonLabelText.color = Palette.EnabledColor;
                     __gInstance.MimicButton.buttonLabelText.material.SetFloat("_Desat", 0f);
-                    if (Rewired.ReInput.players.GetPlayer(0).GetButtonDown("ToU bb/disperse/mimic")) __gInstance.MimicButton.DoClick();
+                    if (Rewired.ReInput.players.GetPlayer(0).GetButtonDown("TOU bb/disperse/mimic")) __gInstance.MimicButton.DoClick();
                 }
                 else
                 {

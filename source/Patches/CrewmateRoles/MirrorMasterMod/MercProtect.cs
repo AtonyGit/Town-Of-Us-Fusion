@@ -30,9 +30,10 @@ namespace TownOfUsFusion.CrewmateRoles.MirrorMasterMod
                 if (!__instance.isActiveAndEnabled) return false;
                 if (__instance.isCoolingDown) return false;
                 if (role.AbsorbTimer() != 0) return false;
+                if (role.AbsorbUsesLeft <= 0) return false;
 
                 var interact2 = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer, false);
-                if (interact2[6] == true && role.ShieldedPlayer == null && role.AbsorbUsesLeft > 0)
+                if (interact2[6] == true && role.ShieldedPlayer == null)
                 {
                     role.ShieldedPlayer = role.ClosestPlayer;
                     role.ShieldedPlayer.myRend().material.SetColor("_VisorColor", Palette.VisorColor);
@@ -46,31 +47,39 @@ namespace TownOfUsFusion.CrewmateRoles.MirrorMasterMod
             if (__instance != DestroyableSingleton<HudManager>.Instance.KillButton) return true;
             if (!__instance.isActiveAndEnabled) return false;
             if (__instance.isCoolingDown) return false;
-            if (role.UnleashTimer() != 0 && role.UnleashUsesLeft > 0) return false;
+            if (role.UnleashTimer() != 0) return false;
+            if (role.UnleashUsesLeft <= 0) return false;
             var interact = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer, true);
             if (interact[6] == true)
             {
                 role.UnleashUsesLeft -= 1;
                 role.ShieldedPlayer = null;
                 role.LastUnleashed = System.DateTime.UtcNow;
+                role.LastAbsorbed = System.DateTime.UtcNow;
             }
             if (interact[0] == true)
             {
                 role.LastUnleashed = System.DateTime.UtcNow;
+                role.LastAbsorbed = System.DateTime.UtcNow;
             }
             else if (interact[4] == true)
             {
                 role.LastUnleashed = System.DateTime.UtcNow;
+                role.LastAbsorbed = System.DateTime.UtcNow;
             }
             else if (interact[1] == true)
             {
                 role.LastUnleashed = System.DateTime.UtcNow;
+                role.LastAbsorbed = System.DateTime.UtcNow;
                 role.LastUnleashed = role.LastUnleashed.AddSeconds(-CustomGameOptions.MirrorUnleashCd + CustomGameOptions.ProtectKCReset);
+                role.LastAbsorbed = role.LastAbsorbed.AddSeconds(-CustomGameOptions.MirrorAbsorbCd + CustomGameOptions.ProtectKCReset);
             }
             else if (interact[2] == true)
             {
                 role.LastUnleashed = System.DateTime.UtcNow;
+                role.LastAbsorbed = System.DateTime.UtcNow;
                 role.LastUnleashed = role.LastUnleashed.AddSeconds(-CustomGameOptions.MirrorUnleashCd + CustomGameOptions.VestKCReset);
+                role.LastAbsorbed = role.LastAbsorbed.AddSeconds(-CustomGameOptions.MirrorAbsorbCd + CustomGameOptions.VestKCReset);
             }
             return false;
         }
