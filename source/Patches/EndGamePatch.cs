@@ -109,6 +109,8 @@ namespace TownOfUsFusion.Patches {
                     break;
                     case RoleEnum.Imitator: playerRole += "<color=#" + Patches.Colors.Imitator.ToHtmlStringRGBA() + ">Imitator</color> > ";
                     break;
+                    case RoleEnum.TimeLord: playerRole += "<color=#" + Patches.Colors.TimeLord.ToHtmlStringRGBA() + ">Time Lord</color> > ";
+                    break;
                     case RoleEnum.Transporter: playerRole += "<color=#" + Patches.Colors.Transporter.ToHtmlStringRGBA() + ">Transporter</color> > ";
                     break;
 
@@ -133,6 +135,8 @@ namespace TownOfUsFusion.Patches {
                     
                     case RoleEnum.Cannibal: playerRole += "<color=#" + Patches.Colors.Cannibal.ToHtmlStringRGBA() + ">Cannibal</color> > ";
                     break;
+                    case RoleEnum.CursedSoul: playerRole += "<color=#" + Patches.Colors.CursedSoul.ToHtmlStringRGBA() + ">Cursed Soul</color> > ";
+                    break;
                     case RoleEnum.Inquisitor: playerRole += "<color=#" + Patches.Colors.Inquisitor.ToHtmlStringRGBA() + ">Inquisitor</color> > ";
                     break;
                     case RoleEnum.Puppet: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Puppet</color> > ";
@@ -149,7 +153,7 @@ namespace TownOfUsFusion.Patches {
                     case RoleEnum.Werewolf: playerRole += "<color=#" + Patches.Colors.Werewolf.ToHtmlStringRGBA() + ">Werewolf</color> > ";
                     break;
                     
-                    case RoleEnum.Jackal: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Jackal</color> > ";
+                    case RoleEnum.Jackal: playerRole += "<color=#" + Patches.Colors.Recruit.ToHtmlStringRGBA() + ">Jackal</color> > ";
                     break;
                     case RoleEnum.Necromancer: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Necromancer</color> > ";
                     break;

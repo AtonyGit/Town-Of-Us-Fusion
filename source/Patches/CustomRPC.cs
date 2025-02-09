@@ -43,6 +43,8 @@ namespace TownOfUsFusion
         JanitorClean,
         FixLights,
         EngineerFix,
+        Rewind,
+        RewindRevive,
         SetSwaps,
         Protect,
         AttemptSound,

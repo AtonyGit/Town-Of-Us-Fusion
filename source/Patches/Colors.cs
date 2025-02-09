@@ -9,6 +9,8 @@ namespace TownOfUsFusion.Patches
         public readonly static Color Mayor = new Color(0.44f, 0.31f, 0.66f, 1f);
         public readonly static Color Sheriff = Color.yellow;
         public readonly static Color Engineer = new Color(1f, 0.65f, 0.04f, 1f);
+        public readonly static Color TimeLord = new Color(0f, 0f, 1f, 1f);
+        public readonly static Color CursedSoul = new(0.64f, 0.64f, 0.91f, 1f);
         public readonly static Color Swapper = new Color(0.4f, 0.9f, 0.4f, 1f);
         public readonly static Color Investigator = new Color(0f, 0.7f, 0.7f, 1f);
         public readonly static Color Medic = new Color(0f, 0.4f, 0f, 1f);
@@ -69,7 +71,6 @@ namespace TownOfUsFusion.Patches
         public readonly static Color ButtonBarry = new Color(0.9f, 0f, 1f, 1f);
         public readonly static Color Flash = new Color(1f, 0.5f, 0.5f, 1f);
         public readonly static Color Giant = new Color(1f, 0.7f, 0.3f, 1f);
-        public readonly static Color Lovers = new Color(1f, 0.4f, 0.8f, 1f);
         public readonly static Color Sleuth = new Color(0.5f, 0.2f, 0.2f, 1f);
         public readonly static Color Tiebreaker = new Color(0.6f, 0.9f, 0.6f, 1f);
         public readonly static Color Radar = new Color(1f, 0f, 0.5f, 1f);
@@ -78,6 +79,11 @@ namespace TownOfUsFusion.Patches
         public readonly static Color SixthSense = new Color(0.85f, 1f, 0.55f, 1f);
         public readonly static Color Shy = new Color(1f, 0.7f, 0.8f, 1f);
         public readonly static Color Mini = new Color(0.8f, 1f, 0.9f, 1f);
+        // ALLIANCE COLORS
+        public readonly static Color Recruit = new(0.31f, 0.3f, 0.36f, 1f);
+        public readonly static Color Lovers = new(1f, 0.4f, 0.53f, 1f);
+        public readonly static Color Crewpocalypse = new(1f, 0.4f, 0.8f, 1f);
+        public readonly static Color Egotist = new(0.23f, 0.38f, 0.25f, 1f);
 
     }
 }

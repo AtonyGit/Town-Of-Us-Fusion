@@ -43,6 +43,7 @@ using TownOfUsFusion.Roles.Alliances;
 using TownOfUsFusion.NeutralRoles.CannibalMod;
 using TownOfUsFusion.NeutralRoles.LawyerMod;
 using TownOfUsFusion.CrewmateRoles.MirrorMasterMod;
+using TownOfUsFusion.CrewmateRoles.TimeLordMod;
 
 namespace TownOfUsFusion
 {
@@ -972,6 +973,25 @@ namespace TownOfUsFusion
                         var cannibalWinner = Role.GetRole<Cannibal>(Utils.PlayerById(reader.ReadByte()));
                         cannibalWinner.Wins();
                         break;
+                        /*
+                    case CustomRPC.Shift:
+                        readByte1 = reader.ReadByte();
+                        readByte2 = reader.ReadByte();
+                        var shifter = Utils.PlayerById(readByte1);
+                        var other = Utils.PlayerById(readByte2);
+                        PerformKillButton.Shift(Role.GetRole<Shifter>(shifter), other);
+                        break;*/
+
+                    case CustomRPC.Rewind:
+                        readByte = reader.ReadByte();
+                        var TimeLordPlayer = Utils.PlayerById(readByte);
+                        var TimeLordRole = Role.GetRole<TimeLord>(TimeLordPlayer);
+                        StartStop.StartRewind(TimeLordRole);
+                        break;
+                    case CustomRPC.RewindRevive:
+                        readByte = reader.ReadByte();
+                        RecordRewind.ReviveBody(Utils.PlayerById(readByte));
+                        break;
                         
                     case CustomRPC.EngineerFix:
                         if (ShipStatus.Instance.Systems.ContainsKey(SystemTypes.MushroomMixupSabotage))
@@ -1774,6 +1794,12 @@ namespace TownOfUsFusion
 
                 if (CustomGameOptions.EngineerOn > 0)
                     CrewmateUtilityRoles.Add((typeof(Engineer), CustomGameOptions.EngineerOn, false || CustomGameOptions.UniqueCrewUtilRoles));
+
+                if (CustomGameOptions.TimeLordOn > 0)
+                    CrewmateUtilityRoles.Add((typeof(TimeLord), CustomGameOptions.TimeLordOn, false || CustomGameOptions.UniqueCrewUtilRoles));
+
+                if (CustomGameOptions.CaptainOn > 0)
+                    CrewmateSovereignRoles.Add((typeof(Captain), CustomGameOptions.CaptainOn, true));
 
                 if (CustomGameOptions.SwapperOn > 0)
                     CrewmateSovereignRoles.Add((typeof(Swapper), CustomGameOptions.SwapperOn, true));

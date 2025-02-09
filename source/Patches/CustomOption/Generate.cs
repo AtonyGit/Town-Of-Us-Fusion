@@ -66,6 +66,7 @@ namespace TownOfUsFusion.CustomOption
         public static CustomHeaderOption CrewUtilityRoles;
         public static CustomNumberOption EngineerOn;
         public static CustomNumberOption ImitatorOn;
+        public static CustomNumberOption TimeLordOn;
         public static CustomNumberOption TransporterOn;
 
         public static CustomHeaderOption NeutralBenignRoles;
@@ -271,6 +272,12 @@ namespace TownOfUsFusion.CustomOption
 
         public static CustomHeaderOption Swapper;
         public static CustomToggleOption SwapperButton;
+
+        public static CustomHeaderOption TimeLord;
+        public static CustomToggleOption RewindRevive;
+        public static CustomNumberOption RewindDuration;
+        public static CustomNumberOption RewindCooldown;
+        public static CustomToggleOption TimeLordVitals;
 
         public static CustomHeaderOption Transporter;
         public static CustomNumberOption TransportCooldown;
@@ -707,6 +714,8 @@ namespace TownOfUsFusion.CustomOption
                 EngineerOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#FFA60AFF>Engineer</color>", 0f, 0f, 100f, 10f,
                     PercentFormat);
                 ImitatorOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#B3D94DFF>Imitator</color>", 0f, 0f, 100f, 10f,
+                    PercentFormat);
+                TimeLordOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#0000FFFF>Time Lord</color>", 0f, 0f, 100f, 10f,
                     PercentFormat);
                 TransporterOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#00EEFFFF>Transporter</color>", 0f, 0f, 100f, 10f,
                     PercentFormat);
@@ -1201,6 +1210,14 @@ namespace TownOfUsFusion.CustomOption
                     new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#B3D94DFF>Imitator</color>");
                 ImitatorCanBecomeMayor =
                     new CustomToggleOption(num++, MultiMenu.crewmate, "Imitator Can Become Mayor", true);
+            TimeLord =
+                new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#0000FFFF>Time Lord</color>");
+                RewindRevive = new CustomToggleOption(num++, MultiMenu.crewmate, "Revive During Rewind", false);
+                RewindDuration = new CustomNumberOption(num++, MultiMenu.crewmate, "Rewind Duration", 3f, 3f, 15f, 0.5f, CooldownFormat);
+                RewindCooldown = new CustomNumberOption(num++, MultiMenu.crewmate, "Rewind Cooldown", 25f, 10f, 40f, 2.5f, CooldownFormat);
+                TimeLordVitals =
+                new CustomToggleOption(num++, MultiMenu.crewmate, "Time Lord can use Vitals", false);
+
             Transporter =
                 new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#00EEFFFF>Transporter</color>");
                 TransportCooldown =

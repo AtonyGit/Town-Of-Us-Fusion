@@ -7,8 +7,6 @@ namespace TownOfUsFusion
         Lookout,
         Medium,
         Spy,
-
-        Coroner,
         Investigator,
         Psychic,
         Tracker,
@@ -19,15 +17,15 @@ namespace TownOfUsFusion
         Veteran,
         Vigilante,
         Hunter,
-        Jailor,
-        Trickster,
 
+        Altruist,
         Bodyguard,
         Medic,
         MirrorMaster,
         Oracle,
         
         Captain,
+        Jailor,
         Politician,
         Mayor,
         Prosecutor,
@@ -35,6 +33,7 @@ namespace TownOfUsFusion
 
         Engineer,
         Imitator,
+        TimeLord,
         Transporter,
 
         Amnesiac,
@@ -48,12 +47,12 @@ namespace TownOfUsFusion
         Phantom,
 
         Cannibal,
+        CursedSoul,
         Inquisitor,
         Puppet,
         Tyrant,
 
         Arsonist,
-        BountyHunter,
         SerialKiller,
         Glitch,
         Werewolf,
@@ -69,9 +68,6 @@ namespace TownOfUsFusion
         SoulCollector,
         Death,
 
-
-
-        Altruist,
 
         Miner,
         Swooper,
