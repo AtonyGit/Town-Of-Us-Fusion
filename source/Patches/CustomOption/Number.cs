@@ -50,6 +50,8 @@ namespace TownOfUsFusion.CustomOption
             number.Increment = Increment;
             number.Value = number.oldValue = Get();
             number.ValueText.text = ToString();
+            number.TitleText.outlineColor = new UnityEngine.Color(0f, 0f, 0f, 1f);
+            number.TitleText.outlineWidth = 2;
         }
     }
 }
