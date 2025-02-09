@@ -1,4 +1,5 @@
 using System;
+using Reactor.Utilities;
 using TownOfUsFusion.Roles;
 using UnityEngine;
 
@@ -16,6 +17,7 @@ namespace TownOfUsFusion.CrewmateRoles.TimeLordMod
             PlayerControl.LocalPlayer.moveable = false;
             oldColor = HudManager.Instance.FullScreen.color;
             HudManager.Instance.FullScreen.color = new Color(0f, 0.5f, 0.8f, 0.3f);
+            Coroutines.Start(Utils.FlashCoroutine(new Color(0f, 0.5f, 0.8f, 0.3f)));
             HudManager.Instance.FullScreen.enabled = true;
             role.StartRewind = DateTime.UtcNow;
         }
