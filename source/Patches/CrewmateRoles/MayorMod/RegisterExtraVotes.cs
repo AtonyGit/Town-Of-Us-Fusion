@@ -119,6 +119,7 @@ namespace TownOfUsFusion.CrewmateRoles.MayorMod
                 mayor.ExtraVotes.Clear();
                 if (mayor.VoteBank < 0)
                     mayor.VoteBank = 0;
+                mayor.PlacedVote = false;
 
                 mayor.VoteBank++;
                 mayor.SelfVote = false;

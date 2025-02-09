@@ -22,6 +22,7 @@ namespace TownOfUsFusion.Roles
         public bool SelfVote { get; set; }
 
         public bool VotedOnce { get; set; }
+        public bool PlacedVote { get; set; }
 
         public PlayerVoteArea Abstain { get; set; }
 

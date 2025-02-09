@@ -1,4 +1,5 @@
 using HarmonyLib;
+using TownOfUsFusion.Roles;
 using UnityEngine;
 
 namespace TownOfUsFusion
@@ -14,6 +15,17 @@ namespace TownOfUsFusion
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Prosecutor))
             {
                 PlayerMaterial.SetColors(voterPlayer.DefaultOutfit.ColorId, spriteRenderer);
+
+                if (GameOptionsManager.Instance.currentNormalGameOptions.AnonymousVotes && voterPlayer._object.Is(RoleEnum.Tyrant))
+                {
+                    var role = Role.GetRole<Tyrant>(voterPlayer._object);
+                    if(!role.PlacedVote) 
+                    {
+                        PlayerMaterial.SetColors(voterPlayer.DefaultOutfit.ColorId, spriteRenderer);
+                        role.PlacedVote = true;
+                    }
+                    else PlayerMaterial.SetColors(Palette.DisabledGrey, spriteRenderer);
+                }
             }
             else if (GameOptionsManager.Instance.currentNormalGameOptions.AnonymousVotes && (!CustomGameOptions.DeadSeeRoles || !PlayerControl.LocalPlayer.Data.IsDead))
             {
