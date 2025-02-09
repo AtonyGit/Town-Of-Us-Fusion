@@ -89,12 +89,12 @@ namespace TownOfUsFusion.Patches {
                     break;
                     case RoleEnum.Medic: playerRole += "<color=#" + Patches.Colors.Medic.ToHtmlStringRGBA() + ">Medic</color> > ";
                     break;
-                    case RoleEnum.MirrorMaster: playerRole += "<color=#" + Patches.Colors.MirrorMaster.ToHtmlStringRGBA() + ">MirrorMaster</color> > ";
+                    case RoleEnum.MirrorMaster: playerRole += "<color=#" + Patches.Colors.MirrorMaster.ToHtmlStringRGBA() + ">Mirror Master</color> > ";
                     break;
                     case RoleEnum.Oracle: playerRole += "<color=#" + Patches.Colors.Oracle.ToHtmlStringRGBA() + ">Oracle</color> > ";
                     break;
 
-                    case RoleEnum.Captain: playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Captain</color> > ";
+                    case RoleEnum.Captain: playerRole += "<color=#" + Patches.Colors.Captain.ToHtmlStringRGBA() + ">Captain</color> > ";
                     break;
                     case RoleEnum.Politician: playerRole += "<color=#" + Patches.Colors.Politician.ToHtmlStringRGBA() + ">Politician</color> > ";
                     break;

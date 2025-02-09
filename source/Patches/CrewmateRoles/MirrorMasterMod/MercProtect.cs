@@ -18,35 +18,39 @@ namespace TownOfUsFusion.CrewmateRoles.MirrorMasterMod
             if (!flag) return true;
             var role = Role.GetRole<MirrorMaster>(PlayerControl.LocalPlayer);
             if (!PlayerControl.LocalPlayer.CanMove) return false;
+
+            var distBetweenPlayers = Utils.GetDistBetweenPlayers(PlayerControl.LocalPlayer, role.ClosestPlayer);
+            var flag3 = distBetweenPlayers <
+                        GameOptionsData.KillDistances[GameOptionsManager.Instance.currentNormalGameOptions.KillDistance];
+            if (!flag3) return false;
+            if (role.ClosestPlayer == null) return false;
+            
             if (__instance == role.AbsorbButton)
             {
                 if (!__instance.isActiveAndEnabled) return false;
                 if (__instance.isCoolingDown) return false;
                 if (role.AbsorbTimer() != 0) return false;
-                if (role.ShieldedPlayer != null)
+
+                var interact2 = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer, false);
+                if (interact2[6] == true && role.ShieldedPlayer == null && role.AbsorbUsesLeft > 0)
                 {
+                    role.ShieldedPlayer = role.ClosestPlayer;
                     role.ShieldedPlayer.myRend().material.SetColor("_VisorColor", Palette.VisorColor);
                     role.ShieldedPlayer.myRend().material.SetFloat("_Outline", 0f);
+                    role.LastUnleashed = System.DateTime.UtcNow;
+                    role.LastAbsorbed = System.DateTime.UtcNow;
                 }
-                role.ShieldedPlayer = null;
                 return false;
             }
 
             if (__instance != DestroyableSingleton<HudManager>.Instance.KillButton) return true;
             if (!__instance.isActiveAndEnabled) return false;
             if (__instance.isCoolingDown) return false;
-            if (role.UnleashTimer() != 0) return false;
-
-            if (role.ClosestPlayer == null) return false;
-            if (role.UnleashTimer() != 0) return false;
-            var distBetweenPlayers = Utils.GetDistBetweenPlayers(PlayerControl.LocalPlayer, role.ClosestPlayer);
-            var flag3 = distBetweenPlayers <
-                        GameOptionsData.KillDistances[GameOptionsManager.Instance.currentNormalGameOptions.KillDistance];
-            if (!flag3) return false;
+            if (role.UnleashTimer() != 0 && role.UnleashUsesLeft > 0) return false;
             var interact = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer, true);
             if (interact[6] == true)
             {
-                role.AbsorbUsesLeft -= 1;
+                role.UnleashUsesLeft -= 1;
                 role.ShieldedPlayer = null;
                 role.LastUnleashed = System.DateTime.UtcNow;
             }

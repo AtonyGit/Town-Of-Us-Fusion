@@ -31,14 +31,14 @@ namespace TownOfUsFusion.CrewmateRoles.MirrorMasterMod
                 role.AbsorbButton = Object.Instantiate(__instance.KillButton, __instance.KillButton.transform.parent);
                 role.AbsorbButton.graphic.enabled = true;
                 role.AbsorbButton.graphic.sprite = AbsorbSprite;
-                role.AbsorbButton.buttonLabelText.text = "Absorb";
-                role.AbsorbButton.buttonLabelText.SetOutlineColor(role.Color);
                 role.AbsorbButton.gameObject.SetActive(false);
             }
             role.AbsorbButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
             role.AbsorbButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+            role.AbsorbButton.buttonLabelText.text = "Absorb";
+            role.AbsorbButton.buttonLabelText.SetOutlineColor(role.Color);
 
             if (role.DummyAbsorbButton == null)
             {
@@ -90,6 +90,21 @@ namespace TownOfUsFusion.CrewmateRoles.MirrorMasterMod
                 role.AbsorbButton.buttonLabelText.color = Palette.DisabledClear;
                 role.AbsorbButton.buttonLabelText.material.SetFloat("_Desat", 1f);
             }
+            var renderer2 = unleashButton.graphic;
+            if (!unleashButton.isCoolingDown && role.UnleashUsesLeft > 0)
+            {
+                renderer2.color = Palette.EnabledColor;
+                renderer2.material.SetFloat("_Desat", 0f);
+                unleashButton.buttonLabelText.color = Palette.EnabledColor;
+                unleashButton.buttonLabelText.material.SetFloat("_Desat", 0f);
+            }
+            else
+            {
+                renderer2.color = Palette.DisabledClear;
+                renderer2.material.SetFloat("_Desat", 1f);
+                unleashButton.buttonLabelText.color = Palette.DisabledClear;
+                unleashButton.buttonLabelText.material.SetFloat("_Desat", 1f);
+            }
 
             unleashButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
@@ -101,7 +116,7 @@ namespace TownOfUsFusion.CrewmateRoles.MirrorMasterMod
             var notShielded = PlayerControl.AllPlayerControls.ToArray().Where(
                 player => role.ShieldedPlayer != player
             ).ToList();
-            if(role.AbsorbUsesLeft != 0) Utils.SetTarget(ref role.ClosestPlayer, unleashButton, float.NaN, notShielded);
+            if(role.AbsorbUsesLeft != 0) Utils.SetTarget(ref role.ClosestPlayer, role.AbsorbButton, float.NaN, notShielded);
 
         }
     }
