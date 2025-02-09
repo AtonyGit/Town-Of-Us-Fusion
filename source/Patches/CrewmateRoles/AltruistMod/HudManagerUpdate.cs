@@ -42,7 +42,9 @@ namespace TownOfUsFusion.CrewmateRoles.AltruistMod
             role.DummyButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-            role.DummyButton.transform.localPosition = killButton.transform.localPosition;
+            role.DummyButton.transform.localPosition = killButton.transform.localPosition + new Vector3(5f, 0f, 0f);
+            role.DummyButton.usesRemainingText.transform.localPosition -= new Vector3(5f, 0f, 0f);
+            role.DummyButton.usesRemainingSprite.transform.localPosition -= new Vector3(5f, 0f, 0f);
             role.DummyButton.SetUsesRemaining(role.RevivesLeft);
             role.DummyButton.usesRemainingText.text = role.RevivesLeft.ToString();
 

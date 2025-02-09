@@ -53,7 +53,9 @@ namespace TownOfUsFusion.CrewmateRoles.MirrorMasterMod
             role.DummyAbsorbButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-                role.DummyAbsorbButton.transform.localPosition = role.AbsorbButton.transform.localPosition;
+                role.DummyAbsorbButton.transform.localPosition = role.AbsorbButton.transform.localPosition + new Vector3(5f, 0f, 0f);
+                role.DummyAbsorbButton.usesRemainingText.transform.localPosition -= new Vector3(5f, 0f, 0f);
+                role.DummyAbsorbButton.usesRemainingSprite.transform.localPosition -= new Vector3(5f, 0f, 0f);
 
                 role.DummyAbsorbButton.SetUsesRemaining(role.AbsorbUsesLeft);
                 role.DummyAbsorbButton.usesRemainingText.text = role.AbsorbUsesLeft.ToString();
@@ -71,7 +73,9 @@ namespace TownOfUsFusion.CrewmateRoles.MirrorMasterMod
             role.DummyUnleashButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-                role.DummyUnleashButton.transform.localPosition = unleashButton.transform.localPosition;
+                role.DummyUnleashButton.transform.localPosition = unleashButton.transform.localPosition + new Vector3(5f, 0f, 0f);
+                role.DummyUnleashButton.usesRemainingText.transform.localPosition -= new Vector3(5f, 0f, 0f);
+                role.DummyUnleashButton.usesRemainingSprite.transform.localPosition -= new Vector3(5f, 0f, 0f);
 
                 role.DummyUnleashButton.SetUsesRemaining(role.UnleashUsesLeft);
                 role.DummyUnleashButton.usesRemainingText.text = role.UnleashUsesLeft.ToString();

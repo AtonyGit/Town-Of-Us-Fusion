@@ -44,7 +44,9 @@ namespace TownOfUsFusion.NeutralRoles.SurvivorMod
             role.DummyButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-            role.DummyButton.transform.localPosition = vestButton.transform.localPosition;
+            role.DummyButton.transform.localPosition = vestButton.transform.localPosition + new Vector3(5f, 0f, 0f);
+            role.DummyButton.usesRemainingText.transform.localPosition -= new Vector3(5f, 0f, 0f);
+            role.DummyButton.usesRemainingSprite.transform.localPosition -= new Vector3(5f, 0f, 0f);
             role.DummyButton.SetUsesRemaining(role.UsesLeft);
             role.DummyButton.usesRemainingText.text = role.UsesLeft.ToString();
 

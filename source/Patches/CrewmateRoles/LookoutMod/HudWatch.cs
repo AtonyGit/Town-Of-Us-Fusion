@@ -41,7 +41,9 @@ namespace TownOfUsFusion.CrewmateRoles.LookoutMod
             role.PerceptDummyButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-                role.PerceptDummyButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
+                role.PerceptDummyButton.transform.localPosition = new Vector3(-2f, 0f, 0f) + new Vector3(5f, 0f, 0f);
+                role.WatchDummyButton.usesRemainingText.transform.localPosition -= new Vector3(5f, 0f, 0f);
+                role.WatchDummyButton.usesRemainingSprite.transform.localPosition -= new Vector3(5f, 0f, 0f);;
 
             role.PerceptButton.graphic.sprite = TownOfUsFusion.PerceptSprite;
             role.PerceptButton.buttonLabelText.text = "Eagle Eye";
@@ -72,7 +74,9 @@ namespace TownOfUsFusion.CrewmateRoles.LookoutMod
             role.WatchDummyButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-                role.WatchDummyButton.transform.localPosition = watchButton.transform.localPosition;
+                role.WatchDummyButton.transform.localPosition = watchButton.transform.localPosition + new Vector3(5f, 0f, 0f);
+                role.WatchDummyButton.usesRemainingText.transform.localPosition -= new Vector3(5f, 0f, 0f);
+                role.WatchDummyButton.usesRemainingSprite.transform.localPosition -= new Vector3(5f, 0f, 0f);
 
                 role.WatchDummyButton.SetUsesRemaining(role.UsesLeft);
                 role.WatchDummyButton.usesRemainingText.text = role.UsesLeft.ToString();

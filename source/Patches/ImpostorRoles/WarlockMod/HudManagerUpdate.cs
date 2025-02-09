@@ -60,7 +60,9 @@ namespace TownOfUsFusion.ImpostorRoles.WarlockMod
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started
                     && (role.Charging || role.UsingCharge));
-            role.DummyButton.transform.localPosition = __instance.KillButton.transform.localPosition;
+            role.DummyButton.transform.localPosition = __instance.KillButton.transform.localPosition + new Vector3(5f, 0f, 0f);
+            role.DummyButton.usesRemainingText.transform.localPosition -= new Vector3(5f, 0f, 0f);
+            role.DummyButton.usesRemainingSprite.transform.localPosition -= new Vector3(5f, 0f, 0f);
             role.DummyButton.SetUsesRemaining(role.ChargePercent);
             role.DummyButton.usesRemainingText.text = role.ChargePercent.ToString() + "%";
             if (role.UsingCharge)
