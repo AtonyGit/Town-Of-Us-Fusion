@@ -15,10 +15,7 @@ namespace TownOfUsFusion.CrewmateRoles.TimeLordMod
             RecordRewind.rewinding = true;
             RecordRewind.whoIsRewinding = role;
             PlayerControl.LocalPlayer.moveable = false;
-            oldColor = HudManager.Instance.FullScreen.color;
-            HudManager.Instance.FullScreen.color = new Color(0f, 0.5f, 0.8f, 0.3f);
-            Coroutines.Start(Utils.FlashCoroutine(new Color(0f, 0.5f, 0.8f, 0.3f)));
-            HudManager.Instance.FullScreen.enabled = true;
+            Coroutines.Start(Utils.FlashCoroutine(role.Color, CustomGameOptions.RewindDuration, 0.3f));
             role.StartRewind = DateTime.UtcNow;
         }
 
@@ -28,8 +25,6 @@ namespace TownOfUsFusion.CrewmateRoles.TimeLordMod
             role.FinishRewind = DateTime.UtcNow;
             RecordRewind.rewinding = false;
             PlayerControl.LocalPlayer.moveable = true;
-            HudManager.Instance.FullScreen.enabled = false;
-            HudManager.Instance.FullScreen.color = oldColor;
         }
     }
 }
