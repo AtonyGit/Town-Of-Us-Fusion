@@ -54,6 +54,12 @@ namespace TownOfUsFusion
         public static int SheriffOn => (int)Generate.SheriffOn.Get();
         public static int JanitorOn => (int)Generate.JanitorOn.Get();
         public static int EngineerOn => (int)Generate.EngineerOn.Get();
+        public static int TimeLordOn => (int) Generate.TimeLordOn.Get();
+            public static bool RewindRevive => Generate.RewindRevive.Get();
+            public static float RewindDuration => Generate.RewindDuration.Get();
+            public static float RewindCooldown => Generate.RewindCooldown.Get();
+            public static bool TimeLordVitals => Generate.TimeLordVitals.Get();
+
         public static int SwapperOn => (int)Generate.SwapperOn.Get();
         public static int AmnesiacOn => (int)Generate.AmnesiacOn.Get();
         public static int MedicOn => (int)Generate.MedicOn.Get();

@@ -93,6 +93,8 @@ namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
             {
                 case RoleEnum.Sheriff:
                 case RoleEnum.Engineer:
+                case RoleEnum.TimeLord:
+                case RoleEnum.Captain:
                 case RoleEnum.Mayor:
                 case RoleEnum.Swapper:
                 case RoleEnum.Investigator:
@@ -129,6 +131,8 @@ namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
                 case RoleEnum.Amnesiac:
                 case RoleEnum.Glitch:
                 case RoleEnum.Juggernaut:
+                case RoleEnum.CursedSoul:
+                case RoleEnum.Jackal:
                 case RoleEnum.Survivor:
                 case RoleEnum.GuardianAngel:
                 case RoleEnum.Plaguebearer:

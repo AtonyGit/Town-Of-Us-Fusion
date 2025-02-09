@@ -649,11 +649,12 @@ namespace TownOfUsFusion.Roles
                                 case Altruist:
                                 case Bodyguard:
                                 case Medic:
-                                //case MirrorMaster:
+                                case MirrorMaster:
                                 case Oracle:
                                 PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Scientist);
                                 break;
-                                //case Captain:
+                                case Captain:
+                                case Jailor:
                                 case Politician:
                                 case Prosecutor:
                                 case Swapper:
@@ -662,6 +663,7 @@ namespace TownOfUsFusion.Roles
                                 case Engineer:
                                 case Imitator:
                                 case Transporter:
+                                case TimeLord:
                                 PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Engineer);
                                 break;
                             }
@@ -742,11 +744,12 @@ namespace TownOfUsFusion.Roles
                                 case Altruist:
                                 case Bodyguard:
                                 case Medic:
-                                //case MirrorMaster:
+                                case MirrorMaster:
                                 case Oracle:
                                 PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Scientist);
                                 break;
-                                //case Captain:
+                                case Captain:
+                                case Jailor:
                                 case Politician:
                                 case Prosecutor:
                                 case Swapper:
@@ -755,6 +758,7 @@ namespace TownOfUsFusion.Roles
                                 case Engineer:
                                 case Imitator:
                                 case Transporter:
+                                case TimeLord:
                                 PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Engineer);
                                 break;
                             }
@@ -847,11 +851,12 @@ namespace TownOfUsFusion.Roles
                                 case Altruist:
                                 case Bodyguard:
                                 case Medic:
-                                //case MirrorMaster:
+                                case MirrorMaster:
                                 case Oracle:
                                 PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Scientist);
                                 break;
-                                //case Captain:
+                                case Captain:
+                                case Jailor:
                                 case Politician:
                                 case Prosecutor:
                                 case Swapper:
@@ -860,6 +865,7 @@ namespace TownOfUsFusion.Roles
                                 case Engineer:
                                 case Imitator:
                                 case Transporter:
+                                case TimeLord:
                                 PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Engineer);
                                 break;
                             }

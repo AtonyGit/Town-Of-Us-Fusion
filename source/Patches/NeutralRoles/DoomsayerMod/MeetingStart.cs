@@ -26,7 +26,7 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
         public static string PlayerReportFeedback(PlayerControl player)
         {
             if (player.Is(RoleEnum.Aurial) || player.Is(RoleEnum.Imitator) || StartImitate.ImitatingPlayer == player
-                || player.Is(RoleEnum.Morphling)
+                || player.Is(RoleEnum.Morphling) || player.Is(RoleEnum.TimeLord)
                  || player.Is(RoleEnum.Glitch))
                 return $"You observe that {player.GetDefaultOutfit().PlayerName} has an altered perception of reality";
 
@@ -58,7 +58,7 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
                  || player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.Warlock) || player.Is(RoleEnum.Bodyguard))
                 return $"You observe that {player.GetDefaultOutfit().PlayerName} is capable of performing relentless attacks";
                 
-            else if (player.Is(RoleEnum.Crewmate) || player.Is(RoleEnum.Impostor))
+            else if (player.Is(RoleEnum.Crewmate) || player.Is(RoleEnum.Impostor) || player.Is(RoleEnum.CursedSoul))
                 return $"You observe that {player.GetDefaultOutfit().PlayerName} appears to be roleless";
             else
                 return "Error";
@@ -67,9 +67,9 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
         public static string RoleReportFeedback(PlayerControl player)
         {
             if (player.Is(RoleEnum.Aurial) || player.Is(RoleEnum.Imitator) || StartImitate.ImitatingPlayer == player
-                || player.Is(RoleEnum.Morphling)
+                || player.Is(RoleEnum.Morphling) || player.Is(RoleEnum.TimeLord)
                   || player.Is(RoleEnum.Glitch))
-                return "(Aurial, Imitator, Morphling, or The Glitch)";
+                return "(Aurial, Imitator, Morphling, Time Lord, or The Glitch)";
 
             else if (player.Is(RoleEnum.Blackmailer) || player.Is(RoleEnum.Investigator) || player.Is(RoleEnum.Doomsayer)
                  || player.Is(RoleEnum.Spy) || player.Is(RoleEnum.Trapper) || player.Is(RoleEnum.Inquisitor))
@@ -99,8 +99,8 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
                  || player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.Warlock) || player.Is(RoleEnum.Bodyguard))
                 return "(Bodyguard, Bomber, Deputy, Jailor, Juggernaut, Sheriff, Vigilante or Warlock)";
 
-            else if (player.Is(RoleEnum.Crewmate) || player.Is(RoleEnum.Impostor))
-                return "(Crewmate or Impostor)";
+            else if (player.Is(RoleEnum.Crewmate) || player.Is(RoleEnum.Impostor) || player.Is(RoleEnum.CursedSoul))
+                return "(Crewmate, Cursed Soul or Impostor)";
             else return "Error";
         }
     }

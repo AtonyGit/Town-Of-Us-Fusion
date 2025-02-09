@@ -61,8 +61,9 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
                         writer4.Write(PlayerControl.LocalPlayer.PlayerId);
                         writer4.Write(role.BittenPlayer.PlayerId);
                         AmongUsClient.Instance.FinishRpcImmediately(writer4);
+                        return false;
                 }
-                if (interact[0] == true)
+                else if (interact[0] == true)
                 {
                     role.LastBit = DateTime.UtcNow;
                     return false;
@@ -104,7 +105,7 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
                     AmongUsClient.Instance.FinishRpcImmediately(writer2);
                     return false;
                 }
-                if (interact[0] == true)
+                else if (interact[0] == true)
                 {
                     role.LastBit = DateTime.UtcNow;
                     return false;

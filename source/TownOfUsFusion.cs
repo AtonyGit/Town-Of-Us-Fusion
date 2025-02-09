@@ -37,7 +37,7 @@ namespace TownOfUsFusion
         public static System.Version Version = System.Version.Parse(VersionString);
         public const string VersionTag = "<color=#ff33fc></color>";
         public const bool isDevBuild = true;
-        public const string DevBuildVersion = "2";
+        public const string DevBuildVersion = "3";
 
         public static readonly string DataPath = Path.GetDirectoryName(Application.dataPath);
         public static readonly string Assets = Path.Combine(DataPath, "FusionAssets");
@@ -59,6 +59,8 @@ namespace TownOfUsFusion
         public static Sprite WerewolfKill;
         public static Sprite EngineerVent;
         public static Sprite EngineerFix;
+        public static Sprite SoulSwapSprite;
+        public static Sprite RewindSprite;
 
         public static Sprite JanitorClean;
         public static Sprite SwapperSwitch;
@@ -212,6 +214,7 @@ namespace TownOfUsFusion
                 SwapperSwitchDisabled = CreateSprite("TownOfUsFusion.Resources.SwapperSwitchDisabled.png");
             // Utility Roles
                 EngineerFix = CreateScaledSprite("TownOfUsFusion.Resources.Engineer.png");
+                RewindSprite = CreateScaledSprite("TownOfUsFusion.Resources.Rewind.png");
                 EngineerVent = CreateVentSprite("TownOfUsFusion.Resources.VentEngineer.png");
                 ImitateSelectSprite = CreateMeetingSprite("TownOfUsFusion.Resources.ImitateSelect.png");
                 ImitateDeselectSprite = CreateMeetingSprite("TownOfUsFusion.Resources.ImitateDeselect.png");
@@ -226,6 +229,7 @@ namespace TownOfUsFusion
                 JesterVent = CreateVentSprite("TownOfUsFusion.Resources.JesterVent.png");
             // Chaos Roles
                 InquisKill = CreateScaledSprite("TownOfUsFusion.Resources.InquisKill.png");
+                SoulSwapSprite = CreateSprite("TownOfUsFusion.Resources.SoulSwap.png");
                 ConsumeSprite = CreateScaledSprite("TownOfUsFusion.Resources.Consume.png");
             // Killing Roles
                 DouseSprite = CreateSprite("TownOfUsFusion.Resources.Douse.png");

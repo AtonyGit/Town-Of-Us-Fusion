@@ -20,6 +20,8 @@ namespace TownOfUsFusion
     public class KillButtonSprite
     {
         private static Sprite Fix => TownOfUsFusion.EngineerFix;
+        private static Sprite Rewind => TownOfUsFusion.RewindSprite;
+        private static Sprite SoulSwap => TownOfUsFusion.SoulSwapSprite;
         private static Sprite EngiVent => TownOfUsFusion.EngineerVent;
         private static Sprite Medic => TownOfUsFusion.MedicSprite;
         private static Sprite Psychic => TownOfUsFusion.PsychicSprite;
@@ -155,6 +157,13 @@ namespace TownOfUsFusion
                 __instance.KillButton.graphic.sprite = Fix;
                 __instance.KillButton.buttonLabelText.text = "Fix";
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Engineer);
+                flag = true;
+            }
+            else if (PlayerControl.LocalPlayer.Is(RoleEnum.TimeLord))
+            {
+                __instance.KillButton.graphic.sprite = Rewind;
+                __instance.KillButton.buttonLabelText.text = "Rewind";
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.TimeLord);
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Trapper))

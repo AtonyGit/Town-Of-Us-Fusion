@@ -40,6 +40,7 @@ namespace TownOfUsFusion.Roles
             if (CustomGameOptions.MirrorMasterOn > 0) ColorMapping.Add("Mirror Master", Colors.MirrorMaster);
             if (CustomGameOptions.SheriffOn > 0) ColorMapping.Add("Sheriff", Colors.Sheriff);
             if (CustomGameOptions.EngineerOn > 0) ColorMapping.Add("Engineer", Colors.Engineer);
+            if (CustomGameOptions.TimeLordOn > 0) ColorMapping.Add("Time Lord", Colors.TimeLord);
             if (CustomGameOptions.SwapperOn > 0) ColorMapping.Add("Swapper", Colors.Swapper);
             if (CustomGameOptions.MedicOn > 0) ColorMapping.Add("Medic", Colors.Medic);
             if (CustomGameOptions.BodyguardOn > 0) ColorMapping.Add("Bodyguard", Colors.Bodyguard);
@@ -94,6 +95,7 @@ namespace TownOfUsFusion.Roles
             if (CustomGameOptions.DoomsayerGuessNeutralChaos)
             {
                 if (CustomGameOptions.CannibalOn > 0) ColorMapping.Add("Cannibal", Colors.Cannibal);
+                //if (CustomGameOptions.CursedSoulOn > 0) ColorMapping.Add("Cursed Soul", Colors.CursedSoul);
                 if (CustomGameOptions.TyrantOn > 0) ColorMapping.Add("Tyrant", Colors.Tyrant);
                 if (CustomGameOptions.InquisitorOn > 0) ColorMapping.Add("Inquisitor", Colors.Inquisitor);
             }

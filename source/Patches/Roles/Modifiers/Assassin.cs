@@ -77,6 +77,7 @@ namespace TownOfUsFusion.Roles.Modifiers
             if (CustomGameOptions.AssassinGuessNeutralChaos)
             {
                 if (CustomGameOptions.CannibalOn > 0) ColorMapping.Add("Cannibal", Colors.Cannibal);
+                //if (CustomGameOptions.CursedSoulOn > 0) ColorMapping.Add("Cursed Soul", Colors.CursedSoul);
                 if (CustomGameOptions.TyrantOn > 0) ColorMapping.Add("Tyrant", Colors.Tyrant);
                 if (CustomGameOptions.InquisitorOn > 0) ColorMapping.Add("Inquisitor", Colors.Inquisitor);
             }
