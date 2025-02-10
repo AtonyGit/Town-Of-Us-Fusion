@@ -23,7 +23,7 @@ public static class CustomVisorManager
         viewData.MatchPlayerColor = cv.Adaptive;
 
         visor.name = cv.Name;
-        Debug.Log($"LOADING VISOR: {cv.Name}");
+        //Debug.Log($"LOADING VISOR: {cv.Name}");
         visor.displayOrder = 99;
         visor.ProductId = "customVisor_" + cv.Name.Replace(' ', '_');
         visor.ChipOffset = new(0f, 0.2f);

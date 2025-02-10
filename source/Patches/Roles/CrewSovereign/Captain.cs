@@ -21,6 +21,7 @@ namespace TownOfUsFusion.Roles
             TribunalThisMeeting = false;
             TribunalsLeft = CustomGameOptions.MaxTribunals;
             EjectionsPerTribunal = CustomGameOptions.MaxTribunalEjects;
+            HasRevealed = false;
         }
         public GameObject TribunalButton = new GameObject();
         public int TribunalsLeft;

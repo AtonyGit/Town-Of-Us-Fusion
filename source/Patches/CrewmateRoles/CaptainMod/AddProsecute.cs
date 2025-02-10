@@ -32,7 +32,7 @@ namespace TownOfUsFusion.CrewmateRoles.CaptainMod
             passive.OnClick = new Button.ButtonClickedEvent();
             passive.OnClick.AddListener(Reveal(role));
             role.TribunalButton = newButton;
-            if (role.TribunalThisMeeting) role.TribunalButton.Destroy();
+            //if (role.TribunalThisMeeting) role.TribunalButton.Destroy();
         }
 
         private static Action Reveal(Captain role)
@@ -41,18 +41,6 @@ namespace TownOfUsFusion.CrewmateRoles.CaptainMod
             {
                 role.TribunalButton.Destroy();
                 role.HasRevealed = true;
-                if (MeetingHud.Instance)
-                {
-                    PlayerVoteArea voteArea = MeetingHud.Instance.playerStates.First();
-
-                        if (voteArea == null) return;
-                        if (voteArea.DidVote) voteArea.UnsetVote();
-                        /*voteArea.AmDead = true;
-                        voteArea.Overlay.gameObject.SetActive(true);
-                        voteArea.Overlay.color = Color.white;
-                        voteArea.XMark.gameObject.SetActive(true);
-                        voteArea.XMark.transform.localScale = Vector3.one;*/
-                }
             }
 
             return Listener;
@@ -64,6 +52,16 @@ namespace TownOfUsFusion.CrewmateRoles.CaptainMod
                 var politician = (Captain)role;
                 politician.TribunalButton.Destroy();
             }
+            if (PlayerControl.LocalPlayer.Data.IsDead) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Captain)) return;
+            if (PlayerControl.LocalPlayer.IsJailed()) return;
+            var mayorrole = Role.GetRole<Captain>(PlayerControl.LocalPlayer);
+            if (mayorrole.TribunalThisMeeting) return;
+            for (var i = 0; i < __instance.playerStates.Length; i++)
+                if (PlayerControl.LocalPlayer.PlayerId == __instance.playerStates[i].TargetPlayerId)
+                {
+                    GenButton(mayorrole, i);
+                }
         }
     }
 }
