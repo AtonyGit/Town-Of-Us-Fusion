@@ -204,6 +204,11 @@ namespace TownOfUsFusion.Roles
                 var mayor = GetRole<Mayor>(lover.OtherLover.Player);
                 if (mayor.Revealed) return true;
             }
+            else if (lover.OtherLover.Player.Is(RoleEnum.Captain))
+            {
+                var cap = GetRole<Captain>(lover.OtherLover.Player);
+                if (cap.HasRevealed) return true;
+            }
         }
         return false;
     }

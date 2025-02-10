@@ -1644,8 +1644,19 @@ namespace TownOfUsFusion
         [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.Update))]
         class MeetingHudUpdatePatch {
             static void Postfix(MeetingHud __instance) {
-                // Deactivate skip Button if skipping on emergency meetings is disabled 
-                if ((voteTarget == null && CustomGameOptions.SkipButtonDisable == DisableSkipButtonMeetings.Emergency) || (CustomGameOptions.SkipButtonDisable == DisableSkipButtonMeetings.Always)) {
+                var flag = false;
+                foreach (var player in PlayerControl.AllPlayerControls)
+                {
+                    if (player.Data.IsDead || player.Data.Disconnected) continue;
+                    if (player.Is(RoleEnum.Captain))
+                    {
+                        // If a Tribunal is in session, skipping is disabled
+                        var cap = Role.GetRole<Captain>(player);
+                        if (cap.TribunalThisMeeting) flag = true;
+                    }
+                }
+                // Deactivate skip Button if skipping on emergency meetings is disabled
+                if ((voteTarget == null && CustomGameOptions.SkipButtonDisable == DisableSkipButtonMeetings.Emergency) || (CustomGameOptions.SkipButtonDisable == DisableSkipButtonMeetings.Always) || flag) {
                     __instance.SkipVoteButton.gameObject.SetActive(false);
                 }
             }

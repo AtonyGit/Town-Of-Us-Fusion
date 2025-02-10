@@ -50,7 +50,7 @@ namespace TownOfUsFusion.Roles
             {
                 return Revealed || base.RoleCriteria();
             }
-            else if (GetRole(localPlayer).Faction == Faction.NeutralKilling && !Player.Data.IsDead)
+            else if ((GetRole(localPlayer).Faction == Faction.NeutralKilling || GetRole(localPlayer).Faction == Faction.NeutralNeophyte || GetRole(localPlayer).Faction == Faction.NeutralApocalypse) && !Player.Data.IsDead)
             {
                 return Revealed && CustomGameOptions.SpySeesNeutrals || base.RoleCriteria();
             }

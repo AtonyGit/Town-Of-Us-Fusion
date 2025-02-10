@@ -98,6 +98,8 @@ namespace TownOfUsFusion
         public static Sprite GuardSprite;
         public static Sprite MirrorAbsorbSprite;
         public static Sprite MirrorUnleashSprite;
+        public static Sprite TribunalSprite;
+        public static Sprite TribunalOverlaySprite;
         public static Sprite BlackmailSprite;
         public static Sprite BlackmailLetterSprite;
         public static Sprite BlackmailOverlaySprite;
@@ -208,6 +210,8 @@ namespace TownOfUsFusion
                 MirrorUnleashSprite = CreateScaledSprite("TownOfUsFusion.Resources.MirrorUnleash.png");
                 BlessSprite = CreateSprite("TownOfUsFusion.Resources.Fortify.png");
             // Sovereign Roles
+                TribunalSprite = CreateMeetingSprite("TownOfUsFusion.Resources.Tribunal.png");
+                TribunalOverlaySprite = CreateSprite("TownOfUsFusion.Resources.TribunalOverlay.png");
                 CampaignSprite = CreateScaledSprite("TownOfUsFusion.Resources.Campaign.png");
                 RevealSprite = CreateSprite("TownOfUsFusion.Resources.Reveal.png");
                 SwapperSwitch = CreateSprite("TownOfUsFusion.Resources.SwapperSwitch.png");

@@ -551,6 +551,7 @@ namespace TownOfUsFusion.CustomOption
 
         public static CustomHeaderOption Captain;
         public static CustomNumberOption MaxTribunals;
+        public static CustomNumberOption MaxTribunalEjects;
 
         public static CustomHeaderOption Prosecutor;
         public static CustomToggleOption ProsDiesOnIncorrectPros;
@@ -1181,6 +1182,8 @@ namespace TownOfUsFusion.CustomOption
                 new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#C3E2EDFF>Captain</color>");
             MaxTribunals =
                     new CustomNumberOption(num++, MultiMenu.crewmate, "Maximum Number Of Tribunals", 2, 1, 3, 1);
+            MaxTribunalEjects =
+                    new CustomNumberOption(num++, MultiMenu.crewmate, "Maximum Number Of Ejections Per Tribunal", 2, 2, 4, 1);
             Jailor =
                 new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#A6A6A6FF>Jailor</color>");
                 JailCooldown =

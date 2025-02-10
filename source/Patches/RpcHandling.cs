@@ -1037,6 +1037,69 @@ namespace TownOfUsFusion
                         }
                         break;
 
+                    case CustomRPC.Tribunal:
+                        var host2 = reader.ReadBoolean();
+                        if (host2 && AmongUsClient.Instance.AmHost)
+                        {
+                            var cap = Utils.PlayerById(reader.ReadByte());
+                            var capRole = Role.GetRole<Captain>(cap);
+                            capRole.TribunalThisMeeting = true;
+                        }
+                        else if (!host2 && !AmongUsClient.Instance.AmHost)
+                        {
+                            var cap = Utils.PlayerById(reader.ReadByte());
+                            var capRole = Role.GetRole<Captain>(cap);
+                            capRole.TribunalThisMeeting = true;
+                        }
+                        break;
+                    case CustomRPC.CallTribunalMeeting:
+                        var captainDude = Utils.PlayerById(reader.ReadByte());
+
+                        if (AmongUsClient.Instance.AmHost)
+                        {
+                            MeetingRoomManager.Instance.reporter = captainDude;
+                            MeetingRoomManager.Instance.target = null;
+                            AmongUsClient.Instance.DisconnectHandlers.AddUnique(MeetingRoomManager.Instance
+                                .Cast<IDisconnectHandler>());
+                            if (GameManager.Instance.CheckTaskCompletion()) return;
+
+                            DestroyableSingleton<HudManager>.Instance.OpenMeetingRoom(captainDude);
+                            captainDude.RpcStartMeeting(null);
+                        }
+                        break;
+                    /*case CustomRPC.TribunalEjection:
+                        readByte = reader.ReadByte();
+                        var captainGuy = Utils.PlayerById(readByte);
+                        var captainRole = Role.GetRole<Captain>(captainGuy);
+                        readByte1 = reader.ReadByte();
+                        captainRole.EjectedPlayers.Add(Utils.PlayerById(readByte1));
+
+                        var ejectedPlayer = Utils.PlayerById(readByte1);
+                        PlayerVoteArea voteArea2 = MeetingHud.Instance.playerStates.First(x => x.TargetPlayerId == ejectedPlayer.PlayerId);
+
+                        if (!ejectedPlayer.Data.IsDead)
+                        {
+                            if (voteArea2 == null) return;
+                            if (voteArea2.DidVote) voteArea2.UnsetVote();
+                            voteArea2.AmDead = true;
+                            voteArea2.Overlay.gameObject.SetActive(true);
+                            voteArea2.Overlay.color = Color.white;
+                            voteArea2.XMark.gameObject.SetActive(true);
+                            voteArea2.XMark.transform.localScale = Vector3.one;
+                        }
+                        break;*/
+                    case CustomRPC.TribunalReset:
+                        PlayerVoteArea voteArea = MeetingHud.Instance.playerStates.First();
+
+                            if (voteArea == null) return;
+                            if (voteArea.DidVote) voteArea.UnsetVote();
+                            voteArea.AmDead = true;
+                            voteArea.Overlay.gameObject.SetActive(true);
+                            voteArea.Overlay.color = Color.white;
+                            voteArea.XMark.gameObject.SetActive(true);
+                            voteArea.XMark.transform.localScale = Vector3.one;
+                        break;
+
                     case CustomRPC.Bite:
                         var newVamp = Utils.PlayerById(reader.ReadByte());
                         Bite.Convert(newVamp);
