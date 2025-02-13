@@ -29,29 +29,29 @@ namespace TownOfUsFusion.NeutralRoles.SerialKillerMod
             if (interact[6] == true) return false;
             else if (interact[0] == true)
             {
-                role.LastKill = DateTime.UtcNow;
+                role.LastKilled = DateTime.UtcNow;
                 return false;
             }
             else if (interact[5] == true)
             {
-                role.LastKill = DateTime.UtcNow;
+                role.LastKilled = DateTime.UtcNow;
                 return false;
             }
             else if (interact[4] == true)
             {
-                role.LastKill = DateTime.UtcNow;
+                role.LastKilled = DateTime.UtcNow;
                 return false;
             }
             else if (interact[1] == true)
             {
-                role.LastKill = DateTime.UtcNow;
-                role.LastKill = role.LastKill.AddSeconds(CustomGameOptions.ProtectKCReset - CustomGameOptions.SkKillCooldown);
+                role.LastKilled = DateTime.UtcNow;
+                role.LastKilled = role.LastKilled.AddSeconds(CustomGameOptions.ProtectKCReset - CustomGameOptions.SkKillCooldown);
                 return false;
             }
             else if (interact[2] == true)
             {
-                role.LastKill = DateTime.UtcNow;
-                role.LastKill = role.LastKill.AddSeconds(CustomGameOptions.VestKCReset - CustomGameOptions.SkKillCooldown);
+                role.LastKilled = DateTime.UtcNow;
+                role.LastKilled = role.LastKilled.AddSeconds(CustomGameOptions.VestKCReset - CustomGameOptions.SkKillCooldown);
                 return false;
             }
             else if (interact[3] == true) return false;

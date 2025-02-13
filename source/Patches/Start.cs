@@ -247,12 +247,12 @@ namespace TownOfUsFusion.Patches
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Glitch))
             {
                 var glitch = Role.GetRole< Glitch> (PlayerControl.LocalPlayer);
-                glitch.LastKill = DateTime.UtcNow;
-                glitch.LastHack = DateTime.UtcNow;
-                glitch.LastMimic = DateTime.UtcNow;
-                glitch.LastKill = glitch.LastKill.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.GlitchKillCooldown);
-                glitch.LastHack = glitch.LastHack.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.HackCooldown);
-                glitch.LastMimic = glitch.LastMimic.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.MimicCooldown);
+                glitch.LastKilled = DateTime.UtcNow;
+                glitch.LastHacked = DateTime.UtcNow;
+                glitch.LastMimiced = DateTime.UtcNow;
+                glitch.LastKilled = glitch.LastKilled.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.GlitchKillCooldown);
+                glitch.LastHacked = glitch.LastHacked.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.HackCooldown);
+                glitch.LastMimiced = glitch.LastMimiced.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.MimicCooldown);
             }
 
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Bodyguard))
@@ -281,17 +281,17 @@ namespace TownOfUsFusion.Patches
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Juggernaut))
             {
                 var juggernaut = Role.GetRole<Juggernaut>(PlayerControl.LocalPlayer);
-                juggernaut.LastKill = DateTime.UtcNow;
-                juggernaut.LastKill = juggernaut.LastKill.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.JuggKCd);
+                juggernaut.LastKilled = DateTime.UtcNow;
+                juggernaut.LastKilled = juggernaut.LastKilled.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.JuggKCd);
             }
 
             if (PlayerControl.LocalPlayer.Is(RoleEnum.SerialKiller))
             {
                 var sk = Role.GetRole<SerialKiller>(PlayerControl.LocalPlayer);
-                sk.LastKill = DateTime.UtcNow;
+                sk.LastKilled = DateTime.UtcNow;
                 sk.Target = sk.GetRandomPlayer();
                 sk.RegenTask();
-                sk.LastKill = sk.LastKill.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.SkKillCooldown);
+                sk.LastKilled = sk.LastKilled.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.SkKillCooldown);
             }
 
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Prosecutor))

@@ -10,7 +10,7 @@ namespace TownOfUsFusion.Roles
         {
             Name = "Pestilence";
             Color = Patches.Colors.Apocalypse;
-            LastKill = DateTime.UtcNow;
+            LastKilled = DateTime.UtcNow;
             RoleType = RoleEnum.Pestilence;
             AddToRoleHistory(RoleType);
             ImpostorText = () => "";
@@ -21,7 +21,7 @@ namespace TownOfUsFusion.Roles
         }
 
         public PlayerControl ClosestPlayer;
-        public DateTime LastKill { get; set; }
+        public DateTime LastKilled { get; set; }
         public bool PestilenceWins { get; set; }
 
         internal override bool GameEnd(LogicGameFlowNormal __instance)
@@ -85,7 +85,7 @@ namespace TownOfUsFusion.Roles
         public float KillTimer()
         {
             var utcNow = DateTime.UtcNow;
-            var timeSpan = utcNow - LastKill;
+            var timeSpan = utcNow - LastKilled;
             var num = CustomGameOptions.PestKillCd * 1000f;
             var flag2 = num - (float)timeSpan.TotalMilliseconds < 0f;
             if (flag2) return 0;

@@ -27,9 +27,9 @@ namespace TownOfUsFusion.Roles
         {
             Name = "The Glitch";
             Color = Patches.Colors.Glitch;
-            LastHack = DateTime.UtcNow;
-            LastMimic = DateTime.UtcNow;
-            LastKill = DateTime.UtcNow;
+            LastHacked = DateTime.UtcNow;
+            LastMimiced = DateTime.UtcNow;
+            LastKilled = DateTime.UtcNow;
             HackButton = null;
             MimicButton = null;
             KillTarget = null;
@@ -44,9 +44,9 @@ namespace TownOfUsFusion.Roles
 
         public PlayerControl ClosestPlayer;
         public PlayerControl Hacked;
-        public DateTime LastMimic { get; set; }
-        public DateTime LastHack { get; set; }
-        public DateTime LastKill { get; set; }
+        public DateTime LastMimiced { get; set; }
+        public DateTime LastHacked { get; set; }
+        public DateTime LastKilled { get; set; }
         public KillButton HackButton { get; set; }
         public KillButton MimicButton { get; set; }
         public PlayerControl KillTarget { get; set; }
@@ -141,7 +141,7 @@ namespace TownOfUsFusion.Roles
 
         public void SetHacked(PlayerControl hacked)
         {
-            LastHack = DateTime.UtcNow;
+            LastHacked = DateTime.UtcNow;
             Hacked = hacked;
         }
 
@@ -306,7 +306,7 @@ namespace TownOfUsFusion.Roles
                     {
                         PlayerControl.LocalPlayer.myTasks.Remove(mimicText);
                         //System.Console.WriteLine("Unsetting mimic");
-                        __instance.LastMimic = DateTime.UtcNow;
+                        __instance.LastMimiced = DateTime.UtcNow;
                         __instance.IsUsingMimic = false;
                         __instance.MimicTarget = null;
                         Utils.Unmorph(__instance.Player);
@@ -336,7 +336,7 @@ namespace TownOfUsFusion.Roles
                     && AmongUsClient.Instance.GameState == InnerNetClient.GameStates.Started);
                 __instance.KillButton.SetCoolDown(
                     CustomGameOptions.GlitchKillCooldown -
-                    (float)(DateTime.UtcNow - __gInstance.LastKill).TotalSeconds,
+                    (float)(DateTime.UtcNow - __gInstance.LastKilled).TotalSeconds,
                     CustomGameOptions.GlitchKillCooldown);
                 __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Glitch);
                 __instance.KillButton.graphic.sprite = KillSprite;
@@ -365,29 +365,29 @@ namespace TownOfUsFusion.Roles
                     }
                     else if (interact[0])
                     {
-                        __gInstance.LastKill = DateTime.UtcNow;
+                        __gInstance.LastKilled = DateTime.UtcNow;
                         return;
                     }
                     else if (interact[5])
                     {
-                        __gInstance.LastKill = DateTime.UtcNow;
+                        __gInstance.LastKilled = DateTime.UtcNow;
                         return;
                     }
                     else if (interact[4])
                     {
-                        __gInstance.LastKill = DateTime.UtcNow;
+                        __gInstance.LastKilled = DateTime.UtcNow;
                         return;
                     }
                     else if (interact[1])
                     {
-                        __gInstance.LastKill = DateTime.UtcNow;
-                        __gInstance.LastKill = __gInstance.LastKill.AddSeconds(CustomGameOptions.ProtectKCReset - CustomGameOptions.GlitchKillCooldown);
+                        __gInstance.LastKilled = DateTime.UtcNow;
+                        __gInstance.LastKilled = __gInstance.LastKilled.AddSeconds(CustomGameOptions.ProtectKCReset - CustomGameOptions.GlitchKillCooldown);
                         return;
                     }
                     else if (interact[2])
                     {
-                        __gInstance.LastKill = DateTime.UtcNow;
-                        __gInstance.LastKill = __gInstance.LastKill.AddSeconds(CustomGameOptions.VestKCReset - CustomGameOptions.GlitchKillCooldown);
+                        __gInstance.LastKilled = DateTime.UtcNow;
+                        __gInstance.LastKilled = __gInstance.LastKilled.AddSeconds(CustomGameOptions.VestKCReset - CustomGameOptions.GlitchKillCooldown);
                         return;
                     }
                     else if (interact[3])
@@ -420,7 +420,7 @@ namespace TownOfUsFusion.Roles
                 __gInstance.HackButton.transform.position = new Vector3(__gInstance.MimicButton.transform.position.x,
                     __gInstance.HackButton.transform.position.y, __instance.ReportButton.transform.position.z);
                 __gInstance.HackButton.SetCoolDown(
-                    CustomGameOptions.HackCooldown - (float)(DateTime.UtcNow - __gInstance.LastHack).TotalSeconds,
+                    CustomGameOptions.HackCooldown - (float)(DateTime.UtcNow - __gInstance.LastHacked).TotalSeconds,
                     CustomGameOptions.HackCooldown);
 
                 __gInstance.HackButton.SetTarget(null);
@@ -458,13 +458,13 @@ namespace TownOfUsFusion.Roles
                     }
                     if (interact[0])
                     {
-                        __gInstance.LastHack = DateTime.UtcNow;
+                        __gInstance.LastHacked = DateTime.UtcNow;
                         return;
                     }
                     else if (interact[1])
                     {
-                        __gInstance.LastHack = DateTime.UtcNow;
-                        __gInstance.LastHack.AddSeconds(CustomGameOptions.ProtectKCReset - CustomGameOptions.HackCooldown);
+                        __gInstance.LastHacked = DateTime.UtcNow;
+                        __gInstance.LastHacked.AddSeconds(CustomGameOptions.ProtectKCReset - CustomGameOptions.HackCooldown);
                         return;
                     }
                     else if (interact[3])
@@ -536,7 +536,7 @@ namespace TownOfUsFusion.Roles
                 {
                     __gInstance.MimicButton.SetCoolDown(
                         CustomGameOptions.MimicCooldown -
-                        (float)(DateTime.UtcNow - __gInstance.LastMimic).TotalSeconds,
+                        (float)(DateTime.UtcNow - __gInstance.LastMimiced).TotalSeconds,
                         CustomGameOptions.MimicCooldown);
                 }
             }

@@ -28,29 +28,29 @@ namespace TownOfUsFusion.NeutralRoles.JuggernautMod
             if (interact[6] == true) return false;
             else if (interact[0] == true)
             {
-                role.LastKill = DateTime.UtcNow;
+                role.LastKilled = DateTime.UtcNow;
                 return false;
             }
             else if (interact[5] == true)
             {
-                role.LastKill = DateTime.UtcNow;
+                role.LastKilled = DateTime.UtcNow;
                 return false;
             }
             else if (interact[4] == true)
             {
-                role.LastKill = DateTime.UtcNow;
+                role.LastKilled = DateTime.UtcNow;
                 return false;
             }
             else if (interact[1] == true)
             {
-                role.LastKill = DateTime.UtcNow;
-                role.LastKill = role.LastKill.AddSeconds(-(CustomGameOptions.JuggKCd - CustomGameOptions.ReducedKCdPerKill * role.JuggKills) + CustomGameOptions.ProtectKCReset);
+                role.LastKilled = DateTime.UtcNow;
+                role.LastKilled = role.LastKilled.AddSeconds(-(CustomGameOptions.JuggKCd - CustomGameOptions.ReducedKCdPerKill * role.JuggKills) + CustomGameOptions.ProtectKCReset);
                 return false;
             }
             else if (interact[2] == true)
             {
-                role.LastKill = DateTime.UtcNow;
-                role.LastKill = role.LastKill.AddSeconds(-(CustomGameOptions.JuggKCd - CustomGameOptions.ReducedKCdPerKill * role.JuggKills) + CustomGameOptions.VestKCReset);
+                role.LastKilled = DateTime.UtcNow;
+                role.LastKilled = role.LastKilled.AddSeconds(-(CustomGameOptions.JuggKCd - CustomGameOptions.ReducedKCdPerKill * role.JuggKills) + CustomGameOptions.VestKCReset);
                 return false;
             }
             else if (interact[3] == true) return false;

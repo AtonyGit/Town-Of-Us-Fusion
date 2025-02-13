@@ -41,14 +41,6 @@ namespace TownOfUsFusion.Patches
                 if (arsoRole != null) return;
                 var glitchRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Glitch && ((Glitch)x).GlitchWins);
                 if (glitchRole != null) return;
-                /*
-                var juggRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Juggernaut && ((Juggernaut)x).JuggernautWins);
-                if (juggRole != null) return;
-                var pestRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Pestilence && ((Pestilence)x).PestilenceWins);
-                if (pestRole != null) return;
-                var pbRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Plaguebearer && ((Plaguebearer)x).PlaguebearerWins);
-                if (pbRole != null) return;*/
-
                 var wwRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Werewolf && ((Werewolf)x).WerewolfWins);
                 if (wwRole != null) return;
                 var skRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.SerialKiller && ((SerialKiller)x).SkWins);

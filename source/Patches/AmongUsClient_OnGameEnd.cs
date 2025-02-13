@@ -76,6 +76,7 @@ namespace TownOfUsFusion
                 var arso = (Arsonist)role;
                 losers.Add(arso.Player.GetDefaultOutfit().ColorId);
             }
+
             foreach (var role in Role.GetRoles(RoleEnum.Juggernaut))
             {
                 var jugg = (Juggernaut)role;
@@ -91,6 +92,7 @@ namespace TownOfUsFusion
                 var pb = (Plaguebearer)role;
                 losers.Add(pb.Player.GetDefaultOutfit().ColorId);
             }
+            
             foreach (var role in Role.GetRoles(RoleEnum.Glitch))
             {
                 var glitch = (Glitch)role;

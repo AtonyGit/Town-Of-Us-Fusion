@@ -9,7 +9,7 @@ namespace TownOfUsFusion.Roles
 {
     public class SerialKiller : Role
     {
-        public DateTime LastKill;
+        public DateTime LastKilled;
         public SerialKiller(PlayerControl player) : base(player)
         {
             Name = "Serial Killer";
@@ -20,7 +20,7 @@ namespace TownOfUsFusion.Roles
             RoleType = RoleEnum.SerialKiller;
             AddToRoleHistory(RoleType);
             Faction = Faction.NeutralKilling;
-            LastKill = DateTime.UtcNow;
+            LastKilled = DateTime.UtcNow;
             BloodlustEnd = DateTime.UtcNow;
         }
         public PlayerControl ClosestPlayer;
@@ -64,7 +64,7 @@ namespace TownOfUsFusion.Roles
         public float KillTimer()
         {
             var utcNow = DateTime.UtcNow;
-            var timeSpan = utcNow - LastKill;
+            var timeSpan = utcNow - LastKilled;
             var num = CustomGameOptions.SkKillCooldown * 1000f;
             var flag2 = num - (float)timeSpan.TotalMilliseconds < 0f;
             if (flag2) return 0;

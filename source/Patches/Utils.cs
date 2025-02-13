@@ -658,18 +658,18 @@ namespace TownOfUsFusion
                         if (player.Is(RoleEnum.Glitch))
                         {
                             var glitch = Role.GetRole<Glitch>(player);
-                            glitch.LastKill = DateTime.UtcNow;
+                            glitch.LastKilled = DateTime.UtcNow;
                         }
                         else if (player.Is(RoleEnum.Juggernaut))
                         {
                             var jugg = Role.GetRole<Juggernaut>(player);
                             jugg.JuggKills += 1;
-                            jugg.LastKill = DateTime.UtcNow;
+                            jugg.LastKilled = DateTime.UtcNow;
                         }
                         else if (player.Is(RoleEnum.Pestilence))
                         {
                             var pest = Role.GetRole<Pestilence>(player);
-                            pest.LastKill = DateTime.UtcNow;
+                            pest.LastKilled = DateTime.UtcNow;
                         }
                         else if (player.Is(RoleEnum.Vampire))
                         {
@@ -684,7 +684,7 @@ namespace TownOfUsFusion
                         else if (player.Is(RoleEnum.SerialKiller))
                         {
                             var sk = Role.GetRole<SerialKiller>(player);
-                            sk.LastKill = DateTime.UtcNow;
+                            sk.LastKilled = DateTime.UtcNow;
                         }
                         RpcMurderPlayer(player, target);
                         abilityUsed = true;
@@ -748,18 +748,18 @@ namespace TownOfUsFusion
                             if (player.Is(RoleEnum.Glitch))
                             {
                                 var glitch = Role.GetRole<Glitch>(player);
-                                glitch.LastKill = DateTime.UtcNow;
+                                glitch.LastKilled = DateTime.UtcNow;
                             }
                             else if (player.Is(RoleEnum.Juggernaut))
                             {
                                 var jugg = Role.GetRole<Juggernaut>(player);
                                 jugg.JuggKills += 1;
-                                jugg.LastKill = DateTime.UtcNow;
+                                jugg.LastKilled = DateTime.UtcNow;
                             }
                             else if (player.Is(RoleEnum.Pestilence))
                             {
                                 var pest = Role.GetRole<Pestilence>(player);
-                                pest.LastKill = DateTime.UtcNow;
+                                pest.LastKilled = DateTime.UtcNow;
                             }
                             else if (player.Is(RoleEnum.Vampire))
                             {
@@ -774,7 +774,7 @@ namespace TownOfUsFusion
                             else if (player.Is(RoleEnum.SerialKiller))
                             {
                                 var sk = Role.GetRole<SerialKiller>(player);
-                                sk.LastKill = DateTime.UtcNow;
+                                sk.LastKilled = DateTime.UtcNow;
                             }
                             RpcMurderPlayer(player, bgPlayer);
                             abilityUsed = true;
@@ -807,18 +807,18 @@ namespace TownOfUsFusion
                 if (player.Is(RoleEnum.Glitch))
                 {
                     var glitch = Role.GetRole<Glitch>(player);
-                    glitch.LastKill = DateTime.UtcNow;
+                    glitch.LastKilled = DateTime.UtcNow;
                 }
                 else if (player.Is(RoleEnum.Juggernaut))
                 {
                     var jugg = Role.GetRole<Juggernaut>(player);
                     jugg.JuggKills += 1;
-                    jugg.LastKill = DateTime.UtcNow;
+                    jugg.LastKilled = DateTime.UtcNow;
                 }
                 else if (player.Is(RoleEnum.Pestilence))
                 {
                     var pest = Role.GetRole<Pestilence>(player);
-                    pest.LastKill = DateTime.UtcNow;
+                    pest.LastKilled = DateTime.UtcNow;
                 }
                 else if (player.Is(RoleEnum.Vampire))
                 {
@@ -833,7 +833,7 @@ namespace TownOfUsFusion
                 else if (player.Is(RoleEnum.SerialKiller))
                 {
                     var sk = Role.GetRole<SerialKiller>(player);
-                    sk.LastKill = DateTime.UtcNow;
+                    sk.LastKilled = DateTime.UtcNow;
                 }
                 RpcMurderPlayer(player, target);
                 abilityUsed = true;
@@ -1303,7 +1303,7 @@ namespace TownOfUsFusion
                 if (target.Is(ModifierEnum.Diseased) && killer.Is(RoleEnum.Glitch))
                 {
                     var glitch = Role.GetRole<Glitch>(killer);
-                    glitch.LastKill = DateTime.UtcNow.AddSeconds((CustomGameOptions.DiseasedMultiplier - 1f) * CustomGameOptions.GlitchKillCooldown);
+                    glitch.LastKilled = DateTime.UtcNow.AddSeconds((CustomGameOptions.DiseasedMultiplier - 1f) * CustomGameOptions.GlitchKillCooldown);
                     glitch.Player.SetKillTimer(CustomGameOptions.GlitchKillCooldown * CustomGameOptions.DiseasedMultiplier);
                     return;
                 }
@@ -1311,7 +1311,7 @@ namespace TownOfUsFusion
                 if (target.Is(ModifierEnum.Diseased) && killer.Is(RoleEnum.Juggernaut))
                 {
                     var juggernaut = Role.GetRole<Juggernaut>(killer);
-                    juggernaut.LastKill = DateTime.UtcNow.AddSeconds((CustomGameOptions.DiseasedMultiplier - 1f) * (CustomGameOptions.JuggKCd - CustomGameOptions.ReducedKCdPerKill * juggernaut.JuggKills));
+                    juggernaut.LastKilled = DateTime.UtcNow.AddSeconds((CustomGameOptions.DiseasedMultiplier - 1f) * (CustomGameOptions.JuggKCd - CustomGameOptions.ReducedKCdPerKill * juggernaut.JuggKills));
                     juggernaut.Player.SetKillTimer((CustomGameOptions.JuggKCd - CustomGameOptions.ReducedKCdPerKill * juggernaut.JuggKills) * CustomGameOptions.DiseasedMultiplier);
                     return;
                 }
@@ -1323,7 +1323,7 @@ namespace TownOfUsFusion
                     {
                         if (target.Is(ModifierEnum.Diseased))
                         {
-                            scav.LastKill = DateTime.UtcNow.AddSeconds((CustomGameOptions.DiseasedMultiplier - 1f) * CustomGameOptions.BloodlustCorrectKillCooldown);
+                            scav.LastKilled = DateTime.UtcNow.AddSeconds((CustomGameOptions.DiseasedMultiplier - 1f) * CustomGameOptions.BloodlustCorrectKillCooldown);
                             scav.Player.SetKillTimer(CustomGameOptions.BloodlustCorrectKillCooldown * CustomGameOptions.DiseasedMultiplier);
                         }
                         else
@@ -1915,14 +1915,14 @@ public static string DeathReason(this PlayerControl player)
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Glitch))
             {
                 var glitch = Role.GetRole<Glitch>(PlayerControl.LocalPlayer);
-                glitch.LastKill = DateTime.UtcNow;
-                glitch.LastHack = DateTime.UtcNow;
-                glitch.LastMimic = DateTime.UtcNow;
+                glitch.LastKilled = DateTime.UtcNow;
+                glitch.LastHacked = DateTime.UtcNow;
+                glitch.LastMimiced = DateTime.UtcNow;
             }
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Juggernaut))
             {
                 var juggernaut = Role.GetRole<Juggernaut>(PlayerControl.LocalPlayer);
-                juggernaut.LastKill = DateTime.UtcNow;
+                juggernaut.LastKilled = DateTime.UtcNow;
             }
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Werewolf))
             {
@@ -1933,7 +1933,7 @@ public static string DeathReason(this PlayerControl player)
             if (PlayerControl.LocalPlayer.Is(RoleEnum.SerialKiller))
             {
                 var sk = Role.GetRole<SerialKiller>(PlayerControl.LocalPlayer);
-                sk.LastKill = DateTime.UtcNow;
+                sk.LastKilled = DateTime.UtcNow;
                 sk.Target = null;
             }
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Plaguebearer))
@@ -1944,7 +1944,7 @@ public static string DeathReason(this PlayerControl player)
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Pestilence))
             {
                 var pest = Role.GetRole<Pestilence>(PlayerControl.LocalPlayer);
-                pest.LastKill = DateTime.UtcNow;
+                pest.LastKilled = DateTime.UtcNow;
             }
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Doomsayer))
             {

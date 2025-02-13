@@ -438,9 +438,9 @@ namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
             else if (role == RoleEnum.Glitch)
             {
                 var glitchRole = Role.GetRole<Glitch>(amnesiac);
-                glitchRole.LastKill = DateTime.UtcNow;
-                glitchRole.LastHack = DateTime.UtcNow;
-                glitchRole.LastMimic = DateTime.UtcNow;
+                glitchRole.LastKilled = DateTime.UtcNow;
+                glitchRole.LastHacked = DateTime.UtcNow;
+                glitchRole.LastMimiced = DateTime.UtcNow;
                 glitchRole.Hacked = null;
             }
 
@@ -448,7 +448,7 @@ namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
             {
                 var juggRole = Role.GetRole<Juggernaut>(amnesiac);
                 juggRole.JuggKills = 0;
-                juggRole.LastKill = DateTime.UtcNow;
+                juggRole.LastKilled = DateTime.UtcNow;
             }
 
             else if (role == RoleEnum.Grenadier)
@@ -534,7 +534,7 @@ namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
             else if (role == RoleEnum.Pestilence)
             {
                 var pestRole = Role.GetRole<Pestilence>(amnesiac);
-                pestRole.LastKill = DateTime.UtcNow;
+                pestRole.LastKilled = DateTime.UtcNow;
             }
 
             else if (role == RoleEnum.Vampire)

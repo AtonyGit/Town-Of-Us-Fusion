@@ -28,24 +28,24 @@ namespace TownOfUsFusion.NeutralRoles.PestilenceMod
             if (interact[6] == true) return false;
             else if (interact[0] == true)
             {
-                role.LastKill = DateTime.UtcNow;
+                role.LastKilled = DateTime.UtcNow;
                 return false;
             }
             else if (interact[4] == true)
             {
-                role.LastKill = DateTime.UtcNow;
+                role.LastKilled = DateTime.UtcNow;
                 return false;
             }
             else if (interact[1] == true)
             {
-                role.LastKill = DateTime.UtcNow;
-                role.LastKill = role.LastKill.AddSeconds(CustomGameOptions.ProtectKCReset - CustomGameOptions.PestKillCd);
+                role.LastKilled = DateTime.UtcNow;
+                role.LastKilled = role.LastKilled.AddSeconds(CustomGameOptions.ProtectKCReset - CustomGameOptions.PestKillCd);
                 return false;
             }
             else if (interact[2] == true)
             {
-                role.LastKill = DateTime.UtcNow;
-                role.LastKill = role.LastKill.AddSeconds(CustomGameOptions.VestKCReset - CustomGameOptions.PestKillCd);
+                role.LastKilled = DateTime.UtcNow;
+                role.LastKilled = role.LastKilled.AddSeconds(CustomGameOptions.VestKCReset - CustomGameOptions.PestKillCd);
                 return false;
             }
             else if (interact[3] == true) return false;

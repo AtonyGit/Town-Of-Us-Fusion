@@ -10,7 +10,7 @@ namespace TownOfUsFusion.Roles
         {
             Name = "Juggernaut";
             Color = Patches.Colors.Apocalypse;
-            LastKill = DateTime.UtcNow;
+            LastKilled = DateTime.UtcNow;
             RoleType = RoleEnum.Juggernaut;
             AddToRoleHistory(RoleType);
             ImpostorText = () => "Your Power Grows With Every Kill";
@@ -19,7 +19,7 @@ namespace TownOfUsFusion.Roles
         }
 
         public PlayerControl ClosestPlayer;
-        public DateTime LastKill { get; set; }
+        public DateTime LastKilled { get; set; }
         public bool JuggernautWins { get; set; }
         public int JuggKills { get; set; } = 0;
 
@@ -103,7 +103,7 @@ namespace TownOfUsFusion.Roles
         public float KillTimer()
         {
             var utcNow = DateTime.UtcNow;
-            var timeSpan = utcNow - LastKill;
+            var timeSpan = utcNow - LastKilled;
             var num = (CustomGameOptions.JuggKCd - CustomGameOptions.ReducedKCdPerKill * JuggKills) * 1000f;
             var flag2 = num - (float)timeSpan.TotalMilliseconds < 0f;
             if (flag2) return 0;
