@@ -1525,6 +1525,13 @@ namespace TownOfUsFusion
                         var thePestilenceTheRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Pestilence);
                         ((Pestilence)thePestilenceTheRole)?.Wins();
                         break;
+                    case CustomRPC.TurnArmaggeddon:
+                        Role.GetRole<Juggernaut>(Utils.PlayerById(reader.ReadByte())).TurnArmaggeddon();
+                        break;
+                    case CustomRPC.ArmaggeddonWin:
+                        var theArmaggeddonTheRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Armaggeddon);
+                        ((Armaggeddon)theArmaggeddonTheRole)?.Wins();
+                        break;
                     case CustomRPC.SyncCustomSettings:
                         Rpc.ReceiveRpc(reader);
                         break;

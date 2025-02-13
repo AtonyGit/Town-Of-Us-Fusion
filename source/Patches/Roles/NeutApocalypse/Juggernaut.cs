@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Reactor.Utilities;
 using TownOfUsFusion.Extensions;
 
 namespace TownOfUsFusion.Roles
@@ -22,6 +23,8 @@ namespace TownOfUsFusion.Roles
         public DateTime LastKilled { get; set; }
         public bool JuggernautWins { get; set; }
         public int JuggKills { get; set; } = 0;
+        public bool CanTransform => JuggKills >= CustomGameOptions.KillsNeeded;
+
 
         internal override bool GameEnd(LogicGameFlowNormal __instance)
         {
@@ -98,6 +101,22 @@ namespace TownOfUsFusion.Roles
                 apocTeam.Add(apocRole.Player);
             }*/
             __instance.teamToShow = apocTeam;
+        }
+        public void TurnArmaggeddon()
+        {
+            var oldRole = GetRole(Player);
+            var killsList = (oldRole.CorrectAssassinKills, oldRole.IncorrectAssassinKills);
+            RoleDictionary.Remove(Player.PlayerId);
+            var role = new Armaggeddon(Player);
+            role.Invincible = true;
+            role.Transformed = true;
+            role.CorrectAssassinKills = killsList.CorrectAssassinKills;
+            role.IncorrectAssassinKills = killsList.IncorrectAssassinKills;
+            if (Player == PlayerControl.LocalPlayer)
+            {
+                Coroutines.Start(Utils.FlashCoroutine(Patches.Colors.Apocalypse));
+                role.RegenTask();
+            }
         }
 
         public float KillTimer()

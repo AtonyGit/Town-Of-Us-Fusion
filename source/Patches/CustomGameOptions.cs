@@ -133,6 +133,8 @@ namespace TownOfUsFusion
             public static bool SkImpVision => Generate.SkImpVision.Get();
         public static int DeputyOn => (int)Generate.DeputyOn.Get();
         public static int JuggernautOn => (int)Generate.JuggernautOn.Get();
+            public static float DestroyRadius => Generate.DestroyRadius.Get();
+            public static int MaxKillsInDestruction => (int) Generate.MaxKillsInDestruction.Get();
         public static int TorchOn => (int)Generate.TorchOn.Get();
         public static int DiseasedOn => (int)Generate.DiseasedOn.Get();
         public static int FlashOn => (int)Generate.FlashOn.Get();

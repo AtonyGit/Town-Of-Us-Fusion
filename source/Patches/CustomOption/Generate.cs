@@ -305,6 +305,8 @@ namespace TownOfUsFusion.CustomOption
         public static CustomNumberOption KillsNeeded;
         public static CustomToggleOption JuggVent;
         public static CustomNumberOption ArmKillCooldown;
+        public static CustomNumberOption DestroyRadius;
+        public static CustomNumberOption MaxKillsInDestruction;
         public static CustomToggleOption ArmVent;
         public static CustomNumberOption DeathRevealDelay;
 
@@ -1411,10 +1413,14 @@ namespace TownOfUsFusion.CustomOption
                 new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#8C004DFF>Juggernaut</color>");
                 JuggKillCooldown = new CustomNumberOption(num++, MultiMenu.neutral, "Juggernaut Initial Kill Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
                 ReducedKCdPerKill = new CustomNumberOption(num++, MultiMenu.neutral, "Reduced Kill Cooldown Per Kill", 5f, 2.5f, 10f, 2.5f, CooldownFormat);
-                KillsNeeded = new CustomNumberOption(num++, MultiMenu.neutral, "Kills Needed Before Armaggeddon Transformation", 2, 2, 5, 1);
-                ArmKillCooldown = new CustomNumberOption(num++, MultiMenu.neutral, "Armaggeddon Kill Cooldown", 10f, 0f, 60f, 2.5f, CooldownFormat);
+                KillsNeeded = new CustomNumberOption(num++, MultiMenu.neutral, "Kills Needed Before Armaggeddon Transformation", 4, 2, 8, 1);
                 JuggVent =
                     new CustomToggleOption(num++, MultiMenu.neutral, "Juggernaut Can Vent", false);
+                ArmKillCooldown = new CustomNumberOption(num++, MultiMenu.neutral, "Armaggeddon Kill Cooldown", 10f, 0f, 60f, 2.5f, CooldownFormat);
+                DestroyRadius =
+                    new CustomNumberOption(num++, MultiMenu.neutral, "Destruction Range", 0.25f, 0.05f, 1f, 0.05f, MultiplierFormat);
+                MaxKillsInDestruction =
+                    new CustomNumberOption(num++, MultiMenu.neutral, "Max Kills In Destruction", 5, 1, 15, 1);
                 ArmVent =
                     new CustomToggleOption(num++, MultiMenu.neutral, "Armaggeddon Can Vent", true);
             Plaguebearer = new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#8C004DFF>Plaguebearer</color>");

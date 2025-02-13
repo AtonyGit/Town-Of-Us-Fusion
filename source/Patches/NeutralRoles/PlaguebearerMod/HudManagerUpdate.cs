@@ -56,7 +56,7 @@ namespace TownOfUsFusion.NeutralRoles.PlaguebearerMod
                 {
                     foreach (var player in alives)
                     {
-                        if (player.Data.IsImpostor() || player.Is(Faction.NeutralKilling))
+                        if (player.Data.IsImpostor() || player.Is(Faction.NeutralKilling) || player.Is(Faction.NeutralNeophyte) || player.Is(Faction.NeutralApocalypse))
                         {
                             transform = true;
                         }

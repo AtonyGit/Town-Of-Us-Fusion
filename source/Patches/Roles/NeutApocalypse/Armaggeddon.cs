@@ -1,28 +1,62 @@
-using System;
+﻿using System;
 using System.Linq;
+using TownOfUsFusion.CrewmateRoles.MedicMod;
 using TownOfUsFusion.Extensions;
+using TownOfUsFusion.Patches;
 
 namespace TownOfUsFusion.Roles
 {
-    public class Pestilence : Role
+    public class Armaggeddon : Role
     {
-        public Pestilence(PlayerControl owner) : base(owner)
+        public Armaggeddon(PlayerControl owner) : base(owner)
         {
-            Name = "Pestilence";
+            Name = "Armaggeddon";
             Color = Patches.Colors.Apocalypse;
             LastKilled = DateTime.UtcNow;
-            RoleType = RoleEnum.Pestilence;
+            RoleType = RoleEnum.Armaggeddon;
             AddToRoleHistory(RoleType);
             ImpostorText = () => "";
-            TaskText = () => "Kill everyone with your unstoppable abilities!\nFake Tasks:";
+            TaskText = () => "Wreak havoc and destroy the weak!\nFake Tasks:";
             Faction = Faction.NeutralApocalypse;
             Invincible = true;
             Transformed = true;
         }
 
         public PlayerControl ClosestPlayer;
+        public void TriggerDestroy()
+        {
+            var playersToDie = Utils.GetClosestPlayers(Player.GetTruePosition(), CustomGameOptions.DestroyRadius, false);
+            playersToDie = Shuffle(playersToDie);
+            while (playersToDie.Count > CustomGameOptions.MaxKillsInDestruction) playersToDie.Remove(playersToDie[playersToDie.Count - 1]);
+            foreach (var player in playersToDie)
+            {
+                if (!player.IsInvincible() && !player.Is(Faction.NeutralApocalypse) && !player.IsShielded() && !player.IsProtected() && player != ShowRoundOneShield.FirstRoundShielded)
+                {
+                    Utils.RpcMultiMurderPlayer(Player, player);
+                }
+                else if (player.IsShielded())
+                {
+                    var medic = player.GetMedic().Player.PlayerId;
+                    Utils.Rpc(CustomRPC.AttemptSound, medic, player.PlayerId);
+                    StopKill.BreakShield(medic, player.PlayerId, CustomGameOptions.ShieldBreaks);
+                }
+            }
+        }
+        public static Il2CppSystem.Collections.Generic.List<PlayerControl> Shuffle(Il2CppSystem.Collections.Generic.List<PlayerControl> playersToDie)
+        {
+            var count = playersToDie.Count;
+            var last = count - 1;
+            for (var i = 0; i < last; ++i)
+            {
+                var r = UnityEngine.Random.Range(i, count);
+                var tmp = playersToDie[i];
+                playersToDie[i] = playersToDie[r];
+                playersToDie[r] = tmp;
+            }
+            return playersToDie;
+        }
         public DateTime LastKilled { get; set; }
-        public bool PestilenceWins { get; set; }
+        public bool ArmaggeddonWins { get; set; }
 
         internal override bool GameEnd(LogicGameFlowNormal __instance)
         {
@@ -72,7 +106,7 @@ namespace TownOfUsFusion.Roles
 
         public void Wins()
         {
-            PestilenceWins = true;
+            ArmaggeddonWins = true;
         }
 
         protected override void IntroPrefix(IntroCutscene._ShowTeam_d__38 __instance)
@@ -85,7 +119,7 @@ namespace TownOfUsFusion.Roles
         {
             var utcNow = DateTime.UtcNow;
             var timeSpan = utcNow - LastKilled;
-            var num = CustomGameOptions.PestKillCd * 1000f;
+            var num = (CustomGameOptions.ArmKillCd) * 1000f;
             var flag2 = num - (float)timeSpan.TotalMilliseconds < 0f;
             if (flag2) return 0;
             return (num - (float)timeSpan.TotalMilliseconds) / 1000f;
