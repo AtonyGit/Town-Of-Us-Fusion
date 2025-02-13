@@ -540,7 +540,7 @@ namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
             else if (role == RoleEnum.Vampire)
             {
                 var vampRole = Role.GetRole<Vampire>(amnesiac);
-                vampRole.LastBit = DateTime.UtcNow;
+                vampRole.LastBitten = DateTime.UtcNow;
             }
 
             else if (role == RoleEnum.Trapper)

@@ -326,8 +326,8 @@ namespace TownOfUsFusion.Patches
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Vampire))
             {
                 var vamp = Role.GetRole<Vampire>(PlayerControl.LocalPlayer);
-                vamp.LastBit = DateTime.UtcNow;
-                vamp.LastBit = vamp.LastBit.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.BiteCd);
+                vamp.LastBitten = DateTime.UtcNow;
+                vamp.LastBitten = vamp.LastBitten.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.BiteCd);
             }
 
             if (PlayerControl.LocalPlayer.Is(RoleEnum.SoulCollector))

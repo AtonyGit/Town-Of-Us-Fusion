@@ -16,7 +16,7 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Convert Crewmates And Kill The Rest";
             TaskText = () => "Bite all other players\nFake Tasks:";
             Color = Patches.Colors.Vampire;
-            LastBit = DateTime.UtcNow;
+            LastBitten = DateTime.UtcNow;
             RoleType = RoleEnum.Vampire;
             Faction = Faction.NeutralKilling;
             AddToRoleHistory(RoleType);
@@ -27,7 +27,7 @@ namespace TownOfUsFusion.Roles
         public bool Enabled = false;
 
         public PlayerControl ClosestPlayer;
-        public DateTime LastBit { get; set; }
+        public DateTime LastBitten { get; set; }
 
         public void BiteThingy()
         {
@@ -63,12 +63,12 @@ namespace TownOfUsFusion.Roles
             }
             BittenPlayer = null;
             Enabled = false;
-            LastBit = DateTime.UtcNow;
+            LastBitten = DateTime.UtcNow;
         }
         public float BiteTimer()
         {
             var utcNow = DateTime.UtcNow;
-            var timeSpan = utcNow - LastBit;
+            var timeSpan = utcNow - LastBitten;
             var num = CustomGameOptions.BiteCd * 1000f;
             var flag2 = num - (float) timeSpan.TotalMilliseconds < 0f;
             if (flag2) return 0;

@@ -65,23 +65,23 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
                 }
                 else if (interact[0] == true)
                 {
-                    role.LastBit = DateTime.UtcNow;
+                    role.LastBitten = DateTime.UtcNow;
                     return false;
                 }
                 else if (interact[5] == true)
                 {
-                    role.LastBit = DateTime.UtcNow;
+                    role.LastBitten = DateTime.UtcNow;
                     return false;
                 }
                 else if (interact[4] == true)
                 {
-                    role.LastBit = DateTime.UtcNow;
+                    role.LastBitten = DateTime.UtcNow;
                     return false;
                 }
                 else if (interact[1] == true)
                 {
-                    role.LastBit = DateTime.UtcNow;
-                    role.LastBit = role.LastBit.AddSeconds(CustomGameOptions.ProtectKCReset - CustomGameOptions.BiteCd);
+                    role.LastBitten = DateTime.UtcNow;
+                    role.LastBitten = role.LastBitten.AddSeconds(CustomGameOptions.ProtectKCReset - CustomGameOptions.BiteCd);
                     return false;
                 }
                 else if (interact[3] == true) return false;
@@ -107,29 +107,29 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
                 }
                 else if (interact[0] == true)
                 {
-                    role.LastBit = DateTime.UtcNow;
+                    role.LastBitten = DateTime.UtcNow;
                     return false;
                 }
                 else if (interact[5] == true)
                 {
-                    role.LastBit = DateTime.UtcNow;
+                    role.LastBitten = DateTime.UtcNow;
                     return false;
                 }
                 else if (interact[4] == true)
                 {
-                    role.LastBit = DateTime.UtcNow;
+                    role.LastBitten = DateTime.UtcNow;
                     return false;
                 }
                 else if (interact[1] == true)
                 {
-                    role.LastBit = DateTime.UtcNow;
-                    role.LastBit = role.LastBit.AddSeconds(CustomGameOptions.ProtectKCReset - CustomGameOptions.BiteCd);
+                    role.LastBitten = DateTime.UtcNow;
+                    role.LastBitten = role.LastBitten.AddSeconds(CustomGameOptions.ProtectKCReset - CustomGameOptions.BiteCd);
                     return false;
                 }
                 else if (interact[2] == true)
                 {
-                    role.LastBit = DateTime.UtcNow;
-                    role.LastBit = role.LastBit.AddSeconds(CustomGameOptions.VestKCReset - CustomGameOptions.BiteCd);
+                    role.LastBitten = DateTime.UtcNow;
+                    role.LastBitten = role.LastBitten.AddSeconds(CustomGameOptions.VestKCReset - CustomGameOptions.BiteCd);
                     return false;
                 }
                 else if (interact[3] == true) return false;

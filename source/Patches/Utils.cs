@@ -674,7 +674,7 @@ namespace TownOfUsFusion
                         else if (player.Is(RoleEnum.Vampire))
                         {
                             var vamp = Role.GetRole<Vampire>(player);
-                            vamp.LastBit = DateTime.UtcNow;
+                            vamp.LastBitten = DateTime.UtcNow;
                         }
                         else if (player.Is(RoleEnum.Werewolf))
                         {
@@ -764,7 +764,7 @@ namespace TownOfUsFusion
                             else if (player.Is(RoleEnum.Vampire))
                             {
                                 var vamp = Role.GetRole<Vampire>(player);
-                                vamp.LastBit = DateTime.UtcNow;
+                                vamp.LastBitten = DateTime.UtcNow;
                             }
                             else if (player.Is(RoleEnum.Werewolf))
                             {
@@ -823,7 +823,7 @@ namespace TownOfUsFusion
                 else if (player.Is(RoleEnum.Vampire))
                 {
                     var vamp = Role.GetRole<Vampire>(player);
-                    vamp.LastBit = DateTime.UtcNow;
+                    vamp.LastBitten = DateTime.UtcNow;
                 }
                 else if (player.Is(RoleEnum.Werewolf))
                 {
@@ -1295,7 +1295,7 @@ namespace TownOfUsFusion
                 if (target.Is(ModifierEnum.Diseased) && killer.Is(RoleEnum.Vampire))
                 {
                     var vampire = Role.GetRole<Vampire>(killer);
-                    vampire.LastBit = DateTime.UtcNow.AddSeconds((CustomGameOptions.DiseasedMultiplier - 1f) * CustomGameOptions.BiteCd);
+                    vampire.LastBitten = DateTime.UtcNow.AddSeconds((CustomGameOptions.DiseasedMultiplier - 1f) * CustomGameOptions.BiteCd);
                     vampire.Player.SetKillTimer(CustomGameOptions.BiteCd * CustomGameOptions.DiseasedMultiplier);
                     return;
                 }
@@ -1895,7 +1895,7 @@ public static string DeathReason(this PlayerControl player)
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Vampire))
             {
                 var vamp = Role.GetRole<Vampire>(PlayerControl.LocalPlayer);
-                vamp.LastBit = DateTime.UtcNow;
+                vamp.LastBitten = DateTime.UtcNow;
             }
             if (PlayerControl.LocalPlayer.Is(RoleEnum.GuardianAngel))
             {
