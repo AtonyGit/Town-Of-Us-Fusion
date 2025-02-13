@@ -71,7 +71,9 @@ namespace TownOfUsFusion.Roles
         protected internal int IncorrectAssassinKills { get; set; } = 0;
 
         public bool Local => PlayerControl.LocalPlayer.PlayerId == Player.PlayerId;
-
+        // I'm... *cue title card*
+        protected internal bool Invincible { get; set; } = false;
+        protected internal bool Transformed { get; set; } = false;
         protected internal bool Hidden { get; set; } = false;
 
         protected internal Faction Faction { get; set; } = Faction.Crewmates;

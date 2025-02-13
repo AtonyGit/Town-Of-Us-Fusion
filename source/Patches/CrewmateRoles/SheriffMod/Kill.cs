@@ -103,6 +103,7 @@ namespace TownOfUsFusion.CrewmateRoles.SheriffMod
                 role.LastKilled.AddSeconds(CustomGameOptions.ProtectKCReset);
                 return false;
             }
+            else if (role.ClosestPlayer.IsInvincible()) return false;
 
             if (!flag4)
             {

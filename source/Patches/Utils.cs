@@ -313,6 +313,14 @@ namespace TownOfUsFusion
         {
             return Role.GetRole(player)?.RoleType == roleType;
         }
+        public static bool IsInvincible(this PlayerControl player)
+        {
+            return Role.GetRole(player).Invincible;
+        }
+        public static bool IsHorseman(this PlayerControl player)
+        {
+            return Role.GetRole(player).Transformed;
+        }
 
         public static bool Is(this PlayerControl player, ModifierEnum modifierType)
         {
@@ -613,6 +621,7 @@ namespace TownOfUsFusion
                     StopKill.BreakShield(medic, player.PlayerId, CustomGameOptions.ShieldBreaks);
                 }
                 else if (player.IsProtected()) gaReset = true;
+                else if (player.IsInvincible()) zeroSecReset = true;
                 else RpcMurderPlayer(target, player);
             }
             else if (target.IsOnAlert())
@@ -629,6 +638,7 @@ namespace TownOfUsFusion
                     StopKill.BreakShield(medic, player.PlayerId, CustomGameOptions.ShieldBreaks);
                 }
                 else if (player.IsProtected()) gaReset = true;
+                else if (target.IsInvincible()) zeroSecReset = true;
                 else RpcMurderPlayer(target, player);
                 if (toKill && CustomGameOptions.KilledOnAlert)
                 {
@@ -718,6 +728,7 @@ namespace TownOfUsFusion
                         StopKill.BreakShield(medic, player.PlayerId, CustomGameOptions.ShieldBreaks);
                     }
                     else if (player.IsProtected()) gaReset = true;
+                    else if (player.IsInvincible()) zeroSecReset = true;
                     else RpcMurderPlayer(bgPlayer, player);
                     if (toKill)
                     {
@@ -786,6 +797,10 @@ namespace TownOfUsFusion
             else if (target.IsProtected() && toKill)
             {
                 gaReset = true;
+            }
+            else if (target.IsInvincible() && toKill)
+            {
+                zeroSecReset = true;
             }
             else if (toKill)
             {

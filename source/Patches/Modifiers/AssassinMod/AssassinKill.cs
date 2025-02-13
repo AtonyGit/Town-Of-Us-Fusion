@@ -183,7 +183,7 @@ namespace TownOfUsFusion.Modifiers.AssassinMod
             if (checkLover && player.IsLover() && CustomGameOptions.BothLoversDie)
             {
                 var otherLover = Alliance.GetAlliance<Lover>(player).OtherLover.Player;
-                if (!otherLover.Is(RoleEnum.Pestilence)) MurderPlayer(otherLover, false);
+                if (!otherLover.IsInvincible()) MurderPlayer(otherLover, false);
             }
 
             var role2 = Role.GetRole(player);

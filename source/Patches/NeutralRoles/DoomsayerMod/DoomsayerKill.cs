@@ -185,7 +185,7 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
             if (checkLover && player.IsLover() && CustomGameOptions.BothLoversDie)
             {
                 var otherLover = Alliance.GetAlliance<Lover>(player).OtherLover.Player;
-                if (!otherLover.Is(RoleEnum.Pestilence)) MurderPlayer(otherLover, false, false);
+                if (!otherLover.IsInvincible()) MurderPlayer(otherLover, false, false);
             }
 
             var role2 = Role.GetRole(player);

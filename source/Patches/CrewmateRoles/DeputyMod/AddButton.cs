@@ -77,7 +77,7 @@ namespace TownOfUsFusion.CrewmateRoles.DeputyMod
             void Listener()
             {
                 var target = Utils.PlayerById(voteArea.TargetPlayerId);
-                if (target == role.Killer && !target.Is(RoleEnum.Pestilence))
+                if (target == role.Killer && !target.IsInvincible())
                 {
                     Shoot(role, target);
                     if (target.Is(Faction.Crewmates)) role.IncorrectKills += 1;
@@ -227,7 +227,7 @@ namespace TownOfUsFusion.CrewmateRoles.DeputyMod
             if (checkLover && player.IsLover() && CustomGameOptions.BothLoversDie)
             {
                 var otherLover = Alliance.GetAlliance<Lover>(player).OtherLover.Player;
-                if (!otherLover.Is(RoleEnum.Pestilence)) Shoot(deputy, otherLover, false);
+                if (!otherLover.IsInvincible()) Shoot(deputy, otherLover, false);
             }
             
             var role2 = Role.GetRole(player);

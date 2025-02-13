@@ -135,6 +135,8 @@ namespace TownOfUsFusion.Roles
             var killsList = (oldRole.CorrectAssassinKills, oldRole.IncorrectAssassinKills);
             RoleDictionary.Remove(Player.PlayerId);
             var role = new Pestilence(Player);
+            role.Invincible = true;
+            role.Transformed = true;
             role.CorrectAssassinKills = killsList.CorrectAssassinKills;
             role.IncorrectAssassinKills = killsList.IncorrectAssassinKills;
             if (Player == PlayerControl.LocalPlayer)

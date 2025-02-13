@@ -172,7 +172,7 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
                     if (playerRole.Player.IsLover() && CustomGameOptions.BothLoversDie)
                     {
                         var lover = ((Lover)playerAlliance).OtherLover.Player;
-                        if (!lover.Is(RoleEnum.Pestilence)) ShowHideButtonsDoom.HideSingle(role, lover.PlayerId, false);
+                        if (!lover.IsInvincible()) ShowHideButtonsDoom.HideSingle(role, lover.PlayerId, false);
                     }
                 }
             }

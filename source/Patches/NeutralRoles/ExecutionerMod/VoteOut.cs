@@ -24,7 +24,7 @@ namespace TownOfUsFusion.NeutralRoles.ExecutionerMod
                     if (PlayerControl.LocalPlayer != ((Executioner)role).Player) return;
                     role.PauseEndCrit = true;
 
-                    byte[] toKill = MeetingHud.Instance.playerStates.Where(x => !Utils.PlayerById(x.TargetPlayerId).Is(RoleEnum.Pestilence) && x.VotedFor == ((Executioner)role).target.PlayerId).Select(x => x.TargetPlayerId).ToArray();
+                    byte[] toKill = MeetingHud.Instance.playerStates.Where(x => !Utils.PlayerById(x.TargetPlayerId).IsInvincible() && x.VotedFor == ((Executioner)role).target.PlayerId).Select(x => x.TargetPlayerId).ToArray();
                     var pk = new PlayerMenu((x) => {
                         Utils.RpcMultiMurderPlayer(((Executioner)role).Player, x);
                         role.PauseEndCrit = false;

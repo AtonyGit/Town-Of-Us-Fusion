@@ -51,7 +51,7 @@ namespace TownOfUsFusion.Roles
         }
         public void PoisonKill()
         {
-            if (!PoisonedPlayer.Is(RoleEnum.Pestilence))
+            if (!PoisonedPlayer.IsInvincible())
             {
                 Utils.RpcMultiMurderPlayer(Player, PoisonedPlayer);
                 if (!PoisonedPlayer.Data.IsDead) SoundManager.Instance.PlaySound(PlayerControl.LocalPlayer.KillSfx, false, 0.5f);

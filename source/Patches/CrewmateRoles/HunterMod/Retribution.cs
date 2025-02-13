@@ -44,7 +44,7 @@ namespace TownOfUsFusion.CrewmateRoles.HunterMod
             if (player.Is(RoleEnum.Hunter) && CustomGameOptions.RetributionOnVote)
             {
                 var hunter = Role.GetRole<Hunter>(player);
-                if (hunter.LastVoted != null && hunter.LastVoted != player && !hunter.LastVoted.Is(RoleEnum.Pestilence))
+                if (hunter.LastVoted != null && hunter.LastVoted != player && !hunter.LastVoted.IsInvincible())
                 {
                     foreach (var role in Role.AllRoles.Where(x => x.RoleType == RoleEnum.Executioner))
                     {
@@ -120,7 +120,7 @@ namespace TownOfUsFusion.CrewmateRoles.HunterMod
             if (checkLover && player.IsLover() && CustomGameOptions.BothLoversDie)
             {
                 var otherLover = Alliance.GetAlliance<Lover>(player).OtherLover.Player;
-                if (!otherLover.Is(RoleEnum.Pestilence)) MurderPlayer(otherLover, false);
+                if (!otherLover.IsInvincible()) MurderPlayer(otherLover, false);
             }
 
             var role2 = Role.GetRole(player);

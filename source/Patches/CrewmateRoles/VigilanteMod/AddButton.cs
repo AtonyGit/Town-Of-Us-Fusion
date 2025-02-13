@@ -156,7 +156,7 @@ namespace TownOfUsFusion.CrewmateRoles.VigilanteMod
 
                 var fortified = toDie.IsFortified() && PlayerControl.LocalPlayer != toDie;
 
-                if (!toDie.Is(RoleEnum.Pestilence) && !fortified)
+                if (!toDie.IsInvincible() && !fortified)
                 {
                     VigilanteKill.RpcMurderPlayer(toDie, PlayerControl.LocalPlayer);
                     role.RemainingKills--;
@@ -164,7 +164,7 @@ namespace TownOfUsFusion.CrewmateRoles.VigilanteMod
                     if (toDie.IsLover() && CustomGameOptions.BothLoversDie)
                     {
                         var lover = ((Lover)playerAlliance).OtherLover.Player;
-                        if (!lover.Is(RoleEnum.Pestilence)) ShowHideButtonsVigi.HideSingle(role, lover.PlayerId, false);
+                        if (!lover.IsInvincible()) ShowHideButtonsVigi.HideSingle(role, lover.PlayerId, false);
                     }
                 }
                 else

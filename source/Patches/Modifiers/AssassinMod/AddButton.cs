@@ -178,7 +178,7 @@ namespace TownOfUsFusion.Modifiers.AssassinMod
 
                 var fortified = toDie.IsFortified() && PlayerControl.LocalPlayer != toDie;
 
-                if ((!toDie.Is(RoleEnum.Pestilence) || PlayerControl.LocalPlayer.Is(RoleEnum.Pestilence)) && !fortified)
+                if ((!toDie.IsInvincible() || PlayerControl.LocalPlayer.IsInvincible()) && !fortified)
                 {
                     if (PlayerControl.LocalPlayer.Is(ModifierEnum.DoubleShot) && toDie == PlayerControl.LocalPlayer)
                     {
@@ -197,7 +197,7 @@ namespace TownOfUsFusion.Modifiers.AssassinMod
                             if (toDie.IsLover() && CustomGameOptions.BothLoversDie)
                             {
                                 var lover = ((Lover)playerAlliance).OtherLover.Player;
-                                if (!lover.Is(RoleEnum.Pestilence)) ShowHideButtons.HideSingle(role, lover.PlayerId, false);
+                                if (!lover.IsInvincible()) ShowHideButtons.HideSingle(role, lover.PlayerId, false);
                             }
                         }
                     }
@@ -209,7 +209,7 @@ namespace TownOfUsFusion.Modifiers.AssassinMod
                         if (toDie.IsLover() && CustomGameOptions.BothLoversDie)
                         {
                             var lover = ((Lover)playerAlliance).OtherLover.Player;
-                            if (!lover.Is(RoleEnum.Pestilence)) ShowHideButtons.HideSingle(role, lover.PlayerId, false);
+                            if (!lover.IsInvincible()) ShowHideButtons.HideSingle(role, lover.PlayerId, false);
                         }
                     }
                 }

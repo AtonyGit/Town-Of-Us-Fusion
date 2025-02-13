@@ -85,7 +85,7 @@ namespace TownOfUsFusion.CrewmateRoles.JailorMod
                 role.UsesText.Destroy();
                 role.JailCell.Destroy();
                 role.Executes -= 1;
-                if (!role.Jailed.Is(RoleEnum.Pestilence))
+                if (!role.Jailed.IsInvincible())
                 {
                     if (role.Jailed.Is(Faction.Crewmates))
                     {
@@ -247,7 +247,7 @@ namespace TownOfUsFusion.CrewmateRoles.JailorMod
             if (checkLover && player.IsLover() && CustomGameOptions.BothLoversDie)
             {
                 var otherLover = Alliance.GetAlliance<Lover>(player).OtherLover.Player;
-                if (!otherLover.Is(RoleEnum.Pestilence)) ExecuteKill(jailor, otherLover, false);
+                if (!otherLover.IsInvincible()) ExecuteKill(jailor, otherLover, false);
             }
 
             var role2 = Role.GetRole(player);

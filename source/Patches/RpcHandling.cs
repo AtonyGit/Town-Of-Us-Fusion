@@ -1316,7 +1316,7 @@ namespace TownOfUsFusion
                                 break;
                             case 2: //shoot
                                 var shot = Utils.PlayerById(reader.ReadByte());
-                                if (shot == deputyRole.Killer && !shot.Is(RoleEnum.Pestilence))
+                                if (shot == deputyRole.Killer && !shot.IsInvincible())
                                 {
                                     AddButtonDeputy.Shoot(deputyRole, shot);
                                     if (shot.Is(Faction.Crewmates)) deputyRole.IncorrectKills += 1;
@@ -1655,7 +1655,7 @@ namespace TownOfUsFusion
                         {
                             phantomWinner.Caught = true;
                             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Phantom) || !CustomGameOptions.PhantomSpook || MeetingHud.Instance) return;
-                            byte[] toKill = MeetingHud.Instance.playerStates.Where(x => !Utils.PlayerById(x.TargetPlayerId).Is(RoleEnum.Pestilence)).Select(x => x.TargetPlayerId).ToArray();
+                            byte[] toKill = MeetingHud.Instance.playerStates.Where(x => !Utils.PlayerById(x.TargetPlayerId).IsInvincible()).Select(x => x.TargetPlayerId).ToArray();
                             Role.GetRole(PlayerControl.LocalPlayer).PauseEndCrit = true;
                             var pk = new PlayerMenu((x) => {
                                 Utils.RpcMultiMurderPlayer(PlayerControl.LocalPlayer, x);

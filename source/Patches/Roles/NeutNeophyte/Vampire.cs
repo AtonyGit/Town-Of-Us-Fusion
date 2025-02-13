@@ -47,7 +47,7 @@ namespace TownOfUsFusion.Roles
             var aliveVamps = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(RoleEnum.Vampire) && !x.Data.IsDead && !x.Data.Disconnected).ToList();
             var vamps = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(RoleEnum.Vampire)).ToList();
 
-            if (!BittenPlayer.Is(RoleEnum.Pestilence) && (BittenPlayer.Is(Faction.Crewmates) || (BittenPlayer.Is(Faction.NeutralBenign)
+            if (!BittenPlayer.IsInvincible() && (BittenPlayer.Is(Faction.Crewmates) || (BittenPlayer.Is(Faction.NeutralBenign)
             && CustomGameOptions.CanBiteNeutralBenign) || (BittenPlayer.Is(Faction.NeutralChaos)
             && CustomGameOptions.CanBiteNeutralChaos) || (BittenPlayer.Is(Faction.NeutralEvil)
             && CustomGameOptions.CanBiteNeutralEvil)) && !BittenPlayer.Is(AllianceEnum.Lover) &&

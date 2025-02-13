@@ -21,7 +21,7 @@ namespace TownOfUsFusion.ImpostorRoles.PoisonerMod
                 var role = Role.GetRole<Poisoner>(poisoner);
                 if (poisoner != role.PoisonedPlayer && role.PoisonedPlayer != null)
                 {
-                    if (!role.PoisonedPlayer.Data.IsDead && !role.PoisonedPlayer.Is(RoleEnum.Pestilence))
+                    if (!role.PoisonedPlayer.Data.IsDead && !role.PoisonedPlayer.IsInvincible())
                         Utils.MurderPlayer(poisoner, role.PoisonedPlayer, false);
                         //Utils.MurderPlayer(poisoner, role.PoisonedPlayer, true);
                 }
