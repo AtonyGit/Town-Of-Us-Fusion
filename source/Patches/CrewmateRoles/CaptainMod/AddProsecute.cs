@@ -3,7 +3,11 @@ using System.Linq;
 using HarmonyLib;
 using Reactor.Utilities.Extensions;
 using TMPro;
+using TownOfUsFusion.CrewmateRoles.VigilanteMod;
+using TownOfUsFusion.Modifiers.AssassinMod;
+using TownOfUsFusion.NeutralRoles.DoomsayerMod;
 using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Modifiers;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
@@ -44,6 +48,35 @@ namespace TownOfUsFusion.CrewmateRoles.CaptainMod
             }
 
             return Listener;
+        }
+        public static void RemoveAssassin(Captain mayor)
+        {
+            PlayerVoteArea voteArea = MeetingHud.Instance.playerStates.First(
+                x => x.TargetPlayerId == mayor.Player.PlayerId);
+
+            if (PlayerControl.LocalPlayer.Is(AbilityEnum.Assassin))
+            {
+                var assassin = Ability.GetAbility<Assassin>(PlayerControl.LocalPlayer);
+                ShowHideButtons.HideTarget(assassin, voteArea.TargetPlayerId);
+                voteArea.NameText.transform.localPosition = new Vector3(0.3384f, 0.0311f, -0.1f);
+            }
+            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Doomsayer))
+            {
+                var doomsayer = Role.GetRole<Doomsayer>(PlayerControl.LocalPlayer);
+                ShowHideButtonsDoom.HideTarget(doomsayer, voteArea.TargetPlayerId);
+                voteArea.NameText.transform.localPosition = new Vector3(0.3384f, 0.0311f, -0.1f);
+                foreach (var (targetId, guessText) in doomsayer.RoleGuess)
+                {
+                    if (!guessText.isActiveAndEnabled || voteArea.TargetPlayerId != targetId) continue;
+                    guessText.gameObject.SetActive(false);
+                }
+            }
+            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Vigilante))
+            {
+                var vigilante = Role.GetRole<Vigilante>(PlayerControl.LocalPlayer);
+                ShowHideButtonsVigi.HideTarget(vigilante, voteArea.TargetPlayerId);
+                voteArea.NameText.transform.localPosition = new Vector3(0.3384f, 0.0311f, -0.1f);
+            }
         }
         public static void Postfix(MeetingHud __instance)
         {

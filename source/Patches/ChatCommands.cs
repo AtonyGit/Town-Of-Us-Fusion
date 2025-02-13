@@ -294,7 +294,7 @@ namespace TownOfUsFusion.Patches
                         AddRoleMessage(RoleEnum.MirrorMaster);
                         return false;
                     }
-                    else if (text.StartsWith("/capt"))
+                    else if (text.StartsWith("/cap"))
                     {
                         AddRoleMessage(RoleEnum.Captain);
                         return false;

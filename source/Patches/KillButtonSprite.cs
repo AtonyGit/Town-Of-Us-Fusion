@@ -299,6 +299,13 @@ namespace TownOfUsFusion
                 flag = true;
                 buttonKills = true;
             }
+            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Armaggeddon))
+            {
+                //__instance.KillButton.graphic.sprite = JuggKill;
+                __instance.KillButton.buttonLabelText.SetOutlineColor(Patches.Colors.Apocalypse);
+                flag = true;
+                buttonKills = true;
+            }
             
             if (!PlayerControl.LocalPlayer.Is(Faction.Impostors) &&
                 GameOptionsManager.Instance.CurrentGameOptions.GameMode != GameModes.HideNSeek)
@@ -321,6 +328,12 @@ namespace TownOfUsFusion
                 __instance.ImpostorVentButton.buttonLabelText.SetOutlineColor(Patches.Colors.Apocalypse);
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Juggernaut))
+            {
+                __instance.ImpostorVentButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
+                //__instance.ImpostorVentButton.graphic.sprite = JuggVent;
+                __instance.ImpostorVentButton.buttonLabelText.SetOutlineColor(Patches.Colors.Apocalypse);
+            }
+            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Armaggeddon))
             {
                 __instance.ImpostorVentButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
                 //__instance.ImpostorVentButton.graphic.sprite = JuggVent;

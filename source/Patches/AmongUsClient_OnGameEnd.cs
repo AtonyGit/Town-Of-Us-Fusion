@@ -77,6 +77,11 @@ namespace TownOfUsFusion
                 losers.Add(arso.Player.GetDefaultOutfit().ColorId);
             }
 
+            foreach (var role in Role.GetRoles(RoleEnum.Armaggeddon))
+            {
+                var arm = (Armaggeddon)role;
+                losers.Add(arm.Player.GetDefaultOutfit().ColorId);
+            }
             foreach (var role in Role.GetRoles(RoleEnum.Juggernaut))
             {
                 var jugg = (Juggernaut)role;
@@ -92,7 +97,7 @@ namespace TownOfUsFusion
                 var pb = (Plaguebearer)role;
                 losers.Add(pb.Player.GetDefaultOutfit().ColorId);
             }
-            
+
             foreach (var role in Role.GetRoles(RoleEnum.Glitch))
             {
                 var glitch = (Glitch)role;
@@ -298,16 +303,24 @@ namespace TownOfUsFusion
                     if (PlayerControl.LocalPlayer != apoc.Player) apocData.IsYou = false;
                     EndGameResult.CachedWinners.Add(apocData);
                 }
-                foreach (var role in Role.GetRoles(RoleEnum.Pestilence))
+                foreach (var role in Role.GetRoles(RoleEnum.SoulCollector))
                 {
-                    var apoc = (Pestilence)role;
+                    var apoc = (SoulCollector)role;
                     var apocData = new CachedPlayerData(apoc.Player.Data);
                     if (PlayerControl.LocalPlayer != apoc.Player) apocData.IsYou = false;
                     EndGameResult.CachedWinners.Add(apocData);
                 }
-                foreach (var role in Role.GetRoles(RoleEnum.SoulCollector))
+                
+                foreach (var role in Role.GetRoles(RoleEnum.Armaggeddon))
                 {
-                    var apoc = (SoulCollector)role;
+                    var apoc = (Armaggeddon)role;
+                    var apocData = new CachedPlayerData(apoc.Player.Data);
+                    if (PlayerControl.LocalPlayer != apoc.Player) apocData.IsYou = false;
+                    EndGameResult.CachedWinners.Add(apocData);
+                }
+                foreach (var role in Role.GetRoles(RoleEnum.Pestilence))
+                {
+                    var apoc = (Pestilence)role;
                     var apocData = new CachedPlayerData(apoc.Player.Data);
                     if (PlayerControl.LocalPlayer != apoc.Player) apocData.IsYou = false;
                     EndGameResult.CachedWinners.Add(apocData);

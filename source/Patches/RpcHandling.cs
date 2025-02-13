@@ -44,6 +44,7 @@ using TownOfUsFusion.NeutralRoles.CannibalMod;
 using TownOfUsFusion.NeutralRoles.LawyerMod;
 using TownOfUsFusion.CrewmateRoles.MirrorMasterMod;
 using TownOfUsFusion.CrewmateRoles.TimeLordMod;
+using TownOfUsFusion.CrewmateRoles.CaptainMod;
 
 namespace TownOfUsFusion
 {
@@ -1044,12 +1045,16 @@ namespace TownOfUsFusion
                             var cap = Utils.PlayerById(reader.ReadByte());
                             var capRole = Role.GetRole<Captain>(cap);
                             capRole.TribunalThisMeeting = true;
+                            capRole.HasRevealed = true;
+                            AddTribunal.RemoveAssassin(capRole);
                         }
                         else if (!host2 && !AmongUsClient.Instance.AmHost)
                         {
                             var cap = Utils.PlayerById(reader.ReadByte());
                             var capRole = Role.GetRole<Captain>(cap);
                             capRole.TribunalThisMeeting = true;
+                            capRole.HasRevealed = true;
+                            AddTribunal.RemoveAssassin(capRole);
                         }
                         break;
                     case CustomRPC.CallTribunalMeeting:

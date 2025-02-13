@@ -165,6 +165,12 @@ namespace TownOfUsFusion.Modifiers.AssassinMod
                     var mayor = Role.GetRole<Mayor>(PlayerControl.LocalPlayer);
                     mayor.RevealButton.Destroy();
                 }
+                
+                if (player.Is(RoleEnum.Captain))
+                {
+                    var cap = Role.GetRole<Captain>(PlayerControl.LocalPlayer);
+                    cap.TribunalButton.Destroy();
+                }
 
                 if (player.Is(RoleEnum.Jailor))
                 {

@@ -42,7 +42,7 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
                  || player.Is(RoleEnum.Swooper) || player.Is(RoleEnum.Tracker) || player.Is(RoleEnum.Werewolf))
                 return $"You observe that {player.GetDefaultOutfit().PlayerName} is well trained in hunting down prey";
 
-            else if (player.Is(RoleEnum.Arsonist) || player.Is(RoleEnum.Hypnotist) || player.Is(RoleEnum.Miner) || player.Is(RoleEnum.Pestilence)
+            else if (player.Is(RoleEnum.Arsonist) || player.Is(RoleEnum.Hypnotist) || player.Is(RoleEnum.Miner) || player.Is(RoleEnum.Pestilence) || player.Is(RoleEnum.Captain)
                  || player.Is(RoleEnum.Plaguebearer) || player.Is(RoleEnum.Prosecutor) || player.Is(RoleEnum.Psychic) || player.Is(RoleEnum.Transporter))
                 return $"You observe that {player.GetDefaultOutfit().PlayerName} spreads fear amonst the group";
 
@@ -54,7 +54,7 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
                  || player.Is(RoleEnum.Swapper) || player.Is(RoleEnum.Traitor) || player.Is(RoleEnum.Venerer) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Tyrant))
                 return $"You observe that {player.GetDefaultOutfit().PlayerName} has a trick up their sleeve";
 
-            else if (player.Is(RoleEnum.Bomber) || player.Is(RoleEnum.Deputy) || player.Is(RoleEnum.Jailor) || player.Is(RoleEnum.Juggernaut)
+            else if (player.Is(RoleEnum.Bomber) || player.Is(RoleEnum.Deputy) || player.Is(RoleEnum.Jailor) || player.Is(RoleEnum.Juggernaut) || player.Is(RoleEnum.Armaggeddon)
                  || player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.Warlock) || player.Is(RoleEnum.Bodyguard))
                 return $"You observe that {player.GetDefaultOutfit().PlayerName} is capable of performing relentless attacks";
                 
@@ -83,9 +83,9 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
                  || player.Is(RoleEnum.Swooper) || player.Is(RoleEnum.Tracker) || player.Is(RoleEnum.Werewolf))
                 return "(Cannibal, Hunter, Lookout, Serial Killer, Swooper, Tracker or Werewolf)";
 
-            else if (player.Is(RoleEnum.Arsonist) || player.Is(RoleEnum.Hypnotist) || player.Is(RoleEnum.Miner) || player.Is(RoleEnum.Pestilence)
+            else if (player.Is(RoleEnum.Arsonist) || player.Is(RoleEnum.Hypnotist) || player.Is(RoleEnum.Miner) || player.Is(RoleEnum.Pestilence) || player.Is(RoleEnum.Captain)
                  || player.Is(RoleEnum.Plaguebearer) || player.Is(RoleEnum.Prosecutor) || player.Is(RoleEnum.Psychic) || player.Is(RoleEnum.Transporter))
-                return "(Arsonist, Hypnotist, Miner, Plaguebearer, Prosecutor, Psychic or Transporter)";
+                return "(Arsonist, Captain, Hypnotist, Miner, Plaguebearer, Prosecutor, Psychic or Transporter)";
 
             else if (player.Is(RoleEnum.Engineer) || player.Is(RoleEnum.Escapist) || player.Is(RoleEnum.Grenadier) || player.Is(RoleEnum.GuardianAngel)
                  || player.Is(RoleEnum.Medic) || player.Is(RoleEnum.Lawyer) || player.Is(RoleEnum.Survivor) || player.Is(RoleEnum.Oracle))
@@ -95,9 +95,9 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
                  || player.Is(RoleEnum.Swapper) || player.Is(RoleEnum.Traitor) || player.Is(RoleEnum.Venerer) || player.Is(RoleEnum.Veteran) || player.Is(RoleEnum.Tyrant))
                 return "(Executioner, Jester, Mirror Master, Politician, Swapper, Traitor, Tyrant, Venerer or Veteran)";
 
-            else if (player.Is(RoleEnum.Bomber) || player.Is(RoleEnum.Deputy) || player.Is(RoleEnum.Jailor) || player.Is(RoleEnum.Juggernaut)
+            else if (player.Is(RoleEnum.Bomber) || player.Is(RoleEnum.Deputy) || player.Is(RoleEnum.Jailor) || player.Is(RoleEnum.Juggernaut) || player.Is(RoleEnum.Armaggeddon)
                  || player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.Warlock) || player.Is(RoleEnum.Bodyguard))
-                return "(Bodyguard, Bomber, Deputy, Jailor, Juggernaut, Sheriff, Vigilante or Warlock)";
+                return "(Armaggeddon, Bodyguard, Bomber, Deputy, Jailor, Juggernaut, Sheriff, Vigilante or Warlock)";
 
             else if (player.Is(RoleEnum.Crewmate) || player.Is(RoleEnum.Impostor) || player.Is(RoleEnum.CursedSoul))
                 return "(Crewmate, Cursed Soul or Impostor)";

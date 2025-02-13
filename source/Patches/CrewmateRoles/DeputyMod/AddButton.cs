@@ -210,6 +210,12 @@ namespace TownOfUsFusion.CrewmateRoles.DeputyMod
                     mayor.RevealButton.Destroy();
                 }
 
+                if (player.Is(RoleEnum.Captain))
+                {
+                    var cap = Role.GetRole<Captain>(PlayerControl.LocalPlayer);
+                    cap.TribunalButton.Destroy();
+                }
+
                 if (player.Is(RoleEnum.Jailor))
                 {
                     var jailor = Role.GetRole<Jailor>(PlayerControl.LocalPlayer);

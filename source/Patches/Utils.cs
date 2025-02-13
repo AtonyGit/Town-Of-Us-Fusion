@@ -1214,11 +1214,11 @@ namespace TownOfUsFusion
                     {
                         if(killer.Is(RoleEnum.Jackal) || killer.Is(AllianceEnum.Recruit)) targetRole.KilledBy = " By " + GradientColorText("B7B9BA", "5E576B", killerRole.PlayerName);
                         else targetRole.KilledBy = " By " + ColorString(killerRole.Color, killerRole.PlayerName);
-                        targetRole.DeathReason = DeathReasonEnum.Killed;
                     }
-                else if (killer.Is(RoleEnum.Jailor)) targetRole.DeathReason = DeathReasonEnum.Executed;
+                if (killer.Is(RoleEnum.Jailor)) targetRole.DeathReason = DeathReasonEnum.Executed;
                 else if (killer.Is(RoleEnum.Arsonist)) targetRole.DeathReason = DeathReasonEnum.Burned;
                 else if (killer.Is(RoleEnum.Bodyguard)) targetRole.DeathReason = DeathReasonEnum.Traded;
+                else if (killer.Is(RoleEnum.Armaggeddon)) targetRole.DeathReason = DeathReasonEnum.Destroyed;
                 else if (killer.Is(RoleEnum.Vampire)) targetRole.DeathReason = DeathReasonEnum.Bitten;
                 else if (killer.Is(RoleEnum.Werewolf)) targetRole.DeathReason = DeathReasonEnum.Mauled;
                 else if (killer.Is(RoleEnum.SerialKiller)) targetRole.DeathReason = DeathReasonEnum.Rampaged;
@@ -1676,7 +1676,7 @@ namespace TownOfUsFusion
                 }
             }
         }
-public static string DeathReason(this PlayerControl player)
+        public static string DeathReason(this PlayerControl player)
         {
             if (player == null)
                 return "";
@@ -1718,6 +1718,8 @@ public static string DeathReason(this PlayerControl player)
                 die = "Punished";
             else if (role.DeathReason == DeathReasonEnum.Shot)
                 die = "Shot";
+            else if (role.DeathReason == DeathReasonEnum.Destroyed)
+                die = "Destroyed";
             else if (role.DeathReason == DeathReasonEnum.Disconnected)
                 die = "Left";
 

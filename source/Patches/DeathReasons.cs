@@ -13,6 +13,8 @@ namespace TownOfUsFusion
         Retribution,
         Unleashed,
         Poisoned,
+        Bombed,
+        Destroyed,
         Bitten,
         Rampaged,
         Mauled,
