@@ -19,6 +19,8 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Campaign To Become The Mayor!";
             TaskText = () => "Spread your campaign to become the Mayor!";
             Color = Patches.Colors.Politician;
+            AbilitySprite = TownOfUsFusion.CampaignSprite;
+            AbilityText = "Campaign";
             RoleType = RoleEnum.Politician;
             AddToRoleHistory(RoleType);
             CanCampaign = true;

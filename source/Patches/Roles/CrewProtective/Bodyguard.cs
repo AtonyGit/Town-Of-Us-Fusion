@@ -23,6 +23,8 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Get Down Mr President!";
             TaskText = () => "Take Down Killers To Protect Crewmates";
             Color = Patches.Colors.Bodyguard;
+            AbilitySprite = TownOfUsFusion.GuardSprite;
+            AbilityText = "Guard";
             LastProtected = DateTime.UtcNow;
             RoleType = RoleEnum.Bodyguard;
             AddToRoleHistory(RoleType);

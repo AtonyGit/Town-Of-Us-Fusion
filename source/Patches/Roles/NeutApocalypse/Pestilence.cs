@@ -10,6 +10,9 @@ namespace TownOfUsFusion.Roles
         {
             Name = "Pestilence";
             Color = Patches.Colors.Apocalypse;
+            AbilitySprite = TownOfUsFusion.PestKill;
+            AbilityText = "Infect";
+            VentSprite = TownOfUsFusion.ApocVent;
             LastKilled = DateTime.UtcNow;
             RoleType = RoleEnum.Pestilence;
             AddToRoleHistory(RoleType);

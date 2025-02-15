@@ -19,6 +19,8 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Sacrifice Yourself To Save Another";
             TaskText = () => "Revive a dead body at the cost of your own life";
             Color = Patches.Colors.Altruist;
+            AbilitySprite = TownOfUsFusion.ReviveSprite;
+            AbilityText = "Revive";
             RoleType = RoleEnum.Altruist;
             AddToRoleHistory(RoleType);
             RevivesLeft = CustomGameOptions.AltruistMaxRevives;

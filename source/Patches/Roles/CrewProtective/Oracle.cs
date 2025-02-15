@@ -16,6 +16,8 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Bless Thy Fellow Crewmates";
             TaskText = () => "Bless another player to protect them from interactions and ejections.";
             Color = Patches.Colors.Oracle;
+            AbilitySprite = TownOfUsFusion.BlessSprite;
+            AbilityText = "Bless";
             LastBlessed = DateTime.UtcNow;
             RoleType = RoleEnum.Oracle;
             AddToRoleHistory(RoleType);

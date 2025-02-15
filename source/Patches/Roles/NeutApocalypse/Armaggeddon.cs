@@ -12,6 +12,9 @@ namespace TownOfUsFusion.Roles
         {
             Name = "Armaggeddon";
             Color = Patches.Colors.Apocalypse;
+            AbilitySprite = TownOfUsFusion.ApocKill;
+            AbilityText = "Destroy";
+            VentSprite = TownOfUsFusion.ApocVent;
             LastKilled = DateTime.UtcNow;
             RoleType = RoleEnum.Armaggeddon;
             AddToRoleHistory(RoleType);

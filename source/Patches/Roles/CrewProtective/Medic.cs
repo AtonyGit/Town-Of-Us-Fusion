@@ -15,6 +15,8 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Create A Shield To Protect A Crewmate";
             TaskText = () => "Protect a crewmate with a shield";
             Color = Patches.Colors.Medic;
+            AbilitySprite = TownOfUsFusion.MedicSprite;
+            AbilityText = "Shield";
             StartingCooldown = DateTime.UtcNow;
             RoleType = RoleEnum.Medic;
             AddToRoleHistory(RoleType);

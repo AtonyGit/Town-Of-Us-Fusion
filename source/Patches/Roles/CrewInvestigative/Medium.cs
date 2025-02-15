@@ -22,6 +22,8 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Watch The Spooky Ghosts";
             TaskText = () => "Follow ghosts to get clues from them";
             Color = Patches.Colors.Medium;
+            AbilitySprite = TownOfUsFusion.MediateSprite;
+            AbilityText = "Mediate";
             LastMediated = DateTime.UtcNow;
             RoleType = RoleEnum.Medium;
             AddToRoleHistory(RoleType);

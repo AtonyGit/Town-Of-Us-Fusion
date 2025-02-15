@@ -27,6 +27,8 @@ namespace TownOfUsFusion.Roles
                     ? "You don't have a target for some reason... weird..."
                     : $"Protect {target.name}!";
             Color = Patches.Colors.GuardianAngel;
+            AbilitySprite = TownOfUsFusion.ProtectSprite;
+            AbilityText = "Protect";
             LastProtected = DateTime.UtcNow;
             RoleType = RoleEnum.GuardianAngel;
             AddToRoleHistory(RoleType);

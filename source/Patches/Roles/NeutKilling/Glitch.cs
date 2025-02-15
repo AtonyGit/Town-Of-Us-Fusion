@@ -27,6 +27,9 @@ namespace TownOfUsFusion.Roles
         {
             Name = "The Glitch";
             Color = Patches.Colors.Glitch;
+            AbilitySprite = TownOfUsFusion.GlitchKill;
+            AbilityText = "Kill";
+            VentSprite = TownOfUsFusion.GlitchVent;
             LastHacked = DateTime.UtcNow;
             LastMimiced = DateTime.UtcNow;
             LastKilled = DateTime.UtcNow;

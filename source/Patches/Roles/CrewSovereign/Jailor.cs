@@ -22,6 +22,8 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Jail And Execute The <color=#FF0000FF>Impostors</color>";
             TaskText = () => "Execute evildoers but not crewmates";
             Color = Patches.Colors.Jailor;
+            AbilitySprite = TownOfUsFusion.JailSprite;
+            AbilityText = "Jail";
             LastJailed = DateTime.UtcNow;
             RoleType = RoleEnum.Jailor;
             AddToRoleHistory(RoleType);

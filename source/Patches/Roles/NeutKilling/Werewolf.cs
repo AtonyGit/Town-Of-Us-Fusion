@@ -22,6 +22,9 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Rampage To Kill Everyone";
             TaskText = () => "Rampage to kill everyone\nFake Tasks:";
             Color = Patches.Colors.Werewolf;
+            AbilitySprite = TownOfUsFusion.WerewolfKill;
+            AbilityText = "Kill";
+            VentSprite = TownOfUsFusion.WerewolfVent;
             LastRampaged = DateTime.UtcNow;
             LastKilled = DateTime.UtcNow;
             RoleType = RoleEnum.Werewolf;

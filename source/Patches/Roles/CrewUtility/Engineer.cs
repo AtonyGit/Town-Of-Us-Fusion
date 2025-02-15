@@ -10,6 +10,9 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Maintain Important Systems On The Ship";
             TaskText = () => "Vent around and fix sabotages";
             Color = Patches.Colors.Engineer;
+            AbilitySprite = TownOfUsFusion.EngineerFix;
+            AbilityText = "Fix";
+            VentSprite = TownOfUsFusion.EngineerVent;
             RoleType = RoleEnum.Engineer;
             AddToRoleHistory(RoleType);
             UsesLeft = CustomGameOptions.MaxFixes;

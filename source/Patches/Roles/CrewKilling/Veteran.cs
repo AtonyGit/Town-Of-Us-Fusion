@@ -22,6 +22,8 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Alert To Kill Anyone Who Interacts With You";
             TaskText = () => "Alert to kill whoever interacts with you";
             Color = Patches.Colors.Veteran;
+            AbilitySprite = TownOfUsFusion.AlertSprite;
+            AbilityText = "Alert";
             LastAlerted = DateTime.UtcNow;
             RoleType = RoleEnum.Veteran;
             AddToRoleHistory(RoleType);

@@ -47,6 +47,8 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Redirect Others' Attacks";
             TaskText = () => "Save crewmates from direct attacks, then unleash them onto others!";
             Color = Patches.Colors.MirrorMaster;
+            AbilitySprite = TownOfUsFusion.MirrorUnleashSprite;
+            AbilityText = "Unleash";
             StartingCooldown = DateTime.UtcNow;
             LastUnleashed = DateTime.UtcNow;
             RoleType = RoleEnum.MirrorMaster;

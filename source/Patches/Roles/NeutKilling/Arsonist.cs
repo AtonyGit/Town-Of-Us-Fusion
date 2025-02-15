@@ -26,6 +26,8 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Douse Players And Ignite The Light";
             TaskText = () => "Douse players and ignite to kill all douses\nFake Tasks:";
             Color = Patches.Colors.Arsonist;
+            AbilitySprite = TownOfUsFusion.DouseSprite;
+            AbilityText = "Douse";
             LastDoused = DateTime.UtcNow;
             RoleType = RoleEnum.Arsonist;
             AddToRoleHistory(RoleType);

@@ -34,6 +34,8 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Track Everyone's Movement";
             TaskText = () => "Track suspicious players";
             Color = Patches.Colors.Tracker;
+            AbilitySprite = TownOfUsFusion.TrackSprite;
+            AbilityText = "Track";
             LastTracked = DateTime.UtcNow;
             RoleType = RoleEnum.Tracker;
             AddToRoleHistory(RoleType);

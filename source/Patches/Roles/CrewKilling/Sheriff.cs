@@ -12,6 +12,8 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Shoot The <color=#FF0000FF>Impostor</color>";
             TaskText = () => "Kill off the impostor but don't kill crewmates";
             Color = Patches.Colors.Sheriff;
+            AbilitySprite = TownOfUsFusion.SheriffKill;
+            AbilityText = "Shoot";
             LastKilled = DateTime.UtcNow;
             RoleType = RoleEnum.Sheriff;
             AddToRoleHistory(RoleType);

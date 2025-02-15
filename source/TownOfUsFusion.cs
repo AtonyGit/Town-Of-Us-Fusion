@@ -141,6 +141,9 @@ namespace TownOfUsFusion
         public static Sprite WatchSprite;
         public static Sprite InquisKill;
         public static Sprite SheriffKill;
+        public static Sprite ApocKill;
+        public static Sprite ApocVent;
+        public static Sprite PestKill;
         public static Sprite PoisonSprite;
         public static Sprite PoisonedSprite;
         public static Sprite CampSprite;
@@ -253,9 +256,12 @@ namespace TownOfUsFusion
                 VampireVent = CreateVentSprite("TownOfUsFusion.Resources.VampireVent.png");
             // Apocalypse Roles
                 InfectSprite = CreateSprite("TownOfUsFusion.Resources.Infect.png");
+                PestKill = CreateScaledSprite("TownOfUsFusion.Resources.PestKill.png");
                 CollectSprite = CreateSprite("TownOfUsFusion.Resources.Collect.png");
                 ReapSprite = CreateSprite("TownOfUsFusion.Resources.Reap.png");
                 SoulSprite = CreateSprite("TownOfUsFusion.Resources.Soul.png");
+                ApocKill = CreateScaledSprite("TownOfUsFusion.Resources.ApocKill.png");
+                ApocVent = CreateVentSprite("TownOfUsFusion.Resources.ApocVent.png");
 
             // Concealing Roles
                 EscapeSprite = CreateScaledSprite("TownOfUsFusion.Resources.Recall.png");

@@ -15,6 +15,8 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Remember A Role Of A Deceased Player";
             TaskText = () => SpawnedAs ? "Find a dead body to remember a role" : "Your target was killed. Now remember a new role!";
             Color = Patches.Colors.Amnesiac;
+            AbilitySprite = TownOfUsFusion.RememberSprite;
+            AbilityText = "Remember";
             RoleType = RoleEnum.Amnesiac;
             AddToRoleHistory(RoleType);
             Faction = Faction.NeutralBenign;

@@ -23,6 +23,9 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Infect Everyone To Become Pestilence";
             TaskText = () => "Infect everyone to become Pestilence\nFake Tasks:";
             Color = Patches.Colors.Apocalypse;
+            AbilitySprite = TownOfUsFusion.InfectSprite;
+            AbilityText = "Infect";
+            VentSprite = TownOfUsFusion.ApocVent;
             RoleType = RoleEnum.Plaguebearer;
             AddToRoleHistory(RoleType);
             Faction = Faction.NeutralApocalypse;

@@ -35,6 +35,9 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Collect Souls";
             TaskText = () => "Collect souls to win the game";
             Color = Patches.Colors.Apocalypse;
+            AbilitySprite = TownOfUsFusion.CollectSprite;
+            AbilityText = "Collect";
+            VentSprite = TownOfUsFusion.ApocVent;
             LastReaped = DateTime.UtcNow;
             RoleType = RoleEnum.SoulCollector;
             AddToRoleHistory(RoleType);

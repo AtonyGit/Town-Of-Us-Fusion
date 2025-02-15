@@ -17,6 +17,9 @@ namespace TownOfUsFusion.Roles
             TaskText = () => 
                 Target == null ? "Kill your given targets for a reduced kill cooldown" : "Hunt Down " + Target.GetDefaultOutfit().PlayerName;
             Color = Patches.Colors.SerialKiller;
+            AbilitySprite = TownOfUsFusion.SkKill;
+            AbilityText = "Kill";
+            VentSprite = TownOfUsFusion.SkVent;
             RoleType = RoleEnum.SerialKiller;
             AddToRoleHistory(RoleType);
             Faction = Faction.NeutralKilling;

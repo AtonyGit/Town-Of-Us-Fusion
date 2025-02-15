@@ -29,6 +29,8 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Guess People's Roles To Win!";
             TaskText = () => "Win by guessing player's roles\nFake Tasks:";
             Color = Patches.Colors.Doomsayer;
+            AbilitySprite = TownOfUsFusion.ObserveSprite;
+            AbilityText = "Observe";
             RoleType = RoleEnum.Doomsayer;
             LastObserved = DateTime.UtcNow;
             AddToRoleHistory(RoleType);

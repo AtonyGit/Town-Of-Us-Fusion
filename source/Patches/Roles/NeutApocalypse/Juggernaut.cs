@@ -11,6 +11,9 @@ namespace TownOfUsFusion.Roles
         {
             Name = "Juggernaut";
             Color = Patches.Colors.Apocalypse;
+            AbilitySprite = TownOfUsFusion.ApocKill;
+            AbilityText = "Kill";
+            VentSprite = TownOfUsFusion.ApocVent;
             LastKilled = DateTime.UtcNow;
             RoleType = RoleEnum.Juggernaut;
             AddToRoleHistory(RoleType);

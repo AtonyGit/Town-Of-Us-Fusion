@@ -37,6 +37,8 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Keep Your Eyes Wide Open";
             TaskText = () => "Watch other crewmates";
             Color = Patches.Colors.Lookout;
+            AbilitySprite = TownOfUsFusion.WatchSprite;
+            AbilityText = "Watch";
             LastWatched = DateTime.UtcNow;
             RoleType = RoleEnum.Lookout;
             AddToRoleHistory(RoleType);

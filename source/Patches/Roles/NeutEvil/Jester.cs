@@ -14,6 +14,7 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Get Voted Out";
             TaskText = () => SpawnedAs ? "Get voted out!\nFake Tasks:" : "Your target was killed. Now you get voted out!\nFake Tasks:";
             Color = Patches.Colors.Jester;
+            VentSprite = TownOfUsFusion.JesterVent;
             RoleType = RoleEnum.Jester;
             AddToRoleHistory(RoleType);
             Faction = Faction.NeutralEvil;

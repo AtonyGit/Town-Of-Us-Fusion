@@ -21,6 +21,8 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Inspect Crime Scenes To Catch The Killer";
             TaskText = () => "Inspect crime scenes, then examine players for clues";
             Color = Patches.Colors.Investigator;
+            AbilitySprite = TownOfUsFusion.AutopsySprite;
+            AbilityText = "Autopsy";
             LastExamined = DateTime.UtcNow;
             RoleType = RoleEnum.Investigator;
             AddToRoleHistory(RoleType);

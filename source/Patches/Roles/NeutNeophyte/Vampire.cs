@@ -16,6 +16,9 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Convert Crewmates And Kill The Rest";
             TaskText = () => "Bite all other players\nFake Tasks:";
             Color = Patches.Colors.Vampire;
+            AbilitySprite = TownOfUsFusion.BiteSprite;
+            AbilityText = "Bite";
+            VentSprite = TownOfUsFusion.VampireVent;
             LastBitten = DateTime.UtcNow;
             RoleType = RoleEnum.Vampire;
             Faction = Faction.NeutralKilling;
