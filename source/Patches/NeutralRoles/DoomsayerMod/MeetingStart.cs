@@ -31,7 +31,7 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
                 return $"You observe that {player.GetDefaultOutfit().PlayerName} has an altered perception of reality";
 
             else if (player.Is(RoleEnum.Blackmailer) || player.Is(RoleEnum.Investigator) || player.Is(RoleEnum.Doomsayer)
-                 || player.Is(RoleEnum.Spy) || player.Is(RoleEnum.Trapper) || player.Is(RoleEnum.Inquisitor))
+                 || player.Is(RoleEnum.Operative) || player.Is(RoleEnum.Trapper) || player.Is(RoleEnum.Inquisitor))
                 return $"You observe that {player.GetDefaultOutfit().PlayerName} has an insight for private information";
 
             else if (player.Is(RoleEnum.Altruist) || player.Is(RoleEnum.Amnesiac) || player.Is(RoleEnum.Janitor) || player.Is(RoleEnum.Cannibal)
@@ -72,8 +72,8 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
                 return "(Aurial, Imitator, Morphling, Time Lord, or The Glitch)";
 
             else if (player.Is(RoleEnum.Blackmailer) || player.Is(RoleEnum.Investigator) || player.Is(RoleEnum.Doomsayer)
-                 || player.Is(RoleEnum.Spy) || player.Is(RoleEnum.Trapper) || player.Is(RoleEnum.Inquisitor))
-                return "(Blackmailer, Inquisitor, Investigator, Doomsayer, Spy or Trapper)";
+                 || player.Is(RoleEnum.Operative) || player.Is(RoleEnum.Trapper) || player.Is(RoleEnum.Inquisitor))
+                return "(Blackmailer, Inquisitor, Investigator, Doomsayer, Operative or Trapper)";
 
             else if (player.Is(RoleEnum.Altruist) || player.Is(RoleEnum.Amnesiac) || player.Is(RoleEnum.Janitor)
                  || player.Is(RoleEnum.Medium) || player.Is(RoleEnum.SoulCollector) || player.Is(RoleEnum.Undertaker) || player.Is(RoleEnum.Vampire))

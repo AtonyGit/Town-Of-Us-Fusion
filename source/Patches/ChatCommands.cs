@@ -97,9 +97,9 @@ namespace TownOfUsFusion.Patches
                         AddRoleMessage(RoleEnum.Psychic);
                         return false;
                     }
-                    else if (text.StartsWith("/spy"))
+                    else if (text.StartsWith("/oper"))
                     {
-                        AddRoleMessage(RoleEnum.Spy);
+                        AddRoleMessage(RoleEnum.Operative);
                         return false;
                     }
                     else if (text.StartsWith("/vig"))
@@ -561,7 +561,7 @@ namespace TownOfUsFusion.Patches
             public static void AddCustomMessage(string type)
             {
                 if (type == "help") DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, "By using /role, you may see what your role does in-game (or you may type a role). This applies to modifiers and alliances as well, but you may see all the commands by running the following: \n/crewroles | /neutroles | /improles | /allmodifiers | /allalliances");
-                else if (type == "crewroles") DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, "--------------- CREW INVESTIGATIVE ---------------\nAurial, Haunter, Investigator, Lookout, Medium, Spy, Psychic, Tracker, Trapper\n--------------------- CREW KILLING ---------------------\nDeputy, Hunter, Sheriff, Veteran, Vigilante\n----------------- CREW PROTECTIVE -----------------\nAltruist, Bodyguard, Medic, Mirror Master, Oracle\n----------------- CREW SOVEREIGN ------------------\nCaptain, Jailor, Politician, Prosecutor, Swapper\n--------------------- CREW UTILITY ---------------------\nEngineer, Imitator, Time Lord, Transporter");
+                else if (type == "crewroles") DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, "--------------- CREW INVESTIGATIVE ---------------\nAurial, Haunter, Investigator, Lookout, Medium, Operative, Psychic, Tracker, Trapper\n--------------------- CREW KILLING ---------------------\nDeputy, Hunter, Sheriff, Veteran, Vigilante\n----------------- CREW PROTECTIVE -----------------\nAltruist, Bodyguard, Medic, Mirror Master, Oracle\n----------------- CREW SOVEREIGN ------------------\nCaptain, Jailor, Politician, Prosecutor, Swapper\n--------------------- CREW UTILITY ---------------------\nEngineer, Imitator, Time Lord, Transporter");
                 else if (type == "neutralroles") DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, "------------------- NEUTRAL BENIGN ------------------\nAmnesiac, Guardian Angel, Lawyer, Survivor\n--------------------- NEUTRAL EVIL ---------------------\nDoomsayer, Executioner, Jester, Phantom\n------------------- NEUTRAL CHAOS -------------------\nCannibal, Cursed Soul, Inquisitor, Tyrant\n------------------- NEUTRAL KILLING ------------------\nArsonist, Serial Killer, The Glitch, Werewolf\n---------------- NEUTRAL NEOPHYTE ----------------\nJackal, Necromancer, Vampire\n-------------- NEUTRAL APOCALYPSEs --------------\nJuggernaut, Armaggeddon, Plaguebearer, Pestilence, Soul Collector, Death");
                 else if (type == "improles") DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, "------------- IMPOSTOR CONCEALING -------------\nEscapist, Grenadier, Morphling, Swooper, Venerer\n----------------- IMPOSTOR KILLING ------------------\nBomber, Poisoner, Traitor, Warlock\n---------------- IMPOSTOR SUPPORT ----------------\nBlackmailer, Hypnotist, Janitor, Miner, Undertaker");
                 else if (type == "modifiers") DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, "-------------- CREWMATE MODIFIERS --------------\nAftermath, Bait, Diseased, Frosty, Multitasker, Torch\n----------------- GLOBAL MODIFIERS -----------------\nButton Barry, Drunk, Oblivious, Flash, Giant, Mini, Radar, Shy, Sixth Sense, Sleuth, Tiebreaker\n--------------- IMPOSTOR MODIFIERS ---------------\nDisperser, Double Shot, Saboteur, Underdog");
@@ -602,8 +602,8 @@ namespace TownOfUsFusion.Patches
                     case RoleEnum.Psychic: DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
                         PlayerControl.LocalPlayer, "The Psychic is a crewmate who can reveal the alliance of other players, and check if they are good or evil via a vision.");
                     break;
-                    case RoleEnum.Spy: DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
-                        PlayerControl.LocalPlayer, "The Spy is a crewmate who can see the colours of players on the admin table and can see who the Impostors are once they complete all their tasks.");
+                    case RoleEnum.Operative: DestroyableSingleton<HudManager>.Instance.Chat.AddChat(
+                        PlayerControl.LocalPlayer, "The Operative is a crewmate who can see the colours of players on the admin table and can see who the Impostors are once they complete all their tasks.");
                     break;
                     case RoleEnum.Vigilante: DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer,
                         "The Vigilante is a crewmate who can guess other people's roles during meetings. If they guess correctly they kill the other player, if not, they die instead.");

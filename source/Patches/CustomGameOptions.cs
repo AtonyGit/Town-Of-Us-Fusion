@@ -18,8 +18,8 @@ namespace TownOfUsFusion
     public enum AdminDeadPlayers
     {
         Nobody,
-        Spy,
-        EveryoneButSpy,
+        Operative,
+        EveryoneButOperative,
         Everyone
     }
     public enum RoleOptions
@@ -67,7 +67,7 @@ namespace TownOfUsFusion
         public static int GlitchOn => (int)Generate.GlitchOn.Get();
         public static int MorphlingOn => (int)Generate.MorphlingOn.Get();
         public static int ExecutionerOn => (int)Generate.ExecutionerOn.Get();
-        public static int SpyOn => (int)Generate.SpyOn.Get();
+        public static int OperativeOn => (int)Generate.OperativeOn.Get();
             public static float AdminCooldown => Generate.AdminCooldown.Get();
         public static int MinerOn => (int)Generate.MinerOn.Get();
         public static int SwooperOn => (int)Generate.SwooperOn.Get();
@@ -217,10 +217,10 @@ namespace TownOfUsFusion
             public static int DefendantImpPercent => (int)Generate.DefendantImpPercent.Get();
             public static bool NeutralDefendant => Generate.NeutralDefendant.Get();
             public static bool LawyerCanTalkDefendant => Generate.LawyerCanTalkDefendant.Get();
-        public static bool SpySeesNeutrals => Generate.SpySeesNeutrals.Get();
-        public static int SpyTasksRemaining => (int)Generate.SpyTasksRemaining.Get();
-        public static bool SpySeesImpInMeeting => Generate.SpySeesImpInMeeting.Get();
-        public static bool SpySeesTraitor => Generate.SpySeesTraitor.Get();
+        public static bool OperativeSeesNeutrals => Generate.OperativeSeesNeutrals.Get();
+        public static int OperativeTasksRemaining => (int)Generate.OperativeTasksRemaining.Get();
+        public static bool OperativeSeesImpInMeeting => Generate.OperativeSeesImpInMeeting.Get();
+        public static bool OperativeSeesTraitor => Generate.OperativeSeesTraitor.Get();
         public static float MineCd => Generate.MineCooldown.Get();
         public static float SwoopCd => Generate.SwoopCooldown.Get();
         public static float SwoopDuration => Generate.SwoopDuration.Get();

@@ -38,7 +38,7 @@ namespace TownOfUsFusion.CustomOption
         public static CustomNumberOption LookoutOn;
         public static CustomNumberOption MediumOn;
         public static CustomNumberOption PsychicOn;
-        public static CustomNumberOption SpyOn;
+        public static CustomNumberOption OperativeOn;
         public static CustomNumberOption TrackerOn;
         public static CustomNumberOption TrapperOn;
 
@@ -324,13 +324,13 @@ namespace TownOfUsFusion.CustomOption
         public static CustomNumberOption PhantomTasksRemaining;
         public static CustomToggleOption PhantomSpook;
 
-        public static CustomHeaderOption Spy;
+        public static CustomHeaderOption Operative;
         public static CustomNumberOption AdminCooldown;
         public static CustomStringOption WhoSeesDead;
-        public static CustomToggleOption SpySeesNeutrals;
-        public static CustomNumberOption SpyTasksRemaining;
-        public static CustomToggleOption SpySeesImpInMeeting;
-        public static CustomToggleOption SpySeesTraitor;
+        public static CustomToggleOption OperativeSeesNeutrals;
+        public static CustomNumberOption OperativeTasksRemaining;
+        public static CustomToggleOption OperativeSeesImpInMeeting;
+        public static CustomToggleOption OperativeSeesTraitor;
 
         public static CustomHeaderOption Altruist;
         public static CustomNumberOption AltruistMaxRevives;
@@ -668,7 +668,7 @@ namespace TownOfUsFusion.CustomOption
                     PercentFormat);
                 MediumOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#A680FFFF>Medium</color>", 0f, 0f, 100f, 10f,
                     PercentFormat);
-                SpyOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#CCA3CCFF>Spy</color>", 0f, 0f, 100f, 10f,
+                OperativeOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#CCA3CCFF>Operative</color>", 0f, 0f, 100f, 10f,
                     PercentFormat);
                 PsychicOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#9900FFFF>Psychic</color>", 0f, 0f, 100f, 10f,
                     PercentFormat);
@@ -1026,17 +1026,17 @@ namespace TownOfUsFusion.CustomOption
                     new CustomToggleOption(num++, MultiMenu.crewmate, "Traitor Does Not Swap Colours", false);
                 RevealAccuracy = new CustomNumberOption(num++, MultiMenu.crewmate, "Reveal Accuracy", 80f, 0f, 100f, 10f,
                     PercentFormat);
-            Spy =
-                new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#CCA3CCFF>Spy</color>");
+            Operative =
+                new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#CCA3CCFF>Operative</color>");
                 AdminCooldown =
                     new CustomNumberOption(num++, MultiMenu.crewmate, "Portable Admin Cooldown", 10f, 1f, 15f, 1f, CooldownFormat);
                 WhoSeesDead = new CustomStringOption(num++, MultiMenu.crewmate, "Who Sees Dead Bodies On Admin",
-                    new[] { "Nobody", "Spy", "Everyone But Spy", "Everyone" });
-                SpySeesNeutrals = new CustomToggleOption(num++, MultiMenu.crewmate, "Spy Sees Neutral Roles", false);
-                SpyTasksRemaining =
+                    new[] { "Nobody", "Operative", "Everyone But Operative", "Everyone" });
+                OperativeSeesNeutrals = new CustomToggleOption(num++, MultiMenu.crewmate, "Operative Sees Neutral Roles", false);
+                OperativeTasksRemaining =
                     new CustomNumberOption(num++, MultiMenu.crewmate, "Tasks Remaining When Revealed", 1, 1, 5, 1);
-                SpySeesImpInMeeting = new CustomToggleOption(num++, MultiMenu.crewmate, "Spy Sees Impostors In Meetings", true);
-                SpySeesTraitor = new CustomToggleOption(num++, MultiMenu.crewmate, "Spy Sees Traitor", true);
+                OperativeSeesImpInMeeting = new CustomToggleOption(num++, MultiMenu.crewmate, "Operative Sees Impostors In Meetings", true);
+                OperativeSeesTraitor = new CustomToggleOption(num++, MultiMenu.crewmate, "Operative Sees Traitor", true);
             Tracker =
                 new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#009900FF>Tracker</color>");
                 UpdateInterval =

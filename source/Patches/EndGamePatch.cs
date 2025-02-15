@@ -61,7 +61,7 @@ namespace TownOfUsFusion.Patches {
                     break;
                     case RoleEnum.Medium: playerRole += "<color=#" + Patches.Colors.Medium.ToHtmlStringRGBA() + ">Medium</color> > ";
                     break;
-                    case RoleEnum.Spy: playerRole += "<color=#" + Patches.Colors.Spy.ToHtmlStringRGBA() + ">Spy</color> > ";
+                    case RoleEnum.Operative: playerRole += "<color=#" + Patches.Colors.Operative.ToHtmlStringRGBA() + ">Operative</color> > ";
                     break;
                     case RoleEnum.Psychic: playerRole += "<color=#" + Patches.Colors.Psychic.ToHtmlStringRGBA() + ">Psychic</color> > ";
                     break;

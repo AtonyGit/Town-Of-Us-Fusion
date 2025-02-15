@@ -52,7 +52,7 @@ namespace TownOfUsFusion.Roles.Modifiers
             if (CustomGameOptions.AssassinGuessCrewInvestigative)
             {
                 if (CustomGameOptions.PsychicOn > 0) ColorMapping.Add("Psychic", Colors.Psychic);
-                if (CustomGameOptions.SpyOn > 0) ColorMapping.Add("Spy", Colors.Spy);
+                if (CustomGameOptions.OperativeOn > 0) ColorMapping.Add("Operative", Colors.Operative);
                 if (CustomGameOptions.TrackerOn > 0) ColorMapping.Add("Tracker", Colors.Tracker);
                 if (CustomGameOptions.TrapperOn > 0) ColorMapping.Add("Trapper", Colors.Trapper);
                 if (CustomGameOptions.AurialOn > 0) ColorMapping.Add("Aurial", Colors.Aurial);

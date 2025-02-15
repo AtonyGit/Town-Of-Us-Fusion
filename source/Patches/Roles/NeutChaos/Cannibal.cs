@@ -15,7 +15,7 @@ namespace TownOfUsFusion.Roles
         {
             Name = "Cannibal";
             ImpostorText = () => "Feast on The Flesh Of The Dead";
-            TaskText = () => !Eaten ? $"You are satiated. Consume {EatNeed} bodies\nFake Tasks:" : $"Eat {EatNeed} {(EatNeed == 1 ? "one more body!" : "bodies in total!")}";
+            TaskText = () => !Eaten ? $"You are satiated. Consume {EatNeed} bodies\nFake Tasks:" : $"Eat {EatNeed} {(EatNeed == 1 ? "one more body!" : "bodies in total!")}\nFake Tasks:";
             Color = Patches.Colors.Cannibal;
             AbilitySprite = TownOfUsFusion.ConsumeSprite;
             AbilityText = "Consume";

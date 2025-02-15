@@ -3,7 +3,7 @@ using AmongUs.GameOptions;
 using HarmonyLib;
 using UnityEngine;
 
-namespace TownOfUsFusion.CrewmateRoles.SpyMod
+namespace TownOfUsFusion.CrewmateRoles.OperativeMod
 {
     [HarmonyPatch(typeof(MapCountOverlay), nameof(MapCountOverlay.Update))]
     public static class Admin
@@ -18,7 +18,7 @@ namespace TownOfUsFusion.CrewmateRoles.SpyMod
                     area.UpdateCount(0);
         }
 
-        public static void UpdateBlips(CounterArea area, List<int> colorMapping, bool isSpy)
+        public static void UpdateBlips(CounterArea area, List<int> colorMapping, bool isOperative)
         {
             area.UpdateCount(colorMapping.Count);
             var icons = area.myIcons.ToArray();
@@ -30,13 +30,13 @@ namespace TownOfUsFusion.CrewmateRoles.SpyMod
                 if (Patches.SubmergedCompatibility.Loaded) sprite.color = new Color(1, 1, 1, 1);
                 if (sprite != null)
                 {
-                    if (isSpy) PlayerMaterial.SetColors(colorMapping[i], sprite);
+                    if (isOperative) PlayerMaterial.SetColors(colorMapping[i], sprite);
                     else PlayerMaterial.SetColors(new Color(0.8793f, 1, 0, 1), sprite);
                 }
             }
         }
 
-        public static void UpdateBlips(MapCountOverlay __instance, bool isSpy)
+        public static void UpdateBlips(MapCountOverlay __instance, bool isOperative)
         {
             var rooms = ShipStatus.Instance.FastRooms;
             var colorMapDuplicate = new List<int>();
@@ -53,8 +53,8 @@ namespace TownOfUsFusion.CrewmateRoles.SpyMod
                     var player = collider.GetComponent<PlayerControl>();
                     var data = player?.Data;
                     if (collider.tag == "DeadBody" &&
-                        (isSpy && CustomGameOptions.WhoSeesDead == AdminDeadPlayers.Spy ||
-                        !isSpy && CustomGameOptions.WhoSeesDead == AdminDeadPlayers.EveryoneButSpy ||
+                        (isOperative && CustomGameOptions.WhoSeesDead == AdminDeadPlayers.Operative ||
+                        !isOperative && CustomGameOptions.WhoSeesDead == AdminDeadPlayers.EveryoneButOperative ||
                         CustomGameOptions.WhoSeesDead == AdminDeadPlayers.Everyone))
                     {
                         var playerId = collider.GetComponent<DeadBody>().ParentId;
@@ -75,7 +75,7 @@ namespace TownOfUsFusion.CrewmateRoles.SpyMod
                         }
                     }
                 }
-                UpdateBlips(area, colorMap, isSpy);
+                UpdateBlips(area, colorMap, isOperative);
             }
         }
 
@@ -83,7 +83,7 @@ namespace TownOfUsFusion.CrewmateRoles.SpyMod
         {
             if (GameOptionsManager.Instance.CurrentGameOptions.GameMode == GameModes.HideNSeek) return true;
             var localPlayer = PlayerControl.LocalPlayer;
-            var isSpy = localPlayer.Is(RoleEnum.Spy);
+            var isOperative = localPlayer.Is(RoleEnum.Operative);
             __instance.timer += Time.deltaTime;
             if (__instance.timer < 0.1f) return false;
 
@@ -95,7 +95,7 @@ namespace TownOfUsFusion.CrewmateRoles.SpyMod
                 SetSabotaged(__instance, sabotaged);
 
             if (!sabotaged)
-                UpdateBlips(__instance, isSpy);
+                UpdateBlips(__instance, isOperative);
             return false;
         }
     }

@@ -651,7 +651,7 @@ namespace TownOfUsFusion.Roles
                                 case Aurial:
                                 case Lookout:
                                 case Medium:
-                                case Spy:
+                                case Operative:
                                 case Investigator:
                                 case Psychic:
                                 case Tracker:
@@ -746,7 +746,7 @@ namespace TownOfUsFusion.Roles
                                 case Aurial:
                                 case Lookout:
                                 case Medium:
-                                case Spy:
+                                case Operative:
                                 case Investigator:
                                 case Psychic:
                                 case Tracker:
@@ -853,7 +853,7 @@ namespace TownOfUsFusion.Roles
                                 case Aurial:
                                 case Lookout:
                                 case Medium:
-                                case Spy:
+                                case Operative:
                                 case Investigator:
                                 case Psychic:
                                 case Tracker:
@@ -1067,11 +1067,11 @@ namespace TownOfUsFusion.Roles
         {
             private static void Postfix(LobbyBehaviour __instance)
             {
-                foreach (var role in AllRoles.Where(x => x.RoleType == RoleEnum.Spy))
+                foreach (var role in AllRoles.Where(x => x.RoleType == RoleEnum.Operative))
                 {
-                    ((Spy)role).ImpArrows.DestroyAll();
-                    ((Spy)role).SpyArrows.Values.DestroyAll();
-                    ((Spy)role).SpyArrows.Clear();
+                    ((Operative)role).ImpArrows.DestroyAll();
+                    ((Operative)role).OperativeArrows.Values.DestroyAll();
+                    ((Operative)role).OperativeArrows.Clear();
                 }
                 foreach (var role in AllRoles.Where(x => x.RoleType == RoleEnum.Tracker))
                 {

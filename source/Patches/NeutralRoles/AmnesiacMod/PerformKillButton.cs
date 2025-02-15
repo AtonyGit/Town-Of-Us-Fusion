@@ -1,6 +1,6 @@
 using HarmonyLib;
 using TownOfUsFusion.CrewmateRoles.TrackerMod;
-using TownOfUsFusion.CrewmateRoles.SpyMod;
+using TownOfUsFusion.CrewmateRoles.OperativeMod;
 using TownOfUsFusion.CrewmateRoles.TrapperMod;
 using TownOfUsFusion.Roles;
 using UnityEngine;
@@ -100,7 +100,7 @@ namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
                 case RoleEnum.Investigator:
                 case RoleEnum.Medic:
                 case RoleEnum.Psychic:
-                case RoleEnum.Spy:
+                case RoleEnum.Operative:
                 case RoleEnum.Altruist:
                 case RoleEnum.Vigilante:
                 case RoleEnum.Veteran:
@@ -158,7 +158,7 @@ namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
 
             if (role == RoleEnum.Tracker) Footprint.DestroyAll(Role.GetRole<Tracker>(other));
 
-            if (role == RoleEnum.Spy) CompleteTask.Postfix(amnesiac);
+            if (role == RoleEnum.Operative) CompleteTask.Postfix(amnesiac);
 
             if (role == RoleEnum.Investigator && PlayerControl.LocalPlayer == other)
             {
@@ -246,12 +246,12 @@ namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
                 if (CustomGameOptions.AmneTurnImpAssassin) new Assassin(amnesiac);
             }
 
-            if (role == RoleEnum.Spy)
+            if (role == RoleEnum.Operative)
             {
-                var spyRole = Role.GetRole<Spy>(amnesiac);
-                spyRole.ImpArrows.DestroyAll();
-                spyRole.SpyArrows.Values.DestroyAll();
-                spyRole.SpyArrows.Clear();
+                var operativeRole = Role.GetRole<Operative>(amnesiac);
+                operativeRole.ImpArrows.DestroyAll();
+                operativeRole.OperativeArrows.Values.DestroyAll();
+                operativeRole.OperativeArrows.Clear();
                 CompleteTask.Postfix(amnesiac);
                 if (other.AmOwner)
                     foreach (var player in PlayerControl.AllPlayerControls)
@@ -576,12 +576,12 @@ namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
             otherRole.CorrectAssassinKills = killsList.CorrectAssassinKills;
             otherRole.IncorrectAssassinKills = killsList.IncorrectAssassinKills;
 
-            if (amnesiac.Is(Faction.Impostors) && (!amnesiac.Is(RoleEnum.Traitor) || CustomGameOptions.SpySeesTraitor))
+            if (amnesiac.Is(Faction.Impostors) && (!amnesiac.Is(RoleEnum.Traitor) || CustomGameOptions.OperativeSeesTraitor))
             {
-                foreach (var spy in Role.GetRoles(RoleEnum.Spy))
+                foreach (var operative in Role.GetRoles(RoleEnum.Operative))
                 {
-                    var spyRole = (Spy)spy;
-                    if (spyRole.TasksDone && PlayerControl.LocalPlayer.Is(RoleEnum.Spy))
+                    var operativeRole = (Operative)operative;
+                    if (operativeRole.TasksDone && PlayerControl.LocalPlayer.Is(RoleEnum.Operative))
                     {
                         var gameObj = new GameObject();
                         var arrow = gameObj.AddComponent<ArrowBehaviour>();
@@ -590,9 +590,9 @@ namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
                         renderer.sprite = Sprite;
                         arrow.image = renderer;
                         gameObj.layer = 5;
-                        spyRole.SpyArrows.Add(amnesiac.PlayerId, arrow);
+                        operativeRole.OperativeArrows.Add(amnesiac.PlayerId, arrow);
                     }
-                    else if (spyRole.Revealed && PlayerControl.LocalPlayer == amnesiac)
+                    else if (operativeRole.Revealed && PlayerControl.LocalPlayer == amnesiac)
                     {
                         var gameObj = new GameObject();
                         var arrow = gameObj.AddComponent<ArrowBehaviour>();
@@ -601,7 +601,7 @@ namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
                         renderer.sprite = Sprite;
                         arrow.image = renderer;
                         gameObj.layer = 5;
-                        spyRole.ImpArrows.Add(arrow);
+                        operativeRole.ImpArrows.Add(arrow);
                     }
                 }
             }

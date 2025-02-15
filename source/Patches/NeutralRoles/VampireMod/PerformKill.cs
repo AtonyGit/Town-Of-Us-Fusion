@@ -142,13 +142,13 @@ namespace TownOfUsFusion.NeutralRoles.VampireMod
             var oldRole = Role.GetRole(newVamp);
             var killsList = (oldRole.CorrectKills, oldRole.IncorrectKills, oldRole.CorrectAssassinKills, oldRole.IncorrectAssassinKills);
 
-            if (newVamp.Is(RoleEnum.Spy))
+            if (newVamp.Is(RoleEnum.Operative))
             {
-                var spy = Role.GetRole<Spy>(newVamp);
-                spy.SpyArrows.Values.DestroyAll();
-                spy.SpyArrows.Clear();
-                spy.ImpArrows.DestroyAll();
-                spy.ImpArrows.Clear();
+                var operative = Role.GetRole<Operative>(newVamp);
+                operative.OperativeArrows.Values.DestroyAll();
+                operative.OperativeArrows.Clear();
+                operative.ImpArrows.DestroyAll();
+                operative.ImpArrows.Clear();
             }
 
             if (newVamp == StartImitate.ImitatingPlayer) StartImitate.ImitatingPlayer = null;

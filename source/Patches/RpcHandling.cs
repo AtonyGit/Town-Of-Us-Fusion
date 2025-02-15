@@ -1891,8 +1891,8 @@ namespace TownOfUsFusion
                 if (CustomGameOptions.PsychicOn > 0)
                     CrewmateInvestigativeRoles.Add((typeof(Psychic), CustomGameOptions.PsychicOn, false || CustomGameOptions.UniqueCrewInvestRoles));
 
-                if (CustomGameOptions.SpyOn > 0)
-                    CrewmateInvestigativeRoles.Add((typeof(Spy), CustomGameOptions.SpyOn, false || CustomGameOptions.UniqueCrewInvestRoles));
+                if (CustomGameOptions.OperativeOn > 0)
+                    CrewmateInvestigativeRoles.Add((typeof(Operative), CustomGameOptions.OperativeOn, false || CustomGameOptions.UniqueCrewInvestRoles));
 
                 if (CustomGameOptions.AltruistOn > 0)
                     CrewmateProtectiveRoles.Add((typeof(Altruist), CustomGameOptions.AltruistOn, false || CustomGameOptions.UniqueCrewProtectRoles));

@@ -2,7 +2,7 @@ using HarmonyLib;
 using TownOfUsFusion.Roles;
 using System.Linq;
 using TownOfUsFusion.CrewmateRoles.TrackerMod;
-using TownOfUsFusion.CrewmateRoles.SpyMod;
+using TownOfUsFusion.CrewmateRoles.OperativeMod;
 using TownOfUsFusion.Extensions;
 using UnityEngine;
 using Reactor.Utilities;
@@ -44,12 +44,12 @@ namespace TownOfUsFusion.ImpostorRoles.TraitorMod
 
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Traitor))
             {
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Spy))
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.Operative))
                 {
-                    var spyRole = Role.GetRole<Spy>(PlayerControl.LocalPlayer);
-                    spyRole.ImpArrows.DestroyAll();
-                    spyRole.SpyArrows.Values.DestroyAll();
-                    spyRole.SpyArrows.Clear();
+                    var operativeRole = Role.GetRole<Operative>(PlayerControl.LocalPlayer);
+                    operativeRole.ImpArrows.DestroyAll();
+                    operativeRole.OperativeArrows.Values.DestroyAll();
+                    operativeRole.OperativeArrows.Clear();
                     CompleteTask.Postfix(PlayerControl.LocalPlayer);
                 }
 
@@ -170,10 +170,10 @@ namespace TownOfUsFusion.ImpostorRoles.TraitorMod
                 Coroutines.Start(Utils.FlashCoroutine(Color.red, 3f));
             }
 
-            foreach (var spy in Role.GetRoles(RoleEnum.Spy))
+            foreach (var operative in Role.GetRoles(RoleEnum.Operative))
             {
-                var spyRole = (Spy)spy;
-                if (spyRole.TasksDone && PlayerControl.LocalPlayer.Is(RoleEnum.Spy) && CustomGameOptions.SpySeesTraitor)
+                var operativeRole = (Operative)operative;
+                if (operativeRole.TasksDone && PlayerControl.LocalPlayer.Is(RoleEnum.Operative) && CustomGameOptions.OperativeSeesTraitor)
                 {
                     var gameObj = new GameObject();
                     var arrow = gameObj.AddComponent<ArrowBehaviour>();
@@ -182,9 +182,9 @@ namespace TownOfUsFusion.ImpostorRoles.TraitorMod
                     renderer.sprite = Sprite;
                     arrow.image = renderer;
                     gameObj.layer = 5;
-                    spyRole.SpyArrows.Add(player.PlayerId, arrow);
+                    operativeRole.OperativeArrows.Add(player.PlayerId, arrow);
                 }
-                else if (spyRole.Revealed && PlayerControl.LocalPlayer.Is(RoleEnum.Traitor) && CustomGameOptions.SpySeesTraitor)
+                else if (operativeRole.Revealed && PlayerControl.LocalPlayer.Is(RoleEnum.Traitor) && CustomGameOptions.OperativeSeesTraitor)
                 {
                     var gameObj = new GameObject();
                     var arrow = gameObj.AddComponent<ArrowBehaviour>();
@@ -193,7 +193,7 @@ namespace TownOfUsFusion.ImpostorRoles.TraitorMod
                     renderer.sprite = Sprite;
                     arrow.image = renderer;
                     gameObj.layer = 5;
-                    spyRole.ImpArrows.Add(arrow);
+                    operativeRole.ImpArrows.Add(arrow);
                 }
             }
 

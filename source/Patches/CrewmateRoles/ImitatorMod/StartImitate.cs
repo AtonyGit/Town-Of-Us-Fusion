@@ -64,13 +64,13 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
             else if (imitatorRole == RoleEnum.Lookout) new Lookout(ImitatingPlayer);
             else if (imitatorRole == RoleEnum.Oracle) new Oracle(ImitatingPlayer);
             else if (imitatorRole == RoleEnum.Psychic) new Psychic(ImitatingPlayer);
-            else if (imitatorRole == RoleEnum.Spy)
+            else if (imitatorRole == RoleEnum.Operative)
             {
-                var spy = new Spy(ImitatingPlayer);
+                var operative = new Operative(ImitatingPlayer);
                 var taskinfos = ImitatingPlayer.Data.Tasks.ToArray();
                 var tasksLeft = taskinfos.Count(x => !x.Complete);
-                if (tasksLeft <= CustomGameOptions.SpyTasksRemaining && ((PlayerControl.LocalPlayer.Data.IsImpostor() && (!PlayerControl.LocalPlayer.Is(RoleEnum.Traitor) || CustomGameOptions.SpySeesTraitor))
-                            || (PlayerControl.LocalPlayer.Is(Faction.NeutralKilling) && CustomGameOptions.SpySeesNeutrals)))
+                if (tasksLeft <= CustomGameOptions.OperativeTasksRemaining && ((PlayerControl.LocalPlayer.Data.IsImpostor() && (!PlayerControl.LocalPlayer.Is(RoleEnum.Traitor) || CustomGameOptions.OperativeSeesTraitor))
+                            || (PlayerControl.LocalPlayer.Is(Faction.NeutralKilling) && CustomGameOptions.OperativeSeesNeutrals)))
                 {
                     var gameObj = new GameObject();
                     var arrow = gameObj.AddComponent<ArrowBehaviour>();
@@ -79,14 +79,14 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
                     renderer.sprite = Sprite;
                     arrow.image = renderer;
                     gameObj.layer = 5;
-                    spy.ImpArrows.Add(arrow);
+                    operative.ImpArrows.Add(arrow);
                 }
                 else if (tasksLeft == 0 && PlayerControl.LocalPlayer == ImitatingPlayer)
                 {
                     var impostors = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Data.IsImpostor());
                     foreach (var imp in impostors)
                     {
-                        if (!imp.Is(RoleEnum.Traitor) || CustomGameOptions.SpySeesTraitor)
+                        if (!imp.Is(RoleEnum.Traitor) || CustomGameOptions.OperativeSeesTraitor)
                         {
                             var gameObj = new GameObject();
                             var arrow = gameObj.AddComponent<ArrowBehaviour>();
@@ -95,7 +95,7 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
                             renderer.sprite = Sprite;
                             arrow.image = renderer;
                             gameObj.layer = 5;
-                            spy.SpyArrows.Add(imp.PlayerId, arrow);
+                            operative.OperativeArrows.Add(imp.PlayerId, arrow);
                         }
                     }
                 }

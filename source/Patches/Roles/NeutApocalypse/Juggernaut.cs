@@ -18,7 +18,7 @@ namespace TownOfUsFusion.Roles
             RoleType = RoleEnum.Juggernaut;
             AddToRoleHistory(RoleType);
             ImpostorText = () => "Your Power Grows With Every Kill";
-            TaskText = () => "With each kill your kill cooldown decreases\nFake Tasks:";
+            TaskText = () => "Each kill lowers your cooldown, turning you into Armaggeddon.\nFake Tasks:";
             Faction = Faction.NeutralApocalypse;
         }
 

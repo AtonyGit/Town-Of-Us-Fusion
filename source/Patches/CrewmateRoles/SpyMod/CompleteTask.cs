@@ -5,7 +5,7 @@ using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;
 using UnityEngine;
 
-namespace TownOfUsFusion.CrewmateRoles.SpyMod
+namespace TownOfUsFusion.CrewmateRoles.OperativeMod
 {
     [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CompleteTask))]
     public class CompleteTask
@@ -14,12 +14,12 @@ namespace TownOfUsFusion.CrewmateRoles.SpyMod
 
         public static void Postfix(PlayerControl __instance)
         {
-            if (!__instance.Is(RoleEnum.Spy)) return;
+            if (!__instance.Is(RoleEnum.Operative)) return;
             if (__instance.Data.IsDead) return;
             var taskinfos = __instance.Data.Tasks.ToArray();
 
             var tasksLeft = taskinfos.Count(x => !x.Complete);
-            var role = Role.GetRole<Spy>(__instance);
+            var role = Role.GetRole<Operative>(__instance);
             var localRole = Role.GetRole(PlayerControl.LocalPlayer);
             switch (tasksLeft)
             {
@@ -28,15 +28,15 @@ namespace TownOfUsFusion.CrewmateRoles.SpyMod
                 case 3:
                 case 4:
                 case 5:
-                    if (tasksLeft == CustomGameOptions.SpyTasksRemaining)
+                    if (tasksLeft == CustomGameOptions.OperativeTasksRemaining)
                     {
                         role.RegenTask();
-                        if (PlayerControl.LocalPlayer.Is(RoleEnum.Spy))
+                        if (PlayerControl.LocalPlayer.Is(RoleEnum.Operative))
                         {
                             Coroutines.Start(Utils.FlashCoroutine(role.Color));
                         }
-                        else if ((PlayerControl.LocalPlayer.Data.IsImpostor() && (!PlayerControl.LocalPlayer.Is(RoleEnum.Traitor) || CustomGameOptions.SpySeesTraitor))
-                            || (PlayerControl.LocalPlayer.Is(Faction.NeutralKilling) && CustomGameOptions.SpySeesNeutrals))
+                        else if ((PlayerControl.LocalPlayer.Data.IsImpostor() && (!PlayerControl.LocalPlayer.Is(RoleEnum.Traitor) || CustomGameOptions.OperativeSeesTraitor))
+                            || (PlayerControl.LocalPlayer.Is(Faction.NeutralKilling) && CustomGameOptions.OperativeSeesNeutrals))
                         {
                             Coroutines.Start(Utils.FlashCoroutine(role.Color));
                             var gameObj = new GameObject();
@@ -53,13 +53,13 @@ namespace TownOfUsFusion.CrewmateRoles.SpyMod
 
                 case 0:
                     role.RegenTask();
-                    if (PlayerControl.LocalPlayer.Is(RoleEnum.Spy))
+                    if (PlayerControl.LocalPlayer.Is(RoleEnum.Operative))
                     {
                         Coroutines.Start(Utils.FlashCoroutine(Color.green));
                         var impostors = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Data.IsImpostor());
                         foreach (var imp in impostors)
                         {
-                            if (!imp.Is(RoleEnum.Traitor) || CustomGameOptions.SpySeesTraitor)
+                            if (!imp.Is(RoleEnum.Traitor) || CustomGameOptions.OperativeSeesTraitor)
                             {
                                 var gameObj = new GameObject();
                                 var arrow = gameObj.AddComponent<ArrowBehaviour>();
@@ -68,11 +68,11 @@ namespace TownOfUsFusion.CrewmateRoles.SpyMod
                                 renderer.sprite = Sprite;
                                 arrow.image = renderer;
                                 gameObj.layer = 5;
-                                role.SpyArrows.Add(imp.PlayerId, arrow);
+                                role.OperativeArrows.Add(imp.PlayerId, arrow);
                             }
                         }
                     }
-                    else if (PlayerControl.LocalPlayer.Data.IsImpostor() || (PlayerControl.LocalPlayer.Is(Faction.NeutralKilling) && CustomGameOptions.SpySeesNeutrals))
+                    else if (PlayerControl.LocalPlayer.Data.IsImpostor() || (PlayerControl.LocalPlayer.Is(Faction.NeutralKilling) && CustomGameOptions.OperativeSeesNeutrals))
                     {
                         Coroutines.Start(Utils.FlashCoroutine(Color.green));
                     }

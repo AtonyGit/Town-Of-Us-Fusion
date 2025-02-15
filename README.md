@@ -29,7 +29,7 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 |                              | [Seer](#seer)                     |                                  | [Tiebreaker](#tiebreaker)    |
 |                              | [Sheriff](#sheriff)               |                                  | [Torch](#torch)              |
 |                              | [Snitch](#snitch)                 |                                  | [Underdog](#underdog)        |
-|                              | [Spy](#spy)                       |                                  |                              |
+|                              | [Operative](#operative)                       |                                  |                              |
 |                              | [Swapper](#swapper)               |                                  |                              |
 |                              | [Tracker](#tracker)               |                                  |                              |
 |                              | [Trapper](#trapper)               |                                  |                              |
@@ -249,7 +249,7 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
   <details>
   <summary> v4.0.3 </summary>
   <ul> <li>Compatibility with the new Among Us version v2023.2.28</li> </ul>
-  <ul> <li>New Setting: Who can see dead players on admin (under Spy)</li> </ul>
+  <ul> <li>New Setting: Who can see dead players on admin (under Operative)</li> </ul>
   <ul> <li>Bug Fix: Transporter and Glitch get everyone alive on their transport/mimic menus</li> </ul>
   <ul> <li>Bug Fix: Undertaker can no longer drag bodies to unreportable positions</li> </ul>
   <ul> <li>Bug Fix: Players can no longer infinitely vent in Hide & Seek</li> </ul>
@@ -620,7 +620,7 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
   <ul> <li> Fix for the disconnect issue</li> </ul>
   <ul> <li> Fix for the username placement </li> </ul>
   <ul> <li> Fix for the Medic  </li> </ul>
-  <ul> <li> Fix for the Spy </li> </ul>
+  <ul> <li> Fix for the Operative </li> </ul>
   <ul> <li> Fix for the Mayor </li> </ul>
   <ul> <li> Fix for the Arsonist </li> </ul>
   <ul> <li> Fix for the Assassin </li> </ul>
@@ -986,16 +986,16 @@ However, when they only have a single task left, the Impostors get an arrow poin
 | Snitch Sees Traitor | Whether the Snitch sees the Traitor | Toggle | True |
 
 -----------------------
-## Spy
+## Operative
 ### **Team: Crewmates**
 
-The Spy is a Crewmate that gains more information when on the Admin Table.\
-On Admin Table, the Spy can see the colors of every person on the map.
+The Operative is a Crewmate that gains more information when on the Admin Table.\
+On Admin Table, the Operative can see the colors of every person on the map.
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
-| Spy | The percentage probability of the Spy appearing | Percentage | 0% |
-| Who Sees Dead Bodies On Admin | Which players see dead bodies on the admin map | Nobody / Spy / Everyone But Spy / Everyone | Nobody |
+| Operative | The percentage probability of the Operative appearing | Percentage | 0% |
+| Who Sees Dead Bodies On Admin | Which players see dead bodies on the admin map | Nobody / Operative / Everyone But Operative / Everyone | Nobody |
 
 -----------------------
 ## Tracker
@@ -2124,7 +2124,7 @@ If you have any bugs or any need to contact me, join the [Discord Server](https:
 [TorchMod](https://github.com/tomozbot/TorchMod) - For the inspiration of the Torch modifier.\
 [XtraCube](https://github.com/XtraCube) - For the RainbowMod.\
 [PhasmoFireGod](https://twitch.tv/PhasmoFireGod) and [Ophidian](https://www.instagram.com/ixean.studio) - Button Art.\
-[TheOtherRoles](https://github.com/Eisbison/TheOtherRoles) - For the inspiration of the Vigilante, Tracker and Spy roles, as well as the Bait modifier.\
+[TheOtherRoles](https://github.com/Eisbison/TheOtherRoles) - For the inspiration of the Vigilante, Tracker and Operative roles, as well as the Bait modifier.\
 [5up](https://www.twitch.tv/5uppp) and the Submarine Team - For the inspiration of the Grenadier role.\
 [Guus](https://github.com/OhMyGuus) - For support for the old Among Us versions (v2021.11.9.5 and v2021.12.15).\
 [MyDragonBreath](https://github.com/MyDragonBreath) - For Submerged Compatibility, the Trapper and Aurial roles, the Aftermath modifier and support for the new Among Us versions (v2022.6.21, v2023.6.13 & v2023.7.12).\

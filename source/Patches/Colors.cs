@@ -14,7 +14,7 @@ namespace TownOfUsFusion.Patches
         public readonly static Color Swapper = new Color(0.4f, 0.9f, 0.4f, 1f);
         public readonly static Color Investigator = new Color(0f, 0.7f, 0.7f, 1f);
         public readonly static Color Medic = new Color(0f, 0.4f, 0f, 1f);
-        public readonly static Color Spy = new Color(0.8f, 0.64f, 0.8f, 1f);
+        public readonly static Color Operative = new Color(0.8f, 0.64f, 0.8f, 1f);
         public readonly static Color Altruist = new Color(0.4f, 0f, 0f, 1f);
         public readonly static Color Vigilante = new Color(1f, 1f, 0.6f, 1f);
         public readonly static Color Veteran = new Color(0.6f, 0.5f, 0.25f, 1f);

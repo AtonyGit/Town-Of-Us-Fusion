@@ -139,13 +139,13 @@ namespace TownOfUsFusion.CrewmateRoles.ImitatorMod
                     medRole.BodyArrows.Clear();
                 }
 
-                if (StartImitate.ImitatingPlayer.Is(RoleEnum.Spy))
+                if (StartImitate.ImitatingPlayer.Is(RoleEnum.Operative))
                 {
-                    var spyRole = Role.GetRole<Spy>(StartImitate.ImitatingPlayer);
-                    spyRole.SpyArrows.Values.DestroyAll();
-                    spyRole.SpyArrows.Clear();
-                    spyRole.ImpArrows.DestroyAll();
-                    spyRole.ImpArrows.Clear();
+                    var operativeRole = Role.GetRole<Operative>(StartImitate.ImitatingPlayer);
+                    operativeRole.OperativeArrows.Values.DestroyAll();
+                    operativeRole.OperativeArrows.Clear();
+                    operativeRole.ImpArrows.DestroyAll();
+                    operativeRole.ImpArrows.Clear();
                 }
 
                 if (StartImitate.ImitatingPlayer.Is(RoleEnum.Jailor))

@@ -3,7 +3,7 @@ using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;
 using TownOfUsFusion.Roles.Modifiers;
 
-namespace TownOfUsFusion.CrewmateRoles.SpyMod
+namespace TownOfUsFusion.CrewmateRoles.OperativeMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class HighlightImpostors
@@ -18,9 +18,9 @@ namespace TownOfUsFusion.CrewmateRoles.SpyMod
                     var role = Role.GetRole(player);
                     if (player.Is(Faction.Impostors) && !player.Is(RoleEnum.Traitor))
                         state.NameText.color = Palette.ImpostorRed;
-                    else if (player.Is(RoleEnum.Traitor) && CustomGameOptions.SpySeesTraitor)
+                    else if (player.Is(RoleEnum.Traitor) && CustomGameOptions.OperativeSeesTraitor)
                         state.NameText.color = Palette.ImpostorRed;
-                    if (player.Is(Faction.NeutralKilling) && CustomGameOptions.SpySeesNeutrals)
+                    if (player.Is(Faction.NeutralKilling) && CustomGameOptions.OperativeSeesNeutrals)
                         state.NameText.color = role.Color;
                 }
             }
@@ -28,10 +28,10 @@ namespace TownOfUsFusion.CrewmateRoles.SpyMod
 
         public static void Postfix(HudManager __instance)
         {
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Spy)) return;
-            var role = Role.GetRole<Spy>(PlayerControl.LocalPlayer);
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Operative)) return;
+            var role = Role.GetRole<Operative>(PlayerControl.LocalPlayer);
             if (!role.TasksDone) return;
-            if (MeetingHud.Instance && CustomGameOptions.SpySeesImpInMeeting) UpdateMeeting(MeetingHud.Instance);
+            if (MeetingHud.Instance && CustomGameOptions.OperativeSeesImpInMeeting) UpdateMeeting(MeetingHud.Instance);
 
             if (!PlayerControl.LocalPlayer.IsHypnotised())
             {
@@ -43,14 +43,14 @@ namespace TownOfUsFusion.CrewmateRoles.SpyMod
                         if (player.Is(ModifierEnum.Shy)) colour.a = Modifier.GetModifier<Shy>(player).Opacity;
                         player.nameText().color = colour;
                     }
-                    else if (player.Is(RoleEnum.Traitor) && CustomGameOptions.SpySeesTraitor)
+                    else if (player.Is(RoleEnum.Traitor) && CustomGameOptions.OperativeSeesTraitor)
                     {
                         var colour = Palette.ImpostorRed;
                         if (player.Is(ModifierEnum.Shy)) colour.a = Modifier.GetModifier<Shy>(player).Opacity;
                         player.nameText().color = colour;
                     }
                     var playerRole = Role.GetRole(player);
-                    if (playerRole.Faction == Faction.NeutralKilling && CustomGameOptions.SpySeesNeutrals)
+                    if (playerRole.Faction == Faction.NeutralKilling && CustomGameOptions.OperativeSeesNeutrals)
                     {
                         var colour = playerRole.Color;
                         if (player.Is(ModifierEnum.Shy)) colour.a = Modifier.GetModifier<Shy>(player).Opacity;

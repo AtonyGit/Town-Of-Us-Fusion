@@ -33,7 +33,7 @@ namespace TownOfUsFusion.Roles
         {
             Name = "Soul Collector";
             ImpostorText = () => "Collect Souls";
-            TaskText = () => "Collect souls to win the game";
+            TaskText = () => "Collect souls to become Death.\nFake Tasks:";
             Color = Patches.Colors.Apocalypse;
             AbilitySprite = TownOfUsFusion.CollectSprite;
             AbilityText = "Collect";

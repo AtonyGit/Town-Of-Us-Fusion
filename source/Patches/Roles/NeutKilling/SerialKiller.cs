@@ -15,7 +15,7 @@ namespace TownOfUsFusion.Roles
             Name = "Serial Killer";
             ImpostorText = () => "Hunt Down Your Targets";
             TaskText = () => 
-                Target == null ? "Kill your given targets for a reduced kill cooldown" : "Hunt Down " + Target.GetDefaultOutfit().PlayerName;
+                Target == null ? "Kill your given targets for a reduced kill cooldown\nFake Tasks:" : "Hunt Down " + Target.GetDefaultOutfit().PlayerName + "\nFake Tasks:";
             Color = Patches.Colors.SerialKiller;
             AbilitySprite = TownOfUsFusion.SkKill;
             AbilityText = "Kill";
