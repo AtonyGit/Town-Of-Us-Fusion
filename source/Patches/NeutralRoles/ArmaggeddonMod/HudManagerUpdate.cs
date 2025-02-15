@@ -15,10 +15,6 @@ namespace TownOfUsFusion.NeutralRoles.ArmaggeddonMod
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Armaggeddon)) return;
             var role = Role.GetRole<Armaggeddon>(PlayerControl.LocalPlayer);
 
-            __instance.KillButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-
             __instance.KillButton.SetCoolDown(role.KillTimer(), CustomGameOptions.ArmKillCd);
 
             var notApocTeam = PlayerControl.AllPlayerControls.ToArray()

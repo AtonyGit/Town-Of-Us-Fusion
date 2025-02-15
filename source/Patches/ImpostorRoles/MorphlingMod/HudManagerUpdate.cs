@@ -18,22 +18,12 @@ namespace TownOfUsFusion.ImpostorRoles.MorphlingMod
             if (PlayerControl.LocalPlayer.Data == null) return;
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Morphling)) return;
             var role = Role.GetRole<Morphling>(PlayerControl.LocalPlayer);
-            if (role.MorphButton == null)
-            {
-                role.MorphButton = Object.Instantiate(__instance.KillButton, __instance.KillButton.transform.parent);
-                role.MorphButton.graphic.enabled = true;
-                role.MorphButton.graphic.sprite = SampleSprite;
-                role.MorphButton.gameObject.SetActive(false);
-            }
 
             if (role.MorphButton.graphic.sprite != SampleSprite && role.MorphButton.graphic.sprite != MorphSprite)
                 role.MorphButton.graphic.sprite = SampleSprite;
 
             if (PlayerControl.LocalPlayer.Data.IsDead) role.MorphButton.SetTarget(null);
 
-            role.MorphButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
             if (role.MorphButton.graphic.sprite == SampleSprite)
             {
                 role.MorphButton.buttonLabelText.text = "Sample";

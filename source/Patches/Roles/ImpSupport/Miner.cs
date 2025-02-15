@@ -18,6 +18,9 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "From The Top, Make It Drop, That's A Vent";
             TaskText = () => "Place vents around the map";
             Color = Patches.Colors.Impostor;
+            AbilityText = "Kill";
+            SecondAbilitySprite = TownOfUsFusion.MineSprite;
+            SecondAbilityText = "Mine";
             LastMined = DateTime.UtcNow;
             RoleType = RoleEnum.Miner;
             AddToRoleHistory(RoleType);

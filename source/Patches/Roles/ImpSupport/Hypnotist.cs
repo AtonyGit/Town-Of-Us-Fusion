@@ -21,6 +21,9 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Hypnotize Crewmates";
             TaskText = () => "Hypnotize crewmates and drive them insane";
             Color = Patches.Colors.Impostor;
+            AbilityText = "Kill";
+            SecondAbilitySprite = TownOfUsFusion.HypnotiseSprite;
+            SecondAbilityText = "Hypnotise";
             LastHypnotised = DateTime.UtcNow;
             RoleType = RoleEnum.Hypnotist;
             AddToRoleHistory(RoleType);

@@ -22,12 +22,6 @@ namespace TownOfUsFusion.CrewmateRoles.LookoutMod
             var role = Role.GetRole<Lookout>(PlayerControl.LocalPlayer);
 
 
-            if (role.PerceptButton == null)
-            {
-                role.PerceptButton = Object.Instantiate(__instance.KillButton, __instance.KillButton.transform.parent);
-                role.PerceptButton.graphic.enabled = true;
-                role.PerceptButton.gameObject.SetActive(false);
-            }
             if (role.PerceptDummyButton == null)
             {
                 role.PerceptDummyButton = Object.Instantiate(__instance.AbilityButton, __instance.AbilityButton.transform.parent);
@@ -45,22 +39,11 @@ namespace TownOfUsFusion.CrewmateRoles.LookoutMod
                 role.PerceptDummyButton.usesRemainingText.transform.localPosition -= new Vector3(5f, 0f, 0f);
                 role.PerceptDummyButton.usesRemainingSprite.transform.localPosition -= new Vector3(5f, 0f, 0f);
 
-            role.PerceptButton.graphic.sprite = TownOfUsFusion.PerceptSprite;
-            role.PerceptButton.buttonLabelText.text = "Eagle Eye";
-            role.PerceptButton.buttonLabelText.SetOutlineColor(role.Color);
             role.PerceptButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
-
-            role.PerceptButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
 
                 role.PerceptDummyButton.SetUsesRemaining(role.PerceptUsesLeft);
                 role.PerceptDummyButton.usesRemainingText.text = role.PerceptUsesLeft.ToString();
                 
-            watchButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-
             if (role.WatchDummyButton == null)
             {
                 role.WatchDummyButton = Object.Instantiate(__instance.AbilityButton, __instance.AbilityButton.transform.parent);

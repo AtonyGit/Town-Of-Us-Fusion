@@ -16,6 +16,9 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Silence Crewmates During Meetings";
             TaskText = () => "Silence a crewmate for the next meeting";
             Color = Patches.Colors.Impostor;
+            AbilityText = "Kill";
+            SecondAbilitySprite = TownOfUsFusion.BlackmailSprite;
+            SecondAbilityText = "Blackmail";
             LastBlackmailed = DateTime.UtcNow;
             RoleType = RoleEnum.Blackmailer;
             AddToRoleHistory(RoleType);

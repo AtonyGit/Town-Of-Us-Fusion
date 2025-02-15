@@ -42,6 +42,8 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Choose Two Players To Swap Locations";
             TaskText = () => "Choose two players to swap locations";
             Color = Colors.Transporter;
+            AbilitySprite = TownOfUsFusion.TransportSprite;
+            AbilityText = "Transport";
             LastTransported = DateTime.UtcNow;
             RoleType = RoleEnum.Transporter;
             AddToRoleHistory(RoleType);

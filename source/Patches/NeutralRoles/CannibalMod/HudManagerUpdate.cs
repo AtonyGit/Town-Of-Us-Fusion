@@ -85,11 +85,6 @@ public class HudManagerUpdate
             }
         }
 
-        /*__instance.KillButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-        KillButtonTarget.SetTarget(killButton, closestBody, role);
-        __instance.KillButton.SetCoolDown(0f, 1f);*/
     }
 }
 }

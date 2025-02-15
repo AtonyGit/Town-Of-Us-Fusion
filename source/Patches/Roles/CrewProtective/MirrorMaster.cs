@@ -49,6 +49,8 @@ namespace TownOfUsFusion.Roles
             Color = Patches.Colors.MirrorMaster;
             AbilitySprite = TownOfUsFusion.MirrorUnleashSprite;
             AbilityText = "Unleash";
+            SecondAbilitySprite = TownOfUsFusion.MirrorAbsorbSprite;
+            SecondAbilityText = "Absorb";
             StartingCooldown = DateTime.UtcNow;
             LastUnleashed = DateTime.UtcNow;
             RoleType = RoleEnum.MirrorMaster;

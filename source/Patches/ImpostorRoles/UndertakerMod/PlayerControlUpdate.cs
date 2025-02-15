@@ -16,25 +16,12 @@ namespace TownOfUsFusion.ImpostorRoles.UndertakerMod
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Undertaker)) return;
 
             var role = Role.GetRole<Undertaker>(PlayerControl.LocalPlayer);
-            if (role.DragDropButton == null)
-            {
-                role.DragDropButton = Object.Instantiate(__instance.KillButton, __instance.KillButton.transform.parent);
-                role.DragDropButton.graphic.enabled = true;
-                role.DragDropButton.graphic.sprite = TownOfUsFusion.DragSprite;
-                role.DragDropButton.gameObject.SetActive(false);
-            }
             if (role.DragDropButton.graphic.sprite != TownOfUsFusion.DragSprite &&
                 role.DragDropButton.graphic.sprite != TownOfUsFusion.DropSprite)
                 role.DragDropButton.graphic.sprite = TownOfUsFusion.DragSprite;
-                role.DragDropButton.buttonLabelText.text = "Drag";
 
             if (role.DragDropButton.graphic.sprite == TownOfUsFusion.DropSprite && role.CurrentlyDragging == null)
                 role.DragDropButton.graphic.sprite = TownOfUsFusion.DragSprite;
-
-            role.DragDropButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-
 
             if (role.DragDropButton.graphic.sprite == TownOfUsFusion.DragSprite)
             {

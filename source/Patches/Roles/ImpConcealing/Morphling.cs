@@ -22,6 +22,8 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Transform Into Crewmates";
             TaskText = () => "Morph into crewmates to be disguised";
             Color = Patches.Colors.Impostor;
+            SecondAbilitySprite = TownOfUsFusion.SampleSprite;
+            SecondAbilityText = "Sample";
             LastMorphed = DateTime.UtcNow;
             RoleType = RoleEnum.Morphling;
             AddToRoleHistory(RoleType);

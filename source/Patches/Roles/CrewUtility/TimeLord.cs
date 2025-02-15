@@ -13,6 +13,8 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Rewind Time";
             TaskText = () => "Rewind Time!";
             Color = Colors.TimeLord;
+            AbilitySprite = TownOfUsFusion.RewindSprite;
+            AbilityText = "Rewind";
             RoleType = RoleEnum.TimeLord;
             Scale = 1.4f;
         }

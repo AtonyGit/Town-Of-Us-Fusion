@@ -17,12 +17,6 @@ namespace TownOfUsFusion.ImpostorRoles.GrenadierMod
             if (PlayerControl.LocalPlayer.Data == null) return;
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Grenadier)) return;
             var role = Role.GetRole<Grenadier>(PlayerControl.LocalPlayer);
-            if (role.FlashButton == null)
-            {
-                role.FlashButton = Object.Instantiate(__instance.KillButton, __instance.KillButton.transform.parent);
-                role.FlashButton.graphic.enabled = true;
-                role.FlashButton.gameObject.SetActive(false);
-            }
 
             if (CustomGameOptions.GrenadierIndicators) {
                 foreach (var player in PlayerControl.AllPlayerControls)
@@ -42,12 +36,6 @@ namespace TownOfUsFusion.ImpostorRoles.GrenadierMod
                     }
                 }
             }
-
-            role.FlashButton.graphic.sprite = FlashSprite;
-            role.FlashButton.buttonLabelText.text = "Flash";
-            role.FlashButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
 
             if (role.Flashed)
             {

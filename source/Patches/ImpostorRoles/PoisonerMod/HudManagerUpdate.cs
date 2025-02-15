@@ -21,20 +21,7 @@ namespace TownOfUsFusion.ImpostorRoles.PoisonerMod
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
             var role = Role.GetRole<Poisoner>(PlayerControl.LocalPlayer);
-            if (role.PoisonButton == null) {
-                role.PoisonButton = Object.Instantiate(__instance.KillButton, __instance.KillButton.transform.parent);
-                role.PoisonButton.graphic.enabled = true;
-                role.PoisonButton.graphic.sprite = PoisonSprite;
-                role.PoisonButton.buttonLabelText.text = "Poison";
-                role.PoisonButton.gameObject.SetActive(false);
-            }
 
-            //role.PoisonButton.gameObject.SetActive(!PlayerControl.LocalPlayer.Data.IsDead && !MeetingHud.Instance);
-
-            role.PoisonButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-            //__instance.KillButton.Hide();
             
             var position = __instance.KillButton.transform.localPosition;
             __instance.ImpostorVentButton.transform.localPosition = new Vector3(position.x - 2f, position.y, position.z);

@@ -39,6 +39,8 @@ namespace TownOfUsFusion.Roles
             Color = Patches.Colors.Lookout;
             AbilitySprite = TownOfUsFusion.WatchSprite;
             AbilityText = "Watch";
+            SecondAbilitySprite = TownOfUsFusion.PerceptSprite;
+            SecondAbilityText = "Eagle Eye";
             LastWatched = DateTime.UtcNow;
             RoleType = RoleEnum.Lookout;
             AddToRoleHistory(RoleType);

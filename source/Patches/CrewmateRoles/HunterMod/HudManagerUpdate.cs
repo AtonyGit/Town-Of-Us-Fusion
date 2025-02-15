@@ -35,30 +35,10 @@ namespace TownOfUsFusion.CrewmateRoles.HunterMod
                 }
             }
 
-            if (role.StalkButton == null)
-            {
-                role.StalkButton = Object.Instantiate(__instance.KillButton, __instance.KillButton.transform.parent);
-                role.StalkButton.graphic.enabled = true;
-                role.StalkButton.gameObject.SetActive(false);
-            }
-
-            role.StalkButton.graphic.sprite = StalkSprite;
-            role.StalkButton.buttonLabelText.text = "Stalk";
-            role.StalkButton.buttonLabelText.SetOutlineColor(role.Color);
             role.StalkButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
 
             if (PlayerControl.LocalPlayer.Data.IsDead) role.StalkButton.SetTarget(null);
 
-            role.StalkButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-            
-                /*role.StalkButton.usesRemainingSprite.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-                role.StalkButton.usesRemainingText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);*/
             if (role.DummyButton == null)
             {
                 role.DummyButton = Object.Instantiate(__instance.AbilityButton, __instance.AbilityButton.transform.parent);
@@ -106,9 +86,6 @@ namespace TownOfUsFusion.CrewmateRoles.HunterMod
                 role.StalkButton.buttonLabelText.material.SetFloat("_Desat", 1f);
             }
 
-            __instance.KillButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
             __instance.KillButton.SetCoolDown(role.HunterKillTimer(), CustomGameOptions.HunterKillCd);
             if ((CamouflageUnCamouflage.IsCamoed && CustomGameOptions.CamoCommsKillAnyone) || PlayerControl.LocalPlayer.IsHypnotised()) Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton, float.NaN, role.CaughtPlayers);
             else if (role.Player.IsLover()) Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton, float.NaN, role.CaughtPlayers.Where(x => !x.IsLover()).ToList());

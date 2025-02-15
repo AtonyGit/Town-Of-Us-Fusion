@@ -17,18 +17,6 @@ namespace TownOfUsFusion.ImpostorRoles.MinerMod
             if (PlayerControl.LocalPlayer.Data == null) return;
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Miner)) return;
             var role = Role.GetRole<Miner>(PlayerControl.LocalPlayer);
-            if (role.MineButton == null)
-            {
-                role.MineButton = Object.Instantiate(__instance.KillButton, __instance.KillButton.transform.parent);
-                role.MineButton.graphic.enabled = true;
-                role.MineButton.gameObject.SetActive(false);
-            }
-
-            role.MineButton.graphic.sprite = MineSprite;
-            role.MineButton.buttonLabelText.text = "Mine";
-            role.MineButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
 
             role.MineButton.SetCoolDown(role.MineTimer(), CustomGameOptions.MineCd);
             var hits = Physics2D.OverlapBoxAll(PlayerControl.LocalPlayer.transform.position, role.VentSize, 0);

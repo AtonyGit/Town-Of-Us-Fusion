@@ -19,50 +19,11 @@ namespace TownOfUsFusion
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class KillButtonSprite
     {
-        private static Sprite Fix => TownOfUsFusion.EngineerFix;
-        private static Sprite Rewind => TownOfUsFusion.RewindSprite;
-        private static Sprite SoulSwap => TownOfUsFusion.SoulSwapSprite;
-        private static Sprite EngiVent => TownOfUsFusion.EngineerVent;
-        private static Sprite Medic => TownOfUsFusion.MedicSprite;
-        private static Sprite Psychic => TownOfUsFusion.PsychicSprite;
-        private static Sprite Douse => TownOfUsFusion.DouseSprite;
-        private static Sprite Revive => TownOfUsFusion.ReviveSprite;
-        private static Sprite Alert => TownOfUsFusion.AlertSprite;
-        private static Sprite Remember => TownOfUsFusion.RememberSprite;
-        private static Sprite Track => TownOfUsFusion.TrackSprite;
-        private static Sprite Transport => TownOfUsFusion.TransportSprite;
-        private static Sprite Mediate => TownOfUsFusion.MediateSprite;
-        private static Sprite Vest => TownOfUsFusion.VestSprite;
-        private static Sprite Protect => TownOfUsFusion.ProtectSprite;
-        private static Sprite Infect => TownOfUsFusion.InfectSprite;
-        private static Sprite Trap => TownOfUsFusion.TrapSprite;
-        private static Sprite Autopsy => TownOfUsFusion.AutopsySprite;
-        private static Sprite Observe => TownOfUsFusion.ObserveSprite;
-        private static Sprite Bite => TownOfUsFusion.BiteSprite;
-        private static Sprite Guard => TownOfUsFusion.GuardSprite;
-        private static Sprite Unleash => TownOfUsFusion.MirrorUnleashSprite;
-        private static Sprite Campaign => TownOfUsFusion.CampaignSprite;
-        private static Sprite Fortify => TownOfUsFusion.BlessSprite;
-        private static Sprite Jail => TownOfUsFusion.JailSprite;
-        private static Sprite Collect => TownOfUsFusion.CollectSprite;
-        private static Sprite Watch => TownOfUsFusion.WatchSprite;
-        private static Sprite Camp => TownOfUsFusion.CampSprite;
-        private static Sprite Consume => TownOfUsFusion.ConsumeSprite;
-
         private static Sprite Kill;
-        private static Sprite SheriffKill => TownOfUsFusion.SheriffKill;
-        private static Sprite SkKill => TownOfUsFusion.SkKill;
-        private static Sprite SkVent => TownOfUsFusion.SkVent;
-        private static Sprite WerewolfKill => TownOfUsFusion.WerewolfKill;
-        private static Sprite GlitchKill => TownOfUsFusion.GlitchKill;
-        private static Sprite WerewolfVent => TownOfUsFusion.WerewolfVent;
-        private static Sprite GlitchVent => TownOfUsFusion.GlitchVent;
-        private static Sprite VampireVent => TownOfUsFusion.VampireVent;
-        private static Sprite JesterVent => TownOfUsFusion.JesterVent;
-
 
         public static void Postfix(HudManager __instance)
         {
+            var role = Role.GetRole(PlayerControl.LocalPlayer);
             if (__instance.KillButton == null) return;
 
             if (!Kill) Kill = __instance.KillButton.graphic.sprite;
@@ -91,13 +52,11 @@ namespace TownOfUsFusion
                     if (curRole.AbilitySprite != null) button.graphic.sprite = curRole.AbilitySprite;
                     if (curRole.AbilityText != null) button.buttonLabelText.text = curRole.AbilityText;
                     if (curRole.VentSprite != null) vent.graphic.sprite = curRole.VentSprite;
-                    flag = true;
                     button.transform.localPosition = new Vector3(0f, 1f, 0f);
                     break;
                 case RoleEnum.Investigator:
                 case RoleEnum.Arsonist:
                     otherButtonKills = true;
-                    flag = true;
                     button.buttonLabelText.SetOutlineColor(curRole.Color);
                     vent.buttonLabelText.SetOutlineColor(curRole.Color);
                     if (curRole.AbilitySprite != null) button.graphic.sprite = curRole.AbilitySprite;
@@ -109,12 +68,12 @@ namespace TownOfUsFusion
                 case null:
                     break;
                 default:
+                    if (curRole.AbilitySprite != null || curRole.AbilityText != null) flag = true;
                     button.buttonLabelText.SetOutlineColor(curRole.Color);
                     vent.buttonLabelText.SetOutlineColor(curRole.Color);
                     if (curRole.AbilitySprite != null) button.graphic.sprite = curRole.AbilitySprite;
                     if (curRole.AbilityText != null) button.buttonLabelText.text = curRole.AbilityText;
                     if (curRole.VentSprite != null) vent.graphic.sprite = curRole.VentSprite;
-                    if (curRole.AbilitySprite != null || curRole.AbilityText != null) flag = true;
                     if (!PlayerControl.LocalPlayer.Is(Faction.Impostors) &&
                         GameOptionsManager.Instance.CurrentGameOptions.GameMode != GameModes.HideNSeek)
                     {
@@ -144,7 +103,6 @@ namespace TownOfUsFusion
             if ((KillKey || controller) && button != null && flag && !PlayerControl.LocalPlayer.Data.IsDead)
                 button.DoClick();
 
-            var role = Role.GetRole(PlayerControl.LocalPlayer);
             bool AbilityKey = Rewired.ReInput.players.GetPlayer(0).GetButtonDown("ActionSecondary");
             if (!otherButtonKills) AbilityKey = Rewired.ReInput.players.GetPlayer(0).GetButtonDown("ActionQuaternary");
             if (role?.ExtraButtons != null && AbilityKey && !PlayerControl.LocalPlayer.Data.IsDead)
@@ -161,6 +119,28 @@ namespace TownOfUsFusion
                      !PlayerControl.LocalPlayer.Data.IsDead)
             {
                 Modifier.GetModifier<Disperser>(PlayerControl.LocalPlayer).DisperseButton.DoClick();
+            }
+
+            if (role.AbilitySprite != null || role.AbilityText != null) 
+            __instance.KillButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+            //if (role.AbilitySprite != null) __instance.KillButton.graphic.sprite = role.AbilitySprite;
+            //if (role.AbilityText != null) __instance.KillButton.buttonLabelText.text = role.AbilityText;
+
+            if (role?.ExtraButtons != null) {
+                if (role.ExtraButtons[0] == null)
+                {
+                    role.ExtraButtons[0] = Object.Instantiate(__instance.KillButton, __instance.KillButton.transform.parent);
+                    role.ExtraButtons[0].graphic.enabled = true;
+                    role.ExtraButtons[0].gameObject.SetActive(false);
+                }
+                    if (role.SecondAbilitySprite != null) role.ExtraButtons[0].graphic.sprite = role.SecondAbilitySprite;
+                    if (role.SecondAbilityText != null) role.ExtraButtons[0].buttonLabelText.text = role.SecondAbilityText;
+                    role.ExtraButtons[0].buttonLabelText.SetOutlineColor(role.Color);
+                    role.ExtraButtons[0].gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                            && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
+                            && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
             }
         }
 

@@ -37,26 +37,10 @@ namespace TownOfUsFusion.NeutralRoles.ArsonistMod
                 }
             }
 
-            if (role.IgniteButton == null)
-            {
-                role.IgniteButton = Object.Instantiate(__instance.KillButton, __instance.KillButton.transform.parent);
-                role.IgniteButton.graphic.enabled = true;
-                role.IgniteButton.gameObject.SetActive(false);
-            }
-
-            role.IgniteButton.graphic.sprite = IgniteSprite;
-            role.IgniteButton.buttonLabelText.text = "Ignite";
-            role.IgniteButton.buttonLabelText.SetOutlineColor(role.Color);
             role.IgniteButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
 
             if (PlayerControl.LocalPlayer.Data.IsDead) role.IgniteButton.SetTarget(null);
 
-            __instance.KillButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-            role.IgniteButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
             if (!role.LastKiller || !CustomGameOptions.IgniteCdRemoved) role.IgniteButton.SetCoolDown(role.DouseTimer(), CustomGameOptions.DouseCd);
             else role.IgniteButton.SetCoolDown(0f, CustomGameOptions.DouseCd);
             if (role.DousedAlive < CustomGameOptions.MaxDoused)

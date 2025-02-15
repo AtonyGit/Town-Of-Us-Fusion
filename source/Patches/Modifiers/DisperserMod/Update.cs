@@ -34,6 +34,7 @@ namespace TownOfUsFusion.Modifiers.DisperserMod
 
             role.DisperseButton.graphic.sprite = DisperseButton;
             role.DisperseButton.buttonLabelText.text = "Disperse";
+            role.DisperseButton.buttonLabelText.SetOutlineColor(role.Color);
 
             role.DisperseButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead

@@ -19,6 +19,9 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Poison A Player To Kill Them Within Seconds";
             TaskText = () => "Poison the crewmates";
             Color = Palette.ImpostorRed;
+            AbilityText = "Kill";
+            SecondAbilitySprite = TownOfUsFusion.PoisonSprite;
+            SecondAbilityText = "Poison";
             LastPoisoned = DateTime.UtcNow;
             RoleType = RoleEnum.Poisoner;
             AddToRoleHistory(RoleType);

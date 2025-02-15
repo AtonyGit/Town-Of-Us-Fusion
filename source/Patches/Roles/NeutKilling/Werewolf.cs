@@ -24,6 +24,8 @@ namespace TownOfUsFusion.Roles
             Color = Patches.Colors.Werewolf;
             AbilitySprite = TownOfUsFusion.WerewolfKill;
             AbilityText = "Kill";
+            SecondAbilitySprite = TownOfUsFusion.RampageSprite;
+            SecondAbilityText = "Rampage";
             VentSprite = TownOfUsFusion.WerewolfVent;
             LastRampaged = DateTime.UtcNow;
             LastKilled = DateTime.UtcNow;

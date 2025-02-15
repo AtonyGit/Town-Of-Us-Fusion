@@ -38,16 +38,6 @@ namespace TownOfUsFusion.NeutralRoles.SoulCollectorMod
                 }
             }
 
-            if (role.ReapButton == null)
-            {
-                role.ReapButton = Object.Instantiate(__instance.KillButton, __instance.KillButton.transform.parent);
-                role.ReapButton.graphic.enabled = true;
-                role.ReapButton.gameObject.SetActive(false);
-            }
-
-            role.ReapButton.graphic.sprite = ReapSprite;
-            role.ReapButton.buttonLabelText.text = "Reap";
-            role.ReapButton.buttonLabelText.SetOutlineColor(role.Color);
             role.ReapButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
 /*
             if (role.CollectedText == null)
@@ -69,13 +59,7 @@ namespace TownOfUsFusion.NeutralRoles.SoulCollectorMod
             }*/
 
             if (PlayerControl.LocalPlayer.Data.IsDead) role.ReapButton.SetTarget(null);
-
-            __instance.KillButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-            role.ReapButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
+            
             if (role.DummyButton == null)
             {
                 role.DummyButton = Object.Instantiate(__instance.AbilityButton, __instance.AbilityButton.transform.parent);

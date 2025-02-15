@@ -16,18 +16,6 @@ namespace TownOfUsFusion.ImpostorRoles.JanitorMod
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Janitor)) return;
 
             var role = Role.GetRole<Janitor>(PlayerControl.LocalPlayer);
-            if (role.CleanButton == null)
-            {
-                role.CleanButton = Object.Instantiate(__instance.KillButton, __instance.KillButton.transform.parent);
-                role.CleanButton.graphic.enabled = true;
-                role.CleanButton.gameObject.SetActive(false);
-            }
-
-            role.CleanButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-            role.CleanButton.graphic.sprite = TownOfUsFusion.JanitorClean;
-            role.CleanButton.buttonLabelText.text = "Clean";
 
             var data = PlayerControl.LocalPlayer.Data;
             var isDead = data.IsDead;

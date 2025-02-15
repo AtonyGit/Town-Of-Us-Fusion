@@ -61,8 +61,10 @@ namespace TownOfUsFusion.Roles
         protected internal Color Color { get; set; }
         protected internal RoleEnum RoleType { get; set; }
         protected internal Sprite AbilitySprite { get; set; }
-        protected internal Sprite VentSprite { get; set; }
         protected internal string AbilityText { get; set; }
+        protected internal Sprite SecondAbilitySprite { get; set; }
+        protected internal string SecondAbilityText { get; set; }
+        protected internal Sprite VentSprite { get; set; }
         protected internal DeathReasonEnum DeathReason { get; set; } = DeathReasonEnum.Alive;
         protected internal string KilledBy { get; set; } = "";
         protected internal int TasksLeft => Player.Data.Tasks.ToArray().Count(x => !x.Complete);

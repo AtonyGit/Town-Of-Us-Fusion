@@ -18,6 +18,9 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "With Each Kill Your Ability Becomes Stronger";
             TaskText = () => "Kill players to unlock ability perks";
             Color = Patches.Colors.Impostor;
+            AbilityText = "Kill";
+            SecondAbilitySprite = TownOfUsFusion.NoAbilitySprite;
+            SecondAbilityText = "Use";
             LastCamouflaged = DateTime.UtcNow;
             RoleType = RoleEnum.Venerer;
             AddToRoleHistory(RoleType);

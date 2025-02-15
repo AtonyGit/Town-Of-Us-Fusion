@@ -39,6 +39,8 @@ namespace TownOfUsFusion.Roles
             Color = Patches.Colors.Inquisitor;
             AbilitySprite = TownOfUsFusion.InquisKill;
             AbilityText = "Vanquish";
+            SecondAbilitySprite = TownOfUsFusion.ObserveSprite;
+            SecondAbilityText = "Inquire";
             RoleType = RoleEnum.Inquisitor;
             AddToRoleHistory(RoleType);
             Faction = Faction.NeutralChaos;

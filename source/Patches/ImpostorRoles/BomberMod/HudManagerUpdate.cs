@@ -18,17 +18,6 @@ namespace TownOfUsFusion.ImpostorRoles.BomberMod
             if (PlayerControl.LocalPlayer.Data == null) return;
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Bomber)) return;
             var role = Role.GetRole<Bomber>(PlayerControl.LocalPlayer);
-            if (role.PlantButton == null)
-            {
-                role.PlantButton = Object.Instantiate(__instance.KillButton, __instance.KillButton.transform.parent);
-                role.PlantButton.graphic.enabled = true;
-                role.PlantButton.graphic.sprite = PlantSprite;
-                role.PlantButton.gameObject.SetActive(false);
-            }
-
-            role.PlantButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
 
             if (role.Detonating)
             {

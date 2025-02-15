@@ -22,11 +22,6 @@ namespace TownOfUsFusion.NeutralRoles.SerialKillerMod
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.SerialKiller)) return;
             var role = Role.GetRole<SerialKiller>(PlayerControl.LocalPlayer);
 
-            __instance.KillButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-            __instance.KillButton.SetCoolDown(role.KillTimer(), CustomGameOptions.SkKillCooldown);
-
             /*__instance.KillButton.usesRemainingSprite.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                 && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                 && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started && role.Scavenging);

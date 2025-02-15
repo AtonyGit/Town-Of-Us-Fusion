@@ -12,6 +12,9 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Drag Bodies And Hide Them";
             TaskText = () => "Drag bodies around to hide them from being reported";
             Color = Patches.Colors.Impostor;
+            AbilityText = "Kill";
+            SecondAbilitySprite = TownOfUsFusion.DragSprite;
+            SecondAbilityText = "Drag";
             LastDragged = DateTime.UtcNow;
             RoleType = RoleEnum.Undertaker;
             AddToRoleHistory(RoleType);

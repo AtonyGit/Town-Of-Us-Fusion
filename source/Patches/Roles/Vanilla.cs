@@ -10,6 +10,7 @@ namespace TownOfUsFusion.Roles
             RoleType = RoleEnum.Impostor;
             AddToRoleHistory(RoleType);
             Color = Palette.ImpostorRed;
+            AbilityText = "Kill";
         }
     }
 

@@ -10,6 +10,9 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Clean Up Bodies";
             TaskText = () => "Clean bodies to prevent Crewmates from discovering them";
             Color = Patches.Colors.Impostor;
+            AbilityText = "Kill";
+            SecondAbilitySprite = TownOfUsFusion.JanitorClean;
+            SecondAbilityText = "Clean";
             RoleType = RoleEnum.Janitor;
             AddToRoleHistory(RoleType);
             Faction = Faction.Impostors;

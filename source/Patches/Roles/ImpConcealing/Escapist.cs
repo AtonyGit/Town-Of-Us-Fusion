@@ -17,6 +17,9 @@ namespace TownOfUsFusion.Roles
             ImpostorText = () => "Get Away From Kills With Ease";
             TaskText = () => "Teleport to get away from bodies";
             Color = Patches.Colors.Impostor;
+            AbilityText = "Kill";
+            SecondAbilitySprite = TownOfUsFusion.MarkSprite;
+            SecondAbilityText = "Mark";
             RoleType = RoleEnum.Escapist;
             AddToRoleHistory(RoleType);
             Faction = Faction.Impostors;

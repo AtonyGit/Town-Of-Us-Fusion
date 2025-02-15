@@ -19,7 +19,7 @@ namespace TownOfUsFusion.Roles
             RoleType = RoleEnum.Armaggeddon;
             AddToRoleHistory(RoleType);
             ImpostorText = () => "";
-            TaskText = () => "Wreak havoc and destroy the weak!\nFake Tasks:";
+            TaskText = () => "Wreak havoc and destroy the weak in groups!\nFake Tasks:";
             Faction = Faction.NeutralApocalypse;
             Invincible = true;
             Transformed = true;

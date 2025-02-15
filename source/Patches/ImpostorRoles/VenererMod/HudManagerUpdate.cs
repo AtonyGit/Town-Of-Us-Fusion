@@ -19,20 +19,11 @@ namespace TownOfUsFusion.ImpostorRoles.VenererMod
             if (PlayerControl.LocalPlayer.Data == null) return;
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Venerer)) return;
             var role = Role.GetRole<Venerer>(PlayerControl.LocalPlayer);
-            if (role.AbilityButton == null)
-            {
-                role.AbilityButton = Object.Instantiate(__instance.KillButton, __instance.KillButton.transform.parent);
-                role.AbilityButton.graphic.enabled = true;
-                role.AbilityButton.gameObject.SetActive(false);
-            }
+
             if (role.Kills == 0) role.AbilityButton.graphic.sprite = NoneSprite;
             else if (role.Kills == 1) role.AbilityButton.graphic.sprite = CamoSprite;
             else if (role.Kills == 2) role.AbilityButton.graphic.sprite = CamoSprintSprite;
             else role.AbilityButton.graphic.sprite = CamoSprintFreezeSprite;
-            role.AbilityButton.buttonLabelText.text = "Use";
-            role.AbilityButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
 
             if (role.IsCamouflaged)
             {

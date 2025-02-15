@@ -37,6 +37,8 @@ namespace TownOfUsFusion.Roles
             Color = Patches.Colors.Apocalypse;
             AbilitySprite = TownOfUsFusion.CollectSprite;
             AbilityText = "Collect";
+            SecondAbilitySprite = TownOfUsFusion.ReapSprite;
+            SecondAbilityText = "Reap";
             VentSprite = TownOfUsFusion.ApocVent;
             LastReaped = DateTime.UtcNow;
             RoleType = RoleEnum.SoulCollector;

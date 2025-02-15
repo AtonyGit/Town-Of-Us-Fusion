@@ -8,7 +8,6 @@ namespace TownOfUsFusion.CrewmateRoles.InvestigatorMod
     [HarmonyPatch(typeof(HudManager))]
     public class HudExamine
     {
-        public static Sprite ExamineSprite => TownOfUsFusion.ExamineSprite;
 
         [HarmonyPatch(nameof(HudManager.Update))]
         public static void Postfix(HudManager __instance)
@@ -20,27 +19,9 @@ namespace TownOfUsFusion.CrewmateRoles.InvestigatorMod
 
             var role = Role.GetRole<Investigator>(PlayerControl.LocalPlayer);
 
-            if (role.ExamineButton == null)
-            {
-                role.ExamineButton = Object.Instantiate(__instance.KillButton, __instance.KillButton.transform.parent);
-                role.ExamineButton.graphic.enabled = true;
-                role.ExamineButton.gameObject.SetActive(false);
-            }
-
-            role.ExamineButton.graphic.sprite = ExamineSprite;
-            role.ExamineButton.buttonLabelText.text = "Examine";
-            role.ExamineButton.buttonLabelText.SetOutlineColor(role.Color);
             role.ExamineButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
 
             if (PlayerControl.LocalPlayer.Data.IsDead) role.ExamineButton.SetTarget(null);
-
-            __instance.KillButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-
-            role.ExamineButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
 
             role.ExamineButton.SetCoolDown(role.ExamineTimer(), CustomGameOptions.ExamineCd);
 

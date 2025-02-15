@@ -20,20 +20,8 @@ namespace TownOfUsFusion.ImpostorRoles.BlackmailerMod
             if (PlayerControl.LocalPlayer.Data == null) return;
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Blackmailer)) return;
             var role = Role.GetRole<Blackmailer>(PlayerControl.LocalPlayer);
-            if (role.BlackmailButton == null)
-            {
-                role.BlackmailButton = Object.Instantiate(__instance.KillButton, __instance.KillButton.transform.parent);
-                role.BlackmailButton.graphic.enabled = true;
-                role.BlackmailButton.gameObject.SetActive(false);
-            }
 
             if (PlayerControl.LocalPlayer.Data.IsDead) role.BlackmailButton.SetTarget(null);
-
-            role.BlackmailButton.graphic.sprite = Blackmail;
-            role.BlackmailButton.buttonLabelText.text = "Blackmail";
-            role.BlackmailButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
-                    && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
-                    && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
 
             var notBlackmailed = PlayerControl.AllPlayerControls.ToArray().Where(
                 player => role.Blackmailed?.PlayerId != player.PlayerId
