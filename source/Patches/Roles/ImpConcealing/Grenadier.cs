@@ -24,6 +24,7 @@ namespace TownOfUsFusion.Roles
             TaskText = () => "Blind the crewmates to get sneaky kills";
             Color = Patches.Colors.Impostor;
             AbilityText = "Kill";
+            SecondAbilityButton = FlashButton;
             SecondAbilitySprite = TownOfUsFusion.FlashSprite;
             SecondAbilityText = "Flash";
             LastFlashed = DateTime.UtcNow;

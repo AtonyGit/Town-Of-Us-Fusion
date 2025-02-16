@@ -133,7 +133,8 @@ namespace TownOfUsFusion
             //if (role.AbilitySprite != null) __instance.KillButton.graphic.sprite = role.AbilitySprite;
             //if (role.AbilityText != null) __instance.KillButton.buttonLabelText.text = role.AbilityText;
 
-            if (role.SecondAbilitySprite != null || role.SecondAbilityText != null) {
+            if (role.SecondAbilityButton != null) {
+                /*
                 var secondKillButton = __instance.KillButton;
                 switch (curRole?.RoleType) {
                     case RoleEnum.Investigator: 
@@ -199,17 +200,17 @@ namespace TownOfUsFusion
                     case RoleEnum.Undertaker: 
                         secondKillButton = Role.GetRole<Undertaker>(guy).DragDropButton;
                         break;
-                }
-                if (secondKillButton == null)
+                }*/
+                if (role.SecondAbilityButton == null)
                 {
-                    secondKillButton = Object.Instantiate(__instance.KillButton, __instance.KillButton.transform.parent);
-                    secondKillButton.graphic.enabled = true;
-                    secondKillButton.gameObject.SetActive(false);
+                    role.SecondAbilityButton = Object.Instantiate(__instance.KillButton, __instance.KillButton.transform.parent);
+                    role.SecondAbilityButton.graphic.enabled = true;
+                    role.SecondAbilityButton.gameObject.SetActive(false);
                 }
-                    if (role.SecondAbilitySprite != null) secondKillButton.graphic.sprite = role.SecondAbilitySprite;
-                    if (role.SecondAbilityText != null) secondKillButton.buttonLabelText.text = role.SecondAbilityText;
-                    secondKillButton.buttonLabelText.SetOutlineColor(role.Color);
-                    secondKillButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                    if (role.SecondAbilitySprite != null) role.SecondAbilityButton.graphic.sprite = role.SecondAbilitySprite;
+                    if (role.SecondAbilityText != null) role.SecondAbilityButton.buttonLabelText.text = role.SecondAbilityText;
+                    role.SecondAbilityButton.buttonLabelText.SetOutlineColor(role.Color);
+                    role.SecondAbilityButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                             && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                             && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
             }

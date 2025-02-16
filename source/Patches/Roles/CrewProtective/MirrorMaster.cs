@@ -49,6 +49,7 @@ namespace TownOfUsFusion.Roles
             Color = Patches.Colors.MirrorMaster;
             AbilitySprite = TownOfUsFusion.MirrorUnleashSprite;
             AbilityText = "Unleash";
+            SecondAbilityButton = AbsorbButton;
             SecondAbilitySprite = TownOfUsFusion.MirrorAbsorbSprite;
             SecondAbilityText = "Absorb";
             StartingCooldown = DateTime.UtcNow;

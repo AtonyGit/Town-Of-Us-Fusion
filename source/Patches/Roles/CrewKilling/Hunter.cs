@@ -17,6 +17,7 @@ namespace TownOfUsFusion.Roles
             TaskText = () => "Stalk and kill impostors, but not crewmates";
             Color = Patches.Colors.Hunter;
             AbilityText = "Kill";
+            SecondAbilityButton = StalkButton;
             SecondAbilitySprite = TownOfUsFusion.StalkSprite;
             SecondAbilityText = "Stalk";
             LastStalked = DateTime.UtcNow;

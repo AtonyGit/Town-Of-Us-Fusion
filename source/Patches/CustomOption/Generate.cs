@@ -1420,7 +1420,7 @@ namespace TownOfUsFusion.CustomOption
                 DestroyRadius =
                     new CustomNumberOption(num++, MultiMenu.neutral, "Destruction Range", 0.25f, 0.05f, 1f, 0.05f, MultiplierFormat);
                 MaxKillsInDestruction =
-                    new CustomNumberOption(num++, MultiMenu.neutral, "Max Kills In Destruction", 5, 1, 15, 1);
+                    new CustomNumberOption(num++, MultiMenu.neutral, "Max Kills In Destruction", 2, 1, 15, 1);
                 ArmVent =
                     new CustomToggleOption(num++, MultiMenu.neutral, "Armaggeddon Can Vent", true);
             Plaguebearer = new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#8C004DFF>Plaguebearer</color>");

@@ -11,6 +11,7 @@ namespace TownOfUsFusion.Roles
             TaskText = () => "Clean bodies to prevent Crewmates from discovering them";
             Color = Patches.Colors.Impostor;
             AbilityText = "Kill";
+            SecondAbilityButton = CleanButton;
             SecondAbilitySprite = TownOfUsFusion.JanitorClean;
             SecondAbilityText = "Clean";
             RoleType = RoleEnum.Janitor;

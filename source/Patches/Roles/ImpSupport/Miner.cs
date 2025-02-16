@@ -19,6 +19,7 @@ namespace TownOfUsFusion.Roles
             TaskText = () => "Place vents around the map";
             Color = Patches.Colors.Impostor;
             AbilityText = "Kill";
+            SecondAbilityButton = MineButton;
             SecondAbilitySprite = TownOfUsFusion.MineSprite;
             SecondAbilityText = "Mine";
             LastMined = DateTime.UtcNow;

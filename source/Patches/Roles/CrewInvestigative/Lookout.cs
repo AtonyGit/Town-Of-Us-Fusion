@@ -39,6 +39,7 @@ namespace TownOfUsFusion.Roles
             Color = Patches.Colors.Lookout;
             AbilitySprite = TownOfUsFusion.WatchSprite;
             AbilityText = "Watch";
+            SecondAbilityButton = PerceptButton;
             SecondAbilitySprite = TownOfUsFusion.PerceptSprite;
             SecondAbilityText = "Eagle Eye";
             LastWatched = DateTime.UtcNow;

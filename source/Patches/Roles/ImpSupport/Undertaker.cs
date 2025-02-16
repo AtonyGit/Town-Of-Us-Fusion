@@ -13,6 +13,7 @@ namespace TownOfUsFusion.Roles
             TaskText = () => "Drag bodies around to hide them from being reported";
             Color = Patches.Colors.Impostor;
             AbilityText = "Kill";
+            SecondAbilityButton = DragDropButton;
             SecondAbilitySprite = TownOfUsFusion.DragSprite;
             SecondAbilityText = "Drag";
             LastDragged = DateTime.UtcNow;

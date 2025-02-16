@@ -24,6 +24,7 @@ namespace TownOfUsFusion.Roles
             Color = Patches.Colors.Werewolf;
             AbilitySprite = TownOfUsFusion.WerewolfKill;
             AbilityText = "Kill";
+            SecondAbilityButton = RampageButton;
             SecondAbilitySprite = TownOfUsFusion.RampageSprite;
             SecondAbilityText = "Rampage";
             VentSprite = TownOfUsFusion.WerewolfVent;

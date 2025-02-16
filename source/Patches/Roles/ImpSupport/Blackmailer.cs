@@ -17,6 +17,7 @@ namespace TownOfUsFusion.Roles
             TaskText = () => "Silence a crewmate for the next meeting";
             Color = Patches.Colors.Impostor;
             AbilityText = "Kill";
+            SecondAbilityButton = BlackmailButton;
             SecondAbilitySprite = TownOfUsFusion.BlackmailSprite;
             SecondAbilityText = "Blackmail";
             LastBlackmailed = DateTime.UtcNow;

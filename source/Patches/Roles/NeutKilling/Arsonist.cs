@@ -28,6 +28,7 @@ namespace TownOfUsFusion.Roles
             Color = Patches.Colors.Arsonist;
             AbilitySprite = TownOfUsFusion.DouseSprite;
             AbilityText = "Douse";
+            SecondAbilityButton = IgniteButton;
             SecondAbilitySprite = TownOfUsFusion.IgniteSprite;
             SecondAbilityText = "Ignite";
             LastDoused = DateTime.UtcNow;

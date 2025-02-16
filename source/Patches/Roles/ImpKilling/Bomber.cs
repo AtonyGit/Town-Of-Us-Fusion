@@ -25,6 +25,7 @@ namespace TownOfUsFusion.Roles
             TaskText = () => "Plant bombs to kill crewmates";
             Color = Palette.ImpostorRed;
             AbilityText = "Kill";
+            SecondAbilityButton = PlantButton;
             SecondAbilitySprite = TownOfUsFusion.PlantSprite;
             SecondAbilityText = "Plant";
             StartingCooldown = DateTime.UtcNow;

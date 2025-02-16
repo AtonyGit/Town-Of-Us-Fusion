@@ -23,6 +23,7 @@ namespace TownOfUsFusion.Roles
             Color = Patches.Colors.Investigator;
             AbilitySprite = TownOfUsFusion.AutopsySprite;
             AbilityText = "Autopsy";
+            SecondAbilityButton = ExamineButton;
             SecondAbilitySprite = TownOfUsFusion.ExamineSprite;
             SecondAbilityText = "Examine";
             LastExamined = DateTime.UtcNow;

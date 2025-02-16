@@ -37,6 +37,7 @@ namespace TownOfUsFusion.Roles
             Color = Patches.Colors.Apocalypse;
             AbilitySprite = TownOfUsFusion.CollectSprite;
             AbilityText = "Collect";
+            SecondAbilityButton = ReapButton;
             SecondAbilitySprite = TownOfUsFusion.ReapSprite;
             SecondAbilityText = "Reap";
             VentSprite = TownOfUsFusion.ApocVent;

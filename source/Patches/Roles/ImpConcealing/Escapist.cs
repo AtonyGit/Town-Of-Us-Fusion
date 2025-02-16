@@ -18,6 +18,7 @@ namespace TownOfUsFusion.Roles
             TaskText = () => "Teleport to get away from bodies";
             Color = Patches.Colors.Impostor;
             AbilityText = "Kill";
+            SecondAbilityButton = EscapeButton;
             SecondAbilitySprite = TownOfUsFusion.MarkSprite;
             SecondAbilityText = "Mark";
             RoleType = RoleEnum.Escapist;

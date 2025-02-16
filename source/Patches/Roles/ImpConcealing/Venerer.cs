@@ -19,6 +19,7 @@ namespace TownOfUsFusion.Roles
             TaskText = () => "Kill players to unlock ability perks";
             Color = Patches.Colors.Impostor;
             AbilityText = "Kill";
+            SecondAbilityButton = AbilityButton;
             SecondAbilitySprite = TownOfUsFusion.NoAbilitySprite;
             SecondAbilityText = "Use";
             LastCamouflaged = DateTime.UtcNow;

@@ -20,6 +20,7 @@ namespace TownOfUsFusion.Roles
             TaskText = () => "Poison the crewmates";
             Color = Palette.ImpostorRed;
             AbilityText = "Kill";
+            SecondAbilityButton = PoisonButton;
             SecondAbilitySprite = TownOfUsFusion.PoisonSprite;
             SecondAbilityText = "Poison";
             LastPoisoned = DateTime.UtcNow;

@@ -62,6 +62,7 @@ namespace TownOfUsFusion.Roles
         protected internal RoleEnum RoleType { get; set; }
         protected internal Sprite AbilitySprite { get; set; }
         protected internal string AbilityText { get; set; }
+        protected internal KillButton SecondAbilityButton { get; set; }
         protected internal Sprite SecondAbilitySprite { get; set; }
         protected internal string SecondAbilityText { get; set; }
         protected internal Sprite VentSprite { get; set; }

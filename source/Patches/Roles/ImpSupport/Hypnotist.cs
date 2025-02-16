@@ -22,6 +22,7 @@ namespace TownOfUsFusion.Roles
             TaskText = () => "Hypnotize crewmates and drive them insane";
             Color = Patches.Colors.Impostor;
             AbilityText = "Kill";
+            SecondAbilityButton = HypnotiseButton;
             SecondAbilitySprite = TownOfUsFusion.HypnotiseSprite;
             SecondAbilityText = "Hypnotise";
             LastHypnotised = DateTime.UtcNow;
