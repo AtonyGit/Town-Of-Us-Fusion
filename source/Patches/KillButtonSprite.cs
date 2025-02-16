@@ -121,6 +121,11 @@ namespace TownOfUsFusion
                 Modifier.GetModifier<Disperser>(PlayerControl.LocalPlayer).DisperseButton.DoClick();
             }
 
+            if (PlayerControl.LocalPlayer == null) return;
+            if (PlayerControl.LocalPlayer.Data == null) return;
+            if (role == null) return;
+            var guy = PlayerControl.LocalPlayer;
+            
             if (role.AbilitySprite != null || role.AbilityText != null) 
             __instance.KillButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
@@ -128,17 +133,83 @@ namespace TownOfUsFusion
             //if (role.AbilitySprite != null) __instance.KillButton.graphic.sprite = role.AbilitySprite;
             //if (role.AbilityText != null) __instance.KillButton.buttonLabelText.text = role.AbilityText;
 
-            if (role?.ExtraButtons != null) {
-                if (role.ExtraButtons[0] == null)
-                {
-                    role.ExtraButtons[0] = Object.Instantiate(__instance.KillButton, __instance.KillButton.transform.parent);
-                    role.ExtraButtons[0].graphic.enabled = true;
-                    role.ExtraButtons[0].gameObject.SetActive(false);
+            if (role.SecondAbilitySprite != null || role.SecondAbilityText != null) {
+                var secondKillButton = __instance.KillButton;
+                switch (curRole?.RoleType) {
+                    case RoleEnum.Investigator: 
+                        secondKillButton = Role.GetRole<Investigator>(guy).ExamineButton;
+                        break;
+                    case RoleEnum.Lookout: 
+                        secondKillButton = Role.GetRole<Lookout>(guy).PerceptButton;
+                        break;
+                    case RoleEnum.Hunter: 
+                        secondKillButton = Role.GetRole<Hunter>(guy).StalkButton;
+                        break;
+                    case RoleEnum.MirrorMaster: 
+                        secondKillButton = Role.GetRole<MirrorMaster>(guy).AbsorbButton;
+                        break;
+
+                    case RoleEnum.Inquisitor: 
+                        secondKillButton = Role.GetRole<Inquisitor>(guy).InquireButton;
+                        break;
+
+                    case RoleEnum.SoulCollector: 
+                        secondKillButton = Role.GetRole<SoulCollector>(guy).ReapButton;
+                        break;
+                    case RoleEnum.Arsonist: 
+                        secondKillButton = Role.GetRole<Arsonist>(guy).IgniteButton;
+                        break;
+                    case RoleEnum.Werewolf: 
+                        secondKillButton = Role.GetRole<Werewolf>(guy).RampageButton;
+                        break;
+
+                    case RoleEnum.Escapist: 
+                        secondKillButton = Role.GetRole<Escapist>(guy).EscapeButton;
+                        break;
+                    case RoleEnum.Grenadier: 
+                        secondKillButton = Role.GetRole<Grenadier>(guy).FlashButton;
+                        break;
+                    case RoleEnum.Morphling: 
+                        secondKillButton = Role.GetRole<Morphling>(guy).MorphButton;
+                        break;
+                    case RoleEnum.Swooper: 
+                        secondKillButton = Role.GetRole<Swooper>(guy).SwoopButton;
+                        break;
+                    case RoleEnum.Venerer: 
+                        secondKillButton = Role.GetRole<Venerer>(guy).AbilityButton;
+                        break;
+                    case RoleEnum.Bomber: 
+                        secondKillButton = Role.GetRole<Bomber>(guy).PlantButton;
+                        break;
+                    case RoleEnum.Poisoner: 
+                        secondKillButton = Role.GetRole<Poisoner>(guy).PoisonButton;
+                        break;
+                    case RoleEnum.Blackmailer: 
+                        secondKillButton = Role.GetRole<Blackmailer>(guy).BlackmailButton;
+                        break;
+                    case RoleEnum.Hypnotist: 
+                        secondKillButton = Role.GetRole<Hypnotist>(guy).HypnotiseButton;
+                        break;
+                    case RoleEnum.Janitor: 
+                        secondKillButton = Role.GetRole<Janitor>(guy).CleanButton;
+                        break;
+                    case RoleEnum.Miner: 
+                        secondKillButton = Role.GetRole<Miner>(guy).MineButton;
+                        break;
+                    case RoleEnum.Undertaker: 
+                        secondKillButton = Role.GetRole<Undertaker>(guy).DragDropButton;
+                        break;
                 }
-                    if (role.SecondAbilitySprite != null) role.ExtraButtons[0].graphic.sprite = role.SecondAbilitySprite;
-                    if (role.SecondAbilityText != null) role.ExtraButtons[0].buttonLabelText.text = role.SecondAbilityText;
-                    role.ExtraButtons[0].buttonLabelText.SetOutlineColor(role.Color);
-                    role.ExtraButtons[0].gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+                if (secondKillButton == null)
+                {
+                    secondKillButton = Object.Instantiate(__instance.KillButton, __instance.KillButton.transform.parent);
+                    secondKillButton.graphic.enabled = true;
+                    secondKillButton.gameObject.SetActive(false);
+                }
+                    if (role.SecondAbilitySprite != null) secondKillButton.graphic.sprite = role.SecondAbilitySprite;
+                    if (role.SecondAbilityText != null) secondKillButton.buttonLabelText.text = role.SecondAbilityText;
+                    secondKillButton.buttonLabelText.SetOutlineColor(role.Color);
+                    secondKillButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                             && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                             && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
             }
