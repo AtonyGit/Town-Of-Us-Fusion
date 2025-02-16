@@ -325,6 +325,13 @@ namespace TownOfUsFusion
                     if (PlayerControl.LocalPlayer != apoc.Player) apocData.IsYou = false;
                     EndGameResult.CachedWinners.Add(apocData);
                 }
+                foreach (var role in Role.GetRoles(RoleEnum.Death))
+                {
+                    var apoc = (Death)role;
+                    var apocData = new CachedPlayerData(apoc.Player.Data);
+                    if (PlayerControl.LocalPlayer != apoc.Player) apocData.IsYou = false;
+                    EndGameResult.CachedWinners.Add(apocData);
+                }
             }
 
             foreach (var role in Role.AllRoles)

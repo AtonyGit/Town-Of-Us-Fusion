@@ -8,6 +8,7 @@ namespace TownOfUsFusion.Roles
 {
     public class Armaggeddon : Role
     {
+        public bool HasSentAlert = false;
         public Armaggeddon(PlayerControl owner) : base(owner)
         {
             Name = "Armaggeddon";

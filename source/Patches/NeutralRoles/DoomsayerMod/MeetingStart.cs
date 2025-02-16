@@ -35,7 +35,7 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
                 return $"You observe that {player.GetDefaultOutfit().PlayerName} has an insight for private information";
 
             else if (player.Is(RoleEnum.Altruist) || player.Is(RoleEnum.Amnesiac) || player.Is(RoleEnum.Janitor) || player.Is(RoleEnum.Cannibal)
-                 || player.Is(RoleEnum.Medium) || player.Is(RoleEnum.SoulCollector) || player.Is(RoleEnum.Undertaker) || player.Is(RoleEnum.Vampire))
+                 || player.Is(RoleEnum.Medium) || player.Is(RoleEnum.SoulCollector) || player.Is(RoleEnum.Death) || player.Is(RoleEnum.Undertaker) || player.Is(RoleEnum.Vampire))
                 return $"You observe that {player.GetDefaultOutfit().PlayerName} has an unusual obsession with dead bodies";
 
             else if (player.Is(RoleEnum.Hunter) || player.Is(RoleEnum.Lookout) || player.Is(RoleEnum.SerialKiller)
@@ -76,7 +76,7 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
                 return "(Blackmailer, Inquisitor, Investigator, Doomsayer, Operative or Trapper)";
 
             else if (player.Is(RoleEnum.Altruist) || player.Is(RoleEnum.Amnesiac) || player.Is(RoleEnum.Janitor)
-                 || player.Is(RoleEnum.Medium) || player.Is(RoleEnum.SoulCollector) || player.Is(RoleEnum.Undertaker) || player.Is(RoleEnum.Vampire))
+                 || player.Is(RoleEnum.Medium) || player.Is(RoleEnum.SoulCollector) || player.Is(RoleEnum.Death) || player.Is(RoleEnum.Undertaker) || player.Is(RoleEnum.Vampire))
                 return "(Altruist, Amnesiac, Janitor, Medium, Soul Collector, Undertaker or Vampire)";
 
             else if (player.Is(RoleEnum.Hunter) || player.Is(RoleEnum.Lookout) || player.Is(RoleEnum.SerialKiller) || player.Is(RoleEnum.Cannibal)
@@ -97,7 +97,7 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
 
             else if (player.Is(RoleEnum.Bomber) || player.Is(RoleEnum.Deputy) || player.Is(RoleEnum.Jailor) || player.Is(RoleEnum.Juggernaut) || player.Is(RoleEnum.Armaggeddon)
                  || player.Is(RoleEnum.Sheriff) || player.Is(RoleEnum.Vigilante) || player.Is(RoleEnum.Warlock) || player.Is(RoleEnum.Bodyguard))
-                return "(Armaggeddon, Bodyguard, Bomber, Deputy, Jailor, Juggernaut, Sheriff, Vigilante or Warlock)";
+                return "(Bodyguard, Bomber, Deputy, Jailor, Juggernaut, Sheriff, Vigilante or Warlock)";
 
             else if (player.Is(RoleEnum.Crewmate) || player.Is(RoleEnum.Impostor) || player.Is(RoleEnum.CursedSoul))
                 return "(Crewmate, Cursed Soul or Impostor)";

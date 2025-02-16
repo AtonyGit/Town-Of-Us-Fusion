@@ -6,6 +6,7 @@ namespace TownOfUsFusion.Roles
 {
     public class Pestilence : Role
     {
+        public bool HasSentAlert = false;
         public Pestilence(PlayerControl owner) : base(owner)
         {
             Name = "Pestilence";

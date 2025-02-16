@@ -908,6 +908,10 @@ namespace TownOfUsFusion
                         Role.SurvOnlyWin();
                         break;
 
+                    case CustomRPC.ApocWin:
+                        Role.ApocWin();
+                        break;
+
                     case CustomRPC.VampireWin:
                         Role.VampWin();
                         break;
@@ -1237,10 +1241,6 @@ namespace TownOfUsFusion
                         var theGlitch = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Glitch);
                         ((Glitch) theGlitch)?.Wins();
                         break;
-                    case CustomRPC.JuggernautWin:
-                        var juggernaut = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Juggernaut);
-                        ((Juggernaut)juggernaut)?.Wins();
-                        break;
                     case CustomRPC.SetHacked:
                         var hackingPlayer = Utils.PlayerById(reader.ReadByte());
                         var hackPlayer = Utils.PlayerById(reader.ReadByte());
@@ -1492,10 +1492,6 @@ namespace TownOfUsFusion
                         var theSkTheRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.SerialKiller);
                         ((SerialKiller)theSkTheRole)?.Wins();
                         break;
-                    case CustomRPC.PlaguebearerWin:
-                        var thePlaguebearerTheRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Plaguebearer);
-                        ((Plaguebearer)thePlaguebearerTheRole)?.Wins();
-                        break;
                     case CustomRPC.Infect:
                         var pb = Role.GetRole<Plaguebearer>(Utils.PlayerById(reader.ReadByte()));
                         pb.SpreadInfection(Utils.PlayerById(reader.ReadByte()), Utils.PlayerById(reader.ReadByte()));
@@ -1513,29 +1509,21 @@ namespace TownOfUsFusion
                                 if (sc.SoulsCollected >= CustomGameOptions.SoulsToWin)
                                 {
                                     sc.CollectedSouls = true;
-
-                                    /*if (!CustomGameOptions.NeutralEvilWinEndsGame)
-                                    {
-                                        CrewmateRoles.AltruistMod.KillButtonTarget.DontRevive = sc.Player.PlayerId;
-                                        sc.Player.Exiled();
-                                    }*/
+                                    sc.TurnDeath();
+                                    Utils.Rpc(CustomRPC.TurnDeath, Utils.PlayerById(reader.ReadByte()));
+                                
                                 }
                                 break;
                         }
                         break;
+                    case CustomRPC.TurnDeath:
+                        Role.GetRole<SoulCollector>(Utils.PlayerById(reader.ReadByte())).TurnDeath();
+                        break;
                     case CustomRPC.TurnPestilence:
                         Role.GetRole<Plaguebearer>(Utils.PlayerById(reader.ReadByte())).TurnPestilence();
                         break;
-                    case CustomRPC.PestilenceWin:
-                        var thePestilenceTheRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Pestilence);
-                        ((Pestilence)thePestilenceTheRole)?.Wins();
-                        break;
                     case CustomRPC.TurnArmaggeddon:
                         Role.GetRole<Juggernaut>(Utils.PlayerById(reader.ReadByte())).TurnArmaggeddon();
-                        break;
-                    case CustomRPC.ArmaggeddonWin:
-                        var theArmaggeddonTheRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Armaggeddon);
-                        ((Armaggeddon)theArmaggeddonTheRole)?.Wins();
                         break;
                     case CustomRPC.SyncCustomSettings:
                         Rpc.ReceiveRpc(reader);

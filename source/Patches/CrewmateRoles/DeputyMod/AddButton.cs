@@ -83,7 +83,7 @@ namespace TownOfUsFusion.CrewmateRoles.DeputyMod
                     if (target.Is(Faction.Crewmates)) role.IncorrectKills += 1;
                     else role.CorrectKills += 1;
                 }
-                else DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, "You missed your shot! They are either not the killer or are invincible (Pestilence).");
+                else DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, "You missed your shot! They are either not the killer or are invincible / a horseman.");
                 Utils.Rpc(CustomRPC.Camp, role.Player.PlayerId, (byte)2, target.PlayerId);
                 role.Killer = null;
                 RemoveButtons.HideButtons(role);

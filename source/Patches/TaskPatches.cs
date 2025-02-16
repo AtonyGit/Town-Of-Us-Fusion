@@ -35,7 +35,7 @@ namespace TownOfUsFusion
                             playerInfo._object.Is(AllianceEnum.Egotist) || playerInfo._object.Is(AllianceEnum.Recruit) ||
                             playerInfo._object.Is(RoleEnum.Cannibal) ||
                             playerInfo._object.Is(RoleEnum.Inquisitor) ||
-                            playerInfo._object.Is(RoleEnum.Vampire) || playerInfo._object.Is(RoleEnum.SoulCollector) ||
+                            playerInfo._object.Is(RoleEnum.Vampire) || playerInfo._object.Is(Faction.NeutralApocalypse) ||
                             playerInfo._object.Is(RoleEnum.Phantom) || playerInfo._object.Is(RoleEnum.Haunter) ||
                             (playerInfo._object.Is(AllianceEnum.Lover) && !Alliance.GetAlliance<Lover>(playerInfo._object).OtherLover.Player.Is(Faction.Crewmates))
                         ))
@@ -62,14 +62,11 @@ namespace TownOfUsFusion
                 var flag = playerControl.Is(RoleEnum.Glitch)
                            || playerControl.Is(RoleEnum.Jester)
                            || playerControl.Is(RoleEnum.Executioner)
-                           || playerControl.Is(RoleEnum.Juggernaut)
                            || playerControl.Is(RoleEnum.Arsonist)
-                           || playerControl.Is(RoleEnum.Plaguebearer)
-                           || playerControl.Is(RoleEnum.Pestilence)
+                           || playerControl.Is(Faction.NeutralApocalypse)
                            || playerControl.Is(RoleEnum.Werewolf)
                            || playerControl.Is(RoleEnum.Doomsayer)
-                           || playerControl.Is(RoleEnum.Vampire)
-                           || playerControl.Is(RoleEnum.SoulCollector);
+                           || playerControl.Is(RoleEnum.Vampire);
 
                 // If the console is not a sabotage repair console
                 if (flag && !__instance.AllowImpostor)
