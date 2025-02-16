@@ -60,7 +60,6 @@ namespace TownOfUsFusion.Roles
             return playersToDie;
         }
         public DateTime LastKilled { get; set; }
-        public bool ArmageddonWins { get; set; }
 
         internal override bool GameEnd(LogicGameFlowNormal __instance)
         {
@@ -106,11 +105,6 @@ namespace TownOfUsFusion.Roles
                 }
                 return false;
             }
-        }
-
-        public void Wins()
-        {
-            ArmageddonWins = true;
         }
 
         protected override void IntroPrefix(IntroCutscene._ShowTeam_d__38 __instance)

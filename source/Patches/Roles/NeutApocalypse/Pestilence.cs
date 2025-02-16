@@ -26,7 +26,6 @@ namespace TownOfUsFusion.Roles
 
         public PlayerControl ClosestPlayer;
         public DateTime LastKilled { get; set; }
-        public bool PestilenceWins { get; set; }
 
         internal override bool GameEnd(LogicGameFlowNormal __instance)
         {
@@ -74,10 +73,6 @@ namespace TownOfUsFusion.Roles
             }
         }
 
-        public void Wins()
-        {
-            PestilenceWins = true;
-        }
 
         protected override void IntroPrefix(IntroCutscene._ShowTeam_d__38 __instance)
         {

@@ -19,7 +19,6 @@ namespace TownOfUsFusion.Roles
         public bool CollectedSouls = false;
         public int SoulsCollected = 0;
         public List<byte> ReapedPlayers = new List<byte>();
-        //public TextMeshPro CollectedText { get; set; }
         private AbilityButton _dummyButton;
         public AbilityButton DummyButton
         {

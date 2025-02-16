@@ -12,7 +12,6 @@ namespace TownOfUsFusion.Roles
         public PlayerControl ClosestPlayer;
         public List<byte> InfectedPlayers = new List<byte>();
         public DateTime LastInfected;
-        public bool PlaguebearerWins { get; set; }
 
         public int InfectedAlive => InfectedPlayers.Count(x => Utils.PlayerById(x) != null && Utils.PlayerById(x).Data != null && !Utils.PlayerById(x).Data.IsDead && !Utils.PlayerById(x).Data.Disconnected);
         public bool CanTransform => PlayerControl.AllPlayerControls.ToArray().Count(x => x != null && !x.Data.IsDead && !x.Data.Disconnected) <= InfectedAlive;
@@ -76,11 +75,6 @@ namespace TownOfUsFusion.Roles
                 }
                 return false;
             }
-        }
-
-        public void Wins()
-        {
-            PlaguebearerWins = true;
         }
 
         protected override void IntroPrefix(IntroCutscene._ShowTeam_d__38 __instance)

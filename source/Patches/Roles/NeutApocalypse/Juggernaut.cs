@@ -24,7 +24,6 @@ namespace TownOfUsFusion.Roles
 
         public PlayerControl ClosestPlayer;
         public DateTime LastKilled { get; set; }
-        public bool JuggernautWins { get; set; }
         public int JuggKills { get; set; } = 0;
         public bool CanTransform => JuggKills >= CustomGameOptions.KillsNeeded;
 
@@ -73,11 +72,6 @@ namespace TownOfUsFusion.Roles
                 }
                 return false;
             }
-        }
-
-        public void Wins()
-        {
-            JuggernautWins = true;
         }
 
         protected override void IntroPrefix(IntroCutscene._ShowTeam_d__38 __instance)
