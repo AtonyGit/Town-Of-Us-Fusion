@@ -1218,7 +1218,7 @@ namespace TownOfUsFusion
                 if (killer.Is(RoleEnum.Jailor)) targetRole.DeathReason = DeathReasonEnum.Executed;
                 else if (killer.Is(RoleEnum.Arsonist)) targetRole.DeathReason = DeathReasonEnum.Burned;
                 else if (killer.Is(RoleEnum.Bodyguard)) targetRole.DeathReason = DeathReasonEnum.Traded;
-                else if (killer.Is(RoleEnum.Armaggeddon)) targetRole.DeathReason = DeathReasonEnum.Destroyed;
+                else if (killer.Is(RoleEnum.Armageddon)) targetRole.DeathReason = DeathReasonEnum.Destroyed;
                 else if (killer.Is(RoleEnum.Vampire)) targetRole.DeathReason = DeathReasonEnum.Bitten;
                 else if (killer.Is(RoleEnum.Werewolf)) targetRole.DeathReason = DeathReasonEnum.Mauled;
                 else if (killer.Is(RoleEnum.SerialKiller)) targetRole.DeathReason = DeathReasonEnum.Rampaged;

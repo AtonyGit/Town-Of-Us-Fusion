@@ -166,7 +166,7 @@ namespace TownOfUsFusion.Patches {
                     break;
                     case RoleEnum.SoulCollector: playerRole += "<color=#" + Patches.Colors.Apocalypse.ToHtmlStringRGBA() + ">Soul Collector</color> > ";
                     break;
-                    case RoleEnum.Armaggeddon: playerRole += "<color=#" + Patches.Colors.Apocalypse.ToHtmlStringRGBA() + ">Armaggeddon</color> > ";
+                    case RoleEnum.Armageddon: playerRole += "<color=#" + Patches.Colors.Apocalypse.ToHtmlStringRGBA() + ">Armageddon</color> > ";
                     break;
                     case RoleEnum.Pestilence: playerRole += "<color=#" + Patches.Colors.Apocalypse.ToHtmlStringRGBA() + ">Pestilence</color> > ";
                     break;

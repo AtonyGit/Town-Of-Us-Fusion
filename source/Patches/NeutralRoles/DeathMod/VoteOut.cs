@@ -21,11 +21,11 @@ namespace TownOfUsFusion.NeutralRoles.DeathMod
                         Utils.Rpc(CustomRPC.SendChat, alert);
                 }
             }
-            foreach (var role in Role.GetRoles(RoleEnum.Armaggeddon))
+            foreach (var role in Role.GetRoles(RoleEnum.Armageddon))
             {
-                if (!((Armaggeddon)role).HasSentAlert) {
-                    ((Armaggeddon)role).HasSentAlert = true;
-                    string alert = $"The Juggernaut has transformed into Armaggeddon, Horseman of the Apocalypse.\nThey can now destroy people in groups.";
+                if (!((Armageddon)role).HasSentAlert) {
+                    ((Armageddon)role).HasSentAlert = true;
+                    string alert = $"The Juggernaut has transformed into Armageddon, Horseman of the Apocalypse.\nThey can now destroy people in groups.";
                         DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, alert);
                         Utils.Rpc(CustomRPC.SendChat, alert);
                 }

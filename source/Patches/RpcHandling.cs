@@ -1522,8 +1522,8 @@ namespace TownOfUsFusion
                     case CustomRPC.TurnPestilence:
                         Role.GetRole<Plaguebearer>(Utils.PlayerById(reader.ReadByte())).TurnPestilence();
                         break;
-                    case CustomRPC.TurnArmaggeddon:
-                        Role.GetRole<Juggernaut>(Utils.PlayerById(reader.ReadByte())).TurnArmaggeddon();
+                    case CustomRPC.TurnArmageddon:
+                        Role.GetRole<Juggernaut>(Utils.PlayerById(reader.ReadByte())).TurnArmageddon();
                         break;
                     case CustomRPC.SyncCustomSettings:
                         Rpc.ReceiveRpc(reader);

@@ -44,7 +44,7 @@ namespace TownOfUsFusion
                 case RoleEnum.Vampire:
                 case RoleEnum.Pestilence:
                 case RoleEnum.Juggernaut:
-                case RoleEnum.Armaggeddon:
+                case RoleEnum.Armageddon:
                     buttonKills = true;
                     flag = true;
                     button.buttonLabelText.SetOutlineColor(curRole.Color);
@@ -90,7 +90,7 @@ namespace TownOfUsFusion
                 case RoleEnum.Glitch:
                 case RoleEnum.Vampire:
                 case RoleEnum.Juggernaut:
-                case RoleEnum.Armaggeddon:
+                case RoleEnum.Armageddon:
                 case RoleEnum.Pestilence:
                 case RoleEnum.Engineer:
                 vent.transform.localPosition = new Vector3(-2f, 0f, 0f);

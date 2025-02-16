@@ -18,7 +18,7 @@ namespace TownOfUsFusion.Roles
             RoleType = RoleEnum.Juggernaut;
             AddToRoleHistory(RoleType);
             ImpostorText = () => "Your Power Grows With Every Kill";
-            TaskText = () => "Each kill lowers your cooldown, turning you into Armaggeddon.\nFake Tasks:";
+            TaskText = () => "Each kill lowers your cooldown, turning you into Armageddon.\nFake Tasks:";
             Faction = Faction.NeutralApocalypse;
         }
 
@@ -105,12 +105,12 @@ namespace TownOfUsFusion.Roles
             }*/
             __instance.teamToShow = apocTeam;
         }
-        public void TurnArmaggeddon()
+        public void TurnArmageddon()
         {
             var oldRole = GetRole(Player);
             var killsList = (oldRole.CorrectAssassinKills, oldRole.IncorrectAssassinKills);
             RoleDictionary.Remove(Player.PlayerId);
-            var role = new Armaggeddon(Player);
+            var role = new Armageddon(Player);
             role.Invincible = true;
             role.Transformed = true;
             role.CorrectAssassinKills = killsList.CorrectAssassinKills;

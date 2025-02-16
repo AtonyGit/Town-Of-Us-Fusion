@@ -44,8 +44,8 @@ namespace TownOfUsFusion.NeutralRoles.JuggernautMod
                 else transform = true;
                 if (transform)
                 {
-                    role.TurnArmaggeddon();
-                    Utils.Rpc(CustomRPC.TurnArmaggeddon, PlayerControl.LocalPlayer.PlayerId);
+                    role.TurnArmageddon();
+                    Utils.Rpc(CustomRPC.TurnArmageddon, PlayerControl.LocalPlayer.PlayerId);
                 }
             }
         }

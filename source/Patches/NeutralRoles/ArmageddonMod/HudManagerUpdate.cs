@@ -2,7 +2,7 @@ using HarmonyLib;
 using System.Linq;
 using TownOfUsFusion.Roles;
 
-namespace TownOfUsFusion.NeutralRoles.ArmaggeddonMod
+namespace TownOfUsFusion.NeutralRoles.ArmageddonMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public static class HudManagerUpdate
@@ -12,8 +12,8 @@ namespace TownOfUsFusion.NeutralRoles.ArmaggeddonMod
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Armaggeddon)) return;
-            var role = Role.GetRole<Armaggeddon>(PlayerControl.LocalPlayer);
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Armageddon)) return;
+            var role = Role.GetRole<Armageddon>(PlayerControl.LocalPlayer);
 
             __instance.KillButton.SetCoolDown(role.KillTimer(), CustomGameOptions.ArmKillCd);
 

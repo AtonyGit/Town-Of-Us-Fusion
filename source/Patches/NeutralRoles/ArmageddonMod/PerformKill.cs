@@ -3,19 +3,19 @@ using HarmonyLib;
 using TownOfUsFusion.Roles;
 using AmongUs.GameOptions;
 
-namespace TownOfUsFusion.NeutralRoles.ArmaggeddonMod
+namespace TownOfUsFusion.NeutralRoles.ArmageddonMod
 {
     [HarmonyPatch(typeof(KillButton), nameof(KillButton.DoClick))]
     public class PerformKill
     {
         public static bool Prefix(KillButton __instance)
         {
-            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.Armaggeddon);
+            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.Armageddon);
             if (!flag) return true;
             if (PlayerControl.LocalPlayer.Data.IsDead) return false;
             if (!PlayerControl.LocalPlayer.CanMove) return false;
             if (!__instance.isActiveAndEnabled || __instance.isCoolingDown) return false;
-            var role = Role.GetRole<Armaggeddon>(PlayerControl.LocalPlayer);
+            var role = Role.GetRole<Armageddon>(PlayerControl.LocalPlayer);
             if (role.Player.inVent) return false;
             if (role.KillTimer() != 0) return false;
 

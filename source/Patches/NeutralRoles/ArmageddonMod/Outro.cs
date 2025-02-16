@@ -4,7 +4,7 @@ using TownOfUsFusion.Extensions;
 using TownOfUsFusion.Roles;
 using UnityEngine;
 
-namespace TownOfUsFusion.NeutralRoles.ArmaggeddonMod
+namespace TownOfUsFusion.NeutralRoles.ArmageddonMod
 {
     [HarmonyPatch(typeof(EndGameManager), nameof(EndGameManager.Start))]
     public static class Outro
@@ -18,7 +18,7 @@ namespace TownOfUsFusion.NeutralRoles.ArmaggeddonMod
                 if (Role.GetRoles(RoleEnum.Doomsayer).Any(x => ((Doomsayer)x).WonByGuessing)) return;
             }
             var role = Role.AllRoles.FirstOrDefault(x =>
-                x.RoleType == RoleEnum.Armaggeddon && Role.ApocWins);
+                x.RoleType == RoleEnum.Armageddon && Role.ApocWins);
             if (role == null) return;
             PoolablePlayer[] array = Object.FindObjectsOfType<PoolablePlayer>();
             foreach (var player in array) player.NameText().text = role.ColorString + player.NameText().text + "</color>";

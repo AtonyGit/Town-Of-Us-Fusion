@@ -77,9 +77,9 @@ namespace TownOfUsFusion
                 losers.Add(arso.Player.GetDefaultOutfit().ColorId);
             }
 
-            foreach (var role in Role.GetRoles(RoleEnum.Armaggeddon))
+            foreach (var role in Role.GetRoles(RoleEnum.Armageddon))
             {
-                var arm = (Armaggeddon)role;
+                var arm = (Armageddon)role;
                 losers.Add(arm.Player.GetDefaultOutfit().ColorId);
             }
             foreach (var role in Role.GetRoles(RoleEnum.Juggernaut))
@@ -311,9 +311,9 @@ namespace TownOfUsFusion
                     EndGameResult.CachedWinners.Add(apocData);
                 }
                 
-                foreach (var role in Role.GetRoles(RoleEnum.Armaggeddon))
+                foreach (var role in Role.GetRoles(RoleEnum.Armageddon))
                 {
-                    var apoc = (Armaggeddon)role;
+                    var apoc = (Armageddon)role;
                     var apocData = new CachedPlayerData(apoc.Player.Data);
                     if (PlayerControl.LocalPlayer != apoc.Player) apocData.IsYou = false;
                     EndGameResult.CachedWinners.Add(apocData);

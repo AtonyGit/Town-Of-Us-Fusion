@@ -62,7 +62,7 @@ namespace TownOfUsFusion
         Vampire,
 
         Juggernaut,
-        Armaggeddon,
+        Armageddon,
         Plaguebearer,
         Pestilence,
         SoulCollector,

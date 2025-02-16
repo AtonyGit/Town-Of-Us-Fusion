@@ -6,18 +6,18 @@ using TownOfUsFusion.Patches;
 
 namespace TownOfUsFusion.Roles
 {
-    public class Armaggeddon : Role
+    public class Armageddon : Role
     {
         public bool HasSentAlert = false;
-        public Armaggeddon(PlayerControl owner) : base(owner)
+        public Armageddon(PlayerControl owner) : base(owner)
         {
-            Name = "Armaggeddon";
+            Name = "Armageddon";
             Color = Patches.Colors.Apocalypse;
             AbilitySprite = TownOfUsFusion.ApocKill;
             AbilityText = "Destroy";
             VentSprite = TownOfUsFusion.ApocVent;
             LastKilled = DateTime.UtcNow;
-            RoleType = RoleEnum.Armaggeddon;
+            RoleType = RoleEnum.Armageddon;
             AddToRoleHistory(RoleType);
             ImpostorText = () => "";
             TaskText = () => "Wreak havoc and destroy the weak in groups!\nFake Tasks:";
@@ -60,7 +60,7 @@ namespace TownOfUsFusion.Roles
             return playersToDie;
         }
         public DateTime LastKilled { get; set; }
-        public bool ArmaggeddonWins { get; set; }
+        public bool ArmageddonWins { get; set; }
 
         internal override bool GameEnd(LogicGameFlowNormal __instance)
         {
@@ -110,7 +110,7 @@ namespace TownOfUsFusion.Roles
 
         public void Wins()
         {
-            ArmaggeddonWins = true;
+            ArmageddonWins = true;
         }
 
         protected override void IntroPrefix(IntroCutscene._ShowTeam_d__38 __instance)

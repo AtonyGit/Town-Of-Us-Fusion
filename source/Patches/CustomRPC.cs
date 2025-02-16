@@ -71,7 +71,7 @@ namespace TownOfUsFusion
         Blackmail,
         Infect,
         TurnPestilence,
-        TurnArmaggeddon,
+        TurnArmageddon,
         TurnDeath,
         TurnFamine,
         Disperse,
