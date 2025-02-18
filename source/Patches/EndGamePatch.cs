@@ -4,11 +4,13 @@ using UnityEngine;
 using System.Text;
 using System.Linq;
 using Reactor.Utilities.Extensions;
+using System.Linq;
 using TownOfUsFusion.Roles;
 using TownOfUsFusion.Extensions;
 using AmongUs.GameOptions;
 using TownOfUsFusion.Patches.ScreenEffects;
 using TownOfUsFusion.Roles.Alliances;
+using Reactor.Utilities;
 
 namespace TownOfUsFusion.Patches {
 
@@ -290,6 +292,20 @@ namespace TownOfUsFusion.Patches {
                 {
                     if (winner.PlayerName == playerControl.Data.PlayerName) playerName += $"<color=#EFBF04>{playerControl.Data.PlayerName}</color>";
                 }
+
+                foreach (var inquis in Role.GetRoles(RoleEnum.Inquisitor))
+                {
+                    var inquisitor = (Inquisitor)inquis;
+                    var flag = PlayerControl.AllPlayerControls.ToArray().Count(p => inquisitor.Heretics.Contains(p.PlayerId)
+                        && (p.Data.IsDead || p.Data.Disconnected)) == inquisitor.HereticCount;
+
+                    if (inquisitor.didWin || flag) {
+                        AdditionalTempData.otherWinners.Add(new AdditionalTempData.Winners() { PlayerName = inquisitor.Player.Data.PlayerName, Role = RoleEnum.Inquisitor });
+                        if (TownOfUsFusion.isDevBuild) PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"INQUISITOR WINS: {inquisitor.Player.Data.PlayerName}");
+                    }
+                    else if (TownOfUsFusion.isDevBuild) PluginSingleton<TownOfUsFusion>.Instance.Log.LogMessage($"INQUISITOR DID NOT WIN: {inquisitor.Player.Data.PlayerName}");
+                }
+
                 if (!CustomGameOptions.NeutralEvilWinEndsGame)
                 {
                     if (playerControl.Is(RoleEnum.Doomsayer))

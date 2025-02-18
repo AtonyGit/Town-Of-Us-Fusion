@@ -26,6 +26,11 @@ namespace TownOfUsFusion
                 var admirer = (Admirer)role;
                 losers.Add(admirer.Player.GetDefaultOutfit().ColorId);
             }
+            foreach (var role in Role.GetRoles(RoleEnum.Inquisitor))
+            {
+                var inquis = (Inquisitor)role;
+                losers.Add(inquis.Player.GetDefaultOutfit().ColorId);
+            }
             foreach (var role in Role.GetRoles(RoleEnum.GuardianAngel))
             {
                 var ga = (GuardianAngel)role;

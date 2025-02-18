@@ -532,6 +532,7 @@ namespace TownOfUsFusion.CustomOption
         public static CustomNumberOption BodiesNeededToWin;
 
         public static CustomHeaderOption Inquisitor;
+        public static CustomNumberOption HereticCount;
         public static CustomNumberOption InquireCooldown;
         public static CustomToggleOption VanquishEnabled;
         public static CustomNumberOption VanquishCooldown;
@@ -1329,6 +1330,8 @@ namespace TownOfUsFusion.CustomOption
                 BodiesNeededToWin =
                     new CustomNumberOption(num++, MultiMenu.neutral, "Bodies Needed To Win", 3, 1, 6, 1);
             Inquisitor = new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#DA4291FF>Inquisitor</color>");
+                HereticCount =
+                    new CustomNumberOption(num++, MultiMenu.neutral, "Amount Of Heretics That Spawn", 3, 1, 5, 1);
                 InquireCooldown =
                     new CustomNumberOption(num++, MultiMenu.neutral, "Inquire Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
                 VanquishEnabled =

@@ -675,13 +675,14 @@ namespace TownOfUsFusion.CustomOption
                             pooledBubble.TextArea.ForceMeshUpdate(true, true);
                             pooledBubble.Background.size = new(5.52f, 0.2f + pooledBubble.NameText.GetNotDumbRenderedHeight() + pooledBubble.TextArea.GetNotDumbRenderedHeight());
                             pooledBubble.MaskArea.size = pooledBubble.Background.size - new Vector2(0, 0.03f);
-
+                            //NotificationHandler.CreateNotif("Welcome to Town Of Us! THIS IS A TEST");
                             pooledBubble.AlignChildren();
                             var pos = pooledBubble.NameText.transform.localPosition;
                             pos.y += 0.05f;
                             pooledBubble.NameText.transform.localPosition = pos;
                             Chat.AlignAllBubbles();
-                            DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, "Welcome to Town Of Us Fusion!\nYou may run /help in your chat to see all of the available commands.", false);
+                            
+                            //DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, "Welcome to Town Of Us Fusion!\nYou may run /help in your chat to see all of the available commands.", false);
                             //DestroyableSingleton<HudManager>.Instance.Chat.NameText.color = jailor.Color;
                             //DestroyableSingleton<HudManager>.Instance.Chat.NameText.text = "Jailor";
                             //Play("Chat");

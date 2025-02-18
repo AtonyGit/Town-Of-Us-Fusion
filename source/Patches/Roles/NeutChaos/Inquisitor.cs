@@ -10,17 +10,10 @@ namespace TownOfUsFusion.Roles
 {
     public class Inquisitor : Role
     {
-        public RoleEnum hereticRole1;
-        public RoleEnum hereticRole2;
-        public RoleEnum hereticRole3;
-        public PlayerControl heretic1;
-        public PlayerControl heretic2;
-        public PlayerControl heretic3;
-        public string displayRole1;
-        public string displayRole2;
-        public string displayRole3;    
-        public bool invalidHeretics => heretic1 == null || heretic2 == null || heretic3 == null;
-        public bool allHereticsDead => (heretic1.Data.IsDead && heretic2.Data.IsDead && heretic3.Data.IsDead) || invalidHeretics;
+        public List<byte> Heretics = new List<byte>();
+        public List<string> HereticRoles = new List<string>();
+        public bool invalidHeretics => Heretics == null || Heretics.Count < 3;
+        public bool allHereticsDead => PlayerControl.AllPlayerControls.ToArray().Count(p => Heretics.Contains(p.PlayerId) && (p.Data.IsDead || p.Data.Disconnected)) == HereticCount || invalidHeretics;
         public bool didWin = false;
         public readonly List<GameObject> Buttons = new List<GameObject>();
         private KillButton _InquireButton;
@@ -29,13 +22,27 @@ namespace TownOfUsFusion.Roles
         public PlayerControl ClosestPlayer;
         public PlayerControl LastInquiredPlayer;
         public bool canVanquish;
+        public int HereticCount;
+        public string taskTextOverride;
+        public string meetingTextOverride;
         public bool lostVanquish = false;
-        public DeadBody CurrentBodyTarget;
         public Inquisitor(PlayerControl player) : base(player)
         {
             Name = "Inquisitor";
             ImpostorText = () => "Vanquish The Heretics";
-            TaskText = () => allHereticsDead ? "The Heretics are all Vanquished\nFake Tasks:" : $"The Heretics are: {displayRole1}, {displayRole2}, and {displayRole3}\nFake Tasks:";
+            HereticCount = CustomGameOptions.HereticCount;
+            for (int i = 0; i < HereticCount; i++)
+            {
+                if(i == HereticCount) taskTextOverride += "and " + HereticRoles[i];
+                else taskTextOverride += HereticRoles[i] + ", ";
+            }
+            for (int i = 0; i < HereticCount; i++)
+            {
+                if(i == HereticCount) meetingTextOverride += "or " + HereticRoles[i];
+                else meetingTextOverride += HereticRoles[i] + ", ";
+            }
+            
+            TaskText = () => allHereticsDead ? "The Heretics are all Vanquished!\nFake Tasks:" : $"The Heretics are: {taskTextOverride}.\nFake Tasks:";
             Color = Patches.Colors.Inquisitor;
             AbilitySprite = TownOfUsFusion.InquisKill;
             AbilityText = "Vanquish";
@@ -46,6 +53,17 @@ namespace TownOfUsFusion.Roles
             AddToRoleHistory(RoleType);
             Faction = Faction.NeutralChaos;
             canVanquish = false;
+        }
+        public void HereticsDead()
+        {
+            var role = Role.GetRole<Inquisitor>(Player);
+            role.didWin = true;
+            role.Invincible = true;
+            if (Player == PlayerControl.LocalPlayer)
+            {
+                Coroutines.Start(Utils.FlashCoroutine(Patches.Colors.Inquisitor));
+                role.RegenTask();
+            }
         }
         
         public KillButton InquireButton

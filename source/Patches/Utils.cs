@@ -33,6 +33,17 @@ using TownOfUsFusion.CrewmateRoles.MirrorMasterMod;
 
 namespace TownOfUsFusion
 {
+    /*[HarmonyPatch(typeof(NotificationPopper), nameof(NotificationPopper.AddSettingsChangeMessage))]
+    public static class NotificationHandler
+    {
+        [HarmonyPrefix]
+        public static void CreateNotif(string text, StringNames key = StringNames.None)
+        {
+            NotificationPopper popperInstance = new NotificationPopper();
+            popperInstance.AddSettingsChangeMessage(key, text, false, RoleTypes.Crewmate);
+        }
+    }*/
+
     [HarmonyPatch]
     public static class Utils
     {
@@ -73,7 +84,6 @@ namespace TownOfUsFusion
             Debug.LogError($"Unable to save text to {fileName}{(diskLocation != null ? $" in {diskLocation}" : "")}");
         }
     }
-
     public static string ReadDiskText(string fileName, string diskLocation = null)
     {
         try

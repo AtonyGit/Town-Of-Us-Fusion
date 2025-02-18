@@ -872,6 +872,25 @@ namespace TownOfUsFusion
                     Utils.Rpc(CustomRPC.SetGATarget, role.Player.PlayerId, ga.target.PlayerId);
                 }
             }
+            
+            foreach (var role in Role.GetRoles(RoleEnum.Inquisitor))
+            {
+                var inquis = (Inquisitor)role;
+                var allTargets = PlayerControl.AllPlayerControls.ToArray().Where(x => !x.Is(RoleEnum.Tyrant) && !x.Is(RoleEnum.Inquisitor) && !x.Is(AllianceEnum.Lover)).ToList();
+                allTargets.Shuffle();
+                allTargets.Shuffle();
+                allTargets.Shuffle();
+                if(allTargets.Count < CustomGameOptions.HereticCount) inquis.HereticCount = allTargets.Count;
+                for (int i = 0; i < CustomGameOptions.HereticCount; i++)
+                {
+                    var RandomPlayer = Random.RandomRangeInt(0, allTargets.Count);
+                    var targetedRole = Role.GetRole(allTargets[RandomPlayer]);
+                    inquis.Heretics.Add(allTargets[RandomPlayer].PlayerId);
+                    inquis.HereticRoles.Add("<color=#" + targetedRole.Color.ToHtmlStringRGBA() + ">" + targetedRole.Name + "</color>");
+                    allTargets.Remove(allTargets[RandomPlayer]);
+                    Utils.Rpc(CustomRPC.SetHeretic, role.Player.PlayerId, allTargets[RandomPlayer].PlayerId);
+                }
+            }
         }
 
         [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.HandleRpc))]
@@ -1299,6 +1318,14 @@ namespace TownOfUsFusion
                         var exeRole = Role.GetRole<Executioner>(exe);
                         exeRole.target = exeTarget;
                         break;
+                    case CustomRPC.SetHeretic:
+                        var inquis = Utils.PlayerById(reader.ReadByte());
+                        var inquisTarget = Utils.PlayerById(reader.ReadByte());
+                        var inquisRole = Role.GetRole<Inquisitor>(inquis);
+                        var targetedRole = Role.GetRole(inquisTarget);
+                        inquisRole.HereticRoles.Add("<color=#" + targetedRole.Color.ToHtmlStringRGBA() + ">" + targetedRole.Name + "</color>");
+                        inquisRole.Heretics.Add(inquisTarget.PlayerId);
+                        break;
                     case CustomRPC.SetGATarget:
                         var ga = Utils.PlayerById(reader.ReadByte());
                         var gaTarget = Utils.PlayerById(reader.ReadByte());
@@ -1548,6 +1575,9 @@ namespace TownOfUsFusion
                         break;
                     case CustomRPC.TurnPestilence:
                         Role.GetRole<Plaguebearer>(Utils.PlayerById(reader.ReadByte())).TurnPestilence();
+                        break;
+                    case CustomRPC.InquisitorGoal:
+                        Role.GetRole<Inquisitor>(Utils.PlayerById(reader.ReadByte())).HereticsDead();
                         break;
                     case CustomRPC.TurnArmageddon:
                         Role.GetRole<Juggernaut>(Utils.PlayerById(reader.ReadByte())).TurnArmageddon();

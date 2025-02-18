@@ -105,6 +105,7 @@ namespace TownOfUsFusion
         public static int InquisitorOn => (int)Generate.InquisitorOn.Get();
             public static float InquireCooldown => Generate.InquireCooldown.Get();
             public static bool VanquishEnabled => Generate.VanquishEnabled.Get();
+            public static int HereticCount => (int)Generate.HereticCount.Get();
             public static bool VanquishRoundOne => Generate.VanquishRoundOne.Get();
             public static float VanquishCooldown => Generate.VanquishCooldown.Get();
         public static int TyrantOn => (int)Generate.TyrantOn.Get();
