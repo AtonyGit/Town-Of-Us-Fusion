@@ -137,6 +137,8 @@ namespace TownOfUsFusion.NeutralRoles.AdmirerMod
 
             newRole = Role.GetRole(other);
             newRole.Player = amnesiac;
+            newRole.OriginalRole = RoleEnum.Admirer;
+            newRole.OriginalTarget = other;
 
             if ((role == RoleEnum.Glitch || role == RoleEnum.Juggernaut || role == RoleEnum.Pestilence ||
                 role == RoleEnum.SerialKiller || role == RoleEnum.Armageddon ||
