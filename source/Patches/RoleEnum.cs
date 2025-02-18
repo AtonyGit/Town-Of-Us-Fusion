@@ -36,6 +36,7 @@ namespace TownOfUsFusion
         TimeLord,
         Transporter,
 
+        Admirer,
         Amnesiac,
         GuardianAngel,
         Lawyer,

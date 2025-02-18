@@ -58,6 +58,8 @@ namespace TownOfUsFusion
         FlashGrenade,
         Alert,
         Remember,
+        Admire,
+        AdmirerSetRole,
         BaitReport,
         Transport,
         SetUntransportable,

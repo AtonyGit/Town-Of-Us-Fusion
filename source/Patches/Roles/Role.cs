@@ -60,12 +60,17 @@ namespace TownOfUsFusion.Roles
         protected float Scale { get; set; } = 1f;
         protected internal Color Color { get; set; }
         protected internal RoleEnum RoleType { get; set; }
+
         protected internal Sprite AbilitySprite { get; set; }
         protected internal string AbilityText { get; set; }
         protected internal KillButton SecondAbilityButton { get; set; }
         protected internal Sprite SecondAbilitySprite { get; set; }
         protected internal string SecondAbilityText { get; set; }
         protected internal Sprite VentSprite { get; set; }
+        
+        protected internal RoleEnum OriginalRole { get; set; }
+        protected internal PlayerControl OriginalTarget { get; set; }
+
         protected internal DeathReasonEnum DeathReason { get; set; } = DeathReasonEnum.Alive;
         protected internal string KilledBy { get; set; } = "";
         protected internal int TasksLeft => Player.Data.Tasks.ToArray().Count(x => !x.Complete);
@@ -409,6 +414,56 @@ namespace TownOfUsFusion.Roles
 
             String PlayerName = Player.GetDefaultOutfit().PlayerName;
 
+            foreach (var role in GetRoles(RoleEnum.Medic))
+            {
+                var ga = (Medic) role;
+                if (Player == ga.ShieldedPlayer && PlayerControl.LocalPlayer.Data.IsDead && !ga.Player.Data.IsDead)
+                {
+                    PlayerName += "<color=#006600FF> +</color>";
+                }
+            }
+            foreach (var role in GetRoles(RoleEnum.Bodyguard))
+            {
+                var ga = (Bodyguard) role;
+                if (Player == ga.guardedPlayer && PlayerControl.LocalPlayer.Data.IsDead && !ga.Player.Data.IsDead)
+                {
+                    PlayerName += "<color=#80D3ABFF> #</color>";
+                }
+            }
+            foreach (var role in GetRoles(RoleEnum.MirrorMaster))
+            {
+                var ga = (MirrorMaster) role;
+                if (Player == ga.ShieldedPlayer && PlayerControl.LocalPlayer.Data.IsDead && !ga.Player.Data.IsDead)
+                {
+                    PlayerName += "<color=#90A2C4FF> [|]</color>";
+                }
+            }
+            foreach (var role in GetRoles(RoleEnum.Oracle))
+            {
+                var ga = (Oracle) role;
+                if (Player == ga.BlessedPlayer && PlayerControl.LocalPlayer.Data.IsDead && !ga.Player.Data.IsDead)
+                {
+                    PlayerName += "<color=#BF00BFFF> T</color>";
+                }
+            }
+
+            foreach (var role in GetRoles(RoleEnum.Veteran))
+            {
+                var ga = (Veteran) role;
+                if (Player.IsOnAlert() && PlayerControl.LocalPlayer.Data.IsDead && !ga.Player.Data.IsDead)
+                {
+                    PlayerName += "<color=#998040FF> !</color>";
+                }
+            }
+
+            foreach (var role in GetRoles(RoleEnum.Admirer))
+            {
+                var ga = (Admirer) role;
+                if (Player == ga.AdmiredPlayer && PlayerControl.LocalPlayer.Data.IsDead && !ga.Player.Data.IsDead)
+                {
+                    PlayerName += "<color=#A95ABDFF> ¥</color>";
+                }
+            }
             foreach (var role in GetRoles(RoleEnum.GuardianAngel))
             {
                 var ga = (GuardianAngel) role;
@@ -416,6 +471,22 @@ namespace TownOfUsFusion.Roles
                     || (PlayerControl.LocalPlayer.Data.IsDead && !ga.Player.Data.IsDead)))
                 {
                     PlayerName += "<color=#B3FFFFFF> ★</color>";
+                }
+            }
+            foreach (var role in GetRoles(RoleEnum.Lawyer))
+            {
+                var lwyr = (Lawyer)role;
+                if (Player == lwyr.target && PlayerControl.LocalPlayer.Data.IsDead && !lwyr.Player.Data.IsDead)
+                {
+                    PlayerName += "<color=#D2B48CFF> @</color>";
+                }
+            }
+            foreach (var role in GetRoles(RoleEnum.Survivor))
+            {
+                var ga = (Survivor) role;
+                if (Player.IsVesting() && PlayerControl.LocalPlayer.Data.IsDead && !ga.Player.Data.IsDead)
+                {
+                    PlayerName += "<color=#FFE64DFF> !</color>";
                 }
             }
 
@@ -427,13 +498,69 @@ namespace TownOfUsFusion.Roles
                     PlayerName += "<color=#8C4005FF> X</color>";
                 }
             }
-            
-            foreach (var role in GetRoles(RoleEnum.Lawyer))
+
+            foreach (var role in GetRoles(RoleEnum.Arsonist))
             {
-                var lwyr = (Lawyer)role;
-                if (Player == lwyr.target && PlayerControl.LocalPlayer.Data.IsDead && !lwyr.Player.Data.IsDead)
+                var ga = (Arsonist) role;
+                if (ga.DousedPlayers.Contains(Player.PlayerId) && PlayerControl.LocalPlayer.Data.IsDead && !ga.Player.Data.IsDead)
                 {
-                    PlayerName += "<color=#D2B48CFF> @</color>";
+                    PlayerName += "<color=#FF4D00FF> ∆</color>";
+                }
+            }
+            foreach (var role in GetRoles(RoleEnum.Glitch))
+            {
+                var ga = (Glitch) role;
+                if (ga.IsUsingMimic && Player == ga.Player && PlayerControl.LocalPlayer.Data.IsDead && !ga.Player.Data.IsDead)
+                {
+                    PlayerName += "<color=#00FF00FF> ¿</color>";
+                }
+                if (Player == ga.Hacked && Player == ga.Player && PlayerControl.LocalPlayer.Data.IsDead && !ga.Player.Data.IsDead)
+                {
+                    PlayerName += "<color=#00FF00FF> ø</color>";
+                }
+            }
+
+            foreach (var role in GetRoles(RoleEnum.Vampire))
+            {
+                var exe = (Vampire) role;
+                if (Player == exe.BittenPlayer && PlayerControl.LocalPlayer.Data.IsDead && !exe.Player.Data.IsDead)
+                {
+                    PlayerName += "<color=#262626FF> ¶</color>";
+                }
+            }
+
+            foreach (var role in GetRoles(RoleEnum.Plaguebearer))
+            {
+                var ga = (Plaguebearer) role;
+                if (ga.InfectedPlayers.Contains(Player.PlayerId) && PlayerControl.LocalPlayer.Data.IsDead && !ga.Player.Data.IsDead)
+                {
+                    PlayerName += "<color=#8C004DFF> £</color>";
+                }
+            }
+            foreach (var role in GetRoles(RoleEnum.SoulCollector))
+            {
+                var ga = (SoulCollector) role;
+                if (ga.ReapedPlayers.Contains(Player.PlayerId) && PlayerControl.LocalPlayer.Data.IsDead && !ga.Player.Data.IsDead)
+                {
+                    PlayerName += "<color=#8C004DFF> %</color>";
+                }
+            }
+
+            foreach (var role in GetRoles(RoleEnum.Morphling))
+            {
+                var ga = (Morphling) role;
+                if (ga.Morphed && Player == ga.Player && PlayerControl.LocalPlayer.Data.IsDead && !ga.Player.Data.IsDead)
+                {
+                    PlayerName += "<color=#FF0000FF> ¿</color>";
+                }
+            }
+
+            foreach (var role in GetRoles(RoleEnum.Poisoner))
+            {
+                var exe = (Poisoner) role;
+                if (Player == exe.PoisonedPlayer && PlayerControl.LocalPlayer.Data.IsDead && !exe.Player.Data.IsDead)
+                {
+                    PlayerName += "<color=#FF0000FF> ¶</color>";
                 }
             }
 /*

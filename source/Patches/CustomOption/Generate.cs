@@ -70,6 +70,7 @@ namespace TownOfUsFusion.CustomOption
         public static CustomNumberOption TransporterOn;
 
         public static CustomHeaderOption NeutralBenignRoles;
+        public static CustomNumberOption AdmirerOn;
         public static CustomNumberOption AmnesiacOn;
         public static CustomNumberOption GuardianAngelOn;
         public static CustomNumberOption LawyerOn;
@@ -725,6 +726,8 @@ namespace TownOfUsFusion.CustomOption
 
 
             NeutralBenignRoles = new CustomHeaderOption(num++, MultiMenu.neutral, "Neutral Benign Roles");
+                AdmirerOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#A95ABDFF>Admirer</color>", 0f, 0f, 100f, 10f,
+                    PercentFormat);
                 AmnesiacOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#80B2FFFF>Amnesiac</color>", 0f, 0f, 100f, 10f,
                     PercentFormat);
                 GuardianAngelOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#B3FFFFFF>Guardian Angel</color>", 0f, 0f, 100f, 10f,

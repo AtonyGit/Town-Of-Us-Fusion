@@ -21,6 +21,11 @@ namespace TownOfUsFusion
                 var amne = (Amnesiac)role;
                 losers.Add(amne.Player.GetDefaultOutfit().ColorId);
             }
+            foreach (var role in Role.GetRoles(RoleEnum.Admirer))
+            {
+                var admirer = (Admirer)role;
+                losers.Add(admirer.Player.GetDefaultOutfit().ColorId);
+            }
             foreach (var role in Role.GetRoles(RoleEnum.GuardianAngel))
             {
                 var ga = (GuardianAngel)role;
@@ -139,6 +144,17 @@ namespace TownOfUsFusion
                         if (PlayerControl.LocalPlayer != surv.Player) survData.IsYou = false;
                         EndGameResult.CachedWinners.Add(survData);
                     }
+                        if (surv.OriginalRole == RoleEnum.Admirer && surv.OriginalTarget != null)
+                        {
+                                if (surv.OriginalTarget.Data.IsDead && !surv.OriginalTarget.Data.Disconnected)
+                                {
+                                    var isImp = EndGameResult.CachedWinners.Count != 0 && EndGameResult.CachedWinners[0].IsImpostor;
+
+                                    var admiredWinData = new CachedPlayerData(surv.OriginalTarget.Data);
+                                    if (PlayerControl.LocalPlayer != surv.OriginalTarget) admiredWinData.IsYou = false;
+                                    EndGameResult.CachedWinners.Add(admiredWinData);
+                                }
+                        }
                 }
 
                 return;
@@ -176,6 +192,18 @@ namespace TownOfUsFusion
                                     }
                                 }
                             }
+
+                            if (jester.OriginalRole == RoleEnum.Admirer && jester.OriginalTarget != null)
+                            {
+                                    if (jester.OriginalTarget.Data.IsDead && !jester.OriginalTarget.Data.Disconnected)
+                                    {
+                                        var isImp = EndGameResult.CachedWinners.Count != 0 && EndGameResult.CachedWinners[0].IsImpostor;
+
+                                        var admiredWinData = new CachedPlayerData(jester.OriginalTarget.Data);
+                                        if (PlayerControl.LocalPlayer != jester.OriginalTarget) admiredWinData.IsYou = false;
+                                        EndGameResult.CachedWinners.Add(admiredWinData);
+                                    }
+                            }
                             return;
                         }
                     }
@@ -204,6 +232,17 @@ namespace TownOfUsFusion
                                     }
                                 }
                             }
+                            if (executioner.OriginalRole == RoleEnum.Admirer && executioner.OriginalTarget != null)
+                            {
+                                    if (executioner.OriginalTarget.Data.IsDead && !executioner.OriginalTarget.Data.Disconnected)
+                                    {
+                                        var isImp = EndGameResult.CachedWinners.Count != 0 && EndGameResult.CachedWinners[0].IsImpostor;
+
+                                        var admiredWinData = new CachedPlayerData(executioner.OriginalTarget.Data);
+                                        if (PlayerControl.LocalPlayer != executioner.OriginalTarget) admiredWinData.IsYou = false;
+                                        EndGameResult.CachedWinners.Add(admiredWinData);
+                                    }
+                            }
                             return;
                         }
                     }
@@ -231,6 +270,17 @@ namespace TownOfUsFusion
                                     EndGameResult.CachedWinners.Add(tyranWinData);
                                     }
                                 }
+                            }
+                            if (doom.OriginalRole == RoleEnum.Admirer && doom.OriginalTarget != null)
+                            {
+                                    if (doom.OriginalTarget.Data.IsDead && !doom.OriginalTarget.Data.Disconnected)
+                                    {
+                                        var isImp = EndGameResult.CachedWinners.Count != 0 && EndGameResult.CachedWinners[0].IsImpostor;
+
+                                        var admiredWinData = new CachedPlayerData(doom.OriginalTarget.Data);
+                                        if (PlayerControl.LocalPlayer != doom.OriginalTarget) admiredWinData.IsYou = false;
+                                        EndGameResult.CachedWinners.Add(admiredWinData);
+                                    }
                             }
                             return;
                         }
@@ -365,6 +415,17 @@ namespace TownOfUsFusion
                                 }
                             }
                         }
+                        if (can.OriginalRole == RoleEnum.Admirer && can.OriginalTarget != null)
+                        {
+                                if (can.OriginalTarget.Data.IsDead && !can.OriginalTarget.Data.Disconnected)
+                                {
+                                    var isImp = EndGameResult.CachedWinners.Count != 0 && EndGameResult.CachedWinners[0].IsImpostor;
+
+                                    var admiredWinData = new CachedPlayerData(can.OriginalTarget.Data);
+                                    if (PlayerControl.LocalPlayer != can.OriginalTarget) admiredWinData.IsYou = false;
+                                    EndGameResult.CachedWinners.Add(admiredWinData);
+                                }
+                        }
                         return;
                     }
                 }
@@ -475,6 +536,22 @@ namespace TownOfUsFusion
                     }
                 }
             }
+                foreach (var role in Role.AllRoles)
+                {
+                    var type = role.OriginalRole;
+                        if (role.OriginalRole == RoleEnum.Admirer && role.OriginalTarget != null
+                        && role.Faction != Faction.Crewmates && role.Faction != Faction.Impostors)
+                        {
+                            if (role.OriginalTarget.Data.IsDead && !role.OriginalTarget.Data.Disconnected)
+                            {
+                                var isImp = EndGameResult.CachedWinners.Count != 0 && EndGameResult.CachedWinners[0].IsImpostor;
+
+                                var admiredWinData = new CachedPlayerData(role.OriginalTarget.Data);
+                                if (PlayerControl.LocalPlayer != role.OriginalTarget) admiredWinData.IsYou = false;
+                                EndGameResult.CachedWinners.Add(admiredWinData);
+                            }
+                        }
+                }
         }
     }
 }

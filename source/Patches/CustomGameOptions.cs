@@ -86,6 +86,7 @@ namespace TownOfUsFusion
         public static int TrapperOn => (int)Generate.TrapperOn.Get();
         public static int TraitorOn => (int)Generate.TraitorOn.Get();
         public static int TransporterOn => (int)Generate.TransporterOn.Get();
+        public static int AdmirerOn => (int)Generate.AdmirerOn.Get();
         public static int MediumOn => (int)Generate.MediumOn.Get();
             public static float MediumArrowDuration => Generate.MediumArrowDuration.Get();
         public static int SurvivorOn => (int)Generate.SurvivorOn.Get();

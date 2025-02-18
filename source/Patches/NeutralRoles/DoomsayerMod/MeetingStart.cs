@@ -34,7 +34,7 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
                  || player.Is(RoleEnum.Operative) || player.Is(RoleEnum.Trapper) || player.Is(RoleEnum.Inquisitor))
                 return $"You observe that {player.GetDefaultOutfit().PlayerName} has an insight for private information";
 
-            else if (player.Is(RoleEnum.Altruist) || player.Is(RoleEnum.Amnesiac) || player.Is(RoleEnum.Janitor) || player.Is(RoleEnum.Cannibal)
+            else if (player.Is(RoleEnum.Altruist) || player.Is(RoleEnum.Amnesiac) || player.Is(RoleEnum.Janitor) || player.Is(RoleEnum.Cannibal) || player.Is(RoleEnum.Admirer)
                  || player.Is(RoleEnum.Medium) || player.Is(RoleEnum.SoulCollector) || player.Is(RoleEnum.Death) || player.Is(RoleEnum.Undertaker) || player.Is(RoleEnum.Vampire))
                 return $"You observe that {player.GetDefaultOutfit().PlayerName} has an unusual obsession with dead bodies";
 
@@ -75,9 +75,9 @@ namespace TownOfUsFusion.NeutralRoles.DoomsayerMod
                  || player.Is(RoleEnum.Operative) || player.Is(RoleEnum.Trapper) || player.Is(RoleEnum.Inquisitor))
                 return "(Blackmailer, Inquisitor, Investigator, Doomsayer, Operative or Trapper)";
 
-            else if (player.Is(RoleEnum.Altruist) || player.Is(RoleEnum.Amnesiac) || player.Is(RoleEnum.Janitor)
+            else if (player.Is(RoleEnum.Altruist) || player.Is(RoleEnum.Amnesiac) || player.Is(RoleEnum.Janitor) || player.Is(RoleEnum.Admirer)
                  || player.Is(RoleEnum.Medium) || player.Is(RoleEnum.SoulCollector) || player.Is(RoleEnum.Death) || player.Is(RoleEnum.Undertaker) || player.Is(RoleEnum.Vampire))
-                return "(Altruist, Amnesiac, Janitor, Medium, Soul Collector, Undertaker or Vampire)";
+                return "(Admirer, Altruist, Amnesiac, Janitor, Medium, Soul Collector, Undertaker or Vampire)";
 
             else if (player.Is(RoleEnum.Hunter) || player.Is(RoleEnum.Lookout) || player.Is(RoleEnum.SerialKiller) || player.Is(RoleEnum.Cannibal)
                  || player.Is(RoleEnum.Swooper) || player.Is(RoleEnum.Tracker) || player.Is(RoleEnum.Werewolf))

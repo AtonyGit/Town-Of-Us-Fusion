@@ -1,68 +1,53 @@
-using HarmonyLib;
-using TownOfUsFusion.CrewmateRoles.TrackerMod;
-using TownOfUsFusion.CrewmateRoles.OperativeMod;
-using TownOfUsFusion.CrewmateRoles.TrapperMod;
-using TownOfUsFusion.Roles;
-using UnityEngine;
 using System;
-using TownOfUsFusion.Extensions;
-using TownOfUsFusion.CrewmateRoles.ImitatorMod;
 using AmongUs.GameOptions;
-using TownOfUsFusion.Roles.Modifiers;
+using HarmonyLib;
+using TownOfUsFusion.CrewmateRoles.HaunterMod;
+using TownOfUsFusion.CrewmateRoles.ImitatorMod;
+using TownOfUsFusion.CrewmateRoles.TrackerMod;
+using TownOfUsFusion.CrewmateRoles.TrapperMod;
+using TownOfUsFusion.Extensions;
 using TownOfUsFusion.ImpostorRoles.BomberMod;
+using TownOfUsFusion.Roles;
+using TownOfUsFusion.Roles.Modifiers;
+using UnityEngine;
 
-namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
+namespace TownOfUsFusion.NeutralRoles.AdmirerMod
 {
-    [HarmonyPatch(typeof(KillButton), nameof(KillButton.DoClick))]
-    public class PerformKillButton
-    {
-        public static Sprite Sprite => TownOfUsFusion.Arrow;
-        public static bool Prefix(KillButton __instance)
-        {
-            if (__instance != DestroyableSingleton<HudManager>.Instance.KillButton) return true;
-            var flag = PlayerControl.LocalPlayer.Is(RoleEnum.Amnesiac);
-            if (!flag) return true;
-            if (!PlayerControl.LocalPlayer.CanMove) return false;
-            if (PlayerControl.LocalPlayer.Data.IsDead) return false;
-            var role = Role.GetRole<Amnesiac>(PlayerControl.LocalPlayer);
 
-            var flag2 = __instance.isCoolingDown;
-            if (flag2) return false;
-            if (!__instance.enabled) return false;
-            var maxDistance = GameOptionsData.KillDistances[GameOptionsManager.Instance.currentNormalGameOptions.KillDistance];
-            if (role == null)
-                return false;
-            if (role.CurrentTarget == null)
-                return false;
-            if (Vector2.Distance(role.CurrentTarget.TruePosition,
-                PlayerControl.LocalPlayer.GetTruePosition()) > maxDistance) return false;
-            var playerId = role.CurrentTarget.ParentId;
-            var player = Utils.PlayerById(playerId);
-            var abilityUsed = Utils.AbilityUsed(PlayerControl.LocalPlayer);
-            if (!abilityUsed) return false;
-            if ((player.IsInfected() || role.Player.IsInfected()) && !player.Is(RoleEnum.Plaguebearer))
-            {
-                foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(player, role.Player);
-            }
+    [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
+    public class AdmirerTargetWait
+    {
+        private static void Postfix(HudManager __instance)
+        {
+            if (PlayerControl.AllPlayerControls.Count <= 1) return;
+            if (PlayerControl.LocalPlayer == null) return;
+            if (PlayerControl.LocalPlayer.Data == null) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Admirer)) return;
+            if (PlayerControl.LocalPlayer.Data.IsDead) return;
+
+            var role = Role.GetRole<Admirer>(PlayerControl.LocalPlayer);
+
+            if (!role.AdmiredPlayer.Data.IsDead && !role.AdmiredPlayer.Data.Disconnected) return;
 
             if (AmongUsClient.Instance.AmHost)
             {
-                Utils.Rpc(CustomRPC.Remember, PlayerControl.LocalPlayer.PlayerId, playerId, (byte)1);
-                Remember(role, player);
+                Utils.Rpc(CustomRPC.AdmirerSetRole, PlayerControl.LocalPlayer.PlayerId, role.AdmiredPlayer.PlayerId, (byte)1);
+                AdmirerSetRole(role, role.AdmiredPlayer);
             }
-            else Utils.Rpc(CustomRPC.Remember, PlayerControl.LocalPlayer.PlayerId, playerId, (byte)0);
+            else Utils.Rpc(CustomRPC.AdmirerSetRole, PlayerControl.LocalPlayer.PlayerId, role.AdmiredPlayer.PlayerId, (byte)0);
 
-            return false;
+            //return false;
         }
 
-        public static void Remember(Amnesiac amneRole, PlayerControl other)
+    public static Sprite Sprite => TownOfUsFusion.Arrow;
+        public static void AdmirerSetRole(Admirer amneRole, PlayerControl other)
         {
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Lookout))
             {
                 var lookout = Role.GetRole<Lookout>(PlayerControl.LocalPlayer);
                 if (lookout.Watching.ContainsKey(other.PlayerId))
                 {
-                    if (!lookout.Watching[other.PlayerId].Contains(RoleEnum.Amnesiac)) lookout.Watching[other.PlayerId].Add(RoleEnum.Amnesiac);
+                    if (!lookout.Watching[other.PlayerId].Contains(RoleEnum.Admirer)) lookout.Watching[other.PlayerId].Add(RoleEnum.Admirer);
                 }
             }
 
@@ -73,21 +58,6 @@ namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
             var rememberNeut = true;
 
             Role newRole;
-
-            if (PlayerControl.LocalPlayer == amnesiac)
-            {
-                var amnesiacRole = Role.GetRole<Amnesiac>(amnesiac);
-                amnesiacRole.BodyArrows.Values.DestroyAll();
-                amnesiacRole.BodyArrows.Clear();
-                try
-                {
-                    foreach (var body in amnesiacRole.CurrentTarget.bodyRenderers) body.material.SetFloat("_Outline", 0f);
-                }
-                catch
-                {
-
-                }
-            }
 
             switch (role)
             {
@@ -577,7 +547,7 @@ namespace TownOfUsFusion.NeutralRoles.AmnesiacMod
                 bomberRole.Bomb.ClearBomb();
             }
 
-            else if (!(amnesiac.Is(RoleEnum.Altruist) || amnesiac.Is(RoleEnum.Amnesiac) || amnesiac.Is(Faction.Impostors)))
+            else if (!(amnesiac.Is(RoleEnum.Altruist) || amnesiac.Is(RoleEnum.Admirer) || amnesiac.Is(Faction.Impostors)))
             {
                 DestroyableSingleton<HudManager>.Instance.KillButton.gameObject.SetActive(false);
             }

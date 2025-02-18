@@ -45,6 +45,7 @@ using TownOfUsFusion.NeutralRoles.LawyerMod;
 using TownOfUsFusion.CrewmateRoles.MirrorMasterMod;
 using TownOfUsFusion.CrewmateRoles.TimeLordMod;
 using TownOfUsFusion.CrewmateRoles.CaptainMod;
+using TownOfUsFusion.NeutralRoles.AdmirerMod;
 
 namespace TownOfUsFusion
 {
@@ -1156,6 +1157,32 @@ namespace TownOfUsFusion
                                 break;
                         }
                         break;
+                    case CustomRPC.AdmirerSetRole:
+                        readByte1 = reader.ReadByte();
+                        readByte2 = reader.ReadByte();
+                        var admirer = Utils.PlayerById(readByte1);
+                        var other3 = Utils.PlayerById(readByte2);
+                        switch (reader.ReadByte()) {
+                            case 0: // start
+                                if (AmongUsClient.Instance.AmHost && admirer.Is(RoleEnum.Admirer))
+                                {
+                                    Utils.Rpc(CustomRPC.AdmirerSetRole, admirer.PlayerId, other3.PlayerId, (byte)1);
+                                    AdmirerTargetWait.AdmirerSetRole(Role.GetRole<Admirer>(admirer), other3);
+                                }
+                                break;
+                            case 1: // end
+                            default:
+                                AdmirerTargetWait.AdmirerSetRole(Role.GetRole<Admirer>(admirer), other3);
+                                break;
+                        }
+                        break;
+                    case CustomRPC.Admire:
+                        readByte1 = reader.ReadByte();
+                        readByte2 = reader.ReadByte();
+                        var admi = Utils.PlayerById(readByte1);
+                        var admired = Utils.PlayerById(readByte2);
+                        Role.GetRole<Admirer>(admired).AdmiredPlayer = admired;
+                        break;
                     case CustomRPC.Protect:
                         readByte1 = reader.ReadByte();
                         readByte2 = reader.ReadByte();
@@ -1960,6 +1987,9 @@ namespace TownOfUsFusion
 
                 if (CustomGameOptions.GuardianAngelOn > 0)
                     NeutralBenignRoles.Add((typeof(GuardianAngel), CustomGameOptions.GuardianAngelOn, false || CustomGameOptions.UniqueNeutBenignRoles));
+
+                if (CustomGameOptions.AdmirerOn > 0)
+                    NeutralBenignRoles.Add((typeof(Admirer), CustomGameOptions.AdmirerOn, false || CustomGameOptions.UniqueNeutBenignRoles));
 
                 if (CustomGameOptions.SerialKillerOn > 0)
                     NeutralKillingRoles.Add((typeof(SerialKiller), CustomGameOptions.SerialKillerOn, false || CustomGameOptions.UniqueNeutKillingRoles));
