@@ -1,7 +1,3 @@
-using System.Collections.Generic;
-using System.IO;
-using Reactor.Utilities.Extensions;
-using UnityEngine;
 namespace TownOfUsFusion.Cosmetics.CustomVisors;
 
 public static class CustomVisorManager

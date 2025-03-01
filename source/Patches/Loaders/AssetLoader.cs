@@ -1,8 +1,3 @@
-using System.Collections;
-using UnityEngine;
-using TownOfUsFusion.Patches;
-using System.Collections.Generic;
-
 namespace TownOfUsFusion.Loaders;
 
 public abstract class AssetLoader

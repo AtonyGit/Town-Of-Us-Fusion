@@ -1,8 +1,3 @@
-using System.Collections.Generic;
-using System.IO;
-using Reactor.Utilities.Extensions;
-using UnityEngine;
-
 namespace TownOfUsFusion.Cosmetics.CustomHats;
 
 public static class CustomHatManager

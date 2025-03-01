@@ -1,9 +1,3 @@
-using System.IO;
-using System.Reflection;
-using Reactor.Utilities.Extensions;
-using TownOfUsFusion.Extensions;
-using UnityEngine;
-
 namespace TownOfUsFusion.Cosmetics;
 
 public static class CustomCosmeticsManager

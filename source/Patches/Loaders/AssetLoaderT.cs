@@ -1,13 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
-using System.Text;
-using System.Text.Json;
-using Reactor.Utilities.Extensions;
-using TownOfUsFusion.Patches;
-using UnityEngine;
-
 namespace TownOfUsFusion.Loaders;
 
 public abstract class AssetLoader<T> : AssetLoader where T : Asset

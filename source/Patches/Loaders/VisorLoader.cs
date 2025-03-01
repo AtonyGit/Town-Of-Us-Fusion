@@ -1,9 +1,4 @@
 using static TownOfUsFusion.Cosmetics.CustomVisors.CustomVisorManager;
-using Cpp2IL.Core.Extensions;
-using UnityEngine;
-using TownOfUsFusion.Patches;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace TownOfUsFusion.Loaders;
 

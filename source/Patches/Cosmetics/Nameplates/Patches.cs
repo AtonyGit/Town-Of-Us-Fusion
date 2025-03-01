@@ -1,14 +1,4 @@
-using Innersloth.Assets;
-using System.Collections.Generic;
-using System.Linq;
-using HarmonyLib;
-using Reactor.Utilities;
-using Reactor.Utilities.Extensions;
-using UnityEngine;
-using Object = UnityEngine.Object;
 using static TownOfUsFusion.Cosmetics.CustomNameplates.CustomNameplateManager;
-using System;
-using AmongUs.Data;
 
 namespace TownOfUsFusion.Cosmetics.CustomNameplates;
 
@@ -47,7 +37,7 @@ public static class NameplatesTabOnEnablePatch
 
         if (Template)
         {
-            var title = Object.Instantiate(Template, __instance.scroller.Inner);
+            var title = UObject.Instantiate(Template, __instance.scroller.Inner);
             var material = title.GetComponent<MeshRenderer>().material;
             material.SetFloat("_StencilComp", 4f);
             material.SetFloat("_Stencil", 1f);
@@ -65,7 +55,7 @@ public static class NameplatesTabOnEnablePatch
             //Debug.Log($"Loading nameplate: {nameplate.name}");
             var xpos = __instance.XRange.Lerp(i % __instance.NumPerRow / (__instance.NumPerRow - 1f));
             var ypos = offset - (i / __instance.NumPerRow * __instance.YOffset);
-            var colorChip = Object.Instantiate(__instance.ColorTabPrefab, __instance.scroller.Inner);
+            var colorChip = UObject.Instantiate(__instance.ColorTabPrefab, __instance.scroller.Inner);
 
             if (ActiveInputManager.currentControlType == ActiveInputManager.InputType.Keyboard)
             {

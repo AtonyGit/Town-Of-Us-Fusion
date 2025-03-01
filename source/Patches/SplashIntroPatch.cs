@@ -1,14 +1,4 @@
-using System.Collections.Generic;
-using System.IO;
-using Reactor.Utilities.Extensions;
-using UObject = UnityEngine.Object;
-using UColor = UnityEngine.Color;
-using UnityEngine;
 using TownOfUsFusion.Loaders;
-using HarmonyLib;
-using TMPro;
-using Reactor.Utilities;
-using System.Collections;
 
 namespace TownOfUsFusion.Patches;
 
@@ -37,7 +27,7 @@ public static class UpdateSplashPatch
         loading.transform.localPosition = new(0f, 1.4f, -5f);
         loading.transform.localScale = new(1f, 1f, 1f);
         var rend = loading.AddComponent<SpriteRenderer>();
-        rend.sprite = TownOfUsFusion.ToUBanner;
+        rend.sprite = ToufAssets.ToUBanner;
         rend.transform.localScale = Vector3.one * 0.9f;
         rend.color = UColor.clear;
         var num = 0f;

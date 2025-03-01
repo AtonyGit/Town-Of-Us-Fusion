@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace TownOfUsFusion
+﻿namespace TownOfUsFusion
 {
     public class VisualAppearance
     {

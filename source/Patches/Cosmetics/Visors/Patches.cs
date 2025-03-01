@@ -1,11 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
-using AmongUs.Data;
-using HarmonyLib;
-using Innersloth.Assets;
-using Reactor.Utilities;
-using Reactor.Utilities.Extensions;
-using UnityEngine;
 using static TownOfUsFusion.Cosmetics.CustomVisors.CustomVisorManager;
 
 namespace TownOfUsFusion.Cosmetics.CustomVisors;
@@ -45,7 +37,7 @@ public static class VisorsTabOnEnablePatch
 
         if (Template)
         {
-            var title = Object.Instantiate(Template, __instance.scroller.Inner);
+            var title = UObject.Instantiate(Template, __instance.scroller.Inner);
             var material = title.GetComponent<MeshRenderer>().material;
             material.SetFloat("_StencilComp", 4f);
             material.SetFloat("_Stencil", 1f);
@@ -63,7 +55,7 @@ public static class VisorsTabOnEnablePatch
             Debug.Log($"Loading visor: {visor.name}");
             var xpos = __instance.XRange.Lerp(i % __instance.NumPerRow / (__instance.NumPerRow - 1f));
             var ypos = offset - (i / __instance.NumPerRow * (isDefaultPackage ? 1f : 1.5f) * __instance.YOffset);
-            var colorChip = Object.Instantiate(__instance.ColorTabPrefab, __instance.scroller.Inner);
+            var colorChip = UObject.Instantiate(__instance.ColorTabPrefab, __instance.scroller.Inner);
 
             if (ActiveInputManager.currentControlType == ActiveInputManager.InputType.Keyboard)
             {

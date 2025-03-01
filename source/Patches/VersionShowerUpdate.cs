@@ -1,6 +1,3 @@
-using HarmonyLib;
-using UnityEngine;
-
 namespace TownOfUsFusion
 {
     [HarmonyPriority(Priority.VeryHigh)] // to show this message first, or be overrided if any plugins do

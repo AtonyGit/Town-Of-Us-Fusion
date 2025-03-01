@@ -1,11 +1,3 @@
-using AmongUs.Data;
-using PowerTools;
-using System.Collections.Generic;
-using System.Linq;
-using HarmonyLib;
-using Reactor.Utilities;
-using Reactor.Utilities.Extensions;
-using UnityEngine;
 using static TownOfUsFusion.Cosmetics.CustomHats.CustomHatManager;
 
 namespace TownOfUsFusion.Cosmetics.CustomHats;
@@ -363,7 +355,7 @@ public static class HatsTabOnEnablePatch
 
         if (Template)
         {
-            var title = Object.Instantiate(Template, __instance.scroller.Inner);
+            var title = UObject.Instantiate(Template, __instance.scroller.Inner);
             title.transform.localPosition = new(2.25f, YStart, -1f);
             title.transform.localScale = Vector3.one * 1.5f;
             title.fontSize *= 0.5f;
@@ -378,7 +370,7 @@ public static class HatsTabOnEnablePatch
             //Debug.Log($"Loading hat: {hat.name}");
             var xpos = __instance.XRange.Lerp(i % __instance.NumPerRow / (__instance.NumPerRow - 1f));
             var ypos = offset - (i / __instance.NumPerRow * (isDefaultPackage ? 1f : 1.5f) * __instance.YOffset);
-            var colorChip = Object.Instantiate(__instance.ColorTabPrefab, __instance.scroller.Inner);
+            var colorChip = UObject.Instantiate(__instance.ColorTabPrefab, __instance.scroller.Inner);
 
             if (ActiveInputManager.currentControlType == ActiveInputManager.InputType.Keyboard)
             {

@@ -1,11 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Text.Json;
-using TownOfUsFusion.Patches;
 using static TownOfUsFusion.Cosmetics.CustomNameplates.CustomNameplateManager;
-using Cpp2IL.Core.Extensions;
-using UnityEngine;
 
 namespace TownOfUsFusion.Loaders;
 

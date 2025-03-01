@@ -1,10 +1,5 @@
-﻿using HarmonyLib;
 using Rewired;
 using Rewired.Data;
-using System.Linq;
-using TownOfUsFusion.Roles;
-using TownOfUsFusion.Roles.Modifiers;
-using Ability = TownOfUsFusion.Roles.Modifiers.Ability;
 
 namespace TownOfUsFusion
 {
@@ -18,8 +13,8 @@ namespace TownOfUsFusion
             //change the text shown on the screen for the kill keybind
             __instance.userData.GetAction("ActionSecondary").descriptiveName = "Kill / Secondary Abilities";
             __instance.userData.GetAction("ActionQuaternary").descriptiveName = "Primary Ability";
-            __instance.userData.RegisterBind("TOU bb/disperse/mimic", "Button Modifier / Mimic Ability");
-            __instance.userData.RegisterBind("TOU Hack", "Glitch's Hack Ability");
+            __instance.userData.RegisterBind("TOU bb/disperse/mimic", "Modifier Ability / Tertiary Ability");
+            __instance.userData.RegisterBind("TOU Hack", "Quaternary Ability");
             __instance.userData.RegisterBind("TOU Cycle +", "Cycle Forwards (Guesser)");
             __instance.userData.RegisterBind("TOU Cycle -", "Cycle Backwards (Guesser)");
             __instance.userData.RegisterBind("TOU Cycle players", "Cycle Selected Player (Guesser)");
@@ -52,7 +47,7 @@ namespace TownOfUsFusion
 
             return action.id;
         }
-    }
+    }/*
 
     [HarmonyPatch]
     public sealed class AssassinVigilanteKeybinds
@@ -126,5 +121,5 @@ namespace TownOfUsFusion
             HighlightedPlayer = null;
             PlayerIndex = 0;
         }
-    }
+    }*/
 }

@@ -1,0 +1,250 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|c:\\users\\atony\\documents\\github\\town-of-us-fusion-mira\\source\\roles\\neutralkilling\\werewolfrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|solutionrelative:source\\roles\\neutralkilling\\werewolfrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|c:\\users\\atony\\documents\\github\\town-of-us-fusion-mira\\source\\modifiers\\captainmodifier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|solutionrelative:source\\modifiers\\captainmodifier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|c:\\users\\atony\\documents\\github\\town-of-us-fusion-mira\\source\\patches\\logopatch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|solutionrelative:source\\patches\\logopatch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|c:\\users\\atony\\documents\\github\\town-of-us-fusion-mira\\source\\patches\\versionshowerupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|solutionrelative:source\\patches\\versionshowerupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|c:\\users\\atony\\documents\\github\\town-of-us-fusion-mira\\source\\patches\\cosmetics\\nameplates\\patches.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|solutionrelative:source\\patches\\cosmetics\\nameplates\\patches.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|c:\\users\\atony\\documents\\github\\town-of-us-fusion-mira\\source\\patches\\cosmetics\\hats\\patches.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|solutionrelative:source\\patches\\cosmetics\\hats\\patches.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|c:\\users\\atony\\documents\\github\\town-of-us-fusion-mira\\source\\toufcolors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|solutionrelative:source\\toufcolors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|c:\\users\\atony\\documents\\github\\town-of-us-fusion-mira\\source\\patches\\splashintropatch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|solutionrelative:source\\patches\\splashintropatch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|c:\\users\\atony\\documents\\github\\town-of-us-fusion-mira\\source\\patches\\cosmetics\\customcosmeticsmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|solutionrelative:source\\patches\\cosmetics\\customcosmeticsmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|c:\\users\\atony\\documents\\github\\town-of-us-fusion-mira\\source\\patches\\cosmetics\\hats\\customhatmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|solutionrelative:source\\patches\\cosmetics\\hats\\customhatmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|c:\\users\\atony\\documents\\github\\town-of-us-fusion-mira\\source\\townofusfusion.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|solutionrelative:source\\townofusfusion.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|c:\\users\\atony\\documents\\github\\town-of-us-fusion-mira\\source\\options\\exampleoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|solutionrelative:source\\options\\exampleoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|c:\\users\\atony\\documents\\github\\town-of-us-fusion-mira\\source\\miradebugwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|solutionrelative:source\\miradebugwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\9.0.101\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "WerewolfRole.cs",
+              "DocumentMoniker": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Roles\\NeutralKilling\\WerewolfRole.cs",
+              "RelativeDocumentMoniker": "source\\Roles\\NeutralKilling\\WerewolfRole.cs",
+              "ToolTip": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Roles\\NeutralKilling\\WerewolfRole.cs",
+              "RelativeToolTip": "source\\Roles\\NeutralKilling\\WerewolfRole.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T21:14:22.251Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CaptainModifier.cs",
+              "DocumentMoniker": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Modifiers\\CaptainModifier.cs",
+              "RelativeDocumentMoniker": "source\\Modifiers\\CaptainModifier.cs",
+              "ToolTip": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Modifiers\\CaptainModifier.cs",
+              "RelativeToolTip": "source\\Modifiers\\CaptainModifier.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T21:13:42.355Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LogoPatch.cs",
+              "DocumentMoniker": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Patches\\LogoPatch.cs",
+              "RelativeDocumentMoniker": "source\\Patches\\LogoPatch.cs",
+              "ToolTip": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Patches\\LogoPatch.cs",
+              "RelativeToolTip": "source\\Patches\\LogoPatch.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAewAgAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T16:39:38.742Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "VersionShowerUpdate.cs",
+              "DocumentMoniker": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Patches\\VersionShowerUpdate.cs",
+              "RelativeDocumentMoniker": "source\\Patches\\VersionShowerUpdate.cs",
+              "ToolTip": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Patches\\VersionShowerUpdate.cs",
+              "RelativeToolTip": "source\\Patches\\VersionShowerUpdate.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAvwAwAAABtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T16:38:24.571Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Patches.cs",
+              "DocumentMoniker": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Patches\\Cosmetics\\Hats\\Patches.cs",
+              "RelativeDocumentMoniker": "source\\Patches\\Cosmetics\\Hats\\Patches.cs",
+              "ToolTip": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Patches\\Cosmetics\\Hats\\Patches.cs",
+              "RelativeToolTip": "source\\Patches\\Cosmetics\\Hats\\Patches.cs",
+              "ViewState": "AgIAAHgBAAAAAAAAAAAvwIEBAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T16:37:25.811Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Patches.cs",
+              "DocumentMoniker": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Patches\\Cosmetics\\Nameplates\\Patches.cs",
+              "RelativeDocumentMoniker": "source\\Patches\\Cosmetics\\Nameplates\\Patches.cs",
+              "ToolTip": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Patches\\Cosmetics\\Nameplates\\Patches.cs",
+              "RelativeToolTip": "source\\Patches\\Cosmetics\\Nameplates\\Patches.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAvwEcAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T16:37:08.724Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ToufColors.cs",
+              "DocumentMoniker": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\ToufColors.cs",
+              "RelativeDocumentMoniker": "source\\ToufColors.cs",
+              "ToolTip": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\ToufColors.cs",
+              "RelativeToolTip": "source\\ToufColors.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T16:36:37.833Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CustomCosmeticsManager.cs",
+              "DocumentMoniker": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Patches\\Cosmetics\\CustomCosmeticsManager.cs",
+              "RelativeDocumentMoniker": "source\\Patches\\Cosmetics\\CustomCosmeticsManager.cs",
+              "ToolTip": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Patches\\Cosmetics\\CustomCosmeticsManager.cs",
+              "RelativeToolTip": "source\\Patches\\Cosmetics\\CustomCosmeticsManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T16:34:59.722Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CustomHatManager.cs",
+              "DocumentMoniker": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Patches\\Cosmetics\\Hats\\CustomHatManager.cs",
+              "RelativeDocumentMoniker": "source\\Patches\\Cosmetics\\Hats\\CustomHatManager.cs",
+              "ToolTip": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Patches\\Cosmetics\\Hats\\CustomHatManager.cs",
+              "RelativeToolTip": "source\\Patches\\Cosmetics\\Hats\\CustomHatManager.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAvwAwAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T16:25:09.715Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "SplashIntroPatch.cs",
+              "DocumentMoniker": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Patches\\SplashIntroPatch.cs",
+              "RelativeDocumentMoniker": "source\\Patches\\SplashIntroPatch.cs",
+              "ToolTip": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Patches\\SplashIntroPatch.cs",
+              "RelativeToolTip": "source\\Patches\\SplashIntroPatch.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAvwCcAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T16:24:36.401Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ExampleOptions.cs",
+              "DocumentMoniker": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Options\\ExampleOptions.cs",
+              "RelativeDocumentMoniker": "source\\Options\\ExampleOptions.cs",
+              "ToolTip": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Options\\ExampleOptions.cs",
+              "RelativeToolTip": "source\\Options\\ExampleOptions.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAewBUAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T11:32:41.123Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "MiraDebugWindow.cs",
+              "DocumentMoniker": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\MiraDebugWindow.cs",
+              "RelativeDocumentMoniker": "source\\MiraDebugWindow.cs",
+              "ToolTip": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\MiraDebugWindow.cs",
+              "RelativeToolTip": "source\\MiraDebugWindow.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAnwAkAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T11:11:01.587Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Microsoft.PackageDependencyResolution.targets",
+              "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\9.0.101\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\9.0.101\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
+              "ToolTip": "C:\\Program Files\\dotnet\\sdk\\9.0.101\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\9.0.101\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
+              "ViewState": "AgIAAAABAAAAAAAAAAAMwAkBAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2025-02-28T10:54:55.743Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "TownOfUsFusion.csproj",
+              "DocumentMoniker": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\TownOfUsFusion.csproj",
+              "RelativeDocumentMoniker": "source\\TownOfUsFusion.csproj",
+              "ToolTip": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\TownOfUsFusion.csproj",
+              "RelativeToolTip": "source\\TownOfUsFusion.csproj",
+              "ViewState": "AgIAAAAAAACQ/////78twBcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-02-28T10:28:41.306Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
