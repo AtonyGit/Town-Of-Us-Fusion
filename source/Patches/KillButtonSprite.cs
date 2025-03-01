@@ -24,8 +24,8 @@ namespace TownOfUsFusion
                 case WerewolfRole:
                     buttonKills = true;
                     flag = true;
-                    button.graphic.sprite = ToufAssets.WerewolfKillButton;
-                    vent.graphic.sprite = ToufAssets.WerewolfVentButton;
+                    button.graphic.sprite = ToufAssets.WerewolfKill;
+                    vent.graphic.sprite = ToufAssets.WerewolfVent;
                     button2 = new RampageButton();
                     break;
                 case null:

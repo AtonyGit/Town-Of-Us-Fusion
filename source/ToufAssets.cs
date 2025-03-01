@@ -9,8 +9,14 @@ public static class ToufAssets
     public static LoadableResourceAsset TeleportButton { get; } = new("TownOfUsFusion.Resources.TeleportButton.png");
     public static LoadableResourceAsset Banner { get; } = new("TownOfUsFusion.Resources.FortniteBanner.jpeg");
     
-    public static Sprite WerewolfKillButton = CreateScaledSprite("TownOfUsFusion.Resources.WerewolfKill.png");
-    public static Sprite WerewolfVentButton = CreateVentSprite("TownOfUsFusion.Resources.WerewolfVent.png");
+    public static LoadableResourceAsset AutopsyButton { get; } = new("TownOfUsFusion.Resources.AutopsyButton.png");
+    public static LoadableResourceAsset ExamineButton { get; } = new("TownOfUsFusion.Resources.ExamineButton.png");
+
+    public static LoadableResourceAsset DouseButton { get; } = new("TownOfUsFusion.Resources.DouseButton.png");
+    public static LoadableResourceAsset IgniteButton { get; } = new("TownOfUsFusion.Resources.IgniteButton.png");
+
+    public static Sprite WerewolfKill = CreateSprite("TownOfUsFusion.Resources.WerewolfKill.png");
+    public static Sprite WerewolfVent = CreateVentSprite("TownOfUsFusion.Resources.WerewolfVent.png");
     public static LoadableResourceAsset RampageButton { get; } = new("TownOfUsFusion.Resources.RampageButton.png");
     public static Sprite ToUBanner { get; } = CreateSprite("TownOfUsFusion.Resources.TownOfUsFusionBanner.png");
     

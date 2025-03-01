@@ -1,6 +1,6 @@
 ﻿namespace TownOfUsFusion.Options.Roles;
 
-public class WerewolfOptions : AbstractOptionGroup
+public class WerewolfRoleSettings : AbstractOptionGroup
 {
     public override string GroupName => "Werewolf";
 

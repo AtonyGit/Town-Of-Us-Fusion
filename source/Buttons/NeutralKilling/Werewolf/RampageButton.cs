@@ -2,10 +2,10 @@
 public class RampageButton : CustomActionButton
 {
     public override string Name => "Rampage";
-    public override ButtonLocation Location => ButtonLocation.BottomRight;
-    public override float Cooldown => OptionGroupSingleton<WerewolfOptions>.Instance.RampageCooldown.Value;
+    public override ButtonLocation Location => ButtonLocation.BottomLeft;
+    public override float Cooldown => OptionGroupSingleton<WerewolfRoleSettings>.Instance.RampageCooldown.Value;
 
-    public override float EffectDuration => OptionGroupSingleton<WerewolfOptions>.Instance.RampageDuration;
+    public override float EffectDuration => OptionGroupSingleton<WerewolfRoleSettings>.Instance.RampageDuration;
 
     public override int MaxUses => 0;
 

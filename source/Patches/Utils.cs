@@ -118,5 +118,21 @@ namespace TownOfUsFusion
             passive.OnMouseOut = new();
             passive.OnMouseOver = new();
         }
+        public static RoleBehaviour GetRole(PlayerControl player)
+        {
+            var role = PlayerControl.LocalPlayer.Data.Role;
+            if (role != null) return role;
+
+            return null;
+        }
+
+        public static PlayerControl PlayerById(byte id)
+        {
+            foreach (var player in PlayerControl.AllPlayerControls)
+                if (player.PlayerId == id)
+                    return player;
+
+            return null;
+        }
     }
 }
