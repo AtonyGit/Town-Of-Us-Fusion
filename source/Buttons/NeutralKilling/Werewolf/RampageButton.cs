@@ -7,6 +7,8 @@ public class RampageButton : CustomTouActionButton
     public override string ButtonKeybind => "ActionQuaternary";
     public override ButtonLocation Location => ButtonLocation.BottomLeft;
     public override float Cooldown => OptionGroupSingleton<WerewolfRoleSettings>.Instance.RampageCooldown.Value;
+    public float KillCooldown => OptionGroupSingleton<WerewolfRoleSettings>.Instance.RampageKillCooldown;
+    public float KillTimer => KillCooldown;
 
     public override float EffectDuration => OptionGroupSingleton<WerewolfRoleSettings>.Instance.RampageDuration;
 
@@ -33,6 +35,11 @@ public class RampageButton : CustomTouActionButton
         base.FixedUpdate(playerControl);
 
         HudManager.Instance.KillButton.gameObject.SetActive(EffectActive);
+        if (KillTimer >= 0)
+        {
+            KillTimer -= Time.deltaTime;
+        }
+        HudManager.Instance.KillButton.SetCoolDown(KillTimer, KillCooldown);
         HudManager.Instance.ImpostorVentButton.gameObject.SetActive(EffectActive || !PlayerControl.LocalPlayer.CanMove);
         
         Button.buttonLabelText.SetOutlineColor(TextColor);

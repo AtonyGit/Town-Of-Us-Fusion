@@ -104,5 +104,51 @@ public class AddButton
                 ImportantTextTask importantTextTask = new GameObject("_Player").AddComponent<ImportantTextTask>();
                 importantTextTask.transform.SetParent(AmongUsClient.Instance.transform, false);
             }
+
+            if (voteArea == null) return;
+            if (voteArea.DidVote) voteArea.UnsetVote();
+            voteArea.AmDead = true;
+            voteArea.Overlay.gameObject.SetActive(true);
+            voteArea.Overlay.color = Color.white;
+            voteArea.XMark.gameObject.SetActive(true);
+            voteArea.XMark.transform.localScale = Vector3.one;
+
+            var meetingHud = MeetingHud.Instance;
+            if (amOwner)
+            {
+                meetingHud.SetForegroundForDead();
+            }
+
+            foreach (var playerVoteArea in meetingHud.playerStates)
+            {
+                if (playerVoteArea.VotedFor != player.PlayerId) continue;
+                playerVoteArea.UnsetVote();
+                var voteAreaPlayer = Utils.PlayerById(playerVoteArea.TargetPlayerId);
+                if (!voteAreaPlayer.AmOwner) continue;
+                meetingHud.ClearVote();
+            }
+
+            if (AmongUsClient.Instance.AmHost) meetingHud.CheckForEndVoting();
         }
+            public static void Postfix(MeetingHud __instance)
+            {
+                foreach (var player in PlayerControl.AllPlayerControls)
+                {
+                    if (player.Data.Role is DeputyRole)
+                    {
+                        var dep = player.Data.Role as DeputyRole;
+                        dep.Buttons.Clear();
+                    }
+                }
+
+                if (PlayerControl.LocalPlayer.Data.IsDead) return;
+                if (!(PlayerControl.LocalPlayer.Data.Role is DeputyRole)) return;
+                var deputyrole = PlayerControl.LocalPlayer.Data.Role as DeputyRole;
+
+                if (deputyrole.Killer == null) return;
+                foreach (var voteArea in __instance.playerStates)
+                {
+                    GenButton(deputyrole, voteArea);
+                }
+            }
     }

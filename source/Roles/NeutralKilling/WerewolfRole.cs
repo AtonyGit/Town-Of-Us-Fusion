@@ -19,7 +19,7 @@ public class WerewolfRole : ImpostorRole, ICustomRole
     public TeamIntroConfiguration? IntroConfiguration { get; } = new(
         Color.gray,
         "OUTCAST",
-        "You are an Outcast Killer. You do not have a team.");
+        "You are an Outcast. You do not have a team.");
 
     public override void SpawnTaskHeader(PlayerControl playerControl)
     {
