@@ -1,4 +1,5 @@
-﻿using MiraAPI.Networking;
+﻿using MiraAPI.Events.Vanilla.Gameplay;
+using MiraAPI.Networking;
 using MiraAPI.PluginLoading;
 using TownOfUsFusion.Modifiers.Camped;
 
@@ -38,26 +39,5 @@ public partial class TownOfUsFusion : BasePlugin, IMiraPlugin
         ReactorCredits.Register<TownOfUsFusion>(ReactorCredits.AlwaysShow);
         
         Harmony.PatchAll();
-    }
-
-    [HarmonyPatch(typeof(CustomMurderRpc), nameof(CustomMurderRpc.RpcCustomMurder))]
-    public static class CustomMurderPatch
-    {
-        public static void Postfix(PlayerControl target, bool didSucceed, bool resetKillTimer, bool createDeadBody, bool teleportMurderer, bool showKillAnim, bool playKillSound)
-            {
-                if (target != null && target.HasModifier<CampedModifier>())
-                {
-                    foreach (var player in PlayerControl.AllPlayerControls)
-                    {
-                        if (player.Data.Role is DeputyRole)
-                        {
-                            var dep = player.Data.Role as DeputyRole;
-                            dep.Killer = PlayerControl.LocalPlayer;
-                        }
-                    }
-                    target?.RpcRemoveModifier<CampedModifier>();
-                }
-            }
-    }
-   
+    }  
 }

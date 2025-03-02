@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|c:\\users\\atony\\documents\\github\\town-of-us-fusion-mira\\source\\buttons\\neutralkilling\\werewolf\\rampagebutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|solutionrelative:source\\buttons\\neutralkilling\\werewolf\\rampagebutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|c:\\users\\atony\\documents\\github\\town-of-us-fusion-mira\\source\\roles\\crewkilling\\deputyrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|solutionrelative:source\\roles\\crewkilling\\deputyrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|c:\\users\\atony\\documents\\github\\town-of-us-fusion-mira\\source\\buttons\\crewkilling\\deputy\\campbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|solutionrelative:source\\buttons\\crewkilling\\deputy\\campbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|c:\\users\\atony\\documents\\github\\town-of-us-fusion-mira\\source\\townofusfusion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|solutionrelative:source\\townofusfusion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|c:\\users\\atony\\documents\\github\\town-of-us-fusion-mira\\source\\patches\\killbuttonsprite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7B91EF68-B9BB-4138-9DEF-79C91FA554D6}|source\\TownOfUsFusion.csproj|solutionrelative:source\\patches\\killbuttonsprite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -74,19 +90,68 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "RampageButton.cs",
+              "DocumentMoniker": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Buttons\\NeutralKilling\\Werewolf\\RampageButton.cs",
+              "RelativeDocumentMoniker": "source\\Buttons\\NeutralKilling\\Werewolf\\RampageButton.cs",
+              "ToolTip": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Buttons\\NeutralKilling\\Werewolf\\RampageButton.cs",
+              "RelativeToolTip": "source\\Buttons\\NeutralKilling\\Werewolf\\RampageButton.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAvwCcAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-02T18:21:06.149Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CampButton.cs",
+              "DocumentMoniker": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Buttons\\CrewKilling\\Deputy\\CampButton.cs",
+              "RelativeDocumentMoniker": "source\\Buttons\\CrewKilling\\Deputy\\CampButton.cs",
+              "ToolTip": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Buttons\\CrewKilling\\Deputy\\CampButton.cs",
+              "RelativeToolTip": "source\\Buttons\\CrewKilling\\Deputy\\CampButton.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAAA1wCoAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-02T03:41:37.572Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DeputyRole.cs",
+              "DocumentMoniker": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Roles\\CrewKilling\\DeputyRole.cs",
+              "RelativeDocumentMoniker": "source\\Roles\\CrewKilling\\DeputyRole.cs",
+              "ToolTip": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Roles\\CrewKilling\\DeputyRole.cs",
+              "RelativeToolTip": "source\\Roles\\CrewKilling\\DeputyRole.cs",
+              "ViewState": "AgIAAIYAAAAAAAAAAAAgwJEAAABRAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-02T03:39:49.02Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TownOfUsFusion.cs",
+              "DocumentMoniker": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\TownOfUsFusion.cs",
+              "RelativeDocumentMoniker": "source\\TownOfUsFusion.cs",
+              "ToolTip": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\TownOfUsFusion.cs",
+              "RelativeToolTip": "source\\TownOfUsFusion.cs",
+              "ViewState": "AQIAADAAAAAAAAAAAAAwwCsAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-02T03:38:47.312Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "KillButtonSprite.cs",
               "DocumentMoniker": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Patches\\KillButtonSprite.cs",
               "RelativeDocumentMoniker": "source\\Patches\\KillButtonSprite.cs",
               "ToolTip": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Patches\\KillButtonSprite.cs",
               "RelativeToolTip": "source\\Patches\\KillButtonSprite.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAA4wBoAAAAaAAAAAAAAAA==",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAmwA4AAABDAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-01T04:32:14.49Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-01T04:32:14.49Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "WerewolfRole.cs",
               "DocumentMoniker": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Roles\\NeutralKilling\\WerewolfRole.cs",
               "RelativeDocumentMoniker": "source\\Roles\\NeutralKilling\\WerewolfRole.cs",
@@ -98,7 +163,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "CaptainModifier.cs",
               "DocumentMoniker": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Modifiers\\CaptainModifier.cs",
               "RelativeDocumentMoniker": "source\\Modifiers\\CaptainModifier.cs",
@@ -110,7 +175,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "LogoPatch.cs",
               "DocumentMoniker": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Patches\\LogoPatch.cs",
               "RelativeDocumentMoniker": "source\\Patches\\LogoPatch.cs",
@@ -122,7 +187,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "VersionShowerUpdate.cs",
               "DocumentMoniker": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Patches\\VersionShowerUpdate.cs",
               "RelativeDocumentMoniker": "source\\Patches\\VersionShowerUpdate.cs",
@@ -134,7 +199,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
               "Title": "Patches.cs",
               "DocumentMoniker": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Patches\\Cosmetics\\Hats\\Patches.cs",
               "RelativeDocumentMoniker": "source\\Patches\\Cosmetics\\Hats\\Patches.cs",
@@ -146,7 +211,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "Patches.cs",
               "DocumentMoniker": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Patches\\Cosmetics\\Nameplates\\Patches.cs",
               "RelativeDocumentMoniker": "source\\Patches\\Cosmetics\\Nameplates\\Patches.cs",
@@ -158,7 +223,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "ToufColors.cs",
               "DocumentMoniker": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\ToufColors.cs",
               "RelativeDocumentMoniker": "source\\ToufColors.cs",
@@ -170,7 +235,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "CustomCosmeticsManager.cs",
               "DocumentMoniker": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Patches\\Cosmetics\\CustomCosmeticsManager.cs",
               "RelativeDocumentMoniker": "source\\Patches\\Cosmetics\\CustomCosmeticsManager.cs",
@@ -182,7 +247,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "CustomHatManager.cs",
               "DocumentMoniker": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Patches\\Cosmetics\\Hats\\CustomHatManager.cs",
               "RelativeDocumentMoniker": "source\\Patches\\Cosmetics\\Hats\\CustomHatManager.cs",
@@ -194,7 +259,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "SplashIntroPatch.cs",
               "DocumentMoniker": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Patches\\SplashIntroPatch.cs",
               "RelativeDocumentMoniker": "source\\Patches\\SplashIntroPatch.cs",
@@ -206,7 +271,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "ExampleOptions.cs",
               "DocumentMoniker": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\Options\\ExampleOptions.cs",
               "RelativeDocumentMoniker": "source\\Options\\ExampleOptions.cs",
@@ -218,7 +283,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 17,
               "Title": "MiraDebugWindow.cs",
               "DocumentMoniker": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\MiraDebugWindow.cs",
               "RelativeDocumentMoniker": "source\\MiraDebugWindow.cs",
@@ -230,7 +295,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 18,
               "Title": "Microsoft.PackageDependencyResolution.targets",
               "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\9.0.101\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\9.0.101\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
@@ -242,7 +307,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "TownOfUsFusion.csproj",
               "DocumentMoniker": "C:\\Users\\Atony\\Documents\\GitHub\\Town-Of-Us-Fusion-mira\\source\\TownOfUsFusion.csproj",
               "RelativeDocumentMoniker": "source\\TownOfUsFusion.csproj",

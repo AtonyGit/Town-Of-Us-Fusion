@@ -8,7 +8,7 @@ public class RampageButton : CustomTouActionButton
     public override ButtonLocation Location => ButtonLocation.BottomLeft;
     public override float Cooldown => OptionGroupSingleton<WerewolfRoleSettings>.Instance.RampageCooldown.Value;
     public float KillCooldown => OptionGroupSingleton<WerewolfRoleSettings>.Instance.RampageKillCooldown;
-    public float KillTimer => KillCooldown;
+    public static float KillTimer { get; private set; } = OptionGroupSingleton<WerewolfRoleSettings>.Instance.RampageKillCooldown;
 
     public override float EffectDuration => OptionGroupSingleton<WerewolfRoleSettings>.Instance.RampageDuration;
 

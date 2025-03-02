@@ -68,6 +68,7 @@ public class AddButton
             void Listener()
             {
                 var target = Utils.PlayerById(voteArea.TargetPlayerId);
+                Logger<TownOfUsFusion>.Info($"The Targeted Player is {target}, the killer is {role.Killer}");
                 if (target == role.Killer)
                 {
                     Shoot(role, target);
