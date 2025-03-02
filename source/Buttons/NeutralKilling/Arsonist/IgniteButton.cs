@@ -2,13 +2,14 @@
 
 namespace TownOfUsFusion.Buttons.Arsonist;
 
-public class IgniteButton : CustomActionButton<PlayerControl>
+public class IgniteButton : CustomTouActionButton<PlayerControl>
 {
     public override string Name => "Ignite";
 
+    public override Color TextColor => Colors.Arsonist;
+    public override string ButtonKeybind => "ActionSecondary";
     public override float Cooldown => OptionGroupSingleton<ArsonistRoleSettings>.Instance.DouseCooldown.Value;
 
-    public override int MaxUses => 0;
 
 
     public override LoadableAsset<Sprite> Sprite => ToufAssets.IgniteButton;
@@ -19,7 +20,17 @@ public class IgniteButton : CustomActionButton<PlayerControl>
         {
             var arsonist = PlayerControl.LocalPlayer.Data.Role as ArsonistRole;
             arsonist.Ignite();
+            arsonist.ResetCooldowns();
         }
+    }
+    protected override void FixedUpdate(PlayerControl playerControl)
+    {
+        base.FixedUpdate(playerControl);
+        
+        Button.buttonLabelText.SetOutlineColor(TextColor);
+        bool AbilityKey = Rewired.ReInput.players.GetPlayer(0).GetButtonDown(ButtonKeybind);
+        if (Button != null && AbilityKey && !PlayerControl.LocalPlayer.Data.IsDead)
+            Button?.DoClick();
     }
 
     public override PlayerControl? GetTarget()

@@ -1,4 +1,5 @@
 ﻿using MiraAPI.Networking;
+using TownOfUsFusion.Buttons.Arsonist;
 using TownOfUsFusion.Modifiers.Doused;
 
 namespace TownOfUsFusion.Roles;
@@ -10,7 +11,15 @@ public class ArsonistRole : ImpostorRole, ICustomRole
     public string RoleLongDescription => "Douse players and ignite to kill all douses";
     public Color RoleColor => Colors.Arsonist;
     public ModdedRoleTeams Team => ModdedRoleTeams.Custom;
-
+    public void ResetCooldowns()
+    {
+        var arsonist = PlayerControl.LocalPlayer.Data.Role as ArsonistRole;
+        if (HudManager.Instance.AbilityButton is DouseButton)
+            HudManager.Instance.AbilityButton.ResetCoolDown();
+        if (HudManager.Instance.AbilityButton is IgniteButton)
+            HudManager.Instance.AbilityButton.ResetCoolDown();
+        //DouseButton<arsonist>.ResetCooldownAndOrEffect();
+    }
     public void Ignite()
     {
         foreach (var player in PlayerControl.AllPlayerControls)

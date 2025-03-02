@@ -2,9 +2,11 @@
 
 namespace TownOfUsFusion.Buttons.Freezer;
 
-public class FreezeButton : CustomActionButton<PlayerControl>
+public class FreezeButton : CustomTouActionButton<PlayerControl>
 {
     public override string Name => "Freeze";
+    public override Color TextColor => Colors.Impostor;
+    public override string ButtonKeybind => "ActionQuaternary";
 
     public override float Cooldown => OptionGroupSingleton<FreezerRoleSettings>.Instance.FreezeDuration;
 

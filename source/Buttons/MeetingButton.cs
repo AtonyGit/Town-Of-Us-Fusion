@@ -1,8 +1,10 @@
 ﻿namespace TownOfUsFusion.Buttons;
 
-public class MeetingButton : CustomActionButton
+public class MeetingButton : CustomTouActionButton
 {
     public override string Name => "Call Meeting";
+    public override Color TextColor => Colors.ButtonBarry;
+    public override string ButtonKeybind => "ActionQuaternary";
 
     public override float Cooldown => 15;
 

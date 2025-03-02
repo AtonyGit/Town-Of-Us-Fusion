@@ -1,5 +1,6 @@
 using Rewired;
 using Rewired.Data;
+using StableNameDotNet;
 
 namespace TownOfUsFusion
 {
@@ -10,11 +11,12 @@ namespace TownOfUsFusion
         [HarmonyPrefix]
         private static void Prefix(InputManager_Base __instance)
         {
-            //change the text shown on the screen for the kill keybind
-            __instance.userData.GetAction("ActionSecondary").descriptiveName = "Kill / Secondary Abilities";
+            //change the text shown on the screen for the keybinds menu
+            __instance.userData.GetAction("ActionSecondary").descriptiveName = "Kill / Secondary Ability";
             __instance.userData.GetAction("ActionQuaternary").descriptiveName = "Primary Ability";
-            __instance.userData.RegisterBind("TOU bb/disperse/mimic", "Modifier Ability / Tertiary Ability");
-            __instance.userData.RegisterBind("TOU Hack", "Quaternary Ability");
+            //__instance.userData.GetAction("UseVent").descriptiveName = "CHECKING Ability";
+            __instance.userData.RegisterBind("ActionCustom", "Modifier Ability / Tertiary Ability");
+            __instance.userData.RegisterBind("ActionCustom2", "Quaternary Ability");
             __instance.userData.RegisterBind("TOU Cycle +", "Cycle Forwards (Guesser)");
             __instance.userData.RegisterBind("TOU Cycle -", "Cycle Backwards (Guesser)");
             __instance.userData.RegisterBind("TOU Cycle players", "Cycle Selected Player (Guesser)");

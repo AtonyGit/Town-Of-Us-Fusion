@@ -1,13 +1,15 @@
 ﻿namespace TownOfUsFusion.Buttons.Werewolf;
-public class RampageButton : CustomActionButton
+public class RampageButton : CustomTouActionButton
 {
     public override string Name => "Rampage";
+
+    public override Color TextColor => Colors.Werewolf;
+    public override string ButtonKeybind => "ActionQuaternary";
     public override ButtonLocation Location => ButtonLocation.BottomLeft;
     public override float Cooldown => OptionGroupSingleton<WerewolfRoleSettings>.Instance.RampageCooldown.Value;
 
     public override float EffectDuration => OptionGroupSingleton<WerewolfRoleSettings>.Instance.RampageDuration;
 
-    public override int MaxUses => 0;
 
     public override LoadableAsset<Sprite> Sprite => ToufAssets.RampageButton;
     public static bool IsRampaging { get; private set; }
@@ -32,6 +34,11 @@ public class RampageButton : CustomActionButton
 
         HudManager.Instance.KillButton.gameObject.SetActive(EffectActive);
         HudManager.Instance.ImpostorVentButton.gameObject.SetActive(EffectActive || !PlayerControl.LocalPlayer.CanMove);
+        
+        Button.buttonLabelText.SetOutlineColor(TextColor);
+        bool AbilityKey = Rewired.ReInput.players.GetPlayer(0).GetButtonDown(ButtonKeybind);
+        if (Button != null && AbilityKey && !PlayerControl.LocalPlayer.Data.IsDead)
+            Button?.DoClick();
     }
 
     private static IEnumerator StartRampage()

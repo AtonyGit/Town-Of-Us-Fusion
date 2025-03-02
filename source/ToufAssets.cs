@@ -12,6 +12,9 @@ public static class ToufAssets
     public static LoadableResourceAsset AutopsyButton { get; } = new("TownOfUsFusion.Resources.AutopsyButton.png");
     public static LoadableResourceAsset ExamineButton { get; } = new("TownOfUsFusion.Resources.ExamineButton.png");
 
+    public static LoadableResourceAsset CampButton { get; } = new("TownOfUsFusion.Resources.CampButton.png");
+    public static LoadableResourceAsset ShootButton { get; } = new("TownOfUsFusion.Resources.Shoot.png");
+
     public static LoadableResourceAsset DouseButton { get; } = new("TownOfUsFusion.Resources.DouseButton.png");
     public static LoadableResourceAsset IgniteButton { get; } = new("TownOfUsFusion.Resources.IgniteButton.png");
 

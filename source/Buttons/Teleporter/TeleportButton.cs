@@ -1,9 +1,12 @@
 ﻿namespace TownOfUsFusion.Buttons.Teleporter;
 
-public class TeleportButton : CustomActionButton
+public class TeleportButton : CustomTouActionButton
 {
     public override string Name => "Teleport";
 
+
+    public override Color TextColor => Colors.Impostor;
+    public override string ButtonKeybind => "ActionQuaternary";
     public override float Cooldown => OptionGroupSingleton<TeleporterOptions>.Instance.TeleportCooldown.Value;
 
     public override float EffectDuration => OptionGroupSingleton<TeleporterOptions>.Instance.TeleportDuration;
@@ -31,6 +34,11 @@ public class TeleportButton : CustomActionButton
     protected override void FixedUpdate(PlayerControl playerControl)
     {
         base.FixedUpdate(playerControl);
+        
+        Button.buttonLabelText.SetOutlineColor(TextColor);
+        bool AbilityKey = Rewired.ReInput.players.GetPlayer(0).GetButtonDown(ButtonKeybind);
+        if (Button != null && AbilityKey && !PlayerControl.LocalPlayer.Data.IsDead)
+            Button?.DoClick();
 
         if (!EffectActive) return;
 

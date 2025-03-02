@@ -1,4 +1,5 @@
-﻿using TownOfUsFusion.Buttons.Werewolf;
+﻿using TownOfUsFusion.Buttons.Arsonist;
+using TownOfUsFusion.Buttons.Werewolf;
 
 namespace TownOfUsFusion
 {
@@ -9,38 +10,32 @@ namespace TownOfUsFusion
 
         public static void Postfix(HudManager __instance)
         {
-            var role = PlayerControl.LocalPlayer.Data.Role;
-            if (__instance.KillButton == null) return;
+            var role = PlayerControl.LocalPlayer.Data.Role as ICustomRole;
 
             if (!Kill) Kill = __instance.KillButton.graphic.sprite;
             var button = __instance.KillButton;
-            CustomActionButton button2 = null;
             var vent = __instance.ImpostorVentButton;
-
-            var flag = false;
-            var buttonKills = false;
-            var otherButtonKills = false;
+            if (role != null)
+            {
+                button.buttonLabelText.SetOutlineColor(role.RoleColor);
+                vent.buttonLabelText.SetOutlineColor(role.RoleColor);
+            }
             switch(role) {
                 case WerewolfRole:
-                    buttonKills = true;
-                    flag = true;
                     button.graphic.sprite = ToufAssets.WerewolfKill;
                     vent.graphic.sprite = ToufAssets.WerewolfVent;
-                    button2 = new RampageButton();
                     break;
                 case null:
                     break;
             }
-
             bool KillKey = Rewired.ReInput.players.GetPlayer(0).GetButtonDown("ActionSecondary");
-            if (!buttonKills) KillKey = Rewired.ReInput.players.GetPlayer(0).GetButtonDown("ActionQuaternary");
             var controller = ConsoleJoystick.player.GetButtonDown(8);
-            if ((KillKey || controller) && button != null && flag && !PlayerControl.LocalPlayer.Data.IsDead)
+            if ((KillKey || controller) && button != null && !PlayerControl.LocalPlayer.Data.IsDead)
                 button.DoClick();
-            bool AbilityKey = Rewired.ReInput.players.GetPlayer(0).GetButtonDown("ActionSecondary");
-            if (!otherButtonKills) AbilityKey = Rewired.ReInput.players.GetPlayer(0).GetButtonDown("ActionQuaternary");
-            if (button2 != null && AbilityKey && !PlayerControl.LocalPlayer.Data.IsDead)
-                button2?.ClickHandler();
+
+            bool VentKey = Rewired.ReInput.players.GetPlayer(0).GetButtonDown("UseVent");
+            if (VentKey && vent != null && !PlayerControl.LocalPlayer.Data.IsDead)
+                vent.DoClick();
 
 /*
             if (Modifier.GetModifier<ButtonBarry>(PlayerControl.LocalPlayer)?.ButtonUsed == false &&
